@@ -1,0 +1,24 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom1 H0 H1 H2 :=  intros H0 H1; [unfold H2 | .. ].
+Ltac custom2 H0 :=  rewrite H0; [case Z.compare_spec; [ | .. ] | .. ].
+Ltac custom3 H0 :=  rewrite H0; [ | lia | .. ].
+Ltac custom4 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros [ H2 | H3 ] [ H4 | H5 ]; [ | .. ] | .. ].
+---------------------------
+Num proofs: 21
+Num training proofs: 7
+Original size: 547
+Compressed total size: 525
+Training size: 338
+(2) (3) Testing size: 209
+(2) (3) Compressed testing size: 198
+(2) (3) Compression rate: 105.56
+Compressed size + lib: 535 ( 525 corpus / 10 library )
+[1] numTactics: 5
+[1] avrgTacticSize: 2.00
+[1] maxTacSize: 2
+[1] numProofsCompressed/total: 6 / 14
+[1] numAvgApplications: 4.40
+[1] numTotalApplications: 22
+Compression rate: 1.0224299065420561
+Num tactics in library: 5

@@ -1,0 +1,12 @@
+safe_par
+triple_pop
+triple_produce
+triple_ccr
+triple_atomic
+safe_and
+triple_set
+triple_alloc
+safe_let
+triple_swap
+triple_release
+safe_immacc

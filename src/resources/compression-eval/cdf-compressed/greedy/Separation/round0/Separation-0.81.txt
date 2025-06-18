@@ -1,0 +1,34 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 :=  apply H0; [intros H1; [split | .. ] | .. ].
+Ltac custom1 H0 :=  apply H0; [auto | .. ].
+Ltac custom2 H0 H1 :=  exists H0, H1; [intuition auto | .. ].
+Ltac custom3 H0 H1 H5 :=  subst H0 H1; [rewrite H5; [auto | .. ] | .. ].
+Ltac custom4 H0 :=  apply H0; [HDISJ | .. ].
+Ltac custom5  :=  cbn; [auto | .. ].
+Ltac custom6 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom7 H0 H1 :=  custom2 H0 H1; [HDISJ | .. ].
+Ltac custom8 H0 H1 H3 :=  destruct ( Z.eq_dec H0 H1 ); [ | apply H3; [lia | .. ] | .. ].
+Ltac custom9 H0 H1 H2 :=  custom8 H0 H1 H2; [lia | .. ].
+Ltac custom10 H0 H1 H2 H3 H4 :=  intros H0 H1 H2; [custom0 H3 H4 | .. ].
+Ltac custom11 H0 :=  custom1 H0; [auto | .. ].
+Ltac custom12 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom13  :=  split; [auto | .. ].
+Ltac custom14 H0 :=  split; [intros H0 | .. ].
+---------------------------
+Num proofs: 41
+Num training proofs: 28
+Original size: 485
+Compressed total size: 405
+Training size: 337
+(2) (3) Testing size: 148
+(2) (3) Compressed testing size: 120
+(2) (3) Compression rate: 123.33
+Compressed size + lib: 438 ( 405 corpus / 33 library )
+[1] numTactics: 15
+[1] avrgTacticSize: 2.20
+[1] maxTacSize: 3
+[1] numProofsCompressed/total: 9 / 13
+[1] numAvgApplications: 3.67
+[1] numTotalApplications: 55
+Compression rate: 1.1073059360730593
+Num tactics in library: 15

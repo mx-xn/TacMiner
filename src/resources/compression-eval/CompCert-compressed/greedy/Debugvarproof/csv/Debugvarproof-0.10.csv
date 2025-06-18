@@ -1,0 +1,16 @@
+extracted tactics -----------
+Ltac custom0  :=  constructor; [auto | auto | .. ].
+Ltac custom1 H0 :=  simpl; [intros H0 | .. ].
+Ltac custom2 H6 H7 :=  split; [apply H6; [apply H7 | .. ] | auto | .. ].
+Ltac custom3 H0 :=  split; [apply H0 | .. ].
+Ltac custom4  :=  induction 1; [simpl | .. ].
+Ltac custom5 H0 H1 H11 :=  simpl in H0; [destruct H1; [inv H11 | .. ] | .. ].
+Ltac custom6 H0 H1 :=  custom3 H0; [apply H1 | auto | .. ].
+Ltac custom7 H0 :=  apply H0; [custom0  |  | auto with coqlib | .. ].
+---------------------------
+ , , 0.1
+Debugvarproof, Number of Tactics, 8
+ , Average Tactic Size, 2.38
+ , Total Tactic Size, 19
+ , Max Tactic Size, 4
+ , Overall CP, 1.11

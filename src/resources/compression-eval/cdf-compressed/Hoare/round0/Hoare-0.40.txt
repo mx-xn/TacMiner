@@ -1,0 +1,44 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto | .. ].
+Ltac custom1  :=  split; [auto | auto | .. ].
+Ltac custom2 H0 H1 H2 H3 H4 H5 H6 H9 H10 :=  intros H0 H1 H2 H3 H4 H5; [apply H6 in H4; [apply H6 in H5; [eapply H9; [apply H10 | .. ] | .. ] | .. ] | .. ].
+Ltac custom4 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom5 H0 H1 H2 H4 H3 :=  apply H0; [intros H1; [specialize ( H2 H1 ); [tauto] | .. ] | .. ]. apply H4 in H3.
+Ltac custom7 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom8  :=  red; [auto | .. ].
+Ltac custom9 H0 :=  apply H0; [split; [auto | auto | .. ] | .. ].
+Ltac custom10 H0 H1 :=  exists H0; [custom0 H1 | .. ].
+Ltac custom11 H0 H1 :=  apply H0; [custom4 H1 | custom4 H1 | .. ].
+Ltac custom13 H0 H6 H1 H3 H4 H5 :=  assert ( H' : exists R : H0 -> assertion, forall x : H6, H1 x ( R x ) ); [custom7 H3 H4; [custom0 H5 | .. ] | .. ].
+Ltac custom14 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1 H2 H3 H4 H5; [apply H6 in H4 | .. ].
+Ltac custom15 H0 H1 H2 :=  custom7 H0 H1; [apply H2 | .. ].
+Ltac custom16 H0 :=  custom4 H0; [eauto | .. ].
+Ltac custom17 H0 H1 :=  eapply H0; [apply H1 | .. ].
+Ltac custom19 H0 :=  exists H0; [split | .. ].
+Ltac custom20 H0 :=  rewrite H0; [ | auto | .. ].
+Ltac custom21 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom22 H0 H1 :=  apply H0 with H1; [auto | auto | .. ].
+Ltac custom23 H0 H1 :=  apply H0; [eapply H1 | .. ].
+Ltac custom24 H0 :=  custom19 H0; [ | auto | .. ].
+Ltac custom25 H0 H1 :=  intros H0; [custom0 H1 | .. ].
+Ltac custom26 H0 H1 :=  apply H0 in H1; [ | custom8  | .. ].
+Ltac custom28 H0 :=  intro H0; [induction H0; [ | .. ] | .. ].
+Ltac custom29  :=  split; [auto | .. ].
+---------------------------
+Num proofs: 27
+Num training proofs: 5
+Original size: 905
+Compressed total size: 679
+Training size: 488
+(2) (3) Testing size: 417
+(2) (3) Compressed testing size: 317
+(2) (3) Compression rate: 131.55
+Compressed size + lib: 756 ( 679 corpus / 77 library )
+[1] numTactics: 25
+[1] avrgTacticSize: 2.48
+[1] maxTacSize: 5
+[1] numProofsCompressed/total: 14 / 22
+[1] numAvgApplications: 5.40
+[1] numTotalApplications: 135
+Compression rate: 1.197089947089947
+Num tactics in library: 25

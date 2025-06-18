@@ -1,0 +1,41 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 H15 H16 H17 :=  constructor; [auto | cbn; [intros H15 H16 | .. ] | intros H0 H1 H2 H3 H4 H5 | intros H6 H7 H8 H9 H10 H11 H12 H13 H14; [subst H8; [inv H17; [ | .. ] | .. ] | .. ] | .. ].
+Ltac custom1 H0 H1 H2 :=  rewrite H0; [apply H1; [intros H2 | .. ] | .. ].
+Ltac custom2 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom3 H0 H1 H2 :=  intros H0 H1; [exists H2; [auto | .. ] | .. ].
+Ltac custom4 H2 H3 H4 H5 H6 H7 H8 H9 H10 :=  constructor; [auto | auto |  | intros H2 H3 H4 H5 H6 H7 H8 H9 H10 | .. ].
+Ltac custom5 H0 H1 H2 H3 :=  intros H0; [cbn; [custom1 H1 H2 H3 | .. ] | .. ].
+Ltac custom6 H0 :=  unfold H0; [cbn; [red; [auto | .. ] | .. ] | .. ].
+Ltac custom7 H0 H1 :=  cbn; [destruct ( Z.eq_dec H0 H1 ); [ | intuition congruence | .. ] | .. ].
+Ltac custom8 H0 H1 H2 :=  apply H0; [rewrite H1; [custom6 H2 | .. ] | .. ].
+Ltac custom9 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom10 H0 H1 :=  eapply H0; [apply H1 | .. ].
+Ltac custom11 H0 :=  apply H0; [auto | .. ].
+Ltac custom12 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom13 H0 H1 H2 H3 :=  apply H0 in H1; [rewrite H2 in H3; [auto] | .. ].
+Ltac custom14 H0 H1 :=  exists H0, H1; [intuition auto | .. ].
+Ltac custom15 H0 H1 :=  custom14 H0 H1; [HDISJ | .. ].
+Ltac custom16  :=  split; [auto | .. ].
+Ltac custom17 H0 :=  destruct H0; [constructor | .. ].
+Ltac custom18 H0 :=  intro H0; [inv H0 | .. ].
+Ltac custom19 H0 H1 :=  custom2 H0 H1; [auto | .. ].
+Ltac custom20 H0 H1 :=  apply H0; [rewrite H1 | .. ].
+Ltac custom21 H15 :=  intuition auto; [ |  | apply H15 | .. ].
+---------------------------
+Num proofs: 16
+Num training proofs: 8
+Original size: 759
+Compressed total size: 587
+Training size: 451
+(2) (3) Testing size: 308
+(2) (3) Compressed testing size: 232
+(2) (3) Compression rate: 132.76
+Compressed size + lib: 647 ( 587 corpus / 60 library )
+[1] numTactics: 22
+[1] avrgTacticSize: 2.73
+[1] maxTacSize: 8
+[1] numProofsCompressed/total: 8 / 8
+[1] numAvgApplications: 4.32
+[1] numTotalApplications: 95
+Compression rate: 1.1731066460587327
+Num tactics in library: 22

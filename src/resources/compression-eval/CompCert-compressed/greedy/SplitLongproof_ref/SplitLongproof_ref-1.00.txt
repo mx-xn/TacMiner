@@ -1,0 +1,19 @@
+extracted tactics -----------
+---------------------------
+Num proofs: 58
+Num training proofs: 58
+Original size: 2470
+Compressed total size: 2470
+Training size: 2470
+(2) (3) Testing size: 0
+(2) (3) Compressed testing size: 2470
+(2) (3) Compression rate: 0.00
+Compressed size + lib: 2470 ( 2470 corpus / 0 library )
+[1] numTactics: 0
+[1] avrgTacticSize: NaN
+[1] maxTacSize: 0
+[1] numProofsCompressed/total: 0 / 58
+[1] numAvgApplications: NaN
+[1] numTotalApplications: 0
+Compression rate: 1.0
+Num tactics in library: 0

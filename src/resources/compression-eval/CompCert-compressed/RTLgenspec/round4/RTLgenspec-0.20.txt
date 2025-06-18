@@ -1,0 +1,36 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom1  :=  econstructor; [eauto | .. ].
+Ltac custom2 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom3  :=  right; [auto | .. ].
+Ltac custom4 H0 :=  apply H0; [custom3  | .. ].
+Ltac custom5 H0 H1 :=  generalize H0; [unfold H1 | .. ].
+Ltac custom6 H0 H1 :=  apply H0 with H1; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom7 H0 H1 :=  apply H0 with H1; [eauto with rtlg | .. ].
+Ltac custom8  :=  split; [red; [simpl | .. ] | .. ].
+Ltac custom9 H0 H1 :=  intros H0 H1; [induction H1 | .. ].
+Ltac custom10 H0 :=  inv H0; [auto].
+Ltac custom11 H0 :=  custom2 H0; [eauto with rtlg | .. ].
+Ltac custom12 H0 :=  exists H0; [auto | .. ].
+Ltac custom13 H0 :=  left; [custom12 H0 | .. ].
+Ltac custom14 H0 H1 :=  apply H0; [custom13 H1 | .. ].
+Ltac custom15 H0 H1 :=  intros H0 H1; [inv H1 | .. ].
+Ltac custom16 H0 :=  constructor; [custom10 H0 | .. ].
+---------------------------
+Num proofs: 21
+Num training proofs: 8
+Original size: 568
+Compressed total size: 469
+Training size: 232
+(2) (3) Testing size: 336
+(2) (3) Compressed testing size: 286
+(2) (3) Compression rate: 117.48
+Compressed size + lib: 510 ( 469 corpus / 41 library )
+[1] numTactics: 17
+[1] avrgTacticSize: 2.41
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 5 / 13
+[1] numAvgApplications: 3.18
+[1] numTotalApplications: 54
+Compression rate: 1.1137254901960785
+Num tactics in library: 17

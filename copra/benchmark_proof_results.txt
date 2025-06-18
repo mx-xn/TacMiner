@@ -1,0 +1,334 @@
+Settings: 
+{
+    "name": "n_4_few_gpt35",
+    "use_hammer": "AUTO",
+    "setting_type": "Agent",
+    "max_proof_depth": 100,
+    "timeout_in_secs": 200,
+    "proof_retries": 4,
+    "max_tokens_per_action": 1000,
+    "max_theorems_in_prompt": 7,
+    "gpt_model_name": "gpt-3.5-turbo",
+    "max_number_of_episodes": 1,
+    "max_steps_per_episode": 4,
+    "render": false,
+    "checkpoint_dir": ".log/checkpoints/simple_benchmark_1/n_4_few_gpt35/coq_few_shot",
+    "should_checkpoint": false,
+    "temperature": 0.7,
+    "max_history_messages": 0,
+    "policy_name": "FewShot",
+    "proof_dump_dir": ".log/proofs/eval_driver/few_shot/simple_benchmark_1/20240620-103033",
+    "use_human_readable_proof_context": true,
+    "sample": 1.0,
+    "sample_seed": 3840,
+    "use_example_retrieval": false,
+    "always_use_useful_theorem_retrieval": false,
+    "num_goal_per_prompt": null
+}
+Benchmark: 
+{
+    "name": "simple_benchmark_1",
+    "num_files": 1,
+    "language": "COQ",
+    "datasets": [
+        {
+            "project": "data/test/coq/custom_group_theory/theories",
+            "files": [
+                {
+                    "path": "grpthm.v",
+                    "theorems": [
+                        "algb_identity_sum",
+                        "algb_add_comm",
+                        "algb_has_identity",
+                        "associativity",
+                        "algb_has_inverse",
+                        "algb_is_closed",
+                        "algb_is_abelian_group",
+                        "algb_mul_is_closed",
+                        "algb_mul_comm",
+                        "algb_mul_assoc",
+                        "algb_mul_add_distr"
+                    ],
+                    "max_retry_attempts_limits": {},
+                    "max_time_limits_in_secs": {}
+                }
+            ]
+        }
+    ],
+    "few_shot_data_path_for_retrieval": ".log/tools/coq_raw_proofs/data/test/coq/custom_group_theory/2023-09-06-03-32-37/theories/train",
+    "few_shot_metadata_filename_for_retrieval": "single.meta.json",
+    "dfs_data_path_for_retrieval": ".log/run_data_generation_transforms/data/test/custom_group_theory/train",
+    "dfs_metadata_filename_for_retrieval": "local.meta.json",
+    "timeout_per_theorem_in_secs": 720
+}
+Lemma: algb_identity_sum
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+algb_identity_sum  : 
+forall a, algb_add a e = a.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: algb_identity_sum  : 
+forall a, algb_add a e = a.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 2.264897346496582
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1, 'attempt_idx': 3, 'total_queries': 3}
+
+
+Lemma: algb_add_comm
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+algb_add_comm  : 
+forall a b, algb_add a b = algb_add b a.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: algb_add_comm  : 
+forall a b, algb_add a b = algb_add b a.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 1.8049399852752686
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1, 'attempt_idx': 3, 'total_queries': 2}
+
+
+Lemma: algb_has_identity
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+algb_has_identity  : 
+forall a, exists i, algb_add a i = a /\ algb_add i a = a.
+Proof.
+    intros a.
+    exists e.
+    split.
+    -
+    apply algb_identity_sum.
+    -
+    rewrite algb_add_comm.
+    apply algb_identity_sum.
+Qed.
+
+ProofFile: None
+LemmaName: algb_has_identity  : 
+forall a, exists i, algb_add a i = a /\ algb_add i a = a.
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 2.3650732040405273
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1, 'attempt_idx': 0, 'total_queries': 1}
+
+
+Lemma: associativity
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+associativity  : 
+forall a b c, (algb_add (algb_add a b) c) = (algb_add a (algb_add b c)).
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: associativity  : 
+forall a b c, (algb_add (algb_add a b) c) = (algb_add a (algb_add b c)).
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 2.4591963291168213
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1, 'attempt_idx': 3, 'total_queries': 2}
+
+
+Lemma: algb_has_inverse
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+algb_has_inverse  : 
+forall a, exists a', algb_add a a' = e /\ algb_add a' a = e.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: algb_has_inverse  : 
+forall a, exists a', algb_add a a' = e /\ algb_add a' a = e.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 3.3746490478515625
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1, 'attempt_idx': 3, 'total_queries': 2}
+
+
+Lemma: algb_is_closed
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+algb_is_closed  :
+forall a b, exists c, algb_eq (algb_add a b) c = true.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: algb_is_closed  :
+forall a b, exists c, algb_eq (algb_add a b) c = true.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 2.85349440574646
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1, 'attempt_idx': 3, 'total_queries': 2}
+
+
+Lemma: algb_is_abelian_group
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+algb_is_abelian_group  :
+forall (a b c : algb), 
+ (exists d, algb_eq (algb_add a b) d = true) /\
+ (exists i, algb_add a i = e /\ algb_add i a = e) /\
+ (exists i, algb_add a i = a /\ algb_add i a = a) /\
+ (algb_add (algb_add a b) c) = (algb_add a (algb_add b c)) /\
+ (algb_add a b) = (algb_add b a).
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: algb_is_abelian_group  :
+forall (a b c : algb), 
+ (exists d, algb_eq (algb_add a b) d = true) /\
+ (exists i, algb_add a i = e /\ algb_add i a = e) /\
+ (exists i, algb_add a i = a /\ algb_add i a = a) /\
+ (algb_add (algb_add a b) c) = (algb_add a (algb_add b c)) /\
+ (algb_add a b) = (algb_add b a).
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 6.1981470584869385
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1, 'attempt_idx': 3, 'total_queries': 2}
+
+
+Lemma: algb_mul_is_closed
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+algb_mul_is_closed  :
+forall a b, algb_eq (algb_mul a b) e = true \/ algb_eq (algb_mul a b) t = true.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: algb_mul_is_closed  :
+forall a b, algb_eq (algb_mul a b) e = true \/ algb_eq (algb_mul a b) t = true.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 10.085267782211304
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2, 'attempt_idx': 3, 'total_queries': 3}
+
+
+Lemma: algb_mul_comm
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+algb_mul_comm  : 
+forall a b, algb_mul a b = algb_mul b a.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: algb_mul_comm  : 
+forall a b, algb_mul a b = algb_mul b a.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 1.5881195068359375
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1, 'attempt_idx': 3, 'total_queries': 3}
+
+
+Lemma: algb_mul_assoc
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+algb_mul_assoc  : 
+forall a b c, algb_mul (algb_mul a b) c = algb_mul a (algb_mul b c).
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: algb_mul_assoc  : 
+forall a b c, algb_mul (algb_mul a b) c = algb_mul a (algb_mul b c).
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 122.31400966644287
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1, 'attempt_idx': 3, 'total_queries': 2}
+
+
+Lemma: algb_mul_add_distr
+File: data/test/coq/custom_group_theory/theories/grpthm.v
+Proof/Incomplete proof: 
+algb_mul_add_distr  : 
+forall a b c, algb_mul a (algb_add b c) = algb_add (algb_mul a b) (algb_mul a c).
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: algb_mul_add_distr  : 
+forall a b c, algb_mul a (algb_add b c) = algb_add (algb_mul a b) (algb_mul a c).
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 2.6516122817993164
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1, 'attempt_idx': 3, 'total_queries': 2}
+
+
+Success rate: 1/11 = 0.09090909090909091 for benchmark: simple_benchmark_1

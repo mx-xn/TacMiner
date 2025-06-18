@@ -1,0 +1,43 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom1 H0 H1 :=  apply H0 with H1; [auto | .. ].
+Ltac custom2  :=  econstructor; [eauto |  |  | eauto | .. ].
+Ltac custom3  :=  econstructor; [ |  | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom4  :=  econstructor; [eauto |  | eauto | .. ].
+Ltac custom5 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom6  :=  constructor; [auto | .. ].
+Ltac custom7 H0 H1 :=  econstructor; [ | custom1 H0 H1 | .. ].
+Ltac custom8 H0 H1 :=  apply H0 with H1; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom9 H0 :=  custom0 H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom10  :=  econstructor; [eauto | .. ].
+Ltac custom11 H0 H1 :=  eapply H0; [ | apply H1; [eauto with rtlg | eauto with rtlg | .. ] | .. ].
+Ltac custom12 H0 :=  apply H0; [auto with coqlib | .. ].
+Ltac custom13  :=  custom6 ; [auto | .. ].
+Ltac custom14  :=  econstructor; [eauto with rtlg | .. ].
+Ltac custom15 H0 :=  eapply H0; [eauto | eauto | .. ].
+Ltac custom16 H0 :=  custom10 ; [ | custom15 H0 | .. ].
+Ltac custom17  :=  custom10 ; [eauto | .. ].
+Ltac custom18 H0 :=  try ( monadInv H0 ); [eauto with rtlg].
+Ltac custom19 H0 :=  eapply H0; [ |  | custom13  | .. ].
+Ltac custom20 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom21  :=  right; [eauto with rtlg | .. ].
+Ltac custom22 H0 :=  exists H0; [auto | .. ].
+Ltac custom23 H0 H1 :=  generalize H0; [unfold H1 | .. ].
+---------------------------
+Num proofs: 20
+Num training proofs: 5
+Original size: 900
+Compressed total size: 666
+Training size: 421
+(2) (3) Testing size: 479
+(2) (3) Compressed testing size: 388
+(2) (3) Compression rate: 123.45
+Compressed size + lib: 725 ( 666 corpus / 59 library )
+[1] numTactics: 24
+[1] avrgTacticSize: 2.46
+[1] maxTacSize: 4
+[1] numProofsCompressed/total: 7 / 15
+[1] numAvgApplications: 4.83
+[1] numTotalApplications: 116
+Compression rate: 1.2413793103448276
+Num tactics in library: 24

@@ -1,0 +1,73 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  intro H0; [elim H0 | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 :=  apply H0; [intro H1; [elim ( occ_inv H1 ); [intro H6 | custom0 H7; [intro H12; [elim H13; [auto with searchtrees | .. ] | .. ] | .. ] | .. ] | .. ] | intros H2 H3; [elim ( occ_inv H3 ); [intro H8 | intro H9 | .. ] | .. ] | intros H4 H5; [elim ( occ_inv H5 ); [intro H10 | intro H11 | .. ] | .. ] | right; [ | .. ] | .. ].
+Ltac custom2 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H32 H33 :=  intros H0 H1 H2 H3 H4 H5 H6 H7; [split; [intros H8 H9; [inversion_clear H9; [auto with searchtrees |  | auto with searchtrees | .. ] | .. ] |  | intros H10 H11; [inversion_clear H11; [auto with searchtrees |  | auto with searchtrees | .. ] | .. ] | elim H7; [constructor 2; [ |  | split; [intros H32 H33 | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom3 H0 :=  elim H0; [auto with searchtrees | .. ].
+Ltac custom4 H0 H1 H2 H3 H9 H10 :=  intros H0 H1 H2; [elim ( occ_inv H1 ); [custom0 H3; [absurd ( H0 < H9 ); [rewrite H3; [apply H10; [auto with zarith | .. ] | .. ] | .. ] | .. ] | destruct 1 | .. ] | .. ].
+Ltac custom5 H0 H1 H2 :=  intro H0; [case H0; [intro H2 | intro H1 | .. ] | .. ].
+Ltac custom6 H0 :=  apply H0; [auto with searchtrees | auto with searchtrees | auto with searchtrees | auto with searchtrees | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 :=  elim H0; [intros H1 H2 H3; [elim ( H3 H4 ); [auto with searchtrees | auto with searchtrees | auto with searchtrees | .. ] | .. ] | .. ].
+Ltac custom8 H0 H1 H2 H3 H4 H5 H6 :=  intro H0; [elim H1; [intros H2 H3 H4 H5; [elim ( H4 H6 H0 ); [auto with searchtrees | auto with searchtrees | .. ] | .. ] | .. ] | .. ].
+Ltac custom9 H0 H1 H2 H3 H4 H6 H5 :=  intros H0 H1 H2 H3; [elim H2; [intros H4; [absurd ( H0 < H6 ); [apply H5 | auto | .. ] | .. ] | .. ] | .. ].
+Ltac custom10 H0 H1 H2 H3 :=  elim ( occ_inv H0 ); [ | custom0 H1; [intro H2 | intro H3 | .. ] | .. ].
+Ltac custom11 H0 H1 :=  intros H0 H1; [inversion_clear H1; [auto with searchtrees | auto with searchtrees | .. ] | .. ].
+Ltac custom12 H0 :=  absurd ( occ H0 Z_leaf ); [auto with searchtrees | auto with searchtrees | .. ].
+Ltac custom13 H0 H1 H2 H3 H4 H7 :=  absurd ( occ H0 H1 ); [apply H2 with H3 H4; [auto with searchtrees | apply H7 | .. ] | auto with searchtrees | .. ].
+Ltac custom14 H0 H1 H2 H3 H4 H5 H6 :=  elim H0; [intros H1 H2 H3 H4 H5 H6 | .. ].
+Ltac custom15 H0 H1 :=  intro H0; [custom3 H1 | .. ].
+Ltac custom16 H0 H1 :=  intros H0 H1; [elim ( occ_inv H1 ) | .. ].
+Ltac custom17 H0 H1 H2 H3 H4 :=  unfold H0; [intros H1 H2; [absurd ( H3 < H4 ); [ | auto with searchtrees | .. ] | .. ] | .. ].
+Ltac custom18 H0 H1 H2 H3 :=  case ( H0 H1 ); [intros H2 H3; [apply H2; [right | .. ] | .. ] | .. ].
+Ltac custom19  :=  left; [auto with searchtrees | .. ].
+Ltac custom20 H0 H1 H2 H3 H4 H5 H6 H7 :=  absurd ( occ H0 H1 ); [apply H2 with H3 ( H4 H5 H6 H7 ); [auto with searchtrees | .. ] | auto with searchtrees | .. ].
+Ltac custom21 H0 H1 H2 H3 :=  case H0; [intros H1 H2; [split; [ | intros H3 | .. ] | .. ] | .. ].
+Ltac custom22 H0 H1 H2 H3 :=  intro H0; [case ( occ_inv H0 ); [intro H1; [absurd ( H2 < H3 ) | .. ] | .. ] | .. ].
+Ltac custom23 H0 H1 H2 H3 :=  intro H0; [apply H1; [intros H2 H3; [inversion_clear H3 | .. ] | .. ] | .. ].
+Ltac custom25 H1 H2 :=  split; [auto with searchtrees | intros H1 H2 | auto with searchtrees | .. ].
+Ltac custom26 H0 :=  rewrite H0; [auto with searchtrees | .. ].
+Ltac custom27 H0 :=  eapply H0; [eauto with searchtrees | .. ].
+Ltac custom28 H0 :=  elim ( min_r H0 ); [auto with searchtrees | .. ].
+Ltac custom29 H0 H1 H2 :=  absurd ( occ H0 H1 ); [apply H2 | auto | .. ].
+Ltac custom30 H0 H1 :=  apply H0 with H1; [auto with searchtrees | auto with searchtrees | .. ].
+Ltac custom31 H0 H1 H2 :=  apply H0 with H1 H2; [auto with searchtrees | .. ].
+Ltac custom32 H0 H1 H2 H3 H4 H5 H6 :=  case H0; [intros H1 H2 H3 | intros H4 H5 H6 | .. ].
+Ltac custom33 H0 H1 :=  intro H0; [subst H1 | .. ].
+Ltac custom35 H0 :=  apply H0; [assumption | .. ].
+Ltac custom36 H0 H1 H2 :=  apply H0; [intros H1 H2 | .. ].
+Ltac custom37 H0 :=  elim H0; [auto | .. ].
+Ltac custom38 H0 :=  custom0 H0; [auto with searchtrees | .. ].
+Ltac custom39 H0 H1 :=  case ( H0 H1 ); [auto | .. ].
+Ltac custom40 H0 H1 :=  intro H0; [elim H1 | .. ].
+Ltac custom41 H0 H1 H2 :=  apply H0; [ |  | custom16 H1 H2 | .. ].
+Ltac custom42 H0 H1 :=  split; [intros H0 H1 | .. ].
+Ltac custom43 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom44 H0 H1 H2 H3 H4 H5 :=  apply H0 with H1 ( H2 H3 H4 H5 ); [auto with searchtrees | .. ].
+Ltac custom45 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom46 H0 H1 :=  apply H0; [custom3 H1 | .. ].
+Ltac custom47 H0 :=  apply H0; [auto | .. ].
+Ltac custom48  :=  cbn; [auto | .. ].
+Ltac custom49 H0 :=  case H0; [auto | .. ].
+Ltac custom50 H0 :=  case H0; [eauto with searchtrees | .. ].
+Ltac custom51 H0 :=  case H0; [auto with searchtrees | .. ].
+Ltac custom52 H0 :=  intros H0; [auto with searchtrees | .. ].
+Ltac custom53 H0 :=  intro H0; [split; [ | .. ] | .. ].
+Ltac custom54 H0 H1 H2 :=  intros H0 H1; [case ( H1 H2 ) | .. ].
+Ltac custom55 H0 H1 :=  intros H0 H1; [case ( occ_inv H1 ) | .. ].
+---------------------------
+Num proofs: 48
+Num training proofs: 48
+Original size: 781
+Compressed total size: 470
+Training size: 781
+(2) (3) Testing size: 0
+(2) (3) Compressed testing size: 470
+(2) (3) Compression rate: 0.00
+Compressed size + lib: 659 ( 470 corpus / 189 library )
+[1] numTactics: 54
+[1] avrgTacticSize: 3.39
+[1] maxTacSize: 17
+[1] numProofsCompressed/total: 39 / 48
+[1] numAvgApplications: 2.98
+[1] numTotalApplications: 161
+Compression rate: 1.1851289833080425
+Num tactics in library: 54

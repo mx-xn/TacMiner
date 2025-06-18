@@ -1,0 +1,43 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  simpl; [intros H0 | .. ].
+Ltac custom1  :=  simpl; [auto | .. ].
+Ltac custom2 H0 :=  split; [apply H0; [apply H0 | .. ] | auto | .. ].
+Ltac custom3  :=  constructor; [ | auto | .. ].
+Ltac custom4 H0 H1 :=  simpl; [intros H0 H1 | .. ].
+Ltac custom5 H0 H1 :=  apply H0 with H1; [eauto | eauto | .. ].
+Ltac custom6  :=  simpl; [constructor | .. ].
+Ltac custom7 H0 :=  destruct H0; [inv H0 |  | .. ].
+Ltac custom8  :=  econstructor; [eauto | .. ].
+Ltac custom9 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom10 H0 H3 :=  inv H0; [inv H3 | .. ].
+Ltac custom11 H0 :=  rewrite <- H0; [apply H0 | .. ].
+Ltac custom12 H0 H1 H2 :=  intros H0 H1; [inv H1; [try ( inv H2 ) | .. ] | .. ].
+Ltac custom13 H0 :=  apply H0; [ |  | auto with coqlib | .. ].
+Ltac custom14 H0 :=  econstructor; [split; [eapply H0; [ |  |  | .. ] |  | .. ] | .. ].
+Ltac custom15 H0 H1 H2 :=  intros H0 H1; [inv H1; [monadInv H2 | .. ] | .. ].
+Ltac custom16 H0 :=  econstructor; [split; [apply H0 |  | .. ] | .. ].
+Ltac custom17  :=  red; [simpl | .. ].
+Ltac custom18 H0 H3 :=  inv H0; [rewrite H3 | .. ].
+Ltac custom19  :=  exploit find_label_match; [eauto |  |  | .. ].
+Ltac custom20 H0 :=  symmetry; [apply H0; [auto | .. ] | .. ].
+Ltac custom21 H0 H1 H2 :=  eapply H0 with ( H1 := H2 ); [ | eauto |  | .. ].
+Ltac custom22 H0 H1 H2 :=  intros ( H0 & H1 & H2 ). eexact H1.
+Ltac custom23  :=  econstructor; [constructor; [ |  | .. ] |  |  | .. ].
+Ltac custom24 H0 :=  inv H0; [eauto | .. ].
+Ltac custom25  :=  exploit find_function_translated; [eauto |  | .. ].
+---------------------------
+Num proofs: 33
+Num training proofs: 5
+Original size: 898
+Compressed total size: 687
+Training size: 463
+(2) (3) Testing size: 435
+(2) (3) Compressed testing size: 371
+(2) (3) Compression rate: 117.25
+Compressed size + lib: 747 ( 687 corpus / 60 library )
+[1] numTactics: 26
+[1] avrgTacticSize: 2.31
+[1] maxTacSize: 4
+[1] numProofsCompressed/total: 61 / 28
+Compression rate: 1.2021419009370817
+Num tactics in library: 26

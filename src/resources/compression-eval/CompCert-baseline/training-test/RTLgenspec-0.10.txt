@@ -1,0 +1,12 @@
+extracted tactics-----------
+custom_tac0: generalize _i; unfold find_var
+---------------------------
+Num proofs: 54
+Num training proofs: 2
+Original size: 855
+Training size: 88
+Testing size: 767
+Compressed total size: 854 ( 852 corpus / 2 library )
+Compressed testing size: 766
+Compression rate: 1.0011709601873535
+Num tactics in library: 1

@@ -1,0 +1,3039 @@
+[
+    {
+        "lemma_name": "div2_rect",
+        "proof": [
+            {
+                "tactic_sig": "Theorem div2_rect : forall ( P : nat -> Type ) , P 0 -> P 1 -> ( forall n , P n -> P ( S ( S n ) ) ) -> forall ( n : nat ) , P n .",
+                "tactic_sig_no_out_arg": "Theorem div2_rect : forall ( P : nat -> Type ) , P 0 -> P 1 -> ( forall n , P n -> P ( S ( S n ) ) ) -> forall ( n : nat ) , P n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (P : forall _ : nat, Type) (_ : P 0) (_ : P 1)\n  (_ : forall (n : nat) (_ : P n), P (S (S n))) (n : nat), \nP n"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros P X0 X1 Xrec n .",
+                "tactic_args": [
+                    "c1_goal : forall (P : forall _ : nat, Type) (_ : P 0) (_ : P 1)\n  (_ : forall (n : nat) (_ : P n), P (S (S n))) (n : nat), \nP n"
+                ],
+                "tactic_res": [
+                    "c2_goal : P n",
+                    "c2_P : forall _ : nat, Type",
+                    "c2_X0 : P 0",
+                    "c2_X1 : P 1",
+                    "c2_Xrec : forall (n : nat) (_ : P n), P (S (S n))",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "assert ( _i _i * _i ( S _i ) ) % type .",
+                "tactic_sig_no_out_arg": "assert ( _i _i * _i ( S _i ) ) % type .",
+                "tactic_args": [
+                    "c2_goal : P n",
+                    "c2_P : forall _ : nat, Type",
+                    "c2_n : nat",
+                    "c2_P : forall _ : nat, Type",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : prod (P n) (P (S n))",
+                    "c4_goal : P n",
+                    "c4_X : prod (P n) (P (S n))"
+                ]
+            },
+            {
+                "tactic_sig": "elim _i .",
+                "tactic_sig_no_out_arg": "elim _i .",
+                "tactic_args": [
+                    "c3_goal : prod (P n) (P (S n))",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c5_goal : prod (P 0) (P 1)",
+                    "c6_goal : forall (n : nat) (_ : prod (P n) (P (S n))),\nprod (P (S n)) (P (S (S n)))"
+                ]
+            },
+            {
+                "tactic_sig": "intuition .",
+                "tactic_sig_no_out_arg": "intuition .",
+                "tactic_args": [
+                    "c5_goal : prod (P 0) (P 1)",
+                    "c2_X1 : P 1",
+                    "c2_X0 : P 0",
+                    "c2_P : forall _ : nat, Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intuition .",
+                "tactic_sig_no_out_arg": "intuition .",
+                "tactic_args": [
+                    "c6_goal : forall (n : nat) (_ : prod (P n) (P (S n))),\nprod (P (S n)) (P (S (S n)))",
+                    "c2_Xrec : forall (n : nat) (_ : P n), P (S (S n))",
+                    "c2_P : forall _ : nat, Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intuition .",
+                "tactic_sig_no_out_arg": "intuition .",
+                "tactic_args": [
+                    "c4_goal : P n",
+                    "c4_X : prod (P n) (P (S n))",
+                    "c2_n : nat",
+                    "c2_P : forall _ : nat, Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "div2_spec",
+        "proof": [
+            {
+                "tactic_sig": "Theorem div2_spec : forall n , ( { x : nat | 2 * x = n } ) + ( { x : nat | 2 * x + 1 = n } ) .",
+                "tactic_sig_no_out_arg": "Theorem div2_spec : forall n , ( { x : nat | 2 * x = n } ) + ( { x : nat | 2 * x + 1 = n } ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall n : nat,\nsum (sig (fun x : nat => eq (Init.Nat.mul 2 x) n))\n  (sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros n .",
+                "tactic_args": [
+                    "c1_goal : forall n : nat,\nsum (sig (fun x : nat => eq (Init.Nat.mul 2 x) n))\n  (sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n))"
+                ],
+                "tactic_res": [
+                    "c2_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) n))\n  (sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n))",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "induction _i as [ | | _i Hrec ] using div2_rect .",
+                "tactic_sig_no_out_arg": "induction _i as [ | | _i Hrec ] using div2_rect .",
+                "tactic_args": [
+                    "c2_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) n))\n  (sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n))",
+                    "c2_n : nat",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) 0))\n  (sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) 0))",
+                    "c4_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) 1))\n  (sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) 1))",
+                    "c5_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) (S (S n))))\n  (sig\n     (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S (S n))))",
+                    "c5_Hrec : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) n))\n  (sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n))"
+                ]
+            },
+            {
+                "tactic_sig": "left .",
+                "tactic_sig_no_out_arg": "left .",
+                "tactic_args": [
+                    "c3_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) 0))\n  (sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) 0))"
+                ],
+                "tactic_res": [
+                    "c6_goal : sig (fun x : nat => eq (Init.Nat.mul 2 x) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "now exists 0 .",
+                "tactic_sig_no_out_arg": "now exists 0 .",
+                "tactic_args": [
+                    "c6_goal : sig (fun x : nat => eq (Init.Nat.mul 2 x) 0)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "right .",
+                "tactic_sig_no_out_arg": "right .",
+                "tactic_args": [
+                    "c4_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) 1))\n  (sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) 1))"
+                ],
+                "tactic_res": [
+                    "c7_goal : sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) 1)"
+                ]
+            },
+            {
+                "tactic_sig": "now exists 0 .",
+                "tactic_sig_no_out_arg": "now exists 0 .",
+                "tactic_args": [
+                    "c7_goal : sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) 1)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [ [ x Heq ] | [ x Heq ] ] .",
+                "tactic_sig_no_out_arg": "destruct _i as [ [ x Heq ] | [ x Heq ] ] .",
+                "tactic_args": [
+                    "c5_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) (S (S n))))\n  (sig\n     (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S (S n))))",
+                    "c5_Hrec : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) n))\n  (sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n))",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c8_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) (S (S n))))\n  (sig\n     (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S (S n))))",
+                    "c8_Heq : eq (Init.Nat.mul 2 x) n",
+                    "c8_x : nat",
+                    "c9_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) (S (S n))))\n  (sig\n     (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S (S n))))",
+                    "c9_Heq : eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n",
+                    "c9_x : nat"
+                ]
+            },
+            {
+                "tactic_sig": "left .",
+                "tactic_sig_no_out_arg": "left .",
+                "tactic_args": [
+                    "c8_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) (S (S n))))\n  (sig\n     (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S (S n))))"
+                ],
+                "tactic_res": [
+                    "c10_goal : sig (fun x : nat => eq (Init.Nat.mul 2 x) (S (S n)))"
+                ]
+            },
+            {
+                "tactic_sig": "exists ( S _i ) .",
+                "tactic_sig_no_out_arg": "exists ( S _i ) .",
+                "tactic_args": [
+                    "c10_goal : sig (fun x : nat => eq (Init.Nat.mul 2 x) (S (S n)))",
+                    "c8_x : nat"
+                ],
+                "tactic_res": [
+                    "c11_goal : eq (Init.Nat.mul 2 (S x)) (S (S n))"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- _i .",
+                "tactic_sig_no_out_arg": "rewrite <- _i .",
+                "tactic_args": [
+                    "c11_goal : eq (Init.Nat.mul 2 (S x)) (S (S n))",
+                    "c8_Heq : eq (Init.Nat.mul 2 x) n"
+                ],
+                "tactic_res": [
+                    "c12_goal : eq (Init.Nat.mul 2 (S x)) (S (S (Init.Nat.mul 2 x)))"
+                ]
+            },
+            {
+                "tactic_sig": "ring .",
+                "tactic_sig_no_out_arg": "ring .",
+                "tactic_args": [
+                    "c12_goal : eq (Init.Nat.mul 2 (S x)) (S (S (Init.Nat.mul 2 x)))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "right .",
+                "tactic_sig_no_out_arg": "right .",
+                "tactic_args": [
+                    "c9_goal : sum (sig (fun x : nat => eq (Init.Nat.mul 2 x) (S (S n))))\n  (sig\n     (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S (S n))))"
+                ],
+                "tactic_res": [
+                    "c13_goal : sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S (S n)))"
+                ]
+            },
+            {
+                "tactic_sig": "exists ( S _i ) .",
+                "tactic_sig_no_out_arg": "exists ( S _i ) .",
+                "tactic_args": [
+                    "c13_goal : sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S (S n)))",
+                    "c9_x : nat"
+                ],
+                "tactic_res": [
+                    "c14_goal : eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) (S (S n))"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- _i .",
+                "tactic_sig_no_out_arg": "rewrite <- _i .",
+                "tactic_args": [
+                    "c14_goal : eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) (S (S n))",
+                    "c9_Heq : eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n"
+                ],
+                "tactic_res": [
+                    "c15_goal : eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1)\n  (S (S (Init.Nat.add (Init.Nat.mul 2 x) 1)))"
+                ]
+            },
+            {
+                "tactic_sig": "ring .",
+                "tactic_sig_no_out_arg": "ring .",
+                "tactic_args": [
+                    "c15_goal : eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1)\n  (S (S (Init.Nat.add (Init.Nat.mul 2 x) 1)))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "half_smaller0",
+        "proof": [
+            {
+                "tactic_sig": "Theorem half_smaller0 : forall n x , 2 * x = S n -> ( x < S n ) .",
+                "tactic_sig_no_out_arg": "Theorem half_smaller0 : forall n x , 2 * x = S n -> ( x < S n ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n x : nat) (_ : eq (Init.Nat.mul 2 x) (S n)), lt x (S n)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c1_goal : forall (n x : nat) (_ : eq (Init.Nat.mul 2 x) (S n)), lt x (S n)"
+                ],
+                "tactic_res": [
+                    "c2_goal : lt x (S n)",
+                    "c2_n : nat",
+                    "c2_x : nat",
+                    "c2_H : eq (Init.Nat.mul 2 x) (S n)"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c2_goal : lt x (S n)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "half_smaller1",
+        "proof": [
+            {
+                "tactic_sig": "Theorem half_smaller1 : forall n x , 2 * x + 1 = n -> ( x < n ) .",
+                "tactic_sig_no_out_arg": "Theorem half_smaller1 : forall n x , 2 * x + 1 = n -> ( x < n ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n x : nat) (_ : eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n),\nlt x n"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c1_goal : forall (n x : nat) (_ : eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n),\nlt x n"
+                ],
+                "tactic_res": [
+                    "c2_goal : lt x n",
+                    "c2_n : nat",
+                    "c2_x : nat",
+                    "c2_H : eq (Init.Nat.add (Init.Nat.mul 2 x) 1) n"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c2_goal : lt x n"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "log2_F'",
+        "proof": [
+            {
+                "tactic_sig": "Definition log2_F' : forall ( n : nat ) , ( forall ( y : nat ) , y < n -> y <> 0 -> ( { p : nat | exp2 p <= y /\\ y < exp2 ( p + 1 ) } ) ) -> n <> 0 -> ( { p : nat | exp2 p <= n /\\ n < exp2 ( p + 1 ) } ) .",
+                "tactic_sig_no_out_arg": "Definition log2_F' : forall ( n : nat ) , ( forall ( y : nat ) , y < n -> y <> 0 -> ( { p : nat | exp2 p <= y /\\ y < exp2 ( p + 1 ) } ) ) -> n <> 0 -> ( { p : nat | exp2 p <= n /\\ n < exp2 ( p + 1 ) } ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y n) (_ : not (eq y 0)),\n       sig\n         (fun p : nat =>\n          and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1)))))\n  (_ : not (eq n 0)),\nsig\n  (fun p : nat => and (le (exp2 p) n) (lt n (exp2 (Init.Nat.add p 1))))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros n .",
+                "tactic_args": [
+                    "c1_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y n) (_ : not (eq y 0)),\n       sig\n         (fun p : nat =>\n          and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1)))))\n  (_ : not (eq n 0)),\nsig\n  (fun p : nat => and (le (exp2 p) n) (lt n (exp2 (Init.Nat.add p 1))))"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall\n  (_ : forall (y : nat) (_ : lt y n) (_ : not (eq y 0)),\n       sig\n         (fun p : nat =>\n          and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1)))))\n  (_ : not (eq n 0)),\nsig\n  (fun p : nat => and (le (exp2 p) n) (lt n (exp2 (Init.Nat.add p 1))))",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c2_goal : forall\n  (_ : forall (y : nat) (_ : lt y n) (_ : not (eq y 0)),\n       sig\n         (fun p : nat =>\n          and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1)))))\n  (_ : not (eq n 0)),\nsig\n  (fun p : nat => and (le (exp2 p) n) (lt n (exp2 (Init.Nat.add p 1))))",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall\n  (_ : forall (y : nat) (_ : lt y 0) (_ : not (eq y 0)),\n       sig\n         (fun p : nat =>\n          and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1)))))\n  (_ : not (eq 0 0)),\nsig\n  (fun p : nat => and (le (exp2 p) 0) (lt 0 (exp2 (Init.Nat.add p 1))))",
+                    "c4_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y (S n)) (_ : not (eq y 0)),\n       sig\n         (fun p : nat =>\n          and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1)))))\n  (_ : not (eq (S n) 0)),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n)) (lt (S n) (exp2 (Init.Nat.add p 1))))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros log2 Hn0 .",
+                "tactic_args": [
+                    "c3_goal : forall\n  (_ : forall (y : nat) (_ : lt y 0) (_ : not (eq y 0)),\n       sig\n         (fun p : nat =>\n          and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1)))))\n  (_ : not (eq 0 0)),\nsig\n  (fun p : nat => and (le (exp2 p) 0) (lt 0 (exp2 (Init.Nat.add p 1))))"
+                ],
+                "tactic_res": [
+                    "c5_goal : sig\n  (fun p : nat => and (le (exp2 p) 0) (lt 0 (exp2 (Init.Nat.add p 1))))",
+                    "c5_log2 : forall (y : nat) (_ : lt y 0) (_ : not (eq y 0)),\nsig\n  (fun p : nat => and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1))))",
+                    "c5_Hn0 : not (eq 0 0)"
+                ]
+            },
+            {
+                "tactic_sig": "elim _i .",
+                "tactic_sig_no_out_arg": "elim _i .",
+                "tactic_args": [
+                    "c5_goal : sig\n  (fun p : nat => and (le (exp2 p) 0) (lt 0 (exp2 (Init.Nat.add p 1))))",
+                    "c5_Hn0 : not (eq 0 0)"
+                ],
+                "tactic_res": [
+                    "c6_goal : eq 0 0"
+                ]
+            },
+            {
+                "tactic_sig": "trivial .",
+                "tactic_sig_no_out_arg": "trivial .",
+                "tactic_args": [
+                    "c6_goal : eq 0 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros n' log2 .",
+                "tactic_args": [
+                    "c4_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y (S n)) (_ : not (eq y 0)),\n       sig\n         (fun p : nat =>\n          and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1)))))\n  (_ : not (eq (S n) 0)),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n)) (lt (S n) (exp2 (Init.Nat.add p 1))))"
+                ],
+                "tactic_res": [
+                    "c7_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c7_n' : nat",
+                    "c7_log2 : forall (y : nat) (_ : lt y (S n')) (_ : not (eq y 0)),\nsig\n  (fun p : nat => and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1))))"
+                ]
+            },
+            {
+                "tactic_sig": "elim ( div2_spec ( S _i ) ) .",
+                "tactic_sig_no_out_arg": "elim ( div2_spec ( S _i ) ) .",
+                "tactic_args": [
+                    "c7_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c7_n' : nat"
+                ],
+                "tactic_res": [
+                    "c8_goal : forall (_ : sig (fun x : nat => eq (Init.Nat.mul 2 x) (S n')))\n  (_ : not (eq (S n') 0)),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c9_goal : forall\n  (_ : sig\n         (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S n')))\n  (_ : not (eq (S n') 0)),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros x .",
+                "tactic_args": [
+                    "c8_goal : forall (_ : sig (fun x : nat => eq (Init.Nat.mul 2 x) (S n')))\n  (_ : not (eq (S n') 0)),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))"
+                ],
+                "tactic_res": [
+                    "c10_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c10_x : sig (fun x : nat => eq (Init.Nat.mul 2 x) (S n'))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [  _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "c10_x : sig (fun x : nat => eq (Init.Nat.mul 2 x) (S n'))",
+                    "c7_log2 : forall (y : nat) (_ : lt y (S n')) (_ : not (eq y 0)),\nsig\n  (fun p : nat => and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1))))",
+                    "c2_n : nat",
+                    "c7_n' : nat"
+                ],
+                "tactic_res": [
+                    "c10_e : eq (Init.Nat.mul 2 x) (S n')",
+                    "c10_x : nat"
+                ]
+            },
+            {
+                "tactic_sig": "case_eq _i .",
+                "tactic_sig_no_out_arg": "case_eq _i .",
+                "tactic_args": [
+                    "c10_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c10_x : nat"
+                ],
+                "tactic_res": [
+                    "c11_goal : forall (_ : eq x 0) (_ : not (eq (S n') 0)),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c12_goal : forall (n : nat) (_ : eq x (S n)) (_ : not (eq (S n') 0)),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c11_goal : forall (_ : eq x 0) (_ : not (eq (S n') 0)),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))"
+                ],
+                "tactic_res": [
+                    "c13_goal : sig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c13_H : eq x 0",
+                    "c13_H0 : not (eq (S n') 0)"
+                ]
+            },
+            {
+                "tactic_sig": "discriminate .",
+                "tactic_sig_no_out_arg": "discriminate .",
+                "tactic_args": [
+                    "c13_goal : sig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros x' Heqx' .",
+                "tactic_args": [
+                    "c12_goal : forall (n : nat) (_ : eq x (S n)) (_ : not (eq (S n') 0)),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))"
+                ],
+                "tactic_res": [
+                    "c14_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c14_x' : nat",
+                    "c14_Heqx' : eq x (S x')"
+                ]
+            },
+            {
+                "tactic_sig": "assert ( Hn0 : S _i <> 0 ) by auto with arith .",
+                "tactic_sig_no_out_arg": "assert ( Hn0 : S _i <> 0 ) by auto with arith .",
+                "tactic_args": [
+                    "c14_x' : nat",
+                    "c14_Heqx' : eq x (S x')",
+                    "c10_e : eq (Init.Nat.mul 2 x) (S n')",
+                    "c7_log2 : forall (y : nat) (_ : lt y (S n')) (_ : not (eq y 0)),\nsig\n  (fun p : nat => and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1))))",
+                    "c2_n : nat",
+                    "c7_n' : nat"
+                ],
+                "tactic_res": [
+                    "c14_Hn0 : not (eq (S x') 0)"
+                ]
+            },
+            {
+                "tactic_sig": "subst _i .",
+                "tactic_sig_no_out_arg": "subst _i .",
+                "tactic_args": [
+                    "c10_x : nat",
+                    "c14_Heqx' : eq x (S x')"
+                ],
+                "tactic_res": [
+                    "c14_e : eq (Init.Nat.mul 2 (S x')) (S n')"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i ( S _i ) ( half_smaller0 _ _ _i ) _i ) as [ v Heqv ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i ( S _i ) ( half_smaller0 _ _ _i ) _i ) as [ v Heqv ] .",
+                "tactic_args": [
+                    "c7_log2 : forall (y : nat) (_ : lt y (S n')) (_ : not (eq y 0)),\nsig\n  (fun p : nat => and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1))))",
+                    "c14_x' : nat",
+                    "c14_e : eq (Init.Nat.mul 2 (S x')) (S n')",
+                    "c14_Hn0 : not (eq (S x') 0)",
+                    "c2_n : nat",
+                    "c7_n' : nat"
+                ],
+                "tactic_res": [
+                    "c14_Heqv : and (le (exp2 v) (S x')) (lt (S x') (exp2 (Init.Nat.add v 1)))",
+                    "c14_v : nat"
+                ]
+            },
+            {
+                "tactic_sig": "exists ( S _i ) .",
+                "tactic_sig_no_out_arg": "exists ( S _i ) .",
+                "tactic_args": [
+                    "c14_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c14_v : nat"
+                ],
+                "tactic_res": [
+                    "c15_goal : and (le (exp2 (S v)) (S n')) (lt (S n') (exp2 (Init.Nat.add (S v) 1)))",
+                    "c15_H : not (eq (S n') 0)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c15_goal : and (le (exp2 (S v)) (S n')) (lt (S n') (exp2 (Init.Nat.add (S v) 1)))"
+                ],
+                "tactic_res": [
+                    "c16_goal : and (le (Init.Nat.add (exp2 v) (Init.Nat.add (exp2 v) 0)) (S n'))\n  (lt (S n')\n     (Init.Nat.add (exp2 (Init.Nat.add v 1))\n        (Init.Nat.add (exp2 (Init.Nat.add v 1)) 0)))"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- _i .",
+                "tactic_sig_no_out_arg": "rewrite <- _i .",
+                "tactic_args": [
+                    "c16_goal : and (le (Init.Nat.add (exp2 v) (Init.Nat.add (exp2 v) 0)) (S n'))\n  (lt (S n')\n     (Init.Nat.add (exp2 (Init.Nat.add v 1))\n        (Init.Nat.add (exp2 (Init.Nat.add v 1)) 0)))",
+                    "c14_e : eq (Init.Nat.mul 2 (S x')) (S n')"
+                ],
+                "tactic_res": [
+                    "c17_goal : and\n  (le (Init.Nat.add (exp2 v) (Init.Nat.add (exp2 v) 0))\n     (Init.Nat.mul 2 (S x')))\n  (lt (Init.Nat.mul 2 (S x'))\n     (Init.Nat.add (exp2 (Init.Nat.add v 1))\n        (Init.Nat.add (exp2 (Init.Nat.add v 1)) 0)))"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c17_goal : and\n  (le (Init.Nat.add (exp2 v) (Init.Nat.add (exp2 v) 0))\n     (Init.Nat.mul 2 (S x')))\n  (lt (Init.Nat.mul 2 (S x'))\n     (Init.Nat.add (exp2 (Init.Nat.add v 1))\n        (Init.Nat.add (exp2 (Init.Nat.add v 1)) 0)))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros x .",
+                "tactic_args": [
+                    "c9_goal : forall\n  (_ : sig\n         (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S n')))\n  (_ : not (eq (S n') 0)),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))"
+                ],
+                "tactic_res": [
+                    "c18_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c18_x : sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S n'))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [  _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "c18_x : sig (fun x : nat => eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S n'))",
+                    "c7_log2 : forall (y : nat) (_ : lt y (S n')) (_ : not (eq y 0)),\nsig\n  (fun p : nat => and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1))))",
+                    "c2_n : nat",
+                    "c7_n' : nat"
+                ],
+                "tactic_res": [
+                    "c18_e : eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S n')",
+                    "c18_x : nat"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [  _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "c18_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c18_x : nat",
+                    "c18_e : eq (Init.Nat.add (Init.Nat.mul 2 x) 1) (S n')",
+                    "c7_log2 : forall (y : nat) (_ : lt y (S n')) (_ : not (eq y 0)),\nsig\n  (fun p : nat => and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1))))",
+                    "c2_n : nat",
+                    "c7_n' : nat"
+                ],
+                "tactic_res": [
+                    "c19_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c19_e : eq (Init.Nat.add (Init.Nat.mul 2 0) 1) (S n')",
+                    "c20_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c20_e : eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) (S n')"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- _i .",
+                "tactic_sig_no_out_arg": "rewrite <- _i .",
+                "tactic_args": [
+                    "c19_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c19_e : eq (Init.Nat.add (Init.Nat.mul 2 0) 1) (S n')"
+                ],
+                "tactic_res": [
+                    "c21_goal : forall _ : not (eq (Init.Nat.add (Init.Nat.mul 2 0) 1) 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (Init.Nat.add (Init.Nat.mul 2 0) 1))\n     (lt (Init.Nat.add (Init.Nat.mul 2 0) 1) (exp2 (Init.Nat.add p 1))))"
+                ]
+            },
+            {
+                "tactic_sig": "exists 0 .",
+                "tactic_sig_no_out_arg": "exists 0 .",
+                "tactic_args": [
+                    "c21_goal : forall _ : not (eq (Init.Nat.add (Init.Nat.mul 2 0) 1) 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (Init.Nat.add (Init.Nat.mul 2 0) 1))\n     (lt (Init.Nat.add (Init.Nat.mul 2 0) 1) (exp2 (Init.Nat.add p 1))))"
+                ],
+                "tactic_res": [
+                    "c22_goal : and (le (exp2 0) (Init.Nat.add (Init.Nat.mul 2 0) 1))\n  (lt (Init.Nat.add (Init.Nat.mul 2 0) 1) (exp2 (Init.Nat.add 0 1)))",
+                    "c22_H : not (eq (Init.Nat.add (Init.Nat.mul 2 0) 1) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c22_goal : and (le (exp2 0) (Init.Nat.add (Init.Nat.mul 2 0) 1))\n  (lt (Init.Nat.add (Init.Nat.mul 2 0) 1) (exp2 (Init.Nat.add 0 1)))"
+                ],
+                "tactic_res": [
+                    "c23_goal : and (le 1 1) (lt 1 2)"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c23_goal : and (le 1 1) (lt 1 2)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "rewrite <- _i .",
+                "tactic_sig_no_out_arg": "rewrite <- _i .",
+                "tactic_args": [
+                    "c20_goal : forall _ : not (eq (S n') 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (S n')) (lt (S n') (exp2 (Init.Nat.add p 1))))",
+                    "c20_e : eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) (S n')"
+                ],
+                "tactic_res": [
+                    "c24_goal : forall _ : not (eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (Init.Nat.add (Init.Nat.mul 2 (S x)) 1))\n     (lt (Init.Nat.add (Init.Nat.mul 2 (S x)) 1)\n        (exp2 (Init.Nat.add p 1))))"
+                ]
+            },
+            {
+                "tactic_sig": "assert ( Hn0 : S _i <> 0 ) by auto with arith .",
+                "tactic_sig_no_out_arg": "assert ( Hn0 : S _i <> 0 ) by auto with arith .",
+                "tactic_args": [
+                    "c18_x : nat",
+                    "c20_e : eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) (S n')",
+                    "c7_log2 : forall (y : nat) (_ : lt y (S n')) (_ : not (eq y 0)),\nsig\n  (fun p : nat => and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1))))",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c24_Hn0 : not (eq (S x) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i ( S _i ) ) as [ a Ha ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i ( S _i ) ) as [ a Ha ] .",
+                "tactic_args": [
+                    "c24_goal : forall _ : not (eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (Init.Nat.add (Init.Nat.mul 2 (S x)) 1))\n     (lt (Init.Nat.add (Init.Nat.mul 2 (S x)) 1)\n        (exp2 (Init.Nat.add p 1))))",
+                    "c7_log2 : forall (y : nat) (_ : lt y (S n')) (_ : not (eq y 0)),\nsig\n  (fun p : nat => and (le (exp2 p) y) (lt y (exp2 (Init.Nat.add p 1))))",
+                    "c18_x : nat",
+                    "c24_Hn0 : not (eq (S x) 0)",
+                    "c20_e : eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) (S n')",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c25_goal : lt (S x) (S n')",
+                    "c26_goal : not (eq (S x) 0)",
+                    "c27_goal : forall _ : not (eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (Init.Nat.add (Init.Nat.mul 2 (S x)) 1))\n     (lt (Init.Nat.add (Init.Nat.mul 2 (S x)) 1)\n        (exp2 (Init.Nat.add p 1))))",
+                    "c27_Ha : and (le (exp2 a) (S x)) (lt (S x) (exp2 (Init.Nat.add a 1)))",
+                    "c27_a : nat"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c25_goal : lt (S x) (S n')"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c26_goal : not (eq (S x) 0)",
+                    "c18_x : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "exists ( S _i ) .",
+                "tactic_sig_no_out_arg": "exists ( S _i ) .",
+                "tactic_args": [
+                    "c27_goal : forall _ : not (eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) 0),\nsig\n  (fun p : nat =>\n   and (le (exp2 p) (Init.Nat.add (Init.Nat.mul 2 (S x)) 1))\n     (lt (Init.Nat.add (Init.Nat.mul 2 (S x)) 1)\n        (exp2 (Init.Nat.add p 1))))",
+                    "c27_a : nat"
+                ],
+                "tactic_res": [
+                    "c28_goal : and (le (exp2 (S a)) (Init.Nat.add (Init.Nat.mul 2 (S x)) 1))\n  (lt (Init.Nat.add (Init.Nat.mul 2 (S x)) 1)\n     (exp2 (Init.Nat.add (S a) 1)))",
+                    "c28_H : not (eq (Init.Nat.add (Init.Nat.mul 2 (S x)) 1) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c28_goal : and (le (exp2 (S a)) (Init.Nat.add (Init.Nat.mul 2 (S x)) 1))\n  (lt (Init.Nat.add (Init.Nat.mul 2 (S x)) 1)\n     (exp2 (Init.Nat.add (S a) 1)))"
+                ],
+                "tactic_res": [
+                    "c29_goal : and\n  (le (Init.Nat.add (exp2 a) (Init.Nat.add (exp2 a) 0))\n     (S (Init.Nat.add (Init.Nat.add x (S (Init.Nat.add x 0))) 1)))\n  (lt (S (Init.Nat.add (Init.Nat.add x (S (Init.Nat.add x 0))) 1))\n     (Init.Nat.add (exp2 (Init.Nat.add a 1))\n        (Init.Nat.add (exp2 (Init.Nat.add a 1)) 0)))"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c29_goal : and\n  (le (Init.Nat.add (exp2 a) (Init.Nat.add (exp2 a) 0))\n     (S (Init.Nat.add (Init.Nat.add x (S (Init.Nat.add x 0))) 1)))\n  (lt (S (Init.Nat.add (Init.Nat.add x (S (Init.Nat.add x 0))) 1))\n     (Init.Nat.add (exp2 (Init.Nat.add a 1))\n        (Init.Nat.add (exp2 (Init.Nat.add a 1)) 0)))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "exp2_positive",
+        "proof": [
+            {
+                "tactic_sig": "Lemma exp2_positive : forall n , exp2 n <> 0 .",
+                "tactic_sig_no_out_arg": "Lemma exp2_positive : forall n , exp2 n <> 0 .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall n : nat, not (eq (exp2 n) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "induction n as [ | n IHn ] .",
+                "tactic_sig_no_out_arg": "induction n as [ | n IHn ] .",
+                "tactic_args": [
+                    "c1_goal : forall n : nat, not (eq (exp2 n) 0)"
+                ],
+                "tactic_res": [
+                    "c2_goal : not (eq (exp2 0) 0)",
+                    "c3_goal : not (eq (exp2 (S n)) 0)",
+                    "c3_IHn : not (eq (exp2 n) 0)",
+                    "c3_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "discriminate .",
+                "tactic_sig_no_out_arg": "discriminate .",
+                "tactic_args": [
+                    "c2_goal : not (eq (exp2 0) 0)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c3_goal : not (eq (exp2 (S n)) 0)"
+                ],
+                "tactic_res": [
+                    "c4_goal : not (eq (Init.Nat.add (exp2 n) (Init.Nat.add (exp2 n) 0)) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( exp2 _i ) as [  _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( exp2 _i ) .",
+                "tactic_args": [
+                    "c4_goal : not (eq (Init.Nat.add (exp2 n) (Init.Nat.add (exp2 n) 0)) 0)",
+                    "c3_n : nat",
+                    "c3_IHn : not (eq (exp2 n) 0)"
+                ],
+                "tactic_res": [
+                    "c5_goal : not (eq (Init.Nat.add 0 (Init.Nat.add 0 0)) 0)",
+                    "c5_IHn : not (eq 0 0)",
+                    "c6_goal : not (eq (Init.Nat.add (S n0) (Init.Nat.add (S n0) 0)) 0)",
+                    "c6_IHn : not (eq (S n0) 0)",
+                    "c6_n0 : nat"
+                ]
+            },
+            {
+                "tactic_sig": "now destruct _i .",
+                "tactic_sig_no_out_arg": "now destruct _i .",
+                "tactic_args": [
+                    "c5_goal : not (eq (Init.Nat.add 0 (Init.Nat.add 0 0)) 0)",
+                    "c5_IHn : not (eq 0 0)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "discriminate .",
+                "tactic_sig_no_out_arg": "discriminate .",
+                "tactic_args": [
+                    "c6_goal : not (eq (Init.Nat.add (S n0) (Init.Nat.add (S n0) 0)) 0)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "div2_double",
+        "proof": [
+            {
+                "tactic_sig": "Lemma div2_double : forall n , div2 ( 2 * n ) = n .",
+                "tactic_sig_no_out_arg": "Lemma div2_double : forall n , div2 ( 2 * n ) = n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall n : nat, eq (div2 (Init.Nat.mul 2 n)) n"
+                ]
+            },
+            {
+                "tactic_sig": "induction n as [ | n IHn ] .",
+                "tactic_sig_no_out_arg": "induction n as [ | n IHn ] .",
+                "tactic_args": [
+                    "c1_goal : forall n : nat, eq (div2 (Init.Nat.mul 2 n)) n"
+                ],
+                "tactic_res": [
+                    "c2_goal : eq (div2 (Init.Nat.mul 2 0)) 0",
+                    "c3_goal : eq (div2 (Init.Nat.mul 2 (S n))) (S n)",
+                    "c3_IHn : eq (div2 (Init.Nat.mul 2 n)) n",
+                    "c3_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c2_goal : eq (div2 (Init.Nat.mul 2 0)) 0"
+                ],
+                "tactic_res": [
+                    "c4_goal : eq 0 0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : eq 0 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "replace ( 2 * S _i ) with ( S ( S ( 2 * _i ) ) ) by lia .",
+                "tactic_sig_no_out_arg": "replace ( 2 * S _i ) with ( S ( S ( 2 * _i ) ) ) by lia .",
+                "tactic_args": [
+                    "c3_goal : eq (div2 (Init.Nat.mul 2 (S n))) (S n)",
+                    "c3_n : nat",
+                    "c3_n : nat"
+                ],
+                "tactic_res": [
+                    "c5_goal : eq (div2 (S (S (Init.Nat.mul 2 n)))) (S n)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl in * .",
+                "tactic_sig_no_out_arg": "simpl in * .",
+                "tactic_args": [
+                    "c5_goal : eq (div2 (S (S (Init.Nat.mul 2 n)))) (S n)"
+                ],
+                "tactic_res": [
+                    "c6_goal : eq (S (div2 (Init.Nat.add n (Init.Nat.add n 0)))) (S n)",
+                    "c6_IHn : eq (div2 (Init.Nat.add n (Init.Nat.add n 0))) n"
+                ]
+            },
+            {
+                "tactic_sig": "now rewrite _i .",
+                "tactic_sig_no_out_arg": "now rewrite _i .",
+                "tactic_args": [
+                    "c6_goal : eq (S (div2 (Init.Nat.add n (Init.Nat.add n 0)))) (S n)",
+                    "c6_IHn : eq (div2 (Init.Nat.add n (Init.Nat.add n 0))) n"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "div2_rect'",
+        "proof": [
+            {
+                "tactic_sig": "Theorem div2_rect' : forall ( P : nat -> Type ) , P 0 -> P 1 -> ( forall n , P n -> P ( S ( S n ) ) ) -> forall ( n : nat ) , P n .",
+                "tactic_sig_no_out_arg": "Theorem div2_rect' : forall ( P : nat -> Type ) , P 0 -> P 1 -> ( forall n , P n -> P ( S ( S n ) ) ) -> forall ( n : nat ) , P n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (P : forall _ : nat, Type) (_ : P 0) (_ : P 1)\n  (_ : forall (n : nat) (_ : P n), P (S (S n))) (n : nat), \nP n"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros P H0 H1 Hrec n .",
+                "tactic_args": [
+                    "c1_goal : forall (P : forall _ : nat, Type) (_ : P 0) (_ : P 1)\n  (_ : forall (n : nat) (_ : P n), P (S (S n))) (n : nat), \nP n"
+                ],
+                "tactic_res": [
+                    "c2_goal : P n",
+                    "c2_P : forall _ : nat, Type",
+                    "c2_H0 : P 0",
+                    "c2_H1 : P 1",
+                    "c2_Hrec : forall (n : nat) (_ : P n), P (S (S n))",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "assert ( _i _i * _i ( S _i ) ) % type .",
+                "tactic_sig_no_out_arg": "assert ( _i _i * _i ( S _i ) ) % type .",
+                "tactic_args": [
+                    "c2_goal : P n",
+                    "c2_P : forall _ : nat, Type",
+                    "c2_n : nat",
+                    "c2_P : forall _ : nat, Type",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : prod (P n) (P (S n))",
+                    "c4_goal : P n",
+                    "c4_X : prod (P n) (P (S n))"
+                ]
+            },
+            {
+                "tactic_sig": "elim _i .",
+                "tactic_sig_no_out_arg": "elim _i .",
+                "tactic_args": [
+                    "c3_goal : prod (P n) (P (S n))",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c5_goal : prod (P 0) (P 1)",
+                    "c6_goal : forall (n : nat) (_ : prod (P n) (P (S n))),\nprod (P (S n)) (P (S (S n)))"
+                ]
+            },
+            {
+                "tactic_sig": "intuition .",
+                "tactic_sig_no_out_arg": "intuition .",
+                "tactic_args": [
+                    "c5_goal : prod (P 0) (P 1)",
+                    "c2_H1 : P 1",
+                    "c2_H0 : P 0",
+                    "c2_P : forall _ : nat, Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intuition .",
+                "tactic_sig_no_out_arg": "intuition .",
+                "tactic_args": [
+                    "c6_goal : forall (n : nat) (_ : prod (P n) (P (S n))),\nprod (P (S n)) (P (S (S n)))",
+                    "c2_Hrec : forall (n : nat) (_ : P n), P (S (S n))",
+                    "c2_P : forall _ : nat, Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intuition .",
+                "tactic_sig_no_out_arg": "intuition .",
+                "tactic_args": [
+                    "c4_goal : P n",
+                    "c4_X : prod (P n) (P (S n))",
+                    "c2_n : nat",
+                    "c2_P : forall _ : nat, Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "div2_le",
+        "proof": [
+            {
+                "tactic_sig": "Lemma div2_le : forall n , div2 n <= n .",
+                "tactic_sig_no_out_arg": "Lemma div2_le : forall n , div2 n <= n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall n : nat, le (div2 n) n"
+                ]
+            },
+            {
+                "tactic_sig": "induction n using div2_rect .",
+                "tactic_sig_no_out_arg": "induction n using div2_rect .",
+                "tactic_args": [
+                    "c1_goal : forall n : nat, le (div2 n) n"
+                ],
+                "tactic_res": [
+                    "c2_goal : le (div2 0) 0",
+                    "c3_goal : le (div2 1) 1",
+                    "c4_goal : le (div2 (S (S n))) (S (S n))",
+                    "c4_IHn : le (div2 n) n",
+                    "c4_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c2_goal : le (div2 0) 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c3_goal : le (div2 1) 1"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c4_goal : le (div2 (S (S n))) (S (S n))"
+                ],
+                "tactic_res": [
+                    "c5_goal : le (S (div2 n)) (S (S n))"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c5_goal : le (S (div2 n)) (S (S n))",
+                    "c4_IHn : le (div2 n) n",
+                    "c4_n : nat"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "div2_lt",
+        "proof": [
+            {
+                "tactic_sig": "Lemma div2_lt : forall n , n <> 0 -> div2 n < n .",
+                "tactic_sig_no_out_arg": "Lemma div2_lt : forall n , n <> 0 -> div2 n < n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n : nat) (_ : not (eq n 0)), lt (div2 n) n"
+                ]
+            },
+            {
+                "tactic_sig": "induction n as [ | | n IHn ] using div2_rect .",
+                "tactic_sig_no_out_arg": "induction n as [ | | n IHn ] using div2_rect .",
+                "tactic_args": [
+                    "c1_goal : forall (n : nat) (_ : not (eq n 0)), lt (div2 n) n"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall _ : not (eq 0 0), lt (div2 0) 0",
+                    "c3_goal : forall _ : not (eq 1 0), lt (div2 1) 1",
+                    "c4_goal : forall _ : not (eq (S (S n)) 0), lt (div2 (S (S n))) (S (S n))",
+                    "c4_IHn : forall _ : not (eq n 0), lt (div2 n) n",
+                    "c4_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c3_goal : forall _ : not (eq 1 0), lt (div2 1) 1"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "now destruct 1 .",
+                "tactic_sig_no_out_arg": "now destruct 1 .",
+                "tactic_args": [
+                    "c2_goal : forall _ : not (eq 0 0), lt (div2 0) 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c4_goal : forall _ : not (eq (S (S n)) 0), lt (div2 (S (S n))) (S (S n))"
+                ],
+                "tactic_res": [
+                    "c5_goal : forall _ : not (eq (S (S n)) 0), lt (S (div2 n)) (S (S n))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c5_goal : forall _ : not (eq (S (S n)) 0), lt (S (div2 n)) (S (S n))"
+                ],
+                "tactic_res": [
+                    "c6_goal : lt (S (div2 n)) (S (S n))",
+                    "c6_H : not (eq (S (S n)) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i with ( _i _i ) .",
+                "tactic_sig_no_out_arg": "apply _i with ( _i _i ) .",
+                "tactic_args": [
+                    "c6_goal : lt (S (div2 n)) (S (S n))",
+                    "_global_Nat.le_lt_trans : forall (n m p : nat) (_ : le n m) (_ : lt m p), lt n p",
+                    "_global_S : forall _ : nat, nat",
+                    "c4_n : nat"
+                ],
+                "tactic_res": [
+                    "c7_goal : le (S (div2 n)) (S n)",
+                    "c8_goal : lt (S n) (S (S n))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c8_goal : lt (S n) (S (S n))",
+                    "c4_n : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "generalize ( div2_le _i ) .",
+                "tactic_sig_no_out_arg": "generalize ( div2_le _i ) .",
+                "tactic_args": [
+                    "c7_goal : le (S (div2 n)) (S n)",
+                    "c4_n : nat"
+                ],
+                "tactic_res": [
+                    "c9_goal : forall _ : le (div2 n) n, le (S (div2 n)) (S n)"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c9_goal : forall _ : le (div2 n) n, le (S (div2 n)) (S n)",
+                    "c4_n : nat"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "log2",
+        "proof": [
+            {
+                "tactic_sig": "Function log2 ( n : nat ) { measure ( fun n : nat => n ) } := match n with 0 | 1 => 0 | _ => S ( log2 ( div2 n ) ) end .",
+                "tactic_sig_no_out_arg": "Function log2 ( n : nat ) { measure ( fun n : nat => n ) } := match n with 0 | 1 => 0 | _ => S ( log2 ( div2 n ) ) end .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n n0 n1 : nat) (_ : eq n0 (S n1)) (_ : eq n (S (S n1))),\nlt (div2 (S (S n1))) (S (S n1))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c1_goal : forall (n n0 n1 : nat) (_ : eq n0 (S n1)) (_ : eq n (S (S n1))),\nlt (div2 (S (S n1))) (S (S n1))"
+                ],
+                "tactic_res": [
+                    "c2_goal : lt (div2 (S (S n1))) (S (S n1))",
+                    "c2_n : nat",
+                    "c2_n0 : nat",
+                    "c2_n1 : nat",
+                    "c2_teq0 : eq n0 (S n1)",
+                    "c2_teq : eq n (S (S n1))"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c2_goal : lt (div2 (S (S n1))) (S (S n1))",
+                    "_global_div2_lt : forall (n : nat) (_ : not (eq n 0)), lt (div2 n) n"
+                ],
+                "tactic_res": [
+                    "c3_goal : not (eq (S (S n1)) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "discriminate .",
+                "tactic_sig_no_out_arg": "discriminate .",
+                "tactic_args": [
+                    "c3_goal : not (eq (S (S n1)) 0)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "log_of_exp2_0",
+        "proof": [
+            {
+                "tactic_sig": "Lemma log_of_exp2_0 : forall n p , n = exp2 p -> log2 n = p .",
+                "tactic_sig_no_out_arg": "Lemma log_of_exp2_0 : forall n p , n = exp2 p -> log2 n = p .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n p : nat) (_ : eq n (exp2 p)), eq (log2 n) p"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro n .",
+                "tactic_args": [
+                    "c1_goal : forall (n p : nat) (_ : eq n (exp2 p)), eq (log2 n) p"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall (p : nat) (_ : eq n (exp2 p)), eq (log2 n) p",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "functional induction ( log2 _i ) .",
+                "tactic_sig_no_out_arg": "functional induction ( log2 _i ) .",
+                "tactic_args": [
+                    "c2_goal : forall (p : nat) (_ : eq n (exp2 p)), eq (log2 n) p",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall (p : nat) (_ : eq 0 (exp2 p)), eq 0 p",
+                    "c4_goal : forall (p : nat) (_ : eq 1 (exp2 p)), eq 0 p",
+                    "c5_goal : forall (p : nat) (_ : eq n (exp2 p)), eq (S (log2 (div2 n))) p",
+                    "c5_IHn0 : forall (p : nat) (_ : eq (div2 n) (exp2 p)), eq (log2 (div2 n)) p",
+                    "c5_y : match n with\n| S (S _) => True\n| _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "induction p .",
+                "tactic_sig_no_out_arg": "induction p .",
+                "tactic_args": [
+                    "c3_goal : forall (p : nat) (_ : eq 0 (exp2 p)), eq 0 p"
+                ],
+                "tactic_res": [
+                    "c6_goal : forall _ : eq 0 (exp2 0), eq 0 0",
+                    "c7_goal : forall _ : eq 0 (exp2 (S p)), eq 0 (S p)",
+                    "c7_IHp : forall _ : eq 0 (exp2 p), eq 0 p",
+                    "c7_p : nat"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c6_goal : forall _ : eq 0 (exp2 0), eq 0 0"
+                ],
+                "tactic_res": [
+                    "c8_goal : forall _ : eq 0 1, eq 0 0"
+                ]
+            },
+            {
+                "tactic_sig": "try discriminate .",
+                "tactic_sig_no_out_arg": "try discriminate .",
+                "tactic_args": [
+                    "c8_goal : forall _ : eq 0 1, eq 0 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c7_goal : forall _ : eq 0 (exp2 (S p)), eq 0 (S p)"
+                ],
+                "tactic_res": [
+                    "c9_goal : forall _ : eq 0 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0)),\neq 0 (S p)"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H .",
+                "tactic_args": [
+                    "c9_goal : forall _ : eq 0 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0)),\neq 0 (S p)"
+                ],
+                "tactic_res": [
+                    "c10_goal : eq 0 (S p)",
+                    "c10_H : eq 0 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))"
+                ]
+            },
+            {
+                "tactic_sig": "case_eq ( exp2 _i ) .",
+                "tactic_sig_no_out_arg": "case_eq ( exp2 _i ) .",
+                "tactic_args": [
+                    "c10_goal : eq 0 (S p)",
+                    "c7_p : nat"
+                ],
+                "tactic_res": [
+                    "c11_goal : forall _ : eq (exp2 p) 0, eq 0 (S p)",
+                    "c12_goal : forall (n : nat) (_ : eq (exp2 p) (S n)), eq 0 (S p)"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H0 .",
+                "tactic_args": [
+                    "c11_goal : forall _ : eq (exp2 p) 0, eq 0 (S p)"
+                ],
+                "tactic_res": [
+                    "c13_goal : eq 0 (S p)",
+                    "c13_H0 : eq (exp2 p) 0"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( exp2_positive _i ) as [  ] .",
+                "tactic_sig_no_out_arg": "destruct ( exp2_positive _i ) .",
+                "tactic_args": [
+                    "c13_goal : eq 0 (S p)",
+                    "c7_p : nat",
+                    "c13_H0 : eq (exp2 p) 0",
+                    "c10_H : eq 0 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))",
+                    "c7_IHp : forall _ : eq 0 (exp2 p), eq 0 p"
+                ],
+                "tactic_res": [
+                    "c14_goal : eq (exp2 p) 0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c14_goal : eq (exp2 p) 0",
+                    "c13_H0 : eq (exp2 p) 0",
+                    "c7_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros n H0 .",
+                "tactic_args": [
+                    "c12_goal : forall (n : nat) (_ : eq (exp2 p) (S n)), eq 0 (S p)"
+                ],
+                "tactic_res": [
+                    "c15_goal : eq 0 (S p)",
+                    "c15_n : nat",
+                    "c15_H0 : eq (exp2 p) (S n)"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite _i in _i .",
+                "tactic_sig_no_out_arg": "rewrite _i in _i .",
+                "tactic_args": [
+                    "c15_H0 : eq (exp2 p) (S n)",
+                    "c15_H : eq 0 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))"
+                ],
+                "tactic_res": [
+                    "c15_H : eq 0 (Init.Nat.add (S n) (Init.Nat.add (S n) 0))"
+                ]
+            },
+            {
+                "tactic_sig": "discriminate .",
+                "tactic_sig_no_out_arg": "discriminate .",
+                "tactic_args": [
+                    "c15_goal : eq 0 (S p)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct p as [  | _o ] .",
+                "tactic_sig_no_out_arg": "destruct p .",
+                "tactic_args": [
+                    "c4_goal : forall (p : nat) (_ : eq 1 (exp2 p)), eq 0 p"
+                ],
+                "tactic_res": [
+                    "c16_goal : forall _ : eq 1 (exp2 0), eq 0 0",
+                    "c17_goal : forall _ : eq 1 (exp2 (S p)), eq 0 (S p)",
+                    "c17_p : nat"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c16_goal : forall _ : eq 1 (exp2 0), eq 0 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c17_goal : forall _ : eq 1 (exp2 (S p)), eq 0 (S p)"
+                ],
+                "tactic_res": [
+                    "c18_goal : forall _ : eq 1 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0)),\neq 0 (S p)"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H .",
+                "tactic_args": [
+                    "c18_goal : forall _ : eq 1 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0)),\neq 0 (S p)"
+                ],
+                "tactic_res": [
+                    "c19_goal : eq 0 (S p)",
+                    "c19_H : eq 1 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))"
+                ]
+            },
+            {
+                "tactic_sig": "case_eq ( exp2 _i ) .",
+                "tactic_sig_no_out_arg": "case_eq ( exp2 _i ) .",
+                "tactic_args": [
+                    "c19_goal : eq 0 (S p)",
+                    "c17_p : nat"
+                ],
+                "tactic_res": [
+                    "c20_goal : forall _ : eq (exp2 p) 0, eq 0 (S p)",
+                    "c21_goal : forall (n : nat) (_ : eq (exp2 p) (S n)), eq 0 (S p)"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H0 .",
+                "tactic_args": [
+                    "c20_goal : forall _ : eq (exp2 p) 0, eq 0 (S p)"
+                ],
+                "tactic_res": [
+                    "c22_goal : eq 0 (S p)",
+                    "c22_H0 : eq (exp2 p) 0"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( exp2_positive _i ) as [  ] .",
+                "tactic_sig_no_out_arg": "destruct ( exp2_positive _i ) .",
+                "tactic_args": [
+                    "c22_goal : eq 0 (S p)",
+                    "c17_p : nat",
+                    "c22_H0 : eq (exp2 p) 0",
+                    "c19_H : eq 1 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))"
+                ],
+                "tactic_res": [
+                    "c23_goal : eq (exp2 p) 0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c23_goal : eq (exp2 p) 0",
+                    "c22_H0 : eq (exp2 p) 0",
+                    "c17_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros n H0 .",
+                "tactic_args": [
+                    "c21_goal : forall (n : nat) (_ : eq (exp2 p) (S n)), eq 0 (S p)"
+                ],
+                "tactic_res": [
+                    "c24_goal : eq 0 (S p)",
+                    "c24_n : nat",
+                    "c24_H0 : eq (exp2 p) (S n)"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite _i in _i .",
+                "tactic_sig_no_out_arg": "rewrite _i in _i .",
+                "tactic_args": [
+                    "c24_H0 : eq (exp2 p) (S n)",
+                    "c24_H : eq 1 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))"
+                ],
+                "tactic_res": [
+                    "c24_H : eq 1 (Init.Nat.add (S n) (Init.Nat.add (S n) 0))"
+                ]
+            },
+            {
+                "tactic_sig": "exfalso .",
+                "tactic_sig_no_out_arg": "exfalso .",
+                "tactic_args": [
+                    "c24_goal : eq 0 (S p)"
+                ],
+                "tactic_res": [
+                    "c25_goal : False"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c25_goal : False"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros p H .",
+                "tactic_args": [
+                    "c5_goal : forall (p : nat) (_ : eq n (exp2 p)), eq (S (log2 (div2 n))) p"
+                ],
+                "tactic_res": [
+                    "c26_goal : eq (S (log2 (div2 n))) p",
+                    "c26_p : nat",
+                    "c26_H : eq n (exp2 p)"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [  _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "c26_goal : eq (S (log2 (div2 n))) p",
+                    "c26_p : nat",
+                    "c26_H : eq n (exp2 p)",
+                    "c5_IHn0 : forall (p : nat) (_ : eq (div2 n) (exp2 p)), eq (log2 (div2 n)) p",
+                    "c5_y : match n with\n| S (S _) => True\n| _ => False\nend",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c27_goal : eq (S (log2 (div2 n))) 0",
+                    "c27_H : eq n (exp2 0)",
+                    "c28_goal : eq (S (log2 (div2 n))) (S p)",
+                    "c28_H : eq n (exp2 (S p))"
+                ]
+            },
+            {
+                "tactic_sig": "simpl in _i .",
+                "tactic_sig_no_out_arg": "simpl in _i .",
+                "tactic_args": [
+                    "c27_H : eq n (exp2 0)"
+                ],
+                "tactic_res": [
+                    "c27_H : eq n 1"
+                ]
+            },
+            {
+                "tactic_sig": "subst _i .",
+                "tactic_sig_no_out_arg": "subst _i .",
+                "tactic_args": [
+                    "c27_goal : eq (S (log2 (div2 n))) 0",
+                    "c2_n : nat",
+                    "c27_H : eq n 1"
+                ],
+                "tactic_res": [
+                    "c29_goal : eq (S (log2 (div2 1))) 0",
+                    "c29_y : False",
+                    "c29_IHn0 : forall (p : nat) (_ : eq (div2 1) (exp2 p)), eq (log2 (div2 1)) p"
+                ]
+            },
+            {
+                "tactic_sig": "contradiction .",
+                "tactic_sig_no_out_arg": "contradiction .",
+                "tactic_args": [
+                    "c29_goal : eq (S (log2 (div2 1))) 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl in _i .",
+                "tactic_sig_no_out_arg": "simpl in _i .",
+                "tactic_args": [
+                    "c28_H : eq n (exp2 (S p))"
+                ],
+                "tactic_res": [
+                    "c28_H : eq n (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite ( _i _i ) .",
+                "tactic_sig_no_out_arg": "rewrite ( _i _i ) .",
+                "tactic_args": [
+                    "c28_goal : eq (S (log2 (div2 n))) (S p)",
+                    "c5_IHn0 : forall (p : nat) (_ : eq (div2 n) (exp2 p)), eq (log2 (div2 n)) p",
+                    "c26_p : nat"
+                ],
+                "tactic_res": [
+                    "c30_goal : eq (S p) (S p)",
+                    "c31_goal : eq (div2 n) (exp2 p)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c30_goal : eq (S p) (S p)",
+                    "c26_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "c31_goal : eq (div2 n) (exp2 p)",
+                    "c28_H : eq n (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))"
+                ],
+                "tactic_res": [
+                    "c32_goal : eq (div2 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))) (exp2 p)"
+                ]
+            },
+            {
+                "tactic_sig": "generalize ( div2_double ( exp2 _i ) ) .",
+                "tactic_sig_no_out_arg": "generalize ( div2_double ( exp2 _i ) ) .",
+                "tactic_args": [
+                    "c32_goal : eq (div2 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))) (exp2 p)",
+                    "c26_p : nat"
+                ],
+                "tactic_res": [
+                    "c33_goal : forall _ : eq (div2 (Init.Nat.mul 2 (exp2 p))) (exp2 p),\neq (div2 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))) (exp2 p)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c33_goal : forall _ : eq (div2 (Init.Nat.mul 2 (exp2 p))) (exp2 p),\neq (div2 (Init.Nat.add (exp2 p) (Init.Nat.add (exp2 p) 0))) (exp2 p)",
+                    "c26_p : nat"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "log_of_exp2",
+        "proof": [
+            {
+                "tactic_sig": "Lemma log_of_exp2 : forall n : nat , log2 ( exp2 n ) = n .",
+                "tactic_sig_no_out_arg": "Lemma log_of_exp2 : forall n : nat , log2 ( exp2 n ) = n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall n : nat, eq (log2 (exp2 n)) n"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro n .",
+                "tactic_args": [
+                    "c1_goal : forall n : nat, eq (log2 (exp2 n)) n"
+                ],
+                "tactic_res": [
+                    "c2_goal : eq (log2 (exp2 n)) n",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "now apply log_of_exp2_0 .",
+                "tactic_sig_no_out_arg": "now apply log_of_exp2_0 .",
+                "tactic_args": [
+                    "c2_goal : eq (log2 (exp2 n)) n"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "div2_ind",
+        "proof": [
+            {
+                "tactic_sig": "Theorem div2_ind : forall ( P : nat -> Prop ) , P 0 -> P 1 -> ( forall n , P n -> P ( S ( S n ) ) ) -> forall n , P n .",
+                "tactic_sig_no_out_arg": "Theorem div2_ind : forall ( P : nat -> Prop ) , P 0 -> P 1 -> ( forall n , P n -> P ( S ( S n ) ) ) -> forall n , P n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (P : forall _ : nat, Prop) (_ : P 0) (_ : P 1)\n  (_ : forall (n : nat) (_ : P n), P (S (S n))) (n : nat), \nP n"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros P H0 H1 Hstep n .",
+                "tactic_args": [
+                    "c1_goal : forall (P : forall _ : nat, Prop) (_ : P 0) (_ : P 1)\n  (_ : forall (n : nat) (_ : P n), P (S (S n))) (n : nat), \nP n"
+                ],
+                "tactic_res": [
+                    "c2_goal : P n",
+                    "c2_P : forall _ : nat, Prop",
+                    "c2_H0 : P 0",
+                    "c2_H1 : P 1",
+                    "c2_Hstep : forall (n : nat) (_ : P n), P (S (S n))",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "assert ( H : _i _i /\\ _i ( S _i ) ) by ( elim _i ; intuition ) .",
+                "tactic_sig_no_out_arg": "assert ( H : _i _i /\\ _i ( S _i ) ) by ( elim _i ; intuition ) .",
+                "tactic_args": [
+                    "c2_P : forall _ : nat, Prop",
+                    "c2_n : nat",
+                    "c2_P : forall _ : nat, Prop",
+                    "c2_n : nat",
+                    "c2_n : nat",
+                    "c2_Hstep : forall (n : nat) (_ : P n), P (S (S n))",
+                    "c2_H1 : P 1",
+                    "c2_H0 : P 0"
+                ],
+                "tactic_res": [
+                    "c2_H : and (P n) (P (S n))"
+                ]
+            },
+            {
+                "tactic_sig": "now destruct _i .",
+                "tactic_sig_no_out_arg": "now destruct _i .",
+                "tactic_args": [
+                    "c2_goal : P n",
+                    "c2_H : and (P n) (P (S n))",
+                    "c2_n : nat",
+                    "c2_P : forall _ : nat, Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "div2_lt'",
+        "proof": [
+            {
+                "tactic_sig": "Theorem div2_lt' : forall n , ( div2 ( S n ) < S n ) .",
+                "tactic_sig_no_out_arg": "Theorem div2_lt' : forall n , ( div2 ( S n ) < S n ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall n : nat, lt (div2 (S n)) (S n)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c1_goal : forall n : nat, lt (div2 (S n)) (S n)"
+                ],
+                "tactic_res": [
+                    "c2_goal : lt (div2 (S n)) (S n)",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "elim _i using div2_ind .",
+                "tactic_sig_no_out_arg": "elim _i using div2_ind .",
+                "tactic_args": [
+                    "c2_goal : lt (div2 (S n)) (S n)",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : lt (div2 1) 1",
+                    "c4_goal : lt (div2 2) 2",
+                    "c5_goal : forall (n : nat) (_ : lt (div2 (S n)) (S n)),\nlt (div2 (S (S (S n)))) (S (S (S n)))"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c3_goal : lt (div2 1) 1"
+                ],
+                "tactic_res": [
+                    "c6_goal : lt 0 1"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c6_goal : lt 0 1"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c4_goal : lt (div2 2) 2"
+                ],
+                "tactic_res": [
+                    "c7_goal : lt 1 2"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c7_goal : lt 1 2"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c5_goal : forall (n : nat) (_ : lt (div2 (S n)) (S n)),\nlt (div2 (S (S (S n)))) (S (S (S n)))"
+                ],
+                "tactic_res": [
+                    "c8_goal : forall (n : nat)\n  (_ : lt match n with\n          | 0 => 0\n          | S p => S (div2 p)\n          end (S n)),\nlt (S match n with\n      | 0 => 0\n      | S p => S (div2 p)\n      end) (S (S (S n)))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c8_goal : forall (n : nat)\n  (_ : lt match n with\n          | 0 => 0\n          | S p => S (div2 p)\n          end (S n)),\nlt (S match n with\n      | 0 => 0\n      | S p => S (div2 p)\n      end) (S (S (S n)))"
+                ],
+                "tactic_res": [
+                    "c9_goal : lt (S match n0 with\n      | 0 => 0\n      | S p => S (div2 p)\n      end) (S (S (S n0)))",
+                    "c9_n0 : nat",
+                    "c9_H : lt match n0 with\n   | 0 => 0\n   | S p => S (div2 p)\n   end (S n0)"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c9_goal : lt (S match n0 with\n      | 0 => 0\n      | S p => S (div2 p)\n      end) (S (S (S n0)))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "log2_terminates",
+        "proof": [
+            {
+                "tactic_sig": "Definition log2_terminates : forall ( n : nat ) , ( { v : nat | exists p : nat , forall k g , p < k -> iter log2_it_F k g n = v } ) .",
+                "tactic_sig_no_out_arg": "Definition log2_terminates : forall ( n : nat ) , ( { v : nat | exists p : nat , forall k g , p < k -> iter log2_it_F k g n = v } ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall n : nat,\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g n) v))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros n .",
+                "tactic_args": [
+                    "c1_goal : forall n : nat,\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g n) v))"
+                ],
+                "tactic_res": [
+                    "c2_goal : sig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g n) v))",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "elim _i using ( well_founded_induction lt_wf ) .",
+                "tactic_sig_no_out_arg": "elim _i using ( well_founded_induction lt_wf ) .",
+                "tactic_args": [
+                    "c2_goal : sig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g n) v))",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall (x : nat)\n  (_ : forall (y : nat) (_ : lt y x),\n       sig\n         (fun v : nat =>\n          ex\n            (fun p : nat =>\n             forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n             eq (iter log2_it_F k g y) v))),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g x) v))"
+                ]
+            },
+            {
+                "tactic_sig": "clear _i .",
+                "tactic_sig_no_out_arg": "clear _i .",
+                "tactic_args": [
+                    "c2_n : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros n .",
+                "tactic_args": [
+                    "c3_goal : forall (x : nat)\n  (_ : forall (y : nat) (_ : lt y x),\n       sig\n         (fun v : nat =>\n          ex\n            (fun p : nat =>\n             forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n             eq (iter log2_it_F k g y) v))),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g x) v))"
+                ],
+                "tactic_res": [
+                    "c4_goal : forall\n  _ : forall (y : nat) (_ : lt y n),\n      sig\n        (fun v : nat =>\n         ex\n           (fun p : nat =>\n            forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n            eq (iter log2_it_F k g y) v)),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g n) v))",
+                    "c4_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c4_goal : forall\n  _ : forall (y : nat) (_ : lt y n),\n      sig\n        (fun v : nat =>\n         ex\n           (fun p : nat =>\n            forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n            eq (iter log2_it_F k g y) v)),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g n) v))",
+                    "c4_n : nat"
+                ],
+                "tactic_res": [
+                    "c5_goal : forall\n  _ : forall (y : nat) (_ : lt y 0),\n      sig\n        (fun v : nat =>\n         ex\n           (fun p : nat =>\n            forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n            eq (iter log2_it_F k g y) v)),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g 0) v))",
+                    "c6_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y (S n)),\n       sig\n         (fun v : nat =>\n          ex\n            (fun p : nat =>\n             forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n             eq (iter log2_it_F k g y) v))),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g (S n)) v))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c5_goal : forall\n  _ : forall (y : nat) (_ : lt y 0),\n      sig\n        (fun v : nat =>\n         ex\n           (fun p : nat =>\n            forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n            eq (iter log2_it_F k g y) v)),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g 0) v))"
+                ],
+                "tactic_res": [
+                    "c7_goal : sig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g 0) v))",
+                    "c7_H : forall (y : nat) (_ : lt y 0),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g y) v))"
+                ]
+            },
+            {
+                "tactic_sig": "exists 0 .",
+                "tactic_sig_no_out_arg": "exists 0 .",
+                "tactic_args": [
+                    "c7_goal : sig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g 0) v))"
+                ],
+                "tactic_res": [
+                    "c8_goal : ex\n  (fun p : nat =>\n   forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n   eq (iter log2_it_F k g 0) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "exists 0 .",
+                "tactic_sig_no_out_arg": "exists 0 .",
+                "tactic_args": [
+                    "c8_goal : ex\n  (fun p : nat =>\n   forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n   eq (iter log2_it_F k g 0) 0)"
+                ],
+                "tactic_res": [
+                    "c9_goal : forall (k : nat) (g : forall _ : nat, nat) (_ : lt 0 k),\neq (iter log2_it_F k g 0) 0"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros k .",
+                "tactic_args": [
+                    "c9_goal : forall (k : nat) (g : forall _ : nat, nat) (_ : lt 0 k),\neq (iter log2_it_F k g 0) 0"
+                ],
+                "tactic_res": [
+                    "c10_goal : forall (g : forall _ : nat, nat) (_ : lt 0 k),\neq (iter log2_it_F k g 0) 0",
+                    "c10_k : nat"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c10_goal : forall (g : forall _ : nat, nat) (_ : lt 0 k),\neq (iter log2_it_F k g 0) 0",
+                    "c10_k : nat"
+                ],
+                "tactic_res": [
+                    "c11_goal : forall (g : forall _ : nat, nat) (_ : lt 0 0),\neq (iter log2_it_F 0 g 0) 0",
+                    "c12_goal : forall (n : nat) (g : forall _ : nat, nat) (_ : lt 0 (S n)),\neq (iter log2_it_F (S n) g 0) 0"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c11_goal : forall (g : forall _ : nat, nat) (_ : lt 0 0),\neq (iter log2_it_F 0 g 0) 0"
+                ],
+                "tactic_res": [
+                    "c13_goal : eq (iter log2_it_F 0 g 0) 0",
+                    "c13_g : forall _ : nat, nat",
+                    "c13_H0 : lt 0 0"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c13_goal : eq (iter log2_it_F 0 g 0) 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros k' g .",
+                "tactic_args": [
+                    "c12_goal : forall (n : nat) (g : forall _ : nat, nat) (_ : lt 0 (S n)),\neq (iter log2_it_F (S n) g 0) 0"
+                ],
+                "tactic_res": [
+                    "c14_goal : forall _ : lt 0 (S k'), eq (iter log2_it_F (S k') g 0) 0",
+                    "c14_k' : nat",
+                    "c14_g : forall _ : nat, nat"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c14_goal : forall _ : lt 0 (S k'), eq (iter log2_it_F (S k') g 0) 0"
+                ],
+                "tactic_res": [
+                    "c15_goal : forall _ : lt 0 (S k'), eq 0 0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c15_goal : forall _ : lt 0 (S k'), eq 0 0",
+                    "c14_k' : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros n' .",
+                "tactic_args": [
+                    "c6_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y (S n)),\n       sig\n         (fun v : nat =>\n          ex\n            (fun p : nat =>\n             forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n             eq (iter log2_it_F k g y) v))),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g (S n)) v))"
+                ],
+                "tactic_res": [
+                    "c16_goal : forall\n  _ : forall (y : nat) (_ : lt y (S n')),\n      sig\n        (fun v : nat =>\n         ex\n           (fun p : nat =>\n            forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n            eq (iter log2_it_F k g y) v)),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g (S n')) v))",
+                    "c16_n' : nat"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c16_goal : forall\n  _ : forall (y : nat) (_ : lt y (S n')),\n      sig\n        (fun v : nat =>\n         ex\n           (fun p : nat =>\n            forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n            eq (iter log2_it_F k g y) v)),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g (S n')) v))",
+                    "c16_n' : nat"
+                ],
+                "tactic_res": [
+                    "c17_goal : forall\n  _ : forall (y : nat) (_ : lt y 1),\n      sig\n        (fun v : nat =>\n         ex\n           (fun p : nat =>\n            forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n            eq (iter log2_it_F k g y) v)),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g 1) v))",
+                    "c18_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y (S (S n))),\n       sig\n         (fun v : nat =>\n          ex\n            (fun p : nat =>\n             forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n             eq (iter log2_it_F k g y) v))),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g (S (S n))) v))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c17_goal : forall\n  _ : forall (y : nat) (_ : lt y 1),\n      sig\n        (fun v : nat =>\n         ex\n           (fun p : nat =>\n            forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n            eq (iter log2_it_F k g y) v)),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g 1) v))"
+                ],
+                "tactic_res": [
+                    "c19_goal : sig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g 1) v))",
+                    "c19_H : forall (y : nat) (_ : lt y 1),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g y) v))"
+                ]
+            },
+            {
+                "tactic_sig": "exists 0 .",
+                "tactic_sig_no_out_arg": "exists 0 .",
+                "tactic_args": [
+                    "c19_goal : sig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g 1) v))"
+                ],
+                "tactic_res": [
+                    "c20_goal : ex\n  (fun p : nat =>\n   forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n   eq (iter log2_it_F k g 1) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "exists 0 .",
+                "tactic_sig_no_out_arg": "exists 0 .",
+                "tactic_args": [
+                    "c20_goal : ex\n  (fun p : nat =>\n   forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n   eq (iter log2_it_F k g 1) 0)"
+                ],
+                "tactic_res": [
+                    "c21_goal : forall (k : nat) (g : forall _ : nat, nat) (_ : lt 0 k),\neq (iter log2_it_F k g 1) 0"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros k .",
+                "tactic_args": [
+                    "c21_goal : forall (k : nat) (g : forall _ : nat, nat) (_ : lt 0 k),\neq (iter log2_it_F k g 1) 0"
+                ],
+                "tactic_res": [
+                    "c22_goal : forall (g : forall _ : nat, nat) (_ : lt 0 k),\neq (iter log2_it_F k g 1) 0",
+                    "c22_k : nat"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c22_goal : forall (g : forall _ : nat, nat) (_ : lt 0 k),\neq (iter log2_it_F k g 1) 0",
+                    "c22_k : nat"
+                ],
+                "tactic_res": [
+                    "c23_goal : forall (g : forall _ : nat, nat) (_ : lt 0 0),\neq (iter log2_it_F 0 g 1) 0",
+                    "c24_goal : forall (n : nat) (g : forall _ : nat, nat) (_ : lt 0 (S n)),\neq (iter log2_it_F (S n) g 1) 0"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c23_goal : forall (g : forall _ : nat, nat) (_ : lt 0 0),\neq (iter log2_it_F 0 g 1) 0"
+                ],
+                "tactic_res": [
+                    "c25_goal : eq (iter log2_it_F 0 g 1) 0",
+                    "c25_g : forall _ : nat, nat",
+                    "c25_H0 : lt 0 0"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c25_goal : eq (iter log2_it_F 0 g 1) 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros k' g .",
+                "tactic_args": [
+                    "c24_goal : forall (n : nat) (g : forall _ : nat, nat) (_ : lt 0 (S n)),\neq (iter log2_it_F (S n) g 1) 0"
+                ],
+                "tactic_res": [
+                    "c26_goal : forall _ : lt 0 (S k'), eq (iter log2_it_F (S k') g 1) 0",
+                    "c26_k' : nat",
+                    "c26_g : forall _ : nat, nat"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c26_goal : forall _ : lt 0 (S k'), eq (iter log2_it_F (S k') g 1) 0"
+                ],
+                "tactic_res": [
+                    "c27_goal : forall _ : lt 0 (S k'), eq 0 0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c27_goal : forall _ : lt 0 (S k'), eq 0 0",
+                    "c26_k' : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros p f .",
+                "tactic_args": [
+                    "c18_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y (S (S n))),\n       sig\n         (fun v : nat =>\n          ex\n            (fun p : nat =>\n             forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n             eq (iter log2_it_F k g y) v))),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g (S (S n))) v))"
+                ],
+                "tactic_res": [
+                    "c28_goal : sig\n  (fun v : nat =>\n   ex\n     (fun p0 : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p0 k),\n      eq (iter log2_it_F k g (S (S p))) v))",
+                    "c28_p : nat",
+                    "c28_f : forall (y : nat) (_ : lt y (S (S p))),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g y) v))"
+                ]
+            },
+            {
+                "tactic_sig": "assert ( Hlt : div2 ( S ( S _i ) ) < S ( S _i ) ) by apply div2_lt' .",
+                "tactic_sig_no_out_arg": "assert ( Hlt : div2 ( S ( S _i ) ) < S ( S _i ) ) by apply div2_lt' .",
+                "tactic_args": [
+                    "c28_p : nat",
+                    "c28_p : nat"
+                ],
+                "tactic_res": [
+                    "c28_Hlt : lt (div2 (S (S p))) (S (S p))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i ( div2 ( S ( S _i ) ) ) _i ) as [ v Hex ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i ( div2 ( S ( S _i ) ) ) _i ) as [ v Hex ] .",
+                "tactic_args": [
+                    "c28_f : forall (y : nat) (_ : lt y (S (S p))),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g y) v))",
+                    "c28_p : nat",
+                    "c28_Hlt : lt (div2 (S (S p))) (S (S p))",
+                    "c4_n : nat",
+                    "c16_n' : nat"
+                ],
+                "tactic_res": [
+                    "c28_Hex : ex\n  (fun p0 : nat =>\n   forall (k : nat) (g : forall _ : nat, nat) (_ : lt p0 k),\n   eq (iter log2_it_F k g (div2 (S (S p)))) v)",
+                    "c28_v : nat"
+                ]
+            },
+            {
+                "tactic_sig": "exists ( S _i ) .",
+                "tactic_sig_no_out_arg": "exists ( S _i ) .",
+                "tactic_args": [
+                    "c28_goal : sig\n  (fun v : nat =>\n   ex\n     (fun p0 : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p0 k),\n      eq (iter log2_it_F k g (S (S p))) v))",
+                    "c28_v : nat"
+                ],
+                "tactic_res": [
+                    "c29_goal : ex\n  (fun p0 : nat =>\n   forall (k : nat) (g : forall _ : nat, nat) (_ : lt p0 k),\n   eq (iter log2_it_F k g (S (S p))) (S v))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [ p' Heq ] .",
+                "tactic_sig_no_out_arg": "destruct _i as [ p' Heq ] .",
+                "tactic_args": [
+                    "c28_Hex : ex\n  (fun p0 : nat =>\n   forall (k : nat) (g : forall _ : nat, nat) (_ : lt p0 k),\n   eq (iter log2_it_F k g (div2 (S (S p)))) v)",
+                    "c28_v : nat",
+                    "c28_Hlt : lt (div2 (S (S p))) (S (S p))",
+                    "c28_f : forall (y : nat) (_ : lt y (S (S p))),\nsig\n  (fun v : nat =>\n   ex\n     (fun p : nat =>\n      forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n      eq (iter log2_it_F k g y) v))",
+                    "c4_n : nat",
+                    "c16_n' : nat",
+                    "c28_p : nat"
+                ],
+                "tactic_res": [
+                    "c29_Heq : forall (k : nat) (g : forall _ : nat, nat) (_ : lt p' k),\neq (iter log2_it_F k g (div2 (S (S p)))) v",
+                    "c29_p' : nat"
+                ]
+            },
+            {
+                "tactic_sig": "exists ( S _i ) .",
+                "tactic_sig_no_out_arg": "exists ( S _i ) .",
+                "tactic_args": [
+                    "c29_goal : ex\n  (fun p0 : nat =>\n   forall (k : nat) (g : forall _ : nat, nat) (_ : lt p0 k),\n   eq (iter log2_it_F k g (S (S p))) (S v))",
+                    "c29_p' : nat"
+                ],
+                "tactic_res": [
+                    "c30_goal : forall (k : nat) (g : forall _ : nat, nat) (_ : lt (S p') k),\neq (iter log2_it_F k g (S (S p))) (S v)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros k g .",
+                "tactic_args": [
+                    "c30_goal : forall (k : nat) (g : forall _ : nat, nat) (_ : lt (S p') k),\neq (iter log2_it_F k g (S (S p))) (S v)"
+                ],
+                "tactic_res": [
+                    "c31_goal : forall _ : lt (S p') k, eq (iter log2_it_F k g (S (S p))) (S v)",
+                    "c31_k : nat",
+                    "c31_g : forall _ : nat, nat"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c31_goal : forall _ : lt (S p') k, eq (iter log2_it_F k g (S (S p))) (S v)",
+                    "c31_k : nat"
+                ],
+                "tactic_res": [
+                    "c32_goal : forall _ : lt (S p') 0, eq (iter log2_it_F 0 g (S (S p))) (S v)",
+                    "c33_goal : forall (n : nat) (_ : lt (S p') (S n)),\neq (iter log2_it_F (S n) g (S (S p))) (S v)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c32_goal : forall _ : lt (S p') 0, eq (iter log2_it_F 0 g (S (S p))) (S v)"
+                ],
+                "tactic_res": [
+                    "c34_goal : eq (iter log2_it_F 0 g (S (S p))) (S v)",
+                    "c34_H : lt (S p') 0"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c34_goal : eq (iter log2_it_F 0 g (S (S p))) (S v)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros k' Hltk .",
+                "tactic_args": [
+                    "c33_goal : forall (n : nat) (_ : lt (S p') (S n)),\neq (iter log2_it_F (S n) g (S (S p))) (S v)"
+                ],
+                "tactic_res": [
+                    "c35_goal : eq (iter log2_it_F (S k') g (S (S p))) (S v)",
+                    "c35_k' : nat",
+                    "c35_Hltk : lt (S p') (S k')"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- ( _i _i _i ) .",
+                "tactic_sig_no_out_arg": "rewrite <- ( _i _i _i ) .",
+                "tactic_args": [
+                    "c35_goal : eq (iter log2_it_F (S k') g (S (S p))) (S v)",
+                    "c29_Heq : forall (k : nat) (g : forall _ : nat, nat) (_ : lt p' k),\neq (iter log2_it_F k g (div2 (S (S p)))) v",
+                    "c35_k' : nat",
+                    "c31_g : forall _ : nat, nat"
+                ],
+                "tactic_res": [
+                    "c36_goal : eq (iter log2_it_F (S k') g (S (S p)))\n  (S (iter log2_it_F k' g (div2 (S (S p)))))",
+                    "c37_goal : lt p' k'"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c36_goal : eq (iter log2_it_F (S k') g (S (S p)))\n  (S (iter log2_it_F k' g (div2 (S (S p)))))",
+                    "c35_k' : nat",
+                    "c31_g : forall _ : nat, nat",
+                    "c28_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c37_goal : lt p' k'"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "log2_fix_eqn",
+        "proof": [
+            {
+                "tactic_sig": "Theorem log2_fix_eqn : forall n , log2' n = match n with 0 => 0 | 1 => 0 | S ( S p ) => S ( log2' ( div2 ( S ( S p ) ) ) ) end .",
+                "tactic_sig_no_out_arg": "Theorem log2_fix_eqn : forall n , log2' n = match n with 0 => 0 | 1 => 0 | S ( S p ) => S ( log2' ( div2 ( S ( S p ) ) ) ) end .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall n : nat,\neq (log2' n)\n  match n with\n  | S (S p) => S (log2' (div2 (S (S p))))\n  | _ => 0\n  end"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros n .",
+                "tactic_args": [
+                    "c1_goal : forall n : nat,\neq (log2' n)\n  match n with\n  | S (S p) => S (log2' (div2 (S (S p))))\n  | _ => 0\n  end"
+                ],
+                "tactic_res": [
+                    "c2_goal : eq (log2' n)\n  match n with\n  | S (S p) => S (log2' (div2 (S (S p))))\n  | _ => 0\n  end",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "unfold _i .",
+                "tactic_sig_no_out_arg": "unfold _i .",
+                "tactic_args": [
+                    "c2_goal : eq (log2' n)\n  match n with\n  | S (S p) => S (log2' (div2 (S (S p))))\n  | _ => 0\n  end",
+                    "_global_log2' : forall _ : nat, nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : eq (let (v, _) := log2_terminates n in v)\n  match n with\n  | S (S p) => S (let (v, _) := log2_terminates (div2 (S (S p))) in v)\n  | _ => 0\n  end"
+                ]
+            },
+            {
+                "tactic_sig": "case ( log2_terminates _i ) .",
+                "tactic_sig_no_out_arg": "case ( log2_terminates _i ) .",
+                "tactic_args": [
+                    "c3_goal : eq (let (v, _) := log2_terminates n in v)\n  match n with\n  | S (S p) => S (let (v, _) := log2_terminates (div2 (S (S p))) in v)\n  | _ => 0\n  end",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c4_goal : forall (x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g n) x)),\neq x\n  match n with\n  | S (S p) => S (let (v, _) := log2_terminates (div2 (S (S p))) in v)\n  | _ => 0\n  end"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c4_goal : forall (x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g n) x)),\neq x\n  match n with\n  | S (S p) => S (let (v, _) := log2_terminates (div2 (S (S p))) in v)\n  | _ => 0\n  end",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c5_goal : forall (x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g 0) x)), eq x 0",
+                    "c6_goal : forall (n x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g (S n)) x)),\neq x\n  match n with\n  | 0 => 0\n  | S p => S (let (v, _) := log2_terminates (div2 (S (S p))) in v)\n  end"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o [ _o _o ] .",
+                "tactic_sig_no_out_arg": "intros v [ p Heq ] .",
+                "tactic_args": [
+                    "c5_goal : forall (x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g 0) x)), eq x 0"
+                ],
+                "tactic_res": [
+                    "c7_goal : eq v 0",
+                    "c7_v : nat",
+                    "c7_p : nat",
+                    "c7_Heq : forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\neq (iter log2_it_F k g 0) v"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- ( _i ( _i _i ) _i ) .",
+                "tactic_sig_no_out_arg": "rewrite <- ( _i ( _i _i ) _i ) .",
+                "tactic_args": [
+                    "c7_goal : eq v 0",
+                    "c7_Heq : forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\neq (iter log2_it_F k g 0) v",
+                    "_global_S : forall _ : nat, nat",
+                    "c7_p : nat",
+                    "_global_log2' : forall _ : nat, nat"
+                ],
+                "tactic_res": [
+                    "c8_goal : eq (iter log2_it_F (S p) log2' 0) 0",
+                    "c9_goal : lt p (S p)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c8_goal : eq (iter log2_it_F (S p) log2' 0) 0",
+                    "c7_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c9_goal : lt p (S p)",
+                    "c7_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros n' .",
+                "tactic_args": [
+                    "c6_goal : forall (n x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g (S n)) x)),\neq x\n  match n with\n  | 0 => 0\n  | S p => S (let (v, _) := log2_terminates (div2 (S (S p))) in v)\n  end"
+                ],
+                "tactic_res": [
+                    "c10_goal : forall (x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g (S n')) x)),\neq x\n  match n' with\n  | 0 => 0\n  | S p => S (let (v, _) := log2_terminates (div2 (S (S p))) in v)\n  end",
+                    "c10_n' : nat"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c10_goal : forall (x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g (S n')) x)),\neq x\n  match n' with\n  | 0 => 0\n  | S p => S (let (v, _) := log2_terminates (div2 (S (S p))) in v)\n  end",
+                    "c10_n' : nat"
+                ],
+                "tactic_res": [
+                    "c11_goal : forall (x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g 1) x)), eq x 0",
+                    "c12_goal : forall (n x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g (S (S n))) x)),\neq x (S (let (v, _) := log2_terminates (div2 (S (S n))) in v))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o [ _o _o ] .",
+                "tactic_sig_no_out_arg": "intros v [ p Heq ] .",
+                "tactic_args": [
+                    "c11_goal : forall (x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g 1) x)), eq x 0"
+                ],
+                "tactic_res": [
+                    "c13_goal : eq v 0",
+                    "c13_v : nat",
+                    "c13_p : nat",
+                    "c13_Heq : forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\neq (iter log2_it_F k g 1) v"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- ( _i ( _i _i ) _i ) .",
+                "tactic_sig_no_out_arg": "rewrite <- ( _i ( _i _i ) _i ) .",
+                "tactic_args": [
+                    "c13_goal : eq v 0",
+                    "c13_Heq : forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\neq (iter log2_it_F k g 1) v",
+                    "_global_S : forall _ : nat, nat",
+                    "c13_p : nat",
+                    "_global_log2' : forall _ : nat, nat"
+                ],
+                "tactic_res": [
+                    "c14_goal : eq (iter log2_it_F (S p) log2' 1) 0",
+                    "c15_goal : lt p (S p)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c14_goal : eq (iter log2_it_F (S p) log2' 1) 0",
+                    "c13_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c15_goal : lt p (S p)",
+                    "c13_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o [ _o _o ] .",
+                "tactic_sig_no_out_arg": "intros n'' v [ p Heq ] .",
+                "tactic_args": [
+                    "c12_goal : forall (n x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g (S (S n))) x)),\neq x (S (let (v, _) := log2_terminates (div2 (S (S n))) in v))"
+                ],
+                "tactic_res": [
+                    "c16_goal : eq v (S (let (v, _) := log2_terminates (div2 (S (S n''))) in v))",
+                    "c16_n'' : nat",
+                    "c16_v : nat",
+                    "c16_p : nat",
+                    "c16_Heq : forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\neq (iter log2_it_F k g (S (S n''))) v"
+                ]
+            },
+            {
+                "tactic_sig": "case ( log2_terminates ( div2 ( S ( S _i ) ) ) ) .",
+                "tactic_sig_no_out_arg": "case ( log2_terminates ( div2 ( S ( S _i ) ) ) ) .",
+                "tactic_args": [
+                    "c16_goal : eq v (S (let (v, _) := log2_terminates (div2 (S (S n''))) in v))",
+                    "c16_n'' : nat"
+                ],
+                "tactic_res": [
+                    "c17_goal : forall (x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g (div2 (S (S n'')))) x)), \neq v (S x)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o [ _o _o ] .",
+                "tactic_sig_no_out_arg": "intros v' [ p' Heq' ] .",
+                "tactic_args": [
+                    "c17_goal : forall (x : nat)\n  (_ : ex\n         (fun p : nat =>\n          forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\n          eq (iter log2_it_F k g (div2 (S (S n'')))) x)), \neq v (S x)"
+                ],
+                "tactic_res": [
+                    "c18_goal : eq v (S v')",
+                    "c18_v' : nat",
+                    "c18_p' : nat",
+                    "c18_Heq' : forall (k : nat) (g : forall _ : nat, nat) (_ : lt p' k),\neq (iter log2_it_F k g (div2 (S (S n'')))) v'"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- ( _i ( _i ( _i ( _i + _i ) ) ) _i ) , <- ( _i ( _i ( _i + _i ) ) _i ) .",
+                "tactic_sig_no_out_arg": "rewrite <- ( _i ( _i ( _i ( _i + _i ) ) ) _i ) , <- ( _i ( _i ( _i + _i ) ) _i ) .",
+                "tactic_args": [
+                    "c18_goal : eq v (S v')",
+                    "c16_Heq : forall (k : nat) (g : forall _ : nat, nat) (_ : lt p k),\neq (iter log2_it_F k g (S (S n''))) v",
+                    "_global_S : forall _ : nat, nat",
+                    "_global_S : forall _ : nat, nat",
+                    "c16_p : nat",
+                    "c18_p' : nat",
+                    "_global_log2' : forall _ : nat, nat",
+                    "c18_Heq' : forall (k : nat) (g : forall _ : nat, nat) (_ : lt p' k),\neq (iter log2_it_F k g (div2 (S (S n'')))) v'",
+                    "_global_S : forall _ : nat, nat",
+                    "c16_p : nat",
+                    "c18_p' : nat",
+                    "_global_log2' : forall _ : nat, nat"
+                ],
+                "tactic_res": [
+                    "c19_goal : eq (iter log2_it_F (S (S (Init.Nat.add p p'))) log2' (S (S n'')))\n  (S (iter log2_it_F (S (Init.Nat.add p p')) log2' (div2 (S (S n'')))))",
+                    "c20_goal : lt p' (S (Init.Nat.add p p'))",
+                    "c21_goal : lt p (S (S (Init.Nat.add p p')))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c19_goal : eq (iter log2_it_F (S (S (Init.Nat.add p p'))) log2' (S (S n'')))\n  (S (iter log2_it_F (S (Init.Nat.add p p')) log2' (div2 (S (S n'')))))",
+                    "c18_p' : nat",
+                    "c16_n'' : nat",
+                    "c16_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c20_goal : lt p' (S (Init.Nat.add p p'))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c21_goal : lt p (S (S (Init.Nat.add p p')))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "div2_eq",
+        "proof": [
+            {
+                "tactic_sig": "Theorem div2_eq : forall n , 2 * div2 n = n \\/ 2 * div2 n + 1 = n .",
+                "tactic_sig_no_out_arg": "Theorem div2_eq : forall n , 2 * div2 n = n \\/ 2 * div2 n + 1 = n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall n : nat,\nor (eq (Init.Nat.mul 2 (div2 n)) n)\n  (eq (Init.Nat.add (Init.Nat.mul 2 (div2 n)) 1) n)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros n .",
+                "tactic_args": [
+                    "c1_goal : forall n : nat,\nor (eq (Init.Nat.mul 2 (div2 n)) n)\n  (eq (Init.Nat.add (Init.Nat.mul 2 (div2 n)) 1) n)"
+                ],
+                "tactic_res": [
+                    "c2_goal : or (eq (Init.Nat.mul 2 (div2 n)) n)\n  (eq (Init.Nat.add (Init.Nat.mul 2 (div2 n)) 1) n)",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "elim _i using div2_ind .",
+                "tactic_sig_no_out_arg": "elim _i using div2_ind .",
+                "tactic_args": [
+                    "c2_goal : or (eq (Init.Nat.mul 2 (div2 n)) n)\n  (eq (Init.Nat.add (Init.Nat.mul 2 (div2 n)) 1) n)",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : or (eq (Init.Nat.mul 2 (div2 0)) 0)\n  (eq (Init.Nat.add (Init.Nat.mul 2 (div2 0)) 1) 0)",
+                    "c4_goal : or (eq (Init.Nat.mul 2 (div2 1)) 1)\n  (eq (Init.Nat.add (Init.Nat.mul 2 (div2 1)) 1) 1)",
+                    "c5_goal : forall (n : nat)\n  (_ : or (eq (Init.Nat.mul 2 (div2 n)) n)\n         (eq (Init.Nat.add (Init.Nat.mul 2 (div2 n)) 1) n)),\nor (eq (Init.Nat.mul 2 (div2 (S (S n)))) (S (S n)))\n  (eq (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S n)))) 1) (S (S n)))"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c3_goal : or (eq (Init.Nat.mul 2 (div2 0)) 0)\n  (eq (Init.Nat.add (Init.Nat.mul 2 (div2 0)) 1) 0)"
+                ],
+                "tactic_res": [
+                    "c6_goal : or (eq 0 0) (eq 1 0)"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c6_goal : or (eq 0 0) (eq 1 0)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c4_goal : or (eq (Init.Nat.mul 2 (div2 1)) 1)\n  (eq (Init.Nat.add (Init.Nat.mul 2 (div2 1)) 1) 1)"
+                ],
+                "tactic_res": [
+                    "c7_goal : or (eq 0 1) (eq 1 1)"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c7_goal : or (eq 0 1) (eq 1 1)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c5_goal : forall (n : nat)\n  (_ : or (eq (Init.Nat.mul 2 (div2 n)) n)\n         (eq (Init.Nat.add (Init.Nat.mul 2 (div2 n)) 1) n)),\nor (eq (Init.Nat.mul 2 (div2 (S (S n)))) (S (S n)))\n  (eq (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S n)))) 1) (S (S n)))"
+                ],
+                "tactic_res": [
+                    "c8_goal : forall (n : nat)\n  (_ : or (eq (Init.Nat.add (div2 n) (Init.Nat.add (div2 n) 0)) n)\n         (eq\n            (Init.Nat.add\n               (Init.Nat.add (div2 n) (Init.Nat.add (div2 n) 0)) 1) n)),\nor\n  (eq (S (Init.Nat.add (div2 n) (S (Init.Nat.add (div2 n) 0))))\n     (S (S n)))\n  (eq\n     (S\n        (Init.Nat.add\n           (Init.Nat.add (div2 n) (S (Init.Nat.add (div2 n) 0))) 1))\n     (S (S n)))"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c8_goal : forall (n : nat)\n  (_ : or (eq (Init.Nat.add (div2 n) (Init.Nat.add (div2 n) 0)) n)\n         (eq\n            (Init.Nat.add\n               (Init.Nat.add (div2 n) (Init.Nat.add (div2 n) 0)) 1) n)),\nor\n  (eq (S (Init.Nat.add (div2 n) (S (Init.Nat.add (div2 n) 0))))\n     (S (S n)))\n  (eq\n     (S\n        (Init.Nat.add\n           (Init.Nat.add (div2 n) (S (Init.Nat.add (div2 n) 0))) 1))\n     (S (S n)))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "log2_power",
+        "proof": [
+            {
+                "tactic_sig": "Theorem log2_power : forall n , 0 < n -> ( exp2 ( log2' n ) <= n < 2 * exp2 ( log2' n ) ) .",
+                "tactic_sig_no_out_arg": "Theorem log2_power : forall n , 0 < n -> ( exp2 ( log2' n ) <= n < 2 * exp2 ( log2' n ) ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n : nat) (_ : lt 0 n),\nand (le (exp2 (log2' n)) n) (lt n (Init.Nat.mul 2 (exp2 (log2' n))))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros n .",
+                "tactic_args": [
+                    "c1_goal : forall (n : nat) (_ : lt 0 n),\nand (le (exp2 (log2' n)) n) (lt n (Init.Nat.mul 2 (exp2 (log2' n))))"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall _ : lt 0 n,\nand (le (exp2 (log2' n)) n) (lt n (Init.Nat.mul 2 (exp2 (log2' n))))",
+                    "c2_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "elim _i using ( well_founded_ind lt_wf ) .",
+                "tactic_sig_no_out_arg": "elim _i using ( well_founded_ind lt_wf ) .",
+                "tactic_args": [
+                    "c2_goal : forall _ : lt 0 n,\nand (le (exp2 (log2' n)) n) (lt n (Init.Nat.mul 2 (exp2 (log2' n))))",
+                    "c2_n : nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall (x : nat)\n  (_ : forall (y : nat) (_ : lt y x) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 x),\nand (le (exp2 (log2' x)) x) (lt x (Init.Nat.mul 2 (exp2 (log2' x))))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros x .",
+                "tactic_args": [
+                    "c3_goal : forall (x : nat)\n  (_ : forall (y : nat) (_ : lt y x) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 x),\nand (le (exp2 (log2' x)) x) (lt x (Init.Nat.mul 2 (exp2 (log2' x))))"
+                ],
+                "tactic_res": [
+                    "c4_goal : forall\n  (_ : forall (y : nat) (_ : lt y x) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 x),\nand (le (exp2 (log2' x)) x) (lt x (Init.Nat.mul 2 (exp2 (log2' x))))",
+                    "c4_x : nat"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c4_goal : forall\n  (_ : forall (y : nat) (_ : lt y x) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 x),\nand (le (exp2 (log2' x)) x) (lt x (Init.Nat.mul 2 (exp2 (log2' x))))",
+                    "c4_x : nat"
+                ],
+                "tactic_res": [
+                    "c5_goal : forall\n  (_ : forall (y : nat) (_ : lt y 0) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 0),\nand (le (exp2 (log2' 0)) 0) (lt 0 (Init.Nat.mul 2 (exp2 (log2' 0))))",
+                    "c6_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y (S n)) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 (S n)),\nand (le (exp2 (log2' (S n))) (S n))\n  (lt (S n) (Init.Nat.mul 2 (exp2 (log2' (S n)))))"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c5_goal : forall\n  (_ : forall (y : nat) (_ : lt y 0) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 0),\nand (le (exp2 (log2' 0)) 0) (lt 0 (Init.Nat.mul 2 (exp2 (log2' 0))))"
+                ],
+                "tactic_res": [
+                    "c7_goal : forall\n  (_ : forall (y : nat) (_ : lt y 0) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y\n            (Init.Nat.add (exp2 (log2' y))\n               (Init.Nat.add (exp2 (log2' y)) 0)))) \n  (_ : lt 0 0),\nand (le (exp2 (log2' 0)) 0)\n  (lt 0\n     (Init.Nat.add (exp2 (log2' 0)) (Init.Nat.add (exp2 (log2' 0)) 0)))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c7_goal : forall\n  (_ : forall (y : nat) (_ : lt y 0) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y\n            (Init.Nat.add (exp2 (log2' y))\n               (Init.Nat.add (exp2 (log2' y)) 0)))) \n  (_ : lt 0 0),\nand (le (exp2 (log2' 0)) 0)\n  (lt 0\n     (Init.Nat.add (exp2 (log2' 0)) (Init.Nat.add (exp2 (log2' 0)) 0)))"
+                ],
+                "tactic_res": [
+                    "c8_goal : and (le (exp2 (log2' 0)) 0)\n  (lt 0\n     (Init.Nat.add (exp2 (log2' 0)) (Init.Nat.add (exp2 (log2' 0)) 0)))",
+                    "c8_H : forall (y : nat) (_ : lt y 0) (_ : lt 0 y),\nand (le (exp2 (log2' y)) y)\n  (lt y\n     (Init.Nat.add (exp2 (log2' y)) (Init.Nat.add (exp2 (log2' y)) 0)))",
+                    "c8_H0 : lt 0 0"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c8_goal : and (le (exp2 (log2' 0)) 0)\n  (lt 0\n     (Init.Nat.add (exp2 (log2' 0)) (Init.Nat.add (exp2 (log2' 0)) 0)))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros x' .",
+                "tactic_args": [
+                    "c6_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y (S n)) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 (S n)),\nand (le (exp2 (log2' (S n))) (S n))\n  (lt (S n) (Init.Nat.mul 2 (exp2 (log2' (S n)))))"
+                ],
+                "tactic_res": [
+                    "c9_goal : forall\n  (_ : forall (y : nat) (_ : lt y (S x')) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 (S x')),\nand (le (exp2 (log2' (S x'))) (S x'))\n  (lt (S x') (Init.Nat.mul 2 (exp2 (log2' (S x')))))",
+                    "c9_x' : nat"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c9_goal : forall\n  (_ : forall (y : nat) (_ : lt y (S x')) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 (S x')),\nand (le (exp2 (log2' (S x'))) (S x'))\n  (lt (S x') (Init.Nat.mul 2 (exp2 (log2' (S x')))))",
+                    "c9_x' : nat"
+                ],
+                "tactic_res": [
+                    "c10_goal : forall\n  (_ : forall (y : nat) (_ : lt y 1) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 1),\nand (le (exp2 (log2' 1)) 1) (lt 1 (Init.Nat.mul 2 (exp2 (log2' 1))))",
+                    "c11_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y (S (S n))) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 (S (S n))),\nand (le (exp2 (log2' (S (S n)))) (S (S n)))\n  (lt (S (S n)) (Init.Nat.mul 2 (exp2 (log2' (S (S n))))))"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite ( _i 1 ) .",
+                "tactic_sig_no_out_arg": "rewrite ( _i 1 ) .",
+                "tactic_args": [
+                    "c10_goal : forall\n  (_ : forall (y : nat) (_ : lt y 1) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 1),\nand (le (exp2 (log2' 1)) 1) (lt 1 (Init.Nat.mul 2 (exp2 (log2' 1))))",
+                    "_global_log2_fix_eqn : forall n : nat,\n       eq (log2' n)\n         match n with\n         | S (S p) => S (log2' (div2 (S (S p))))\n         | _ => 0\n         end"
+                ],
+                "tactic_res": [
+                    "c12_goal : forall\n  (_ : forall (y : nat) (_ : lt y 1) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 1), and (le (exp2 0) 1) (lt 1 (Init.Nat.mul 2 (exp2 0)))"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c12_goal : forall\n  (_ : forall (y : nat) (_ : lt y 1) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 1), and (le (exp2 0) 1) (lt 1 (Init.Nat.mul 2 (exp2 0)))"
+                ],
+                "tactic_res": [
+                    "c13_goal : forall\n  (_ : forall (y : nat) (_ : lt y 1) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y\n            (Init.Nat.add (exp2 (log2' y))\n               (Init.Nat.add (exp2 (log2' y)) 0)))) \n  (_ : lt 0 1), and (le 1 1) (lt 1 2)"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c13_goal : forall\n  (_ : forall (y : nat) (_ : lt y 1) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y\n            (Init.Nat.add (exp2 (log2' y))\n               (Init.Nat.add (exp2 (log2' y)) 0)))) \n  (_ : lt 0 1), and (le 1 1) (lt 1 2)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros p Hrec .",
+                "tactic_args": [
+                    "c11_goal : forall (n : nat)\n  (_ : forall (y : nat) (_ : lt y (S (S n))) (_ : lt 0 y),\n       and (le (exp2 (log2' y)) y)\n         (lt y (Init.Nat.mul 2 (exp2 (log2' y))))) \n  (_ : lt 0 (S (S n))),\nand (le (exp2 (log2' (S (S n)))) (S (S n)))\n  (lt (S (S n)) (Init.Nat.mul 2 (exp2 (log2' (S (S n))))))"
+                ],
+                "tactic_res": [
+                    "c14_goal : forall _ : lt 0 (S (S p)),\nand (le (exp2 (log2' (S (S p)))) (S (S p)))\n  (lt (S (S p)) (Init.Nat.mul 2 (exp2 (log2' (S (S p))))))",
+                    "c14_p : nat",
+                    "c14_Hrec : forall (y : nat) (_ : lt y (S (S p))) (_ : lt 0 y),\nand (le (exp2 (log2' y)) y) (lt y (Init.Nat.mul 2 (exp2 (log2' y))))"
+                ]
+            },
+            {
+                "tactic_sig": "elim ( _i ( div2 ( S ( S _i ) ) ) ) .",
+                "tactic_sig_no_out_arg": "elim ( _i ( div2 ( S ( S _i ) ) ) ) .",
+                "tactic_args": [
+                    "c14_goal : forall _ : lt 0 (S (S p)),\nand (le (exp2 (log2' (S (S p)))) (S (S p)))\n  (lt (S (S p)) (Init.Nat.mul 2 (exp2 (log2' (S (S p))))))",
+                    "c14_Hrec : forall (y : nat) (_ : lt y (S (S p))) (_ : lt 0 y),\nand (le (exp2 (log2' y)) y) (lt y (Init.Nat.mul 2 (exp2 (log2' y))))",
+                    "c14_p : nat"
+                ],
+                "tactic_res": [
+                    "c15_goal : forall (_ : le (exp2 (log2' (div2 (S (S p))))) (div2 (S (S p))))\n  (_ : lt (div2 (S (S p)))\n         (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p)))))))\n  (_ : lt 0 (S (S p))),\nand (le (exp2 (log2' (S (S p)))) (S (S p)))\n  (lt (S (S p)) (Init.Nat.mul 2 (exp2 (log2' (S (S p))))))",
+                    "c16_goal : lt (div2 (S (S p))) (S (S p))",
+                    "c17_goal : lt 0 (div2 (S (S p)))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _ .",
+                "tactic_sig_no_out_arg": "intros Hle Hlt _ .",
+                "tactic_args": [
+                    "c15_goal : forall (_ : le (exp2 (log2' (div2 (S (S p))))) (div2 (S (S p))))\n  (_ : lt (div2 (S (S p)))\n         (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p)))))))\n  (_ : lt 0 (S (S p))),\nand (le (exp2 (log2' (S (S p)))) (S (S p)))\n  (lt (S (S p)) (Init.Nat.mul 2 (exp2 (log2' (S (S p))))))"
+                ],
+                "tactic_res": [
+                    "c18_goal : and (le (exp2 (log2' (S (S p)))) (S (S p)))\n  (lt (S (S p)) (Init.Nat.mul 2 (exp2 (log2' (S (S p))))))",
+                    "c18_Hle : le (exp2 (log2' (div2 (S (S p))))) (div2 (S (S p)))",
+                    "c18_Hlt : lt (div2 (S (S p))) (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p))))))"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite ( _i ( _i ( _i _i ) ) ) .",
+                "tactic_sig_no_out_arg": "rewrite ( _i ( _i ( _i _i ) ) ) .",
+                "tactic_args": [
+                    "c18_goal : and (le (exp2 (log2' (S (S p)))) (S (S p)))\n  (lt (S (S p)) (Init.Nat.mul 2 (exp2 (log2' (S (S p))))))",
+                    "_global_log2_fix_eqn : forall n : nat,\n       eq (log2' n)\n         match n with\n         | S (S p) => S (log2' (div2 (S (S p))))\n         | _ => 0\n         end",
+                    "_global_S : forall _ : nat, nat",
+                    "_global_S : forall _ : nat, nat",
+                    "c14_p : nat"
+                ],
+                "tactic_res": [
+                    "c19_goal : and (le (exp2 (S (log2' (div2 (S (S p)))))) (S (S p)))\n  (lt (S (S p)) (Init.Nat.mul 2 (exp2 (S (log2' (div2 (S (S p))))))))"
+                ]
+            },
+            {
+                "tactic_sig": "cbv zeta iota beta delta [ exp2 ] .",
+                "tactic_sig_no_out_arg": "cbv zeta iota beta delta [ exp2 ] .",
+                "tactic_args": [
+                    "c19_goal : and (le (exp2 (S (log2' (div2 (S (S p)))))) (S (S p)))\n  (lt (S (S p)) (Init.Nat.mul 2 (exp2 (S (log2' (div2 (S (S p))))))))"
+                ],
+                "tactic_res": [
+                    "c20_goal : and\n  (le\n     (Init.Nat.mul 2\n        ((fix exp2 (n : nat) : nat :=\n            match n with\n            | 0 => 1\n            | S p => Init.Nat.mul 2 (exp2 p)\n            end) (log2' (div2 (S (S p)))))) (S (S p)))\n  (lt (S (S p))\n     (Init.Nat.mul 2\n        (Init.Nat.mul 2\n           ((fix exp2 (n : nat) : nat :=\n               match n with\n               | 0 => 1\n               | S p => Init.Nat.mul 2 (exp2 p)\n               end) (log2' (div2 (S (S p))))))))"
+                ]
+            },
+            {
+                "tactic_sig": "fold exp2 .",
+                "tactic_sig_no_out_arg": "fold exp2 .",
+                "tactic_args": [
+                    "c20_goal : and\n  (le\n     (Init.Nat.mul 2\n        ((fix exp2 (n : nat) : nat :=\n            match n with\n            | 0 => 1\n            | S p => Init.Nat.mul 2 (exp2 p)\n            end) (log2' (div2 (S (S p)))))) (S (S p)))\n  (lt (S (S p))\n     (Init.Nat.mul 2\n        (Init.Nat.mul 2\n           ((fix exp2 (n : nat) : nat :=\n               match n with\n               | 0 => 1\n               | S p => Init.Nat.mul 2 (exp2 p)\n               end) (log2' (div2 (S (S p))))))))"
+                ],
+                "tactic_res": [
+                    "c21_goal : and (le (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p)))))) (S (S p)))\n  (lt (S (S p))\n     (Init.Nat.mul 2 (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p))))))))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c21_goal : and (le (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p)))))) (S (S p)))\n  (lt (S (S p))\n     (Init.Nat.mul 2 (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p))))))))"
+                ],
+                "tactic_res": [
+                    "c22_goal : le (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p)))))) (S (S p))",
+                    "c23_goal : lt (S (S p))\n  (Init.Nat.mul 2 (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p)))))))"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i with ( 2 * _i ( _i ( _i _i ) ) ) .",
+                "tactic_sig_no_out_arg": "apply _i with ( 2 * _i ( _i ( _i _i ) ) ) .",
+                "tactic_args": [
+                    "c22_goal : le (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p)))))) (S (S p))",
+                    "_global_Nat.le_trans : forall (n m p : nat) (_ : le n m) (_ : le m p), le n p",
+                    "_global_div2 : forall _ : nat, nat",
+                    "_global_S : forall _ : nat, nat",
+                    "_global_S : forall _ : nat, nat",
+                    "c14_p : nat"
+                ],
+                "tactic_res": [
+                    "c24_goal : le (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p))))))\n  (Init.Nat.mul 2 (div2 (S (S p))))",
+                    "c25_goal : le (Init.Nat.mul 2 (div2 (S (S p)))) (S (S p))"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c24_goal : le (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p))))))\n  (Init.Nat.mul 2 (div2 (S (S p))))",
+                    "c18_Hle : le (exp2 (log2' (div2 (S (S p))))) (div2 (S (S p)))",
+                    "c14_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "elim ( div2_eq ( S ( S _i ) ) ) .",
+                "tactic_sig_no_out_arg": "elim ( div2_eq ( S ( S _i ) ) ) .",
+                "tactic_args": [
+                    "c25_goal : le (Init.Nat.mul 2 (div2 (S (S p)))) (S (S p))",
+                    "c14_p : nat"
+                ],
+                "tactic_res": [
+                    "c26_goal : forall _ : eq (Init.Nat.mul 2 (div2 (S (S p)))) (S (S p)),\nle (Init.Nat.mul 2 (div2 (S (S p)))) (S (S p))",
+                    "c27_goal : forall\n  _ : eq (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1) (S (S p)),\nle (Init.Nat.mul 2 (div2 (S (S p)))) (S (S p))"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c26_goal : forall _ : eq (Init.Nat.mul 2 (div2 (S (S p)))) (S (S p)),\nle (Init.Nat.mul 2 (div2 (S (S p)))) (S (S p))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c27_goal : forall\n  _ : eq (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1) (S (S p)),\nle (Init.Nat.mul 2 (div2 (S (S p)))) (S (S p))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i with ( 2 * _i ( _i ( _i _i ) ) + 1 ) .",
+                "tactic_sig_no_out_arg": "apply _i with ( 2 * _i ( _i ( _i _i ) ) + 1 ) .",
+                "tactic_args": [
+                    "c23_goal : lt (S (S p))\n  (Init.Nat.mul 2 (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p)))))))",
+                    "_global_Nat.le_lt_trans : forall (n m p : nat) (_ : le n m) (_ : lt m p), lt n p",
+                    "_global_div2 : forall _ : nat, nat",
+                    "_global_S : forall _ : nat, nat",
+                    "_global_S : forall _ : nat, nat",
+                    "c14_p : nat"
+                ],
+                "tactic_res": [
+                    "c28_goal : le (S (S p)) (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1)",
+                    "c29_goal : lt (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1)\n  (Init.Nat.mul 2 (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p)))))))"
+                ]
+            },
+            {
+                "tactic_sig": "elim ( div2_eq ( S ( S _i ) ) ) .",
+                "tactic_sig_no_out_arg": "elim ( div2_eq ( S ( S _i ) ) ) .",
+                "tactic_args": [
+                    "c28_goal : le (S (S p)) (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1)",
+                    "c14_p : nat"
+                ],
+                "tactic_res": [
+                    "c30_goal : forall _ : eq (Init.Nat.mul 2 (div2 (S (S p)))) (S (S p)),\nle (S (S p)) (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1)",
+                    "c31_goal : forall\n  _ : eq (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1) (S (S p)),\nle (S (S p)) (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1)"
+                ]
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c30_goal : forall _ : eq (Init.Nat.mul 2 (div2 (S (S p)))) (S (S p)),\nle (S (S p)) (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c31_goal : forall\n  _ : eq (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1) (S (S p)),\nle (S (S p)) (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "lia .",
+                "tactic_sig_no_out_arg": "lia .",
+                "tactic_args": [
+                    "c29_goal : lt (Init.Nat.add (Init.Nat.mul 2 (div2 (S (S p)))) 1)\n  (Init.Nat.mul 2 (Init.Nat.mul 2 (exp2 (log2' (div2 (S (S p)))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c16_goal : lt (div2 (S (S p))) (S (S p))",
+                    "_global_div2_lt : forall (n : nat) (_ : not (eq n 0)), lt (div2 n) n"
+                ],
+                "tactic_res": [
+                    "c32_goal : not (eq (S (S p)) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c32_goal : not (eq (S (S p)) 0)",
+                    "c14_p : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c17_goal : lt 0 (div2 (S (S p)))"
+                ],
+                "tactic_res": [
+                    "c33_goal : lt 0 (S (div2 p))"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c33_goal : lt 0 (S (div2 p))",
+                    "c14_p : nat"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

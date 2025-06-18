@@ -1,0 +1,29 @@
+forall l0 h0 : Z,
+iff (In x (add l0 h0 Nil))
+  (or (and (Z.le l0 x) (Z.lt x h0)) (In x Nil))
+
+forall l0 h0 : Z,
+iff (In x (add l0 h0 (Cons l h s)))
+  (or (and (Z.le l0 x) (Z.lt x h0)) (In x (Cons l h s)))
+
+iff (In x (Cons l h (add l0 h0 s)))
+  (or (and (Z.le l0 x) (Z.lt x h0))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+iff
+  (In x
+     (if zlt h0 l
+      then Cons l0 h0 (Cons l h s)
+      else add (Z.min l l0) (Z.max h h0) s))
+  (or (and (Z.le l0 x) (Z.lt x h0))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+iff (In x (Cons l0 h0 (Cons l h s)))
+  (or (and (Z.le l0 x) (Z.lt x h0))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+iff (In x (add (Z.min l l0) (Z.max h h0) s))
+  (or (and (Z.le l0 x) (Z.lt x h0))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+or (and (Z.le (Z.min l l0) x) (Z.lt x (Z.max h h0))) (In x s)

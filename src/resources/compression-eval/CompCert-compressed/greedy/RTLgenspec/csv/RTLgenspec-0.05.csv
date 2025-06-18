@@ -1,0 +1,19 @@
+extracted tactics -----------
+Ltac custom0  :=  econstructor; [eauto | eauto | eauto |  | .. ].
+Ltac custom1  :=  econstructor; [eauto |  |  | .. ].
+Ltac custom2 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom3  :=  custom2 ; [eauto | .. ].
+Ltac custom4  :=  custom1 ; [eauto |  | .. ].
+Ltac custom5  :=  custom1 ; [eauto |  | .. ].
+Ltac custom6 H0 H1 H2 :=  intros H0 H1 H2; [induction 1; [ |  |  |  |  |  |  |  | .. ] | .. ].
+Ltac custom7  :=  custom0 ; [eauto | .. ].
+Ltac custom8  :=  custom0 ; [eauto | .. ].
+Ltac custom9  :=  custom0 ; [eauto | .. ].
+Ltac custom10  :=  custom1 ; [eauto | .. ].
+---------------------------
+ , , 0.05
+RTLgenspec, Number of Tactics, 11
+ , Average Tactic Size, 2.18
+ , Total Tactic Size, 24
+ , Max Tactic Size, 4
+ , Overall CP, 1.05

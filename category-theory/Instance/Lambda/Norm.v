@@ -1,0 +1,213 @@
+Require Import Category.Lib.
+Require Import Category.Instance.Lambda.Ltac.
+Require Import Category.Instance.Lambda.Ty.
+Require Import Category.Instance.Lambda.Exp.
+Require Import Category.Instance.Lambda.Value.
+Require Import Category.Instance.Lambda.Ren.
+Require Import Category.Instance.Lambda.Sub.
+Require Import Category.Instance.Lambda.Log.
+Require Import Category.Instance.Lambda.Sem.
+Require Import Category.Instance.Lambda.Multi.
+Require Import Category.Instance.Lambda.Sound.
+Require Import Category.Instance.Lambda.Step.
+
+From Equations Require Import Equations.
+Set Equations With UIP.
+
+Generalizable All Variables.
+
+Section Norm.
+
+#[local] Hint Constructors ValueP Step : core.
+
+#[local] Hint Extern 7 (_ ---> _) => repeat econstructor : core.
+
+Definition normalizing `(R : crelation X) : Type :=
+  ∀ t, ∃ t', multi R t t' ∧ normal_form R t'.
+
+Definition halts {Γ τ} (e : Exp Γ τ) : Type :=
+  ∃ e', e --->* e' ∧ ValueP e'.
+
+Notation " e '⇓' " := (halts e) (at level 11).
+
+Definition normal_form_of {Γ τ} (e e' : Exp Γ τ) : Type :=
+  (e --->* e' ∧ normal_form Step e').
+
+Ltac normality :=
+  exfalso;
+  lazymatch goal with
+    | [ H1 : ValueP ?X, H2 : ?X ---> ?Y |- False ] =>
+        apply value_is_nf in H1; destruct H1;
+        now exists Y
+    | [ H1 : normal_form ?R ?X, H2 : ?R ?X ?Y |- False ] =>
+        exfalso; now apply (H1 Y)
+  end.
+
+Ltac invert_step :=
+  try lazymatch goal with
+  | [ H : _ ---> _ |- _ ] => now inv H
+  end;
+  try solve [ f_equal; intuition eauto | normality ].
+
+Lemma value_halts {Γ τ} (v : Exp Γ τ) : ValueP v → halts v.
+Proof.
+  intros X.
+  unfold halts.
+  now induction X; eexists; repeat constructor.
+Qed.
+
+Theorem normal_forms_unique Γ τ :
+  deterministic (normal_form_of (Γ:=Γ) (τ:=τ)).
+Proof.
+  unfold deterministic, normal_form_of.
+  intros x y1 y2 P1 P2.
+  destruct P1 as [P11 P12].
+  destruct P2 as [P21 P22].
+  generalize dependent y2.
+  induction P11; intros.
+  - inversion P21; auto.
+    now einduction P12; eauto.
+  - apply IHP11; auto.
+    inv P21.
+    + now edestruct P22; eauto.
+    + assert (y = y0) by now apply Step_deterministic with x.
+      now subst.
+Qed.
+
+Lemma step_preserves_halting {Γ τ} (e e' : Exp Γ τ) :
+  (e ---> e') → (halts e ↔ halts e').
+Proof.
+  intros.
+  unfold halts.
+  split.
+  - intros [e'' [H1 H2]].
+    + destruct H1.
+      * apply value_is_nf in H2.
+        now edestruct H2; eauto.
+      * rewrite (Step_deterministic _ _ _ _ _ H s).
+        now intuition eauto.
+  - intros [e'0 [H1 H2]].
+    + exists e'0.
+      split; auto.
+      now eapply multi_step; eauto.
+Qed.
+
+Definition SN {Γ τ} : Γ ⊢ τ → Type := ExpP (@halts Γ).
+Arguments SN {Γ τ} _ /.
+
+Definition SN_Sub {Γ Γ'} : Sub Γ' Γ → Type := SubP (@halts Γ').
+Arguments SN_Sub {Γ Γ'} /.
+
+Definition SN_halts {Γ τ} {e : Γ ⊢ τ} : SN e → halts e := ExpP_P _.
+
+#[local] Transparent ExpP.
+
+Lemma step_preserves_SN {Γ τ} {e e' : Γ ⊢ τ} :
+  (e ---> e') → SN e → SN e'.
+Proof.
+  intros.
+  induction τ; simpl in *;
+  pose proof H as H2;
+  apply step_preserves_halting in H2;
+  firstorder.
+Qed.
+
+Lemma multistep_preserves_SN {Γ τ} {e e' : Γ ⊢ τ} :
+  (e --->* e') → SN e → SN e'.
+Proof.
+  intros.
+  induction X; auto.
+  apply IHX.
+  now eapply step_preserves_SN; eauto.
+Qed.
+
+Lemma step_preserves_SN' {Γ τ} {e e' : Γ ⊢ τ} :
+  (e ---> e') → SN e' → SN e.
+Proof.
+  intros.
+  induction τ; simpl in *;
+  pose proof H as H2;
+  apply step_preserves_halting in H2;
+  firstorder.
+Qed.
+
+Lemma multistep_preserves_SN' {Γ τ} {e e' : Γ ⊢ τ} :
+  (e --->* e') → SN e' → SN e.
+Proof.
+  intros.
+  induction X; auto.
+  now eapply step_preserves_SN'; eauto.
+Qed.
+
+Lemma SubExp_SN {Γ Γ'} (env : Sub Γ' Γ) {τ} (e : Exp Γ τ) :
+  SN_Sub env →
+  SN (SubExp env e).
+Proof.
+  generalize dependent env.
+  induction e; intros; simpl.
+  - now eexists; repeat constructor.
+  - split.
+    + destruct (SN_halts (IHe1 env X)) as [v1 [P1 Q1]].
+      destruct (SN_halts (IHe2 env X)) as [v2 [P2 Q2]].
+      exists (Pair v1 v2).
+      split.
+      * now apply multistep_Pair.
+      * now repeat constructor.
+    + split.
+      * destruct (SN_halts (IHe1 env X)) as [v1 [P1 Q1]].
+        destruct (SN_halts (IHe2 env X)) as [v2 [P2 Q2]].
+        apply (multistep_preserves_SN' (e':=v1)); auto.
+        ** rewrite (multistep_Fst1 (p':=Pair v1 v2)).
+           *** now apply multi_R; eauto.
+           *** erewrite multistep_Pair1; eauto.
+               erewrite multistep_Pair2; eauto.
+               now apply multi_refl.
+        ** apply (multistep_preserves_SN (e:=SubExp env e1));
+           now intuition.
+      * destruct (SN_halts (IHe1 env X)) as [v1 [P1 Q1]].
+        destruct (SN_halts (IHe2 env X)) as [v2 [P2 Q2]].
+        apply (multistep_preserves_SN' (e':=v2)); auto.
+        ** rewrite (multistep_Snd1 (p':=Pair v1 v2)).
+           *** now apply multi_R; eauto.
+           *** erewrite multistep_Pair1; eauto.
+               erewrite multistep_Pair2; eauto.
+               now apply multi_refl.
+        ** apply (multistep_preserves_SN (e:=SubExp env e2));
+           now intuition.
+  - now apply IHe.
+  - now apply IHe.
+  - induction env.
+    + now inv v.
+    + dependent elimination X.
+      now dependent elimination v; simpl in *; simp SubVar.
+  - split.
+    + now eexists; repeat constructor.
+    + intros.
+      destruct (SN_halts X0) as [v [P Q]].
+      apply (multistep_preserves_SN' (e':=SubExp (Push v env) e)); auto.
+      * eapply multi_trans; eauto.
+        ** now eapply multistep_AppR; eauto.
+        ** apply multi_R; auto.
+           now rewrite SubExp_Push; eauto 6.
+      * apply IHe.
+        constructor; auto.
+        now eapply multistep_preserves_SN; eauto.
+  - now apply IHe1, IHe2.
+Qed.
+
+Theorem Exp_SN {τ} (e : Exp nil τ) : SN e.
+Proof.
+  intros.
+  replace e with (SubExp (Γ:=nil) NoSub e).
+  - apply SubExp_SN.
+    now constructor.
+  - now rewrite NoSub_idSub, SubExp_idSub.
+Qed.
+
+Corollary strong_normalization {τ} (e : Exp nil τ) : e ⇓.
+Proof.
+  pose proof (Exp_SN e) as X.
+  now apply SN_halts.
+Qed.
+
+End Norm.

@@ -1,0 +1,17 @@
+iff (eq (contains l0 h0 Nil) true)
+  (forall (x : Z) (_ : and (Z.le l0 x) (Z.lt x h0)), In x Nil)
+
+iff (eq (contains l0 h0 (Cons l h s)) true)
+  (forall (x : Z) (_ : and (Z.le l0 x) (Z.lt x h0)), In x (Cons l h s))
+
+iff (eq (orb (andb (left l1) (zle l l0)) (contains l0 h0 s)) true)
+  (forall (x : Z) (_ : and (Z.le l0 x) (Z.lt x h0)),
+   or (and (Z.le l x) (Z.lt x h)) (In x s))
+
+iff (eq (orb (andb (right g) (zle l l0)) (contains l0 h0 s)) true)
+  (forall (x : Z) (_ : and (Z.le l0 x) (Z.lt x h0)),
+   or (and (Z.le l x) (Z.lt x h)) (In x s))
+
+iff (eq (orb (left l2) (contains l0 h0 s)) true)
+  (forall (x : Z) (_ : and (Z.le l0 x) (Z.lt x h0)),
+   or (and (Z.le l x) (Z.lt x h)) (In x s))

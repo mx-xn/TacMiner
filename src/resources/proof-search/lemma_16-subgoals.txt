@@ -1,0 +1,9 @@
+iff
+  (R.In x
+     (proj1_sig
+        (exist (fun r : R.t => R.ok r) (R.add l h (proj1_sig s))
+           (add_obligation_1 l h s l0))))
+  (or (and (Z.le l x) (Z.lt x h)) (R.In x (proj1_sig s)))
+
+iff (R.In x (proj1_sig s))
+  (or (and (Z.le l x) (Z.lt x h)) (R.In x (proj1_sig s)))

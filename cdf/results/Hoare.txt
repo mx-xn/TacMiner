@@ -1,0 +1,870 @@
+Lemma update_same : forall x v s, ( update x v s ) x = v .
+Proof.
+   unfold update. intros x v s. destruct ( string_dec x x ) as [  e | n ]. 
+    - congruence.
+    - congruence.
+Qed.
+Lemma update_other : forall x v s y, x <> y -> ( update x v s ) y = s y .
+Proof.
+   unfold update. intros x v s y H. destruct ( string_dec x y ) as [  e | n ]. 
+    - congruence.
+    - congruence.
+Qed.
+Lemma Hoare_consequence_pre : forall P P' Q c, ⦃ P ⦄ c ⦃ Q ⦄ -> P' -->> P -> ⦃ P' ⦄ c ⦃ Q ⦄ .
+Proof.
+   intros P P' Q c H H0. apply Hoare_consequence with ( P := P ) ( Q := Q ). 
+    - auto.
+    - unfold aimp. auto.
+    - unfold aimp. auto.
+Qed.
+Lemma Hoare_consequence_post : forall P Q Q' c, ⦃ P ⦄ c ⦃ Q ⦄ -> Q -->> Q' -> ⦃ P ⦄ c ⦃ Q' ⦄ .
+Proof.
+   intros P Q Q' c H H0. apply Hoare_consequence with ( P := P ) ( Q := Q ). 
+    - auto.
+    - unfold aimp. auto.
+    - unfold aimp. auto.
+Qed.
+Lemma Floyd_assign : forall P x a, ⦃ P ⦄ ASSIGN x a ⦃ aexists ( fun x0 => aexists ( fun v => aequal ( VAR x ) v //\\ aupdate x ( CONST x0 ) ( P //\\ aequal a v ) ) ) ⦄ .
+Proof.
+   intros P x a. eapply Hoare_consequence_pre. 
+    - apply Hoare_assign.
+    - intros s Ps. set ( x0 := s x ). set ( v := aeval a s ). set ( s' := update x v s ). set ( s'' := update x x0 s' ). assert ( s'' = s ). 
+      -- apply functional_extensionality. intros x1. unfold s'', s', update. destruct ( string_dec x x1 ) as [  e | n ]. 
+        --- subst x1. auto.
+        --- auto.
+      -- unfold aupdate. exists x0. exists v. split. 
+        --- red. cbn. apply update_same.
+        --- cbn. fold v. fold s'. fold s''. rewrite H. split. 
+          ---- auto.
+          ---- red. auto.
+Qed.
+Lemma Hoare_ifthen : forall b c P Q, ⦃ atrue b //\\ P ⦄ c ⦃ Q ⦄ -> afalse b //\\ P -->> Q -> ⦃ P ⦄ IFTHENELSE b c SKIP ⦃ Q ⦄ .
+Proof.
+   intros b c P Q H H0. apply Hoare_ifthenelse. 
+    - auto.
+    - apply Hoare_consequence_pre with Q. 
+      -- auto using Hoare_skip.
+      -- auto using Hoare_skip.
+Qed.
+Lemma Hoare_dowhile : forall P b c Q, ⦃ P ⦄ c ⦃ Q ⦄ -> ( atrue b //\\ Q -->> P ) -> ⦃ P ⦄ DOWHILE c b ⦃ afalse b //\\ Q ⦄ .
+Proof.
+   intros P b c Q H H0. apply Hoare_seq with Q. 
+    - auto.
+    - apply Hoare_while. apply Hoare_consequence_pre with P. 
+      -- auto.
+      -- auto.
+Qed.
+Lemma HOARE_frame : forall R P c Q, 〚 P 〛 c 〚 Q 〛 -> independent R ( assigns c ) -> 〚 P //\\ R 〛 c 〚 Q //\\ R 〛 .
+Proof.
+   intros R. assert ( IND_SUB : forall ( vars1 vars2 : ident -> Prop ), independent R vars1 -> ( forall x, vars2 x -> vars1 x ) -> independent R vars2 ). 
+    - unfold independent. intros vars1 vars2 H H0 s1 s2 H1 H2. apply H with s1. 
+      -- auto.
+      -- auto.
+    - induction 1. 
+      -- intros IND. simpl in IND. apply HOARE_skip.
+      -- intros IND. simpl in IND. eapply HOARE_consequence with ( Q := P //\\ R ). 
+        --- apply HOARE_assign.
+        --- unfold aupdate. intros s [ A B ]. split. 
+          ---- auto.
+          ---- apply IND with s. 
+            ----- intros y DIFF. rewrite update_other. 
+              ------ auto.
+              ------ auto.
+            ----- auto.
+        --- Tauto.
+      -- intros IND. simpl in IND. apply HOARE_seq with ( Q //\\ R ). 
+        --- apply IHHOARE1. eapply IND_SUB. 
+          ---- eauto.
+          ---- cbn. intros x H1. tauto.
+        --- apply IHHOARE2. eapply IND_SUB. 
+          ---- eauto.
+          ---- cbn. intros x H1. tauto.
+      -- intros IND. simpl in IND. apply HOARE_ifthenelse. 
+        --- eapply HOARE_consequence with ( Q := Q //\\ R ). 
+          ---- apply IHHOARE1. eapply IND_SUB. 
+            ----- eauto.
+            ----- cbn. intros x H1. tauto.
+          ---- Tauto.
+          ---- Tauto.
+        --- eapply HOARE_consequence with ( Q := Q //\\ R ). 
+          ---- apply IHHOARE2. eapply IND_SUB. 
+            ----- eauto.
+            ----- cbn. intros x H1. tauto.
+          ---- Tauto.
+          ---- Tauto.
+      -- intros IND. simpl in IND. eapply HOARE_consequence with ( P := P //\\ R ). 
+        --- apply HOARE_while with a. intros v. eapply HOARE_consequence. 
+          ---- apply ( H0 v ). auto.
+          ---- Tauto.
+          ---- Tauto.
+        --- Tauto.
+        --- Tauto.
+      -- intros IND. simpl in IND. eapply HOARE_consequence with ( Q := Q //\\ R ). 
+        --- apply HOARE_havoc.
+        --- intros s [ A B ] n. split. 
+          ---- apply A.
+          ---- apply IND with s. 
+            ----- intros y DIFF. rewrite update_other. 
+              ------ auto.
+              ------ auto.
+            ----- auto.
+        --- Tauto.
+      -- intros IND. simpl in IND. eapply HOARE_consequence. 
+        --- apply HOARE_assert with ( P := P //\\ R ).
+        --- Tauto.
+        --- Tauto.
+      -- intros IND. simpl in INDeapply HOARE_consequence. 
+        --- apply IHHOARE. auto.
+        --- intros s [ A B ]. split. 
+          ---- auto.
+          ---- auto.
+        --- intros s [ A B ]. split. 
+          ---- auto.
+          ---- auto.
+Qed.
+Lemma HOARE_for : forall l h i c P, 〚 atrue ( LESSEQUAL ( VAR i ) ( VAR h ) ) //\\ P 〛 c 〚 aupdate i ( PLUS ( VAR i ) ( CONST 1 ) ) P 〛 -> ~ assigns c i -> ~ assigns c h -> i <> h -> 〚 aupdate i l P 〛 FOR i l h c 〚 afalse ( LESSEQUAL ( VAR i ) ( VAR h ) ) //\\ P 〛 .
+Proof.
+   intros l h i c P H H0 H1 H2. 
+    - apply HOARE_seq with P. 
+      -- apply HOARE_assign.
+      -- .
+    - ...
+    - . set ( variant := PLUS ( MINUS ( VAR h ) ( VAR i ) ) ( CONST 1 ).
+    - . 
+Qed.
+Lemma Hoare_skip_inv : forall P Q, ⦃ P ⦄ SKIP ⦃ Q ⦄ -> ( P -->> Q ) .
+Proof.
+   intros P Q H. dependent induction H. 
+    - red. auto.
+    - red. intros s H2. apply H1, IHHoare, H0. 
+      -- auto.
+      -- auto.
+Qed.
+Lemma Hoare_assign_inv : forall x a P Q, ⦃ P ⦄ ASSIGN x a ⦃ Q ⦄ -> ( P -->> aupdate x a Q ) .
+Proof.
+   intros x a P Q H. dependent induction H. 
+    - red. auto.
+    - red. intros s H2. red. apply H1, IHHoare, H0. 
+      -- auto.
+      -- auto.
+Qed.
+Lemma Hoare_seq_inv : forall c1 c2 P Q, ⦃ P ⦄ c1 ; ; c2 ⦃ Q ⦄ -> exists R, ⦃ P ⦄ c1 ⦃ R ⦄ /\ ⦃ R ⦄ c2 ⦃ Q ⦄ .
+Proof.
+   intros c1 c2 P Q H. dependent induction H. 
+    - exists Q. auto.
+    - edestruct IHHoare as ( R & C1 & C2 ). 
+      -- eauto.
+      -- exists R. split. 
+        --- eauto using Hoare_consequence_pre, Hoare_consequence_post.
+        --- eauto using Hoare_consequence_pre, Hoare_consequence_post.
+Qed.
+Lemma Hoare_ifthenelse_inv : forall b c1 c2 P Q, ⦃ P ⦄ IFTHENELSE b c1 c2 ⦃ Q ⦄ -> ⦃ atrue b //\\ P ⦄ c1 ⦃ Q ⦄ /\ ⦃ afalse b //\\ P ⦄ c2 ⦃ Q ⦄ .
+Proof.
+   intros b c1 c2 P Q H. dependent induction H. 
+    - split. 
+      -- auto.
+      -- auto.
+    - edestruct IHHoare as ( C1 & C2 ). 
+      -- eauto.
+      -- split. 
+        --- eapply Hoare_consequence. 
+          ---- eauto.
+          ---- intros s [ A B ]. split. 
+            ----- auto.
+            ----- auto.
+          ---- eauto.
+        --- eapply Hoare_consequence. 
+          ---- eauto.
+          ---- intros s [ A B ]. split. 
+            ----- auto.
+            ----- auto.
+          ---- eauto.
+Qed.
+Lemma Hoare_while_inv : forall b c P Q, ⦃ P ⦄ WHILE b c ⦃ Q ⦄ -> exists Inv, ⦃ atrue b //\\ Inv ⦄ c ⦃ Inv ⦄ /\ ( P -->> Inv ) /\ ( afalse b //\\ Inv -->> Q ) .
+Proof.
+   intros b c P Q H. dependent induction H. 
+    - exists P. split. 
+      -- auto.
+      -- split. 
+        --- Tauto.
+        --- Tauto.
+    - edestruct IHHoare as ( Inv & C & X & Y ). 
+      -- eauto.
+      -- exists Inv. split. 
+        --- auto.
+        --- split. 
+          ---- Tauto.
+          ---- Tauto.
+Qed.
+Lemma Hoare_havoc_inv : forall x P Q, ⦃ P ⦄ HAVOC x ⦃ Q ⦄ -> ( P -->> aforall ( fun n => aupdate x ( CONST n ) Q ) ) .
+Proof.
+   intros x P Q H. dependent induction H. 
+    - red. auto.
+    - intros s Ps n. apply H1. apply IHHoare. 
+      -- auto.
+      -- auto.
+Qed.
+Lemma Hoare_assert_inv : forall b P Q, ⦃ P ⦄ ASSERT b ⦃ Q ⦄ -> exists R, ( P -->> atrue b //\\ R ) /\ ( atrue b //\\ R -->> Q ) .
+Proof.
+   intros b P Q H. dependent induction H. 
+    - exists P. split. 
+      -- Tauto.
+      -- Tauto.
+    - edestruct IHHoare as ( R & A & B ). 
+      -- eauto.
+      -- exists R. split. 
+        --- Tauto.
+        --- Tauto.
+Qed.
+Lemma Hoare_conj : forall c P1 P2 Q1 Q2, ⦃ P1 ⦄ c ⦃ Q1 ⦄ -> ⦃ P2 ⦄ c ⦃ Q2 ⦄ -> ⦃ P1 //\\ P2 ⦄ c ⦃ Q1 //\\ Q2 ⦄ .
+Proof.
+   intro c. induction c. 
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_skip_inv in H. apply Hoare_skip_inv in H0. eapply Hoare_consequence_post. 
+      -- apply Hoare_skip.
+      -- Tauto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_assign_inv in H. apply Hoare_assign_inv in H0. eapply Hoare_consequence_pre. 
+      -- apply Hoare_assign.
+      -- unfold aupdate in *. Tauto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_seq_inv in H. destruct H as ( R1 & C11 & C21 ). apply Hoare_seq_inv in H0. destruct H0 as ( R2 & C12 & C22 ). apply Hoare_seq with ( R1 //\\ R2 ). 
+      -- auto.
+      -- auto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_ifthenelse_inv in H. destruct H as ( C11 & C21 ). apply Hoare_ifthenelse_inv in H0. destruct H0 as ( C12 & C22 ). apply Hoare_ifthenelse. 
+      -- eapply Hoare_consequence_pre. 
+        --- eauto.
+        --- Tauto.
+      -- eapply Hoare_consequence_pre. 
+        --- eauto.
+        --- Tauto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_while_inv in H. destruct H as ( Inv1 & C1 & A1 & B1 ). apply Hoare_while_inv in H0. destruct H0 as ( Inv2 & C2 & A2 & B2 ). eapply Hoare_consequence with ( P := Inv1 //\\ Inv2 ). 
+      -- apply Hoare_while. eapply Hoare_consequence_pre. 
+        --- eapply IHc. 
+          ---- eauto.
+          ---- eauto.
+        --- Tauto.
+      -- Tauto.
+      -- Tauto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_assert_inv in H. destruct H as ( R1 & A1 & B1 ). apply Hoare_assert_inv in H0. destruct H0 as ( R2 & A2 & B2 ). eapply Hoare_consequence. 
+      -- eapply Hoare_assert with ( P := R1 //\\ R2 ).
+      -- Tauto.
+      -- Tauto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_havoc_inv in H. apply Hoare_havoc_inv in H0. eapply Hoare_consequence_pre. 
+      -- apply Hoare_havoc.
+      -- unfold aupdate, aforall in *. Tauto.
+Qed.
+Lemma Hoare_disj : forall c P1 P2 Q1 Q2, ⦃ P1 ⦄ c ⦃ Q1 ⦄ -> ⦃ P2 ⦄ c ⦃ Q2 ⦄ -> ⦃ P1 \\// P2 ⦄ c ⦃ Q1 \\// Q2 ⦄ .
+Proof.
+   intro c. induction c. 
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_skip_inv in H. apply Hoare_skip_inv in H0. eapply Hoare_consequence_post. 
+      -- apply Hoare_skip.
+      -- Tauto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_assign_inv in H. apply Hoare_assign_inv in H0. eapply Hoare_consequence_pre. 
+      -- apply Hoare_assign.
+      -- unfold aupdate in *. Tauto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_seq_inv in H. destruct H as ( R1 & C11 & C21 ). apply Hoare_seq_inv in H0. destruct H0 as ( R2 & C12 & C22 ). apply Hoare_seq with ( R1 \\// R2 ). 
+      -- auto.
+      -- auto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_ifthenelse_inv in H. destruct H as ( C11 & C21 ). apply Hoare_ifthenelse_inv in H0. destruct H0 as ( C12 & C22 ). apply Hoare_ifthenelse. 
+      -- eapply Hoare_consequence_pre. 
+        --- eauto.
+        --- Tauto.
+      -- eapply Hoare_consequence_pre. 
+        --- eauto.
+        --- Tauto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_while_inv in H. destruct H as ( Inv1 & C1 & A1 & B1 ). apply Hoare_while_inv in H0. destruct H0 as ( Inv2 & C2 & A2 & B2 ). eapply Hoare_consequence with ( P := Inv1 \\// Inv2 ). 
+      -- apply Hoare_while. eapply Hoare_consequence_pre. 
+        --- eapply IHc. 
+          ---- eauto.
+          ---- eauto.
+        --- Tauto.
+      -- Tauto.
+      -- Tauto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_assert_inv in H. destruct H as ( R1 & A1 & B1 ). apply Hoare_assert_inv in H0. destruct H0 as ( R2 & A2 & B2 ). eapply Hoare_consequence. 
+      -- eapply Hoare_assert with ( P := R1 \\// R2 ).
+      -- Tauto.
+      -- Tauto.
+    - intros P1 P2 Q1 Q2 H H0. apply Hoare_havoc_inv in H. apply Hoare_havoc_inv in H0. eapply Hoare_consequence_pre. 
+      -- apply Hoare_havoc.
+      -- unfold aupdate, aforall in *. Tauto.
+Qed.
+Lemma Hoare_exists : choice_axiom -> forall ( X : Type ) c ( P Q : X -> assertion ), ( forall x, ⦃ P x ⦄ c ⦃ Q x ⦄ ) -> ⦃ aexists P ⦄ c ⦃ aexists Q ⦄ .
+Proof.
+   intros CHOICE X c. induction c. 
+    - intros P Q H. assert ( H' : forall x, P x -->> Q x ) by ( intros ; apply Hoare_skip_inv ; auto ). eapply Hoare_consequence_pre. 
+      -- apply Hoare_skip.
+      -- intros s ( x & Px ). exists x. apply H'. auto.
+    - intros P Q H. assert ( H' : forall y, P y -->> aupdate x a ( Q y ) ). 
+      -- intros y. apply Hoare_assign_inv. auto.
+      -- eapply Hoare_consequence_pre. 
+        --- apply Hoare_assign.
+        --- intros s ( y & Py ). exists y. apply H'. auto.
+    - intros P Q H. set ( REL := fun ( x : X ) ( R : assertion ) => Hoare ( P x ) c1 R /\ Hoare R c2 ( Q x ) ). assert ( H' : exists R : X -> assertion, forall x : X, REL x ( R x ) ). 
+      -- apply CHOICE. intros x. apply Hoare_seq_inv. auto.
+      -- destruct H' as ( R & H' ). apply Hoare_seq with ( aexists R ). 
+        --- apply IHc1. intros x. apply H'.
+        --- apply IHc2. intros x. apply H'.
+    - intros P Q H. assert ( H1 : Hoare ( aexists ( fun x => atrue b //\\ P x ) ) c1 ( aexists Q ) ). 
+      -- apply IHc1. intros x. specialize ( H x ). apply Hoare_ifthenelse_inv in H. tauto.
+      -- assert ( H2 : Hoare ( aexists ( fun x => afalse b //\\ P x ) ) c2 ( aexists Q ) ). 
+        --- apply IHc2. intros x. specialize ( H x ). apply Hoare_ifthenelse_inv in H. tauto.
+        --- apply Hoare_ifthenelse. 
+          ---- eapply Hoare_consequence_pre. 
+            ----- eauto.
+            ----- intros s ( A & x & B ). exists x. split. 
+              ------ auto.
+              ------ auto.
+          ---- eapply Hoare_consequence_pre. 
+            ----- eauto.
+            ----- intros s ( A & x & B ). exists x. split. 
+              ------ auto.
+              ------ auto.
+    - intros P Q H. set ( REL := fun ( x : X ) ( Inv : assertion ) => Hoare ( atrue b //\\ Inv ) c Inv /\ ( P x -->> Inv ) /\ ( afalse b //\\ Inv -->> Q x ) ). assert ( H' : exists Inv : X -> assertion, forall x : X, REL x ( Inv x ) ). 
+      -- apply CHOICE. intros x. apply Hoare_while_inv. auto.
+      -- destruct H' as ( Inv & H' ). eapply Hoare_consequence with ( P := aexists Inv ). 
+        --- apply Hoare_while. apply Hoare_consequence_pre with ( P := aexists ( fun x => atrue b //\\ Inv x ) ). 
+          ---- apply IHc. intros x. apply H'.
+          ---- intros s ( A & x & B ). exists x. split. 
+            ----- auto.
+            ----- auto.
+        --- intros s ( x & A ). exists x. apply H'. auto.
+        --- intros s ( A & x & B ). exists x. apply H'. split. 
+          ---- auto.
+          ---- auto.
+    - intros P Q H. set ( REL := fun ( x : X ) ( R : assertion ) => ( P x -->> atrue b //\\ R ) /\ ( atrue b //\\ R -->> Q x ) ). assert ( H' : exists R : X -> assertion, forall x : X, REL x ( R x ) ). 
+      -- apply CHOICE. intros x. apply Hoare_assert_inv. auto.
+      -- destruct H' as ( R & A ). eapply Hoare_consequence. 
+        --- apply Hoare_assert with ( P := aexists R ).
+        --- intros s ( x & Px ). destruct ( A x ) as ( B & C ). apply B in Px. destruct Px as [  H1 H0 ]. split. 
+          ---- auto.
+          ---- exists x. auto.
+        --- intros s ( Bs & x & Rx ). destruct ( A x ) as ( B & C ). exists x. apply C. split. 
+          ---- auto.
+          ---- auto.
+    - intros P Q H. assert ( H' : forall y, P y -->> aforall ( fun n => aupdate x ( CONST n ) ( Q y ) ) ). 
+      -- intros y. apply Hoare_havoc_inv. auto.
+      -- eapply Hoare_consequence_pre. 
+        --- apply Hoare_havoc.
+        --- intros s ( y & Py ). exists y. apply H'. auto.
+Qed.
+Lemma Hoare_forall : choice_axiom -> forall ( X : Type ) ( inhabited : X ) c ( P Q : X -> assertion ), ( forall x, ⦃ P x ⦄ c ⦃ Q x ⦄ ) -> ⦃ aforall P ⦄ c ⦃ aforall Q ⦄ .
+Proof.
+   intros CHOICE X inhabited c. induction c. 
+    - intros P Q H. assert ( H' : forall x, P x -->> Q x ) by ( intros ; apply Hoare_skip_inv ; auto ). eapply Hoare_consequence_pre. 
+      -- apply Hoare_skip.
+      -- intros s Ps x. apply H'. apply Ps.
+    - intros P Q H. assert ( H' : forall y, P y -->> aupdate x a ( Q y ) ). 
+      -- intros y. apply Hoare_assign_inv. auto.
+      -- eapply Hoare_consequence_pre. 
+        --- apply Hoare_assign.
+        --- intros s Ps y. apply H'. auto.
+    - intros P Q H. set ( REL := fun ( x : X ) ( R : assertion ) => Hoare ( P x ) c1 R /\ Hoare R c2 ( Q x ) ). assert ( H' : exists R : X -> assertion, forall x : X, REL x ( R x ) ). 
+      -- apply CHOICE. intros x. apply Hoare_seq_inv. auto.
+      -- destruct H' as ( R & H' ). apply Hoare_seq with ( aforall R ). 
+        --- apply IHc1. intros x. apply H'.
+        --- apply IHc2. intros x. apply H'.
+    - intros P Q H. assert ( H1 : Hoare ( aforall ( fun x => atrue b //\\ P x ) ) c1 ( aforall Q ) ). 
+      -- apply IHc1. intros x. specialize ( H x ). apply Hoare_ifthenelse_inv in H. tauto.
+      -- assert ( H2 : Hoare ( aforall ( fun x => afalse b //\\ P x ) ) c2 ( aforall Q ) ). 
+        --- apply IHc2. intros x. specialize ( H x ). apply Hoare_ifthenelse_inv in H. tauto.
+        --- apply Hoare_ifthenelse. 
+          ---- eapply Hoare_consequence_pre. 
+            ----- eauto.
+            ----- intros s ( A & B ) x. split. 
+              ------ auto.
+              ------ auto.
+          ---- eapply Hoare_consequence_pre. 
+            ----- eauto.
+            ----- intros s ( A & B ) x. split. 
+              ------ auto.
+              ------ auto.
+    - intros P Q H. set ( REL := fun ( x : X ) ( Inv : assertion ) => Hoare ( atrue b //\\ Inv ) c Inv /\ ( P x -->> Inv ) /\ ( afalse b //\\ Inv -->> Q x ) ). assert ( H' : exists Inv : X -> assertion, forall x : X, REL x ( Inv x ) ). 
+      -- apply CHOICE. intros x. apply Hoare_while_inv. auto.
+      -- destruct H' as ( Inv & H' ). eapply Hoare_consequence with ( P := aforall Inv ). 
+        --- apply Hoare_while. apply Hoare_consequence_pre with ( P := aforall ( fun x => atrue b //\\ Inv x ) ). 
+          ---- apply IHc. intros x. apply H'.
+          ---- intros s [ A B ] x. split. 
+            ----- auto.
+            ----- auto.
+        --- intros s A x. apply H'. auto.
+        --- intros s [ A B ] x. apply H'. split. 
+          ---- auto.
+          ---- auto.
+    - intros P Q H. set ( REL := fun ( x : X ) ( R : assertion ) => ( P x -->> atrue b //\\ R ) /\ ( atrue b //\\ R -->> Q x ) ). assert ( H' : exists R : X -> assertion, forall x : X, REL x ( R x ) ). 
+      -- apply CHOICE. intros x. apply Hoare_assert_inv. auto.
+      -- destruct H' as ( R & A ). eapply Hoare_consequence. 
+        --- apply Hoare_assert with ( P := aforall R ).
+        --- intros s Pall. split. 
+          ---- destruct ( A inhabited ) as ( B & C ). apply B. auto.
+          ---- intros x. destruct ( A x ) as ( B & C ). apply B. auto.
+        --- intros s ( Bs & Rall ) x. destruct ( A x ) as ( B & C ). apply C. split. 
+          ---- auto.
+          ---- auto.
+    - intros P Q H. assert ( H' : forall y, P y -->> aforall ( fun n => aupdate x ( CONST n ) ( Q y ) ) ). 
+      -- intros y. apply Hoare_havoc_inv. auto.
+      -- eapply Hoare_consequence_pre. 
+        --- apply Hoare_havoc.
+        --- intros s Pall n y. apply H'. auto.
+Qed.
+Lemma Hoare_safe : forall P c Q, ⦃ P ⦄ c ⦃ Q ⦄ -> forall s, P s -> ~ ( error c s ) .
+Proof.
+   induction 1. 
+    - intros s Ps. simpl. auto.
+    - intros s Ps. simpl. auto.
+    - intros s Ps. simpl. auto.
+    - intros s Ps. simpl. auto.
+    - intros s Ps. simpl. auto.
+    - intros s Ps. simpl. auto.
+    - intros s Ps. simpl. destruct Ps as [  H0 H ]. red in H. congruence.
+    - intros s Ps. auto.
+Qed.
+Lemma Hoare_step : forall P c Q, ⦃ P ⦄ c ⦃ Q ⦄ -> forall s c' s', P s -> red ( c, s ) ( c', s' ) -> exists P', ⦃ P' ⦄ c' ⦃ Q ⦄ /\ P' s' .
+Proof.
+   induction 1. 
+    - intros s c' s' Ps RED. inv RED.
+    - intros s c' s' Ps RED. inv RED. exists P. split. 
+      -- constructor.
+      -- exact Ps.
+    - intros s c' s' Ps RED. inv RED. 
+      -- exists Q. split. 
+        --- assumption.
+        --- eapply Hoare_skip_inv. 
+          ---- eauto.
+          ---- eauto.
+      -- destruct ( IHHoare1 _ _ _ Ps H2 ) as ( P' & HO' & Ps' ). exists P'. split. 
+        --- apply Hoare_seq with Q. 
+          ---- auto.
+          ---- auto.
+        --- auto.
+    - intros s c' s' Ps RED. inv RED. exists ( if beval b s' then atrue b //\\ P else afalse b //\\ P ). split. 
+      -- destruct ( beval b s' ) as [  | ]. 
+        --- auto.
+        --- auto.
+      -- unfold aand, atrue, afalse. destruct ( beval b s' ) eqn : B. 
+        --- auto.
+        --- auto.
+    - intros s c' s' Ps RED. inv RED. 
+      -- exists ( afalse b //\\ P ). split. 
+        --- constructor.
+        --- unfold aand, afalse. auto.
+      -- exists ( atrue b //\\ P ). split. 
+        --- apply Hoare_seq with P. 
+          ---- auto.
+          ---- apply Hoare_while. auto.
+        --- unfold aand, atrue. auto.
+    - intros s c' s' Ps RED. inv RED. exists Q. split. 
+      -- constructor.
+      -- apply Ps.
+    - intros s c' s' Ps RED. destruct Ps as [ Ps1 Ps2 ]. inv RED. exists ( atrue b //\\ P ). split. 
+      -- constructor.
+      -- split. 
+        --- auto.
+        --- auto.
+    - intros s c' s' Ps RED. apply H0 in Ps. destruct ( IHHoare _ _ _ Ps RED ) as ( R & HO & Rs' ). exists R. split. 
+      -- apply Hoare_consequence_post with Q. 
+        --- auto.
+        --- auto.
+      -- auto.
+Qed.
+Corollary Hoare_steps : forall P Q c s c' s', ⦃ P ⦄ c ⦃ Q ⦄ -> P s -> star red ( c, s ) ( c', s' ) -> exists P', ⦃ P' ⦄ c' ⦃ Q ⦄ /\ P' s' .
+Proof.
+   assert ( REC : forall cs cs', star red cs cs' -> forall P Q, Hoare P ( fst cs ) Q -> P ( snd cs ) -> exists P', Hoare P' ( fst cs' ) Q /\ P' ( snd cs' ) ). 
+    - induction 1. 
+      -- intros P Q H H0. exists P. auto.
+      -- intros P Q H1 H2. destruct a as [ c1 s1 ], b as [ c2 s2 ], c as [ c3 s3 ]. simpl in *. destruct ( Hoare_step _ _ _ H1 _ _ _ H2 H ) as ( R & HO & Rs2 ). eapply IHstar. 
+        --- eauto.
+        --- eauto.
+    - intros P Q c s c' s' H H0 H1. eapply ( REC ( c, s ) ( c', s' ) ). 
+      -- eauto.
+      -- eauto.
+      -- eauto.
+Qed.
+Corollary Hoare_sound : forall P c Q s, ⦃ P ⦄ c ⦃ Q ⦄ -> P s -> ~ goeswrong c s /\ ( forall s', terminates c s s' -> Q s' ) .
+Proof.
+   intros P c Q s HO Ps. split. 
+    - intros ( c' & s' & RED & STUCK ). destruct ( Hoare_steps _ _ _ _ _ _ HO Ps RED ) as ( P' & HO' & Ps' ). eapply Hoare_safe. 
+      -- eauto.
+      -- eauto.
+      -- eauto.
+    - intros s' ( c' & RED & TERM ). red in TERM. subst c'. destruct ( Hoare_steps _ _ _ _ _ _ HO Ps RED ) as ( P' & HO' & Ps' ). eapply Hoare_skip_inv. 
+      -- eauto.
+      -- eauto.
+Qed.
+Lemma Triple_skip : forall P, 〚〚 P 〛〛 SKIP 〚〚 P 〛〛 .
+Proof.
+   intros P s PRE. apply safe_now. 
+    - reflexivity.
+    - auto.
+Qed.
+Lemma Triple_assign : forall P x a, 〚〚 aupdate x a P 〛〛 ASSIGN x a 〚〚 P 〛〛 .
+Proof.
+   intros P x a s PRE. apply safe_step. 
+    - unfold terminated. congruence.
+    - cbn. tauto.
+    - intros c' s' RED. inv RED. apply safe_now. 
+      -- reflexivity.
+      -- exact PRE.
+Qed.
+Remark safe_seq : forall ( Q R : assertion ) ( c' : com ), ( forall s, Q s -> safe R c' s ) -> forall c s, safe Q c s -> safe R ( c ; ; c' ) s .
+Proof.
+   intros Q R c2 QR. induction 1. 
+    - rewrite H. apply safe_step. 
+      -- unfold terminated. congruence.
+      -- cbn. auto.
+      -- intros c' s' RED. inv RED. 
+        --- apply QR. auto.
+        --- inv H2.
+    - apply safe_step. 
+      -- unfold terminated. congruence.
+      -- cbn. auto.
+      -- intros c' s' RED. inv RED. 
+        --- elim H. red. auto.
+        --- apply H2. auto.
+Qed.
+Lemma Triple_seq : forall P Q R c1 c2, 〚〚 P 〛〛 c1 〚〚 Q 〛〛 -> 〚〚 Q 〛〛 c2 〚〚 R 〛〛 -> 〚〚 P 〛〛 c1 ; ; c2 〚〚 R 〛〛 .
+Proof.
+   intros P Q R c1 c2 H H0. intros s PRE. apply safe_seq with Q. 
+    - auto.
+    - auto.
+Qed.
+Lemma Triple_ifthenelse : forall P Q b c1 c2, 〚〚 atrue b //\\ P 〛〛 c1 〚〚 Q 〛〛 -> 〚〚 afalse b //\\ P 〛〛 c2 〚〚 Q 〛〛 -> 〚〚 P 〛〛 IFTHENELSE b c1 c2 〚〚 Q 〛〛 .
+Proof.
+   intros P Q b c1 c2 H H0. intros s PRE. apply safe_step. 
+    - unfold terminated. congruence.
+    - cbn. auto.
+    - intros c' s' RED. inv RED. destruct ( beval b s' ) eqn : B. 
+      -- apply H. split. 
+        --- auto.
+        --- auto.
+      -- apply H0. split. 
+        --- auto.
+        --- auto.
+Qed.
+Lemma Triple_while : forall P variant b c, ( forall v, 〚〚 atrue b //\\ aequal variant v //\\ P 〛〛 c 〚〚 alessthan variant v //\\ P 〛〛 ) -> 〚〚 P 〛〛 WHILE b c 〚〚 afalse b //\\ P 〛〛 .
+Proof.
+   intros P variant b c T. assert ( REC : forall v s, P s -> aeval variant s = v -> safe ( afalse b //\\ P ) ( WHILE b c ) s ). 
+    - intro v. induction v using ( well_founded_induction ( Z.lt_wf 0 ) ). intros s H0 H1. apply safe_step. 
+      -- unfold terminated. congruence.
+      -- cbn. auto.
+      -- intros c' s' RED. inv RED. 
+        --- apply safe_now. 
+          ---- red. auto.
+          ---- split. 
+            ----- auto.
+            ----- auto.
+        --- apply safe_seq with ( alessthan variant ( aeval variant s' ) //\\ P ). 
+          ---- intros s'' [ PRE1 PRE2 ]. red in PRE1. eapply H. 
+            ----- eexact PRE1.
+            ----- exact PRE2.
+            ----- auto.
+          ---- apply T. split. 
+            ----- auto.
+            ----- split. 
+              ------ red. auto.
+              ------ auto.
+    - intros s PRE. apply REC with ( aeval variant s ). 
+      -- auto.
+      -- auto.
+Qed.
+Lemma Triple_havoc : forall x Q, 〚〚 aforall ( fun n => aupdate x ( CONST n ) Q ) 〛〛 HAVOC x 〚〚 Q 〛〛 .
+Proof.
+   intros x Q. intros s PRE. apply safe_step. 
+    - unfold terminated. congruence.
+    - cbn. auto.
+    - intros c' s' RED. inv RED. constructor. 
+      -- red. auto.
+      -- apply PRE.
+Qed.
+Lemma Triple_assert : forall b P, 〚〚 atrue b //\\ P 〛〛 ASSERT b 〚〚 atrue b //\\ P 〛〛 .
+Proof.
+   intros b P. intros s [ PRE1 PRE2 ]. red in PRE1. apply safe_step. 
+    - unfold terminated. congruence.
+    - cbn. congruence.
+    - intros c' s' RED. inv RED. apply safe_now. 
+      -- red. auto.
+      -- split. 
+        --- auto.
+        --- auto.
+Qed.
+Lemma Triple_consequence : forall P Q P' Q' c, 〚〚 P 〛〛 c 〚〚 Q 〛〛 -> P' -->> P -> Q -->> Q' -> 〚〚 P' 〛〛 c 〚〚 Q' 〛〛 .
+Proof.
+   intros P Q P' Q' c H H0 H1. assert ( REC : forall c s, safe Q c s -> safe Q' c s ). 
+    - induction 1. 
+      -- apply safe_now. 
+        --- auto.
+        --- auto.
+      -- apply safe_step. 
+        --- auto.
+        --- auto.
+        --- auto.
+    - red. auto.
+Qed.
+Theorem HOARE_sound : forall P c Q, 〚 P 〛 c 〚 Q 〛 -> 〚〚 P 〛〛 c 〚〚 Q 〛〛 .
+Proof.
+   induction 1. 
+    - apply Triple_skip.
+    - apply Triple_assign.
+    - apply Triple_seq with Q. 
+      -- auto.
+      -- auto.
+    - apply Triple_ifthenelse. 
+      -- auto.
+      -- auto.
+    - apply Triple_while with a. auto.
+    - apply Triple_havoc.
+    - apply Triple_assert.
+    - apply Triple_consequence with P Q. 
+      -- auto.
+      -- auto.
+      -- auto.
+Qed.
+Lemma safe_terminated_inv : forall Q c s, safe Q c s -> terminated c -> Q s .
+Proof.
+   intros Q c s H H0. inv H. 
+    - auto.
+    - contradiction.
+Qed.
+Lemma safe_not_stuck : forall Q c s, safe Q c s -> ~ terminated c -> ~ ( error c s ) .
+Proof.
+   intros Q c s H H0. inv H. 
+    - contradiction.
+    - auto.
+Qed.
+Lemma safe_step_inv : forall Q c s c' s', safe Q c s -> red ( c, s ) ( c', s' ) -> safe Q c' s' .
+Proof.
+   intros Q c s c' s' H H0. inv H. 
+    - red in H1. subst c. inv H0.
+    - eauto.
+Qed.
+Lemma triple_skip : forall P, ⦃⦃ P ⦄⦄ SKIP ⦃⦃ P ⦄⦄ .
+Proof.
+   intros P s PRE. apply safe_now. 
+    - reflexivity.
+    - auto.
+Qed.
+Lemma triple_assign : forall P x a, ⦃⦃ aupdate x a P ⦄⦄ ASSIGN x a ⦃⦃ P ⦄⦄ .
+Proof.
+   intros P x a s PRE. apply safe_step. 
+    - unfold terminated. congruence.
+    - cbn. tauto.
+    - intros c' s' RED. inv RED. apply safe_now. 
+      -- reflexivity.
+      -- exact PRE.
+Qed.
+Lemma triple_seq : forall P Q R c1 c2, ⦃⦃ P ⦄⦄ c1 ⦃⦃ Q ⦄⦄ -> ⦃⦃ Q ⦄⦄ c2 ⦃⦃ R ⦄⦄ -> ⦃⦃ P ⦄⦄ c1 ; ; c2 ⦃⦃ R ⦄⦄ .
+Proof.
+   intros P Q R c1 c2 H H0. intros s PRE. apply safe_seq with Q. 
+    - auto.
+    - auto.
+Qed.
+Lemma triple_while : forall P b c, ⦃⦃ atrue b //\\ P ⦄⦄ c ⦃⦃ P ⦄⦄ -> ⦃⦃ P ⦄⦄ WHILE b c ⦃⦃ afalse b //\\ P ⦄⦄ .
+Proof.
+   intros P b c T. assert ( REC : forall s, P s -> safe ( afalse b //\\ P ) ( WHILE b c ) s ). 
+    - intros s Ps. apply safe_step. 
+      -- unfold terminated. congruence.
+      -- cbn. auto.
+      -- intros c' s' RED. inversion RED. 
+        --- apply safe_now. 
+          ---- red. auto.
+          ---- split. 
+            ----- auto.
+            ----- congruence.
+        --- apply safe_seq with P. 
+          ---- intros s'' Ps''. apply CHR. auto.
+          ---- apply T. split. 
+            ----- auto.
+            ----- congruence.
+    - intros s PRE. apply REC. auto.
+Qed.
+Lemma triple_ifthenelse : forall P Q b c1 c2, ⦃⦃ atrue b //\\ P ⦄⦄ c1 ⦃⦃ Q ⦄⦄ -> ⦃⦃ afalse b //\\ P ⦄⦄ c2 ⦃⦃ Q ⦄⦄ -> ⦃⦃ P ⦄⦄ IFTHENELSE b c1 c2 ⦃⦃ Q ⦄⦄ .
+Proof.
+   intros P Q b c1 c2 H H0. intros s PRE. apply safe_step. 
+    - unfold terminated. congruence.
+    - cbn. auto.
+    - intros c' s' RED. inv RED. destruct ( beval b s' ) eqn : B. 
+      -- apply H. split. 
+        --- auto.
+        --- auto.
+      -- apply H0. split. 
+        --- auto.
+        --- auto.
+Qed.
+Lemma triple_havoc : forall x Q, ⦃⦃ aforall ( fun n => aupdate x ( CONST n ) Q ) ⦄⦄ HAVOC x ⦃⦃ Q ⦄⦄ .
+Proof.
+   intros x Q. intros s PRE. apply safe_step. 
+    - unfold terminated. congruence.
+    - cbn. auto.
+    - intros c' s' RED. inv RED. constructor. 
+      -- red. auto.
+      -- apply PRE.
+Qed.
+Lemma triple_assert : forall b P, ⦃⦃ atrue b //\\ P ⦄⦄ ASSERT b ⦃⦃ atrue b //\\ P ⦄⦄ .
+Proof.
+   intros b P. intros s [ PRE1 PRE2 ]. red in PRE1. apply safe_step. 
+    - unfold terminated. congruence.
+    - cbn. congruence.
+    - intros c' s' RED. inv RED. apply safe_now. 
+      -- red. auto.
+      -- split. 
+        --- auto.
+        --- auto.
+Qed.
+Lemma triple_consequence : forall P Q P' Q' c, ⦃⦃ P ⦄⦄ c ⦃⦃ Q ⦄⦄ -> P' -->> P -> Q -->> Q' -> ⦃⦃ P' ⦄⦄ c ⦃⦃ Q' ⦄⦄ .
+Proof.
+   intros P Q P' Q' c H H0 H1. assert ( REC : forall c s, safe Q c s -> safe Q' c s ). 
+    - destruct 1 as [  H3 H2 s c0 | H4 H3 H2 s c0 ]. 
+      -- apply safe_now. 
+        --- auto.
+        --- auto.
+      -- apply safe_step. 
+        --- auto.
+        --- auto.
+        --- auto.
+    - red. auto.
+Qed.
+Lemma safe_mono : forall Q n c s, safe Q n c s -> forall n', ( n' <= n ) % nat -> safe Q n' c s .
+Proof.
+   induction 1. 
+    - intros n' H. replace n' with O by lia. constructor.
+    - intros n' H1. destruct n' as [  H1 | H1 ]. 
+      -- constructor.
+      -- apply safe_now. 
+        --- auto.
+        --- auto.
+    - intros n' H3. destruct n' as [  H3 | H3 ]. 
+      -- constructor.
+      -- apply safe_step. 
+        --- auto.
+        --- auto.
+        --- intros c' s' H4. apply H2. 
+          ---- auto.
+          ---- lia.
+Qed.
+Lemma safe_now' : forall ( Q : assertion ) n c s, terminated c -> Q s -> safe Q n c s .
+Proof.
+   intros Q n c s H H0. destruct n as [  | ]. 
+    - constructor.
+    - apply safe_now. 
+      -- auto.
+      -- auto.
+Qed.
+Lemma safe_notstuck : forall Q n c s, safe Q ( S n ) c s -> ~ error c s .
+Proof.
+   intros Q n c s H. inv H. 
+    - rewrite H1. cbn. auto.
+    - auto.
+Qed.
+Lemma terminated_dec : forall c, { terminated c } + { ~ terminated c } .
+Proof.
+   unfold terminated. destruct c as [  | a x | c2 c1 | c2 c1 b | c b | b | x ]. 
+    - ( left ; reflexivity ) ( left ; reflexivity ).
+    - .
+    - ( right ; discriminate ( left ; reflexivity ) ( left ; reflexivity ) || ( right ; discriminate ( left ; reflexivity ) ( left ; reflexivity ) || ( right ; discriminate ( left ; reflexivity ) || ( right ; discriminate ))|| ( right ; discriminate ))|| ( right ; discriminate )).
+    - .
+    - ( right ; discriminate ).
+    - .
+    - .
+    - .
+    - .
+    - .
+    - .
+Qed.
+Lemma sem_wp_seq : forall c1 c2 Q s, sem_wp ( c1 ; ; c2 ) Q s -> sem_wp c1 ( sem_wp c2 Q ) s .
+Proof.
+   unfold sem_wp. intros c1 c2 Q s SAFE. destruct ( terminated_dec c1 ) as [  t | n ]. 
+    - apply safe_now. 
+      -- auto.
+      -- eapply safe_step_inv. 
+        --- eauto.
+        --- rewrite t. constructor.
+    - apply safe_step. 
+      -- auto.
+      -- change ( ~ ( error ( c1 ; ; c2 ) s ) ). eapply safe_not_stuck. 
+        --- eauto.
+        --- unfold terminated. congruence.
+      -- intros c' s' H. apply CH. eapply safe_step_inv. 
+        --- eexact SAFE.
+        --- constructor. auto.
+Qed.
+Lemma Hoare_sem_wp : forall c Q, ⦃ sem_wp c Q ⦄ c ⦃ Q ⦄ .
+Proof.
+   intro c. induction c. 
+    - intros Q. eapply Hoare_consequence_pre. 
+      -- apply Hoare_skip.
+      -- intros s W. eapply safe_terminated_inv. 
+        --- eexact W.
+        --- red. auto.
+    - intros Q. eapply Hoare_consequence_pre. 
+      -- apply Hoare_assign.
+      -- intros s W. assert ( W' : safe Q SKIP ( update x ( aeval a s ) s ) ). 
+        --- eapply safe_step_inv. 
+          ---- eexact W.
+          ---- apply red_assign.
+        --- apply safe_terminated_inv in W'. 
+          ---- assumption.
+          ---- red. auto.
+    - intros Q. apply Hoare_seq with ( sem_wp c2 Q ). 
+      -- eapply Hoare_consequence_pre. 
+        --- apply IHc1.
+        --- intros s. apply sem_wp_seq.
+      -- auto.
+    - intros Q. apply Hoare_ifthenelse. 
+      -- eapply Hoare_consequence_pre. 
+        --- apply IHc1.
+        --- intros s [ P1 P2 ]. replace c1 with ( if beval b s then c1 else c2 ). 
+          ---- eapply safe_step_inv. 
+            ----- eexact P2.
+            ----- constructor.
+          ---- rewrite P1. auto.
+      -- eapply Hoare_consequence_pre. 
+        --- apply IHc2.
+        --- intros s [ P1 P2 ]. replace c2 with ( if beval b s then c1 else c2 ). 
+          ---- eapply safe_step_inv. 
+            ----- eexact P2.
+            ----- constructor.
+          ---- rewrite P1. auto.
+    - intros Q. eapply Hoare_consequence_post. 
+      -- apply Hoare_while. eapply Hoare_consequence_pre. 
+        --- apply IHc.
+        --- intros s [ P1 P2 ]. apply sem_wp_seq. eapply safe_step_inv. 
+          ---- eexact P2.
+          ---- constructor. exact P1.
+      -- intros s [ P1 P2 ]. eapply safe_terminated_inv. 
+        --- eapply safe_step_inv. 
+          ---- eexact P2.
+          ---- apply red_while_done. exact P1.
+        --- red. auto.
+    - intros Q. eapply Hoare_consequence. 
+      -- apply Hoare_assert.
+      -- intros s SAFE. assert ( NOTSTUCK : ~ ( error ( ASSERT b ) s ) ). 
+        --- eapply safe_not_stuck. 
+          ---- eauto.
+          ---- unfold terminated. congruence.
+        --- assert ( B : beval b s = true ). 
+          ---- cbn in NOTSTUCK. destruct ( beval b s ) as [  NOTSTUCK | NOTSTUCK ]. 
+            ----- auto.
+            ----- auto.
+          ---- assert ( FINAL : Q s ). 
+            ----- eapply safe_terminated_inv. 
+              ------ eapply safe_step_inv. 
+                ------- eexact SAFE.
+                ------- constructor. auto.
+              ------ red. auto.
+            ----- split. 
+              ------ exact B.
+              ------ exact FINAL.
+      -- intros s. unfold aand. tauto.
+    - intros Q. eapply Hoare_consequence_pre. 
+      -- apply Hoare_havoc.
+      -- intros s W n. assert ( W' : safe Q SKIP ( update x n s ) ). 
+        --- eapply safe_step_inv. 
+          ---- eexact W.
+          ---- apply red_havoc.
+        --- apply safe_terminated_inv in W'. 
+          ---- assumption.
+          ---- red. auto.
+Qed.
+Theorem Hoare_complete : forall P c Q, ⦃⦃ P ⦄⦄ c ⦃⦃ Q ⦄⦄ -> ⦃ P ⦄ c ⦃ Q ⦄ .
+Proof.
+   intros P c Q H. apply Hoare_consequence_pre with ( sem_wp c Q ). 
+    - apply Hoare_sem_wp.
+    - intros s. apply H.
+Qed.

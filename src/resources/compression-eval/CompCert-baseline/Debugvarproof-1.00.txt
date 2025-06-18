@@ -1,0 +1,33 @@
+extracted tactics-----------
+custom_tac29: constructor; auto
+custom_tac13: induction 1; simpl
+custom_tac10: intros; unfold _i; destruct ( delta_state _i _i) as [ killed born]; induction _i as [ | [ v i] l]; simpl
+custom_tac15: econstructor; eauto
+custom_tac24: apply _i; auto
+custom_tac0: eapply _i; eauto
+custom_tac2: simpl; auto
+custom_tac1: rewrite _i; auto
+custom_tac11: simpl; intros
+custom_tac6: constructor; apply _i
+custom_tac41: inv _i; inv _i
+custom_tac9: unfold _i; intros
+custom_tac23: inv _i; auto
+custom_tac45: eauto; intros _o
+custom_tac3: rewrite _i; rewrite _i
+custom_tac16: inv _i; econstructor
+custom_tac17: intros; inv _i
+---------------------------
+Num proofs: 32
+Num training proofs: 32
+Original size: 679
+Training size: 679
+Testing size: 679
+Compressed total size: 592 ( 512 corpus / 80 library )
+Compressed testing size: 634
+[1] numTactics: 17
+[1] avrgTacticSize: 2.18
+[1] maxTacSize: 5
+[1] numAvgApplications: 2.47
+[1] numTotalApplications: 42
+Compression rate: 1.0709779179810726
+Num tactics in library: 17

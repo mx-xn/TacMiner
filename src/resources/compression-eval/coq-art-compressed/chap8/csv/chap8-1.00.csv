@@ -1,0 +1,39 @@
+extracted tactics -----------
+Ltac custom0 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 H15 H16 H17 :=  simple induction l; [intros H2; [case H2; [simpl | .. ] | .. ] | intros H3; [case H3; [clear H3simpl; [intros H4 H5 H6 | .. ] | simpl; [intros H7 H8 H9; [case H9; [intros H10 H11 H12 | intros H13 H14 H15 H16 H17 | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom1  :=  simpl; [auto | .. ].
+Ltac custom2 H0 :=  apply H0; [auto | auto | .. ].
+Ltac custom3 H5 H6 :=  split; [rewrite H5; [rewrite H6; [auto | .. ] | .. ] | auto | .. ].
+Ltac custom4 H0 H1 H2 :=  injection H0; [intros H1 H2 | .. ].
+Ltac custom5 H0 H1 :=  rewrite H0 with ( 1 := H1 ); [simpl; [repeat ( rewrite <- app_assoc ; simpl ); [auto | .. ] | .. ] | .. ].
+Ltac custom6 H0 H1 H2 :=  case H0; [simpl; [intros H1 H2; [discriminate H2 | .. ] | .. ] | .. ].
+Ltac custom7 H0 H1 :=  intros H0 H1; [elim H1; [auto | auto | .. ] | .. ].
+Ltac custom8 H0 :=  apply H0; [auto | .. ].
+Ltac custom9 H0 :=  apply H0; [trivial | .. ].
+Ltac custom10 H0 H1 H2 :=  intros H0 H1; [rewrite H2 | .. ].
+Ltac custom11 H0 :=  simpl; [intros H0; [case H0 | .. ] | .. ].
+Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].
+Ltac custom13 H0 H1 :=  apply H0 with ( 1 := H1 ); [simpl; [auto with arith | .. ] | .. ].
+Ltac custom14  :=  simple induction 1; [auto | auto | .. ].
+Ltac custom15 H0 H1 :=  intros H0 H1; [elim H1; [ | .. ] | .. ].
+Ltac custom16 H0 :=  rewrite <- H0; [auto | .. ].
+Ltac custom17 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom18 H0 H1 H2 :=  simpl; [intros H0 H1 H2 | .. ].
+Ltac custom19 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 H15 :=  custom0 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 H15; [ | clear H1 | .. ].
+Ltac custom20  :=  simpl in | - *; [auto | .. ].
+Ltac custom21 H0 :=  inversion_clear H0; [auto | .. ].
+Ltac custom22 H0 :=  custom2 H0; [auto | .. ].
+Ltac custom23 H0 :=  custom9 H0; [trivial | .. ].
+Ltac custom24 H0 H1 :=  rewrite H0; [custom2 H1 | .. ].
+Ltac custom25 H0 H1 H2 :=  case H0; [intros H1 H2 | .. ].
+Ltac custom26 H0 H1 H2 :=  custom25 H0 H1 H2; [left | .. ].
+Ltac custom27 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1 H2 H3 H4; [custom4 H4 H5 H6 | .. ].
+Ltac custom28 H0 H1 H2 :=  intros H0; [custom4 H0 H1 H2 | .. ].
+Ltac custom29 H0 H1 H2 :=  intros H0 H1 H2; [induction H2 | .. ].
+Ltac custom30 H0 H1 :=  intros H0 H1; [discriminate H1 | .. ].
+---------------------------
+ , , 1.0
+chap8, Number of Tactics, 31
+ , Average Tactic Size, 2.81
+ , Total Tactic Size, 87
+ , Max Tactic Size, 14
+ , Overall CP, 0.00

@@ -1,0 +1,50 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 :=  constructor; [auto | constructor | intros H0 H1 H2; [inv H2 | .. ] | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 H5 :=  red; [intros H0 H1; [eapply H2; [eapply H3; [eexact H4 | eapply H5; [red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom2 H0 :=  apply H0; [auto | auto | .. ].
+Ltac custom3 H0 H1 H2 :=  simpl; [rewrite H0; [apply H1; [intros H2 | .. ] | .. ] | .. ].
+Ltac custom4 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom5 H2 :=  split; [auto | exists H2; [auto | .. ] | .. ].
+Ltac custom6 H0 H1 H2 H4 H5 H6 :=  assert ( L : H0 H1 = Some H2 ); [ | custom0 H4 H5 H6; [congruence | constructor | .. ] | .. ].
+Ltac custom7 H0 H1 :=  red; [intros H0 H1 | .. ].
+Ltac custom8 H0 H2 H3 :=  red in H0; [subst H2; [apply H3 | .. ] | .. ].
+Ltac custom9  :=  split; [auto | auto | .. ].
+Ltac custom10 H0 :=  apply H0; [auto | .. ].
+Ltac custom11 H0 :=  apply H0; [lia | .. ].
+Ltac custom12 H0 H1 H2 :=  apply H0; [intros H1; [cbn; [destruct ( Z.eq_dec H2 H1 ); [auto | .. ] | .. ] | .. ] | .. ].
+Ltac custom13 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom14 H0 H2 H1 :=  custom12 H0 H2 H1; [auto | .. ].
+Ltac custom15 H0 H1 :=  eapply H0; [apply H1 | .. ].
+Ltac custom16  :=  simpl; [intros _ | .. ].
+Ltac custom17 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom18 H0 H5 :=  subst H0; [custom2 H5 | .. ].
+Ltac custom19  :=  split; [lia | .. ].
+Ltac custom20 H0 H2 H1 :=  split; [ | custom14 H0 H2 H1 | .. ].
+Ltac custom21 H2 H3 H4 :=  constructor; [auto |  | intros H2 H3 H4 | .. ].
+Ltac custom22  :=  constructor; [auto | .. ].
+Ltac custom23  :=  red; [auto | .. ].
+Ltac custom24 H0 :=  apply H0; [custom23  | .. ].
+Ltac custom25 H0 H1 H2 :=  rewrite H0; [custom13 H1 H2 | .. ].
+Ltac custom26 H0 H1 H2 :=  eapply H0; [custom4 H1 H2 | .. ].
+Ltac custom27  :=  split; [auto | .. ].
+Ltac custom28 H0 H1 H2 :=  intros H0 H1; [custom5 H2 | .. ].
+Ltac custom29 H0 H2 H3 H1 :=  apply H0; [custom28 H2 H3 H1 | .. ].
+Ltac custom30 H0 H1 H2 :=  intros H0 H1; [exists H2 | .. ].
+---------------------------
+Num proofs: 51
+Num training proofs: 31
+Original size: 905
+Compressed total size: 648
+Training size: 623
+(2) (3) Testing size: 282
+(2) (3) Compressed testing size: 196
+(2) (3) Compression rate: 143.88
+Compressed size + lib: 732 ( 648 corpus / 84 library )
+[1] numTactics: 31
+[1] avrgTacticSize: 2.71
+[1] maxTacSize: 8
+[1] numProofsCompressed/total: 17 / 20
+[1] numAvgApplications: 4.45
+[1] numTotalApplications: 138
+Compression rate: 1.2363387978142077
+Num tactics in library: 31

@@ -1,0 +1,11 @@
+extracted tactics-----------
+---------------------------
+Num proofs: 47
+Num training proofs: 2
+Original size: 1135
+Training size: 125
+Testing size: 1010
+Compressed total size: 1131 ( 1129 corpus / 2 library )
+Compressed testing size: 1010
+Compression rate: 1.0035366931918657
+Num tactics in library: 0

@@ -1,0 +1,92 @@
+iff (In x (remove l0 h0 Nil))
+  (and (not (and (Z.le l0 x) (Z.lt x h0))) (In x Nil))
+
+iff (In x (remove l0 h0 (Cons l h s)))
+  (and (not (and (Z.le l0 x) (Z.lt x h0))) (In x (Cons l h s)))
+
+iff (In x (Cons l h (remove l0 h0 s)))
+  (and (not (and (Z.le l0 x) (Z.lt x h0)))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+iff
+  (In x
+     (if zlt h0 l
+      then Cons l h s
+      else
+       if zlt l l0
+       then
+        if zlt h0 h
+        then Cons l l0 (Cons h0 h s)
+        else Cons l l0 (remove l0 h0 s)
+       else if zlt h0 h then Cons h0 h s else remove l0 h0 s))
+  (and (not (and (Z.le l0 x) (Z.lt x h0)))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+iff (In x (Cons l h s))
+  (and (not (and (Z.le l0 x) (Z.lt x h0)))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+iff
+  (In x
+     (if zlt l l0
+      then
+       if zlt h0 h
+       then Cons l l0 (Cons h0 h s)
+       else Cons l l0 (remove l0 h0 s)
+      else if zlt h0 h then Cons h0 h s else remove l0 h0 s))
+  (and (not (and (Z.le l0 x) (Z.lt x h0)))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+In ?Goal0 s
+
+forall _ : Z.lt h ?Goal0, False
+
+In ?Goal0 s
+
+forall _ : Z.lt h ?Goal0, False
+
+iff
+  (In x
+     (if zlt h0 h
+      then Cons l l0 (Cons h0 h s)
+      else Cons l l0 (remove l0 h0 s)))
+  (and (not (and (Z.le l0 x) (Z.lt x h0)))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+iff (In x (if zlt h0 h then Cons h0 h s else remove l0 h0 s))
+  (and (not (and (Z.le l0 x) (Z.lt x h0)))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+iff (In x (Cons l l0 (Cons h0 h s)))
+  (and (not (and (Z.le l0 x) (Z.lt x h0)))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+iff (In x (Cons l l0 (remove l0 h0 s)))
+  (and (not (and (Z.le l0 x) (Z.lt x h0)))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+forall
+  _ : or (and (Z.le l x) (Z.lt x l0))
+        (or (and (Z.le h0 x) (Z.lt x h)) (In x s)),
+and (not (and (Z.le l0 x) (Z.lt x h0)))
+  (or (and (Z.le l x) (Z.lt x h)) (In x s))
+
+forall
+  _ : and (not (and (Z.le l0 x) (Z.lt x h0)))
+        (or (and (Z.le l x) (Z.lt x h)) (In x s)),
+or (and (Z.le l x) (Z.lt x l0))
+  (or (and (Z.le h0 x) (Z.lt x h)) (In x s))
+
+or (and (Z.le l x) (Z.lt x h)) (In x s)
+
+or (and (Z.le l x) (Z.lt x h)) (In x s)
+
+not (and (Z.le l0 x) (Z.lt x h0))
+
+iff (In x (Cons h0 h s))
+  (and (not (and (Z.le l0 x) (Z.lt x h0)))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))
+
+iff (In x (remove l0 h0 s))
+  (and (not (and (Z.le l0 x) (Z.lt x h0)))
+     (or (and (Z.le l x) (Z.lt x h)) (In x s)))

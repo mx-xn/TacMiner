@@ -1,0 +1,40 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 :=  rewrite H0; [apply H1 | .. ].
+Ltac custom1 H0 H1 :=  intros H0; [apply H1; [auto with zarith | .. ] | .. ].
+Ltac custom2 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom3 H0 H1 :=  case Z.compare_spec; [ | intros H0 | intros H1 | .. ].
+Ltac custom4 H0 H1 H2 H3 :=  intros H0 H1; [custom0 H2 H3; [clear H0 H1 | .. ] | .. ].
+Ltac custom5 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom6 H0 H1 :=  custom0 H0 H1; [ | auto with zarith | .. ].
+Ltac custom7 H0 :=  intros H0; [rewrite H0 | .. ].
+Ltac custom8 H0 H1 :=  intros H0; [rewrite H1 | .. ].
+Ltac custom9 H0 :=  symmetry; [apply H0 | .. ].
+Ltac custom10 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom11 H0 :=  custom2 H0; [auto with zarith | .. ].
+Ltac custom12 H0 :=  apply H0; [ | auto | .. ].
+Ltac custom13 H0 :=  apply H0; [auto | .. ].
+Ltac custom14 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom15 H0 :=  rewrite H0; [auto with zarith | .. ].
+Ltac custom16 H0 H1 H2 :=  intros H0 H1; [rewrite H2 | .. ].
+Ltac custom17 H0 H1 :=  custom6 H0 H1; [auto with zarith | .. ].
+Ltac custom18 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom19 H0 H1 H2 :=  custom3 H0 H1; [intros H2 | .. ].
+Ltac custom20 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+---------------------------
+Num proofs: 44
+Num training proofs: 18
+Original size: 981
+Compressed total size: 826
+Training size: 615
+(2) (3) Testing size: 366
+(2) (3) Compressed testing size: 318
+(2) (3) Compression rate: 115.09
+Compressed size + lib: 871 ( 826 corpus / 45 library )
+[1] numTactics: 21
+[1] avrgTacticSize: 2.14
+[1] maxTacSize: 3
+[1] numProofsCompressed/total: 14 / 26
+[1] numAvgApplications: 5.48
+[1] numTotalApplications: 115
+Compression rate: 1.1262916188289323
+Num tactics in library: 21

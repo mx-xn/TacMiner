@@ -1,0 +1,19 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom1 H0 H1 :=  custom0 H0 H1; [split | .. ].
+Ltac custom2 H0 :=  apply H0; [HDISJ | .. ].
+Ltac custom3 H0 H1 :=  exists H0, H1; [intuition auto | .. ].
+Ltac custom4 H0 H1 :=  destruct ( H0 H1 ) as [ z| ]; [ | auto | .. ].
+Ltac custom5 H0 :=  rewrite H0; [tauto | .. ].
+Ltac custom6 H0 H1 :=  custom3 H0 H1; [HDISJ | .. ].
+Ltac custom7 H15 :=  intuition auto; [ | custom5 H15 | .. ].
+Ltac custom8 H0 H1 H2 H3 H4 :=  intros H0 H1 H2; [custom1 H3 H4 | .. ].
+Ltac custom9 H0 :=  split; [intros H0 | .. ].
+Ltac custom10 H0 H1 :=  assert ( H0 = H1 ); [ | subst H1 | .. ].
+---------------------------
+ , , 0.2
+Separation, Number of Tactics, 11
+ , Average Tactic Size, 1.82
+ , Total Tactic Size, 20
+ , Max Tactic Size, 2
+ , Overall CP, 1.07

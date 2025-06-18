@@ -1,0 +1,13 @@
+extracted tactics-----------
+custom_tac0: intros; inv _i
+custom_tac2: econstructor; eauto
+---------------------------
+Num proofs: 54
+Num training proofs: 4
+Original size: 855
+Training size: 212
+Testing size: 643
+Compressed total size: 839 ( 835 corpus / 4 library )
+Compressed testing size: 632
+Compression rate: 1.0190703218116806
+Num tactics in library: 2

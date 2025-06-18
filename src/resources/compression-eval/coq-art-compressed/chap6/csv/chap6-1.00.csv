@@ -1,0 +1,15 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  case H0; [simpl; [auto with arith | .. ] | simpl | simpl; [auto with arith | .. ] | simpl; [auto with arith | .. ] | simpl; [auto with arith | .. ] | simpl; [auto with arith | .. ] | simpl; [auto with arith | .. ] | simpl; [auto with arith | .. ] | simpl; [auto with arith | .. ] | simpl; [auto with arith | .. ] | simpl; [auto with arith | .. ] | simpl; [auto with arith | .. ] | .. ].
+Ltac custom1 H0 :=  simpl; [intros Hnext_eq; [( reflexivity || discriminate H0 ) | .. ] | .. ].
+Ltac custom2  :=  simpl; [auto with arith | .. ].
+Ltac custom3 H0 :=  simpl; [intro H0; [case ( fraction H0 ); [inversion_clear 1; [split; [auto | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom4 H0 H1 H2 H3 H4 H5 H6 H7 :=  intros H0 H1 H2; [case H2; [intros H3 H4 H5 H6 H7 | .. ] | .. ].
+Ltac custom5  :=  simpl; [split | .. ].
+Ltac custom6 H0 :=  rewrite H0; [reflexivity | .. ].
+---------------------------
+ , , 1.0
+chap6, Number of Tactics, 7
+ , Average Tactic Size, 6.00
+ , Total Tactic Size, 42
+ , Max Tactic Size, 24
+ , Overall CP, 0.00

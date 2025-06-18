@@ -1,0 +1,10 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 :=  destruct ( H0 H1 ) as [ z| ]; [ | auto | .. ].
+Ltac custom1 H0 :=  split; [intros H0 | .. ].
+---------------------------
+ , , 0.1
+Separation, Number of Tactics, 2
+ , Average Tactic Size, 2.00
+ , Total Tactic Size, 4
+ , Max Tactic Size, 2
+ , Overall CP, 1.01

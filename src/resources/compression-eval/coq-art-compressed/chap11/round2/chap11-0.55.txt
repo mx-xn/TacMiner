@@ -1,0 +1,35 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  intro H0; [elim H0 | .. ].
+Ltac custom1 H0 H1 :=  intro H0; [elim H1 | .. ].
+Ltac custom2 H0 :=  absurd ( occ H0 Z_leaf ); [auto with searchtrees | auto with searchtrees | .. ].
+Ltac custom3 H0 H1 :=  intros H0 H1; [inversion_clear H1; [auto with searchtrees |  | auto with searchtrees | .. ] | .. ].
+Ltac custom4 H0 H1 :=  elim ( occ_inv H0 ); [custom0 H1 | .. ].
+Ltac custom5 H0 :=  case H0; [eauto with searchtrees | .. ].
+Ltac custom6  :=  left; [auto with searchtrees | .. ].
+Ltac custom7 H0 :=  elim H0; [auto with searchtrees | .. ].
+Ltac custom8 H0 H1 H2 H3 H4 H5 H6 :=  elim H0; [intros H1 H2 H3 H4 H5 H6 | .. ].
+Ltac custom9 H0 H2 H1 :=  absurd ( H0 < H2 ); [apply H1 | .. ].
+Ltac custom10 H0 H1 :=  custom0 H0; [ | intro H1 | .. ].
+Ltac custom11 H0 H1 :=  absurd ( occ H0 H1 ); [ | auto | .. ].
+Ltac custom12 H0 H1 H2 :=  apply H0 with H1 H2; [auto with searchtrees | .. ].
+Ltac custom13 H0 :=  intro H0; [case H0 | .. ].
+Ltac custom14 H0 H1 :=  intro H0; [apply H1 | .. ].
+Ltac custom15 H1 H0 :=  custom1 H1 H0; [auto with searchtrees | .. ].
+---------------------------
+Num proofs: 26
+Num training proofs: 13
+Original size: 522
+Compressed total size: 444
+Training size: 320
+(2) (3) Testing size: 202
+(2) (3) Compressed testing size: 177
+(2) (3) Compression rate: 114.12
+Compressed size + lib: 479 ( 444 corpus / 35 library )
+[1] numTactics: 16
+[1] avrgTacticSize: 2.19
+[1] maxTacSize: 4
+[1] numProofsCompressed/total: 8 / 13
+[1] numAvgApplications: 3.81
+[1] numTotalApplications: 61
+Compression rate: 1.0897703549060542
+Num tactics in library: 16

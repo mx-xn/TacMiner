@@ -1,0 +1,43 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom1 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom2 H0 H1 H2 H3 H4 :=  rewrite H0; [case Z.compare_spec; [intros H3; [custom0 H4 | .. ] | intros H1; [custom0 H4 | .. ] | intros H2 | .. ] | .. ].
+Ltac custom3 H0 H1 :=  intros H0; [rewrite H1 | .. ].
+Ltac custom4 H0 H1 :=  rewrite H0; [apply H1; [ | .. ] | .. ].
+Ltac custom5 H0 :=  custom0 H0; [auto with zarith | auto with zarith | .. ].
+Ltac custom6 H0 :=  apply H0; [ | auto | .. ].
+Ltac custom7 H0 H1 :=  case Z.compare_spec; [ | intros H0 | intros H1 | .. ].
+Ltac custom8 H0 :=  symmetry; [apply H0 | .. ].
+Ltac custom9 H0 H1 H2 :=  intros H0 H1; [unfold H2 | .. ].
+Ltac custom10 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1; [custom4 H2 H3; [clear H0 H1intros H4 H5 H6 | .. ] | .. ].
+Ltac custom11 H0 :=  custom0 H0; [auto with zarith | .. ].
+Ltac custom12 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom13 H0 :=  apply H0; [auto | .. ].
+Ltac custom14 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom15 H0 H1 H2 :=  intros H0 H1; [rewrite H2 | .. ].
+Ltac custom16 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom17 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom18 H0 H1 H2 :=  custom1 H0 H1; [rewrite H2 | .. ].
+Ltac custom19 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom20 H0 H1 :=  rewrite H0; [custom11 H1 | .. ].
+Ltac custom21 H0 :=  intros H0; [clear H0 | .. ].
+Ltac custom22 H0 H1 H2 :=  custom7 H0 H1; [intros H2 | .. ].
+Ltac custom23 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1 H2 H3 H4 H5; [unfold H6 | .. ].
+---------------------------
+Num proofs: 46
+Num training proofs: 15
+Original size: 1016
+Compressed total size: 849
+Training size: 572
+(2) (3) Testing size: 444
+(2) (3) Compressed testing size: 382
+(2) (3) Compression rate: 116.23
+Compressed size + lib: 906 ( 849 corpus / 57 library )
+[1] numTactics: 24
+[1] avrgTacticSize: 2.38
+[1] maxTacSize: 7
+[1] numProofsCompressed/total: 17 / 31
+[1] numAvgApplications: 4.88
+[1] numTotalApplications: 117
+Compression rate: 1.1214128035320088
+Num tactics in library: 24

@@ -1,0 +1,23 @@
+Extraction time in ms (normal vs SAT): 5131, 9472
+Lib construction time in ms (normal vs SAT): 37, 16
+
+library diagnosticsextracted tactics-----------
+custom0  := simpl; [auto | .. ].
+custom1 H0 H1 H2 := generalize H0; [pattern H1 at - 2; [induction H2; [discriminate | .. ] | .. ] | .. ].
+custom2 H0 H1 H2 := injection H0; [intros H1 H2 | .. ].
+---------------------------
+Num proofs: 25
+Original size: 137
+Compressed size: 132 ( 124 corpus / 8 library )
+Compression rate: 1.0378787878787878
+Num tactics in library: 3
+
+library diagnostics ablationextracted tactics-----------
+custom0 H0 H1 H2 := injection H0; [intros H1 H2 | .. ].
+custom1  := simpl; [auto | .. ].
+---------------------------
+Num proofs: 25
+Original size: 137
+Compressed size: 134 ( 130 corpus / 4 library )
+Compression rate: 1.0223880597014925
+Num tactics in library: 2

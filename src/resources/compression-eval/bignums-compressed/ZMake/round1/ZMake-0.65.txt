@@ -1,0 +1,29 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  destr_norm_pos H0; [simpl; [rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor, ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1 | .. ] | simpl; [rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor, ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; [ | auto with zarith | .. ] | .. ] | .. ].
+Ltac custom1 H0 H1 H2 :=  intros H0 H1; [unfold H2; [destr_norm_pos H0; [ | destr_norm_pos H1; [simpl | simpl | .. ] | .. ] | .. ] | .. ].
+Ltac custom2 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom3 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom4  :=  rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor, ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; [ | auto with zarith | .. ].
+Ltac custom5 H0 :=  rewrite H0; [ | lia | .. ].
+Ltac custom6 H0 :=  rewrite H0; [case Z.compare_spec; [ | .. ] | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros [ H2 | H3 ] [ H4 | H5 ]; [ | .. ] | .. ].
+Ltac custom8 H0 H1 H2 :=  intros H0 H1; [unfold H2 | .. ].
+Ltac custom9 H0 H1 :=  intros H0; [custom2 H1 | .. ].
+---------------------------
+Num proofs: 24
+Num training proofs: 10
+Original size: 608
+Compressed total size: 537
+Training size: 399
+(2) (3) Testing size: 209
+(2) (3) Compressed testing size: 171
+(2) (3) Compression rate: 122.22
+Compressed size + lib: 565 ( 537 corpus / 28 library )
+[1] numTactics: 10
+[1] avrgTacticSize: 2.80
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 9 / 14
+[1] numAvgApplications: 4.00
+[1] numTotalApplications: 40
+Compression rate: 1.0761061946902655
+Num tactics in library: 10

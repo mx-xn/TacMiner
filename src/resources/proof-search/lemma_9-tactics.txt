@@ -1,0 +1,5 @@
+Ltac custom0 H0 H1 := intros H0 H1; [discriminate | .. ].
+Ltac custom0 H0 H1 := intros H0; [exfalso; [apply ( H0 H1 ); [left; [lia | .. ] | .. ] | .. ] | .. ].
+Ltac custom0 H0 := exfalso; [exploit H0; [eauto; [lia | .. ] | .. ] | .. ].
+Ltac custom0 H0 H1 := intros H0; [exfalso; [exploit H1; [eauto; [lia | .. ] | .. ] | .. ] | .. ].
+Ltac custom0  := eauto; [lia | .. ].

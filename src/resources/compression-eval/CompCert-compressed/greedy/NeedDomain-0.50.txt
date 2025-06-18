@@ -1,0 +1,62 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  destruct H0; [simpl in *; [auto | .. ] | simpl in * | simpl in * | .. ].
+Ltac custom1 H0 :=  apply H0; [auto | .. ].
+Ltac custom2 H0 :=  destruct H0; [auto |  | auto |  |  |  | .. ].
+Ltac custom3 H0 H1 H2 :=  red; [intros H0 H1 H2; [autorewrite with ints; [ |  |  | .. ] | .. ] | .. ].
+Ltac custom4  :=  simpl; [auto | .. ].
+Ltac custom5  :=  unfold Val._i; [InvAgree | .. ].
+Ltac custom6 H0 H1 H2 H3 H4 :=  constructor; [intros H0 | intros H1 H2 H3 H4 | .. ].
+Ltac custom7 H1 H2 H3 :=  rewrite ISet.In_inter; [intros [ H1 H2 ]; [eelim H3; [eauto |  | .. ] | .. ] | .. ].
+Ltac custom8 H0 H2 H3 H4 H5 H6 H7 :=  unfold H0; [intros H2 H3 H4 H5 H6 H7 | .. ].
+Ltac custom9 H0 H2 H3 H4 H5 H6 :=  unfold H0; [intros H2 H3 H4 H5 H6 | .. ].
+Ltac custom10 H0 :=  destruct H0; [ | simpl in * |  | .. ].
+Ltac custom11 H0 :=  red; [intros H0 | .. ].
+Ltac custom12  :=  apply Val.lessdef_same; [f_equal | .. ].
+Ltac custom13 H0 :=  destruct H0; [auto with na |  |  | auto with na |  |  | .. ].
+Ltac custom14  :=  red; [auto | .. ].
+Ltac custom15 H0 :=  apply H0; [lia |  | .. ].
+Ltac custom16 H0 H1 H2 H3 :=  split; [ | intros H0 H1 H2 H3 | .. ].
+Ltac custom17 H0 H2 H3 H4 H5 H6 H7 H8 :=  unfold H0; [intros H2 H3 H4 H5 H6 H7 H8 | .. ].
+Ltac custom18  :=  constructor; [auto with na | auto with na | .. ].
+Ltac custom19 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom20 H0 :=  eapply H0; [eauto |  | .. ].
+Ltac custom21 H0 H13 :=  destruct H0; [ | destruct H13; [ |  |  |  |  |  | .. ] |  |  |  |  | .. ].
+Ltac custom22 H0 H10 :=  inversion H0; [unfold H10 | .. ].
+Ltac custom23 H0 H1 H2 :=  set ( j := if zlt H0 H0 then H1 else H1 - 1 ); [assert ( 0 <= H2 < Int.zwordsize ); [ |  | .. ] | .. ].
+Ltac custom24 H0 H1 H2 :=  red; [intros H0 H1 H2; [rewrite ! Int.bits_shr by auto | .. ] | .. ].
+Ltac custom25 H0 :=  rewrite <- H0; [eauto | .. ].
+Ltac custom26 H0 :=  generalize ( Int.unsigned_range H0 ); [lia | .. ].
+Ltac custom27 H0 H1 H2 :=  generalize ( Int.size_range H0 ); [intros H1; [assert ( EQ : Int.size H0 = Z.of_nat H2 ); [ |  | .. ] | .. ] | .. ].
+Ltac custom28 H0 :=  autorewrite with ints; [apply H0; [unfold H0 | .. ] |  |  | .. ].
+Ltac custom29 H0 H2 H3 :=  unfold H0; [destruct ( zlt H2 H3 ); [ | lia | .. ] | .. ].
+Ltac custom30 H1 H2 :=  rewrite ISet.In_remove; [intros [ H1 H2 ] | .. ].
+Ltac custom31 H0 :=  elim H0; [auto | .. ].
+Ltac custom32 H0 H1 H2 H7 :=  destruct ( ISet.contains ( Ptrofs.unsigned H0 ) ( Ptrofs.unsigned H0 + H1 ) H2 ) eqn : IC; [rewrite ISet.contains_spec in H7 | try discriminate | .. ].
+Ltac custom33 H0 H1 :=  split; [intros H0 | intros H1 | .. ].
+Ltac custom34  :=  rewrite ISet.In_add; [intros [ P|P ]; [lia |  | .. ] | .. ].
+Ltac custom35 H0 H1 H2 H3 :=  red; [intros H0 H1 H2; [exploit ( eq_same_bits H0 ); [ |  | .. ] | .. ] | .. ]. rewrite H3.
+Ltac custom36 H0 H2 :=  inv H0; [constructor | inv H2; [ |  | .. ] | .. ].
+Ltac custom37 H0 :=  rewrite Int.bits_zero_ext by lia; [rewrite H0 by lia | .. ].
+Ltac custom38 H0 H1 H6 :=  destruct ( peq H0 H1 ); [inv H6 | eauto | .. ].
+Ltac custom39  :=  symmetry; [apply Z2Nat._i | .. ].
+Ltac custom40 H0 :=  rewrite ! H0; [auto | .. ].
+Ltac custom41 H0 :=  rewrite H0; [eauto | .. ].
+Ltac custom42 H0 :=  intros H0; [destruct H0; [ |  | .. ] | .. ].
+Ltac custom43 H0 :=  intros H0; [auto | .. ].
+Ltac custom44 H0 H12 H2 H13 H14 :=  inv H0; [assert ( Genv.find_symbol H12 H2 = Some H13 ) by ( eapply H14 ; eauto ) |  |  |  |  |  |  | .. ].
+---------------------------
+Num proofs: 96
+Num training proofs: 27
+Original size: 1583
+Compressed total size: 1231
+Training size: 794
+(2) (3) Testing size: 789
+(2) (3) Compressed testing size: 628
+(2) (3) Compression rate: 125.64
+Compressed size + lib: 1342 ( 1231 corpus / 111 library )
+[1] numTactics: 45
+[1] avrgTacticSize: 2.47
+[1] maxTacSize: 5
+[1] numProofsCompressed/total: 154 / 69
+Compression rate: 1.1795827123695977
+Num tactics in library: 45

@@ -1,0 +1,30 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom1 H0 H1 :=  rewrite H0; [apply H1 | .. ].
+Ltac custom2 H0 H1 H2 :=  case Z.compare_spec; [intros H2 | intros H0 | intros H1 | .. ].
+Ltac custom3 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom4 H0 :=  custom0 H0; [auto with zarith | .. ].
+Ltac custom5 H0 H1 H2 H3 :=  intros H0 H1; [custom1 H2 H3; [clear H0 H1 | .. ] | .. ].
+Ltac custom6 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 H9 H10 H5 H6 H7 :=  rewrite ( H0 H1 H2 H3 ), ( H4 H9 H10 H5 ); [unfold H6; [apply H7; [ | auto | .. ] | .. ] | .. ].
+Ltac custom8 H0 :=  rewrite <- H0; [auto with zarith | auto with zarith | auto with zarith | .. ].
+Ltac custom9 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom10 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom11  :=  subst; [auto | .. ].
+Ltac custom12 H0 :=  apply H0; [auto | .. ].
+Ltac custom13 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom14 H0 :=  apply H0; [ | auto with zarith | .. ].
+Ltac custom15  :=  split; [auto with zarith | .. ].
+Ltac custom16 H0 :=  rewrite <- H0; [ | auto with zarith | auto with zarith | .. ].
+Ltac custom17 H2 H3 H0 H1 :=  custom5 H2 H3 H0 H1; [ | clear H2 H3 | .. ].
+Ltac custom18 H2 H3 H0 H1 :=  custom17 H2 H3 H0 H1; [ | clear H2 H3 | .. ].
+Ltac custom19 H2 H3 H0 H1 :=  custom18 H2 H3 H0 H1; [ | clear H2 H3 | .. ].
+Ltac custom20 H0 H1 :=  apply H0; [custom0 H1 | .. ].
+Ltac custom21 H0 H1 H2 :=  intros H0 H1; [apply H2 | .. ].
+---------------------------
+ , , 0.3
+NMake, Number of Tactics, 22
+ , Average Tactic Size, 2.36
+ , Total Tactic Size, 52
+ , Max Tactic Size, 4
+ , Overall CP, 1.14

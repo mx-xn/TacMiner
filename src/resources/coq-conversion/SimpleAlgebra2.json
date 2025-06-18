@@ -1,0 +1,236 @@
+[
+    {
+        "lemma_name": "algb_nat_zero",
+        "proof": [
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall a : nat, eq (Nat.add a 0) a"
+                ],
+                "tactic_res": [
+                    "_goal : eq (Nat.add a 0) a",
+                    "a : nat"
+                ]
+            },
+            {
+                "tactic_sig": "induction _i .",
+                "tactic_sig_no_out_arg": "induction _i .",
+                "tactic_args": [
+                    "_goal : eq (Nat.add a 0) a",
+                    "a : nat"
+                ],
+                "tactic_res": [
+                    "_goal : eq (Nat.add 0 0) 0",
+                    "_goal : eq (Nat.add (S a) 0) (S a)",
+                    "IHa : eq (Nat.add a 0) a"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : eq (Nat.add 0 0) 0"
+                ],
+                "tactic_res": [
+                    "_goal : eq 0 0"
+                ]
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "_goal : eq 0 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : eq (Nat.add (S a) 0) (S a)"
+                ],
+                "tactic_res": [
+                    "_goal : eq (S (Nat.add a 0)) (S a)"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "_goal : eq (S (Nat.add a 0)) (S a)",
+                    "IHa : eq (Nat.add a 0) a"
+                ],
+                "tactic_res": [
+                    "_goal : eq (S a) (S a)"
+                ]
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "_goal : eq (S a) (S a)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "algb_identity_sum",
+        "proof": [
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall a : algb, eq (algb_add a e) a"
+                ],
+                "tactic_res": [
+                    "_goal : eq (algb_add a e) a",
+                    "a : algb"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i ) eqn : _o .",
+                "tactic_sig_no_out_arg": "destruct ( _i ) eqn : H .",
+                "tactic_args": [
+                    "_goal : eq (algb_add a e) a",
+                    "a : algb"
+                ],
+                "tactic_res": [
+                    "_goal : eq (algb_add e e) e",
+                    "_goal : eq (algb_add t e) t",
+                    "H : eq a e",
+                    "H : eq a t"
+                ]
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "_goal : eq (algb_add e e) e"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "_goal : eq (algb_add t e) t"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "algb_identity_sum2",
+        "proof": [
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall a : algb, eq (algb_add a e) a"
+                ],
+                "tactic_res": [
+                    "_goal : eq (algb_add a e) a",
+                    "a : algb"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i ) eqn : _o .",
+                "tactic_sig_no_out_arg": "destruct ( _i ) eqn : H .",
+                "tactic_args": [
+                    "_goal : eq (algb_add a e) a",
+                    "a : algb"
+                ],
+                "tactic_res": [
+                    "_goal : eq (algb_add e e) e",
+                    "_goal : eq (algb_add t e) t",
+                    "H : eq a e",
+                    "H : eq a t"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : eq (algb_add e e) e"
+                ],
+                "tactic_res": [
+                    "_goal : eq e e"
+                ]
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "_goal : eq e e"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "_goal : eq (algb_add t e) t"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "algb_identity_sum3",
+        "proof": [
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall a : algb, eq (algb_add a e) a"
+                ],
+                "tactic_res": [
+                    "_goal : eq (algb_add a e) a",
+                    "a : algb"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i ) eqn : _o .",
+                "tactic_sig_no_out_arg": "destruct ( _i ) eqn : H .",
+                "tactic_args": [
+                    "_goal : eq (algb_add a e) a",
+                    "a : algb"
+                ],
+                "tactic_res": [
+                    "_goal : eq (algb_add e e) e",
+                    "_goal : eq (algb_add t e) t",
+                    "H : eq a e",
+                    "H : eq a t"
+                ]
+            },
+            {
+                "tactic_sig": "simpl in * .",
+                "tactic_sig_no_out_arg": "simpl in * .",
+                "tactic_args": [
+                    "_goal : eq (algb_add e e) e"
+                ],
+                "tactic_res": [
+                    "_goal : eq e e"
+                ]
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "_goal : eq e e"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "_goal : eq (algb_add t e) t"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

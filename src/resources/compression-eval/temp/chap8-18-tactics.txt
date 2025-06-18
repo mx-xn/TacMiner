@@ -1,0 +1,4 @@
+Ltac custom0 H0 H1 H2 H3 H4 H5 H6 := intros H0 H1 H2 H3 H4; [injection H0; [intros H5 H6; [rewrite <- H5; [auto | .. ] | .. ] | .. ] | .. ].
+
+Ltac custom0 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 := intros H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11; [injection H1; [intros H12 H13; [subst H8 H14; [eauto | .. ] | .. ] | .. ] | .. ].
+

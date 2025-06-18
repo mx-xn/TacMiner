@@ -1,0 +1,46 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H4 :=  intros H0; [rewrite H1; [destr_t H0 as ( n, H4 ) | .. ] | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1; [rewrite H2; [clear H0 H1apply H3; [intros H4 H5 H6 | .. ] | .. ] | .. ].
+Ltac custom2 H0 H1 H2 H3 H4 H5 :=  rewrite H0; [apply H1; [intros H2 H3 H4; [simpl; [rewrite H5 | .. ] | .. ] | .. ] | .. ].
+Ltac custom3 H0 :=  apply H0; [auto with zarith | auto with zarith | .. ].
+Ltac custom4 H0 H1 H2 :=  intros H0 H1; [rewrite H2 | .. ].
+Ltac custom5 H0 :=  symmetry; [apply H0 | .. ].
+Ltac custom6 H0 :=  intros H0; [rewrite H0 | .. ].
+Ltac custom7 H0 :=  rewrite H0; [ | auto with zarith | auto with zarith | .. ].
+Ltac custom8 H0 H1 :=  rewrite H0; [apply H1; [ | .. ] | .. ].
+Ltac custom9 H0 H1 :=  intros H0; [rewrite H1 | .. ].
+Ltac custom10 H1 H2 H0 :=  custom4 H1 H2 H0; [clear H1 H2 | .. ].
+Ltac custom11 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom12 H0 H1 H2 H5 :=  rewrite H0, H1; [destr_t H2 as ( n, H5 ) | .. ].
+Ltac custom13 H0 :=  generalize ( ZnZ.spec_to_Z H0 ); [auto with zarith | .. ].
+Ltac custom14 H0 :=  generalize ( spec_pos H0 ); [auto with zarith | .. ].
+Ltac custom15  :=  split; [auto with zarith | .. ].
+Ltac custom16 H0 H1 :=  case Z.compare_spec; [ | intros H0 | intros H1 | .. ].
+Ltac custom17 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom18 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom19 H0 H4 :=  rewrite H0 by auto with zarith; [rewrite H4 | .. ].
+Ltac custom20 H2 H3 H0 H1 H4 H5 H6 :=  custom1 H2 H3 H0 H1 H4 H5 H6; [simpl | .. ].
+Ltac custom21 H0 :=  apply H0 with 0; [auto with zarith | .. ].
+Ltac custom22 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom23 H0 :=  rewrite H0; [auto with zarith | .. ].
+Ltac custom24 H0 H1 :=  custom17 H0; [custom23 H1 | .. ].
+Ltac custom25 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom26 H0 H1 H2 :=  intros H0 H1; [unfold H2 | .. ].
+---------------------------
+Num proofs: 78
+Num training proofs: 41
+Original size: 1351
+Compressed total size: 1109
+Training size: 987
+(2) (3) Testing size: 364
+(2) (3) Compressed testing size: 287
+(2) (3) Compression rate: 126.83
+Compressed size + lib: 1173 ( 1109 corpus / 64 library )
+[1] numTactics: 27
+[1] avrgTacticSize: 2.37
+[1] maxTacSize: 5
+[1] numProofsCompressed/total: 22 / 37
+[1] numAvgApplications: 6.26
+[1] numTotalApplications: 169
+Compression rate: 1.1517476555839727
+Num tactics in library: 27

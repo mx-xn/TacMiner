@@ -1,0 +1,30 @@
+-I plugin
+-R . Bignums
+
+BigN/Nbasic.v
+BigN/NMake.v
+BigN/NMake_gen.v
+BigN/BigN.v
+SpecViaZ/NSig.v
+SpecViaZ/ZSig.v
+SpecViaZ/NSigNAxioms.v
+SpecViaZ/ZSigZAxioms.v
+SpecViaQ/QSig.v
+BigQ/Depend.v
+BigQ/QMake.v
+BigQ/BigQ.v
+CyclicDouble/DoubleBase.v
+CyclicDouble/DoubleAdd.v
+CyclicDouble/DoubleDiv.v
+CyclicDouble/DoubleMul.v
+CyclicDouble/DoubleSub.v
+CyclicDouble/DoubleDivn1.v
+CyclicDouble/DoubleSqrt.v
+CyclicDouble/DoubleCyclic.v
+CyclicDouble/DoubleLift.v
+BigNumPrelude.v
+BigZ/ZMake.v
+BigZ/BigZ.v
+
+plugin/bignums_syntax.ml
+plugin/bignums_syntax_plugin.mlpack

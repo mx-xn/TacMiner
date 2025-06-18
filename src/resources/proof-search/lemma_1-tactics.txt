@@ -1,0 +1,1 @@
+Ltac custom0  := eauto; [lia | .. ].

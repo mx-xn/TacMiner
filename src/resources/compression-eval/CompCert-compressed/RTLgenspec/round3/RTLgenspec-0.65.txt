@@ -1,0 +1,55 @@
+extracted tactics -----------
+Ltac custom0  :=  econstructor; [eauto | .. ].
+Ltac custom1 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom2 H0 H8 :=  intros until H0; [unfold H8 | .. ].
+Ltac custom3 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom4 H0 :=  apply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom5 H0 H1 :=  apply H0 with H1; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom6  :=  constructor; [auto | auto | .. ].
+Ltac custom7 H0 :=  custom1 H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom8 H0 H1 :=  econstructor; [eauto with rtlg |  | apply H0 with H1; [eauto with rtlg | .. ] | .. ].
+Ltac custom9 H0 :=  econstructor; [custom7 H0 | .. ].
+Ltac custom10 H0 :=  apply H0; [ | eauto 3 with rtlg | .. ].
+Ltac custom11  :=  constructor; [auto | .. ].
+Ltac custom12 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | custom11  | .. ].
+Ltac custom13 H0 H1 H12 :=  econstructor; [eauto with rtlg |  | apply H0 with H1; [ | eapply H12; [ | .. ] | .. ] | .. ].
+Ltac custom14  :=  right; [auto | .. ].
+Ltac custom15 H0 :=  apply H0; [auto with coqlib | .. ].
+Ltac custom16 H0 H1 :=  apply H0 with H1; [eauto 3 with rtlg | .. ].
+Ltac custom17  :=  econstructor; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom18  :=  econstructor; [eauto with rtlg | .. ].
+Ltac custom19 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom20 H0 :=  monadInv H0; [constructor | .. ].
+Ltac custom21 H0 :=  exists H0; [auto | .. ].
+Ltac custom22 H0 :=  left; [custom21 H0 | .. ].
+Ltac custom23 H0 :=  inv H0; [eauto with rtlg].
+Ltac custom24  :=  econstructor; [ | eauto 4 with rtlg | .. ].
+Ltac custom25  :=  right; [eauto with rtlg | .. ].
+Ltac custom26 H0 :=  intro H0; [induction H0 | .. ].
+Ltac custom27 H0 H1 :=  apply H0 with H1; [eauto with rtlg | .. ].
+Ltac custom28 H0 H1 :=  apply H0 with H1; [auto | .. ].
+Ltac custom29  :=  split; [ | auto | .. ].
+Ltac custom30  :=  split; [ | congruence | .. ].
+Ltac custom31  :=  custom30 ; [congruence | .. ].
+Ltac custom32  :=  left; [custom31  | .. ].
+Ltac custom33 H0 :=  econstructor; [custom1 H0 | .. ].
+Ltac custom34 H0 H1 H2 :=  custom28 H0 H1; [custom1 H2 | .. ].
+Ltac custom35 H0 :=  try ( monadInv H0 ); [eauto with rtlg].
+---------------------------
+Num proofs: 31
+Num training proofs: 12
+Original size: 1047
+Compressed total size: 797
+Training size: 697
+(2) (3) Testing size: 350
+(2) (3) Compressed testing size: 283
+(2) (3) Compression rate: 123.67
+Compressed size + lib: 883 ( 797 corpus / 86 library )
+[1] numTactics: 36
+[1] avrgTacticSize: 2.39
+[1] maxTacSize: 4
+[1] numProofsCompressed/total: 13 / 19
+[1] numAvgApplications: 3.75
+[1] numTotalApplications: 135
+Compression rate: 1.1857304643261608
+Num tactics in library: 36

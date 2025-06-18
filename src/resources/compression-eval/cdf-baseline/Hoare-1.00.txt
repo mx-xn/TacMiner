@@ -1,0 +1,34 @@
+extracted tactics-----------
+custom_tac14: apply _i; auto
+custom_tac6: split; auto
+custom_tac7: red; auto
+custom_tac27: eapply _i; eauto
+custom_tac22: apply _i with _i; auto
+custom_tac5: exists _i; split
+custom_tac1: intros; apply _i with ( _i := _i) ( _i := _i); unfold _i; auto
+custom_tac99: intros; inv _i; auto; contradiction
+custom_tac98: intros; inv _i
+custom_tac0: unfold _i; intros
+custom_tac32: apply _i; eapply _i
+custom_tac39: intros _o _o _o _o _o; dependent induction _i
+custom_tac41: exists _i; auto
+custom_tac46: intros _o _o _o _o; dependent induction _i
+custom_tac67: induction 1; intros
+custom_tac68: red in _i; subst _i
+custom_tac75: unfold _i; congruence
+custom_tac49: intros _o _o _o; apply _i
+---------------------------
+Num proofs: 65
+Num training proofs: 65
+Original size: 1252
+Training size: 1252
+Testing size: 1252
+Compressed total size: 981 ( 874 corpus / 107 library )
+Compressed testing size: 1189
+[1] numTactics: 18
+[1] avrgTacticSize: 2.22
+[1] maxTacSize: 4
+[1] numAvgApplications: 3.06
+[1] numTotalApplications: 55
+Compression rate: 1.0529857022708158
+Num tactics in library: 18

@@ -1,0 +1,41 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 H9 H10 :=  split; [intros H0; [destruct ( OrderedEquation'.eq_dec H2 H3 ); [ | apply H9 | .. ] | .. ] | intros H1; [destruct ( OrderedEquation.eq_dec H2 H3 ); [ | apply H10 | .. ] | .. ] | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom2 H0 H1 H2 H3 :=  apply ( H0 H1 ); [apply H2 with H3; [auto | .. ] | .. ].
+Ltac custom3 H0 H1 :=  red in H0; [rewrite H1; [tauto | .. ] | .. ].
+Ltac custom4 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3 H4; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ]; [destruct H2 as [ e1|e1 ] | try contradiction | .. ] | .. ] | .. ].
+Ltac custom5 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom6  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].
+Ltac custom7  :=  red; [auto | .. ].
+Ltac custom8 H0 :=  apply H0; [custom7  | .. ].
+Ltac custom9 H0 :=  apply H0; [auto | .. ].
+Ltac custom10 H0 H1 H2 H3 :=  custom2 H0 H1 H2 H3; [auto | .. ].
+Ltac custom11 H0 :=  unfold H0; [auto | .. ].
+Ltac custom12 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5 | .. ].
+Ltac custom13 H0 H1 :=  split; [intros H0 | intros H1 | .. ].
+Ltac custom14 H0 H1 H2 :=  red; [intros H0; [custom3 H1 H2 | .. ] | .. ].
+Ltac custom15 H0 H1 :=  intros H0 H1; [destruct H0; [destruct H1 | .. ] | .. ].
+Ltac custom16 H0 H8 :=  destruct H0; [custom9 H8 | .. ].
+Ltac custom17 H0 :=  destruct H0; [auto | .. ].
+Ltac custom18 H0 H1 H2 :=  intros H0 H1; [custom9 H2 | .. ].
+Ltac custom19 H0 :=  destruct H0; [auto | .. ].
+Ltac custom20  :=  eelim Plt_strict; [eauto | .. ].
+Ltac custom21 H0 :=  intros H0; [destruct H0 | .. ].
+---------------------------
+Num proofs: 34
+Num training proofs: 23
+Original size: 539
+Compressed total size: 349
+Training size: 405
+(2) (3) Testing size: 134
+(2) (3) Compressed testing size: 83
+(2) (3) Compression rate: 161.45
+Compressed size + lib: 416 ( 349 corpus / 67 library )
+[1] numTactics: 22
+[1] avrgTacticSize: 3.05
+[1] maxTacSize: 10
+[1] numProofsCompressed/total: 10 / 11
+[1] numAvgApplications: 3.82
+[1] numTotalApplications: 84
+Compression rate: 1.2956730769230769
+Num tactics in library: 22

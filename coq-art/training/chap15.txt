@@ -1,0 +1,6 @@
+log2_terminates
+log_of_exp2_0
+log2_F'
+log2_power
+log2_fix_eqn
+div2_lt

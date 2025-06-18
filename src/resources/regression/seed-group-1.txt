@@ -1,0 +1,20 @@
+[2, 8]
+
+[8, 12]
+Ltac custom0  := constructor; [auto | .. ].
+[11, 18]
+
+[12, 14]
+
+[14, 16]
+Ltac custom0 H0 H1 H2 H3 := destruct ( zlt H0 H1 ) as [H2 | H3 ]; [simpl | .. ].
+[16, 18]
+Ltac custom0 H0 H1 H2 H3 H4 H5 := intros H0 H1 H2 H3; [destruct ( zlt H2 H3 ) as [H4 | H5 ]; [simpl |intuition | .. ] | .. ].
+[20, 22]
+Ltac custom0 H0 H1 H2 := intros H0 H1 H2; [simpl | .. ].
+[20, 23]
+
+[20, 25]
+
+[23, 25]
+Ltac custom0 H0 H1 := unfold mem , In; [intros H0 H1 | .. ].

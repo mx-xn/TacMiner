@@ -1,0 +1,36 @@
+extracted tactics -----------
+Ltac custom0  :=  econstructor; [eauto |  |  | .. ].
+Ltac custom1 H0 H1 H3 H4 H5 H6 H7 H8 H9 :=  generalize H0; [unfold H1; [caseEq ( nth_error ( map_letvars H3 ) H4 ); [intros H5 H6 H7 | intros H8 H9 | .. ] | .. ] | .. ].
+Ltac custom2 H0 H8 :=  intros until H0; [unfold H8 | .. ].
+Ltac custom3 H0 H1 :=  red; [intros H0 H1 | .. ].
+Ltac custom4 H0 H1 :=  apply H0 with H1; [eauto with rtlg |  | .. ].
+Ltac custom5 H0 :=  exists H0; [auto | .. ].
+Ltac custom6  :=  right; [eauto with rtlg | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 H5 H6 H7 :=  simpl; [intros H0 H1 H2 H3 H4 H5 H6 H7 | .. ].
+Ltac custom8  :=  constructor; [auto | .. ].
+Ltac custom9 H0 H1 H2 H3 H4 H5 H6 H7 :=  intros H0 H1 H2 H3 H4 H5 H6 H7; [monadInv H7 | .. ].
+Ltac custom10 H0 H1 H2 :=  intros H0 H1 H2; [left; [eauto with rtlg | .. ] | .. ].
+Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [pose ( AT := fun pc i => instr_at_incr H0 H1 pc i H2 ) | .. ].
+Ltac custom12 H0 :=  monadInv H0; [split; [ |  | .. ] | .. ].
+Ltac custom13  :=  custom4 ; [eauto with rtlg | .. ].
+Ltac custom14  :=  custom4 ; [eauto with rtlg | .. ].
+Ltac custom15 H0 H1 :=  generalize H0; [unfold H1 | .. ].
+Ltac custom16 H0 :=  apply H0; [ | eauto with rtlg | .. ].
+Ltac custom17 H0 :=  apply H0; [ | eauto 3 with rtlg | .. ].
+Ltac custom18 H0 H1 H2 :=  intros H0 H1 H2; [inv H2 | .. ].
+Ltac custom19  :=  econstructor; [ |  |  | eauto with rtlg | .. ].
+Ltac custom20 H0 H1 :=  apply H0 with H1; [auto | .. ].
+Ltac custom21  :=  induction 1; [econstructor |  | .. ].
+Ltac custom22  :=  custom8 ; [auto | .. ].
+Ltac custom23  :=  constructor; [eauto with rtlg |  | .. ].
+Ltac custom24  :=  custom0 ; [ | eauto |  | .. ].
+Ltac custom25 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom26 H0 H1 :=  intros H0 H1; [inv H1 | .. ].
+Ltac custom27 H0 :=  exploit H0; [eauto |  |  | .. ].
+---------------------------
+ , , 0.85
+RTLgenspec, Number of Tactics, 28
+ , Average Tactic Size, 2.14
+ , Total Tactic Size, 60
+ , Max Tactic Size, 5
+ , Overall CP, 1.26

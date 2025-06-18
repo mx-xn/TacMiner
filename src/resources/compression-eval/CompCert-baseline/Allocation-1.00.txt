@@ -1,0 +1,24 @@
+extracted tactics-----------
+custom_tac23: split; intros; destruct ( OrderedEquation'.eq_dec _i _i) as [ _o | _o]; eelim EqSet2.remove_1; eauto; apply _i; auto; apply ( _i _i); apply _i with _i; auto; destruct ( OrderedEquation.eq_dec _i _i) as [ _o | _o]; eelim EqSet.remove_1; eauto; apply _i; auto; apply ( _i _i); apply _i with _i; auto
+custom_tac19: split; intros; destruct ( OrderedEquation'.eq_dec _i _i) as [ _o | _o]; apply _i; auto; apply _i; apply ( _i _i); apply _i with _i; auto; destruct ( OrderedEquation.eq_dec _i _i) as [ _o | _o]; apply _i; auto; apply _i; apply ( _i _i); apply _i with _i; auto
+custom_tac36: unfold _i, _i, _i; intros; destruct _i as [ _o | _o]; destruct _i as [ _o | _o]; auto; intros; apply _i; auto
+custom_tac32: unfold _i; unfold _i; intros
+custom_tac0: unfold _i; auto
+custom_tac2: unfold _i; intros; rewrite _i
+custom_tac14: intros; rewrite _i; auto
+custom_tac34: destruct _i as [ _o | _o]; auto; intros
+---------------------------
+Num proofs: 38
+Num training proofs: 38
+Original size: 486
+Training size: 486
+Testing size: 486
+Compressed total size: 310 ( 96 corpus / 214 library )
+Compressed testing size: 426
+[1] numTactics: 8
+[1] avrgTacticSize: 7.00
+[1] maxTacSize: 18
+[1] numAvgApplications: 1.63
+[1] numTotalApplications: 13
+Compression rate: 1.1408450704225352
+Num tactics in library: 8

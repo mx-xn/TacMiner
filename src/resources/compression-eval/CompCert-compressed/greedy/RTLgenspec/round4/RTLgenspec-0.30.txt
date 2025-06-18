@@ -1,0 +1,37 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | .. ] | .. ].
+Ltac custom1  :=  econstructor; [eauto | .. ].
+Ltac custom2 H0 H1 H3 :=  apply H0 with H1; [auto | eapply H3; [ | .. ] | .. ].
+Ltac custom3 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom4 H0 :=  eapply H0; [eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | .. ].
+Ltac custom5 H0 :=  monadInv H0; [eauto with rtlg].
+Ltac custom6 H0 :=  apply H0; [ | eauto 3 with rtlg | .. ].
+Ltac custom7  :=  econstructor; [ |  | eauto with rtlg | .. ].
+Ltac custom8 H0 :=  inv H0; [eauto with rtlg].
+Ltac custom9  :=  split; [red; [simpl | .. ] | .. ].
+Ltac custom10 H0 H1 :=  intros H0 H1; [induction H1 | .. ].
+Ltac custom11  :=  econstructor; [ | eauto 4 with rtlg | .. ].
+Ltac custom12 H0 H1 H2 :=  custom2 H0 H1 H2; [ |  |  |  | eauto 4 with rtlg | .. ].
+Ltac custom13 H0 H1 H2 :=  custom2 H0 H1 H2; [ |  | eauto with rtlg | .. ].
+Ltac custom14 H0 :=  custom5 H0; [eauto with rtlg]. eauto with rtlg.
+Ltac custom15 H0 H1 :=  intros H0 H1; [monadInv H1 | .. ].
+Ltac custom16  :=  constructor; [auto | .. ].
+Ltac custom17 H0 H1 H2 :=  intros H0 H1 H2; [monadInv H2 | .. ].
+---------------------------
+Num proofs: 16
+Num training proofs: 3
+Original size: 678
+Compressed total size: 532
+Training size: 342
+(2) (3) Testing size: 336
+(2) (3) Compressed testing size: 278
+(2) (3) Compression rate: 120.86
+Compressed size + lib: 577 ( 532 corpus / 45 library )
+[1] numTactics: 18
+[1] avrgTacticSize: 2.50
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 5 / 13
+[1] numAvgApplications: 4.50
+[1] numTotalApplications: 81
+Compression rate: 1.175043327556326
+Num tactics in library: 18

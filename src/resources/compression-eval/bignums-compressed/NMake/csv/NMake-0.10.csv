@@ -1,0 +1,15 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom1 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom2 H0 H1 :=  case Z.compare_spec; [ | intros H0 | intros H1 | .. ].
+Ltac custom3 H0 :=  rewrite <- H0; [auto with zarith | auto with zarith | auto with zarith | .. ].
+Ltac custom4 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom5 H0 :=  apply H0; [ | auto with zarith | .. ].
+Ltac custom6 H0 :=  rewrite <- H0; [ | auto with zarith | auto with zarith | .. ].
+---------------------------
+ , , 0.1
+NMake, Number of Tactics, 7
+ , Average Tactic Size, 2.57
+ , Total Tactic Size, 18
+ , Max Tactic Size, 4
+ , Overall CP, 1.06

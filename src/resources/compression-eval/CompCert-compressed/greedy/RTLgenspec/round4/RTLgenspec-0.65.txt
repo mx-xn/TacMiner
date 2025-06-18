@@ -1,0 +1,64 @@
+extracted tactics -----------
+Ltac custom0 H3 :=  econstructor; [eapply H3; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom1 H3 :=  econstructor; [eapply H3; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom2 H0 H1 H2 :=  apply H0 with H1; [auto | eapply H2; [ |  | eauto with rtlg | .. ] | .. ].
+Ltac custom3 H3 :=  econstructor; [eapply H3; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom4 H0 H1 H2 :=  apply H0 with H1; [auto | eapply H2; [ |  | eauto with rtlg | .. ] | .. ].
+Ltac custom5  :=  econstructor; [eauto | .. ].
+Ltac custom6 H0 H1 H2 :=  apply H0 with H1; [auto | eapply H2; [ | eauto with rtlg | .. ] | .. ].
+Ltac custom7 H0 H1 H2 :=  apply H0 with H1; [auto | eapply H2; [ | eauto with rtlg | .. ] | .. ].
+Ltac custom8 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | .. ] | .. ].
+Ltac custom9 H0 :=  eapply H0; [ | eauto with rtlg | .. ].
+Ltac custom10 H0 H1 H2 :=  apply H0 with H1; [auto | eapply H2; [eauto 2 with rtlg | eauto 2 with rtlg | .. ] | .. ].
+Ltac custom11 H0 H1 H2 :=  apply H0 with H1; [auto | eapply H2; [ |  | eauto 4 with rtlg | .. ] | .. ].
+Ltac custom12  :=  econstructor; [eauto with rtlg | .. ].
+Ltac custom13 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom14 H0 :=  eapply H0; [eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | .. ].
+Ltac custom15 H0 H1 H2 H3 H4 H5 H6 H7 H8 :=  generalize H0; [unfold H1; [caseEq ( nth_error ( map_letvars H2 ) H3 ); [intros H4 H5 H6 | intros H7 H8 | .. ] | .. ] | .. ].
+Ltac custom16 H0 :=  apply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom17 H0 :=  custom8 H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom18  :=  split; [ | congruence | .. ].
+Ltac custom19  :=  right; [auto | .. ].
+Ltac custom20  :=  right; [eauto with rtlg | .. ].
+Ltac custom21 H0 H1 H2 H3 H4 H5 H6 :=  simpl; [intros H0 H1 H2 H3 H4 H5 H6 | .. ].
+Ltac custom22 H0 H1 :=  exists H0; [exists H1 | .. ].
+Ltac custom23 H0 H8 :=  intros until H0; [unfold H8 | .. ].
+Ltac custom24 H0 H1 :=  apply H0 with H1; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom25 H0 H1 :=  apply H0 with H1; [eauto with rtlg | .. ].
+Ltac custom26 H0 H1 :=  apply H0 with H1; [auto | .. ].
+Ltac custom27  :=  constructor; [auto | auto | .. ].
+Ltac custom28 H0 :=  inv H0; [ | custom20  | .. ].
+Ltac custom29 H0 :=  inv H0; [eauto with rtlg].
+Ltac custom30 H0 H1 :=  intros H0 H1; [induction H1 | .. ].
+Ltac custom31  :=  econstructor; [ | eauto 4 with rtlg | .. ].
+Ltac custom32  :=  red; [simpl | .. ].
+Ltac custom33 H0 H1 H2 :=  custom26 H0 H1; [eapply H2; [ | .. ] | .. ].
+Ltac custom34 H0 :=  intro H0; [induction H0 | .. ].
+Ltac custom35 H0 :=  exists H0; [auto | .. ].
+Ltac custom36 H0 :=  left; [custom35 H0 | .. ].
+Ltac custom37 H0 H1 :=  generalize H0; [unfold H1 | .. ].
+Ltac custom38 H0 :=  apply H0; [ | eauto 3 with rtlg | .. ].
+Ltac custom39 H0 :=  apply H0; [auto with coqlib | .. ].
+Ltac custom40 H0 H1 :=  intros H0 H1; [inv H1 | .. ].
+Ltac custom41  :=  constructor; [auto | .. ].
+Ltac custom42 H0 :=  custom8 H0; [eauto with rtlg | .. ].
+Ltac custom43 H0 H1 H2 :=  intros H0 H1 H2; [inv H2 | .. ].
+Ltac custom44 H0 :=  monadInv H0; [split | .. ].
+---------------------------
+Num proofs: 23
+Num training proofs: 10
+Original size: 1040
+Compressed total size: 746
+Training size: 704
+(2) (3) Testing size: 336
+(2) (3) Compressed testing size: 232
+(2) (3) Compression rate: 144.83
+Compressed size + lib: 888 ( 746 corpus / 142 library )
+[1] numTactics: 45
+[1] avrgTacticSize: 3.16
+[1] maxTacSize: 10
+[1] numProofsCompressed/total: 9 / 13
+[1] numAvgApplications: 3.58
+[1] numTotalApplications: 161
+Compression rate: 1.1711711711711712
+Num tactics in library: 45

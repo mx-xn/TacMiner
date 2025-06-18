@@ -1,0 +1,22 @@
+extracted tactics -----------
+Ltac custom0 H0 H4 H5 H6 H3 :=  apply H0; [auto | apply ( H4 H5 ); [apply H6 with H3; [auto | .. ] | .. ] | .. ].
+Ltac custom1  :=  red; [auto | .. ].
+Ltac custom2 H0 :=  apply H0; [custom1  | .. ].
+---------------------------
+Num proofs: 14
+Num training proofs: 4
+Original size: 251
+Compressed total size: 219
+Training size: 105
+(2) (3) Testing size: 146
+(2) (3) Compressed testing size: 136
+(2) (3) Compression rate: 107.35
+Compressed size + lib: 228 ( 219 corpus / 9 library )
+[1] numTactics: 3
+[1] avrgTacticSize: 3.00
+[1] maxTacSize: 5
+[1] numProofsCompressed/total: 2 / 10
+[1] numAvgApplications: 4.67
+[1] numTotalApplications: 14
+Compression rate: 1.1008771929824561
+Num tactics in library: 3

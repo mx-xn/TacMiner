@@ -1,0 +1,10 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5 | .. ].
+Ltac custom1 H0 H1 :=  destruct H0; [destruct H1 | .. ].
+---------------------------
+ , , 0.1
+Allocation, Number of Tactics, 2
+ , Average Tactic Size, 2.00
+ , Total Tactic Size, 4
+ , Max Tactic Size, 2
+ , Overall CP, 1.02

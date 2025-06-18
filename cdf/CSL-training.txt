@@ -1,0 +1,12 @@
+safe_frame
+safe_frame_invariant
+safe_par
+triple_get
+triple_set
+safe_consequence
+triple_simple_conj_pre
+safe_and
+triple_acquire
+triple_release
+triple_produce
+triple_consume

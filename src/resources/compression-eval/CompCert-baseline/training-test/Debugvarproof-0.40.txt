@@ -1,0 +1,13 @@
+extracted tactics-----------
+custom_tac0: induction 1; simpl
+custom_tac1: inv _i; inv _i
+---------------------------
+Num proofs: 33
+Num training proofs: 3
+Original size: 675
+Training size: 298
+Testing size: 377
+Compressed total size: 662 ( 658 corpus / 4 library )
+Compressed testing size: 365
+Compression rate: 1.0196374622356494
+Num tactics in library: 2

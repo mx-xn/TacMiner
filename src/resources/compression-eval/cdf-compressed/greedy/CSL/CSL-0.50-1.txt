@@ -1,0 +1,51 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 :=  constructor; [auto |  | intros H0 H1 H2 H3 H4 H5 | intros H6 H7 H8 H9 H10 H11 H12 H13 H14 | .. ].
+Ltac custom1 H0 :=  apply H0; [auto |  | .. ].
+Ltac custom2 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom3  :=  split; [HDISJ | split; [ | split; [ | custom1 ; [ |  | .. ] | .. ] | .. ] | .. ].
+Ltac custom4 H0 H1 H2 H3 :=  intros H0; [cbn; [rewrite H1; [apply H2; [intros H3 | .. ] | .. ] | .. ] | .. ]. subst H0.
+Ltac custom5  :=  red; [auto | .. ].
+Ltac custom6 H0 H1 :=  exists H0, H1; [intuition auto | .. ].
+Ltac custom7 H0 H1 :=  apply H0; [intros H1; [eapply triple_let; [ |  | .. ] | .. ] | .. ]. exists H1; [auto | .. ].
+Ltac custom8 H0 :=  destruct H0; [constructor |  | .. ].
+Ltac custom9 H15 H14 :=  custom0 ; [ | intro H15 | inv H14 | .. ].
+Ltac custom10 H0 :=  intros H0; [cbn | .. ].
+Ltac custom11  :=  split; [auto |  | .. ].
+Ltac custom12 H0 H1 :=  rewrite H0; [apply H1 | .. ].
+Ltac custom13 H0 H1 :=  destruct ( H0 H1 ); [congruence |  | .. ].
+Ltac custom14  :=  custom6 ; [HDISJ | .. ].
+Ltac custom15 H0 H1 :=  exists H0, H1; [auto | .. ].
+Ltac custom16 H0 H1 H2 :=  red; [intros H0 H1; [exists H2; [auto | .. ] | .. ] | .. ].
+Ltac custom17 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom18 H0 H1 :=  apply H0; [intros H1 |  | .. ].
+Ltac custom19 H0 :=  rewrite H0; [f_equal | .. ].
+Ltac custom20 H0 H1 :=  intros H0 H1. custom7 ; [ |  | .. ].
+Ltac custom21 H0 H1 :=  apply H0; [rewrite H1 | .. ].
+Ltac custom22 H0 H1 :=  cbn; [intros H0 H1 | .. ].
+Ltac custom23 H8 :=  custom0 ; [subst H8 |  |  | .. ].
+Ltac custom24  :=  custom9 ; [auto |  |  | .. ].
+Ltac custom25 H0 H1 :=  rewrite H0; [rewrite ( hunion_comm H1 ) by HDISJ; [assumption | .. ] | .. ].
+Ltac custom26  :=  split; [ | split; [ |  | .. ] | .. ].
+Ltac custom27  :=  cbn; [custom5  | .. ].
+Ltac custom28 H0 H1 :=  destruct ( Z.eq_dec H0 H1 ); [ | intuition congruence | .. ].
+Ltac custom29 H3 :=  intuition auto; [ |  | apply H3 | .. ].
+Ltac custom30 H0 :=  eapply triple_consequence_pre; [apply H0 |  | .. ].
+Ltac custom31 H14 :=  custom23 ; [ |  | inv H14; [ |  | .. ] | .. ].
+---------------------------
+Num proofs: 47
+Num training proofs: 11
+Original size: 1224
+Compressed total size: 927
+Training size: 617
+(2) (3) Testing size: 607
+(2) (3) Compressed testing size: 449
+(2) (3) Compression rate: 135.19
+Compressed size + lib: 1007 ( 927 corpus / 80 library )
+[1] numTactics: 32
+[1] avrgTacticSize: 2.50
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 29 / 36
+[1] numAvgApplications: 5.66
+[1] numTotalApplications: 181
+Compression rate: 1.2154915590863953
+Num tactics in library: 32

@@ -1,0 +1,1605 @@
+[
+    {
+        "lemma_name": "star_trans",
+        "proof": [
+            {
+                "tactic_sig": "Lemma star_trans : forall ( a b : A ) , star a b -> forall c , star b c -> star a c .",
+                "tactic_sig_no_out_arg": "Lemma star_trans : forall ( a b : A ) , star a b -> forall c , star b c -> star a c .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b : A) (_ : star a b) (c : A) (_ : star b c), star a c",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "induction 1 .",
+                "tactic_sig_no_out_arg": "induction 1 .",
+                "tactic_args": [
+                    "c1_goal : forall (a b : A) (_ : star a b) (c : A) (_ : star b c), star a c"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall (c : A) (_ : star a c), star a c",
+                    "c2_a : A",
+                    "c3_goal : forall (c0 : A) (_ : star c c0), star a c0",
+                    "c3_IHstar : forall (c0 : A) (_ : star c c0), star b c0",
+                    "c3_H0 : star b c",
+                    "c3_H : R a b",
+                    "c3_c : A",
+                    "c3_b : A",
+                    "c3_a : A"
+                ]
+            },
+            {
+                "tactic_sig": "eauto using star .",
+                "tactic_sig_no_out_arg": "eauto using star .",
+                "tactic_args": [
+                    "c2_goal : forall (c : A) (_ : star a c), star a c",
+                    "c2_a : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eauto using star .",
+                "tactic_sig_no_out_arg": "eauto using star .",
+                "tactic_args": [
+                    "c3_goal : forall (c0 : A) (_ : star c c0), star a c0",
+                    "c3_IHstar : forall (c0 : A) (_ : star c c0), star b c0",
+                    "c3_H : R a b",
+                    "c3_a : A",
+                    "c3_c : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "plus_star",
+        "proof": [
+            {
+                "tactic_sig": "Lemma plus_star : forall a b , plus a b -> star a b .",
+                "tactic_sig_no_out_arg": "Lemma plus_star : forall a b , plus a b -> star a b .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b : A) (_ : plus a b), star a b",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros a b H .",
+                "tactic_args": [
+                    "c1_goal : forall (a b : A) (_ : plus a b), star a b"
+                ],
+                "tactic_res": [
+                    "c2_goal : star a b",
+                    "c2_a : A",
+                    "c2_b : A",
+                    "c2_H : plus a b"
+                ]
+            },
+            {
+                "tactic_sig": "inversion _i .",
+                "tactic_sig_no_out_arg": "inversion _i .",
+                "tactic_args": [
+                    "c2_H : plus a b"
+                ],
+                "tactic_res": [
+                    "c2_H3 : eq c b",
+                    "c2_H2 : eq a0 a",
+                    "c2_H1 : star b0 b",
+                    "c2_H0 : R a b0",
+                    "c2_c : A",
+                    "c2_b0 : A",
+                    "c2_a0 : A"
+                ]
+            },
+            {
+                "tactic_sig": "eauto using star .",
+                "tactic_sig_no_out_arg": "eauto using star .",
+                "tactic_args": [
+                    "c2_goal : star a b",
+                    "c2_H1 : star b0 b",
+                    "c2_H0 : R a b0",
+                    "c2_a : A",
+                    "c2_b : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "plus_star_trans",
+        "proof": [
+            {
+                "tactic_sig": "Lemma plus_star_trans : forall a b c , plus a b -> star b c -> plus a c .",
+                "tactic_sig_no_out_arg": "Lemma plus_star_trans : forall a b c , plus a b -> star b c -> plus a c .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b c : A) (_ : plus a b) (_ : star b c), plus a c",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros a b c H H0 .",
+                "tactic_args": [
+                    "c1_goal : forall (a b c : A) (_ : plus a b) (_ : star b c), plus a c"
+                ],
+                "tactic_res": [
+                    "c2_goal : plus a c",
+                    "c2_a : A",
+                    "c2_b : A",
+                    "c2_c : A",
+                    "c2_H : plus a b",
+                    "c2_H0 : star b c"
+                ]
+            },
+            {
+                "tactic_sig": "inversion _i .",
+                "tactic_sig_no_out_arg": "inversion _i .",
+                "tactic_args": [
+                    "c2_H : plus a b"
+                ],
+                "tactic_res": [
+                    "c2_H4 : eq c0 b",
+                    "c2_H3 : eq a0 a",
+                    "c2_H2 : star b0 b",
+                    "c2_H1 : R a b0",
+                    "c2_c0 : A",
+                    "c2_b0 : A",
+                    "c2_a0 : A"
+                ]
+            },
+            {
+                "tactic_sig": "eauto using plus , star_trans .",
+                "tactic_sig_no_out_arg": "eauto using plus , star_trans .",
+                "tactic_args": [
+                    "c2_goal : plus a c",
+                    "c2_H2 : star b0 b",
+                    "c2_H1 : R a b0",
+                    "c2_H0 : star b c",
+                    "c2_a : A",
+                    "c2_c : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "star_plus_trans",
+        "proof": [
+            {
+                "tactic_sig": "Lemma star_plus_trans : forall a b c , star a b -> plus b c -> plus a c .",
+                "tactic_sig_no_out_arg": "Lemma star_plus_trans : forall a b c , star a b -> plus b c -> plus a c .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b c : A) (_ : star a b) (_ : plus b c), plus a c",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros a b c H H0 .",
+                "tactic_args": [
+                    "c1_goal : forall (a b c : A) (_ : star a b) (_ : plus b c), plus a c"
+                ],
+                "tactic_res": [
+                    "c2_goal : plus a c",
+                    "c2_a : A",
+                    "c2_b : A",
+                    "c2_c : A",
+                    "c2_H : star a b",
+                    "c2_H0 : plus b c"
+                ]
+            },
+            {
+                "tactic_sig": "inversion _i .",
+                "tactic_sig_no_out_arg": "inversion _i .",
+                "tactic_args": [
+                    "c2_H0 : plus b c"
+                ],
+                "tactic_res": [
+                    "c2_H4 : eq c0 c",
+                    "c2_H3 : eq a0 b",
+                    "c2_H2 : star b0 c",
+                    "c2_H1 : R b b0",
+                    "c2_c0 : A",
+                    "c2_b0 : A",
+                    "c2_a0 : A"
+                ]
+            },
+            {
+                "tactic_sig": "inversion _i .",
+                "tactic_sig_no_out_arg": "inversion _i .",
+                "tactic_args": [
+                    "c2_goal : plus a c",
+                    "c2_H : star a b"
+                ],
+                "tactic_res": [
+                    "c3_goal : plus b c",
+                    "c3_H6 : eq a b",
+                    "c3_H5 : eq a1 a",
+                    "c3_a1 : A",
+                    "c4_goal : plus a c",
+                    "c4_H8 : eq c1 b",
+                    "c4_H7 : eq a1 a",
+                    "c4_H6 : star b1 b",
+                    "c4_H5 : R a b1",
+                    "c4_c1 : A",
+                    "c4_b1 : A",
+                    "c4_a1 : A"
+                ]
+            },
+            {
+                "tactic_sig": "eauto using plus , star , star_trans .",
+                "tactic_sig_no_out_arg": "eauto using plus , star , star_trans .",
+                "tactic_args": [
+                    "c3_goal : plus b c",
+                    "c2_b : A",
+                    "c2_c : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eauto using plus , star , star_trans .",
+                "tactic_sig_no_out_arg": "eauto using plus , star , star_trans .",
+                "tactic_args": [
+                    "c4_goal : plus a c",
+                    "c4_H6 : star b1 b",
+                    "c4_H5 : R a b1",
+                    "c2_H2 : star b0 c",
+                    "c2_H1 : R b b0",
+                    "c2_a : A",
+                    "c2_c : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "starN_star",
+        "proof": [
+            {
+                "tactic_sig": "Lemma starN_star : forall n a b , starN n a b -> star a b .",
+                "tactic_sig_no_out_arg": "Lemma starN_star : forall n a b , starN n a b -> star a b .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n : nat) (a b : A) (_ : starN n a b), star a b",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "induction 1 .",
+                "tactic_sig_no_out_arg": "induction 1 .",
+                "tactic_args": [
+                    "c1_goal : forall (n : nat) (a b : A) (_ : starN n a b), star a b"
+                ],
+                "tactic_res": [
+                    "c2_goal : star a a",
+                    "c2_a : A",
+                    "c3_goal : star a c",
+                    "c3_IHstarN : star b c",
+                    "c3_H0 : starN n b c",
+                    "c3_H : R a b",
+                    "c3_c : A",
+                    "c3_b : A",
+                    "c3_a : A",
+                    "c3_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "econstructor .",
+                "tactic_sig_no_out_arg": "econstructor .",
+                "tactic_args": [
+                    "c2_goal : star a a"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "custom4 .",
+                "tactic_sig_no_out_arg": "custom4 .",
+                "tactic_args": [
+                    "c3_goal : star a c"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "star_starN",
+        "proof": [
+            {
+                "tactic_sig": "Lemma star_starN : forall a b , star a b -> exists n , starN n a b .",
+                "tactic_sig_no_out_arg": "Lemma star_starN : forall a b , star a b -> exists n , starN n a b .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b : A) (_ : star a b), ex (fun n : nat => starN n a b)",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "induction 1 .",
+                "tactic_sig_no_out_arg": "induction 1 .",
+                "tactic_args": [
+                    "c1_goal : forall (a b : A) (_ : star a b), ex (fun n : nat => starN n a b)"
+                ],
+                "tactic_res": [
+                    "c2_goal : ex (fun n : nat => starN n a a)",
+                    "c2_a : A",
+                    "c3_goal : ex (fun n : nat => starN n a c)",
+                    "c3_IHstar : ex (fun n : nat => starN n b c)",
+                    "c3_H0 : star b c",
+                    "c3_H : R a b",
+                    "c3_c : A",
+                    "c3_b : A",
+                    "c3_a : A"
+                ]
+            },
+            {
+                "tactic_sig": "exists O .",
+                "tactic_sig_no_out_arg": "exists O .",
+                "tactic_args": [
+                    "c2_goal : ex (fun n : nat => starN n a a)"
+                ],
+                "tactic_res": [
+                    "c4_goal : starN 0 a a"
+                ]
+            },
+            {
+                "tactic_sig": "constructor .",
+                "tactic_sig_no_out_arg": "constructor .",
+                "tactic_args": [
+                    "c4_goal : starN 0 a a"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as ( n & Sn ) .",
+                "tactic_sig_no_out_arg": "destruct _i as ( n & Sn ) .",
+                "tactic_args": [
+                    "c3_IHstar : ex (fun n : nat => starN n b c)",
+                    "c3_H0 : star b c",
+                    "c3_H : R a b",
+                    "c3_a : A",
+                    "c3_c : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": [
+                    "c3_Sn : starN n b c",
+                    "c3_n : nat"
+                ]
+            },
+            {
+                "tactic_sig": "exists ( S _i ) .",
+                "tactic_sig_no_out_arg": "exists ( S _i ) .",
+                "tactic_args": [
+                    "c3_goal : ex (fun n : nat => starN n a c)",
+                    "c3_n : nat"
+                ],
+                "tactic_res": [
+                    "c5_goal : starN (S n) a c"
+                ]
+            },
+            {
+                "tactic_sig": "custom4 .",
+                "tactic_sig_no_out_arg": "custom4 .",
+                "tactic_args": [
+                    "c5_goal : starN (S n) a c"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "cycle_infseq",
+        "proof": [
+            {
+                "tactic_sig": "Remark cycle_infseq : forall a , R a a -> infseq a .",
+                "tactic_sig_no_out_arg": "Remark cycle_infseq : forall a , R a a -> infseq a .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a : A) (_ : R a a), infseq a",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros a H .",
+                "tactic_args": [
+                    "c1_goal : forall (a : A) (_ : R a a), infseq a"
+                ],
+                "tactic_res": [
+                    "c2_goal : infseq a",
+                    "c2_a : A",
+                    "c2_H : R a a"
+                ]
+            },
+            {
+                "tactic_sig": "exists ( fun b => b = _i ) .",
+                "tactic_sig_no_out_arg": "exists ( fun b => b = _i ) .",
+                "tactic_args": [
+                    "c2_goal : infseq a",
+                    "c2_a : A"
+                ],
+                "tactic_res": [
+                    "c3_goal : and (eq a a)\n  (forall (a1 : A) (_ : eq a1 a),\n   ex (fun a2 : A => and (R a1 a2) (eq a2 a)))"
+                ]
+            },
+            {
+                "tactic_sig": "custom2 a1 H0 .",
+                "tactic_sig_no_out_arg": "custom2 a1 H0 .",
+                "tactic_args": [
+                    "c3_goal : and (eq a a)\n  (forall (a1 : A) (_ : eq a1 a),\n   ex (fun a2 : A => and (R a1 a2) (eq a2 a)))"
+                ],
+                "tactic_res": [
+                    "c4_goal : ex (fun a2 : A => and (R a1 a2) (eq a2 a))",
+                    "c4_H0 : eq a1 a",
+                    "c4_a1 : A"
+                ]
+            },
+            {
+                "tactic_sig": "subst _i .",
+                "tactic_sig_no_out_arg": "subst _i .",
+                "tactic_args": [
+                    "c4_goal : ex (fun a2 : A => and (R a1 a2) (eq a2 a))",
+                    "c4_a1 : A",
+                    "c4_H0 : eq a1 a"
+                ],
+                "tactic_res": [
+                    "c5_goal : ex (fun a2 : A => and (R a a2) (eq a2 a))"
+                ]
+            },
+            {
+                "tactic_sig": "custom7 _i .",
+                "tactic_sig_no_out_arg": "custom7 _i .",
+                "tactic_args": [
+                    "c5_goal : ex (fun a2 : A => and (R a a2) (eq a2 a))",
+                    "c2_a : A"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "infseq_if_all_seq_inf",
+        "proof": [
+            {
+                "tactic_sig": "Lemma infseq_if_all_seq_inf : forall a , all_seq_inf a -> infseq a .",
+                "tactic_sig_no_out_arg": "Lemma infseq_if_all_seq_inf : forall a , all_seq_inf a -> infseq a .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a : A) (_ : all_seq_inf a), infseq a",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros a0 ALL0 .",
+                "tactic_args": [
+                    "c1_goal : forall (a : A) (_ : all_seq_inf a), infseq a"
+                ],
+                "tactic_res": [
+                    "c2_goal : infseq a0",
+                    "c2_a0 : A",
+                    "c2_ALL0 : all_seq_inf a0"
+                ]
+            },
+            {
+                "tactic_sig": "exists all_seq_inf .",
+                "tactic_sig_no_out_arg": "exists all_seq_inf .",
+                "tactic_args": [
+                    "c2_goal : infseq a0"
+                ],
+                "tactic_res": [
+                    "c3_goal : and (all_seq_inf a0)\n  (forall (a1 : A) (_ : all_seq_inf a1),\n   ex (fun a2 : A => and (R a1 a2) (all_seq_inf a2)))"
+                ]
+            },
+            {
+                "tactic_sig": "custom2 a1 ALL1 .",
+                "tactic_sig_no_out_arg": "custom2 a1 ALL1 .",
+                "tactic_args": [
+                    "c3_goal : and (all_seq_inf a0)\n  (forall (a1 : A) (_ : all_seq_inf a1),\n   ex (fun a2 : A => and (R a1 a2) (all_seq_inf a2)))"
+                ],
+                "tactic_res": [
+                    "c4_goal : ex (fun a2 : A => and (R a1 a2) (all_seq_inf a2))",
+                    "c4_ALL1 : all_seq_inf a1",
+                    "c4_a1 : A"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _i ) as [ a2 R12 ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _i ) as [ a2 R12 ] .",
+                "tactic_args": [
+                    "c4_goal : ex (fun a2 : A => and (R a1 a2) (all_seq_inf a2))",
+                    "c4_ALL1 : all_seq_inf a1",
+                    "c4_a1 : A",
+                    "c2_ALL0 : all_seq_inf a0",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": [
+                    "c5_goal : star a1 a1",
+                    "c6_goal : ex (fun a2 : A => and (R a1 a2) (all_seq_inf a2))",
+                    "c6_R12 : R a1 a2",
+                    "c6_a2 : A"
+                ]
+            },
+            {
+                "tactic_sig": "constructor .",
+                "tactic_sig_no_out_arg": "constructor .",
+                "tactic_args": [
+                    "c5_goal : star a1 a1"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "exists _i .",
+                "tactic_sig_no_out_arg": "exists _i .",
+                "tactic_args": [
+                    "c6_goal : ex (fun a2 : A => and (R a1 a2) (all_seq_inf a2))",
+                    "c6_a2 : A"
+                ],
+                "tactic_res": [
+                    "c7_goal : and (R a1 a2) (all_seq_inf a2)"
+                ]
+            },
+            {
+                "tactic_sig": "custom2 a3 S23 .",
+                "tactic_sig_no_out_arg": "custom2 a3 S23 .",
+                "tactic_args": [
+                    "c7_goal : and (R a1 a2) (all_seq_inf a2)"
+                ],
+                "tactic_res": [
+                    "c8_goal : ex (fun c : A => R a3 c)",
+                    "c8_S23 : star a2 a3",
+                    "c8_a3 : A"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _i ) as [ a4 R23 ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _i ) as [ a4 R23 ] .",
+                "tactic_args": [
+                    "c8_goal : ex (fun c : A => R a3 c)",
+                    "c4_ALL1 : all_seq_inf a1",
+                    "c8_a3 : A",
+                    "c8_S23 : star a2 a3",
+                    "c6_R12 : R a1 a2",
+                    "c2_ALL0 : all_seq_inf a0",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": [
+                    "c9_goal : star a1 a3",
+                    "c10_goal : ex (fun c : A => R a3 c)",
+                    "c10_R23 : R a3 a4",
+                    "c10_a4 : A"
+                ]
+            },
+            {
+                "tactic_sig": "custom5 star_step _i .",
+                "tactic_sig_no_out_arg": "custom5 star_step _i .",
+                "tactic_args": [
+                    "c9_goal : star a1 a3",
+                    "c6_a2 : A"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "custom7 _i .",
+                "tactic_sig_no_out_arg": "custom7 _i .",
+                "tactic_args": [
+                    "c10_goal : ex (fun c : A => R a3 c)",
+                    "c10_a4 : A"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "infseq_from_function",
+        "proof": [
+            {
+                "tactic_sig": "Lemma infseq_from_function : forall a , infseq_with_function a -> infseq a .",
+                "tactic_sig_no_out_arg": "Lemma infseq_from_function : forall a , infseq_with_function a -> infseq a .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a : A) (_ : infseq_with_function a), infseq a",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o ( _o & _o & _o ) .",
+                "tactic_sig_no_out_arg": "intros a0 ( f & F0 & Fn ) .",
+                "tactic_args": [
+                    "c1_goal : forall (a : A) (_ : infseq_with_function a), infseq a"
+                ],
+                "tactic_res": [
+                    "c2_goal : infseq a0",
+                    "c2_a0 : A",
+                    "c2_f : forall _ : nat, A",
+                    "c2_F0 : eq (f 0) a0",
+                    "c2_Fn : forall i : nat, R (f i) (f (Nat.add 1 i))"
+                ]
+            },
+            {
+                "tactic_sig": "exists ( fun a => exists i , _i i = a ) .",
+                "tactic_sig_no_out_arg": "exists ( fun a => exists i , _i i = a ) .",
+                "tactic_args": [
+                    "c2_goal : infseq a0",
+                    "c2_f : forall _ : nat, A"
+                ],
+                "tactic_res": [
+                    "c3_goal : and (ex (fun i : nat => eq (f i) a0))\n  (forall (a1 : A) (_ : ex (fun i : nat => eq (f i) a1)),\n   ex (fun a2 : A => and (R a1 a2) (ex (fun i : nat => eq (f i) a2))))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c3_goal : and (ex (fun i : nat => eq (f i) a0))\n  (forall (a1 : A) (_ : ex (fun i : nat => eq (f i) a1)),\n   ex (fun a2 : A => and (R a1 a2) (ex (fun i : nat => eq (f i) a2))))"
+                ],
+                "tactic_res": [
+                    "c4_goal : ex (fun i : nat => eq (f i) a0)",
+                    "c5_goal : forall (a1 : A) (_ : ex (fun i : nat => eq (f i) a1)),\nex (fun a2 : A => and (R a1 a2) (ex (fun i : nat => eq (f i) a2)))"
+                ]
+            },
+            {
+                "tactic_sig": "exists 0 .",
+                "tactic_sig_no_out_arg": "exists 0 .",
+                "tactic_args": [
+                    "c4_goal : ex (fun i : nat => eq (f i) a0)"
+                ],
+                "tactic_res": [
+                    "c6_goal : eq (f 0) a0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c6_goal : eq (f 0) a0",
+                    "c2_F0 : eq (f 0) a0",
+                    "c2_f : forall _ : nat, A",
+                    "c2_a0 : A",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o ( _o & _o ) .",
+                "tactic_sig_no_out_arg": "intros a1 ( i1 & F1 ) .",
+                "tactic_args": [
+                    "c5_goal : forall (a1 : A) (_ : ex (fun i : nat => eq (f i) a1)),\nex (fun a2 : A => and (R a1 a2) (ex (fun i : nat => eq (f i) a2)))"
+                ],
+                "tactic_res": [
+                    "c7_goal : ex (fun a2 : A => and (R a1 a2) (ex (fun i : nat => eq (f i) a2)))",
+                    "c7_a1 : A",
+                    "c7_i1 : nat",
+                    "c7_F1 : eq (f i1) a1"
+                ]
+            },
+            {
+                "tactic_sig": "subst _i .",
+                "tactic_sig_no_out_arg": "subst _i .",
+                "tactic_args": [
+                    "c7_goal : ex (fun a2 : A => and (R a1 a2) (ex (fun i : nat => eq (f i) a2)))",
+                    "c7_a1 : A",
+                    "c7_F1 : eq (f i1) a1"
+                ],
+                "tactic_res": [
+                    "c8_goal : ex (fun a2 : A => and (R (f i1) a2) (ex (fun i : nat => eq (f i) a2)))"
+                ]
+            },
+            {
+                "tactic_sig": "exists ( _i ( 1 + _i ) ) .",
+                "tactic_sig_no_out_arg": "exists ( _i ( 1 + _i ) ) .",
+                "tactic_args": [
+                    "c8_goal : ex (fun a2 : A => and (R (f i1) a2) (ex (fun i : nat => eq (f i) a2)))",
+                    "c2_f : forall _ : nat, A",
+                    "c7_i1 : nat"
+                ],
+                "tactic_res": [
+                    "c9_goal : and (R (f i1) (f (Nat.add 1 i1)))\n  (ex (fun i : nat => eq (f i) (f (Nat.add 1 i1))))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c9_goal : and (R (f i1) (f (Nat.add 1 i1)))\n  (ex (fun i : nat => eq (f i) (f (Nat.add 1 i1))))"
+                ],
+                "tactic_res": [
+                    "c10_goal : R (f i1) (f (Nat.add 1 i1))",
+                    "c11_goal : ex (fun i : nat => eq (f i) (f (Nat.add 1 i1)))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c10_goal : R (f i1) (f (Nat.add 1 i1))",
+                    "c7_i1 : nat",
+                    "c2_Fn : forall i : nat, R (f i) (f (Nat.add 1 i))",
+                    "c2_f : forall _ : nat, A",
+                    "c1_R : forall (_ : A) (_ : A), Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "exists ( 1 + _i ) .",
+                "tactic_sig_no_out_arg": "exists ( 1 + _i ) .",
+                "tactic_args": [
+                    "c11_goal : ex (fun i : nat => eq (f i) (f (Nat.add 1 i1)))",
+                    "c7_i1 : nat"
+                ],
+                "tactic_res": [
+                    "c12_goal : eq (f (Nat.add 1 i1)) (f (Nat.add 1 i1))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c12_goal : eq (f (Nat.add 1 i1)) (f (Nat.add 1 i1))",
+                    "c7_i1 : nat",
+                    "c2_f : forall _ : nat, A",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "infseq_inv",
+        "proof": [
+            {
+                "tactic_sig": "Lemma infseq_inv : forall a , infseq a -> exists b , R a b /\\ infseq b .",
+                "tactic_sig_no_out_arg": "Lemma infseq_inv : forall a , infseq a -> exists b , R a b /\\ infseq b .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a : A) (_ : infseq a), ex (fun b : A => and (R a b) (infseq b))",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o ( _o & _o & _o ) .",
+                "tactic_sig_no_out_arg": "intros a ( X & Xa & XP ) .",
+                "tactic_args": [
+                    "c1_goal : forall (a : A) (_ : infseq a), ex (fun b : A => and (R a b) (infseq b))"
+                ],
+                "tactic_res": [
+                    "c2_goal : ex (fun b : A => and (R a b) (infseq b))",
+                    "c2_a : A",
+                    "c2_X : forall _ : A, Prop",
+                    "c2_Xa : X a",
+                    "c2_XP : forall (a1 : A) (_ : X a1), ex (fun a2 : A => and (R a1 a2) (X a2))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _i _i ) as ( b & Rab & Xb ) .",
+                "tactic_sig_no_out_arg": "destruct ( _i _i _i ) as ( b & Rab & Xb ) .",
+                "tactic_args": [
+                    "c2_XP : forall (a1 : A) (_ : X a1), ex (fun a2 : A => and (R a1 a2) (X a2))",
+                    "c2_a : A",
+                    "c2_Xa : X a",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": [
+                    "c2_Xb : X b",
+                    "c2_Rab : R a b",
+                    "c2_b : A"
+                ]
+            },
+            {
+                "tactic_sig": "custom0 _i _i .",
+                "tactic_sig_no_out_arg": "custom0 _i _i .",
+                "tactic_args": [
+                    "c2_goal : ex (fun b : A => and (R a b) (infseq b))",
+                    "c2_b : A",
+                    "c2_X : forall _ : A, Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "infseq_coinduction_principle",
+        "proof": [
+            {
+                "tactic_sig": "Lemma infseq_coinduction_principle : forall ( X : A -> Prop ) , ( forall a , X a -> exists b , plus a b /\\ X b ) -> forall a , X a -> infseq a .",
+                "tactic_sig_no_out_arg": "Lemma infseq_coinduction_principle : forall ( X : A -> Prop ) , ( forall a , X a -> exists b , plus a b /\\ X b ) -> forall a , X a -> infseq a .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (X : forall _ : A, Prop)\n  (_ : forall (a : A) (_ : X a), ex (fun b : A => and (plus a b) (X b)))\n  (a : A) (_ : X a), infseq a",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros X H a0 Xa0 .",
+                "tactic_args": [
+                    "c1_goal : forall (X : forall _ : A, Prop)\n  (_ : forall (a : A) (_ : X a), ex (fun b : A => and (plus a b) (X b)))\n  (a : A) (_ : X a), infseq a"
+                ],
+                "tactic_res": [
+                    "c2_goal : infseq a0",
+                    "c2_X : forall _ : A, Prop",
+                    "c2_H : forall (a : A) (_ : X a), ex (fun b : A => and (plus a b) (X b))",
+                    "c2_a0 : A",
+                    "c2_Xa0 : X a0"
+                ]
+            },
+            {
+                "tactic_sig": "exists ( fun a => exists b , star a b /\\ _i b ) .",
+                "tactic_sig_no_out_arg": "exists ( fun a => exists b , star a b /\\ _i b ) .",
+                "tactic_args": [
+                    "c2_goal : infseq a0",
+                    "c2_X : forall _ : A, Prop"
+                ],
+                "tactic_res": [
+                    "c3_goal : and (ex (fun b : A => and (star a0 b) (X b)))\n  (forall (a1 : A) (_ : ex (fun b : A => and (star a1 b) (X b))),\n   ex\n     (fun a2 : A =>\n      and (R a1 a2) (ex (fun b : A => and (star a2 b) (X b)))))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c3_goal : and (ex (fun b : A => and (star a0 b) (X b)))\n  (forall (a1 : A) (_ : ex (fun b : A => and (star a1 b) (X b))),\n   ex\n     (fun a2 : A =>\n      and (R a1 a2) (ex (fun b : A => and (star a2 b) (X b)))))"
+                ],
+                "tactic_res": [
+                    "c4_goal : ex (fun b : A => and (star a0 b) (X b))",
+                    "c5_goal : forall (a1 : A) (_ : ex (fun b : A => and (star a1 b) (X b))),\nex\n  (fun a2 : A =>\n   and (R a1 a2) (ex (fun b : A => and (star a2 b) (X b))))"
+                ]
+            },
+            {
+                "tactic_sig": "exists _i .",
+                "tactic_sig_no_out_arg": "exists _i .",
+                "tactic_args": [
+                    "c4_goal : ex (fun b : A => and (star a0 b) (X b))",
+                    "c2_a0 : A"
+                ],
+                "tactic_res": [
+                    "c6_goal : and (star a0 a0) (X a0)"
+                ]
+            },
+            {
+                "tactic_sig": "auto using star_refl .",
+                "tactic_sig_no_out_arg": "auto using star_refl .",
+                "tactic_args": [
+                    "c6_goal : and (star a0 a0) (X a0)",
+                    "c2_Xa0 : X a0",
+                    "c2_a0 : A",
+                    "c2_X : forall _ : A, Prop",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o ( _o & _o & _o ) .",
+                "tactic_sig_no_out_arg": "intros a1 ( a2 & S12 & X2 ) .",
+                "tactic_args": [
+                    "c5_goal : forall (a1 : A) (_ : ex (fun b : A => and (star a1 b) (X b))),\nex\n  (fun a2 : A =>\n   and (R a1 a2) (ex (fun b : A => and (star a2 b) (X b))))"
+                ],
+                "tactic_res": [
+                    "c7_goal : ex\n  (fun a2 : A =>\n   and (R a1 a2) (ex (fun b : A => and (star a2 b) (X b))))",
+                    "c7_a1 : A",
+                    "c7_a2 : A",
+                    "c7_S12 : star a1 a2",
+                    "c7_X2 : X a2"
+                ]
+            },
+            {
+                "tactic_sig": "inversion _i .",
+                "tactic_sig_no_out_arg": "inversion _i .",
+                "tactic_args": [
+                    "c7_goal : ex\n  (fun a2 : A =>\n   and (R a1 a2) (ex (fun b : A => and (star a2 b) (X b))))",
+                    "c7_S12 : star a1 a2"
+                ],
+                "tactic_res": [
+                    "c8_goal : ex\n  (fun a3 : A =>\n   and (R a2 a3) (ex (fun b : A => and (star a3 b) (X b))))",
+                    "c8_H1 : eq a1 a2",
+                    "c8_H0 : eq a a1",
+                    "c8_a : A",
+                    "c9_goal : ex\n  (fun a2 : A =>\n   and (R a1 a2) (ex (fun b : A => and (star a2 b) (X b))))",
+                    "c9_H3 : eq c a2",
+                    "c9_H2 : eq a a1",
+                    "c9_H1 : star b a2",
+                    "c9_H0 : R a1 b",
+                    "c9_c : A",
+                    "c9_b : A",
+                    "c9_a : A"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _i _i ) as ( a3 & P23 & X3 ) .",
+                "tactic_sig_no_out_arg": "destruct ( _i _i _i ) as ( a3 & P23 & X3 ) .",
+                "tactic_args": [
+                    "c2_H : forall (a : A) (_ : X a), ex (fun b : A => and (plus a b) (X b))",
+                    "c7_a2 : A",
+                    "c7_X2 : X a2",
+                    "c8_H1 : eq a1 a2",
+                    "c8_H0 : eq a a1",
+                    "c7_S12 : star a1 a2",
+                    "c2_Xa0 : X a0",
+                    "c2_X : forall _ : A, Prop",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": [
+                    "c8_X3 : X a3",
+                    "c8_P23 : plus a2 a3",
+                    "c8_a3 : A"
+                ]
+            },
+            {
+                "tactic_sig": "inversion _i .",
+                "tactic_sig_no_out_arg": "inversion _i .",
+                "tactic_args": [
+                    "c8_P23 : plus a2 a3"
+                ],
+                "tactic_res": [
+                    "c8_H5 : eq c a3",
+                    "c8_H4 : eq a4 a2",
+                    "c8_H3 : star b a3",
+                    "c8_H2 : R a2 b",
+                    "c8_c : A",
+                    "c8_b : A",
+                    "c8_a4 : A"
+                ]
+            },
+            {
+                "tactic_sig": "custom0 _i _i .",
+                "tactic_sig_no_out_arg": "custom0 _i _i .",
+                "tactic_args": [
+                    "c8_goal : ex\n  (fun a3 : A =>\n   and (R a2 a3) (ex (fun b : A => and (star a3 b) (X b))))",
+                    "c8_b : A",
+                    "c8_a3 : A"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "custom0 _i _i .",
+                "tactic_sig_no_out_arg": "custom0 _i _i .",
+                "tactic_args": [
+                    "c9_goal : ex\n  (fun a2 : A =>\n   and (R a1 a2) (ex (fun b : A => and (star a2 b) (X b))))",
+                    "c9_b : A",
+                    "c7_a2 : A"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "star_star_inv",
+        "proof": [
+            {
+                "tactic_sig": "Lemma star_star_inv : forall a b , star a b -> forall c , star a c -> star b c \\/ star c b .",
+                "tactic_sig_no_out_arg": "Lemma star_star_inv : forall a b , star a b -> forall c , star a c -> star b c \\/ star c b .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b : A) (_ : star a b) (c : A) (_ : star a c),\nor (star b c) (star c b)",
+                    "c1_R_functional : forall (a b c : A) (_ : R a b) (_ : R a c), eq b c",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "induction 1 .",
+                "tactic_sig_no_out_arg": "induction 1 .",
+                "tactic_args": [
+                    "c1_goal : forall (a b : A) (_ : star a b) (c : A) (_ : star a c),\nor (star b c) (star c b)"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall (c : A) (_ : star a c), or (star a c) (star c a)",
+                    "c2_a : A",
+                    "c3_goal : forall (c0 : A) (_ : star a c0), or (star c c0) (star c0 c)",
+                    "c3_IHstar : forall (c0 : A) (_ : star b c0), or (star c c0) (star c0 c)",
+                    "c3_H0 : star b c",
+                    "c3_H : R a b",
+                    "c3_c : A",
+                    "c3_b : A",
+                    "c3_a : A"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros c H .",
+                "tactic_args": [
+                    "c2_goal : forall (c : A) (_ : star a c), or (star a c) (star c a)"
+                ],
+                "tactic_res": [
+                    "c4_goal : or (star a c) (star c a)",
+                    "c4_c : A",
+                    "c4_H : star a c"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : or (star a c) (star c a)",
+                    "c4_H : star a c",
+                    "c2_a : A",
+                    "c4_c : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros c0 H1 .",
+                "tactic_args": [
+                    "c3_goal : forall (c0 : A) (_ : star a c0), or (star c c0) (star c0 c)"
+                ],
+                "tactic_res": [
+                    "c5_goal : or (star c c0) (star c0 c)",
+                    "c5_c0 : A",
+                    "c5_H1 : star a c0"
+                ]
+            },
+            {
+                "tactic_sig": "inversion _i .",
+                "tactic_sig_no_out_arg": "inversion _i .",
+                "tactic_args": [
+                    "c5_goal : or (star c c0) (star c0 c)",
+                    "c5_H1 : star a c0"
+                ],
+                "tactic_res": [
+                    "c6_goal : or (star c c0) (star c0 c)",
+                    "c6_H3 : eq a c0",
+                    "c6_H2 : eq a0 a",
+                    "c6_a0 : A",
+                    "c7_goal : or (star c c0) (star c0 c)",
+                    "c7_H5 : eq c1 c0",
+                    "c7_H4 : eq a0 a",
+                    "c7_H3 : star b0 c0",
+                    "c7_H2 : R a b0",
+                    "c7_c1 : A",
+                    "c7_b0 : A",
+                    "c7_a0 : A"
+                ]
+            },
+            {
+                "tactic_sig": "subst _i _i .",
+                "tactic_sig_no_out_arg": "subst _i _i .",
+                "tactic_args": [
+                    "c6_a0 : A",
+                    "c3_a : A",
+                    "c6_H3 : eq a c0",
+                    "c6_H2 : eq a0 a"
+                ],
+                "tactic_res": [
+                    "c6_H : R c0 b",
+                    "c6_H1 : star c0 c0"
+                ]
+            },
+            {
+                "tactic_sig": "right .",
+                "tactic_sig_no_out_arg": "right .",
+                "tactic_args": [
+                    "c6_goal : or (star c c0) (star c0 c)"
+                ],
+                "tactic_res": [
+                    "c8_goal : star c0 c"
+                ]
+            },
+            {
+                "tactic_sig": "eauto using star .",
+                "tactic_sig_no_out_arg": "eauto using star .",
+                "tactic_args": [
+                    "c8_goal : star c0 c",
+                    "c3_H0 : star b c",
+                    "c6_H : R c0 b",
+                    "c3_c : A",
+                    "c5_c0 : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c7_goal : or (star c c0) (star c0 c)",
+                    "c3_IHstar : forall (c0 : A) (_ : star b c0), or (star c c0) (star c0 c)"
+                ],
+                "tactic_res": [
+                    "c9_goal : star b c0"
+                ]
+            },
+            {
+                "tactic_sig": "custom3 _i _i _i .",
+                "tactic_sig_no_out_arg": "custom3 _i _i _i .",
+                "tactic_args": [
+                    "c9_goal : star b c0",
+                    "c3_b : A",
+                    "c7_b0 : A",
+                    "c1_R_functional : forall (a b c : A) (_ : R a b) (_ : R a c), eq b c"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "finseq_unique",
+        "proof": [
+            {
+                "tactic_sig": "Lemma finseq_unique : forall a b b' , star a b -> irred b -> star a b' -> irred b' -> b = b' .",
+                "tactic_sig_no_out_arg": "Lemma finseq_unique : forall a b b' , star a b -> irred b -> star a b' -> irred b' -> b = b' .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b b' : A) (_ : star a b) (_ : irred b) (_ : star a b')\n  (_ : irred b'), eq b b'",
+                    "c1_R_functional : forall (a b c : A) (_ : R a b) (_ : R a c), eq b c",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c1_goal : forall (a b b' : A) (_ : star a b) (_ : irred b) (_ : star a b')\n  (_ : irred b'), eq b b'"
+                ],
+                "tactic_res": [
+                    "c2_goal : eq b b'",
+                    "c2_a : A",
+                    "c2_b : A",
+                    "c2_b' : A",
+                    "c2_H : star a b",
+                    "c2_H0 : irred b",
+                    "c2_H1 : star a b'",
+                    "c2_H2 : irred b'"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( star_star_inv _i _i ) as [  _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( star_star_inv _i _i ) .",
+                "tactic_args": [
+                    "c2_goal : eq b b'",
+                    "c2_H : star a b",
+                    "c2_H1 : star a b'",
+                    "c2_H2 : irred b'",
+                    "c2_H0 : irred b",
+                    "c2_b : A",
+                    "c2_b' : A",
+                    "c1_R_functional : forall (a b c : A) (_ : R a b) (_ : R a c), eq b c",
+                    "c1_A : Type"
+                ],
+                "tactic_res": [
+                    "c3_goal : eq b b'",
+                    "c3_H3 : star b b'",
+                    "c4_goal : eq b b'",
+                    "c4_H3 : star b' b"
+                ]
+            },
+            {
+                "tactic_sig": "inversion _i .",
+                "tactic_sig_no_out_arg": "inversion _i .",
+                "tactic_args": [
+                    "c3_goal : eq b b'",
+                    "c3_H3 : star b b'"
+                ],
+                "tactic_res": [
+                    "c5_goal : eq b' b'",
+                    "c5_H5 : eq b b'",
+                    "c5_H4 : eq a0 b",
+                    "c5_a0 : A",
+                    "c6_goal : eq b b'",
+                    "c6_H7 : eq c b'",
+                    "c6_H6 : eq a0 b",
+                    "c6_H5 : star b0 b'",
+                    "c6_H4 : R b b0",
+                    "c6_c : A",
+                    "c6_b0 : A",
+                    "c6_a0 : A"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c5_goal : eq b' b'",
+                    "c2_b' : A",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "elim ( _i _ _i ) .",
+                "tactic_sig_no_out_arg": "elim ( _i _ _i ) .",
+                "tactic_args": [
+                    "c6_goal : eq b b'",
+                    "c2_H0 : irred b",
+                    "c6_H4 : R b b0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "inversion _i .",
+                "tactic_sig_no_out_arg": "inversion _i .",
+                "tactic_args": [
+                    "c4_goal : eq b b'",
+                    "c4_H3 : star b' b"
+                ],
+                "tactic_res": [
+                    "c7_goal : eq b b",
+                    "c7_H5 : eq b' b",
+                    "c7_H4 : eq a0 b'",
+                    "c7_a0 : A",
+                    "c8_goal : eq b b'",
+                    "c8_H7 : eq c b",
+                    "c8_H6 : eq a0 b'",
+                    "c8_H5 : star b0 b",
+                    "c8_H4 : R b' b0",
+                    "c8_c : A",
+                    "c8_b0 : A",
+                    "c8_a0 : A"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c7_goal : eq b b",
+                    "c2_b : A",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "elim ( _i _ _i ) .",
+                "tactic_sig_no_out_arg": "elim ( _i _ _i ) .",
+                "tactic_args": [
+                    "c8_goal : eq b b'",
+                    "c2_H2 : irred b'",
+                    "c8_H4 : R b' b0"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "infseq_inv'",
+        "proof": [
+            {
+                "tactic_sig": "Lemma infseq_inv' : forall a b , R a b -> infseq a -> infseq b .",
+                "tactic_sig_no_out_arg": "Lemma infseq_inv' : forall a b , R a b -> infseq a -> infseq b .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b : A) (_ : R a b) (_ : infseq a), infseq b",
+                    "c1_R_functional : forall (a b c : A) (_ : R a b) (_ : R a c), eq b c",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros a b Rab Ia .",
+                "tactic_args": [
+                    "c1_goal : forall (a b : A) (_ : R a b) (_ : infseq a), infseq b"
+                ],
+                "tactic_res": [
+                    "c2_goal : infseq b",
+                    "c2_a : A",
+                    "c2_b : A",
+                    "c2_Rab : R a b",
+                    "c2_Ia : infseq a"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( infseq_inv _i ) as ( b' & Rab' & Xb' ) .",
+                "tactic_sig_no_out_arg": "destruct ( infseq_inv _i ) as ( b' & Rab' & Xb' ) .",
+                "tactic_args": [
+                    "c2_Ia : infseq a",
+                    "c2_Rab : R a b",
+                    "c2_b : A",
+                    "c1_R_functional : forall (a b c : A) (_ : R a b) (_ : R a c), eq b c",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": [
+                    "c2_Xb' : infseq b'",
+                    "c2_Rab' : R a b'",
+                    "c2_b' : A"
+                ]
+            },
+            {
+                "tactic_sig": "custom3 _i _i _i .",
+                "tactic_sig_no_out_arg": "custom3 _i _i _i .",
+                "tactic_args": [
+                    "c2_goal : infseq b",
+                    "c2_b' : A",
+                    "c2_b : A",
+                    "c1_R_functional : forall (a b c : A) (_ : R a b) (_ : R a c), eq b c"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "infseq_star_inv",
+        "proof": [
+            {
+                "tactic_sig": "Lemma infseq_star_inv : forall a b , star a b -> infseq a -> infseq b .",
+                "tactic_sig_no_out_arg": "Lemma infseq_star_inv : forall a b , star a b -> infseq a -> infseq b .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b : A) (_ : star a b) (_ : infseq a), infseq b",
+                    "c1_R_functional : forall (a b c : A) (_ : R a b) (_ : R a c), eq b c",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "induction 1 .",
+                "tactic_sig_no_out_arg": "induction 1 .",
+                "tactic_args": [
+                    "c1_goal : forall (a b : A) (_ : star a b) (_ : infseq a), infseq b"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall _ : infseq a, infseq a",
+                    "c2_a : A",
+                    "c3_goal : forall _ : infseq a, infseq c",
+                    "c3_IHstar : forall _ : infseq b, infseq c",
+                    "c3_H0 : star b c",
+                    "c3_H : R a b",
+                    "c3_c : A",
+                    "c3_b : A",
+                    "c3_a : A"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros H .",
+                "tactic_args": [
+                    "c2_goal : forall _ : infseq a, infseq a"
+                ],
+                "tactic_res": [
+                    "c4_goal : infseq a",
+                    "c4_H : infseq a"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : infseq a",
+                    "c4_H : infseq a",
+                    "c2_a : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros H1 .",
+                "tactic_args": [
+                    "c3_goal : forall _ : infseq a, infseq c"
+                ],
+                "tactic_res": [
+                    "c5_goal : infseq c",
+                    "c5_H1 : infseq a"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c5_goal : infseq c",
+                    "c3_IHstar : forall _ : infseq b, infseq c"
+                ],
+                "tactic_res": [
+                    "c6_goal : infseq b"
+                ]
+            },
+            {
+                "tactic_sig": "custom5 infseq_inv' _i .",
+                "tactic_sig_no_out_arg": "custom5 infseq_inv' _i .",
+                "tactic_args": [
+                    "c6_goal : infseq b",
+                    "c3_a : A"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "infseq_finseq_excl",
+        "proof": [
+            {
+                "tactic_sig": "Lemma infseq_finseq_excl : forall a b , star a b -> irred b -> infseq a -> False .",
+                "tactic_sig_no_out_arg": "Lemma infseq_finseq_excl : forall a b , star a b -> irred b -> infseq a -> False .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b : A) (_ : star a b) (_ : irred b) (_ : infseq a), False",
+                    "c1_R_functional : forall (a b c : A) (_ : R a b) (_ : R a c), eq b c",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros a b H H0 H1 .",
+                "tactic_args": [
+                    "c1_goal : forall (a b : A) (_ : star a b) (_ : irred b) (_ : infseq a), False"
+                ],
+                "tactic_res": [
+                    "c2_goal : False",
+                    "c2_a : A",
+                    "c2_b : A",
+                    "c2_H : star a b",
+                    "c2_H0 : irred b",
+                    "c2_H1 : infseq a"
+                ]
+            },
+            {
+                "tactic_sig": "custom1 _i infseq_star_inv .",
+                "tactic_sig_no_out_arg": "custom1 _i infseq_star_inv .",
+                "tactic_args": [
+                    "c2_b : A"
+                ],
+                "tactic_res": [
+                    "c2_Rbc : R b c",
+                    "c2_c : A"
+                ]
+            },
+            {
+                "tactic_sig": "apply ( _i _i ) .",
+                "tactic_sig_no_out_arg": "apply ( _i _i ) .",
+                "tactic_args": [
+                    "c2_goal : False",
+                    "c2_H0 : irred b",
+                    "c2_c : A"
+                ],
+                "tactic_res": [
+                    "c3_goal : R b c"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c3_goal : R b c",
+                    "c2_Rbc : R b c",
+                    "c2_c : A",
+                    "c2_b : A",
+                    "c1_R : forall (_ : A) (_ : A), Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "infseq_all_seq_inf",
+        "proof": [
+            {
+                "tactic_sig": "Lemma infseq_all_seq_inf : forall a , infseq a -> all_seq_inf a .",
+                "tactic_sig_no_out_arg": "Lemma infseq_all_seq_inf : forall a , infseq a -> all_seq_inf a .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a : A) (_ : infseq a), all_seq_inf a",
+                    "c1_R_functional : forall (a b c : A) (_ : R a b) (_ : R a c), eq b c",
+                    "c1_R : forall (_ : A) (_ : A), Prop",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros a H .",
+                "tactic_args": [
+                    "c1_goal : forall (a : A) (_ : infseq a), all_seq_inf a"
+                ],
+                "tactic_res": [
+                    "c2_goal : all_seq_inf a",
+                    "c2_a : A",
+                    "c2_H : infseq a"
+                ]
+            },
+            {
+                "tactic_sig": "unfold _i .",
+                "tactic_sig_no_out_arg": "unfold _i .",
+                "tactic_args": [
+                    "c2_goal : all_seq_inf a",
+                    "_global_all_seq_inf : forall _ : A, Prop"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall (b : A) (_ : star a b), ex (fun c : A => R b c)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros b H0 .",
+                "tactic_args": [
+                    "c3_goal : forall (b : A) (_ : star a b), ex (fun c : A => R b c)"
+                ],
+                "tactic_res": [
+                    "c4_goal : ex (fun c : A => R b c)",
+                    "c4_b : A",
+                    "c4_H0 : star a b"
+                ]
+            },
+            {
+                "tactic_sig": "custom1 _i infseq_star_inv .",
+                "tactic_sig_no_out_arg": "custom1 _i infseq_star_inv .",
+                "tactic_args": [
+                    "c4_b : A"
+                ],
+                "tactic_res": [
+                    "c4_Rbc : R b c",
+                    "c4_c : A"
+                ]
+            },
+            {
+                "tactic_sig": "custom7 _i .",
+                "tactic_sig_no_out_arg": "custom7 _i .",
+                "tactic_args": [
+                    "c4_goal : ex (fun c : A => R b c)",
+                    "c4_c : A"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

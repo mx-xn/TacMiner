@@ -1,0 +1,3764 @@
+[
+    {
+        "lemma_name": "index_inj",
+        "proof": [
+            {
+                "tactic_sig": "destruct x as [| | ] .",
+                "tactic_sig_no_out_arg": "destruct x .",
+                "tactic_args": [
+                    "_goal : forall (x y : t) (_ : eq (index x) (index y)), eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : forall (y : t) (_ : eq (index Full) (index y)), eq Full y",
+                    "_goal : forall (y : t) (_ : eq (index Low) (index y)), eq Low y",
+                    "_goal : forall (y : t) (_ : eq (index High) (index y)), eq High y"
+                ]
+            },
+            {
+                "tactic_sig": "destruct y as [| | ] .",
+                "tactic_sig_no_out_arg": "destruct y .",
+                "tactic_args": [
+                    "_goal : forall (y : t) (_ : eq (index Full) (index y)), eq Full y"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq (index Full) (index Full), eq Full Full",
+                    "_goal : forall _ : eq (index Full) (index Low), eq Full Low",
+                    "_goal : forall _ : eq (index Full) (index High), eq Full High"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall _ : eq (index Full) (index Full), eq Full Full"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq 1%positive 1%positive, eq Full Full"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : forall _ : eq 1%positive 1%positive, eq Full Full"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall _ : eq (index Full) (index Low), eq Full Low"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq 1%positive 2%positive, eq Full Low"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : forall _ : eq 1%positive 2%positive, eq Full Low"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall _ : eq (index Full) (index High), eq Full High"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq 1%positive 3%positive, eq Full High"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : forall _ : eq 1%positive 3%positive, eq Full High"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct y as [| | ] .",
+                "tactic_sig_no_out_arg": "destruct y .",
+                "tactic_args": [
+                    "_goal : forall (y : t) (_ : eq (index Low) (index y)), eq Low y"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq (index Low) (index Full), eq Low Full",
+                    "_goal : forall _ : eq (index Low) (index Low), eq Low Low",
+                    "_goal : forall _ : eq (index Low) (index High), eq Low High"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall _ : eq (index Low) (index Full), eq Low Full"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq 2%positive 1%positive, eq Low Full"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : forall _ : eq 2%positive 1%positive, eq Low Full"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall _ : eq (index Low) (index Low), eq Low Low"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq 2%positive 2%positive, eq Low Low"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : forall _ : eq 2%positive 2%positive, eq Low Low"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall _ : eq (index Low) (index High), eq Low High"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq 2%positive 3%positive, eq Low High"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : forall _ : eq 2%positive 3%positive, eq Low High"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct y as [| | ] .",
+                "tactic_sig_no_out_arg": "destruct y .",
+                "tactic_args": [
+                    "_goal : forall (y : t) (_ : eq (index High) (index y)), eq High y"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq (index High) (index Full), eq High Full",
+                    "_goal : forall _ : eq (index High) (index Low), eq High Low",
+                    "_goal : forall _ : eq (index High) (index High), eq High High"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall _ : eq (index High) (index Full), eq High Full"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq 3%positive 1%positive, eq High Full"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : forall _ : eq 3%positive 1%positive, eq High Full"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall _ : eq (index High) (index Low), eq High Low"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq 3%positive 2%positive, eq High Low"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : forall _ : eq 3%positive 2%positive, eq High Low"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall _ : eq (index High) (index High), eq High High"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eq 3%positive 3%positive, eq High High"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : forall _ : eq 3%positive 3%positive, eq High High"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "eq",
+        "proof": [
+            {
+                "tactic_sig": "decide equality .",
+                "tactic_sig_no_out_arg": "decide equality .",
+                "tactic_args": [
+                    "_goal : sumbool (eq x y) (not (eq x y))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "eq_refl",
+        "proof": []
+    },
+    {
+        "lemma_name": "eq_sym",
+        "proof": []
+    },
+    {
+        "lemma_name": "eq_trans",
+        "proof": []
+    },
+    {
+        "lemma_name": "lt_trans",
+        "proof": [
+            {
+                "tactic_sig": "unfold lt .",
+                "tactic_sig_no_out_arg": "unfold lt .",
+                "tactic_args": [
+                    "_goal : forall (x y z : t) (_ : lt x y) (_ : lt y z), lt x z"
+                ],
+                "tactic_res": [
+                    "_goal : forall (x y z : t)\n  (_ : or (Plt (ereg x) (ereg y))\n         (and (Logic.eq (ereg x) (ereg y))\n            (or (OrderedLoc.lt (eloc x) (eloc y))\n               (and (Logic.eq (eloc x) (eloc y))\n                  (OrderedEqKind.lt (ekind x) (ekind y))))))\n  (_ : or (Plt (ereg y) (ereg z))\n         (and (Logic.eq (ereg y) (ereg z))\n            (or (OrderedLoc.lt (eloc y) (eloc z))\n               (and (Logic.eq (eloc y) (eloc z))\n                  (OrderedEqKind.lt (ekind y) (ekind z)))))),\nor (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (x y z : t)\n  (_ : or (Plt (ereg x) (ereg y))\n         (and (Logic.eq (ereg x) (ereg y))\n            (or (OrderedLoc.lt (eloc x) (eloc y))\n               (and (Logic.eq (eloc x) (eloc y))\n                  (OrderedEqKind.lt (ekind x) (ekind y))))))\n  (_ : or (Plt (ereg y) (ereg z))\n         (and (Logic.eq (ereg y) (ereg z))\n            (or (OrderedLoc.lt (eloc y) (eloc z))\n               (and (Logic.eq (eloc y) (eloc z))\n                  (OrderedEqKind.lt (ekind y) (ekind z)))))),\nor (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "z : True",
+                    "y : True",
+                    "x : True",
+                    "H : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc y))\n        (and (Logic.eq (eloc x) (eloc y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))",
+                    "H0 : or (Plt (ereg y) (ereg z))\n  (and (Logic.eq (ereg y) (ereg z))\n     (or (OrderedLoc.lt (eloc y) (eloc z))\n        (and (Logic.eq (eloc y) (eloc z))\n           (OrderedEqKind.lt (ekind y) (ekind z)))))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc y))\n        (and (Logic.eq (eloc x) (eloc y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "H : Plt (ereg x) (ereg y)",
+                    "H : and (Logic.eq (ereg x) (ereg y))\n  (or (OrderedLoc.lt (eloc x) (eloc y))\n     (and (Logic.eq (eloc x) (eloc y))\n        (OrderedEqKind.lt (ekind x) (ekind y))))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H0 : or (Plt (ereg y) (ereg z))\n  (and (Logic.eq (ereg y) (ereg z))\n     (or (OrderedLoc.lt (eloc y) (eloc z))\n        (and (Logic.eq (eloc y) (eloc z))\n           (OrderedEqKind.lt (ekind y) (ekind z)))))"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "H0 : Plt (ereg y) (ereg z)",
+                    "H0 : and (Logic.eq (ereg y) (ereg z))\n  (or (OrderedLoc.lt (eloc y) (eloc z))\n     (and (Logic.eq (eloc y) (eloc z))\n        (OrderedEqKind.lt (ekind y) (ekind z))))"
+                ]
+            },
+            {
+                "tactic_sig": "left .",
+                "tactic_sig_no_out_arg": "left .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ],
+                "tactic_res": [
+                    "_goal : Plt (ereg x) (ereg z)"
+                ]
+            },
+            {
+                "tactic_sig": "eapply Plt_trans .",
+                "tactic_sig_no_out_arg": "eapply Plt_trans .",
+                "tactic_args": [
+                    "_goal : Plt (ereg x) (ereg z)"
+                ],
+                "tactic_res": [
+                    "_goal : Plt (ereg x) ?y",
+                    "_goal : Plt ?y (ereg z)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : Plt (ereg x) ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : Plt ?y (ereg z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H0 : and (Logic.eq (ereg y) (ereg z))\n  (or (OrderedLoc.lt (eloc y) (eloc z))\n     (and (Logic.eq (eloc y) (eloc z))\n        (OrderedEqKind.lt (ekind y) (ekind z))))"
+                ],
+                "tactic_res": [
+                    "H1 : or (OrderedLoc.lt (eloc y) (eloc z))\n  (and (Logic.eq (eloc y) (eloc z))\n     (OrderedEqKind.lt (ekind y) (ekind z)))",
+                    "H0 : Logic.eq (ereg y) (ereg z)"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- _i .",
+                "tactic_sig_no_out_arg": "rewrite <- _i .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "H0 : Logic.eq (ereg y) (ereg z)"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H : and (Logic.eq (ereg x) (ereg y))\n  (or (OrderedLoc.lt (eloc x) (eloc y))\n     (and (Logic.eq (eloc x) (eloc y))\n        (OrderedEqKind.lt (ekind x) (ekind y))))"
+                ],
+                "tactic_res": [
+                    "H1 : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (OrderedEqKind.lt (ekind x) (ekind y)))",
+                    "H : Logic.eq (ereg x) (ereg y)"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "H : Logic.eq (ereg x) (ereg y)"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg y) (ereg z))\n  (and (Logic.eq (ereg y) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H0 : or (Plt (ereg y) (ereg z))\n  (and (Logic.eq (ereg y) (ereg z))\n     (or (OrderedLoc.lt (eloc y) (eloc z))\n        (and (Logic.eq (eloc y) (eloc z))\n           (OrderedEqKind.lt (ekind y) (ekind z)))))"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg y) (ereg z))\n  (and (Logic.eq (ereg y) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "H0 : Plt (ereg y) (ereg z)",
+                    "H0 : and (Logic.eq (ereg y) (ereg z))\n  (or (OrderedLoc.lt (eloc y) (eloc z))\n     (and (Logic.eq (eloc y) (eloc z))\n        (OrderedEqKind.lt (ekind y) (ekind z))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg y) (ereg z))\n  (and (Logic.eq (ereg y) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H0 : and (Logic.eq (ereg y) (ereg z))\n  (or (OrderedLoc.lt (eloc y) (eloc z))\n     (and (Logic.eq (eloc y) (eloc z))\n        (OrderedEqKind.lt (ekind y) (ekind z))))"
+                ],
+                "tactic_res": [
+                    "H2 : or (OrderedLoc.lt (eloc y) (eloc z))\n  (and (Logic.eq (eloc y) (eloc z))\n     (OrderedEqKind.lt (ekind y) (ekind z)))",
+                    "H0 : Logic.eq (ereg y) (ereg z)"
+                ]
+            },
+            {
+                "tactic_sig": "right .",
+                "tactic_sig_no_out_arg": "right .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg y) (ereg z))\n  (and (Logic.eq (ereg y) (ereg z))\n     (or (OrderedLoc.lt (eloc x) (eloc z))\n        (and (Logic.eq (eloc x) (eloc z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ],
+                "tactic_res": [
+                    "_goal : and (Logic.eq (ereg y) (ereg z))\n  (or (OrderedLoc.lt (eloc x) (eloc z))\n     (and (Logic.eq (eloc x) (eloc z))\n        (OrderedEqKind.lt (ekind x) (ekind z))))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : and (Logic.eq (ereg y) (ereg z))\n  (or (OrderedLoc.lt (eloc x) (eloc z))\n     (and (Logic.eq (eloc x) (eloc z))\n        (OrderedEqKind.lt (ekind x) (ekind z))))"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq (ereg y) (ereg z)",
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Logic.eq (ereg y) (ereg z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intuition .",
+                "tactic_sig_no_out_arg": "intuition .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))",
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))",
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))",
+                    "H1 : OrderedLoc.lt (eloc y) (eloc z)",
+                    "H3 : OrderedLoc.lt (eloc x) (eloc y)",
+                    "H4 : OrderedEqKind.lt (ekind y) (ekind z)",
+                    "H2 : Logic.eq (eloc y) (eloc z)",
+                    "H3 : OrderedLoc.lt (eloc y) (eloc z)",
+                    "H4 : OrderedEqKind.lt (ekind x) (ekind y)",
+                    "H1 : Logic.eq (eloc x) (eloc y)",
+                    "H5 : OrderedEqKind.lt (ekind y) (ekind z)"
+                ]
+            },
+            {
+                "tactic_sig": "left .",
+                "tactic_sig_no_out_arg": "left .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedLoc.lt (eloc x) (eloc z)"
+                ]
+            },
+            {
+                "tactic_sig": "eapply OrderedLoc.lt_trans .",
+                "tactic_sig_no_out_arg": "eapply OrderedLoc.lt_trans .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.lt (eloc x) (eloc z)"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedLoc.lt (eloc x) ?y",
+                    "_goal : OrderedLoc.lt ?y (eloc z)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.lt (eloc x) ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.lt ?y (eloc z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "left .",
+                "tactic_sig_no_out_arg": "left .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedLoc.lt (eloc x) (eloc z)"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.lt (eloc x) (eloc z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "left .",
+                "tactic_sig_no_out_arg": "left .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedLoc.lt (eloc x) (eloc z)"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.lt (eloc x) (eloc z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "right .",
+                "tactic_sig_no_out_arg": "right .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))"
+                ],
+                "tactic_res": [
+                    "_goal : and (Logic.eq (eloc x) (eloc z)) (OrderedEqKind.lt (ekind x) (ekind z))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : and (Logic.eq (eloc x) (eloc z)) (OrderedEqKind.lt (ekind x) (ekind z))"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq (eloc x) (eloc z)",
+                    "_goal : OrderedEqKind.lt (ekind x) (ekind z)"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : Logic.eq (eloc x) (eloc z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eapply OrderedEqKind.lt_trans .",
+                "tactic_sig_no_out_arg": "eapply OrderedEqKind.lt_trans .",
+                "tactic_args": [
+                    "_goal : OrderedEqKind.lt (ekind x) (ekind z)"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedEqKind.lt (ekind x) ?y",
+                    "_goal : OrderedEqKind.lt ?y (ekind z)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedEqKind.lt (ekind x) ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedEqKind.lt ?y (ekind z)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "lt_not_eq",
+        "proof": [
+            {
+                "tactic_sig": "unfold lt , eq .",
+                "tactic_sig_no_out_arg": "unfold lt , eq .",
+                "tactic_args": [
+                    "_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+                ],
+                "tactic_res": [
+                    "_goal : forall (x y : t)\n  (_ : or (Plt (ereg x) (ereg y))\n         (and (Logic.eq (ereg x) (ereg y))\n            (or (OrderedLoc.lt (eloc x) (eloc y))\n               (and (Logic.eq (eloc x) (eloc y))\n                  (OrderedEqKind.lt (ekind x) (ekind y)))))),\nnot (Logic.eq x y)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (x y : t)\n  (_ : or (Plt (ereg x) (ereg y))\n         (and (Logic.eq (ereg x) (ereg y))\n            (or (OrderedLoc.lt (eloc x) (eloc y))\n               (and (Logic.eq (eloc x) (eloc y))\n                  (OrderedEqKind.lt (ekind x) (ekind y)))))),\nnot (Logic.eq x y)"
+                ],
+                "tactic_res": [
+                    "_goal : not (Logic.eq x y)",
+                    "y : True",
+                    "x : True",
+                    "H : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc y))\n        (and (Logic.eq (eloc x) (eloc y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : not (Logic.eq x y)"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : Logic.eq x y, False"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall _ : Logic.eq x y, False"
+                ],
+                "tactic_res": [
+                    "_goal : False",
+                    "H0 : Logic.eq x y"
+                ]
+            },
+            {
+                "tactic_sig": "subst _i .",
+                "tactic_sig_no_out_arg": "subst _i .",
+                "tactic_args": [
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "H : or (Plt (ereg x) (ereg x))\n  (and (Logic.eq (ereg x) (ereg x))\n     (or (OrderedLoc.lt (eloc x) (eloc x))\n        (and (Logic.eq (eloc x) (eloc x))\n           (OrderedEqKind.lt (ekind x) (ekind x)))))"
+                ]
+            },
+            {
+                "tactic_sig": "intuition .",
+                "tactic_sig_no_out_arg": "intuition .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "_goal : False",
+                    "_goal : False",
+                    "H0 : Plt (ereg x) (ereg x)",
+                    "H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                    "H : Logic.eq (ereg x) (ereg x)",
+                    "H2 : OrderedEqKind.lt (ekind x) (ekind x)",
+                    "H1 : Logic.eq (eloc x) (eloc x)"
+                ]
+            },
+            {
+                "tactic_sig": "eelim Plt_strict .",
+                "tactic_sig_no_out_arg": "eelim Plt_strict .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": [
+                    "_goal : Plt ?p ?p"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : Plt ?p ?p"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eelim OrderedLoc.lt_not_eq .",
+                "tactic_sig_no_out_arg": "eelim OrderedLoc.lt_not_eq .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedLoc.lt ?x ?y",
+                    "_goal : OrderedLoc.eq ?x ?y"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.lt ?x ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.eq ?x ?y"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq (eloc x) (eloc x)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Logic.eq (eloc x) (eloc x)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eelim OrderedEqKind.lt_not_eq .",
+                "tactic_sig_no_out_arg": "eelim OrderedEqKind.lt_not_eq .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedEqKind.lt ?x ?y",
+                    "_goal : OrderedEqKind.eq ?x ?y"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedEqKind.lt ?x ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : OrderedEqKind.eq ?x ?y"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq (ekind x) (ekind x)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Logic.eq (ekind x) (ekind x)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "compare",
+        "proof": [
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall x y : t, Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : Compare lt eq x y",
+                    "y : True",
+                    "x : True"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( OrderedPositive.compare ( ereg _i ) ( ereg _i ) ) as [_o | _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( OrderedPositive.compare ( ereg _i ) ( ereg _i ) ) .",
+                "tactic_args": [
+                    "x : True",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : Compare lt eq x y",
+                    "_goal : Compare lt eq x y",
+                    "l : OrderedPositive.lt (ereg x) (ereg y)",
+                    "e : OrderedPositive.eq (ereg x) (ereg y)",
+                    "l : OrderedPositive.lt (ereg y) (ereg x)"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_LT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt x y), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt x y"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt x y"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc y))\n        (and (Logic.eq (eloc x) (eloc y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc y))\n        (and (Logic.eq (eloc x) (eloc y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct ( OrderedLoc.compare ( eloc _i ) ( eloc _i ) ) as [_o | _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( OrderedLoc.compare ( eloc _i ) ( eloc _i ) ) .",
+                "tactic_args": [
+                    "x : True",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : Compare lt eq x y",
+                    "_goal : Compare lt eq x y",
+                    "l : OrderedLoc.lt (eloc x) (eloc y)",
+                    "e0 : OrderedLoc.eq (eloc x) (eloc y)",
+                    "l : OrderedLoc.lt (eloc y) (eloc x)"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_LT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt x y), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt x y"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt x y"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc y))\n        (and (Logic.eq (eloc x) (eloc y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc y))\n        (and (Logic.eq (eloc x) (eloc y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct ( OrderedEqKind.compare ( ekind _i ) ( ekind _i ) ) as [_o | _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( OrderedEqKind.compare ( ekind _i ) ( ekind _i ) ) .",
+                "tactic_args": [
+                    "x : True",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : Compare lt eq x y",
+                    "_goal : Compare lt eq x y",
+                    "l : OrderedEqKind.lt (ekind x) (ekind y)",
+                    "e1 : OrderedEqKind.eq (ekind x) (ekind y)",
+                    "l : OrderedEqKind.lt (ekind y) (ekind x)"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_LT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt x y), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt x y"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt x y"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc y))\n        (and (Logic.eq (eloc x) (eloc y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (or (OrderedLoc.lt (eloc x) (eloc y))\n        (and (Logic.eq (eloc x) (eloc y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_EQ : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : eq x y), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : eq x y"
+                ]
+            },
+            {
+                "tactic_sig": "red in _i .",
+                "tactic_sig_no_out_arg": "red in _i .",
+                "tactic_args": [
+                    "e : OrderedPositive.eq (ereg x) (ereg y)"
+                ],
+                "tactic_res": [
+                    "e : Logic.eq (ereg x) (ereg y)"
+                ]
+            },
+            {
+                "tactic_sig": "red in _i .",
+                "tactic_sig_no_out_arg": "red in _i .",
+                "tactic_args": [
+                    "e0 : OrderedLoc.eq (eloc x) (eloc y)"
+                ],
+                "tactic_res": [
+                    "e0 : Logic.eq (eloc x) (eloc y)"
+                ]
+            },
+            {
+                "tactic_sig": "red in _i .",
+                "tactic_sig_no_out_arg": "red in _i .",
+                "tactic_args": [
+                    "e1 : OrderedEqKind.eq (ekind x) (ekind y)"
+                ],
+                "tactic_res": [
+                    "e1 : Logic.eq (ekind x) (ekind y)"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq x y"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o _o _o _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : Logic.eq x y",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |} y",
+                    "e1 : Logic.eq (ekind {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (ekind y)",
+                    "e0 : Logic.eq (eloc {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (eloc y)",
+                    "e : Logic.eq (ereg {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (ereg y)",
+                    "eloc0 : loc",
+                    "ereg0 : reg",
+                    "ekind0 : equation_kind"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o _o _o _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : Logic.eq {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |} y",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |}\n  {| ekind := ekind1; ereg := ereg1; eloc := eloc1 |}",
+                    "e1 : Logic.eq (ekind {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (ekind {| ekind := ekind1; ereg := ereg1; eloc := eloc1 |})",
+                    "e0 : Logic.eq (eloc {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (eloc {| ekind := ekind1; ereg := ereg1; eloc := eloc1 |})",
+                    "e : Logic.eq (ereg {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (ereg {| ekind := ekind1; ereg := ereg1; eloc := eloc1 |})",
+                    "eloc1 : loc",
+                    "ereg1 : reg",
+                    "ekind1 : equation_kind"
+                ]
+            },
+            {
+                "tactic_sig": "simpl in * .",
+                "tactic_sig_no_out_arg": "simpl in * .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "e1 : Logic.eq ekind0 ekind1",
+                    "e0 : Logic.eq eloc0 eloc1",
+                    "e : Logic.eq ereg0 ereg1"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : Logic.eq {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |}\n  {| ekind := ekind1; ereg := ereg1; eloc := eloc1 |}"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_GT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt y x), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt y x"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt y x"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg y) (ereg x))\n  (and (Logic.eq (ereg y) (ereg x))\n     (or (OrderedLoc.lt (eloc y) (eloc x))\n        (and (Logic.eq (eloc y) (eloc x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg y) (ereg x))\n  (and (Logic.eq (ereg y) (ereg x))\n     (or (OrderedLoc.lt (eloc y) (eloc x))\n        (and (Logic.eq (eloc y) (eloc x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_GT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt y x), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt y x"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt y x"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg y) (ereg x))\n  (and (Logic.eq (ereg y) (ereg x))\n     (or (OrderedLoc.lt (eloc y) (eloc x))\n        (and (Logic.eq (eloc y) (eloc x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg y) (ereg x))\n  (and (Logic.eq (ereg y) (ereg x))\n     (or (OrderedLoc.lt (eloc y) (eloc x))\n        (and (Logic.eq (eloc y) (eloc x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_GT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt y x), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt y x"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt y x"
+                ],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg y) (ereg x))\n  (and (Logic.eq (ereg y) (ereg x))\n     (or (OrderedLoc.lt (eloc y) (eloc x))\n        (and (Logic.eq (eloc y) (eloc x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg y) (ereg x))\n  (and (Logic.eq (ereg y) (ereg x))\n     (or (OrderedLoc.lt (eloc y) (eloc x))\n        (and (Logic.eq (eloc y) (eloc x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "eq_dec",
+        "proof": [
+            {
+                "tactic_sig": "decide equality .",
+                "tactic_sig_no_out_arg": "decide equality .",
+                "tactic_args": [
+                    "_goal : sumbool (Logic.eq x y) (not (Logic.eq x y))"
+                ],
+                "tactic_res": [
+                    "_goal : sumbool (Logic.eq eloc0 eloc1) (not (Logic.eq eloc0 eloc1))",
+                    "_goal : sumbool (Logic.eq ereg0 ereg1) (not (Logic.eq ereg0 ereg1))",
+                    "_goal : sumbool (Logic.eq ekind0 ekind1) (not (Logic.eq ekind0 ekind1))",
+                    "a0 : Logic.eq ereg0 ereg1",
+                    "a : Logic.eq ekind0 ekind1",
+                    "eloc1 : loc",
+                    "ereg1 : reg",
+                    "ekind1 : equation_kind",
+                    "eloc0 : loc",
+                    "ereg0 : reg",
+                    "ekind0 : equation_kind"
+                ]
+            },
+            {
+                "tactic_sig": "apply Loc.eq .",
+                "tactic_sig_no_out_arg": "apply Loc.eq .",
+                "tactic_args": [
+                    "_goal : sumbool (Logic.eq eloc0 eloc1) (not (Logic.eq eloc0 eloc1))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : sumbool (Logic.eq ereg0 ereg1) (not (Logic.eq ereg0 ereg1))",
+                    "_global_peq : forall x y : positive, sumbool (Logic.eq x y) (not (Logic.eq x y))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply IndexedEqKind.eq .",
+                "tactic_sig_no_out_arg": "apply IndexedEqKind.eq .",
+                "tactic_args": [
+                    "_goal : sumbool (Logic.eq ekind0 ekind1) (not (Logic.eq ekind0 ekind1))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "eq_refl",
+        "proof": []
+    },
+    {
+        "lemma_name": "eq_sym",
+        "proof": []
+    },
+    {
+        "lemma_name": "eq_trans",
+        "proof": []
+    },
+    {
+        "lemma_name": "lt_trans",
+        "proof": [
+            {
+                "tactic_sig": "unfold lt .",
+                "tactic_sig_no_out_arg": "unfold lt .",
+                "tactic_args": [
+                    "_goal : forall (x y z : t) (_ : lt x y) (_ : lt y z), lt x z"
+                ],
+                "tactic_res": [
+                    "_goal : forall (x y z : t)\n  (_ : or (OrderedLoc.lt (eloc x) (eloc y))\n         (and (Logic.eq (eloc x) (eloc y))\n            (or (Plt (ereg x) (ereg y))\n               (and (Logic.eq (ereg x) (ereg y))\n                  (OrderedEqKind.lt (ekind x) (ekind y))))))\n  (_ : or (OrderedLoc.lt (eloc y) (eloc z))\n         (and (Logic.eq (eloc y) (eloc z))\n            (or (Plt (ereg y) (ereg z))\n               (and (Logic.eq (ereg y) (ereg z))\n                  (OrderedEqKind.lt (ekind y) (ekind z)))))),\nor (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (x y z : t)\n  (_ : or (OrderedLoc.lt (eloc x) (eloc y))\n         (and (Logic.eq (eloc x) (eloc y))\n            (or (Plt (ereg x) (ereg y))\n               (and (Logic.eq (ereg x) (ereg y))\n                  (OrderedEqKind.lt (ekind x) (ekind y))))))\n  (_ : or (OrderedLoc.lt (eloc y) (eloc z))\n         (and (Logic.eq (eloc y) (eloc z))\n            (or (Plt (ereg y) (ereg z))\n               (and (Logic.eq (ereg y) (ereg z))\n                  (OrderedEqKind.lt (ekind y) (ekind z)))))),\nor (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "z : True",
+                    "y : True",
+                    "x : True",
+                    "H : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg y))\n        (and (Logic.eq (ereg x) (ereg y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))",
+                    "H0 : or (OrderedLoc.lt (eloc y) (eloc z))\n  (and (Logic.eq (eloc y) (eloc z))\n     (or (Plt (ereg y) (ereg z))\n        (and (Logic.eq (ereg y) (ereg z))\n           (OrderedEqKind.lt (ekind y) (ekind z)))))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg y))\n        (and (Logic.eq (ereg x) (ereg y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "H : OrderedLoc.lt (eloc x) (eloc y)",
+                    "H : and (Logic.eq (eloc x) (eloc y))\n  (or (Plt (ereg x) (ereg y))\n     (and (Logic.eq (ereg x) (ereg y))\n        (OrderedEqKind.lt (ekind x) (ekind y))))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H0 : or (OrderedLoc.lt (eloc y) (eloc z))\n  (and (Logic.eq (eloc y) (eloc z))\n     (or (Plt (ereg y) (ereg z))\n        (and (Logic.eq (ereg y) (ereg z))\n           (OrderedEqKind.lt (ekind y) (ekind z)))))"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "H0 : OrderedLoc.lt (eloc y) (eloc z)",
+                    "H0 : and (Logic.eq (eloc y) (eloc z))\n  (or (Plt (ereg y) (ereg z))\n     (and (Logic.eq (ereg y) (ereg z))\n        (OrderedEqKind.lt (ekind y) (ekind z))))"
+                ]
+            },
+            {
+                "tactic_sig": "left .",
+                "tactic_sig_no_out_arg": "left .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedLoc.lt (eloc x) (eloc z)"
+                ]
+            },
+            {
+                "tactic_sig": "eapply OrderedLoc.lt_trans .",
+                "tactic_sig_no_out_arg": "eapply OrderedLoc.lt_trans .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.lt (eloc x) (eloc z)"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedLoc.lt (eloc x) ?y",
+                    "_goal : OrderedLoc.lt ?y (eloc z)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.lt (eloc x) ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.lt ?y (eloc z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H0 : and (Logic.eq (eloc y) (eloc z))\n  (or (Plt (ereg y) (ereg z))\n     (and (Logic.eq (ereg y) (ereg z))\n        (OrderedEqKind.lt (ekind y) (ekind z))))"
+                ],
+                "tactic_res": [
+                    "H1 : or (Plt (ereg y) (ereg z))\n  (and (Logic.eq (ereg y) (ereg z))\n     (OrderedEqKind.lt (ekind y) (ekind z)))",
+                    "H0 : Logic.eq (eloc y) (eloc z)"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- _i .",
+                "tactic_sig_no_out_arg": "rewrite <- _i .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "H0 : Logic.eq (eloc y) (eloc z)"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H : and (Logic.eq (eloc x) (eloc y))\n  (or (Plt (ereg x) (ereg y))\n     (and (Logic.eq (ereg x) (ereg y))\n        (OrderedEqKind.lt (ekind x) (ekind y))))"
+                ],
+                "tactic_res": [
+                    "H1 : or (Plt (ereg x) (ereg y))\n  (and (Logic.eq (ereg x) (ereg y))\n     (OrderedEqKind.lt (ekind x) (ekind y)))",
+                    "H : Logic.eq (eloc x) (eloc y)"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc z))\n  (and (Logic.eq (eloc x) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "H : Logic.eq (eloc x) (eloc y)"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc y) (eloc z))\n  (and (Logic.eq (eloc y) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H0 : or (OrderedLoc.lt (eloc y) (eloc z))\n  (and (Logic.eq (eloc y) (eloc z))\n     (or (Plt (ereg y) (ereg z))\n        (and (Logic.eq (ereg y) (ereg z))\n           (OrderedEqKind.lt (ekind y) (ekind z)))))"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc y) (eloc z))\n  (and (Logic.eq (eloc y) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))",
+                    "H0 : OrderedLoc.lt (eloc y) (eloc z)",
+                    "H0 : and (Logic.eq (eloc y) (eloc z))\n  (or (Plt (ereg y) (ereg z))\n     (and (Logic.eq (ereg y) (ereg z))\n        (OrderedEqKind.lt (ekind y) (ekind z))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc y) (eloc z))\n  (and (Logic.eq (eloc y) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H0 : and (Logic.eq (eloc y) (eloc z))\n  (or (Plt (ereg y) (ereg z))\n     (and (Logic.eq (ereg y) (ereg z))\n        (OrderedEqKind.lt (ekind y) (ekind z))))"
+                ],
+                "tactic_res": [
+                    "H2 : or (Plt (ereg y) (ereg z))\n  (and (Logic.eq (ereg y) (ereg z))\n     (OrderedEqKind.lt (ekind y) (ekind z)))",
+                    "H0 : Logic.eq (eloc y) (eloc z)"
+                ]
+            },
+            {
+                "tactic_sig": "right .",
+                "tactic_sig_no_out_arg": "right .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc y) (eloc z))\n  (and (Logic.eq (eloc y) (eloc z))\n     (or (Plt (ereg x) (ereg z))\n        (and (Logic.eq (ereg x) (ereg z))\n           (OrderedEqKind.lt (ekind x) (ekind z)))))"
+                ],
+                "tactic_res": [
+                    "_goal : and (Logic.eq (eloc y) (eloc z))\n  (or (Plt (ereg x) (ereg z))\n     (and (Logic.eq (ereg x) (ereg z))\n        (OrderedEqKind.lt (ekind x) (ekind z))))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : and (Logic.eq (eloc y) (eloc z))\n  (or (Plt (ereg x) (ereg z))\n     (and (Logic.eq (ereg x) (ereg z))\n        (OrderedEqKind.lt (ekind x) (ekind z))))"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq (eloc y) (eloc z)",
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Logic.eq (eloc y) (eloc z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intuition .",
+                "tactic_sig_no_out_arg": "intuition .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))",
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))",
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))",
+                    "H1 : Plt (ereg y) (ereg z)",
+                    "H3 : Plt (ereg x) (ereg y)",
+                    "H4 : OrderedEqKind.lt (ekind y) (ekind z)",
+                    "H2 : Logic.eq (ereg y) (ereg z)",
+                    "H3 : Plt (ereg y) (ereg z)",
+                    "H4 : OrderedEqKind.lt (ekind x) (ekind y)",
+                    "H1 : Logic.eq (ereg x) (ereg y)",
+                    "H5 : OrderedEqKind.lt (ekind y) (ekind z)"
+                ]
+            },
+            {
+                "tactic_sig": "left .",
+                "tactic_sig_no_out_arg": "left .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))"
+                ],
+                "tactic_res": [
+                    "_goal : Plt (ereg x) (ereg z)"
+                ]
+            },
+            {
+                "tactic_sig": "eapply Plt_trans .",
+                "tactic_sig_no_out_arg": "eapply Plt_trans .",
+                "tactic_args": [
+                    "_goal : Plt (ereg x) (ereg z)"
+                ],
+                "tactic_res": [
+                    "_goal : Plt (ereg x) ?y",
+                    "_goal : Plt ?y (ereg z)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : Plt (ereg x) ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : Plt ?y (ereg z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "left .",
+                "tactic_sig_no_out_arg": "left .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))"
+                ],
+                "tactic_res": [
+                    "_goal : Plt (ereg x) (ereg z)"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : Plt (ereg x) (ereg z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "left .",
+                "tactic_sig_no_out_arg": "left .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))"
+                ],
+                "tactic_res": [
+                    "_goal : Plt (ereg x) (ereg z)"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : Plt (ereg x) (ereg z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "right .",
+                "tactic_sig_no_out_arg": "right .",
+                "tactic_args": [
+                    "_goal : or (Plt (ereg x) (ereg z))\n  (and (Logic.eq (ereg x) (ereg z))\n     (OrderedEqKind.lt (ekind x) (ekind z)))"
+                ],
+                "tactic_res": [
+                    "_goal : and (Logic.eq (ereg x) (ereg z)) (OrderedEqKind.lt (ekind x) (ekind z))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : and (Logic.eq (ereg x) (ereg z)) (OrderedEqKind.lt (ekind x) (ekind z))"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq (ereg x) (ereg z)",
+                    "_goal : OrderedEqKind.lt (ekind x) (ekind z)"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : Logic.eq (ereg x) (ereg z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eapply OrderedEqKind.lt_trans .",
+                "tactic_sig_no_out_arg": "eapply OrderedEqKind.lt_trans .",
+                "tactic_args": [
+                    "_goal : OrderedEqKind.lt (ekind x) (ekind z)"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedEqKind.lt (ekind x) ?y",
+                    "_goal : OrderedEqKind.lt ?y (ekind z)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedEqKind.lt (ekind x) ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedEqKind.lt ?y (ekind z)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "lt_not_eq",
+        "proof": [
+            {
+                "tactic_sig": "unfold lt , eq .",
+                "tactic_sig_no_out_arg": "unfold lt , eq .",
+                "tactic_args": [
+                    "_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+                ],
+                "tactic_res": [
+                    "_goal : forall (x y : t)\n  (_ : or (OrderedLoc.lt (eloc x) (eloc y))\n         (and (Logic.eq (eloc x) (eloc y))\n            (or (Plt (ereg x) (ereg y))\n               (and (Logic.eq (ereg x) (ereg y))\n                  (OrderedEqKind.lt (ekind x) (ekind y)))))),\nnot (Logic.eq x y)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (x y : t)\n  (_ : or (OrderedLoc.lt (eloc x) (eloc y))\n         (and (Logic.eq (eloc x) (eloc y))\n            (or (Plt (ereg x) (ereg y))\n               (and (Logic.eq (ereg x) (ereg y))\n                  (OrderedEqKind.lt (ekind x) (ekind y)))))),\nnot (Logic.eq x y)"
+                ],
+                "tactic_res": [
+                    "_goal : not (Logic.eq x y)",
+                    "y : True",
+                    "x : True",
+                    "H : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg y))\n        (and (Logic.eq (ereg x) (ereg y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : not (Logic.eq x y)"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : Logic.eq x y, False"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall _ : Logic.eq x y, False"
+                ],
+                "tactic_res": [
+                    "_goal : False",
+                    "H0 : Logic.eq x y"
+                ]
+            },
+            {
+                "tactic_sig": "subst _i .",
+                "tactic_sig_no_out_arg": "subst _i .",
+                "tactic_args": [
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "H : or (OrderedLoc.lt (eloc x) (eloc x))\n  (and (Logic.eq (eloc x) (eloc x))\n     (or (Plt (ereg x) (ereg x))\n        (and (Logic.eq (ereg x) (ereg x))\n           (OrderedEqKind.lt (ekind x) (ekind x)))))"
+                ]
+            },
+            {
+                "tactic_sig": "intuition .",
+                "tactic_sig_no_out_arg": "intuition .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "_goal : False",
+                    "_goal : False",
+                    "H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                    "H0 : Plt (ereg x) (ereg x)",
+                    "H : Logic.eq (eloc x) (eloc x)",
+                    "H2 : OrderedEqKind.lt (ekind x) (ekind x)",
+                    "H1 : Logic.eq (ereg x) (ereg x)"
+                ]
+            },
+            {
+                "tactic_sig": "eelim OrderedLoc.lt_not_eq .",
+                "tactic_sig_no_out_arg": "eelim OrderedLoc.lt_not_eq .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedLoc.lt ?x ?y",
+                    "_goal : OrderedLoc.eq ?x ?y"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.lt ?x ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : OrderedLoc.eq ?x ?y"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq (eloc x) (eloc x)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Logic.eq (eloc x) (eloc x)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eelim Plt_strict .",
+                "tactic_sig_no_out_arg": "eelim Plt_strict .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": [
+                    "_goal : Plt ?p ?p"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : Plt ?p ?p"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eelim OrderedEqKind.lt_not_eq .",
+                "tactic_sig_no_out_arg": "eelim OrderedEqKind.lt_not_eq .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": [
+                    "_goal : OrderedEqKind.lt ?x ?y",
+                    "_goal : OrderedEqKind.eq ?x ?y"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : OrderedEqKind.lt ?x ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : OrderedEqKind.eq ?x ?y"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq (ekind x) (ekind x)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Logic.eq (ekind x) (ekind x)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "compare",
+        "proof": [
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall x y : t, Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : Compare lt eq x y",
+                    "y : True",
+                    "x : True"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( OrderedLoc.compare ( eloc _i ) ( eloc _i ) ) as [_o | _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( OrderedLoc.compare ( eloc _i ) ( eloc _i ) ) .",
+                "tactic_args": [
+                    "x : True",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : Compare lt eq x y",
+                    "_goal : Compare lt eq x y",
+                    "l : OrderedLoc.lt (eloc x) (eloc y)",
+                    "e : OrderedLoc.eq (eloc x) (eloc y)",
+                    "l : OrderedLoc.lt (eloc y) (eloc x)"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_LT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt x y), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt x y"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt x y"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg y))\n        (and (Logic.eq (ereg x) (ereg y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg y))\n        (and (Logic.eq (ereg x) (ereg y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct ( OrderedPositive.compare ( ereg _i ) ( ereg _i ) ) as [_o | _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( OrderedPositive.compare ( ereg _i ) ( ereg _i ) ) .",
+                "tactic_args": [
+                    "x : True",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : Compare lt eq x y",
+                    "_goal : Compare lt eq x y",
+                    "l : OrderedPositive.lt (ereg x) (ereg y)",
+                    "e0 : OrderedPositive.eq (ereg x) (ereg y)",
+                    "l : OrderedPositive.lt (ereg y) (ereg x)"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_LT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt x y), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt x y"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt x y"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg y))\n        (and (Logic.eq (ereg x) (ereg y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg y))\n        (and (Logic.eq (ereg x) (ereg y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct ( OrderedEqKind.compare ( ekind _i ) ( ekind _i ) ) as [_o | _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( OrderedEqKind.compare ( ekind _i ) ( ekind _i ) ) .",
+                "tactic_args": [
+                    "x : True",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : Compare lt eq x y",
+                    "_goal : Compare lt eq x y",
+                    "l : OrderedEqKind.lt (ekind x) (ekind y)",
+                    "e1 : OrderedEqKind.eq (ekind x) (ekind y)",
+                    "l : OrderedEqKind.lt (ekind y) (ekind x)"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_LT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt x y), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt x y"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt x y"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg y))\n        (and (Logic.eq (ereg x) (ereg y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc x) (eloc y))\n  (and (Logic.eq (eloc x) (eloc y))\n     (or (Plt (ereg x) (ereg y))\n        (and (Logic.eq (ereg x) (ereg y))\n           (OrderedEqKind.lt (ekind x) (ekind y)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_EQ : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : eq x y), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : eq x y"
+                ]
+            },
+            {
+                "tactic_sig": "red in _i .",
+                "tactic_sig_no_out_arg": "red in _i .",
+                "tactic_args": [
+                    "e : OrderedLoc.eq (eloc x) (eloc y)"
+                ],
+                "tactic_res": [
+                    "e : Logic.eq (eloc x) (eloc y)"
+                ]
+            },
+            {
+                "tactic_sig": "red in _i .",
+                "tactic_sig_no_out_arg": "red in _i .",
+                "tactic_args": [
+                    "e0 : OrderedPositive.eq (ereg x) (ereg y)"
+                ],
+                "tactic_res": [
+                    "e0 : Logic.eq (ereg x) (ereg y)"
+                ]
+            },
+            {
+                "tactic_sig": "red in _i .",
+                "tactic_sig_no_out_arg": "red in _i .",
+                "tactic_args": [
+                    "e1 : OrderedEqKind.eq (ekind x) (ekind y)"
+                ],
+                "tactic_res": [
+                    "e1 : Logic.eq (ekind x) (ekind y)"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq x y"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o _o _o _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : Logic.eq x y",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |} y",
+                    "e1 : Logic.eq (ekind {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (ekind y)",
+                    "e0 : Logic.eq (ereg {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (ereg y)",
+                    "e : Logic.eq (eloc {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (eloc y)",
+                    "eloc0 : loc",
+                    "ereg0 : reg",
+                    "ekind0 : equation_kind"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o _o _o _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : Logic.eq {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |} y",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |}\n  {| ekind := ekind1; ereg := ereg1; eloc := eloc1 |}",
+                    "e1 : Logic.eq (ekind {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (ekind {| ekind := ekind1; ereg := ereg1; eloc := eloc1 |})",
+                    "e0 : Logic.eq (ereg {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (ereg {| ekind := ekind1; ereg := ereg1; eloc := eloc1 |})",
+                    "e : Logic.eq (eloc {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |})\n  (eloc {| ekind := ekind1; ereg := ereg1; eloc := eloc1 |})",
+                    "eloc1 : loc",
+                    "ereg1 : reg",
+                    "ekind1 : equation_kind"
+                ]
+            },
+            {
+                "tactic_sig": "simpl in * .",
+                "tactic_sig_no_out_arg": "simpl in * .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "e1 : Logic.eq ekind0 ekind1",
+                    "e0 : Logic.eq ereg0 ereg1",
+                    "e : Logic.eq eloc0 eloc1"
+                ]
+            },
+            {
+                "tactic_sig": "congruence .",
+                "tactic_sig_no_out_arg": "congruence .",
+                "tactic_args": [
+                    "_goal : Logic.eq {| ekind := ekind0; ereg := ereg0; eloc := eloc0 |}\n  {| ekind := ekind1; ereg := ereg1; eloc := eloc1 |}"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_GT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt y x), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt y x"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt y x"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc y) (eloc x))\n  (and (Logic.eq (eloc y) (eloc x))\n     (or (Plt (ereg y) (ereg x))\n        (and (Logic.eq (ereg y) (ereg x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc y) (eloc x))\n  (and (Logic.eq (eloc y) (eloc x))\n     (or (Plt (ereg y) (ereg x))\n        (and (Logic.eq (ereg y) (ereg x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_GT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt y x), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt y x"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt y x"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc y) (eloc x))\n  (and (Logic.eq (eloc y) (eloc x))\n     (or (Plt (ereg y) (ereg x))\n        (and (Logic.eq (ereg y) (ereg x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc y) (eloc x))\n  (and (Logic.eq (eloc y) (eloc x))\n     (or (Plt (ereg y) (ereg x))\n        (and (Logic.eq (ereg y) (ereg x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "_goal : Compare lt eq x y",
+                    "_global_GT : forall (X : Type) (lt eq : forall (_ : X) (_ : X), Prop) \n         (x y : X) (_ : lt y x), Compare lt eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : lt y x"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : lt y x"
+                ],
+                "tactic_res": [
+                    "_goal : or (OrderedLoc.lt (eloc y) (eloc x))\n  (and (Logic.eq (eloc y) (eloc x))\n     (or (Plt (ereg y) (ereg x))\n        (and (Logic.eq (ereg y) (ereg x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : or (OrderedLoc.lt (eloc y) (eloc x))\n  (and (Logic.eq (eloc y) (eloc x))\n     (or (Plt (ereg y) (ereg x))\n        (and (Logic.eq (ereg y) (ereg x))\n           (OrderedEqKind.lt (ekind y) (ekind x)))))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : iff (EqSet2.In q EqSet2.empty) (EqSet.In q EqSet.empty)"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : EqSet2.In q EqSet2.empty, EqSet.In q EqSet.empty",
+                    "_goal : forall _ : EqSet.In q EqSet.empty, EqSet2.In q EqSet2.empty"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall _ : EqSet2.In q EqSet2.empty, EqSet.In q EqSet.empty"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q EqSet.empty",
+                    "H : EqSet2.In q EqSet2.empty"
+                ]
+            },
+            {
+                "tactic_sig": "eelim EqSet2.empty_1 .",
+                "tactic_sig_no_out_arg": "eelim EqSet2.empty_1 .",
+                "tactic_args": [
+                    "_goal : EqSet.In q EqSet.empty"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In ?a EqSet2.empty"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : EqSet2.In ?a EqSet2.empty"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall _ : EqSet.In q EqSet.empty, EqSet2.In q EqSet2.empty"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q EqSet2.empty",
+                    "H : EqSet.In q EqSet.empty"
+                ]
+            },
+            {
+                "tactic_sig": "eelim EqSet.empty_1 .",
+                "tactic_sig_no_out_arg": "eelim EqSet.empty_1 .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q EqSet2.empty"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In ?a EqSet.empty"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : EqSet.In ?a EqSet.empty"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : iff (EqSet2.In q0 (EqSet2.add q (eqs2 e)))\n  (EqSet.In q0 (EqSet.add q e))"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : EqSet2.In q0 (EqSet2.add q (eqs2 e)),\nEqSet.In q0 (EqSet.add q e)",
+                    "_goal : forall _ : EqSet.In q0 (EqSet.add q e),\nEqSet2.In q0 (EqSet2.add q (eqs2 e))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall _ : EqSet2.In q0 (EqSet2.add q (eqs2 e)),\nEqSet.In q0 (EqSet.add q e)"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q0 (EqSet.add q e)",
+                    "H : EqSet2.In q0 (EqSet2.add q (eqs2 e))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( OrderedEquation'.eq_dec _i _i ) as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( OrderedEquation'.eq_dec _i _i ) .",
+                "tactic_args": [
+                    "q : equation",
+                    "q0 : EqSet2.elt"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q0 (EqSet.add q e)",
+                    "e0 : eq q q0",
+                    "n : not (eq q q0)"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet.add_1 .",
+                "tactic_sig_no_out_arg": "apply EqSet.add_1 .",
+                "tactic_args": [
+                    "_goal : EqSet.In q0 (EqSet.add q e)"
+                ],
+                "tactic_res": [
+                    "_goal : eq q q0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : eq q q0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply EqSet.add_2 .",
+                "tactic_sig_no_out_arg": "apply EqSet.add_2 .",
+                "tactic_args": [
+                    "_goal : EqSet.In q0 (EqSet.add q e)"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q0 e"
+                ]
+            },
+            {
+                "tactic_sig": "apply ( eqs_same _i ) .",
+                "tactic_sig_no_out_arg": "apply ( eqs_same _i ) .",
+                "tactic_args": [
+                    "_goal : EqSet.In q0 e",
+                    "e : eqs"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q0 (eqs2 e)"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet2.add_3 with _i .",
+                "tactic_sig_no_out_arg": "apply EqSet2.add_3 with _i .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q0 (eqs2 e)",
+                    "q : equation"
+                ],
+                "tactic_res": [
+                    "_goal : not (eq q q0)",
+                    "_goal : EqSet2.In q0 (EqSet2.add q (eqs2 e))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : not (eq q q0)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q0 (EqSet2.add q (eqs2 e))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall _ : EqSet.In q0 (EqSet.add q e),\nEqSet2.In q0 (EqSet2.add q (eqs2 e))"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q0 (EqSet2.add q (eqs2 e))",
+                    "H : EqSet.In q0 (EqSet.add q e)"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( OrderedEquation.eq_dec _i _i ) as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( OrderedEquation.eq_dec _i _i ) .",
+                "tactic_args": [
+                    "q : equation",
+                    "q0 : EqSet2.elt"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q0 (EqSet2.add q (eqs2 e))",
+                    "e0 : eq q q0",
+                    "n : not (eq q q0)"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet2.add_1 .",
+                "tactic_sig_no_out_arg": "apply EqSet2.add_1 .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q0 (EqSet2.add q (eqs2 e))"
+                ],
+                "tactic_res": [
+                    "_goal : eq q q0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : eq q q0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply EqSet2.add_2 .",
+                "tactic_sig_no_out_arg": "apply EqSet2.add_2 .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q0 (EqSet2.add q (eqs2 e))"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q0 (eqs2 e)"
+                ]
+            },
+            {
+                "tactic_sig": "apply ( eqs_same _i ) .",
+                "tactic_sig_no_out_arg": "apply ( eqs_same _i ) .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q0 (eqs2 e)",
+                    "e : eqs"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q0 e"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet.add_3 with _i .",
+                "tactic_sig_no_out_arg": "apply EqSet.add_3 with _i .",
+                "tactic_args": [
+                    "_goal : EqSet.In q0 e",
+                    "q : equation"
+                ],
+                "tactic_res": [
+                    "_goal : not (eq q q0)",
+                    "_goal : EqSet.In q0 (EqSet.add q e)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : not (eq q q0)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet.In q0 (EqSet.add q e)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : iff (EqSet2.In q0 (EqSet2.remove q (eqs2 e)))\n  (EqSet.In q0 (EqSet.remove q e))"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : EqSet2.In q0 (EqSet2.remove q (eqs2 e)),\nEqSet.In q0 (EqSet.remove q e)",
+                    "_goal : forall _ : EqSet.In q0 (EqSet.remove q e),\nEqSet2.In q0 (EqSet2.remove q (eqs2 e))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall _ : EqSet2.In q0 (EqSet2.remove q (eqs2 e)),\nEqSet.In q0 (EqSet.remove q e)"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q0 (EqSet.remove q e)",
+                    "H : EqSet2.In q0 (EqSet2.remove q (eqs2 e))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( OrderedEquation'.eq_dec _i _i ) as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( OrderedEquation'.eq_dec _i _i ) .",
+                "tactic_args": [
+                    "q : equation",
+                    "q0 : EqSet2.elt"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q0 (EqSet.remove q e)",
+                    "e0 : eq q q0",
+                    "n : not (eq q q0)"
+                ]
+            },
+            {
+                "tactic_sig": "eelim EqSet2.remove_1 .",
+                "tactic_sig_no_out_arg": "eelim EqSet2.remove_1 .",
+                "tactic_args": [
+                    "_goal : EqSet.In q0 (EqSet.remove q e)"
+                ],
+                "tactic_res": [
+                    "_goal : eq ?x ?y",
+                    "_goal : EqSet2.In ?y (EqSet2.remove ?x ?s)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : eq ?x ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : EqSet2.In ?y (EqSet2.remove ?x ?s)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply EqSet.remove_2 .",
+                "tactic_sig_no_out_arg": "apply EqSet.remove_2 .",
+                "tactic_args": [
+                    "_goal : EqSet.In q0 (EqSet.remove q e)"
+                ],
+                "tactic_res": [
+                    "_goal : not (eq q q0)",
+                    "_goal : EqSet.In q0 e"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : not (eq q q0)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply ( eqs_same _i ) .",
+                "tactic_sig_no_out_arg": "apply ( eqs_same _i ) .",
+                "tactic_args": [
+                    "_goal : EqSet.In q0 e",
+                    "e : eqs"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q0 (eqs2 e)"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet2.remove_3 with _i .",
+                "tactic_sig_no_out_arg": "apply EqSet2.remove_3 with _i .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q0 (eqs2 e)",
+                    "q : equation"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q0 (EqSet2.remove q (eqs2 e))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q0 (EqSet2.remove q (eqs2 e))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall _ : EqSet.In q0 (EqSet.remove q e),\nEqSet2.In q0 (EqSet2.remove q (eqs2 e))"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q0 (EqSet2.remove q (eqs2 e))",
+                    "H : EqSet.In q0 (EqSet.remove q e)"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( OrderedEquation.eq_dec _i _i ) as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( OrderedEquation.eq_dec _i _i ) .",
+                "tactic_args": [
+                    "q : equation",
+                    "q0 : EqSet2.elt"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q0 (EqSet2.remove q (eqs2 e))",
+                    "e0 : eq q q0",
+                    "n : not (eq q q0)"
+                ]
+            },
+            {
+                "tactic_sig": "eelim EqSet.remove_1 .",
+                "tactic_sig_no_out_arg": "eelim EqSet.remove_1 .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q0 (EqSet2.remove q (eqs2 e))"
+                ],
+                "tactic_res": [
+                    "_goal : eq ?x ?y",
+                    "_goal : EqSet.In ?y (EqSet.remove ?x ?s)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : eq ?x ?y"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : EqSet.In ?y (EqSet.remove ?x ?s)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply EqSet2.remove_2 .",
+                "tactic_sig_no_out_arg": "apply EqSet2.remove_2 .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q0 (EqSet2.remove q (eqs2 e))"
+                ],
+                "tactic_res": [
+                    "_goal : not (eq q q0)",
+                    "_goal : EqSet2.In q0 (eqs2 e)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : not (eq q q0)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply ( eqs_same _i ) .",
+                "tactic_sig_no_out_arg": "apply ( eqs_same _i ) .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q0 (eqs2 e)",
+                    "e : eqs"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q0 e"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet.remove_3 with _i .",
+                "tactic_sig_no_out_arg": "apply EqSet.remove_3 with _i .",
+                "tactic_args": [
+                    "_goal : EqSet.In q0 e",
+                    "q : equation"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q0 (EqSet.remove q e)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet.In q0 (EqSet.remove q e)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "eq_refl",
+        "proof": [
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall x : t, eq x x"
+                ],
+                "tactic_res": [
+                    "_goal : eq x x",
+                    "x : True"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : eq x x",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : eq (OK e) (OK e)",
+                    "_goal : eq (Error e) (Error e)",
+                    "e : eqs",
+                    "e : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : eq (OK e) (OK e)"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.Equal e e"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : EqSet.Equal e e"
+                ],
+                "tactic_res": [
+                    "_goal : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e)"
+                ]
+            },
+            {
+                "tactic_sig": "tauto .",
+                "tactic_sig_no_out_arg": "tauto .",
+                "tactic_args": [
+                    "_goal : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : eq (Error e) (Error e)"
+                ],
+                "tactic_res": [
+                    "_goal : True"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "eq_sym",
+        "proof": [
+            {
+                "tactic_sig": "unfold eq .",
+                "tactic_sig_no_out_arg": "unfold eq .",
+                "tactic_args": [
+                    "_goal : forall (x y : t) (_ : eq x y), eq y x"
+                ],
+                "tactic_res": [
+                    "_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend",
+                    "y : True",
+                    "x : True",
+                    "H : match x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : match y with\n| OK a => EqSet.Equal a e\n| Error _ => False\nend",
+                    "_goal : match y with\n| OK _ => False\n| Error _ => True\nend",
+                    "H : match y with\n| OK b => EqSet.Equal e b\n| Error _ => False\nend",
+                    "e : eqs",
+                    "H : match y with\n| OK _ => False\n| Error _ => True\nend",
+                    "e : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match y with\n| OK a => EqSet.Equal a e\n| Error _ => False\nend",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.Equal e0 e",
+                    "_goal : False",
+                    "H : EqSet.Equal e e0",
+                    "e0 : eqs",
+                    "H : False",
+                    "e0 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "red in _i .",
+                "tactic_sig_no_out_arg": "red in _i .",
+                "tactic_args": [
+                    "H : EqSet.Equal e e0"
+                ],
+                "tactic_res": [
+                    "H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : EqSet.Equal e0 e"
+                ],
+                "tactic_res": [
+                    "_goal : forall a : EqSet.elt, iff (EqSet.In a e0) (EqSet.In a e)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall a : EqSet.elt, iff (EqSet.In a e0) (EqSet.In a e)"
+                ],
+                "tactic_res": [
+                    "_goal : iff (EqSet.In a e0) (EqSet.In a e)",
+                    "a : EqSet.elt"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "_goal : iff (EqSet.In a e0) (EqSet.In a e)",
+                    "H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+                ],
+                "tactic_res": [
+                    "_goal : iff (EqSet.In a e0) (EqSet.In a e0)"
+                ]
+            },
+            {
+                "tactic_sig": "tauto .",
+                "tactic_sig_no_out_arg": "tauto .",
+                "tactic_args": [
+                    "_goal : iff (EqSet.In a e0) (EqSet.In a e0)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match y with\n| OK _ => False\n| Error _ => True\nend"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "eq_trans",
+        "proof": [
+            {
+                "tactic_sig": "unfold eq .",
+                "tactic_sig_no_out_arg": "unfold eq .",
+                "tactic_args": [
+                    "_goal : forall (x y z : t) (_ : eq x y) (_ : eq y z), eq x z"
+                ],
+                "tactic_res": [
+                    "_goal : forall (x y z : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end)\n  (_ : match y with\n       | OK a =>\n           match z with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match z with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a => match z with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match z with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (x y z : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end)\n  (_ : match y with\n       | OK a =>\n           match z with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match z with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a => match z with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match z with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match x with\n| OK a => match z with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match z with\n             | OK _ => False\n             | Error _ => True\n             end\nend",
+                    "z : True",
+                    "y : True",
+                    "x : True",
+                    "H : match x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend",
+                    "H0 : match y with\n| OK a => match z with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match z with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match x with\n| OK a => match z with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match z with\n             | OK _ => False\n             | Error _ => True\n             end\nend",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : match z with\n| OK b => EqSet.Equal e b\n| Error _ => False\nend",
+                    "_goal : match z with\n| OK _ => False\n| Error _ => True\nend",
+                    "H : match y with\n| OK b => EqSet.Equal e b\n| Error _ => False\nend",
+                    "e : eqs",
+                    "H : match y with\n| OK _ => False\n| Error _ => True\nend",
+                    "e : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o _o | _o _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : match z with\n| OK b => EqSet.Equal e b\n| Error _ => False\nend",
+                    "H0 : match z with\n| OK b => EqSet.Equal e0 b\n| Error _ => False\nend",
+                    "H : EqSet.Equal e e0",
+                    "e0 : eqs",
+                    "H0 : match z with\n| OK _ => False\n| Error _ => True\nend",
+                    "H : False",
+                    "e0 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match z with\n| OK b => EqSet.Equal e b\n| Error _ => False\nend",
+                    "z : True"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.Equal e e1",
+                    "_goal : False",
+                    "H0 : EqSet.Equal e0 e1",
+                    "e1 : eqs",
+                    "H0 : False",
+                    "e1 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "red in _i .",
+                "tactic_sig_no_out_arg": "red in _i .",
+                "tactic_args": [
+                    "H : EqSet.Equal e e0"
+                ],
+                "tactic_res": [
+                    "H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+                ]
+            },
+            {
+                "tactic_sig": "red in _i .",
+                "tactic_sig_no_out_arg": "red in _i .",
+                "tactic_args": [
+                    "H0 : EqSet.Equal e0 e1"
+                ],
+                "tactic_res": [
+                    "H0 : forall a : EqSet.elt, iff (EqSet.In a e0) (EqSet.In a e1)"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : EqSet.Equal e e1"
+                ],
+                "tactic_res": [
+                    "_goal : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e1)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e1)"
+                ],
+                "tactic_res": [
+                    "_goal : iff (EqSet.In a e) (EqSet.In a e1)",
+                    "a : EqSet.elt"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "_goal : iff (EqSet.In a e) (EqSet.In a e1)",
+                    "H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+                ],
+                "tactic_res": [
+                    "_goal : iff (EqSet.In a e0) (EqSet.In a e1)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : iff (EqSet.In a e0) (EqSet.In a e1)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "contradiction .",
+                "tactic_sig_no_out_arg": "contradiction .",
+                "tactic_args": [
+                    "_goal : match z with\n| OK b => EqSet.Equal e b\n| Error _ => False\nend"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o _o | _o _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : match z with\n| OK _ => False\n| Error _ => True\nend",
+                    "H0 : match z with\n| OK b => EqSet.Equal e0 b\n| Error _ => False\nend",
+                    "H : False",
+                    "e0 : eqs",
+                    "H0 : match z with\n| OK _ => False\n| Error _ => True\nend",
+                    "H : True",
+                    "e0 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match z with\n| OK _ => False\n| Error _ => True\nend",
+                    "z : True"
+                ],
+                "tactic_res": [
+                    "_goal : False",
+                    "_goal : True",
+                    "H0 : EqSet.Equal e0 e1",
+                    "e1 : eqs",
+                    "H0 : False",
+                    "e1 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match z with\n| OK _ => False\n| Error _ => True\nend"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "beq_correct",
+        "proof": [
+            {
+                "tactic_sig": "unfold beq , eq .",
+                "tactic_sig_no_out_arg": "unfold beq , eq .",
+                "tactic_args": [
+                    "_goal : forall (x y : t) (_ : Logic.eq (beq x y) true), eq x y"
+                ],
+                "tactic_res": [
+                    "_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend",
+                    "y : True",
+                    "x : True",
+                    "H : Logic.eq\n  match x with\n  | OK a =>\n      match y with\n      | OK b => EqSet.equal a b\n      | Error _ => false\n      end\n  | Error _ => match y with\n               | OK _ => false\n               | Error _ => true\n               end\n  end true"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : match y with\n| OK b => EqSet.Equal e b\n| Error _ => False\nend",
+                    "_goal : match y with\n| OK _ => False\n| Error _ => True\nend",
+                    "H : Logic.eq match y with\n         | OK b => EqSet.equal e b\n         | Error _ => false\n         end true",
+                    "e : eqs",
+                    "H : Logic.eq match y with\n         | OK _ => false\n         | Error _ => true\n         end true",
+                    "e : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match y with\n| OK b => EqSet.Equal e b\n| Error _ => False\nend",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.Equal e e0",
+                    "_goal : False",
+                    "H : Logic.eq (EqSet.equal e e0) true",
+                    "e0 : eqs",
+                    "H : Logic.eq false true",
+                    "e0 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet.equal_2 .",
+                "tactic_sig_no_out_arg": "apply EqSet.equal_2 .",
+                "tactic_args": [
+                    "_goal : EqSet.Equal e e0"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.eq (EqSet.equal e e0) true"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Logic.eq (EqSet.equal e e0) true"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "discriminate .",
+                "tactic_sig_no_out_arg": "discriminate .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match y with\n| OK _ => False\n| Error _ => True\nend",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : False",
+                    "_goal : True",
+                    "H : Logic.eq false true",
+                    "e0 : eqs",
+                    "H : Logic.eq true true",
+                    "e0 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "discriminate .",
+                "tactic_sig_no_out_arg": "discriminate .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "ge_refl",
+        "proof": [
+            {
+                "tactic_sig": "unfold eq , ge , EqSet.Equal , EqSet.Subset .",
+                "tactic_sig_no_out_arg": "unfold eq , ge , EqSet.Equal , EqSet.Subset .",
+                "tactic_args": [
+                    "_goal : forall (x y : t) (_ : eq x y), ge x y"
+                ],
+                "tactic_res": [
+                    "_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b =>\n               forall a0 : EqSet.elt,\n               iff (EqSet.In a0 a) (EqSet.In a0 b)\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b =>\n               forall a0 : EqSet.elt,\n               iff (EqSet.In a0 a) (EqSet.In a0 b)\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "y : True",
+                    "x : True",
+                    "H : match x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall a0 : EqSet.elt, iff (EqSet.In a0 a) (EqSet.In a0 b)\n    | Error _ => False\n    end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : match y with\n| OK b => forall (a : EqSet.elt) (_ : EqSet.In a b), EqSet.In a e\n| Error _ => False\nend",
+                    "_goal : True",
+                    "H : match y with\n| OK b => forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a b)\n| Error _ => False\nend",
+                    "e : eqs",
+                    "H : match y with\n| OK _ => False\n| Error _ => True\nend",
+                    "e : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match y with\n| OK b => forall (a : EqSet.elt) (_ : EqSet.In a b), EqSet.In a e\n| Error _ => False\nend",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                    "_goal : False",
+                    "H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)",
+                    "e0 : eqs",
+                    "H : False",
+                    "e0 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In a e",
+                    "a : EqSet.elt",
+                    "H0 : EqSet.In a e0"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "_goal : EqSet.In a e",
+                    "H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In a e0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet.In a e0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "ge_trans",
+        "proof": [
+            {
+                "tactic_sig": "unfold ge , EqSet.Subset .",
+                "tactic_sig_no_out_arg": "unfold ge , EqSet.Subset .",
+                "tactic_args": [
+                    "_goal : forall (x y z : t) (_ : ge x y) (_ : ge y z), ge x z"
+                ],
+                "tactic_res": [
+                    "_goal : forall (x y z : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b =>\n               forall (a0 : EqSet.elt) (_ : EqSet.In a0 b),\n               EqSet.In a0 a\n           | Error _ => False\n           end\n       | Error _ => True\n       end)\n  (_ : match y with\n       | OK a =>\n           match z with\n           | OK b =>\n               forall (a0 : EqSet.elt) (_ : EqSet.In a0 b),\n               EqSet.In a0 a\n           | Error _ => False\n           end\n       | Error _ => True\n       end),\nmatch x with\n| OK a =>\n    match z with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (x y z : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b =>\n               forall (a0 : EqSet.elt) (_ : EqSet.In a0 b),\n               EqSet.In a0 a\n           | Error _ => False\n           end\n       | Error _ => True\n       end)\n  (_ : match y with\n       | OK a =>\n           match z with\n           | OK b =>\n               forall (a0 : EqSet.elt) (_ : EqSet.In a0 b),\n               EqSet.In a0 a\n           | Error _ => False\n           end\n       | Error _ => True\n       end),\nmatch x with\n| OK a =>\n    match z with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match x with\n| OK a =>\n    match z with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "z : True",
+                    "y : True",
+                    "x : True",
+                    "H : match x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "H0 : match y with\n| OK a =>\n    match z with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match x with\n| OK a =>\n    match z with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : match z with\n| OK b => forall (a : EqSet.elt) (_ : EqSet.In a b), EqSet.In a e\n| Error _ => False\nend",
+                    "_goal : True",
+                    "H : match y with\n| OK b => forall (a : EqSet.elt) (_ : EqSet.In a b), EqSet.In a e\n| Error _ => False\nend",
+                    "e : eqs",
+                    "H : True",
+                    "e : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o _o | _o _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : match z with\n| OK b => forall (a : EqSet.elt) (_ : EqSet.In a b), EqSet.In a e\n| Error _ => False\nend",
+                    "H0 : match z with\n| OK b => forall (a : EqSet.elt) (_ : EqSet.In a b), EqSet.In a e0\n| Error _ => False\nend",
+                    "H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                    "e0 : eqs",
+                    "H0 : True",
+                    "H : False",
+                    "e0 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match z with\n| OK b => forall (a : EqSet.elt) (_ : EqSet.In a b), EqSet.In a e\n| Error _ => False\nend",
+                    "z : True"
+                ],
+                "tactic_res": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e",
+                    "_goal : False",
+                    "H0 : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e0",
+                    "e1 : eqs",
+                    "H0 : False",
+                    "e1 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "contradiction .",
+                "tactic_sig_no_out_arg": "contradiction .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match z with\n| OK b => forall (a : EqSet.elt) (_ : EqSet.In a b), EqSet.In a e\n| Error _ => False\nend",
+                    "z : True"
+                ],
+                "tactic_res": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e",
+                    "_goal : False",
+                    "e1 : eqs",
+                    "e1 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "contradiction .",
+                "tactic_sig_no_out_arg": "contradiction .",
+                "tactic_args": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "ge_bot",
+        "proof": [
+            {
+                "tactic_sig": "unfold ge , bot , EqSet.Subset .",
+                "tactic_sig_no_out_arg": "unfold ge , bot , EqSet.Subset .",
+                "tactic_args": [
+                    "_goal : forall x : t, ge x bot"
+                ],
+                "tactic_res": [
+                    "_goal : forall x : t,\nmatch x with\n| OK a =>\n    forall (a0 : EqSet.elt) (_ : EqSet.In a0 empty_eqs), EqSet.In a0 a\n| Error _ => True\nend"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall x : t,\nmatch x with\n| OK a =>\n    forall (a0 : EqSet.elt) (_ : EqSet.In a0 empty_eqs), EqSet.In a0 a\n| Error _ => True\nend"
+                ],
+                "tactic_res": [
+                    "_goal : forall x : t,\nmatch x with\n| OK a =>\n    forall (a0 : EqSet.elt) (_ : EqSet.In a0 EqSet.empty),\n    EqSet.In a0 a\n| Error _ => True\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall x : t,\nmatch x with\n| OK a =>\n    forall (a0 : EqSet.elt) (_ : EqSet.In a0 EqSet.empty),\n    EqSet.In a0 a\n| Error _ => True\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match x with\n| OK a =>\n    forall (a0 : EqSet.elt) (_ : EqSet.In a0 EqSet.empty),\n    EqSet.In a0 a\n| Error _ => True\nend",
+                    "x : True"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match x with\n| OK a =>\n    forall (a0 : EqSet.elt) (_ : EqSet.In a0 EqSet.empty),\n    EqSet.In a0 a\n| Error _ => True\nend",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a EqSet.empty), EqSet.In a e",
+                    "_goal : True",
+                    "e : eqs",
+                    "e : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a EqSet.empty), EqSet.In a e"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In a e",
+                    "a : EqSet.elt",
+                    "H : EqSet.In a EqSet.empty"
+                ]
+            },
+            {
+                "tactic_sig": "elim ( EqSet.empty_1 _i ) .",
+                "tactic_sig_no_out_arg": "elim ( EqSet.empty_1 _i ) .",
+                "tactic_args": [
+                    "_goal : EqSet.In a e",
+                    "H : EqSet.In a EqSet.empty"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : iff (EqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b)))\n  (EqSet.In q (EqSet.union a b))"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : EqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b)),\nEqSet.In q (EqSet.union a b)",
+                    "_goal : forall _ : EqSet.In q (EqSet.union a b),\nEqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall _ : EqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b)),\nEqSet.In q (EqSet.union a b)"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q (EqSet.union a b)",
+                    "H : EqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b))"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet2.union_1 in _i .",
+                "tactic_sig_no_out_arg": "apply EqSet2.union_1 in _i .",
+                "tactic_args": [
+                    "H : EqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b))"
+                ],
+                "tactic_res": [
+                    "H : or (EqSet2.In q (eqs2 a)) (EqSet2.In q (eqs2 b))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H : or (EqSet2.In q (eqs2 a)) (EqSet2.In q (eqs2 b))"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q (EqSet.union a b)",
+                    "H : EqSet2.In q (eqs2 a)",
+                    "H : EqSet2.In q (eqs2 b)"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite eqs_same in _i .",
+                "tactic_sig_no_out_arg": "rewrite eqs_same in _i .",
+                "tactic_args": [
+                    "H : EqSet2.In q (eqs2 a)"
+                ],
+                "tactic_res": [
+                    "H : EqSet.In q a"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet.union_2 .",
+                "tactic_sig_no_out_arg": "apply EqSet.union_2 .",
+                "tactic_args": [
+                    "_goal : EqSet.In q (EqSet.union a b)"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q a"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet.In q a"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "rewrite eqs_same in _i .",
+                "tactic_sig_no_out_arg": "rewrite eqs_same in _i .",
+                "tactic_args": [
+                    "H : EqSet2.In q (eqs2 b)"
+                ],
+                "tactic_res": [
+                    "H : EqSet.In q b"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet.union_3 .",
+                "tactic_sig_no_out_arg": "apply EqSet.union_3 .",
+                "tactic_args": [
+                    "_goal : EqSet.In q (EqSet.union a b)"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In q b"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet.In q b"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall _ : EqSet.In q (EqSet.union a b),\nEqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b))"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b))",
+                    "H : EqSet.In q (EqSet.union a b)"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet.union_1 in _i .",
+                "tactic_sig_no_out_arg": "apply EqSet.union_1 in _i .",
+                "tactic_args": [
+                    "H : EqSet.In q (EqSet.union a b)"
+                ],
+                "tactic_res": [
+                    "H : or (EqSet.In q a) (EqSet.In q b)"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "H : or (EqSet.In q a) (EqSet.In q b)"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b))",
+                    "H : EqSet.In q a",
+                    "H : EqSet.In q b"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- eqs_same in _i .",
+                "tactic_sig_no_out_arg": "rewrite <- eqs_same in _i .",
+                "tactic_args": [
+                    "H : EqSet.In q a"
+                ],
+                "tactic_res": [
+                    "H : EqSet2.In q (eqs2 a)"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet2.union_2 .",
+                "tactic_sig_no_out_arg": "apply EqSet2.union_2 .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b))"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q (eqs2 a)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q (eqs2 a)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "rewrite <- eqs_same in _i .",
+                "tactic_sig_no_out_arg": "rewrite <- eqs_same in _i .",
+                "tactic_args": [
+                    "H : EqSet.In q b"
+                ],
+                "tactic_res": [
+                    "H : EqSet2.In q (eqs2 b)"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet2.union_3 .",
+                "tactic_sig_no_out_arg": "apply EqSet2.union_3 .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q (EqSet2.union (eqs2 a) (eqs2 b))"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet2.In q (eqs2 b)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet2.In q (eqs2 b)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "ge_lub_left",
+        "proof": [
+            {
+                "tactic_sig": "unfold lub , ge , EqSet.Subset .",
+                "tactic_sig_no_out_arg": "unfold lub , ge , EqSet.Subset .",
+                "tactic_args": [
+                    "_goal : forall x y : t, ge (lub x y) x"
+                ],
+                "tactic_res": [
+                    "_goal : forall x y : t,\nmatch\n  match x with\n  | OK a =>\n      match y with\n      | OK b =>\n          OK\n            {|\n              eqs1 := EqSet.union a b;\n              eqs2 := EqSet2.union (eqs2 a) (eqs2 b);\n              eqs_same := fun q : EqSet2.elt => lub_obligation_1 a b q\n            |}\n      | Error _ => y\n      end\n  | Error _ => x\n  end\nwith\n| OK a =>\n    match x with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall x y : t,\nmatch\n  match x with\n  | OK a =>\n      match y with\n      | OK b =>\n          OK\n            {|\n              eqs1 := EqSet.union a b;\n              eqs2 := EqSet2.union (eqs2 a) (eqs2 b);\n              eqs_same := fun q : EqSet2.elt => lub_obligation_1 a b q\n            |}\n      | Error _ => y\n      end\n  | Error _ => x\n  end\nwith\n| OK a =>\n    match x with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match x with\n  | OK a =>\n      match y with\n      | OK b =>\n          OK\n            {|\n              eqs1 := EqSet.union a b;\n              eqs2 := EqSet2.union (eqs2 a) (eqs2 b);\n              eqs_same := fun q : EqSet2.elt => lub_obligation_1 a b q\n            |}\n      | Error _ => y\n      end\n  | Error _ => x\n  end\nwith\n| OK a =>\n    match x with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "y : True",
+                    "x : True"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match\n  match x with\n  | OK a =>\n      match y with\n      | OK b =>\n          OK\n            {|\n              eqs1 := EqSet.union a b;\n              eqs2 := EqSet2.union (eqs2 a) (eqs2 b);\n              eqs_same := fun q : EqSet2.elt => lub_obligation_1 a b q\n            |}\n      | Error _ => y\n      end\n  | Error _ => x\n  end\nwith\n| OK a =>\n    match x with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match y with\n  | OK b =>\n      OK\n        {|\n          eqs1 := EqSet.union e b;\n          eqs2 := EqSet2.union (eqs2 e) (eqs2 b);\n          eqs_same := fun q : EqSet2.elt => lub_obligation_1 e b q\n        |}\n  | Error _ => y\n  end\nwith\n| OK a => forall (a0 : EqSet.elt) (_ : EqSet.In a0 e), EqSet.In a0 a\n| Error _ => True\nend",
+                    "_goal : True",
+                    "e : eqs",
+                    "e : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match\n  match y with\n  | OK b =>\n      OK\n        {|\n          eqs1 := EqSet.union e b;\n          eqs2 := EqSet2.union (eqs2 e) (eqs2 b);\n          eqs_same := fun q : EqSet2.elt => lub_obligation_1 e b q\n        |}\n  | Error _ => y\n  end\nwith\n| OK a => forall (a0 : EqSet.elt) (_ : EqSet.In a0 e), EqSet.In a0 a\n| Error _ => True\nend",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a e),\nEqSet.In a\n  {|\n    eqs1 := EqSet.union e e0;\n    eqs2 := EqSet2.union (eqs2 e) (eqs2 e0);\n    eqs_same := fun q : EqSet2.elt => lub_obligation_1 e e0 q\n  |}",
+                    "_goal : True",
+                    "e0 : eqs",
+                    "e0 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a e),\nEqSet.In a\n  {|\n    eqs1 := EqSet.union e e0;\n    eqs2 := EqSet2.union (eqs2 e) (eqs2 e0);\n    eqs_same := fun q : EqSet2.elt => lub_obligation_1 e e0 q\n  |}"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In a\n  {|\n    eqs1 := EqSet.union e e0;\n    eqs2 := EqSet2.union (eqs2 e) (eqs2 e0);\n    eqs_same := fun q : EqSet2.elt => lub_obligation_1 e e0 q\n  |}",
+                    "a : EqSet.elt",
+                    "H : EqSet.In a e"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet.union_2 .",
+                "tactic_sig_no_out_arg": "apply EqSet.union_2 .",
+                "tactic_args": [
+                    "_goal : EqSet.In a\n  {|\n    eqs1 := EqSet.union e e0;\n    eqs2 := EqSet2.union (eqs2 e) (eqs2 e0);\n    eqs_same := fun q : EqSet2.elt => lub_obligation_1 e e0 q\n  |}"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In a e"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet.In a e"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : True",
+                    "e0 : eqs",
+                    "e0 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "ge_lub_right",
+        "proof": [
+            {
+                "tactic_sig": "unfold lub , ge , EqSet.Subset .",
+                "tactic_sig_no_out_arg": "unfold lub , ge , EqSet.Subset .",
+                "tactic_args": [
+                    "_goal : forall x y : t, ge (lub x y) y"
+                ],
+                "tactic_res": [
+                    "_goal : forall x y : t,\nmatch\n  match x with\n  | OK a =>\n      match y with\n      | OK b =>\n          OK\n            {|\n              eqs1 := EqSet.union a b;\n              eqs2 := EqSet2.union (eqs2 a) (eqs2 b);\n              eqs_same := fun q : EqSet2.elt => lub_obligation_1 a b q\n            |}\n      | Error _ => y\n      end\n  | Error _ => x\n  end\nwith\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall x y : t,\nmatch\n  match x with\n  | OK a =>\n      match y with\n      | OK b =>\n          OK\n            {|\n              eqs1 := EqSet.union a b;\n              eqs2 := EqSet2.union (eqs2 a) (eqs2 b);\n              eqs_same := fun q : EqSet2.elt => lub_obligation_1 a b q\n            |}\n      | Error _ => y\n      end\n  | Error _ => x\n  end\nwith\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match x with\n  | OK a =>\n      match y with\n      | OK b =>\n          OK\n            {|\n              eqs1 := EqSet.union a b;\n              eqs2 := EqSet2.union (eqs2 a) (eqs2 b);\n              eqs_same := fun q : EqSet2.elt => lub_obligation_1 a b q\n            |}\n      | Error _ => y\n      end\n  | Error _ => x\n  end\nwith\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "y : True",
+                    "x : True"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match\n  match x with\n  | OK a =>\n      match y with\n      | OK b =>\n          OK\n            {|\n              eqs1 := EqSet.union a b;\n              eqs2 := EqSet2.union (eqs2 a) (eqs2 b);\n              eqs_same := fun q : EqSet2.elt => lub_obligation_1 a b q\n            |}\n      | Error _ => y\n      end\n  | Error _ => x\n  end\nwith\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "x : True"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match y with\n  | OK b =>\n      OK\n        {|\n          eqs1 := EqSet.union e b;\n          eqs2 := EqSet2.union (eqs2 e) (eqs2 b);\n          eqs_same := fun q : EqSet2.elt => lub_obligation_1 e b q\n        |}\n  | Error _ => y\n  end\nwith\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "_goal : True",
+                    "e : eqs",
+                    "e : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match\n  match y with\n  | OK b =>\n      OK\n        {|\n          eqs1 := EqSet.union e b;\n          eqs2 := EqSet2.union (eqs2 e) (eqs2 b);\n          eqs_same := fun q : EqSet2.elt => lub_obligation_1 e b q\n        |}\n  | Error _ => y\n  end\nwith\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                    "y : True"
+                ],
+                "tactic_res": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a e0),\nEqSet.In a\n  {|\n    eqs1 := EqSet.union e e0;\n    eqs2 := EqSet2.union (eqs2 e) (eqs2 e0);\n    eqs_same := fun q : EqSet2.elt => lub_obligation_1 e e0 q\n  |}",
+                    "_goal : True",
+                    "e0 : eqs",
+                    "e0 : errmsg"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (a : EqSet.elt) (_ : EqSet.In a e0),\nEqSet.In a\n  {|\n    eqs1 := EqSet.union e e0;\n    eqs2 := EqSet2.union (eqs2 e) (eqs2 e0);\n    eqs_same := fun q : EqSet2.elt => lub_obligation_1 e e0 q\n  |}"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In a\n  {|\n    eqs1 := EqSet.union e e0;\n    eqs2 := EqSet2.union (eqs2 e) (eqs2 e0);\n    eqs_same := fun q : EqSet2.elt => lub_obligation_1 e e0 q\n  |}",
+                    "a : EqSet.elt",
+                    "H : EqSet.In a e0"
+                ]
+            },
+            {
+                "tactic_sig": "apply EqSet.union_3 .",
+                "tactic_sig_no_out_arg": "apply EqSet.union_3 .",
+                "tactic_args": [
+                    "_goal : EqSet.In a\n  {|\n    eqs1 := EqSet.union e e0;\n    eqs2 := EqSet2.union (eqs2 e) (eqs2 e0);\n    eqs_same := fun q : EqSet2.elt => lub_obligation_1 e e0 q\n  |}"
+                ],
+                "tactic_res": [
+                    "_goal : EqSet.In a e0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : EqSet.In a e0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

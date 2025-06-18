@@ -1,0 +1,52 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  destruct H0; [simpl in *; [auto | .. ] | simpl in * | simpl in * | .. ].
+Ltac custom1 H0 :=  apply H0; [auto | .. ].
+Ltac custom2 H0 H1 :=  apply H0; [rewrite H1; [auto | .. ] | .. ].
+Ltac custom3 H0 H1 H2 H3 :=  rewrite H0; [intros [ H1 H2 ]; [eelim H3; [eauto |  | eauto | .. ] | .. ] | .. ].
+Ltac custom4 H0 :=  unfold H0; [InvAgree | .. ].
+Ltac custom5 H0 H1 H2 H3 :=  rewrite H0; [intros [ H1 H2 ]; [eelim H3; [eauto | .. ] | .. ] | .. ].
+Ltac custom6 H0 H1 H2 H3 H4 :=  constructor; [intros H4 | intros H0 H1 H2 H3 | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 H5 H6 :=  unfold H0; [intros H1 H2 H3 H4 H5 H6 | .. ].
+Ltac custom8 H0 :=  custom1 H0; [autorewrite with ints; [ | auto | .. ] | .. ].
+Ltac custom9  :=  simpl; [auto | .. ].
+Ltac custom10 H0 H1 H2 :=  red; [intros H0 H1 H2; [autorewrite with ints; [ | .. ] | .. ] | .. ].
+Ltac custom11 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom12 H0 :=  split; [intros H0; [auto | .. ] | .. ].
+Ltac custom13 H0 H1 H2 H3 :=  split; [ | intros H0 H1 H2 H3; [eauto | .. ] | .. ].
+Ltac custom14 H0 :=  red; [intros H0 | .. ].
+Ltac custom15 H0 :=  custom1 H0; [autorewrite with ints; [ | try lia | .. ] | .. ].
+Ltac custom16 H0 :=  elim H0; [auto | .. ].
+Ltac custom17 H0 :=  apply H0; [f_equal | .. ].
+Ltac custom18  :=  constructor; [auto with na | auto with na | .. ].
+Ltac custom19  :=  constructor; [auto with na | .. ].
+Ltac custom20 H0 H1 H2 H3 H4 :=  constructor; [intros H4 | intros H0 H1 H2 H3 | .. ].
+Ltac custom21 H0 H7 H6 H10 :=  inversion H0; [subst H7 H6 H10 | .. ].
+Ltac custom22 H0 :=  destruct H0; [custom9  | .. ].
+Ltac custom23 H0 :=  eelim H0; [ | eauto | .. ].
+Ltac custom24 H0 H1 :=  apply H0; [custom1 H1 | .. ].
+Ltac custom25 H0 :=  apply H0; [lia | .. ].
+Ltac custom26 H0 H1 :=  rewrite H0 by lia; [custom25 H1 | .. ].
+Ltac custom27 H0 H1 H2 :=  custom10 H0 H1 H2; [ | try lia | .. ].
+Ltac custom28  :=  InvAgree; [simpl | .. ].
+Ltac custom29 H0 H1 H2 H3 :=  intros H0 H1 H2 H3; [congruence | .. ].
+Ltac custom30 H0 H1 H2 H3 H4 H5 H6 :=  custom29 H0 H1 H2 H3; [assert ( H4 H5 = BCglob H0 ) by ( eapply H6 ; eauto )].
+Ltac custom31 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3; [rewrite H4 in H3 | .. ].
+Ltac custom32 H0 :=  inv H0; [constructor | .. ].
+---------------------------
+Num proofs: 47
+Num training proofs: 15
+Original size: 1062
+Compressed total size: 834
+Training size: 588
+(2) (3) Testing size: 474
+(2) (3) Compressed testing size: 384
+(2) (3) Compression rate: 123.44
+Compressed size + lib: 917 ( 834 corpus / 83 library )
+[1] numTactics: 33
+[1] avrgTacticSize: 2.52
+[1] maxTacSize: 5
+[1] numProofsCompressed/total: 24 / 32
+[1] numAvgApplications: 4.42
+[1] numTotalApplications: 146
+Compression rate: 1.158124318429662
+Num tactics in library: 33

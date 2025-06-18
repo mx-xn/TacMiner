@@ -1,0 +1,47 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H4 H5 H6 :=  assert ( L : H0 H1 = Some H2 ); [ | constructor; [auto | constructor; [congruence | .. ] | intros H4 H5 H6; [inv H6; [constructor | .. ] | .. ] | .. ] | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 H5 :=  red; [intros H0 H1; [eapply H2; [eapply H3; [eexact H4 | eapply H5 | .. ] | .. ] | .. ] | .. ].
+Ltac custom2  :=  split; [auto | auto | .. ].
+Ltac custom3 H0 :=  intros H0; [constructor | .. ].
+Ltac custom4 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom5 H0 H1 :=  cbn; [destruct ( Z.eq_dec H0 H1 ); [ | auto | .. ] | .. ].
+Ltac custom6 H0 H2 H3 :=  red in H0; [subst H2; [apply H3 | .. ] | .. ].
+Ltac custom7 H0 :=  apply H0; [auto | .. ].
+Ltac custom8 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom9 H0 H1 H2 :=  intros H0 H1; [split; [auto | exists H2; [auto | .. ] | .. ] | .. ].
+Ltac custom10 H0 H1 :=  destruct ( H0 H1 ) as [ z| ]; [congruence | .. ].
+Ltac custom11 H0 H1 H2 :=  constructor; [auto |  | intros H0 H1 H2; [inv H2 | .. ] | .. ].
+Ltac custom12 H0 :=  apply H0; [custom2  | .. ].
+Ltac custom13 H0 :=  apply H0; [lia | .. ].
+Ltac custom14 H0 :=  cbn; [rewrite H0; [auto | .. ] | .. ].
+Ltac custom15  :=  simpl; [intros _ | .. ].
+Ltac custom16 H0 :=  custom7 H0; [auto | .. ].
+Ltac custom17  :=  split; [lia | .. ].
+Ltac custom18 H0 H1 H2 :=  custom8 H0 H1; [custom5 H2 H1; [auto | .. ] | .. ].
+Ltac custom19 H0 H2 H1 :=  split; [ | custom18 H0 H2 H1 | .. ].
+Ltac custom20  :=  red; [auto | .. ].
+Ltac custom21 H0 :=  apply H0; [custom20  | .. ].
+Ltac custom22 H0 H1 :=  red; [intros H0 H1 | .. ].
+Ltac custom23  :=  constructor; [auto | .. ].
+Ltac custom24  :=  split; [auto | .. ].
+Ltac custom25 H0 H1 H2 :=  eapply H0; [custom4 H1 H2 | .. ].
+Ltac custom26 H0 H1 H2 :=  custom8 H0 H1; [rewrite H2 | .. ].
+Ltac custom27 H0 :=  intros H0; [simpl | .. ].
+---------------------------
+Num proofs: 43
+Num training proofs: 27
+Original size: 859
+Compressed total size: 606
+Training size: 609
+(2) (3) Testing size: 250
+(2) (3) Compressed testing size: 169
+(2) (3) Compression rate: 147.93
+Compressed size + lib: 682 ( 606 corpus / 76 library )
+[1] numTactics: 28
+[1] avrgTacticSize: 2.71
+[1] maxTacSize: 8
+[1] numProofsCompressed/total: 13 / 16
+[1] numAvgApplications: 4.89
+[1] numTotalApplications: 137
+Compression rate: 1.2595307917888563
+Num tactics in library: 28

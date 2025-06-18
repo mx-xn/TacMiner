@@ -1,0 +1,67 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto | .. ].
+Ltac custom1 H0 H12 :=  destruct H0; [simpl in *; [auto | .. ] | simpl in *; [unfold H12; [InvAgree | .. ] | .. ] | simpl in * | .. ].
+Ltac custom2 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom3 H0 H1 H2 H3 H10 H11 H12 H13 H14 :=  intros H0 H1 H2; [unfold H3; [destruct H0, H1, H2; [simpl; [intros [ H10 H11 ] [ H12 H13 ]; [split; [eapply H14; [eauto | eauto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom4 H0 H1 H2 H3 H4 H5 :=  constructor; [intros H0; [rewrite H5 | .. ] | intros H1 H2 H3 H4 | .. ].
+Ltac custom5  :=  autorewrite with ints; [ | auto | auto | .. ].
+Ltac custom6 H3 :=  InvAgree; [apply H3 | .. ].
+Ltac custom7 H0 H1 H2 H3 :=  intros H0 H1; [unfold H2, H3; [destruct H0, H1; [simpl | .. ] | .. ] | .. ].
+Ltac custom8 H0 H15 :=  destruct H0; [simpl in *; [auto | .. ] | simpl in *; [InvAgree; [custom0 H15 | .. ] | .. ] | simpl in * | .. ].
+Ltac custom9 H0 H1 H2 :=  red; [intros H0 H1 H2 | .. ].
+Ltac custom10 H0 :=  f_equal; [apply H0; [ | .. ] | .. ].
+Ltac custom11 H0 H1 H2 H3 H4 H5 H6 :=  unfold H0; [intros H1 H2 H3 H4 H5 H6 | .. ].
+Ltac custom12  :=  red; [auto | .. ].
+Ltac custom13 H0 :=  rewrite ! H0; [auto | .. ].
+Ltac custom14 H0 :=  split; [intros H0; [auto | .. ] | .. ].
+Ltac custom15 H0 H1 H2 H3 :=  split; [ | intros H0 H1 H2 H3; [eauto | .. ] | .. ].
+Ltac custom16  :=  autorewrite with ints; [ | try lia | try lia | .. ].
+Ltac custom17 H0 :=  apply H0; [lia | .. ].
+Ltac custom18 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H12 H11 :=  intros H0 H1 H2 H3 H4 H5 H6; [apply ( H7 H8 ( H9 H10 H12 H11 ) ); [auto | auto | .. ] | .. ].
+Ltac custom19 H0 :=  generalize ( Int.unsigned_range H0 ); [lia | .. ].
+Ltac custom20 H0 H1 :=  rewrite H0 by lia; [custom17 H1 | .. ].
+Ltac custom21 H0 H1 :=  red; [intros H0; [rewrite H1 | .. ] | .. ].
+Ltac custom22  :=  simpl; [auto | .. ].
+Ltac custom23 H0 H1 H2 H3 H4 :=  split; [custom0 H0 | intros H1 H2 H3 H4 | .. ].
+Ltac custom24  :=  autorewrite with ints; [ | try lia | .. ].
+Ltac custom25 H0 :=  split; [intros H0 | .. ].
+Ltac custom26  :=  constructor; [auto with na | auto with na | .. ].
+Ltac custom27 H0 H1 H2 H3 H4 :=  constructor; [intros H0 | intros H1 H2 H3 H4 | .. ].
+Ltac custom28 H0 H1 H2 H3 H4 H5 :=  split; [ | intros H0 H1 H2 H3 H4; [custom0 H5 | .. ] | .. ].
+Ltac custom29 H0 H1 :=  intros H0 H1; [inv H1; [ | .. ] | .. ].
+Ltac custom30 H0 H1 :=  custom29 H0 H1; [eauto with na | .. ].
+Ltac custom31 H0 H1 :=  custom29 H0 H1; [eauto with na | .. ].
+Ltac custom32 H0 H1 H2 H3 H4 H5 H6 H8 :=  custom11 H0 H1 H2 H3 H4 H5 H6; [inv H5; [rewrite H8 | .. ] | .. ].
+Ltac custom33 H0 H1 H2 H3 :=  custom9 H0 H1 H2; [rewrite ! H3 by auto | .. ].
+Ltac custom34 H0 :=  inv H0; [auto | .. ].
+Ltac custom35 H0 :=  destruct H0; [ | simpl in * | try discriminate | .. ].
+Ltac custom36 H0 H1 :=  unfold H0; [custom6 H1 | .. ].
+Ltac custom37 H0 H1 H2 H3 H4 H5 H6 H7 :=  unfold H0; [intros H1 H2 H3 H4 H5 H6 H7 | .. ].
+Ltac custom38 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5 | .. ].
+Ltac custom39 H0 :=  red; [intros H0 | .. ].
+Ltac custom40 H0 H1 :=  generalize ( Int.size_range H0 ); [intros H1 | .. ].
+Ltac custom41 H0 :=  intro H0; [destruct H0; [ | .. ] | .. ].
+Ltac custom42 H0 H1 :=  apply H0; [custom0 H1 | .. ].
+Ltac custom43  :=  autorewrite with ints; [ | auto | .. ].
+Ltac custom44 H0 H1 H2 :=  custom9 H0 H1 H2; [custom5  | .. ].
+Ltac custom45 H0 :=  destruct H0; [auto | .. ].
+Ltac custom46 H0 :=  custom45 H0; [ | auto | .. ].
+Ltac custom47 H0 :=  custom45 H0; [ | auto | .. ].
+---------------------------
+Num proofs: 103
+Num training proofs: 74
+Original size: 1759
+Compressed total size: 1315
+Training size: 1287
+(2) (3) Testing size: 472
+(2) (3) Compressed testing size: 338
+(2) (3) Compression rate: 139.64
+Compressed size + lib: 1445 ( 1315 corpus / 130 library )
+[1] numTactics: 48
+[1] avrgTacticSize: 2.71
+[1] maxTacSize: 9
+[1] numProofsCompressed/total: 23 / 29
+[1] numAvgApplications: 5.31
+[1] numTotalApplications: 255
+Compression rate: 1.2173010380622837
+Num tactics in library: 48

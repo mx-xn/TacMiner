@@ -1,0 +1,20 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [red; [auto | .. ] | .. ].
+Ltac custom1 H1 H2 :=  Next Obligation; [split; [intros H1 | intros H2 | .. ] | .. ].
+Ltac custom2 H0 H1 H2 H3 :=  apply ( H0 H1 ); [apply H2 with H3; [auto |  | .. ] | .. ].
+Ltac custom3 H0 :=  apply H0; [auto | .. ].
+Ltac custom4 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0; [destruct H1; [ |  | .. ] | destruct H1; [ | auto | .. ] | .. ] | .. ].
+Ltac custom5 H0 H3 :=  destruct H0; [destruct H3; [ |  | .. ] |  | .. ].
+Ltac custom6  :=  red; [auto | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5 | .. ].
+Ltac custom8  :=  custom3 ; [custom2  | .. ].
+Ltac custom9 H0 :=  red; [intros H0 | .. ].
+Ltac custom10  :=  custom5 ; [ |  | try contradiction | .. ].
+Ltac custom11 H0 :=  rewrite H0; [auto | .. ].
+---------------------------
+ , , 0.51
+Allocation, Number of Tactics, 12
+ , Average Tactic Size, 2.58
+ , Total Tactic Size, 31
+ , Max Tactic Size, 5
+ , Overall CP, 1.32

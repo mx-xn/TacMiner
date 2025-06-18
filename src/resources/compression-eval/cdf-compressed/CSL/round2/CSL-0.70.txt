@@ -1,0 +1,48 @@
+extracted tactics -----------
+Ltac custom0 H5 :=  split; [HDISJ | split; [ | split; [ | apply H5; [auto | .. ] | .. ] | .. ] | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 :=  constructor; [auto |  | intros H9 H10 H11 H12 H13 H14 | intros H0 H1 H2 H3 H4 H5 H6 H7 H8 | .. ].
+Ltac custom2 H0 H1 :=  exists H0, H1; [intuition auto | .. ].
+Ltac custom3 H0 :=  inv H0; [constructor; [auto | .. ] | .. ].
+Ltac custom4 H0 :=  apply H0; [auto |  | auto | .. ].
+Ltac custom5 H6 H7 H8 H9 H10 H11 H12 H13 H14 :=  constructor; [auto | auto | auto | intros H6 H7 H8 H9 H10 H11 H12 H13 H14 | .. ].
+Ltac custom6 H0 :=  apply H0; [auto | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 H17 :=  custom1 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14; [auto | intro H17 | inv H8 | .. ].
+Ltac custom8 H0 H1 H2 H3 :=  apply H0 in H1; [rewrite H2 in H3; [auto] | .. ].
+Ltac custom9 H0 H1 :=  exists H0, H1; [auto | .. ].
+Ltac custom10 H0 :=  custom0 H0; [ | auto | .. ].
+Ltac custom11 H0 H2 :=  subst H0; [inv H2].
+Ltac custom12 H0 H1 H2 :=  apply H0; [custom2 H1 H2; [HDISJ | .. ] | .. ].
+Ltac custom13 H0 :=  inv H0; [constructor | .. ].
+Ltac custom14 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 H15 :=  custom1 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14; [ |  | custom11 H2 H15 | .. ].
+Ltac custom15  :=  red; [auto | .. ].
+Ltac custom16  :=  cbn; [custom15  | .. ].
+Ltac custom17 H0 :=  red; [intros H0 | .. ].
+Ltac custom18 H0 H1 :=  custom2 H0 H1; [HDISJ | .. ].
+Ltac custom19 H0 H4 H11 :=  rewrite H0 by HDISJ; [custom18 H4 H11 | .. ].
+Ltac custom20 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom21 H0 H1 H2 H3 :=  apply H0; [apply H1 with ( H2 H3 ) | .. ].
+Ltac custom22 H0 H1 :=  apply H0; [eapply H1 | .. ].
+Ltac custom23 H0 H1 :=  apply H0; [eexact H1 | .. ].
+Ltac custom24 H0 H1 :=  apply H0; [custom6 H1 | .. ].
+Ltac custom25  :=  split; [ | split | .. ].
+Ltac custom26  :=  split; [auto | .. ].
+Ltac custom27 H0 :=  destruct H0; [constructor | .. ].
+Ltac custom28 H0 H1 :=  intros H0 H1; [cbn | .. ].
+---------------------------
+Num proofs: 29
+Num training proofs: 18
+Original size: 1004
+Compressed total size: 813
+Training size: 668
+(2) (3) Testing size: 336
+(2) (3) Compressed testing size: 269
+(2) (3) Compression rate: 124.91
+Compressed size + lib: 886 ( 813 corpus / 73 library )
+[1] numTactics: 29
+[1] avrgTacticSize: 2.52
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 11 / 11
+[1] numAvgApplications: 3.62
+[1] numTotalApplications: 105
+Compression rate: 1.1331828442437923
+Num tactics in library: 29

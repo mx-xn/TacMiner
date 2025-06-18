@@ -1,0 +1,63 @@
+---
+fullname: Bignums
+shortname: bignums
+organization: coq-community
+community: true
+action: true
+branch: 'v8.15'
+
+synopsis: >-
+  Bignums, the Coq library of arbitrarily large numbers
+
+description: |
+  This Coq library provides BigN, BigZ, and BigQ that used to
+  be part of the standard library.
+
+authors:
+- name: Laurent Théry
+- name: Benjamin Grégoire
+- name: Arnaud Spiwack
+- name: Evgeny Makarov
+- name: Pierre Letouzey
+
+maintainers:
+- name: Pierre Roux
+  nickname: proux01
+- name: Érik Martin-Dorel
+  nickname: erikmd
+
+opam-file-maintainer: palmskog@gmail.com
+
+opam-file-version: '8.15.dev'
+
+license:
+  fullname: GNU Lesser General Public License v2.1
+  identifier: LGPL-2.1-only
+
+plugin: true
+
+supported_ocaml_versions:
+  text: all versions supported by Coq
+
+supported_coq_versions:
+  text: >-
+    The v8.15 branch tracks version 8.15 of Coq, see
+    releases for compatibility with released versions of Coq
+  opam: '{>= "8.15" & < "8.16~"}'
+
+tested_coq_opam_versions:
+- version: '8.15'
+
+namespace: Bignums
+
+keywords:
+- name: integer numbers
+- name: rational numbers
+- name: arithmetic
+- name: arbitrary precision
+
+categories:
+- name: Miscellaneous/Coq Extensions
+- name: Mathematics/Arithmetic and Number Theory/Number theory
+- name: Mathematics/Arithmetic and Number Theory/Rational numbers
+---

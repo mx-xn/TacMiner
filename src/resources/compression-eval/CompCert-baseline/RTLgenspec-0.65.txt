@@ -1,0 +1,23 @@
+extracted tactics-----------
+custom_tac4: intros; monadInv _i
+custom_tac1: intros until _o; unfold _i
+custom_tac10: eapply _i; eauto
+custom_tac16: intros; inv _i
+custom_tac7: apply _i; eauto with rtlg
+custom_tac0: exists _i; auto
+custom_tac20: econstructor; eauto with rtlg
+---------------------------
+Num proofs: 55
+Num training proofs: 17
+Original size: 888
+Training size: 546
+Testing size: 342
+Compressed total size: 771 ( 742 corpus / 29 library )
+Compressed testing size: 318
+[1] numTactics: 7
+[1] avrgTacticSize: 2.00
+[1] maxTacSize: 2
+[1] numAvgApplications: 3.43
+[1] numTotalApplications: 24
+Compression rate: 1.0754716981132075
+Num tactics in library: 7

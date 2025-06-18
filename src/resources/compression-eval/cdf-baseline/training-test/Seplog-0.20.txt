@@ -1,0 +1,13 @@
+extracted tactics-----------
+custom_tac1: constructor; auto
+custom_tac2: apply _i; intros _o
+---------------------------
+Num proofs: 70
+Num training proofs: 3
+Original size: 947
+Training size: 193
+Testing size: 754
+Compressed total size: 894 ( 888 corpus / 6 library )
+Compressed testing size: 731
+Compression rate: 1.0592841163310962
+Num tactics in library: 2

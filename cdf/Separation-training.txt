@@ -1,0 +1,10 @@
+hinit_inside
+hinit_outside
+hunion_comm
+hdisjoint_union_l
+hunion_invert_r
+pure_sep
+pureconj_sepconj
+wand_curry
+sepconj_param_precise
+sepconj_and_distr_2

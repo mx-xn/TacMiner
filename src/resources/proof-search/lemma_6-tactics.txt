@@ -1,0 +1,9 @@
+Ltac custom0  := simpl; [tauto | .. ].
+Ltac custom0 H7 H8 := simpl; [intuition; [exploit H7; [eauto; [intros H8; [extlia | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom0 H7 H8 := intuition; [exploit H7; [eauto; [intros H8; [extlia | .. ] | .. ] | .. ] | .. ].
+Ltac custom0 H0 := rewrite H0; [simpl; [intuition | .. ] |auto | .. ].
+Ltac custom0 H0 H1 := exploit H0; [eauto; [intros H1; [extlia | .. ] | .. ] | .. ].
+Ltac custom1  := simpl; [intuition | .. ].
+Ltac custom0 H0 := eauto; [intros H0; [extlia | .. ] | .. ].
+Ltac custom0 H0 := rewrite H0; [intuition | .. ].
+Ltac custom1 H0 := simpl; [rewrite H0 | .. ].

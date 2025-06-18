@@ -1,0 +1,17 @@
+extracted tactics-----------
+custom_tac12: apply _i; auto
+custom_tac2: split; auto
+custom_tac20: unfold _i; congruence
+custom_tac5: red; auto
+custom_tac15: eapply _i; eauto
+custom_tac4: exists _i; split
+---------------------------
+Num proofs: 66
+Num training proofs: 16
+Original size: 1311
+Training size: 675
+Testing size: 636
+Compressed total size: 1102 ( 1080 corpus / 22 library )
+Compressed testing size: 596
+Compression rate: 1.1896551724137931
+Num tactics in library: 6

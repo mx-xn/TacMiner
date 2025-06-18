@@ -1,0 +1,115 @@
+coq-art/./chap11.v
+-----
+coq-art/./chap11_compr.v
+-----
+-----
+occ_inv
+Proof. inversion 1 using OCC_INV; auto with searchtrees. Qed.
+not_occ_Leaf
+Proof. unfold not; inversion_clear 1. Qed.
+naive_occ_dec
+Proof. intros n t; induction t as [| z t1 IH1 t2 IH2]. - right; auto with searchtrees. - case (Z.eq_dec n z). + intro e; subst n; left; auto with searchtrees. + case IH1; case IH2; intros; auto with searchtrees. right; intro H; elim (occ_inv H); auto with searchtrees. tauto. Defined.
+min_leaf
+Proof. intro z; apply min_intro; intros z' H; inversion_clear H. Qed.
+maj_leaf
+Proof. intro z; apply maj_intro; intros z' H; inversion_clear H. Qed.
+maj_not_occ
+Proof. intros z t H H'; elim H; intros; absurd (z < z); auto. apply Z.lt_irrefl. Qed.
+min_not_occ
+Proof. intros z t H H'; elim H; intros; absurd (z < z); auto. apply Z.lt_irrefl. Qed.
+search_tree_l
+Proof. inversion_clear se; auto with searchtrees. Qed.
+search_tree_r
+Proof. inversion_clear se; auto with searchtrees. Qed.
+maj_l
+Proof. inversion_clear se; auto with searchtrees. Qed.
+min_r
+Proof. inversion_clear se; auto with searchtrees. Qed.
+not_right
+Proof. intros p H; elim min_r. unfold not; intros; absurd (n < p); auto with searchtrees. apply Zle_not_lt; assumption. Qed.
+not_left
+Proof. intros p H; elim maj_l. unfold not; intros; absurd (p < n); auto with searchtrees. Qed.
+go_left
+Proof. intros p H H0; elim (occ_inv H). - intro e; elim e; absurd (p < n). + rewrite e; apply Zle_not_lt; auto with zarith. + assumption. - destruct 1;auto. absurd (occ p t2). + apply not_right; apply Zlt_le_weak; assumption. + auto. Qed.
+go_right
+Proof. intros p H H0; elim (occ_inv H). - intro e; elim e; absurd (n < p). + rewrite e; apply Zle_not_lt; auto with zarith. + apply Z.gt_lt; assumption. - destruct 1; auto. absurd (occ p t1). + apply not_left; unfold Z.ge; rewrite H0; discriminate. + auto. Qed.
+occ_dec
+Proof. refine (fix occ_dec (p:Z) (t:Z_btree) {struct t} : occ_dec_spec p t := match t as x return occ_dec_spec p x with | Z_leaf => fun h => right _ _ | Z_bnode n t1 t2 => fun h => match Z_le_gt_dec p n with | left h1 => match Z_le_lt_eq_dec p n h1 with | left h'1 => match occ_dec p t1 _ with | left h''1 => left _ _ | right h''2 => right _ _ end | right h'2 => left _ _ end | right h2 => match occ_dec p t2 _ with | left h''1 => left _ _ | right h''2 => right _ _ end end end); eauto with searchtrees. rewrite h'2; auto with searchtrees. Defined.
+insert_leaf
+Proof. intro n; split; auto with searchtrees. intros p H; inversion_clear H; auto with searchtrees. Qed.
+insert_l
+Proof. intros n p t1 t'1 t2 H H0 H1; split. - intros p0 H2; inversion_clear H2; auto with searchtrees. elim H1; auto with searchtrees. - constructor 2; elim H1; auto with searchtrees. - intros p0 H2; inversion_clear H2; auto with searchtrees. elim H1. intros H4 H5 H6. elim (H6 p0); auto with searchtrees. - elim H1; constructor 2; auto with searchtrees. + eapply search_tree_r; eauto with searchtrees. + split; intros; elim (H4 z'). intro; cut (maj p t1). * induction 1; auto with searchtrees. * eapply maj_l; eauto with searchtrees. * intro e; subst z'; auto with searchtrees. * assumption. + eapply min_r; eauto with searchtrees. Qed.
+insert_r
+Proof. intros n p t1 t2 t'2 H H0 H1; split. - intros p0 H2; inversion_clear H2; auto with searchtrees. elim H1; auto with searchtrees. - constructor 3; elim H1; auto with searchtrees. - intros p0 H2; inversion_clear H2; auto with searchtrees. elim H1; intros H4 H5 H6. elim (H6 p0); auto with searchtrees. - elim H1; constructor 2; auto with searchtrees. + eapply search_tree_l; eauto with searchtrees. + split; intros; elim (maj_l H0); auto with searchtrees. + split; intros q H6; elim (H4 q H6). intro; elim (min_r H0); auto with searchtrees. intro e; subst q; auto with searchtrees. apply Z.gt_lt. assumption. Qed.
+insert_eq
+Proof. intros. auto with searchtrees. Qed.
+insert
+Proof. refine (fix insert (n:Z) (t:Z_btree) {struct t} : insert_spec n t := match t return insert_spec n t with | Z_leaf => fun s => exist _ (Z_bnode n Z_leaf Z_leaf) _ | Z_bnode p t1 t2 => fun s => match Z_le_gt_dec n p with | left h => match Z_le_lt_eq_dec n p h with | left _ => match insert n t1 _ with | exist _ t3 _ => exist _ (Z_bnode p t3 t2) _ end | right _ => exist _ (Z_bnode n t1 t2) _ end | right _ => match insert n t2 _ with | exist _ t3 _ => exist _ (Z_bnode p t1 t3) _ end end end); eauto with searchtrees. rewrite e; eauto with searchtrees. Defined.
+list2tree_aux
+Proof. refine (fix list2tree_aux (l:list Z) : forall t:Z_btree, list2tree_aux_spec l t := fun t => match l return list2tree_aux_spec l t with | nil => fun s => exist _ t _ | cons p l' => fun s => match insert p (t:=t) s with | exist _ t' _ => match list2tree_aux l' t' _ with | exist _ t'' _ => exist _ t'' _ end end end). - split; auto. + split; auto. * induction 1; auto. inversion H. - case i; auto. - case a; auto. intros; split; auto. intros; case a; intros; split; auto. destruct 1 as [H3 | H3]. + case H3. * intro e; rewrite <- e. case (H2 p); intros; apply H4; right; case i; auto. * case (H2 p0); auto. + case (H2 p0); auto. intros H4 H5; apply H4; right. elim i; auto. + intros; case a; auto; intros H4 H5. case (H5 p0); intros H6 H7; case (H7 H3). left; auto. cbn; auto. case i. intros H8 H9 H10 H11 H12. case (H10 p0 H12); auto. induction 1; cbn; auto. Defined.
+list2tree
+Proof. refine (fun l => match list2tree_aux l (t:=Z_leaf) _ with | exist _ t _ => exist _ t _ end). eauto with searchtrees. case a; auto. split; auto. intro p; split; case (H0 p). - auto. - intros H1 H2 H3; case (H2 H3); auto. inversion 1. Defined.
+rmax_leaf_leaf
+Proof. intro n; split; auto with searchtrees. - intros p H; inversion_clear H; auto with searchtrees. + auto with zarith. + absurd (occ p Z_leaf); auto with searchtrees. + absurd (occ p Z_leaf); auto with searchtrees. - inversion_clear 1 ; auto with searchtrees. Qed.
+rmax_t_Z_leaf
+Proof. intros t n H; split; auto with searchtrees. - intros p H0; elim (occ_inv H0); intro H1. + subst p; auto with zarith. + elim H1; intro H2. * apply Zlt_le_weak; elim (maj_l H); auto. * absurd (occ p Z_leaf); auto with searchtrees. - intros q H1; elim (occ_inv H1); intros H0; auto with searchtrees. destruct H0; auto. inversion H0. - intro H'; absurd (occ n Z_leaf). + auto with searchtrees. + destruct (not_left H (p:=n)). * auto with zarith. * auto with searchtrees. - eauto with searchtrees. Qed.
+rmax_1
+Proof. elim R1; auto with searchtrees. Qed.
+rmax_2
+Proof. elim (min_r S1); auto with searchtrees. Qed.
+rmax_3
+Proof. apply min_intro. intros q' H; elim R1; intros. elim (min_r S1); auto with searchtrees. Qed.
+rmax_4
+Proof. right. - apply search_tree_l with n (Z_bnode p t2 t3); auto with searchtrees. - elim R1; auto with searchtrees. - apply maj_l with (Z_bnode p t2 t3); auto with searchtrees. - auto with searchtrees. Qed.
+rmax_5
+Proof. elim R1; intros; apply Z.lt_le_trans with p; auto with searchtrees. Qed.
+rmax_6
+Proof. intros p0 H; elim R1; intros H0 H1 H2 H3 H4 H5. elim (occ_inv H); intro H6. - elim H6; apply Zlt_le_weak; auto with searchtrees zarith. - elim H6; intro H7; elim (maj_l S1). intro H8; cut (p0 < n); auto with searchtrees. intro; apply Zlt_le_weak; apply Z.lt_trans with n; auto with searchtrees. elim (min_r S1); auto with searchtrees. Qed.
+rmax_7
+Proof. intros q' H; elim (occ_inv H); intro H0. - elim H0; auto with searchtrees. - elim H0; auto with searchtrees. intro H1; elim R1; auto with searchtrees. Qed.
+rmax_8
+Proof. intro F;case (occ_inv F). + intro eg; absurd (n < q). * rewrite eg; apply Z.lt_irrefl. * auto with searchtrees. + intro H1; case H1; intro H2. * absurd (occ q t1); auto with searchtrees. apply not_left with n (Z_bnode p t2 t3); auto with searchtrees. apply Z.le_ge; elim R1; auto with searchtrees. * elim R1; auto. Qed.
+rmax_9
+Proof. intros q0 H; elim (occ_inv H). - intro e; elim e; left; auto with searchtrees. - intro d; case d; intro H'. + left; auto with searchtrees. + elim R1; intros H1 H2 H3 H4 H5 H6. elim (H4 _ H'); auto with searchtrees. Qed.
+rmax_t1_t2t3
+Proof. apply rmax_intro; auto with searchtrees. Qed.
+rmax
+Proof. refine (fix rmax (t:Z_btree) : rmax_spec t := match t as x return rmax_spec x with | Z_leaf => fun h h' => False_rec _ _ | Z_bnode r t1 t2 => match t2 as z return rmax_spec z -> z = t2 -> rmax_spec (Z_bnode r t1 z) with | Z_leaf => fun h h' h'' h''' => existT (fun q:Z => rmax_sig (Z_bnode r t1 Z_leaf) q) r (exist _ t1 _) | Z_bnode n' t'1 t'2 => fun h h' h'' h''' => match rmax t2 _ _ with | existT _ num (exist _ t' _) => existT (fun q:Z => rmax_sig (Z_bnode r t1 (Z_bnode n' t'1 t'2)) q) num (exist _ (Z_bnode r t1 t') _) end end _ _ end). - inversion h'. - auto with searchtrees. - case h'; eauto with searchtrees. - case h'; eauto with searchtrees. - rewrite h'; eauto with searchtrees. case h'; apply rmax_t1_t2t3; auto. rewrite h'; auto. - auto. - auto. Defined.
+RM_0
+Proof. intro n; apply rm_intro; auto with searchtrees. Qed.
+RM_1
+Proof. intros; apply rm_intro; auto with searchtrees. intros p H; elim (occ_inv H); auto with searchtrees. tauto. Qed.
+rm_left
+Proof. intros n p t1 t2 t' H H0 H1. apply rm_intro. - intro H2; elim (occ_inv H2). + intro eg; apply Z.lt_irrefl with n. pattern n at 1; rewrite eg; auto. + intro D; elim D; intro H3. elim H1; auto with searchtrees. absurd (occ p t2); auto with searchtrees. apply not_right with n t1; auto with searchtrees. apply Zlt_le_weak; auto with searchtrees. - intros p0 H2; elim (occ_inv H2). + intro e; case e; auto with searchtrees. + intro d; case d; auto with searchtrees. intro; elim H1; auto with searchtrees. - intros p0 H2; elim (occ_inv H2). + intro e; case e; auto with searchtrees. + intro d; case d; intro H4. elim H1; intros H5 H6 H7 H8. elim (H7 p0 H4); auto with searchtrees. auto with searchtrees. - right. + elim H1; auto with searchtrees. + apply search_tree_r with n t1; auto with searchtrees. + apply maj_intro; intros q H2. cut (occ q t1). * intro; elim (maj_l H0); intros; auto with searchtrees. * auto with searchtrees. elim H1; auto with searchtrees. + apply min_r with t1; auto with searchtrees. Qed.
+rm_right
+Proof. intros n p t1 t2 t' H H0 H1; apply rm_intro. - intro H2; elim (occ_inv H2). + intro eg; apply Z.lt_irrefl with p; auto with searchtrees. pattern p at 1; rewrite <- eg; auto with searchtrees. + intro D; elim D; intro H3; elim H1; auto with searchtrees. absurd (occ p t1); auto with searchtrees. apply not_left with n t2; auto with searchtrees. apply Z.le_ge; apply Zlt_le_weak; auto. - intros p0 H2; elim (occ_inv H2). + intro e ; elim e; auto with searchtrees. + intro d ; elim d; auto with searchtrees. intro; elim H1; auto with searchtrees. - intros p0 H2; elim (occ_inv H2). + intro e ; elim e; auto with searchtrees. + intro d ; elim d; intro H4. elim H1; intros H5 H6 H7 H8. left. auto with searchtrees. elim H1; intros H5 H6 H7 H8. elim (H7 p0 H4); auto with searchtrees. - right. eauto with searchtrees. elim H1; auto. + eauto with searchtrees. + eapply min_r with t1; elim H1; intros H2 H3 H4 H5. inversion_clear H0. right; auto. * elim H9;split; intros. apply H0. elim H1; auto with searchtrees. Qed.
+rm_root_base_case
+Proof. intros; apply rm_intro. - apply not_right with n Z_leaf; auto with searchtrees. reflexivity. - auto with searchtrees. - intros p H1; elim (occ_inv H1); intro H2. + right; auto. + case H2; intro. * absurd (occ p Z_leaf); auto with searchtrees. * now left. - apply search_tree_r with n Z_leaf; auto with searchtrees. Qed.
+rm_2
+Proof. elim R; intros H H0 H1 H2 H3 H4. elim (maj_l (n:=n) (t1:=(Z_bnode p t1 t2)) (t2:=t')); auto. Qed.
+rm_3
+Proof. intro H; case (occ_inv H). - intro eg; absurd (q < q); auto with searchtrees. apply Z.lt_irrefl. pattern q at 2; rewrite eg; auto with searchtrees. - intro D; elim D; intro H'. + elim R; intros H0 H1 H2 H3 H4 H5. absurd (occ n (Z_bnode p t1 t2)); auto with searchtrees. apply not_left with n t'; auto with searchtrees. apply Z.le_ge; auto with zarith. + absurd (occ n t'); auto with searchtrees. apply not_right with n (Z_bnode p t1 t2); auto with searchtrees. auto with zarith. Qed.
+rm_4
+Proof. intros p0 H; case (occ_inv H). - intro eg; elim R; rewrite eg; auto with searchtrees. - intro D; elim D; auto with searchtrees. intro H'; elim R; auto with searchtrees. Qed.
+rm_5
+Proof. intros p0 H; case (occ_inv H). - intro e ; elim e; auto with searchtrees. - intro H1; case H1; intro H'1. + elim R; intros H2 H3 H4 H5 H6 H7; elim (H5 p0 H'1); left; auto with searchtrees. subst p0; auto with searchtrees. + left; auto with searchtrees. Qed.
+Ltac custom_tac32 H0 := elim H0; auto with searchtrees.
+
+Ltac custom_tac53 H0 H1 H2 H3 H4 H5 := apply H0 with H1 ( H2 H3 H4 H5); auto with searchtrees.
+
+Ltac custom_tac56 H0 H1 H2 H3 H4 H5 H6 := elim H0; intros H1 H2 H3 H4 H5 H6.
+
+Ltac custom_tac9 H0 H1 H2 := apply H0; intros H1 H2.
+
+Ltac custom_tac46 H0 := auto; intro H0.
+
+Ltac custom_tac73 H0 := auto; rewrite H0.
+
+Ltac custom_tac16 H0 := auto with searchtrees; apply H0.
+
+rm_6
+Proof. right. - custom_tac32 R. - custom_tac53 search_tree_r n Z_bnode p t1 t2. - custom_tac56 R H H0 H1 H2 H3 H4; custom_tac9 maj_intro q0 H5. elim ( Zle_lt_or_eq _ _ ( H0 q0 ( H1 q0 H5))); custom_tac46 eg; absurd ( occ q0 t0);custom_tac73 eg; custom_tac16 min_intro; intros q0 H; apply Z.lt_trans with n. + custom_tac32 R. + elim ( min_r ( n:=n) ( t1:=( Z_bnode p t1 t2)) ( t2:=t')); auto with searchtrees. Qed.
+rm_root_lemma
+Proof. apply rm_intro; auto with searchtrees. Qed.
+rm
+Proof. refine (fix rm (n:Z) (t:Z_btree) {struct t} : rm_spec n t := match t return rm_spec n t with | Z_leaf => fun h => exist _ Z_leaf _ | Z_bnode z t1 t2 => match Z_le_gt_dec n z with | left H0 => match Z_le_lt_eq_dec _ _ H0 with | left H1 => fun h => match rm n t1 _ with | exist _ t'1 H'1 => exist _ (Z_bnode z t'1 t2) _ end | right H1 => match H1 in (_ = x) return rm_spec n (Z_bnode x t1 t2) with | refl_equal => match t1 as t return rm_spec n (Z_bnode n t t2) with | Z_leaf => fun h => exist _ t2 _ | Z_bnode p' t'1 t'2 => fun h => match rmax (t:=(Z_bnode p' t'1 t'2)) _ _ with existT _ q (exist _ t'' H3) => exist _ (Z_bnode q t'' t2) _ end end end end | right H0 => fun h => match rm n t2 _ with | exist _ t'2 H'2 => exist _ (Z_bnode z t1 t'2) _ end end end); clear rm; eauto with searchtrees zarith. now cbn. Defined.

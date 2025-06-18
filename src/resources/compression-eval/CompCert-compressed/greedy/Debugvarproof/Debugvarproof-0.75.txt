@@ -1,0 +1,48 @@
+extracted tactics -----------
+Ltac custom0  :=  constructor; [ |  | auto | .. ].
+Ltac custom1 H0 :=  simpl; [intros H0 | .. ].
+Ltac custom2  :=  constructor; [ | auto | .. ].
+Ltac custom3  :=  simpl; [auto | .. ].
+Ltac custom4 H0 :=  exploit H0; [ | eauto | tauto | .. ].
+Ltac custom5 H0 :=  destruct H0; [auto | .. ].
+Ltac custom6  :=  induction 1; [simpl; [try tauto | .. ] | .. ].
+Ltac custom7  :=  simpl; [constructor | .. ].
+Ltac custom8  :=  constructor; [auto | .. ].
+Ltac custom9 H0 :=  eapply H0; [ |  | traceEq | .. ].
+Ltac custom10 H0 :=  destruct H0; [auto | .. ].
+Ltac custom11  :=  custom2 ; [auto | .. ].
+Ltac custom12  :=  simpl; [tauto | .. ].
+Ltac custom13 H0 H1 :=  simpl; [intros H0 H1 | .. ].
+Ltac custom14  :=  simpl; [induction 1 | .. ].
+Ltac custom15 H0 :=  apply H0; [custom11  |  | auto with coqlib | .. ].
+Ltac custom16 H0 :=  apply H0; [auto | .. ].
+Ltac custom17 H0 :=  apply H0; [exact symbols_preserved | .. ].
+Ltac custom18 H0 :=  apply H0; [eauto | .. ].
+Ltac custom19 H0 H1 :=  apply H0; [custom18 H1 | .. ].
+Ltac custom20 H0 H1 :=  destruct ( Pos.compare_spec H0 H1 ); [subst H1 | .. ].
+Ltac custom21 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom22 H0 :=  induction H0 as [ | [ v i ] l ]; [simpl | .. ].
+Ltac custom23 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom24 H0 :=  custom23 H0; [eauto | .. ].
+Ltac custom25 H0 :=  eapply H0; [ | eauto | .. ].
+Ltac custom26 H0 :=  exploit H0; [ | eauto | .. ].
+Ltac custom27  :=  econstructor; [eauto | .. ].
+Ltac custom28 H0 :=  destruct H0; [ | auto | .. ].
+---------------------------
+Num proofs: 32
+Num training proofs: 18
+Original size: 903
+Compressed total size: 738
+Training size: 685
+(2) (3) Testing size: 218
+(2) (3) Compressed testing size: 177
+(2) (3) Compression rate: 123.16
+Compressed size + lib: 799 ( 738 corpus / 61 library )
+[1] numTactics: 29
+[1] avrgTacticSize: 2.10
+[1] maxTacSize: 3
+[1] numProofsCompressed/total: 9 / 14
+[1] numAvgApplications: 5.03
+[1] numTotalApplications: 146
+Compression rate: 1.130162703379224
+Num tactics in library: 29

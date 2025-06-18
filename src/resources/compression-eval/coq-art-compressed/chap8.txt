@@ -1,0 +1,11 @@
+extracted tactics -----------
+custom0 H0 H1 H2 := generalize H0; [pattern H1 at - 2; [induction H2; [discriminate | .. ] | .. ] | .. ].
+custom1 H0 H1 H2 H3 H4 H5 H6 := intros H0 H1 H2 H3 H4; [injection H4; [intros H5 H6 | .. ] | .. ].
+custom2  := simpl; [auto | .. ].
+custom3 H0 H1 H2 := intros H0 H1 H2; [induction H2 | .. ].
+---------------------------
+Num proofs: 25
+Original size: 137
+Compressed size: 131 ( 120 corpus / 11 library )
+Compression rate: 1.0458015267175573
+Num tactics in library: 4

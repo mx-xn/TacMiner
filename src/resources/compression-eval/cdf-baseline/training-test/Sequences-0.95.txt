@@ -1,0 +1,14 @@
+extracted tactics-----------
+custom_tac2: inversion _i; subst
+custom_tac0: split; auto
+custom_tac1: exists _i; auto
+---------------------------
+Num proofs: 20
+Num training proofs: 7
+Original size: 137
+Training size: 84
+Testing size: 53
+Compressed total size: 125 ( 119 corpus / 6 library )
+Compressed testing size: 49
+Compression rate: 1.096
+Num tactics in library: 3

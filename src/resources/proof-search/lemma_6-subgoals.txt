@@ -1,0 +1,328 @@
+forall (s2 : t) (_ : ok s2),
+iff (In x (inter Nil s2)) (and (In x Nil) (In x s2))
+
+forall (s2 : t) (_ : ok s2),
+iff (In x (inter (Cons l h s) s2)) (and (In x (Cons l h s)) (In x s2))
+
+iff (In x Nil) (and False (In x Nil))
+
+iff (In x Nil) (and False (In x (Cons l h s)))
+
+iff (In x (inter (Cons l h s) Nil))
+  (and (In x (Cons l h s)) (In x Nil))
+
+iff (In x (inter (Cons l h s) (Cons l0 h0 s0)))
+  (and (In x (Cons l h s)) (In x (Cons l0 h0 s0)))
+
+iff (In x (inter s (Cons l0 h0 s0)))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+iff
+  (In x
+     (if zle h0 l
+      then
+       (fix intr (s2 : t) : t :=
+          match s2 with
+          | Nil => Nil
+          | Cons l2 h2 s2' =>
+              if zle h l2
+              then inter s s2
+              else
+               if zle h2 l
+               then intr s2'
+               else
+                if zle l l2
+                then
+                 if zle h2 h
+                 then Cons l2 h2 (intr s2')
+                 else Cons l2 h (inter s s2)
+                else
+                 if zle h h2
+                 then Cons l h (inter s s2)
+                 else Cons l h2 (intr s2')
+          end) s0
+      else
+       if zle l l0
+       then
+        if zle h0 h
+        then
+         Cons l0 h0
+           ((fix intr (s2 : t) : t :=
+               match s2 with
+               | Nil => Nil
+               | Cons l2 h2 s2' =>
+                   if zle h l2
+                   then inter s s2
+                   else
+                    if zle h2 l
+                    then intr s2'
+                    else
+                     if zle l l2
+                     then
+                      if zle h2 h
+                      then Cons l2 h2 (intr s2')
+                      else Cons l2 h (inter s s2)
+                     else
+                      if zle h h2
+                      then Cons l h (inter s s2)
+                      else Cons l h2 (intr s2')
+               end) s0)
+        else Cons l0 h (inter s (Cons l0 h0 s0))
+       else
+        if zle h h0
+        then Cons l h (inter s (Cons l0 h0 s0))
+        else
+         Cons l h0
+           ((fix intr (s2 : t) : t :=
+               match s2 with
+               | Nil => Nil
+               | Cons l2 h2 s2' =>
+                   if zle h l2
+                   then inter s s2
+                   else
+                    if zle h2 l
+                    then intr s2'
+                    else
+                     if zle l l2
+                     then
+                      if zle h2 h
+                      then Cons l2 h2 (intr s2')
+                      else Cons l2 h (inter s s2)
+                     else
+                      if zle h h2
+                      then Cons l h (inter s s2)
+                      else Cons l h2 (intr s2')
+               end) s0)))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+iff (and (In x s) (In x (Cons l0 h0 s0)))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+In ?Goal0 s0
+
+forall _ : Z.lt h0 ?Goal0, In x s
+
+In ?Goal0 s0
+
+forall _ : Z.lt h0 ?Goal0, In x s
+
+iff
+  (In x
+     ((fix intr (s2 : t) : t :=
+         match s2 with
+         | Nil => Nil
+         | Cons l2 h2 s2' =>
+             if zle h l2
+             then inter s s2
+             else
+              if zle h2 l
+              then intr s2'
+              else
+               if zle l l2
+               then
+                if zle h2 h
+                then Cons l2 h2 (intr s2')
+                else Cons l2 h (inter s s2)
+               else
+                if zle h h2
+                then Cons l h (inter s s2)
+                else Cons l h2 (intr s2')
+         end) s0))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+iff
+  (In x
+     (if zle l l0
+      then
+       if zle h0 h
+       then
+        Cons l0 h0
+          ((fix intr (s2 : t) : t :=
+              match s2 with
+              | Nil => Nil
+              | Cons l2 h2 s2' =>
+                  if zle h l2
+                  then inter s s2
+                  else
+                   if zle h2 l
+                   then intr s2'
+                   else
+                    if zle l l2
+                    then
+                     if zle h2 h
+                     then Cons l2 h2 (intr s2')
+                     else Cons l2 h (inter s s2)
+                    else
+                     if zle h h2
+                     then Cons l h (inter s s2)
+                     else Cons l h2 (intr s2')
+              end) s0)
+       else Cons l0 h (inter s (Cons l0 h0 s0))
+      else
+       if zle h h0
+       then Cons l h (inter s (Cons l0 h0 s0))
+       else
+        Cons l h0
+          ((fix intr (s2 : t) : t :=
+              match s2 with
+              | Nil => Nil
+              | Cons l2 h2 s2' =>
+                  if zle h l2
+                  then inter s s2
+                  else
+                   if zle h2 l
+                   then intr s2'
+                   else
+                    if zle l l2
+                    then
+                     if zle h2 h
+                     then Cons l2 h2 (intr s2')
+                     else Cons l2 h (inter s s2)
+                    else
+                     if zle h h2
+                     then Cons l h (inter s s2)
+                     else Cons l h2 (intr s2')
+              end) s0)))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+In ?Goal0 s
+
+forall _ : Z.lt h ?Goal0, In x s0
+
+In ?Goal0 s
+
+forall _ : Z.lt h ?Goal0, In x s0
+
+iff
+  (In x
+     (if zle h0 h
+      then
+       Cons l0 h0
+         ((fix intr (s2 : t) : t :=
+             match s2 with
+             | Nil => Nil
+             | Cons l2 h2 s2' =>
+                 if zle h l2
+                 then inter s s2
+                 else
+                  if zle h2 l
+                  then intr s2'
+                  else
+                   if zle l l2
+                   then
+                    if zle h2 h
+                    then Cons l2 h2 (intr s2')
+                    else Cons l2 h (inter s s2)
+                   else
+                    if zle h h2
+                    then Cons l h (inter s s2)
+                    else Cons l h2 (intr s2')
+             end) s0)
+      else Cons l0 h (inter s (Cons l0 h0 s0))))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+iff
+  (In x
+     (if zle h h0
+      then Cons l h (inter s (Cons l0 h0 s0))
+      else
+       Cons l h0
+         ((fix intr (s2 : t) : t :=
+             match s2 with
+             | Nil => Nil
+             | Cons l2 h2 s2' =>
+                 if zle h l2
+                 then inter s s2
+                 else
+                  if zle h2 l
+                  then intr s2'
+                  else
+                   if zle l l2
+                   then
+                    if zle h2 h
+                    then Cons l2 h2 (intr s2')
+                    else Cons l2 h (inter s s2)
+                   else
+                    if zle h h2
+                    then Cons l h (inter s s2)
+                    else Cons l h2 (intr s2')
+             end) s0)))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+iff
+  (In x
+     (Cons l0 h0
+        ((fix intr (s2 : t) : t :=
+            match s2 with
+            | Nil => Nil
+            | Cons l2 h2 s2' =>
+                if zle h l2
+                then inter s s2
+                else
+                 if zle h2 l
+                 then intr s2'
+                 else
+                  if zle l l2
+                  then
+                   if zle h2 h
+                   then Cons l2 h2 (intr s2')
+                   else Cons l2 h (inter s s2)
+                  else
+                   if zle h h2
+                   then Cons l h (inter s s2)
+                   else Cons l h2 (intr s2')
+            end) s0)))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+iff (In x (Cons l0 h (inter s (Cons l0 h0 s0))))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+iff
+  (or (and (Z.le l0 x) (Z.lt x h))
+     (and (In x s) (In x (Cons l0 h0 s0))))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+iff (In x (Cons l h (inter s (Cons l0 h0 s0))))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+iff
+  (In x
+     (Cons l h0
+        ((fix intr (s2 : t) : t :=
+            match s2 with
+            | Nil => Nil
+            | Cons l2 h2 s2' =>
+                if zle h l2
+                then inter s s2
+                else
+                 if zle h2 l
+                 then intr s2'
+                 else
+                  if zle l l2
+                  then
+                   if zle h2 h
+                   then Cons l2 h2 (intr s2')
+                   else Cons l2 h (inter s s2)
+                  else
+                   if zle h h2
+                   then Cons l h (inter s s2)
+                   else Cons l h2 (intr s2')
+            end) s0)))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+
+iff
+  (or (and (Z.le l x) (Z.lt x h)) (and (In x s) (In x (Cons l0 h0 s0))))
+  (and (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))

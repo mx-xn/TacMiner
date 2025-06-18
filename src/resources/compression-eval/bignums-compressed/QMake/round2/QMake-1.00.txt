@@ -1,0 +1,64 @@
+extracted tactics -----------
+Ltac custom0 H3 H4 H5 H6 H7 H8 :=  destr_eqb; [nzsimpl; [intros H3 H4 | .. ] | nzsimpl; [intros H5 H6 | .. ] | nzsimpl; [intros H7 H8 | .. ] | .. ].
+Ltac custom1 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom2  :=  nzsimpl; [simpl; [auto | .. ] | .. ].
+Ltac custom3 H0 H1 H2 :=  apply H0; [apply H1; [apply H2 | .. ] | apply H1; [apply H2 | .. ] | .. ].
+Ltac custom4 H0 :=  rewrite H0 in *; [ | lia | .. ].
+Ltac custom5 H0 H1 H2 :=  rewrite <- H0 by apply H1; [rewrite H2; [symmetry | .. ] | .. ].
+Ltac custom6 H0 H1 :=  unfold H0; [apply H1 | .. ].
+Ltac custom7 H0 :=  rewrite H0; [ | lia | .. ].
+Ltac custom8  :=  simpl; [try discriminate | .. ].
+Ltac custom9  :=  simpl; [destr_eqb; [ | simpl | .. ] | .. ].
+Ltac custom10 H0 :=  unfold H0; [nzsimpl; [destr_zcompare; [ | .. ] | .. ] | .. ].
+Ltac custom11 H0 H1 :=  rewrite H0, H1; [auto | auto | .. ].
+Ltac custom12 H0 :=  destruct H0; [simpl; [discriminate | .. ] | .. ].
+Ltac custom13  :=  red; [simpl | .. ].
+Ltac custom14 H0 H1 H3 H2 :=  symmetry; [apply ( H0 H1 H3 H2 ) | .. ].
+Ltac custom15  :=  simpl; [auto with qarith | .. ].
+Ltac custom16 H0 H1 H2 :=  intros H0 H1; [rewrite H2 | .. ].
+Ltac custom17 H0 :=  rewrite H0 in *; [ | auto | .. ].
+Ltac custom18  :=  red; [auto | .. ].
+Ltac custom19  :=  simpl; [nzsimpl; [auto | .. ] | .. ].
+Ltac custom20 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom21 H0 H1 H2 H3 :=  unfold H0; [custom6 H1 H2; [apply H3 | .. ] | .. ].
+Ltac custom22 H0 H1 H2 H3 H4 H5 H6 :=  unfold H0, H1; [custom6 H2 H3; [custom3 H4 H5 H6 | .. ] | .. ].
+Ltac custom23 H0 :=  rewrite H0; [ | auto | .. ].
+Ltac custom24 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom25 H0 H1 H2 :=  custom6 H0 H1; [ | apply H2 | .. ].
+Ltac custom26 H0 H1 :=  intros H0; [rewrite H1 | .. ].
+Ltac custom27 H0 :=  apply H0; [auto with zarith | auto with zarith | .. ].
+Ltac custom28 H0 :=  unfold H0; [simpl | .. ].
+Ltac custom29 H0 :=  symmetry; [apply H0 | .. ].
+Ltac custom30 H0 :=  custom29 H0; [auto with zarith | .. ].
+Ltac custom31  :=  simpl; [auto with zarith | .. ].
+Ltac custom32  :=  simpl; [auto | .. ].
+Ltac custom33 H0 H1 :=  custom28 H0; [custom12 H1 | .. ].
+Ltac custom34  :=  simpl; [destr_eqb | .. ].
+Ltac custom35  :=  destr_eqb; [ | auto using Qeq_refl, spec_norm | .. ].
+Ltac custom36  :=  destr_eqb; [ | custom2  | .. ].
+Ltac custom37 H0 :=  rewrite H0; [auto with qarith | .. ].
+Ltac custom38 H0 H1 H2 :=  rewrite H0, H1; [apply H2 | .. ].
+Ltac custom39 H0 H1 H2 :=  simpl; [custom38 H0 H1 H2 | .. ].
+Ltac custom40 H0 :=  generalize ( NN.spec_pos H0 ); [lia | .. ].
+Ltac custom41 H0 :=  apply H0; [auto | .. ].
+Ltac custom42 H0 H1 :=  apply H0; [rewrite H1 | .. ].
+Ltac custom43 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom44 H0 H1 H2 :=  intros H0 H1; [custom10 H2; [ | .. ] | .. ].
+---------------------------
+Num proofs: 68
+Num training proofs: 42
+Original size: 1392
+Compressed total size: 1062
+Training size: 1070
+(2) (3) Testing size: 322
+(2) (3) Compressed testing size: 229
+(2) (3) Compression rate: 140.61
+Compressed size + lib: 1170 ( 1062 corpus / 108 library )
+[1] numTactics: 45
+[1] avrgTacticSize: 2.40
+[1] maxTacSize: 7
+[1] numProofsCompressed/total: 25 / 26
+[1] numAvgApplications: 4.56
+[1] numTotalApplications: 205
+Compression rate: 1.1897435897435897
+Num tactics in library: 45

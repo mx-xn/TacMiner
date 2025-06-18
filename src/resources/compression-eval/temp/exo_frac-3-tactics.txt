@@ -1,0 +1,6 @@
+Ltac custom0  := split; [auto | .. ].
+
+Ltac custom0  := split; [auto | .. ].
+
+Ltac custom0 H0 := simpl; [intro H0; [case ( fraction H0 ); [inversion_clear 1; [split; [auto | .. ] | .. ] | .. ] | .. ] | .. ].
+

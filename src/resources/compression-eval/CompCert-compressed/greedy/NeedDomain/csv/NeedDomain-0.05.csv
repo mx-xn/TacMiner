@@ -1,0 +1,13 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto | .. ].
+Ltac custom1 H0 H1 :=  apply H0; [rewrite H1; [auto | .. ] | .. ].
+Ltac custom2 H3 :=  InvAgree; [apply H3 | .. ].
+Ltac custom3 H0 :=  f_equal; [apply H0; [ | .. ] | .. ].
+Ltac custom4 H0 :=  simpl; [custom3 H0 | .. ].
+---------------------------
+ , , 0.05
+NeedDomain, Number of Tactics, 5
+ , Average Tactic Size, 2.20
+ , Total Tactic Size, 11
+ , Max Tactic Size, 3
+ , Overall CP, 1.04

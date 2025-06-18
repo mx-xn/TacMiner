@@ -1,0 +1,106 @@
+extracted tactics -----------
+Ltac custom0 H0 H16 H17 H18 H19 H20 H21 H22 H23 H24 H25 H26 H27 H28 H29 H30 H31 H32 H33 H34 H35 H36 H40 H41 H2 H1 H43 H44 H45 H37 H6 H5 H79 H46 H38 H48 H49 H47 H80 H52 H53 H51 H4 H54 H50 H3 H55 H13 H81 H82 H56 H58 H59 H57 H83 H62 H63 H61 H64 H65 H12 H66 H60 H14 H84 H85 H67 H69 H70 H68 H73 H74 H72 H15 H76 H77 H78 :=  induction H0; [intros H16 H17 H18; [assert ( H' : forall x, H16 x -->> H17 x ) by ( intros ; apply Hoare_skip_inv ; auto ); [eapply H40; [apply H41 | .. ] | .. ] | .. ] | intros H19 H20 H21; [assert ( H' : forall y, H19 y -->> aupdate H2 H1 ( H20 y ) ); [intros H43; [apply H44; [auto | .. ] | .. ] | eapply H40; [apply H45 | .. ] | .. ] | .. ] | intros H22 H23 H24; [set ( REL := fun ( x : H37 ) ( R : assertion ) => Hoare ( H22 x ) H6 R /\ Hoare R H5 ( H23 x ) ); [assert ( H' : exists R : H37 -> assertion, forall x : H79, H46 x ( R x ) ); [apply H38; [intros H48; [apply H49; [auto | .. ] | .. ] | .. ] | destruct H47 as ( R & H80 ); [apply H52 with ( H53 H51 ); [apply H4; [intros H54; [apply H50 | .. ] | .. ] | apply H3; [intros H55; [apply H50 | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | intros H25 H26 H27 | intros H28 H29 H30; [set ( REL := fun ( x : H37 ) ( Inv : assertion ) => Hoare ( atrue H13 //\\ Inv ) H0 Inv /\ ( H28 x -->> Inv ) /\ ( afalse H81 //\\ Inv -->> H29 x ) ); [assert ( H' : exists Inv : H37 -> assertion, forall x : H82, H56 x ( Inv x ) ); [apply H38; [intros H58; [apply H59; [auto | .. ] | .. ] | .. ] | destruct H57 as ( Inv & H83 ); [eapply H62 with ( H28 := H63 H61 ); [apply H64; [apply H40 with ( H28 := H63 ( fun x => H65 H13 //\\ H61 x ) ); [apply H12; [intros H66; [apply H60 | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | intros H31 H32 H33; [set ( REL := fun ( x : H37 ) ( R : assertion ) => ( H31 x -->> atrue H14 //\\ R ) /\ ( atrue H84 //\\ R -->> H32 x ) ); [assert ( H' : exists R : H37 -> assertion, forall x : H85, H67 x ( R x ) ); [apply H38; [intros H69; [apply H70; [auto | .. ] | .. ] | .. ] | destruct H68 as ( R & A ); [eapply H62; [apply H73 with ( H31 := H74 H72 ) | .. ] | .. ] | .. ] | .. ] | .. ] | intros H34 H35 H36; [assert ( H' : forall y, H34 y -->> aforall ( fun n => aupdate H15 ( CONST n ) ( H35 y ) ) ); [intros H76; [apply H77; [auto | .. ] | .. ] | eapply H40; [apply H78 | .. ] | .. ] | .. ] | .. ].
+Ltac custom1 H0 H16 H17 H18 H19 H20 H21 H22 H23 H24 H25 H26 H27 H28 H29 H30 H31 H32 H33 H34 H35 H36 H37 H38 H39 H40 H41 H42 H43 H44 H45 H46 H47 H48 H49 H50 H51 H52 H53 H54 H55 H56 H57 H58 H61 H62 H63 H66 H67 H68 H71 H72 H76 H80 H81 H84 H87 H88 H89 H94 H99 H100 H104 H108 H109 H112 H113 :=  intro H0; [induction H0; [intros H16 H17 H18 H19 H20 H21; [apply H58 in H20; [eapply H61; [apply H62 | Tauto | .. ] | .. ] | .. ] | intros H22 H23 H24 H25 H26 H27; [apply H58 in H21; [eapply H66; [apply H67 | unfold H68 in *; [Tauto | .. ] | .. ] | .. ] | .. ] | intros H28 H29 H30 H31 H32 H33; [apply H63 in H26 | .. ] | intros H34 H35 H36 H37 H38 H39; [apply H63 in H27; [apply H80 in H38; [destruct H81 as ( C11 & C21 ); [apply H80 in H39; [destruct H84 as ( C12 & C22 ); [apply H87; [eapply H66; [eauto | Tauto | .. ] | eapply H66; [eauto | Tauto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | intros H40 H41 H42 H43 H44 H45; [apply H71 in H32; [apply H88 in H44; [destruct H89 as ( Inv1 & C1 & A1 & B1 ); [apply H88 in H45; [destruct H94 as ( Inv2 & C2 & A2 & B2 )] | .. ] | .. ] | .. ] | .. ] | intros H46 H47 H48 H49 H50 H51; [destruct H72 as ( R1 & C11 & C21 ); [apply H99 in H50; [destruct H100 as ( R1 & A1 & B1 ); [apply H99 in H51; [destruct H104 as ( R2 & A2 & B2 ); [eapply H108; [ | Tauto | Tauto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | intros H52 H53 H54 H55 H56 H57; [apply H71 in H33; [destruct H76 as ( R2 & C12 & C22 ); [apply H109 in H56; [apply H109 in H57; [eapply H66; [apply H112 | unfold H68, H113 in *; [Tauto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom2 H0 H1 H2 H3 H4 :=  apply H0; [unfold H1; [congruence | .. ] | cbn | intros H2 H3 H4; [inv H4 | .. ] | .. ].
+Ltac custom3  :=  split; [auto | auto | .. ].
+Ltac custom4 H0 :=  apply H0; [auto | .. ].
+Ltac custom5 H40 H41 H42 H43 H44 H45 H46 H11 H47 H39 H38 :=  induction 1; [apply H41 | apply H42 | apply H46 with H11; [auto | auto | .. ] | custom4 H43; [auto | .. ] | custom4 H44 | apply H40 | apply H45 | apply H47 with H39 H38; [auto | auto | auto | .. ] | .. ].
+Ltac custom6  :=  red; [auto | .. ].
+Ltac custom7 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom8 H0 H1 H2 H3 H4 :=  apply H0; [unfold H1; [congruence | .. ] | cbn; [auto | .. ] | intros H2 H3 H4 | .. ].
+Ltac custom9 H0 H1 H2 H3 H4 H6 H8 H7 :=  custom2 H0 H1 H2 H3 H4; [auto | destruct ( beval H6 H3 ) eqn : B; [apply H8; [custom3  | .. ] | apply H7; [custom3  | .. ] | .. ] | .. ].
+Ltac custom10 H0 H1 H2 H3 :=  apply H0; [custom7 H1; [cbn; [intros H2 H3; [tauto | .. ] | .. ] | .. ] | .. ].
+Ltac custom11 H0 H1 :=  apply H0 with H1; [auto | auto | .. ].
+Ltac custom12 H0 H1 H2 H4 H3 :=  apply H0; [intros H1; [specialize ( H2 H1 ); [tauto] | .. ] | .. ]. apply H4 in H3.
+Ltac custom13 H0 H1 H2 H3 H4 H5 H6 H9 H7 H8 :=  eapply H0; [apply H1 | intros H2 [ H3 H4 ]; [replace H5 with ( if beval H6 H2 then H9 else H7 ); [eapply H8; [eexact H4 | constructor | .. ] | rewrite H3; [auto | .. ] | .. ] | .. ] | .. ].
+Ltac custom14 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H14 :=  intros H0 H1; [intros H2 [ H3 H4 ]; [custom2 H5 H6 H7 H8 H9; [red in H3; [congruence] | apply H14; [custom6  | custom3  | .. ] | .. ] | .. ] | .. ].
+Ltac custom15 H0 H1 H2 H3 H4 H7 :=  simpl in H0; [apply H1 with H2; [intros H3 H4; [rewrite H7; [auto | auto | .. ] | .. ] | auto | .. ] | .. ].
+Ltac custom16 H0 :=  custom4 H0; [auto | .. ].
+Ltac custom17 H0 H1 H2 H3 H4 H5 H6 H7 H8 :=  intros H0 H1; [intros H2 H3; [custom2 H4 H5 H6 H7 H8; [auto | constructor; [custom6  | apply H3 | .. ] | .. ] | .. ] | .. ].
+Ltac custom18 H0 :=  exists H0; [split | .. ].
+Ltac custom19 H0 H1 H2 :=  intros H0; [eapply H1; [apply H2 | .. ] | .. ].
+Ltac custom20 H0 H1 H8 H2 H9 H5 :=  apply H0 with ( H1 := H8 ) ( H2 := H9 ); [auto | unfold H5; [auto | .. ] | unfold H5; [auto | .. ] | .. ].
+Ltac custom21 H0 H1 :=  intros H0 H1; [simpl; [auto | .. ] | .. ].
+Ltac custom22 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 :=  intros H0 H1 H2 H3 H4; [custom2 H5 H6 H7 H8 H9; [tauto | apply H10; [reflexivity | exact H4 | .. ] | .. ] | .. ].
+Ltac custom23 H0 H6 H7 H8 H9 H10 H11 :=  destruct H0; [constructor | custom2 H6 H7 H8 H9 H10; [ | apply H11 | .. ] | .. ].
+Ltac custom24 H0 H1 :=  eapply H0; [eexact H1 | .. ].
+Ltac custom25 H0 H1 H2 :=  apply H0; [eapply H1; [custom7 H2; [eauto | .. ] | Tauto | .. ] | .. ].
+Ltac custom27 H0 :=  custom18 H0; [auto | split; [Tauto | Tauto | .. ] | .. ].
+Ltac custom28 H0 H1 H2 H3 :=  intros H0 ( H1 & H2 ); [exists H1; [custom4 H3 | .. ] | .. ].
+Ltac custom29 H0 H1 :=  eapply H0; [apply H1 | .. ].
+Ltac custom30 H0 :=  intros H0; [simpl in H0 | .. ].
+Ltac custom31 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3 H4; [inv H4 | .. ].
+Ltac custom32  :=  split; [auto | .. ].
+Ltac custom33 H0 :=  apply H0; [custom3  | .. ].
+Ltac custom34 H0 :=  apply H0; [reflexivity | auto | .. ].
+Ltac custom35 H0 H4 H5 H6 :=  custom7 H0; [intros H4 [ H5 H6 ]; [custom3  | .. ] | eauto | .. ].
+Ltac custom36 H0 H1 H2 H3 H4 :=  custom7 H0; [intros H1 ( H2 & H3 & H4 ); [exists H3; [custom3  | .. ] | .. ] | .. ].
+Ltac custom37 H0 H1 H7 H2 H3 H4 H5 H6 :=  eapply H0 with ( H1 := H7 //\\ H2 ); [custom10 H3 H4 H5 H6 | Tauto | Tauto | .. ].
+Ltac custom38 H0 H6 H7 :=  dependent induction H0; [custom6  | red; [intros H6 H7 | .. ] | .. ].
+Ltac custom39 H0 H1 H9 :=  intros H0 H1; [destruct H0; [constructor | custom16 H9 | .. ] | .. ].
+Ltac custom40 H0 H1 H2 H3 H4 H5 :=  intros H0 H1 H2 H3 H4; [inv H4; [custom18 H5; [constructor | .. ] | .. ] | .. ].
+Ltac custom41 H0 :=  custom7 H0; [eauto | .. ].
+Ltac custom42 H0 H1 H2 H3 H4 :=  custom7 H0; [intros H1 ( H2 & H3 ) H4; [custom3  | .. ] | .. ].
+Ltac custom43 H0 H1 :=  custom7 H0; [unfold H1; [congruence | .. ] | .. ].
+Ltac custom44 H0 H1 :=  custom24 H0 H1; [constructor | .. ].
+Ltac custom45 H0 :=  custom18 H0; [Tauto | Tauto | .. ].
+Ltac custom46 H0 H1 H2 :=  custom18 H0; [custom11 H1 H2 | auto | .. ].
+Ltac custom47 H0 H1 H2 H3 H4 H5 H6 H7 H9 H10 :=  intros H0 H1 H2 H3 H4 H5 H6 H7; [assert ( REC : forall H4 s, safe H1 H9 s -> safe H3 H10 s ); [ | custom6  | .. ] | .. ].
+Ltac custom48 H0 H5 :=  destruct ( string_dec H0 H5 ); [congruence | congruence | .. ].
+Ltac custom49 H0 H1 :=  split; [ | unfold H0, H1; [auto | .. ] | .. ].
+Ltac custom50 H0 H2 H3 H5 H4 :=  custom30 H0; [eapply H2 with ( H3 := H5 //\\ H4 ); [ |  | Tauto | .. ] | .. ].
+Ltac custom51 H0 H1 H2 :=  apply H0, H1, H2; [auto | auto | .. ].
+Ltac custom52 H0 :=  eapply H0; [ | Tauto | Tauto | .. ].
+Ltac custom53 H0 H1 H2 :=  intros H0; [custom29 H1 H2 | .. ].
+Ltac custom54 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 :=  intros H0 H1 H2 H3 H4 H5 H6; [intros H7 H8; [custom11 H9 H1 | .. ] | .. ].
+Ltac custom55 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 :=  intros H0 H1 H2 H3 H4 H5 H6; [intros H7 H8; [custom9 H9 H10 H11 H12 H13 H2 H5 H6 | .. ] | .. ].
+Ltac custom56 H0 H1 :=  apply H0 in H1; [assumption | custom6  | .. ].
+Ltac custom57 H0 :=  inv H0; [auto | contradiction | .. ].
+Ltac custom58 H0 :=  exists H0; [auto | .. ].
+Ltac custom59 H0 H1 H2 :=  custom24 H0 H1; [apply H2 | .. ].
+Ltac custom60 H0 :=  custom16 H0; [auto | .. ].
+Ltac custom61 H0 H1 :=  apply H0 with H1; [auto | .. ].
+Ltac custom62 H0 H1 :=  intros H0; [apply H1 | .. ].
+Ltac custom64 H0 H1 H2 H3 H4 :=  custom2 H0 H1 H2 H3 H4; [auto | .. ].
+Ltac custom66 H0 H1 H2 H3 :=  intros H0 H1 H2; [custom4 H3 | .. ].
+Ltac custom67 H0 H1 H2 H3 :=  intros H0 H1 H2; [apply H3 | .. ].
+Ltac custom68 H0 H1 :=  custom44 H0 H1; [auto | .. ].
+Ltac custom69  :=  cbn; [auto | .. ].
+Ltac custom70  :=  custom32 ; [congruence | .. ].
+Ltac custom71 H0 :=  elim H0; [custom6  | .. ].
+Ltac custom72 H0 H1 H2 H3 H4 :=  custom29 H0 H1; [intros H2 [ H3 H4 ] | .. ].
+Ltac custom73 H0 H1 :=  destruct ( beval H0 H1 ); [auto | .. ].
+Ltac custom74 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom75 H0 H1 :=  exists H0; [custom33 H1 | .. ].
+Ltac custom76 H0 :=  destruct H0; [constructor | .. ].
+Ltac custom77 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 :=  intros H0 H1 H2 H3 H4 H5 H6; [intros H7 H8 H9 | .. ].
+Ltac custom78 H0 :=  split; [ | exact H0 | .. ].
+Ltac custom79 H0 H1 H8 :=  destruct ( H0 H1 ) as ( B & C ); [custom4 H8].
+Ltac custom80 H0 H1 H2 H3 :=  apply H0 with ( H1 H2 H3 ); [ | auto | .. ].
+Ltac custom81 H0 H1 H2 H3 H4 :=  custom8 H0 H1 H2 H3 H4; [inversion H4 | .. ].
+Ltac custom83 H0 :=  eapply H0; [ | custom6  | .. ].
+Ltac custom84 H0 :=  inv H0; [ | eauto | .. ].
+Ltac custom85 H0 H1 H2 :=  intros H0 [ H1 H2 ]; [custom3  | .. ].
+Ltac custom86 H0 H1 H2 H3 :=  intros H0 H1 H2 H3; [dependent induction H3 | .. ].
+Ltac custom87 H0 H1 :=  intros H0 H1; [simpl | .. ].
+Ltac custom88 H0 H1 H2 H3 :=  intros H0 H1 H2; [custom34 H3 | .. ].
+Ltac custom89 H0 H1 H2 :=  intros H0 H1; [custom4 H2 | .. ].
+Ltac custom90 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3 H4; [dependent induction H4 | .. ].
+---------------------------
+Num proofs: 66
+Num training proofs: 66
+Original size: 1545
+Compressed total size: 653
+Training size: 1545
+(2) (3) Testing size: 0
+(2) (3) Compressed testing size: 769
+(2) (3) Compression rate: 0.00
+Compressed size + lib: 1050 ( 653 corpus / 397 library )
+[1] numTactics: 85
+[1] avrgTacticSize: 3.21
+[1] maxTacSize: 15
+[1] numProofsCompressed/total: 64 / 66
+[1] numAvgApplications: 2.66
+[1] numTotalApplications: 226
+Compression rate: 1.4714285714285715
+Num tactics in library: 85

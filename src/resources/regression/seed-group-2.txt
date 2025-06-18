@@ -1,0 +1,16 @@
+[0, 24]
+Ltac custom0 H0 H1 := split; [intros H0 |intros H1 | .. ].
+[1, 24]
+
+[2, 24]
+Ltac custom0 H0 H1 H2 H3 := intros; [destruct ( zlt H0 H1 ) as [H2 | H3 ] | .. ].
+[3, 24]
+Ltac custom0 H0 H1 H2 H3 H4 := intros H0; [destruct ( zlt H1 H2 ) as [H3 | H4 ] | .. ].
+
+Ltac custom1 H0 H1 := intros H0 H1; [auto | .. ].
+[7, 24]
+
+[8, 24]
+Ltac custom0 H0 := split; [ |intros H0 | .. ].
+[9, 24]
+Ltac custom0 H0 H1 := split; [intros H1 |intros H0 | .. ].

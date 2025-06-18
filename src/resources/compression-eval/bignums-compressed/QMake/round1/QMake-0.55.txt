@@ -1,0 +1,47 @@
+extracted tactics -----------
+Ltac custom0  :=  simpl; [nzsimpl | .. ].
+Ltac custom1 H0 H1 H2 :=  unfold H0; [apply H1; [apply H2 | .. ] | .. ].
+Ltac custom2  :=  destr_eqb; [nzsimpl | nzsimpl | .. ].
+Ltac custom3 H0 H1 H2 H3 H4 H5 H6 :=  unfold H0, H1; [custom1 H2 H3 H4; [apply H5; [apply H6 | .. ] | apply H5; [apply H6 | .. ] | .. ] | .. ].
+Ltac custom4  :=  custom0 ; [auto | .. ].
+Ltac custom5 H0 :=  rewrite H0 in *; [ | lia | .. ].
+Ltac custom6  :=  simpl; [auto | .. ].
+Ltac custom7 H0 H1 H2 :=  intros H0 H1; [unfold H2 | .. ].
+Ltac custom8  :=  simpl; [try discriminate | .. ].
+Ltac custom9  :=  custom0 ; [try lia | .. ].
+Ltac custom10 H0 H1 H2 H3 :=  unfold H0; [custom1 H1 H2 H3 | .. ].
+Ltac custom11 H0 :=  nzsimpl; [rewrite H0 | .. ].
+Ltac custom12  :=  nzsimpl; [destr_zcompare; [ | .. ] | .. ].
+Ltac custom13 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom14 H0 H1 :=  custom0 ; [rewrite H0, H1 | .. ].
+Ltac custom15 H0 :=  intros H0; [custom4  | .. ].
+Ltac custom16  :=  simpl; [discriminate | .. ].
+Ltac custom17 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom18 H0 :=  generalize ( NN.spec_pos H0 ); [lia | .. ].
+Ltac custom19 H0 H1 :=  rewrite H0, H1; [auto | .. ].
+Ltac custom20  :=  destr_zcompare; [ | simpl | simpl | .. ].
+Ltac custom21  :=  custom0 ; [destr_eqb | .. ].
+Ltac custom22 H0 H1 :=  generalize ( Z.gcd_nonneg ( ZZ.to_Z H0 ) ( NN.to_Z H1 ) ); [lia | .. ].
+Ltac custom23 H0 :=  rewrite H0; [qsimpl; [ | .. ] | .. ].
+Ltac custom24 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom25 H0 H1 :=  apply H0; [ |  | apply H1 | .. ].
+Ltac custom26 H0 H1 H2 H3 :=  custom25 H0 H1; [ | custom22 H2 H3 | .. ].
+Ltac custom27 H2 :=  custom2 ; [intros H2 | .. ].
+---------------------------
+Num proofs: 39
+Num training proofs: 12
+Original size: 963
+Compressed total size: 740
+Training size: 548
+(2) (3) Testing size: 415
+(2) (3) Compressed testing size: 316
+(2) (3) Compression rate: 131.33
+Compressed size + lib: 803 ( 740 corpus / 63 library )
+[1] numTactics: 28
+[1] avrgTacticSize: 2.25
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 19 / 27
+[1] numAvgApplications: 4.82
+[1] numTotalApplications: 135
+Compression rate: 1.199252801992528
+Num tactics in library: 28

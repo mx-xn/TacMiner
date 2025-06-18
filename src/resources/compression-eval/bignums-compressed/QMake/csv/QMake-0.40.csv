@@ -1,0 +1,46 @@
+extracted tactics -----------
+Ltac custom0  :=  simpl; [destr_eqb; [nzsimpl | .. ] | .. ].
+Ltac custom1  :=  simpl; [auto | .. ].
+Ltac custom2  :=  simpl; [nzsimpl | .. ].
+Ltac custom3 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom4 H0 :=  rewrite H0; [symmetry | .. ].
+Ltac custom5 H2 H3 H4 H5 H6 :=  custom0 ; [intros H2 H3; [rewrite H6 in *; [lia | lia | .. ] | .. ] | nzsimpl; [intros H4 H5 | .. ] | .. ].
+Ltac custom6 H0 H1 H2 :=  intros H0 H1; [unfold H2 | .. ].
+Ltac custom7 H0 :=  unfold H0; [simpl | .. ].
+Ltac custom8  :=  simpl; [try discriminate | .. ].
+Ltac custom9  :=  custom0 ; [ | nzsimpl | .. ].
+Ltac custom10 H0 :=  apply H0; [auto with zarith | auto with zarith | .. ].
+Ltac custom11 H0 :=  nzsimpl; [rewrite H0; [ | lia | .. ] | .. ].
+Ltac custom12  :=  nzsimpl; [destr_zcompare; [ | .. ] | .. ].
+Ltac custom13 H0 H1 H2 :=  intros H0 H1; [rewrite H2 in *; [ | lia | .. ] | .. ].
+Ltac custom14  :=  destr_eqb; [nzsimpl | nzsimpl | .. ].
+Ltac custom15 H0 :=  rewrite H0 in *; [lia | lia | .. ].
+Ltac custom16 H0 :=  destruct H0; [simpl; [discriminate | .. ] | .. ].
+Ltac custom17 H0 H1 :=  rewrite H0, H1; [auto | .. ].
+Ltac custom18  :=  custom2 ; [try lia | .. ].
+Ltac custom19 H0 H1 :=  generalize ( Z.gcd_nonneg ( ZZ.to_Z H0 ) ( NN.to_Z H1 ) ); [lia | .. ].
+Ltac custom20 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom21 H0 H1 :=  custom7 H0; [custom16 H1 | .. ].
+Ltac custom22 H0 H1 :=  custom4 H0; [custom10 H1 | .. ].
+Ltac custom23 H0 :=  rewrite H0; [qsimpl; [ | .. ] | .. ].
+Ltac custom24  :=  custom14 ; [ | custom1  | .. ].
+Ltac custom25 H0 :=  rewrite H0; [ | auto | .. ].
+Ltac custom26 H0 :=  nzsimpl; [rewrite H0 | .. ].
+Ltac custom27 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom28 H0 :=  intros _; [rewrite H0 | .. ].
+Ltac custom29 H0 H1 H3 H2 :=  symmetry; [apply ( H0 H1 H3 H2 ) | .. ].
+Ltac custom30  :=  custom2 ; [auto | .. ].
+Ltac custom31  :=  custom2 ; [destr_eqb | .. ].
+Ltac custom32 H0 H1 :=  simpl; [intros H0 H1 | .. ].
+Ltac custom33 H0 :=  custom3 H0; [destr_zcompare; [ | .. ] | .. ].
+Ltac custom34 H1 H2 :=  nzsimpl; [intros H1 H2 | .. ].
+Ltac custom35 H0 H1 :=  intros H0; [custom15 H1 | .. ].
+Ltac custom36 H0 :=  rewrite H0 in *; [auto with zarith].
+Ltac custom37 H0 :=  rewrite H0 in *; [ | auto | .. ].
+---------------------------
+ , , 0.4
+QMake, Number of Tactics, 38
+ , Average Tactic Size, 2.32
+ , Total Tactic Size, 88
+ , Max Tactic Size, 7
+ , Overall CP, 1.15

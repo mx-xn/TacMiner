@@ -1,0 +1,119 @@
+cdf/./CSL.v
+-----
+cdf/./CSL_compr.v
+-----
+-----
+safe_pure
+Proof. intros. destruct n; constructor; auto. Qed.
+safe_pure_inv
+Proof. intros. inv H. auto. contradiction. Qed.
+safe_red
+Proof. intros. inv H0. - inv H. - eauto. Qed.
+safe_redN
+Proof. intro n. induction n; intros. - inv H. exists h1, hj; auto. - inv H. rename c' into c''. rename h' into h''. destruct b as [c' h']. edestruct safe_red as (h1' & hj' & A & B & C & D). eassumption. eassumption. assumption. assumption. subst h'. eapply IHn; eauto. Qed.
+safe_not_erroneous
+Proof. intros. inv H. - intros ST; inv ST. - eauto. Qed.
+safe_immacc
+Proof. intros. inv H. - contradiction. - eapply ACC; auto. Qed.
+safe_mono
+Proof. intro n. induction n; intros. - replace n' with O by lia. constructor. - destruct n' as [ | n']. constructor. inv H. + constructor; auto. + constructor; auto; intros. edestruct STEP as (h1' & hj' & A & B & C & D); eauto. exists h1', hj'; intuition auto. apply IHn; auto. lia. Qed.
+safe_frame
+Proof. intros R Q J n. induction n; intros. - constructor. - inv H. + constructor. exists h, h'; auto. + constructor; auto. * intros. apply ACC in H. cbn. destruct (h l) as [z|]; congruence. * intros. subst h0. apply (IMM (hunion h' hf) hj). HDISJ. rewrite hunion_assoc. f_equal. rewrite hunion_comm by HDISJ. rewrite hunion_assoc. f_equal. apply hunion_comm. HDISJ. auto. * intros. subst h0. edestruct (STEP (hunion h' hf) hj) as (h1' & hj' & A & B & C & D). HDISJ. eauto. eauto. rewrite (hunion_comm (hunion h' hf)) by HDISJ. rewrite hunion_assoc. rewrite <- hunion_assoc. rewrite (hunion_comm hj) by HDISJ. eauto. exists (hunion h1' h'), hj'. split. HDISJ. split. rewrite hunion_assoc. f_equal. rewrite (hunion_comm (hunion hj' hf)) by HDISJ. rewrite hunion_assoc. rewrite (hunion_comm h') by HDISJ. assumption. split. assumption. apply IHn; auto. HDISJ. Qed.
+triple_frame
+Proof. intros; red; intros. destruct H0 as (h1 & h2 & P1 & R2 & D & U). subst h. apply safe_frame; auto. Qed.
+safe_frame_invariant
+Proof. intros Q J J' n. induction n; intros. - constructor. - inv H. + constructor; auto. + constructor; auto. * intros. destruct H1 as (hj1 & hj2 & A & B & C & D). subst hj h0. apply (IMM (hunion hj2 hf) hj1). HDISJ. f_equal. rewrite hunion_assoc. auto. auto. * intros. destruct H1 as (hj1 & hj2 & A & B & C & D). subst hj h0. edestruct (STEP (hunion hj2 hf) hj1) as (h1' & hj1' & U & V & X & Y). HDISJ. eauto. auto. rewrite <- (hunion_assoc hj1) by HDISJ. eauto. subst h'. exists h1', (hunion hj1' hj2). split. HDISJ. split. f_equal. rewrite hunion_assoc. auto. split. exists hj1', hj2. intuition auto. HDISJ. apply IHn. auto. Qed.
+triple_frame_invariant
+Proof. intros; red; intros. apply safe_frame_invariant; auto. Qed.
+triple_atomic
+Proof. intros until Q; intros TR n h Ph. destruct n; constructor; auto. - intros. intro ST; inv ST. apply star_starN in H4. destruct H4 as (N & STEPS). rewrite <- hunion_assoc in STEPS. rewrite <- (hunion_empty hf) in STEPS. edestruct safe_redN as (h1' & hj' & A & B & C & D). eexact STEPS. apply TR. exists h, hj. intuition auto. HDISJ. reflexivity. HDISJ. eelim safe_not_erroneous. eexact D. eexact A. eauto. subst h'; auto. - intros. inv H2. apply star_starN in H4. destruct H4 as (N & STEPS). rewrite <- hunion_assoc in STEPS. rewrite <- (hunion_empty hf) in STEPS. edestruct safe_redN as (h1' & hj' & A & B & C & D). eexact STEPS. apply TR. exists h, hj. intuition auto. HDISJ. reflexivity. HDISJ. subst h'. apply safe_pure_inv in D. destruct D as (h1'' & hj'' & U & V & X & Y). subst h1'. exists h1'', hj''. split. HDISJ. split. rewrite hunion_assoc. rewrite C. rewrite hunion_empty. auto. split. auto. apply safe_pure. auto. Qed.
+safe_share
+Proof. intros Q J J' n. induction n; intros. - constructor. - inv H. + constructor. exists h, h'; auto. + constructor; auto. * intros. apply ACC in H. cbn. destruct (h l) as [z|]; congruence. * intros. apply (IMM hf (hunion h' hj)). HDISJ. subst h0. rewrite ! hunion_assoc. auto. rewrite hunion_comm by HDISJ. exists hj, h'; intuition auto. HDISJ. * intros. edestruct (STEP hf (hunion h' hj)) as (h1' & hj' & U & V & X & Y). HDISJ. subst h0. rewrite ! hunion_assoc. auto. rewrite hunion_comm by HDISJ. exists hj, h'; intuition auto. HDISJ. eauto. rewrite <- hunion_assoc by HDISJ. subst h0. eauto. destruct X as (hj1' & hj2' & A & B & C & D). subst hj' h'0 h0. exists (hunion h1' hj2'), hj1'. split. HDISJ. split. rewrite (hunion_comm hj2') by HDISJ. rewrite ! hunion_assoc. auto. split. auto. apply IHn; auto. HDISJ. Qed.
+triple_share
+Proof. intros; intros n h (h1 & h2 & Ph1 & J'h2 & D & U). subst h. apply safe_share; auto. Qed.
+triple_pure
+Proof. intros J P Q v IMP n h Ph. apply safe_pure; auto. Qed.
+safe_let
+Proof. intros Q R J f n. induction n; intros until h; intros S1 S2. - constructor. - constructor; auto; intros. + eapply safe_immacc; eauto. + red; intros. inv H2. eelim safe_not_erroneous; eauto. + subst h0. inv H2. * exists h, hj; intuition auto. apply S2. eapply safe_pure_inv; eauto. lia. * edestruct safe_red as (h1' & hj' & A & B & C & D); eauto. exists h1', hj'; intuition auto. Qed.
+triple_let
+Proof. intros; red; intros. apply safe_let with Q. apply H; auto. intros; apply H0; auto. Qed.
+triple_seq
+Proof. intros. apply triple_let with (fun _ => Q); auto. Qed.
+safe_ifthenelse
+Proof. intros. constructor; auto; intros. - intro ST; inv ST. - inv H4. exists h, hj; intuition auto. destruct (Z.eqb_spec b 0); auto. Qed.
+triple_ifthenelse
+Proof. intros; red; intros. destruct n. constructor. apply safe_ifthenelse. - intros. apply H. split; auto. - intros. apply H0. split; auto. Qed.
+triple_repeat
+Proof. intros J P c Q TR IMP. red; intro n; induction n; intros h Ph. - constructor. - constructor; auto. + intros; intro ST. inv ST. + intros. inv H2. exists h, hj; intuition auto. apply safe_let with Q. * apply TR; auto. * intros. destruct n'. constructor. apply safe_ifthenelse. ** intros. destruct n'; constructor. split; auto. ** intros. apply safe_mono with n. apply IHn. apply IMP. congruence. lia. Qed.
+safe_par
+Proof. intros J Q1 Q2 n. induction n; intros until h2; intros S1 S2 DISJ; constructor; auto. - cbn; intros. destruct H as [H | H]. + eapply safe_immacc with (h1 := h1) in H; eauto. destruct (h1 l) as [z|]; congruence. + eapply safe_immacc with (h1 := h2) in H; eauto. destruct (h1 l) as [z'|]; congruence. - intros. intros ST; inv ST. + destruct H3 as [IM1 IM2]. eapply safe_immacc with (h1 := h1) in IM1; eauto. eapply safe_immacc with (h1 := h2) in IM2; eauto. specialize (DISJ l). tauto. + elim (safe_not_erroneous _ _ _ _ _ hj (hunion h2 hf) S1). HDISJ. auto. rewrite hunion_assoc in H3. rewrite <- (hunion_comm hj) by HDISJ. rewrite hunion_assoc. rewrite (hunion_comm hj) by HDISJ. assumption. + elim (safe_not_erroneous _ _ _ _ _ hj (hunion h1 hf) S2). HDISJ. auto. rewrite <- (hunion_comm h1) in H3 by HDISJ. rewrite hunion_assoc in H3. rewrite <- (hunion_comm hj) by HDISJ. rewrite hunion_assoc. rewrite (hunion_comm hj) by HDISJ. assumption. - intros; subst h. inv H2. + apply safe_pure_inv in S1. apply safe_pure_inv in S2. exists (hunion h1 h2), hj; intuition auto. apply safe_pure. exists h1, h2; intuition auto. + rewrite hunion_assoc in H3. rewrite <- (hunion_comm h2) in H3 by HDISJ. rewrite hunion_assoc in H3. destruct (safe_red _ _ _ _ _ _ _ _ _ H3 S1) as (h1' & hj' & A & B & C & D). auto. HDISJ. subst h'. exists (hunion h1' h2), hj'. split. HDISJ. split. rewrite hunion_assoc. f_equal. rewrite <- (hunion_comm h2) by HDISJ. rewrite hunion_assoc. auto. split. assumption. apply IHn. auto. apply safe_mono with (S n); auto. HDISJ. + rewrite <- (hunion_comm h1) in H3 by HDISJ. rewrite hunion_assoc in H3. rewrite <- (hunion_comm h1) in H3 by HDISJ. rewrite hunion_assoc in H3. destruct (safe_red _ _ _ _ _ _ _ _ _ H3 S2) as (h2' & hj' & A & B & C & D). auto. HDISJ. subst h'. exists (hunion h2' h1), hj'. split. HDISJ. split. rewrite hunion_assoc. f_equal. rewrite <- (hunion_comm h1) by HDISJ. rewrite hunion_assoc. auto. split. assumption. rewrite hunion_comm by HDISJ. apply IHn. apply safe_mono with (S n); auto. auto. HDISJ. Qed.
+triple_par
+Proof. intros until Q2; intros TR1 TR2 n h Ph. destruct Ph as (h1 & h2 & Ph1 & Ph2 & D & U). subst h. apply safe_par; auto. Qed.
+triple_get
+Proof. intros J l v n h Ph. assert (L: h l = Some v) by (rewrite Ph; apply hupdate_same). destruct n; constructor; auto. - cbn; intros. congruence. - intros. subst h0. intro ST; inv ST. cbn in H2. rewrite L in H2. congruence. - intros. subst h0. inv H2. assert (v0 = v). cbn in H3. rewrite L in H3. congruence. subst v0. exists h, hj; intuition auto. apply safe_pure. split; auto. Qed.
+triple_set
+Proof. intros J l v n h Ph. destruct Ph as (v0 & Ph). assert (L: h l = Some v0) by (rewrite Ph; apply hupdate_same). destruct n; constructor; auto. - cbn; intros. congruence. - intros; intro ST; inv ST. cbn in H3. rewrite L in H3; congruence. - intros. subst h0. rewrite Ph in H. inv H2. exists (hupdate l v hempty), hj; intuition auto. + HDISJ. red; intros l0; generalize (H l0); cbn. destruct (Z.eq_dec l l0); intuition congruence. red; intros l0; generalize (H0 l0); cbn. destruct (Z.eq_dec l l0); intuition congruence. + rewrite Ph. apply heap_extensionality; intros l0; cbn. destruct (Z.eq_dec l l0); auto. + apply safe_pure. reflexivity. Qed.
+valid_N_init
+Proof. intro sz. induction sz as [ | sz]; intros l; cbn. - red; auto. - exists (hupdate l 0 hempty), (hinit (l+1) sz hempty). split. exists 0. red; auto. split. apply IHsz. split. intros x. unfold hupdate, hempty at 1; cbn. destruct (Z.eq_dec l x); auto. right. rewrite hinit_outside by lia. auto. apply heap_extensionality; intros x. cbn. destruct (Z.eq_dec l x); auto. Qed.
+triple_alloc
+Proof. intros J sz n h Ph. red in Ph; subst h. destruct n; constructor; auto. - intros; intro ST. inv ST. - intros. rewrite hunion_empty in H0. subst h. inv H2. exists (hinit l sz hempty), hj; intuition auto. + assert (D: hdisjoint (hinit l sz hempty) (hunion hj hf)). red; intros l0. assert (EITHER: l <= l0 < l+Z.of_nat sz \/ l0 < l \/ l+Z.of_nat sz <= l0) by lia. destruct EITHER. right; auto. left; apply hinit_outside; auto. HDISJ. + apply heap_extensionality; intros l0; cbn. assert (EITHER: l <= l0 < l+Z.of_nat sz \/ l0 < l \/ l+Z.of_nat sz <= l0) by lia. destruct EITHER. rewrite ! hinit_inside by auto. auto. rewrite ! hinit_outside by auto. auto. + apply safe_pure. split. auto. apply valid_N_init. Qed.
+triple_free
+Proof. intros J l n h Ph. destruct Ph as (v0 & Ph). assert (L: h l = Some v0) by (rewrite Ph; apply hupdate_same). destruct n; constructor; auto. - cbn; intros. congruence. - intros; intro ST; inv ST. cbn in H3. rewrite L in H3; congruence. - intros. subst h0. rewrite Ph in H. inv H2. exists hempty, hj; intuition auto. + HDISJ. + assert (D: hdisjoint (hupdate l v0 hempty) (hunion hj hf)) by HDISJ. rewrite Ph. apply heap_extensionality; intros l0; cbn. destruct (Z.eq_dec l l0); auto. subst l0. destruct (D l); auto. rewrite hupdate_same in H0; congruence. + apply safe_pure. reflexivity. Qed.
+triple_consequence_pre
+Proof. intros. intros n h Ph. apply H. auto. Qed.
+safe_consequence
+Proof. intros Q Q' J H n. induction n; intros. - constructor. - inv H0. + constructor. apply H; auto. + constructor; auto. intros. edestruct STEP as (h1' & hj' & A & B & C & D); eauto. exists h1', hj'; intuition auto. Qed.
+triple_consequence_post
+Proof. intros. intros n h Ph. apply safe_consequence with Q'; auto. Qed.
+triple_exists_pre
+Proof. intros. intros n h Ph. destruct Ph as (v & Ph). apply (H v). auto. Qed.
+triple_simple_conj_pre
+Proof. intros. intros n h Ph. destruct Ph. apply H; auto. Qed.
+triple_or
+Proof. intros until Q'; intros TR1 TR2 n h [Ph | P'h]. - apply safe_consequence with Q. intros v1 h1; red; auto. apply TR1; auto. - apply safe_consequence with Q'. intros v1 h1; red; auto. apply TR2; auto. Qed.
+safe_and
+Proof. intros J Q Q' H n. induction n; intros c h S S'. - constructor. - inv S; inv S'. + constructor; split; auto. + contradiction. + contradiction. + constructor; auto. * intros. edestruct STEP as (h1' & hj' & D' & E' & J' & SAFE'); eauto. edestruct STEP0 as (h1'' & hj'' & D'' & E'' & J'' & SAFE''); eauto. assert (hj' = hj''). apply H with (hunion h1' hf) (hunion h1'' hf); auto. HDISJ. HDISJ. rewrite ! (hunion_comm hf) by HDISJ. rewrite <- ! hunion_assoc. rewrite (hunion_comm h1'), (hunion_comm h1'') by HDISJ. congruence. subst hj''. assert (h1' = h1''). apply hunion_invert_l with (hunion hj' hf). congruence. HDISJ. HDISJ. subst h1''. exists h1', hj'; auto. Qed.
+triple_and
+Proof. intros until Q'; intros PR TR1 TR2 n h (Ph & P'h). apply safe_and; auto. Qed.
+triple_swap
+Proof. intros. apply triple_atomic. rewrite sepconj_emp. unfold sem_invariant at 1. apply triple_exists_pre; intros v. eapply triple_let with (Q := fun v' => ((v' = v) //\\ contains lck v)**(if v =? 0 then emp else R)). apply triple_frame. apply triple_get. cbn. intros v'. rewrite lift_pureconj. apply triple_simple_conj_pre. intros EQ; subst v'. apply triple_seq with (Q := contains lck 0**(if v =? 0 then emp else R)). apply triple_frame. apply triple_consequence_pre with (valid lck). apply triple_set. red; intros. exists v; auto. apply triple_pure. unfold sem_invariant. red; intros. rewrite sepconj_comm, lift_aexists. exists 0. rewrite Z.eqb_refl. rewrite <- (sepconj_comm emp), sepconj_emp. assumption. Qed.
+triple_acquire
+Proof. intros. apply triple_consequence_post with (Q' := fun v => (v <> 0) //\\ (if Z.eqb v 0 then emp else R)). apply triple_repeat. apply triple_swap. rewrite Z.eqb_refl. red; auto. intros v h [H1 H2]. apply Z.eqb_neq in H1. rewrite H1 in H2. auto. Qed.
+triple_release
+Proof. intros. apply triple_atomic. rewrite sepconj_comm. unfold sem_invariant at 1. rewrite lift_aexists. apply triple_exists_pre. intros v. rewrite sepconj_assoc. apply triple_consequence_post with (Q' := fun _ => contains lck 1**(if v =? 0 then emp else R)**R). apply triple_frame. apply triple_consequence_pre with (valid lck). apply triple_set. red; intros. exists v; auto. intros _. intros h P. assert ((contains lck 1**R) h). eapply sepconj_imp_r with (P := (if v =? 0 then emp else R) ** R); eauto. destruct (v =? 0). rewrite sepconj_emp. red; auto. apply sepconj_self; auto. rewrite sepconj_emp. exists 1. simpl. auto. Qed.
+triple_critregion
+Proof. intros. apply triple_seq with (Q := R**P). rewrite <- (sepconj_emp P) at 1. apply triple_frame. apply triple_acquire. eapply triple_let. rewrite sepconj_comm. rewrite <- sepconj_emp at 1. apply triple_frame_invariant. apply H0. intros. simpl. apply triple_seq with (Q := emp**Q v). rewrite sepconj_comm. apply triple_frame. apply triple_release; auto. rewrite sepconj_emp. apply triple_pure. red; auto. Qed.
+triple_ccr
+Proof. intros. set (Qloop := fun v => if v =? 0 then P else Q). apply triple_consequence_post with (fun v => (v <> 0) //\\ Qloop v). apply triple_repeat. apply triple_seq with (Q := R**P). rewrite <- (sepconj_emp P) at 1. apply triple_frame. apply triple_acquire. rewrite sepconj_comm at 1. eapply triple_let. rewrite <- sepconj_emp at 1. apply triple_frame_invariant. eexact H0. intros v. apply triple_ifthenelse. - eapply triple_seq. eapply triple_consequence_pre. rewrite <- sepconj_emp at 1. apply triple_frame_invariant. eexact H1. intros h (X & Y). apply Z.eqb_neq in X. rewrite X in Y. auto. apply triple_seq with (Q := emp**Q). rewrite sepconj_comm at 1. apply triple_frame. apply triple_release; auto. apply triple_pure. rewrite sepconj_emp. unfold Qloop. cbn. red; auto. - apply triple_consequence_pre with (P**R). eapply triple_seq with (Q := emp**P). rewrite sepconj_comm at 1. apply triple_frame. apply triple_release; auto. apply triple_pure. rewrite sepconj_emp. unfold Qloop. cbn. red; auto. intros h (X & Y). subst v. auto. - unfold Qloop. intros v U. simpl in U. auto. - intros v h (U & V). red in V. apply Z.eqb_neq in U. rewrite U in V. auto. Qed.
+precise_buffer_invariant
+Proof. intros. apply aexists_precise. apply sepconj_param_precise; auto. apply contains_param_precise. Qed.
+triple_consume
+Proof. intros. eapply triple_seq. unfold buffer_invariant. rewrite sepconj_comm. apply triple_frame_invariant. apply triple_acquire. apply triple_exists_pre. intros v. eapply triple_let. apply triple_frame. apply triple_get. intros v'. cbn. rewrite lift_pureconj. apply triple_simple_conj_pre. intros EQ; subst v'. apply triple_seq with (emp**R v). unfold buffer_invariant. apply triple_frame_invariant. apply triple_frame. eapply triple_consequence_pre. apply triple_release. apply valid_precise. red; intros; exists v; auto. apply triple_pure. rewrite sepconj_emp. red; auto. Qed.
+triple_produce
+Proof. intros. apply triple_seq with (valid buff**R data). unfold buffer_invariant. apply triple_frame_invariant. rewrite <- (sepconj_emp (R data)) at 1. apply triple_frame. apply triple_acquire. apply triple_seq with (contains buff data**R data). apply triple_frame. apply triple_set. unfold buffer_invariant. rewrite sepconj_comm. apply triple_frame_invariant. eapply triple_consequence_pre. apply triple_release. apply precise_buffer_invariant. assumption. red; intros. exists data; auto. Qed.
+triple_produce
+Proof. intros. eapply triple_let. rewrite <- (sepconj_emp (R data)). apply triple_frame. apply triple_alloc. intros a; cbn. rewrite lift_pureconj. apply triple_simple_conj_pre; intros NOT0. rewrite ! sepconj_assoc, sepconj_emp. apply triple_seq with (contains a data**valid (a+1)**R data). apply triple_frame. apply triple_set. apply triple_atomic. rewrite sepconj_comm. unfold buffer_invariant. rewrite lift_aexists; apply triple_exists_pre; intros l. rewrite lift_aexists; apply triple_exists_pre; intros p. rewrite sepconj_assoc. eapply triple_let. apply triple_frame. apply triple_get. intros p'; cbn. rewrite lift_pureconj. apply triple_simple_conj_pre; intros EQ; subst p'. eapply triple_seq. rewrite (sepconj_pick3 (valid (a+1))). rewrite sepconj_pick2. apply triple_frame with (Q := fun _ => contains (a+1) p). apply triple_set. rewrite sepconj_pick2. eapply triple_consequence_post. apply triple_frame. eapply triple_consequence_pre. apply triple_set. intros h A; exists p; auto. cbn. intros _. rewrite sepconj_emp. rewrite <- (sepconj_swap3 (list_invariant R l p)). rewrite (sepconj_pick2 (contains a data)). intros h A. exists (data :: l), a. revert h A. apply sepconj_imp_r. intros h A. cbn. split; auto. exists p; exact A. Qed.
+Ltac custom_tac54 H0 H1 := apply H0; apply H1.
+
+Ltac custom_tac61 H0 H1 H2 := rewrite H0; apply H1; intros H2.
+
+Ltac custom_tac66 H0 H1 := apply H0; intros H1.
+
+Ltac custom_tac62 H0 H1 := rewrite H0; apply H1.
+
+Ltac custom_tac95 H0 H1 H2 H3 H4 H5 := apply H0; apply H1; intros H2; cbn; rewrite H3; apply H4; intros H5; subst H2.
+
+Ltac custom_tac38 H0 := auto; apply H0.
+
+Ltac custom_tac69 H0 H1 := intros H0 H1; red.
+
+Ltac custom_tac10 H0 H1 := exists H0, H1; auto.
+
+Ltac custom_tac64  := red; auto.
+
+Ltac custom_tac78 H0 H1 H2 := apply H0 in H1; rewrite H1 in H2; auto.
+
+triple_pop
+Proof. intros. set ( Qloop := fun p => if p =? 0 then emp else aexists ( fun x => contains p x**valid ( p+1)**R x)). apply triple_consequence_post with ( fun p => ( p <> 0) //\\ Qloop p). custom_tac54 triple_repeat triple_atomic. custom_tac61 sepconj_emp triple_exists_pre l; custom_tac66 triple_exists_pre p; eapply triple_let. custom_tac54 triple_frame triple_get. cbn. intros p'. custom_tac61 lift_pureconj triple_simple_conj_pre E; subst p'. custom_tac54 triple_ifthenelse triple_simple_conj_pre; intros NOTZERO. rewrite sepconj_comm. destruct l as [ | x l]; cbn; custom_tac62 lift_pureconj triple_simple_conj_pre; intro; try lia. custom_tac61 lift_aexists triple_exists_pre t; eapply triple_let. rewrite ! sepconj_assoc, sepconj_pick2. custom_tac95 triple_frame triple_get t' lift_pureconj triple_simple_conj_pre E. rewrite <- ! sepconj_assoc, sepconj_comm, ! sepconj_assoc. eapply triple_seq; apply triple_frame with ( Q := fun _ => contains buff t). eapply triple_consequence_pre. apply triple_set. intros h A; exists p; custom_tac38 triple_pure. unfold Qloop. apply Z.eqb_neq in NOTZERO; rewrite NOTZERO. rewrite ( sepconj_pick2 ( contains p x)). rewrite <- ( sepconj_pick3 ( contains buff t)). rewrite <- ( sepconj_pick2 ( contains buff t)). intros h A. rewrite lift_aexists. exists x. rewrite ! sepconj_assoc. eapply sepconj_imp_r with ( P := contains ( p + 1) t ** R x ** contains buff t ** list_invariant R l t); eauto. intros h' B. apply sepconj_imp_l with ( P := contains ( p+1) t). intros h'' C. exists t; auto. revert h' B. apply sepconj_imp_r. apply sepconj_imp_r. custom_tac69 h''' D. exists l; exists t; auto. + custom_tac66 triple_simple_conj_pre ZERO. apply triple_pure. unfold Qloop; cbn. rewrite sepconj_emp. intros h A; custom_tac10 l p. - unfold Qloop; cbn. custom_tac64 . - unfold Qloop. intros v h [ A B]. custom_tac78 Z.eqb_neq A B. Qed.
+triple_consume2
+Proof. intros. eapply triple_let. apply triple_pop. intros b. cbn. apply triple_exists_pre; intros p. eapply triple_let. apply triple_frame. apply triple_get. intros p'; cbn; rewrite lift_pureconj; apply triple_simple_conj_pre; intros E; subst p'. eapply triple_seq. apply triple_frame with (Q := fun _ => emp). eapply triple_consequence_pre. apply triple_free. intros h A; exists p; auto. rewrite sepconj_emp. eapply triple_seq. apply triple_frame with (Q := fun _ => emp). apply triple_free. apply triple_pure. rewrite sepconj_emp. red; auto. Qed.

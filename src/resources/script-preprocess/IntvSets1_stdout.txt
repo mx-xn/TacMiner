@@ -1,0 +1,199 @@
+(* info auto: *)
+simple apply conj (in core).
+ assumption.
+ assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+simple apply IHok.
+ assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+simple apply BELOW.
+ assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+simple apply or_intror (in core).
+ assumption.
+(* info auto: *)
+simple apply or_intror (in core).
+ simple apply or_intror (in core).
+  assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+simple apply IHok.
+ assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+simple apply IHok.
+ assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+simple apply IHok.
+ assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+simple apply or_intror (in core).
+ assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+simple apply or_intror (in core).
+ assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+idtac.
+(* info auto: *)
+idtac.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+assumption.
+(* info auto: *)
+simple apply @eq_refl (in core).
+(* info auto: *)

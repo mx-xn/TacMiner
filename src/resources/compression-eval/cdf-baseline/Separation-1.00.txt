@@ -1,0 +1,42 @@
+extracted tactics-----------
+custom_tac15: apply _i; intros _o
+custom_tac2: destruct ( isfinite _i) as ( i & fin); exists ( Z.max _i ( _i + 1)); intros; destruct ( Z.eq_dec _i _i) as [ _o | _o]; lia; apply _i; lia
+custom_tac30: apply _i; auto
+custom_tac7: destruct ( isfinite _i) as ( i & fin); exists _i; intros; destruct ( Z.eq_dec _i _i) as [ _o | _o]; auto
+custom_tac12: destruct ( isfinite _i) as ( i1 & fin1), ( isfinite _i) as ( i2 & fin2); exists ( Z.max _i _i); intros; rewrite _i, _i by lia; auto
+custom_tac42: rewrite _i; auto
+custom_tac32: exists _i, _i; intuition auto
+custom_tac37: split; auto
+custom_tac47: split; intros _o
+custom_tac53: apply _i; HDISJ
+custom_tac18: cbn; destruct ( _i _i) as [ z|]; auto
+custom_tac44: apply _i; exists _i, _i; auto
+custom_tac58: unfold _i; intros _o; red
+custom_tac57: red; intros _o _o _o _o _o _o _o _o _o _o _o
+custom_tac6: cbn; destruct ( Z.eq_dec _i _i) as [ _o | _o]
+custom_tac11: cbn; auto
+custom_tac24: auto; congruence
+custom_tac34: intros _o _o _o ( _o & _o & _o & _o & _o & _o); subst _i
+custom_tac39: exists ( hunion _i _i), _i; intuition auto
+custom_tac49: intros _o ( _o & _o & _o & _o & _o & _o); subst _i
+custom_tac50: intros; intros _o _o _o _o _o
+custom_tac51: apply _i; apply _i
+custom_tac56: red; intros _o _o _o _o _o _o _o _o _o
+custom_tac0: f_equal; apply _i
+custom_tac25: intros; rewrite _i
+custom_tac45: exists _i, _i; auto
+---------------------------
+Num proofs: 58
+Num training proofs: 58
+Original size: 487
+Training size: 487
+Testing size: 487
+Compressed total size: 431 ( 343 corpus / 88 library )
+Compressed testing size: 398
+[1] numTactics: 26
+[1] avrgTacticSize: 2.54
+[1] maxTacSize: 7
+[1] numAvgApplications: 2.62
+[1] numTotalApplications: 68
+Compression rate: 1.2236180904522613
+Num tactics in library: 26

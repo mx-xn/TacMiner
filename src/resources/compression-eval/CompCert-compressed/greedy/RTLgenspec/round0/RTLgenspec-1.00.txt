@@ -1,0 +1,76 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom1 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom2  :=  econstructor; [eauto | eauto | eauto | .. ].
+Ltac custom3 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom4 H0 H1 :=  apply H0 with H1; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom5 H0 H1 H3 :=  apply H0 with H1; [auto | eapply H3; [eauto 2 with rtlg | eauto 2 with rtlg |  |  | eauto 2 with rtlg | .. ] | .. ].
+Ltac custom6 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom7  :=  econstructor; [eauto | .. ].
+Ltac custom8 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | .. ].
+Ltac custom9 H0 H1 H2 H10 H4 :=  econstructor; [ | eapply H0; [ | .. ] | apply H1 with H2; [auto | eapply H10; [ | apply H4; [eauto with rtlg | eauto with rtlg | .. ] | .. ] | .. ] | .. ].
+Ltac custom10 H0 H1 H3 :=  apply H0 with H1; [auto | eapply H3; [ |  |  |  | eauto 4 with rtlg | .. ] | .. ].
+Ltac custom11  :=  econstructor; [eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom12 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg |  |  | eauto with rtlg | .. ].
+Ltac custom13 H0 H12 H5 H10 H14 H15 :=  monadInv H0; [apply H12 with H5; [auto | eapply H14; [ | .. ] | .. ] | .. ]. apply H12 with H10; [auto | eapply H15; [ | .. ] | .. ].
+Ltac custom14 H0 H8 :=  intros until H0; [unfold H8 | .. ].
+Ltac custom15 H0 :=  eapply H0; [ |  |  |  | eauto 3 with rtlg | .. ].
+Ltac custom16 H0 H1 H2 H3 H4 H5 H6 H7 H8 :=  generalize H0; [unfold H1; [caseEq ( nth_error ( map_letvars H2 ) H3 ); [intros H4 H5 H6 | intros H7 H8 | .. ] | .. ] | .. ].
+Ltac custom17 H0 H1 H2 H3 H4 H5 H6 :=  simpl; [intros H0 H1 H2 H3 H4 H5 H6 | .. ].
+Ltac custom18  :=  custom7 ; [eauto | .. ].
+Ltac custom19 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom20 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom21  :=  constructor; [ | auto | .. ].
+Ltac custom22  :=  split; [ | auto | .. ].
+Ltac custom23  :=  split; [ | congruence | .. ].
+Ltac custom24 H0 :=  apply H0; [ | eauto 3 with rtlg | .. ].
+Ltac custom25 H0 :=  subst H0; [auto | .. ].
+Ltac custom26 H0 :=  inversion H0; [auto].
+Ltac custom27 H0 :=  custom18 ; [custom20 H0; [eauto | .. ] | .. ].
+Ltac custom28 H0 :=  custom19 H0; [eauto with rtlg | .. ].
+Ltac custom29 H0 H1 :=  red; [intros H0 H1 | .. ].
+Ltac custom30 H0 :=  left; [exists H0; [auto | .. ] | .. ].
+Ltac custom31 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1 H2 H3 H4 H5 H6; [eauto with rtlg | .. ].
+Ltac custom32 H0 H1 H2 H3 H4 H5 H6 H7 :=  unfold H0; [custom31 H1 H2 H3 H4 H5 H6 H7 | .. ].
+Ltac custom33  :=  constructor; [eauto with rtlg | .. ].
+Ltac custom34 H0 H1 H2 :=  elim H0; [intro H1 | intro H2 | .. ].
+Ltac custom35 H0 :=  apply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom36 H0 H1 :=  econstructor; [ |  | custom4 H0 H1 | .. ].
+Ltac custom37  :=  econstructor; [ |  | eauto with rtlg | .. ].
+Ltac custom38 H0 :=  intro H0; [induction H0 | .. ].
+Ltac custom39 H0 H1 H2 :=  intros H0 H1 H2; [left; [eauto with rtlg | .. ] | .. ].
+Ltac custom40  :=  custom2 ; [eauto | .. ].
+Ltac custom41 H0 :=  custom20 H0; [eauto | .. ].
+Ltac custom42  :=  right; [auto | .. ].
+Ltac custom43  :=  right; [eauto with rtlg | .. ].
+Ltac custom44 H0 :=  inv H0; [ | custom43  | .. ].
+Ltac custom45 H0 :=  inv H0; [eauto with rtlg].
+Ltac custom46 H0 :=  simpl; [apply H0 | .. ].
+Ltac custom47 H0 H1 :=  generalize H0; [unfold H1 | .. ].
+Ltac custom48  :=  constructor; [auto | .. ].
+Ltac custom49 H0 H1 :=  apply H0 with H1; [auto | .. ].
+Ltac custom50 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1 H2 H3 H4; [custom29 H5 H6 | .. ].
+Ltac custom51  :=  econstructor; [eauto with rtlg | .. ].
+Ltac custom52 H0 H1 :=  intros H0 H1; [inv H1 | .. ].
+Ltac custom53 H0 H1 :=  intros H0 H1; [induction H1 | .. ].
+Ltac custom54 H0 H1 H2 H3 H4 H5 H6 H7 :=  intros H0 H1 H2 H3 H4 H5 H6 H7; [monadInv H7 | .. ].
+Ltac custom55 H0 H1 H2 :=  intros H0 H1 H2; [inv H2 | .. ].
+Ltac custom56 H0 H1 H2 :=  intros H0 H1 H2; [pose ( AT := fun pc i => instr_at_incr H0 H1 pc i H2 ) | .. ].
+---------------------------
+Num proofs: 55
+Num training proofs: 39
+Original size: 1413
+Compressed total size: 991
+Training size: 1055
+(2) (3) Testing size: 358
+(2) (3) Compressed testing size: 220
+(2) (3) Compression rate: 162.73
+Compressed size + lib: 1169 ( 991 corpus / 178 library )
+[1] numTactics: 57
+[1] avrgTacticSize: 3.12
+[1] maxTacSize: 10
+[1] numProofsCompressed/total: 16 / 16
+[1] numAvgApplications: 3.72
+[1] numTotalApplications: 212
+Compression rate: 1.2087254063301967
+Num tactics in library: 57

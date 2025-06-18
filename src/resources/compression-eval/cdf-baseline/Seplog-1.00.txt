@@ -1,0 +1,32 @@
+extracted tactics-----------
+custom_tac15: apply _i; auto
+custom_tac25: apply _i; intros _o
+custom_tac0: constructor; auto
+custom_tac49: intros; red; intros
+custom_tac22: split; auto
+custom_tac3: intros; apply _i
+custom_tac26: red; auto
+custom_tac89: intros _o _o ( _o & _o & _o & _o & _o & _o); apply ( _i ( _i _i)); exists _i, _i; auto
+custom_tac51: intros; apply _i with _i _i; auto
+custom_tac6: apply _i; apply _i
+custom_tac34: intros; inv _i
+custom_tac39: intros; intros _o _o
+custom_tac40: intros until _o; intros _o _o _o _o
+custom_tac73: apply _i; eapply _i
+custom_tac71: apply _i; intros
+custom_tac87: intros; apply _i with ( _i ** _i) ( fun v => _i v ** _i)
+---------------------------
+Num proofs: 70
+Num training proofs: 70
+Original size: 954
+Training size: 954
+Testing size: 954
+Compressed total size: 724 ( 593 corpus / 131 library )
+Compressed testing size: 889
+[1] numTactics: 16
+[1] avrgTacticSize: 2.25
+[1] maxTacSize: 4
+[1] numAvgApplications: 3.50
+[1] numTotalApplications: 56
+Compression rate: 1.0731158605174353
+Num tactics in library: 16

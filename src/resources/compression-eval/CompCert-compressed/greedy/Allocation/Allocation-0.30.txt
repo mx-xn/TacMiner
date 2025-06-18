@@ -1,0 +1,29 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [red; [auto | .. ] | .. ].
+Ltac custom1  :=  simpl; [congruence | .. ].
+Ltac custom2 H0 :=  apply H0; [auto | .. ].
+Ltac custom3 H0 :=  left; [eapply H0; [eauto | eauto | .. ] | .. ].
+Ltac custom4 H0 H1 H2 H3 :=  apply ( H0 H1 ); [apply H2 with H3; [auto | .. ] | .. ].
+Ltac custom5 H0 H5 :=  destruct H0; [ | destruct H5 | .. ].
+Ltac custom6 H0 :=  destruct H0; [ |  | custom1  | .. ].
+Ltac custom7  :=  left; [congruence | .. ].
+Ltac custom8 H0 H1 H2 H3 H4 :=  custom2 H0; [custom4 H1 H2 H3 H4 | .. ].
+Ltac custom9  :=  right; [split | .. ].
+---------------------------
+Num proofs: 25
+Num training proofs: 5
+Original size: 387
+Compressed total size: 304
+Training size: 126
+(2) (3) Testing size: 261
+(2) (3) Compressed testing size: 223
+(2) (3) Compression rate: 117.04
+Compressed size + lib: 328 ( 304 corpus / 24 library )
+[1] numTactics: 10
+[1] avrgTacticSize: 2.40
+[1] maxTacSize: 4
+[1] numProofsCompressed/total: 7 / 20
+[1] numAvgApplications: 5.20
+[1] numTotalApplications: 52
+Compression rate: 1.1798780487804879
+Num tactics in library: 10

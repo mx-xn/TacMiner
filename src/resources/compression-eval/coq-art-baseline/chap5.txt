@@ -1,0 +1,8 @@
+extracted tactics-----------
+apply _i; [assumption
+---------------------------
+Num proofs: 35
+Original size: 113
+Compressed size: 109 ( 107 corpus / 2 library )
+Compression rate: 1.036697247706422
+Num tactics in library: 1

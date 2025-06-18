@@ -1,0 +1,19 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 :=  rewrite H0; [case Z.compare_spec; [unfold H1; [rewrite ?NN.spec_0, ?NN.spec_sub; [lia | .. ] | .. ] | rewrite ?NN.spec_0, ?NN.spec_sub; [lia | .. ] | rewrite ?NN.spec_0, ?NN.spec_sub; [lia | .. ] | .. ] | .. ].
+Ltac custom1 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom2 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom3  :=  simpl; [auto with zarith | .. ].
+Ltac custom4 H0 :=  destr_norm_pos H0; [simpl | simpl | .. ].
+Ltac custom5  :=  rewrite ?NN.spec_0, ?NN.spec_sub; [lia | .. ].
+Ltac custom6 H0 H1 H2 :=  intros H0 H1; [unfold H2 | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros [ H2 | H3 ] [ H4 | H5 ]; [ | .. ] | .. ].
+Ltac custom8 H0 :=  rewrite H0; [case Z.compare_spec; [ | .. ] | .. ].
+Ltac custom9 H0 :=  rewrite H0; [ | lia | .. ].
+Ltac custom10 H0 H4 :=  destruct H0 as [ p|p ]; [ | assert ( Hp := NN.spec_pos H4 ) | .. ].
+---------------------------
+ , , 0.65
+ZMake, Number of Tactics, 11
+ , Average Tactic Size, 2.73
+ , Total Tactic Size, 30
+ , Max Tactic Size, 9
+ , Overall CP, 1.17

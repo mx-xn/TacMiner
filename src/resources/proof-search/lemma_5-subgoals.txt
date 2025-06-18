@@ -1,0 +1,45 @@
+ok (remove l0 h0 Nil)
+
+ok (remove l0 h0 (Cons l h s))
+
+ok (Cons l h (remove l0 h0 s))
+
+ok
+  (if zlt h0 l
+   then Cons l h s
+   else
+    if zlt l l0
+    then
+     if zlt h0 h
+     then Cons l l0 (Cons h0 h s)
+     else Cons l l0 (remove l0 h0 s)
+    else if zlt h0 h then Cons h0 h s else remove l0 h0 s)
+
+forall (x : Z) (_ : In x (remove l0 h0 s)), Z.lt h x
+
+ok (Cons l h s)
+
+ok
+  (if zlt l l0
+   then
+    if zlt h0 h
+    then Cons l l0 (Cons h0 h s)
+    else Cons l l0 (remove l0 h0 s)
+   else if zlt h0 h then Cons h0 h s else remove l0 h0 s)
+
+ok
+  (if zlt h0 h
+   then Cons l l0 (Cons h0 h s)
+   else Cons l l0 (remove l0 h0 s))
+
+ok (if zlt h0 h then Cons h0 h s else remove l0 h0 s)
+
+ok (Cons l l0 (Cons h0 h s))
+
+ok (Cons l l0 (remove l0 h0 s))
+
+forall (x : Z) (_ : In x (Cons h0 h s)), Z.lt l0 x
+
+ok (Cons h0 h s)
+
+ok (Cons h0 h s)

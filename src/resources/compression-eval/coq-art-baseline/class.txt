@@ -1,0 +1,9 @@
+extracted tactics-----------
+custom_tac2: unfold excluded_middle; [intros _o _o
+custom_tac0: apply _i; [intro _o
+---------------------------
+Num proofs: 7
+Original size: 51
+Compressed size: 48 ( 44 corpus / 4 library )
+Compression rate: 1.0625
+Num tactics in library: 2

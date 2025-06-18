@@ -1,0 +1,26 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 H15 H16 H17 H18 H31 H32 :=  unfold H0; [intros H1 H2 H3 H4 H5; [destruct H4 as [  H6 | H7 ]; [destruct H5 as [  H8 | H9 ]; [left; [eapply H10; [eauto | eauto | .. ] | .. ] | destruct H9 as [  H11 H12 ]; [rewrite <- H12; [auto | .. ] | .. ] | .. ] | destruct H7 as [  H13 H14 ]; [rewrite H14; [destruct H5 as [  H15 | H16 ]; [auto | destruct H16 as [  H17 H18 ]; [right; [split; [auto | intuition; [left; [eapply H31; [eauto | eauto | .. ] | .. ] | left; [congruence | .. ] | left; [congruence | .. ] | right; [split; [congruence | eapply H32; [eauto | eauto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom1 H0 H1 H2 H3 H5 H6 H7 H8 H4 H9 H10 H11 H12 H13 :=  split; [intros H0; [destruct ( OrderedEquation'.eq_dec H2 H3 ) as [  H5 | H6 ]; [eelim EqSet2.remove_1; [eauto | eauto | .. ] | apply H7; [auto | apply ( H8 H4 ); [apply H9 with H2; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | intros H1; [destruct ( OrderedEquation.eq_dec H2 H3 ) as [  H10 | H11 ]; [eelim EqSet.remove_1; [eauto | eauto | .. ] | apply H12; [auto | apply ( H8 H4 ); [apply H13 with H2; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom2 H0 H1 H2 H3 H5 H6 H7 H8 H9 H4 H10 H11 H12 H13 H14 H15 :=  split; [intros H0; [destruct ( OrderedEquation'.eq_dec H2 H3 ) as [  H5 | H6 ]; [apply H7; [auto | .. ] | apply H8; [apply ( H9 H4 ); [apply H10 with H2; [auto | auto | .. ] | .. ] | .. ] | .. ] | .. ] | intros H1; [destruct ( OrderedEquation.eq_dec H2 H3 ) as [  H11 | H12 ]; [apply H13; [auto | .. ] | apply H14; [apply ( H9 H4 ); [apply H15 with H2; [auto | auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom3 H0 H1 H2 H3 H9 H10 H11 H14 H15 H16 H17 H18 H19 H22 H23 :=  split; [intros H0; [apply H2 in H0; [destruct H3 as [  H9 | H10 ]; [rewrite H11 in H9; [apply H14; [auto | .. ] | .. ] | rewrite H11 in H10; [apply H15; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | intros H1; [apply H16 in H1; [destruct H17 as [  H18 | H19 ]; [rewrite <- H11 in H18; [apply H22; [auto | .. ] | .. ] | rewrite <- H11 in H19; [apply H23; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom4 H0 :=  apply H0; [red; [auto | .. ] | .. ].
+Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom6 H0 H1 H2 H3 H4 H11 H12 H13 :=  unfold H0, H1, H2; [intros H3 H4; [destruct H3; [destruct H4; [intros H11 H12; [apply H13 | .. ] | auto | .. ] | destruct H4; [auto | auto | .. ] | .. ] | .. ] | .. ].
+Ltac custom7 H0 :=  destruct H0; [simpl; [congruence | .. ] | simpl; [congruence | .. ] | simpl; [congruence | .. ] | .. ].
+Ltac custom8 H0 H1 :=  split; [intros H0; [eelim EqSet2.empty_1; [eauto | .. ] | .. ] | intros H1; [eelim EqSet.empty_1; [eauto | .. ] | .. ] | .. ].
+Ltac custom10 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5; [destruct H1 as [ e|e ]; [destruct H2 as [ e0|e0 ]; [destruct H3 as [ e1|e1 ] | try contradiction | .. ] | .. ] | .. ] | .. ].
+Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].
+Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].
+Ltac custom13 H0 :=  unfold H0; [auto | .. ].
+Ltac custom14  :=  simpl; [congruence | .. ].
+Ltac custom15 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom16 H0 H1 :=  unfold H0; [unfold H1 | .. ].
+Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].
+Ltac custom18 H0 :=  intros H0; [destruct H0 | .. ].
+---------------------------
+ , , 1.0
+Allocation, Number of Tactics, 18
+ , Average Tactic Size, 8.72
+ , Total Tactic Size, 157
+ , Max Tactic Size, 34
+ , Overall CP, 0.00

@@ -1,0 +1,9 @@
+[submodule "src/python/coq_serapy"]
+	path = src/python/coq_serapy
+	url = git@github.com:HazardousPeach/coq_serapy.git
+[submodule "copra-dreamprover"]
+	path = copra-dreamprover
+	url = git@github.com:gpoesia/copra-dreamprover.git
+[submodule "CompCert"]
+	path = CompCert
+	url = git@github.com:jxin31415/CompCert.git

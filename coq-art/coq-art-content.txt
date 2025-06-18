@@ -1,0 +1,11 @@
+- chap3.v: i don't think will outperform baseline
+- chap3_cut_example.v: 
+  1) mcs will have more tokenized tactics, will outperform baseline
+  2) we can also see if the input proof preprocessing improves performance
+- chap4.v: not enough proofs
+- chap5.v: can extract but not sure how much it outperforms baseline
+- chap5_class.v: not sure how well it outperforms baseline
+- chap6_exo_frac.v: should outperform baseline because branch dependency was encaptured by
+                    mcs, and will benefit from graph pre-processing
+- chap6_nth_length.v: should outperform baseline because of support for branch dependency and inner graph extraction
+- chap8.v: should outperform baseline bacause of branch support

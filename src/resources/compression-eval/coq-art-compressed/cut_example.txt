@@ -1,0 +1,10 @@
+extracted tactics -----------
+custom0 H0 H1 H2 H3 := apply H0; [intro H1; [apply H2; [apply H3; [assumption | .. ] | .. ] | .. ] | .. ].
+custom1 H0 H1 H2 := intro H0; [apply H1; [apply H2; [assumption | .. ] | .. ] | .. ].
+custom2 H0 := apply H0; [assumption | .. ].
+---------------------------
+Num proofs: 4
+Original size: 35
+Compressed size: 24 ( 17 corpus / 7 library )
+Compression rate: 1.4583333333333333
+Num tactics in library: 3

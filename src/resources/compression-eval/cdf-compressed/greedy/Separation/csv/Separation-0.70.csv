@@ -1,0 +1,26 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto | .. ].
+Ltac custom1 H0 :=  apply H0; [ | auto | .. ].
+Ltac custom2 H0 H5 :=  cbn; [destruct ( Z.eq_dec H0 H5 ) | .. ].
+Ltac custom3 H0 H1 :=  exists H0, H1; [intuition auto | .. ].
+Ltac custom4  :=  red; [auto | .. ].
+Ltac custom5 H0 :=  rewrite H0; [tauto | .. ].
+Ltac custom6 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom7 H0 :=  custom0 H0; [auto | .. ].
+Ltac custom8 H0 H1 :=  custom3 H0 H1; [HDISJ | .. ].
+Ltac custom9 H0 H1 H2 H3 H4 H5 H6 :=  split; [intros ( H0 & H1 & ( H2 & H3 ) & H4 & H5 & H6 ) | .. ].
+Ltac custom10 H0 H1 :=  apply H0; [intros H1; [split | .. ] | .. ].
+Ltac custom11  :=  split; [auto | .. ].
+Ltac custom12 H0 H1 H2 H3 H4 :=  intros H0 H1 H2; [apply H3; [intros H4 | .. ] | .. ].
+Ltac custom13 H0 H1 :=  exists H0, H1; [auto | .. ].
+Ltac custom14 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 :=  red; [intros H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 | .. ].
+Ltac custom15 H0 :=  apply H0; [lia | .. ].
+Ltac custom16 H0 :=  split; [intros H0 | .. ].
+Ltac custom17 H0 H1 H2 :=  intros H0 H1; [apply H2 | .. ].
+---------------------------
+ , , 0.7
+Separation, Number of Tactics, 18
+ , Average Tactic Size, 1.89
+ , Total Tactic Size, 34
+ , Max Tactic Size, 3
+ , Overall CP, 1.16

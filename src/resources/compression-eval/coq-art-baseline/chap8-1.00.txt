@@ -1,0 +1,32 @@
+extracted tactics-----------
+custom_tac10: apply _i; auto
+custom_tac3: simpl; auto
+custom_tac2: injection _i; intros _o _o
+custom_tac6: intros _o _o; elim _i
+custom_tac13: apply _i; trivial
+custom_tac17: rewrite _i; auto
+custom_tac7: rewrite <- _i; auto
+custom_tac0: inversion _i; auto with sorted_base
+custom_tac4: simpl; apply _i
+custom_tac5: intros _o _o _o; induction _i
+custom_tac16: simpl; intros _o _o _o _o
+custom_tac23: rewrite _i; trivial
+custom_tac24: simple induction 1; auto
+custom_tac25: rewrite <- _i; rewrite _i
+custom_tac26: auto; intros _o _o _o
+custom_tac12: apply _i; apply _i
+---------------------------
+Num proofs: 61
+Num training proofs: 61
+Original size: 513
+Training size: 513
+Testing size: 513
+Compressed total size: 475 ( 417 corpus / 58 library )
+Compressed testing size: 465
+[1] numTactics: 16
+[1] avrgTacticSize: 2.00
+[1] maxTacSize: 2
+[1] numAvgApplications: 3.00
+[1] numTotalApplications: 48
+Compression rate: 1.103225806451613
+Num tactics in library: 16

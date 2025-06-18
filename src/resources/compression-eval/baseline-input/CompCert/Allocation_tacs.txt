@@ -1,0 +1,85 @@
+CompCert/backend/Allocation.v
+-----
+CompCert/backend/Allocation_compr.v
+-----
+-----
+index_inj
+Proof. intros x y. destruct x; destruct y; simpl; congruence. Qed.
+eq_refl
+Proof. unfold eq. auto. Qed.
+eq_sym
+Proof. unfold eq. auto. Qed.
+eq_trans
+Proof. unfold eq. intros. rewrite H. exact H0. Qed.
+lt_trans
+Proof. unfold lt; intros. destruct H. destruct H0. left; eapply Plt_trans; eauto. destruct H0. rewrite <- H0. auto. destruct H. rewrite H. destruct H0. auto. destruct H0. right; split; auto. intuition. left; eapply OrderedLoc.lt_trans; eauto. left; congruence. left; congruence. right; split. congruence. eapply OrderedEqKind.lt_trans; eauto. Qed.
+lt_not_eq
+Proof. unfold lt, eq; intros; red; intros. subst y. intuition. eelim Plt_strict; eauto. eelim OrderedLoc.lt_not_eq; eauto. red; auto. eelim OrderedEqKind.lt_not_eq; eauto. red; auto. Qed.
+compare
+Proof. intros. destruct (OrderedPositive.compare (ereg x) (ereg y)). - apply LT. red; auto. - destruct (OrderedLoc.compare (eloc x) (eloc y)). + apply LT. red; auto. + destruct (OrderedEqKind.compare (ekind x) (ekind y)). * apply LT. red; auto. * apply EQ. red in e; red in e0; red in e1; red. destruct x as [???]; destruct y as [???]; simpl in *; congruence. * apply GT. red; auto. + apply GT. red; auto. - apply GT. red; auto. Defined.
+eq_dec
+Proof. intros. decide equality. apply Loc.eq. apply peq. apply IndexedEqKind.eq. Defined.
+eq_refl
+Proof. unfold eq. auto. Qed.
+eq_sym
+Proof. unfold eq. auto. Qed.
+eq_trans
+Proof. unfold eq. intros. rewrite H. auto. Qed.
+eq_trans2
+Proof. unfold eq. intros. rewrite H. auto. Qed.
+lt_trans
+Proof. unfold lt; intros. destruct H. destruct H0. left; eapply OrderedLoc.lt_trans; eauto. destruct H0. rewrite <- H0. auto. destruct H. rewrite H. destruct H0. auto. destruct H0. right; split; auto. intuition. left; eapply Plt_trans; eauto. left; congruence. left; congruence. right; split. congruence. eapply OrderedEqKind.lt_trans; eauto. Qed.
+lt_trans2
+Proof. unfold lt; intros. destruct H. destruct H0. left; eapply OrderedLoc.lt_trans; eauto. destruct H0. rewrite <- H0. auto. destruct H. rewrite H. destruct H0. auto. destruct H0. right; split; auto. intuition. left; eapply Plt_trans; eauto. left; congruence. left; congruence. right; split. congruence. eapply OrderedEqKind.lt_trans; eauto. Qed.
+lt_not_eq
+Proof. unfold lt, eq; intros; red; intros. subst y. intuition. eelim OrderedLoc.lt_not_eq; eauto. red; auto. eelim Plt_strict; eauto. eelim OrderedEqKind.lt_not_eq; eauto. red; auto. Qed.
+lt_not_eq2
+Proof. unfold lt, eq; intros; red; intros. subst y. intuition. eelim OrderedLoc.lt_not_eq; eauto. red; auto. eelim Plt_strict; eauto. eelim OrderedEqKind.lt_not_eq; eauto. red; auto. Qed.
+compare
+Proof. intros. destruct (OrderedLoc.compare (eloc x) (eloc y)). - apply LT. red; auto. - destruct (OrderedPositive.compare (ereg x) (ereg y)). + apply LT. red; auto. + destruct (OrderedEqKind.compare (ekind x) (ekind y)). * apply LT. red; auto. * apply EQ. red in e; red in e0; red in e1; red. destruct x; destruct y; simpl in *; congruence. * apply GT. red; auto. + apply GT. red; auto. - apply GT. red; auto. Defined.
+compare2
+Proof. intros. destruct (OrderedLoc.compare (eloc x) (eloc y)). - apply LT. red; auto. - destruct (OrderedPositive.compare (ereg x) (ereg y)). + apply LT. red; auto. + destruct (OrderedEqKind.compare (ekind x) (ekind y)). * apply LT. red; auto. * apply EQ. red in e; red in e0; red in e1; red. destruct x as [???]; destruct y as [???]; simpl in *; congruence. * apply GT. red; auto. + apply GT. red; auto. - apply GT. red; auto. Defined.
+
+Next Obligation. split; intros. eelim EqSet2.empty_1; eauto. eelim EqSet.empty_1; eauto. Qed.
+empty_eqs_dup
+Proof. split; intros. eelim EqSet2.empty_1; eauto. eelim EqSet.empty_1; eauto. Qed.
+
+Next Obligation. split; intros. destruct (OrderedEquation'.eq_dec q q0). apply EqSet.add_1; auto. apply EqSet.add_2. apply (eqs_same e). apply EqSet2.add_3 with q; auto. destruct (OrderedEquation.eq_dec q q0). apply EqSet2.add_1; auto. apply EqSet2.add_2. apply (eqs_same e). apply EqSet.add_3 with q; auto. Qed.
+add_equation_dup
+Proof. split; intros. destruct (OrderedEquation'.eq_dec q q0). apply EqSet.add_1; auto. apply EqSet.add_2. apply (eqs_same e). apply EqSet2.add_3 with q; auto. destruct (OrderedEquation.eq_dec q q0). apply EqSet2.add_1; auto. apply EqSet2.add_2. apply (eqs_same e). apply EqSet.add_3 with q; auto. Qed.
+
+Next Obligation. split; intros. destruct (OrderedEquation'.eq_dec q q0). eelim EqSet2.remove_1; eauto. apply EqSet.remove_2; auto. apply (eqs_same e). apply EqSet2.remove_3 with q; auto. destruct (OrderedEquation.eq_dec q q0). eelim EqSet.remove_1; eauto. apply EqSet2.remove_2; auto. apply (eqs_same e). apply EqSet.remove_3 with q; auto. Qed.
+remove_equation_dup
+Proof. split; intros. destruct (OrderedEquation'.eq_dec q q0). eelim EqSet2.remove_1; eauto. apply EqSet.remove_2; auto. apply (eqs_same e). apply EqSet2.remove_3 with q; auto. destruct (OrderedEquation.eq_dec q q0). eelim EqSet.remove_1; eauto. apply EqSet2.remove_2; auto. apply (eqs_same e). apply EqSet.remove_3 with q; auto. Qed.
+eq_refl
+Proof. intros; destruct x; simpl; auto. red; tauto. Qed.
+eq_refl2
+Proof. intros; destruct x; simpl; auto. red; tauto. Qed.
+eq_sym
+Proof. unfold eq; intros; destruct x as [e|e]; destruct y as [e0|e0]; auto. red in H; red; intros. rewrite H; tauto. Qed.
+eq_sym2
+Proof. unfold eq; intros; destruct x as [e|e]; destruct y as [e0|e0]; auto. red in H; red; intros. rewrite H; tauto. Qed.
+eq_trans
+Proof. unfold eq; intros. destruct x as [e|e]; destruct y as [e0|e0]; try contradiction; destruct z as [e1|e1]; auto. red in H; red in H0; red; intros. rewrite H. auto. Qed.
+eq_trans3
+Proof. unfold eq; intros. destruct x as [e|e]; destruct y as [e0|e0]; try contradiction; destruct z as [e1|e1]; auto. red in H; red in H0; red; intros. rewrite H. auto. Qed.
+Ltac custom_tac28 H0 H1 := intros; destruct H0 as [ e|e]; destruct H1 as [ e0|e0].
+
+Ltac custom_tac21 H0 := apply H0; auto.
+
+beq_correct
+Proof. unfold beq, eq; custom_tac28 x y; custom_tac21 EqSet.equal_2. discriminate. discriminate. auto. Qed.
+ge_refl
+Proof. unfold eq. unfold ge. unfold EqSet.Equal. unfold EqSet.Subset. intros. destruct x; destruct y; auto. intros; rewrite H; auto. Qed.
+ge_trans
+Proof. unfold ge. unfold EqSet.Subset; intros. destruct x as [e|e]; auto; destruct y as [e0|e0]; try contradiction. destruct z as [e1|e1]; eauto. Qed.
+ge_bot
+Proof. unfold ge, bot, EqSet.Subset; simpl; intros. destruct x; auto. intros. elim (EqSet.empty_1 H). Qed.
+
+Next Obligation. split; intros. apply EqSet2.union_1 in H. destruct H; rewrite eqs_same in H. apply EqSet.union_2; auto. apply EqSet.union_3; auto. apply EqSet.union_1 in H. destruct H; rewrite <- eqs_same in H. apply EqSet2.union_2; auto. apply EqSet2.union_3; auto. Qed.
+lub_dup
+Proof. split; intros. apply EqSet2.union_1 in H. destruct H; rewrite eqs_same in H. apply EqSet.union_2; auto. apply EqSet.union_3; auto. apply EqSet.union_1 in H. destruct H; rewrite <- eqs_same in H. apply EqSet2.union_2; auto. apply EqSet2.union_3; auto. Qed.
+ge_lub_left
+Proof. unfold lub, ge, EqSet.Subset; intros. destruct x; destruct y; auto. intros; apply EqSet.union_2; auto. Qed.
+ge_lub_right
+Proof. unfold lub, ge, EqSet.Subset; intros. destruct x; destruct y; auto. intros; apply EqSet.union_3; auto. Qed.

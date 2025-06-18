@@ -1,0 +1,35 @@
+extracted tactics -----------
+Ltac custom0  :=  simpl; [nzsimpl | .. ].
+Ltac custom1  :=  destr_eqb; [nzsimpl | nzsimpl | .. ].
+Ltac custom2  :=  simpl; [auto | .. ].
+Ltac custom3  :=  simpl; [try discriminate | .. ].
+Ltac custom4  :=  custom0 ; [try lia | .. ].
+Ltac custom5 H0 H1 H2 :=  intros H0 H1; [rewrite H2 in *; [ | lia | .. ] | .. ].
+Ltac custom7  :=  simpl; [discriminate | .. ].
+Ltac custom8 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom9  :=  destr_zcompare; [ | simpl | simpl | .. ].
+Ltac custom10 H0 :=  rewrite H0 in *; [lia | .. ].
+Ltac custom11 H0 :=  destruct H0 as [ zy|ny dy ]; [ | simpl | .. ].
+Ltac custom12 H1 H2 :=  nzsimpl; [intros H1 H2 | .. ].
+Ltac custom13 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom14 H0 :=  custom10 H0; [lia | .. ].
+Ltac custom15 H0 H1 :=  intros H0; [custom14 H1 | .. ].
+Ltac custom16 H0 H4 :=  rewrite H0 in *; [apply H4 | .. ].
+---------------------------
+Num proofs: 19
+Num training proofs: 2
+Original size: 586
+Compressed total size: 475
+Training size: 220
+(2) (3) Testing size: 366
+(2) (3) Compressed testing size: 312
+(2) (3) Compression rate: 117.31
+Compressed size + lib: 513 ( 475 corpus / 38 library )
+[1] numTactics: 16
+[1] avrgTacticSize: 2.19
+[1] maxTacSize: 3
+[1] numProofsCompressed/total: 6 / 17
+[1] numAvgApplications: 5.31
+[1] numTotalApplications: 85
+Compression rate: 1.142300194931774
+Num tactics in library: 16

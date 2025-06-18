@@ -1,0 +1,131 @@
+cdf/./Separation.v
+-----
+cdf/./Separation_compr.v
+-----
+-----
+heap_extensionality
+Proof. intros. destruct h1 as [c1 fin1], h2 as [c2 fin2]. assert (c1 = c2) by (apply functional_extensionality; auto). subst c2. f_equal. apply proof_irrelevance. Qed.
+
+Next Obligation. exists 0; auto. Qed.
+hempty_dup
+Proof. exists 0; auto. Qed.
+
+Next Obligation. destruct (isfinite h) as (i & fin). exists (Z.max i (l + 1)); intros. destruct (Z.eq_dec l j). lia. apply fin; lia. Qed.
+hupdate_dup
+Proof. destruct (isfinite h) as (i & fin). exists (Z.max i (l + 1)); intros. destruct (Z.eq_dec l j). lia. apply fin; lia. Qed.
+hupdate_same
+Proof. intros l v h. cbn. destruct (Z.eq_dec l l); congruence. Qed.
+hupdate_other
+Proof. intros l v h l' H. cbn. destruct (Z.eq_dec l l'); congruence. Qed.
+
+Next Obligation. destruct (isfinite h) as (i & fin). exists i; intros. destruct (Z.eq_dec l j); auto. Qed.
+hfree_dup
+Proof. destruct (isfinite h) as (i & fin). exists i; intros. destruct (Z.eq_dec l j); auto. Qed.
+hinit_inside
+Proof. intros h sz. induction sz; intros. - lia. - cbn. destruct (Z.eq_dec l l'); auto. apply IHsz. lia. Qed.
+hinit_outside
+Proof. intros h sz. induction sz; intros; cbn. - auto. - destruct (Z.eq_dec l l'). lia. apply IHsz; lia. Qed.
+hdisjoint_sym
+Proof. unfold hdisjoint; intros h1 h2; split; intros H l; specialize (H l); tauto. Qed.
+
+Next Obligation. destruct (isfinite h1) as (i1 & fin1), (isfinite h2) as (i2 & fin2). exists (Z.max i1 i2); intros. rewrite fin1, fin2 by lia. auto. Qed.
+hunion_dup
+Proof. destruct (isfinite h1) as (i1 & fin1), (isfinite h2) as (i2 & fin2). exists (Z.max i1 i2); intros. rewrite fin1, fin2 by lia. auto. Qed.
+hunion_comm
+Proof. intros h1 h2 H; apply heap_extensionality; intros l; cbn. specialize (H l). destruct (h1 l) as [z|], (h2 l) as [z'|]; intuition congruence. Qed.
+hunion_assoc
+Proof. intros h1 h2 h3; apply heap_extensionality; intros l; cbn. destruct (h1 l) as [z|]; auto. Qed.
+hunion_empty
+Proof. intros h; apply heap_extensionality; intros l. cbn. auto. Qed.
+hdisjoint_union_l
+Proof. unfold hdisjoint, hunion; cbn; intros h1 h2 h3. split. - intros D; split; intros l; destruct (D l) as [z|]; auto; destruct (h1 l) as [z'|]; auto. discriminate. - intros [D1 D2] l. destruct (D2 l) as [z|]; auto. destruct (h1 l) as [z'|] eqn:H1; auto. destruct (D1 l) as [z''|]; auto. congruence. Qed.
+hdisjoint_union_r
+Proof. intros. rewrite hdisjoint_sym. rewrite hdisjoint_union_l. rewrite (hdisjoint_sym h2), (hdisjoint_sym h3). tauto. Qed.
+hunion_invert_r
+Proof. intros. apply heap_extensionality; intros l. assert (hunion h h1 l = hunion h h2 l) by congruence. cbn in H2. specialize (H0 l); specialize (H1 l). destruct (h l) as [z|]; intuition congruence. Qed.
+hunion_invert_l
+Proof. intros. apply hunion_invert_r with h. rewrite <- ! (hunion_comm h) by HDISJ. auto. HDISJ. HDISJ. Qed.
+assertion_extensionality
+Proof. intros. apply functional_extensionality; intros h. apply propositional_extensionality. auto. Qed.
+sepconj_comm
+Proof. assert (forall P Q h, (P ** Q) h -> (Q ** P) h). intros P Q h (h1 & h2 & P1 & Q2 & EQ & DISJ); subst h. exists h2, h1; intuition auto. apply hdisjoint_sym; auto. symmetry; apply hunion_comm; auto. intros P Q; apply assertion_extensionality; intros h. split; auto. Qed.
+sepconj_assoc
+Proof. intros P Q R; apply assertion_extensionality; intros h; split. - intros (hx & h3 & (h1 & h2 & P1 & Q2 & EQ & DISJ) & R3 & EQ' & DISJ'). subst hx h. rewrite hdisjoint_union_l in EQ'. rewrite hunion_assoc. exists h1, (hunion h2 h3); intuition auto. exists h2, h3; intuition auto. rewrite hdisjoint_union_r; tauto. - intros (h1 & hx & P1 & (h2 & h3 & Q2 & R3 & EQ & DISJ) & EQ' & DISJ'). subst hx h. rewrite hdisjoint_union_r in EQ'. rewrite <- hunion_assoc. exists (hunion h1 h2), h3; intuition auto. exists h1, h2; intuition auto. rewrite hdisjoint_union_l; tauto. Qed.
+sepconj_emp
+Proof. intros P; apply assertion_extensionality; intros h. split. - intros (h1 & h2 & EMP1 & P2 & EQ & DISJ). red in EMP1. subst h h1. rewrite hunion_empty; auto. - intros. exists hempty, h; intuition auto. red; auto. red; auto. rewrite hunion_empty; auto. Qed.
+sepconj_imp_l
+Proof. intros P Q R IMP h (h1 & h2 & P1 & Q2 & D & U). exists h1, h2; intuition auto. Qed.
+sepconj_imp_r
+Proof. intros. rewrite ! (sepconj_comm R). apply sepconj_imp_l; auto. Qed.
+pure_sep
+Proof. intros P Q. apply assertion_extensionality; intros h. unfold pure, sepconj. split. - intros ((A & B) & C). subst h. exists hempty, hempty; intuition. intro; auto. rewrite hunion_empty; auto. - intros (h1 & h2 & (PP & E1) & (QQ & E2) & C & D). subst h h1 h2. rewrite hunion_empty; auto. Qed.
+pureconj_sepconj
+Proof. intros P Q. apply assertion_extensionality; intros h. unfold pure, sepconj, pureconj; split. - intros (h1 & h2 & (A & B) & C & D & E). split. auto. subst h h1. rewrite hunion_empty. auto. - intros (A & B). exists hempty, h; intuition. intro l. auto. rewrite hunion_empty; auto. Qed.
+lift_pureconj
+Proof. intros. rewrite <- ! pureconj_sepconj. rewrite sepconj_assoc. auto. Qed.
+lift_aexists
+Proof. intros A P Q; apply assertion_extensionality; intros h; split. - intros (h1 & h2 & (a & P1) & Q2 & DISJ & EQ). exists a, h1, h2; auto. - intros (a & h1 & h2 & P1 & Q2 & DISJ & EQ). exists h1, h2; intuition auto. exists a; auto. Qed.
+sepconj_swap3
+Proof. intros. rewrite <- sepconj_assoc, sepconj_comm. auto. Qed.
+sepconj_swap4
+Proof. intros. rewrite <- sepconj_assoc, sepconj_swap3, sepconj_assoc. auto. Qed.
+sepconj_pick2
+Proof. intros. rewrite (sepconj_comm Q), <- sepconj_assoc, sepconj_comm. auto. Qed.
+sepconj_pick3
+Proof. intros. rewrite (sepconj_pick2 R), (sepconj_pick2 P). auto. Qed.
+wand_intro
+Proof. intros P Q R IMP h Ph h' DISJ Qh'. apply IMP. exists h, h'; auto. Qed.
+wand_cancel
+Proof. intros P Q h (h1 & h2 & Ph1 & Wh2 & D & U). subst h. assert (D': hdisjoint h2 h1) by (apply hdisjoint_sym; auto). rewrite hunion_comm by auto. apply Wh2; auto. Qed.
+wand_charact
+Proof. intros P Q; apply assertion_extensionality; intros h; split. - intros W. exists (P --* Q). split; auto. apply wand_cancel. - intros (R & A & B) h' D Ph'. assert (D': hdisjoint h' h) by (apply hdisjoint_sym; auto). rewrite hunion_comm by auto. apply A. exists h', h; auto. Qed.
+wand_equiv
+Proof. intros P Q R; split; intros H. - intros h (h1 & h2 & Ph1 & Wh2 & D & U). subst h. apply H; auto. - apply wand_intro; auto. Qed.
+wand_imp_l
+Proof. intros. intros h W h' DISJ P'h'. apply W; auto. Qed.
+wand_imp_r
+Proof. intros. intros h W h' DISJ Ph'. apply H; apply W; auto. Qed.
+wand_idem
+Proof. intros P h E. rewrite E. red. intros. rewrite hunion_empty. auto. Qed.
+wand_pure_l
+Proof. intros P Q PP. apply assertion_extensionality. intros h; split. - intros W. rewrite <- hunion_empty, hunion_comm by HDISJ. apply W. HDISJ. split; auto. - intros Qh h' DISJ (Ph' & E). subst h'. rewrite hunion_comm, hunion_empty by HDISJ. auto. Qed.
+wand_curry
+Proof. intros P Q R; apply assertion_extensionality; intros h; split. - intros W h1 D1 Ph1 h2 D2 Qh2. rewrite hunion_assoc. apply W. HDISJ. exists h1, h2; intuition auto. HDISJ. - intros W h' D (h1 & h2 & Ph1 & Qh2 & D12 & U12). subst h'. rewrite <- hunion_assoc. apply W. HDISJ. auto. HDISJ. auto. Qed.
+wand_star
+Proof. intros; intros h (h1 & h2 & W1 & R2 & D & U). subst h. intros h' D' Ph'. exists (hunion h1 h'), h2; intuition auto. apply W1; auto. HDISJ. HDISJ. rewrite ! hunion_assoc. f_equal. apply hunion_comm. HDISJ. Qed.
+param_precise_precise
+Proof. intros X P H x; red; intros h1 h2 h1' h2' H0 H1 H2 H3 H4. edestruct (H x x h1 h2 h1' h2'); eauto. Qed.
+precise_param_precise
+Proof. intros P H; red; intros x1 x2 h1 h2 h1' h2' H0 H1 H2 H3 H4. split. destruct x1, x2; auto. eauto. Qed.
+pure_precise
+Proof. unfold pure; intros P; red; intros h1 h2 h1' h2' H H0 H1 H2 H3. destruct H2, H3. congruence. Qed.
+pure_param_precise
+Proof. unfold pure; intros X P H. red; intros x1 x2 h1 h2 h1' h2' H0 H1 H2 H3 H4. destruct H3, H4. split. auto. congruence. Qed.
+contains_param_precise
+Proof. unfold contains; intros l; red; intros x1 x2 h1 h2 h1' h2' H H0 H1 H2 H3. assert (E: hunion h1 h2 l = hunion h1' h2' l) by congruence. cbn in E. subst h1 h1'. rewrite ! hupdate_same in E. replace x2 with x1 by congruence. auto. Qed.
+contains_precise
+Proof. intros. apply param_precise_precise. apply contains_param_precise. Qed.
+aexists_precise
+Proof. intros X P H; red; intros h1 h2 h1' h2' H0 H1 H2 H3 H4. destruct H3 as (x1 & P1), H4 as (x2 & P2). eapply H; eauto. Qed.
+valid_precise
+Proof. intros l. apply aexists_precise. apply contains_param_precise. Qed.
+sepconj_param_precise
+Proof. intros X P Q H H0; red; intros x1 x2 h1 h2 h1' h2' H1 H2 H3 H4 H5. destruct H4 as (h3 & h4 & P3 & Q4 & D & E). destruct H5 as (h3' & h4' & P3' & Q4' & D' & E'). subst h1 h1'. assert (x1 = x2 /\ h3 = h3'). apply H with (hunion h4 h2) (hunion h4' h2'); auto. HDISJ. HDISJ. rewrite <- ! hunion_assoc. auto. destruct H4. subst x2. assert (h4 = h4'). apply (H0 x1) with (hunion h3 h2) (hunion h3' h2'); auto. HDISJ. HDISJ. rewrite <- ! hunion_assoc. rewrite (hunion_comm h3) by HDISJ. rewrite (hunion_comm h3') by HDISJ. auto. subst h3 h4. auto. Qed.
+sepconj_precise
+Proof. intros. assert (param_precise (fun _ : unit => P ** Q)). apply sepconj_param_precise. apply precise_param_precise; auto. auto. apply param_precise_precise in H1. auto. exact tt. Qed.
+sepconj_and_distr_1
+Proof. intros P1 P2 Q h (h1 & h2 & (P11 & P21) & Q2 & D & E); split; exists h1, h2; auto. Qed.
+sepconj_and_distr_2
+Proof. intros P1 P2 Q PQ. rewrite (sepconj_comm P1), (sepconj_comm P2). intros h ((h1 & h2 & Q1 & P12 & D & E) & (h1' & h2' & Q1' & P22 & D' & E')). assert (h1 = h1'). apply PQ with h2 h2'; auto. HDISJ. HDISJ. congruence. subst h1'. assert (h2 = h2'). apply hunion_invert_r with h1; auto; congruence. subst h2'. unfold aand; exists h2, h1; intuition auto. HDISJ. rewrite hunion_comm by HDISJ; auto. Qed.
+Ltac custom_tac55 H0 H1 H2 H3 H4 H5 H6 := intros; intros H0 ( H1 & H2 & H3 & H4 & H5 & H6).
+
+Ltac custom_tac28  := auto; HDISJ.
+
+Ltac custom_tac53 H0 := apply H0; HDISJ.
+
+Ltac custom_tac15 H0 H1 := apply H0; intros H1.
+
+Ltac custom_tac18 H0 H1 := cbn; destruct ( H0 H1) as [ z|]; auto.
+
+sepconj_self
+Proof. custom_tac55 h h1 h2 P1 P2 D E. assert ( h1 = h2). apply H with h2 h1; custom_tac28 . custom_tac53 hunion_comm. subst h2. assert ( h = h1). custom_tac15 heap_extensionality l. rewrite E; custom_tac18 h1 l; congruence. Qed.

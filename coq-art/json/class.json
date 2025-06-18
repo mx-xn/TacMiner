@@ -1,0 +1,656 @@
+[
+    {
+        "lemma_name": "excluded_middle_peirce",
+        "proof": [
+            {
+                "tactic_sig": "Lemma excluded_middle_peirce : excluded_middle -> peirce .",
+                "tactic_sig_no_out_arg": "Lemma excluded_middle_peirce : excluded_middle -> peirce .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall _ : excluded_middle, peirce"
+                ]
+            },
+            {
+                "tactic_sig": "unfold peirce .",
+                "tactic_sig_no_out_arg": "unfold peirce .",
+                "tactic_args": [
+                    "c1_goal : forall _ : excluded_middle, peirce"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall (_ : excluded_middle) (P Q : Prop)\n  (_ : forall _ : forall _ : P, Q, P), P"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros H P Q H0 .",
+                "tactic_args": [
+                    "c2_goal : forall (_ : excluded_middle) (P Q : Prop)\n  (_ : forall _ : forall _ : P, Q, P), P"
+                ],
+                "tactic_res": [
+                    "c3_goal : P",
+                    "c3_H : excluded_middle",
+                    "c3_P : Prop",
+                    "c3_Q : Prop",
+                    "c3_H0 : forall _ : forall _ : P, Q, P"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _i ) as [ p | np ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _i ) as [ p | np ] .",
+                "tactic_args": [
+                    "c3_goal : P",
+                    "c3_H : excluded_middle",
+                    "c3_P : Prop"
+                ],
+                "tactic_res": [
+                    "c4_goal : P",
+                    "c4_p : P",
+                    "c5_goal : P",
+                    "c5_np : not P"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c4_goal : P"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c5_goal : P",
+                    "c3_H0 : forall _ : forall _ : P, Q, P"
+                ],
+                "tactic_res": [
+                    "c6_goal : forall _ : P, Q"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H1 .",
+                "tactic_args": [
+                    "c6_goal : forall _ : P, Q"
+                ],
+                "tactic_res": [
+                    "c7_goal : Q",
+                    "c7_H1 : P"
+                ]
+            },
+            {
+                "tactic_sig": "now absurd _i .",
+                "tactic_sig_no_out_arg": "now absurd _i .",
+                "tactic_args": [
+                    "c7_goal : Q",
+                    "c3_P : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "peirce_classic",
+        "proof": [
+            {
+                "tactic_sig": "Lemma peirce_classic : peirce -> classic .",
+                "tactic_sig_no_out_arg": "Lemma peirce_classic : peirce -> classic .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall _ : peirce, classic"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros HPeirce P H0 .",
+                "tactic_args": [
+                    "c1_goal : forall _ : peirce, classic"
+                ],
+                "tactic_res": [
+                    "c2_goal : P",
+                    "c2_HPeirce : peirce",
+                    "c2_P : Prop",
+                    "c2_H0 : not (not P)"
+                ]
+            },
+            {
+                "tactic_sig": "apply ( _i _i False ) .",
+                "tactic_sig_no_out_arg": "apply ( _i _i False ) .",
+                "tactic_args": [
+                    "c2_goal : P",
+                    "c2_HPeirce : peirce",
+                    "c2_P : Prop"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall _ : forall _ : P, False, P"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H1 .",
+                "tactic_args": [
+                    "c3_goal : forall _ : forall _ : P, False, P"
+                ],
+                "tactic_res": [
+                    "c4_goal : P",
+                    "c4_H1 : forall _ : P, False"
+                ]
+            },
+            {
+                "tactic_sig": "now destruct _i .",
+                "tactic_sig_no_out_arg": "now destruct _i .",
+                "tactic_args": [
+                    "c4_goal : P",
+                    "c2_H0 : not (not P)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "classic_excluded_middle",
+        "proof": [
+            {
+                "tactic_sig": "Lemma classic_excluded_middle : classic -> excluded_middle .",
+                "tactic_sig_no_out_arg": "Lemma classic_excluded_middle : classic -> excluded_middle .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall _ : classic, excluded_middle"
+                ]
+            },
+            {
+                "tactic_sig": "unfold excluded_middle .",
+                "tactic_sig_no_out_arg": "unfold excluded_middle .",
+                "tactic_args": [
+                    "c1_goal : forall _ : classic, excluded_middle"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall (_ : classic) (P : Prop), or P (not P)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros H P .",
+                "tactic_args": [
+                    "c2_goal : forall (_ : classic) (P : Prop), or P (not P)"
+                ],
+                "tactic_res": [
+                    "c3_goal : or P (not P)",
+                    "c3_H : classic",
+                    "c3_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c3_goal : or P (not P)",
+                    "c3_H : classic"
+                ],
+                "tactic_res": [
+                    "c4_goal : not (not (or P (not P)))"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H0 .",
+                "tactic_args": [
+                    "c4_goal : not (not (or P (not P)))"
+                ],
+                "tactic_res": [
+                    "c5_goal : False",
+                    "c5_H0 : not (or P (not P))"
+                ]
+            },
+            {
+                "tactic_sig": "absurd _i .",
+                "tactic_sig_no_out_arg": "absurd _i .",
+                "tactic_args": [
+                    "c5_goal : False",
+                    "c3_P : Prop"
+                ],
+                "tactic_res": [
+                    "c6_goal : not P",
+                    "c7_goal : P"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H1 .",
+                "tactic_args": [
+                    "c6_goal : not P"
+                ],
+                "tactic_res": [
+                    "c8_goal : False",
+                    "c8_H1 : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c8_goal : False",
+                    "c5_H0 : not (or P (not P))"
+                ],
+                "tactic_res": [
+                    "c9_goal : or P (not P)"
+                ]
+            },
+            {
+                "tactic_sig": "now left .",
+                "tactic_sig_no_out_arg": "now left .",
+                "tactic_args": [
+                    "c9_goal : or P (not P)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c7_goal : P",
+                    "c3_H : classic"
+                ],
+                "tactic_res": [
+                    "c10_goal : not (not P)"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H1 .",
+                "tactic_args": [
+                    "c10_goal : not (not P)"
+                ],
+                "tactic_res": [
+                    "c11_goal : False",
+                    "c11_H1 : not P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c11_goal : False",
+                    "c5_H0 : not (or P (not P))"
+                ],
+                "tactic_res": [
+                    "c12_goal : or P (not P)"
+                ]
+            },
+            {
+                "tactic_sig": "now right .",
+                "tactic_sig_no_out_arg": "now right .",
+                "tactic_args": [
+                    "c12_goal : or P (not P)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "excluded_middle_implies_to_or",
+        "proof": [
+            {
+                "tactic_sig": "Lemma excluded_middle_implies_to_or : excluded_middle -> implies_to_or .",
+                "tactic_sig_no_out_arg": "Lemma excluded_middle_implies_to_or : excluded_middle -> implies_to_or .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall _ : excluded_middle, implies_to_or"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros H P Q H0 .",
+                "tactic_args": [
+                    "c1_goal : forall _ : excluded_middle, implies_to_or"
+                ],
+                "tactic_res": [
+                    "c2_goal : or (not P) Q",
+                    "c2_H : excluded_middle",
+                    "c2_P : Prop",
+                    "c2_Q : Prop",
+                    "c2_H0 : forall _ : P, Q"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _i ) as [ p | np ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _i ) as [ p | np ] .",
+                "tactic_args": [
+                    "c2_goal : or (not P) Q",
+                    "c2_H : excluded_middle",
+                    "c2_P : Prop"
+                ],
+                "tactic_res": [
+                    "c3_goal : or (not P) Q",
+                    "c3_p : P",
+                    "c4_goal : or (not P) Q",
+                    "c4_np : not P"
+                ]
+            },
+            {
+                "tactic_sig": "right .",
+                "tactic_sig_no_out_arg": "right .",
+                "tactic_args": [
+                    "c3_goal : or (not P) Q"
+                ],
+                "tactic_res": [
+                    "c5_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c5_goal : Q"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "now left .",
+                "tactic_sig_no_out_arg": "now left .",
+                "tactic_args": [
+                    "c4_goal : or (not P) Q"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "implies_to_or_excluded_middle",
+        "proof": [
+            {
+                "tactic_sig": "Lemma implies_to_or_excluded_middle : implies_to_or -> excluded_middle .",
+                "tactic_sig_no_out_arg": "Lemma implies_to_or_excluded_middle : implies_to_or -> excluded_middle .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall _ : implies_to_or, excluded_middle"
+                ]
+            },
+            {
+                "tactic_sig": "unfold excluded_middle .",
+                "tactic_sig_no_out_arg": "unfold excluded_middle .",
+                "tactic_args": [
+                    "c1_goal : forall _ : implies_to_or, excluded_middle"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall (_ : implies_to_or) (P : Prop), or P (not P)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros H P .",
+                "tactic_args": [
+                    "c2_goal : forall (_ : implies_to_or) (P : Prop), or P (not P)"
+                ],
+                "tactic_res": [
+                    "c3_goal : or P (not P)",
+                    "c3_H : implies_to_or",
+                    "c3_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _i _i ) as [  | _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _i _i ) .",
+                "tactic_args": [
+                    "c3_goal : or P (not P)",
+                    "c3_H : implies_to_or",
+                    "c3_P : Prop",
+                    "c3_P : Prop"
+                ],
+                "tactic_res": [
+                    "c4_goal : forall _ : P, P",
+                    "c5_goal : or P (not P)",
+                    "c5_H0 : not P",
+                    "c6_goal : or P (not P)",
+                    "c6_H0 : P"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : forall _ : P, P"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c5_goal : or P (not P)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c6_goal : or P (not P)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "classic_de_morgan_not_and_not",
+        "proof": [
+            {
+                "tactic_sig": "Lemma classic_de_morgan_not_and_not : classic -> de_morgan_not_and_not .",
+                "tactic_sig_no_out_arg": "Lemma classic_de_morgan_not_and_not : classic -> de_morgan_not_and_not .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall _ : classic, de_morgan_not_and_not"
+                ]
+            },
+            {
+                "tactic_sig": "unfold de_morgan_not_and_not .",
+                "tactic_sig_no_out_arg": "unfold de_morgan_not_and_not .",
+                "tactic_args": [
+                    "c1_goal : forall _ : classic, de_morgan_not_and_not"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall (_ : classic) (P Q : Prop) (_ : not (and (not P) (not Q))),\nor P Q"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros H P Q H0 .",
+                "tactic_args": [
+                    "c2_goal : forall (_ : classic) (P Q : Prop) (_ : not (and (not P) (not Q))),\nor P Q"
+                ],
+                "tactic_res": [
+                    "c3_goal : or P Q",
+                    "c3_H : classic",
+                    "c3_P : Prop",
+                    "c3_Q : Prop",
+                    "c3_H0 : not (and (not P) (not Q))"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c3_goal : or P Q",
+                    "c3_H : classic"
+                ],
+                "tactic_res": [
+                    "c4_goal : not (not (or P Q))"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H1 .",
+                "tactic_args": [
+                    "c4_goal : not (not (or P Q))"
+                ],
+                "tactic_res": [
+                    "c5_goal : False",
+                    "c5_H1 : not (or P Q)"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c5_goal : False",
+                    "c3_H0 : not (and (not P) (not Q))"
+                ],
+                "tactic_res": [
+                    "c6_goal : and (not P) (not Q)"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c6_goal : and (not P) (not Q)"
+                ],
+                "tactic_res": [
+                    "c7_goal : not P",
+                    "c8_goal : not Q"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro .",
+                "tactic_args": [
+                    "c7_goal : not P"
+                ],
+                "tactic_res": [
+                    "c9_goal : False",
+                    "c9_H2 : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c9_goal : False",
+                    "c5_H1 : not (or P Q)"
+                ],
+                "tactic_res": [
+                    "c10_goal : or P Q"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c10_goal : or P Q"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro .",
+                "tactic_args": [
+                    "c8_goal : not Q"
+                ],
+                "tactic_res": [
+                    "c11_goal : False",
+                    "c11_H2 : Q"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c11_goal : False",
+                    "c5_H1 : not (or P Q)"
+                ],
+                "tactic_res": [
+                    "c12_goal : or P Q"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c12_goal : or P Q"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "de_morgan_not_and_not_excluded_middle",
+        "proof": [
+            {
+                "tactic_sig": "Lemma de_morgan_not_and_not_excluded_middle : de_morgan_not_and_not -> excluded_middle .",
+                "tactic_sig_no_out_arg": "Lemma de_morgan_not_and_not_excluded_middle : de_morgan_not_and_not -> excluded_middle .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall _ : de_morgan_not_and_not, excluded_middle"
+                ]
+            },
+            {
+                "tactic_sig": "unfold excluded_middle .",
+                "tactic_sig_no_out_arg": "unfold excluded_middle .",
+                "tactic_args": [
+                    "c1_goal : forall _ : de_morgan_not_and_not, excluded_middle"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall (_ : de_morgan_not_and_not) (P : Prop), or P (not P)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros H P .",
+                "tactic_args": [
+                    "c2_goal : forall (_ : de_morgan_not_and_not) (P : Prop), or P (not P)"
+                ],
+                "tactic_res": [
+                    "c3_goal : or P (not P)",
+                    "c3_H : de_morgan_not_and_not",
+                    "c3_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c3_goal : or P (not P)",
+                    "c3_H : de_morgan_not_and_not"
+                ],
+                "tactic_res": [
+                    "c4_goal : not (and (not P) (not (not P)))"
+                ]
+            },
+            {
+                "tactic_sig": "intros [ _o _o ] .",
+                "tactic_sig_no_out_arg": "intros [ H1 H2 ] .",
+                "tactic_args": [
+                    "c4_goal : not (and (not P) (not (not P)))"
+                ],
+                "tactic_res": [
+                    "c5_goal : False",
+                    "c5_H1 : not P",
+                    "c5_H2 : not (not P)"
+                ]
+            },
+            {
+                "tactic_sig": "contradiction .",
+                "tactic_sig_no_out_arg": "contradiction .",
+                "tactic_args": [
+                    "c5_goal : False"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

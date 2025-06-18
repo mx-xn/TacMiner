@@ -1,0 +1,42 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 :=  constructor; [auto |  | intros H0 H1 H2 H3 H4 H5 | intros H6 H7 H8 H9 H10 H11 H12 H13 H14 | .. ].
+Ltac custom1 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom2 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom3 H0 :=  apply H0; [auto | .. ].
+Ltac custom4 H0 H1 :=  exists H0, H1; [intuition auto | .. ].
+Ltac custom5 H0 H1 H2 H3 H4 :=  eapply H0; [ | intros H1; [cbn; [rewrite H2; [custom2 H3 H4; [subst H1 | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom6  :=  red; [auto | .. ].
+Ltac custom7 H0 H1 H2 :=  exists ( hunion H0 H1 ), H2; [split; [HDISJ | split; [ | split | .. ] | .. ] | .. ].
+Ltac custom8 H0 H1 H2 :=  intros H0 H1; [exists H2; [auto | .. ] | .. ].
+Ltac custom9 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom10 H0 H1 H2 H3 :=  apply H0 in H1; [rewrite H2 in H3; [auto] | .. ].
+Ltac custom11 H0 H1 :=  rewrite ( H0 H1 ) by HDISJ; [assumption | .. ].
+Ltac custom12 H0 H1 :=  custom4 H0 H1; [HDISJ | .. ].
+Ltac custom13 H0 H1 H2 :=  rewrite H0; [custom11 H1 H2 | .. ].
+Ltac custom14 H0 H1 H2 :=  rewrite H0; [custom2 H1 H2 | .. ].
+Ltac custom15  :=  split; [auto | .. ].
+Ltac custom16 H0 H1 :=  apply H0; [rewrite H1 | .. ].
+Ltac custom17 H0 H2 H3 H1 :=  eapply H0; [ | custom8 H2 H3 H1 | .. ].
+Ltac custom18 H0 H1 H2 :=  apply H0 with ( H1 H2 ); [ | auto | .. ].
+Ltac custom19  :=  cbn; [custom6  | .. ].
+Ltac custom20 H0 :=  unfold H0; [custom19  | .. ].
+Ltac custom21 H0 H1 H2 :=  custom16 H0 H1; [custom20 H2 | .. ].
+Ltac custom22 H0 H1 :=  apply H0; [unfold H1 | .. ].
+---------------------------
+Num proofs: 22
+Num training proofs: 5
+Original size: 728
+Compressed total size: 560
+Training size: 390
+(2) (3) Testing size: 338
+(2) (3) Compressed testing size: 269
+(2) (3) Compression rate: 125.65
+Compressed size + lib: 617 ( 560 corpus / 57 library )
+[1] numTactics: 23
+[1] avrgTacticSize: 2.48
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 12 / 17
+[1] numAvgApplications: 4.09
+[1] numTotalApplications: 94
+Compression rate: 1.179902755267423
+Num tactics in library: 23

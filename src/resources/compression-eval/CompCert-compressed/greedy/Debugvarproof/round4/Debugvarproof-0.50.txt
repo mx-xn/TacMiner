@@ -1,0 +1,33 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  split; [apply H0 | .. ].
+Ltac custom1  :=  constructor; [auto | auto | auto | .. ].
+Ltac custom2  :=  induction 1; [simpl | .. ].
+Ltac custom3  :=  constructor; [ | auto | .. ].
+Ltac custom4 H0 :=  apply H0; [auto | .. ].
+Ltac custom5 H0 :=  apply H0; [custom3 ; [auto | .. ] | .. ].
+Ltac custom6  :=  custom3 ; [auto | .. ].
+Ltac custom7 H0 :=  apply H0; [exact symbols_preserved | .. ].
+Ltac custom8 H0 :=  custom5 H0; [ | auto with coqlib | .. ].
+Ltac custom9 H0 :=  eapply H0; [ |  | traceEq | .. ].
+Ltac custom10 H0 :=  inv H0; [eauto | .. ].
+Ltac custom11 H0 :=  eapply H0; [ | eauto | .. ].
+Ltac custom12 H0 H1 :=  custom11 H0; [apply H1 | .. ].
+Ltac custom13  :=  econstructor; [eauto | .. ].
+---------------------------
+Num proofs: 14
+Num training proofs: 3
+Original size: 569
+Compressed total size: 456
+Training size: 375
+(2) (3) Testing size: 194
+(2) (3) Compressed testing size: 172
+(2) (3) Compression rate: 112.79
+Compressed size + lib: 487 ( 456 corpus / 31 library )
+[1] numTactics: 14
+[1] avrgTacticSize: 2.21
+[1] maxTacSize: 4
+[1] numProofsCompressed/total: 7 / 11
+[1] numAvgApplications: 5.21
+[1] numTotalApplications: 73
+Compression rate: 1.1683778234086242
+Num tactics in library: 14

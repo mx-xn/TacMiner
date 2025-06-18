@@ -1,0 +1,54 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 H4 :=  apply H0; [unfold H1; [congruence | .. ] | cbn | intros H2 H3 H4; [inv H4 | .. ] | .. ].
+Ltac custom1 H0 :=  apply H0; [auto | auto | .. ].
+Ltac custom2  :=  split; [auto | auto | .. ].
+Ltac custom3  :=  red; [auto | .. ].
+Ltac custom4 H0 H1 H2 H3 H4 H5 H6 H9 H10 :=  intros H0 H1 H2 H3 H4 H5; [apply H6 in H4; [apply H6 in H5; [eapply H9; [apply H10 | .. ] | .. ] | .. ] | .. ].
+Ltac custom5 H0 H1 H2 H3 H4 :=  apply H0; [unfold H1; [congruence | .. ] | cbn; [auto | .. ] | intros H2 H3 H4 | .. ].
+Ltac custom6 H0 H1 :=  apply H0 with H1; [auto | auto | .. ].
+Ltac custom8 H0 :=  apply H0; [auto | .. ].
+Ltac custom9 H0 H1 H2 H3 H4 :=  custom0 H0 H1 H2 H3 H4; [auto | .. ].
+Ltac custom10 H0 :=  apply H0; [custom2  | .. ].
+Ltac custom11 H0 :=  eapply H0; [eauto | eauto | .. ].
+Ltac custom12 H0 :=  exists H0; [split; [ | auto | .. ] | .. ].
+Ltac custom13  :=  split; [Tauto | Tauto | .. ].
+Ltac custom14  :=  split; [auto | custom13  | .. ].
+Ltac custom15 H0 H1 :=  apply H0; [eapply H1; [eauto | .. ] | eapply H1; [eauto | .. ] | .. ].
+Ltac custom16 H0 :=  destruct H0; [constructor | .. ].
+Ltac custom17 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1 H2 H3 H4 H5; [apply H6 in H4 | .. ].
+Ltac custom18 H0 :=  unfold H0; [congruence | .. ].
+Ltac custom19 H0 :=  exists H0; [custom2  | .. ].
+Ltac custom20 H0 H1 H2 H3 :=  intros H0 ( H1 & H2 & H3 ); [custom19 H2 | .. ].
+Ltac custom21 H0 :=  split; [ | exact H0 | .. ].
+Ltac custom22 H0 :=  apply H0; [reflexivity | .. ].
+Ltac custom24 H0 :=  unfold H0; [auto | .. ].
+Ltac custom25 H0 :=  exists H0; [custom14  | .. ].
+Ltac custom26 H0 H1 :=  exists H0; [custom10 H1 | .. ].
+Ltac custom27  :=  constructor; [auto | .. ].
+Ltac custom28 H0 H3 :=  custom16 H0; [custom1 H3 | .. ].
+Ltac custom29  :=  split; [auto | .. ].
+Ltac custom30 H0 H1 H2 H3 :=  apply H0 with ( H1 H2 H3 ); [ | auto | .. ].
+Ltac custom31 H0 :=  rewrite H0; [ | auto | .. ].
+Ltac custom32 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom33 H0 H1 :=  apply H0 with H1; [ | auto | .. ].
+Ltac custom34 H0 H1 :=  apply H0 in H1; [ | custom3  | .. ].
+Ltac custom35 H0 :=  eapply H0; [ | Tauto | .. ].
+Ltac custom36 H0 :=  inv H0; [auto | .. ].
+Ltac custom38 H0 :=  custom22 H0; [auto | .. ].
+Ltac custom39 H0 :=  exists H0; [auto | .. ].
+Ltac custom40 H0 :=  exists H0; [split | .. ].
+Ltac custom41  :=  split; [constructor | .. ].
+Ltac custom42 H0 H1 :=  apply H0 with H1; [auto | .. ].
+Ltac custom43 H0 :=  custom35 H0; [ | Tauto | .. ].
+Ltac custom44 H0 H1 :=  intros H0; [apply H1 | .. ].
+Ltac custom45 H0 :=  intro H0; [induction H0; [ | .. ] | .. ].
+Ltac custom46 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3 H4; [dependent induction H4 | .. ].
+Ltac custom47 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3 H4; [inv H4 | .. ].
+Ltac custom48 H0 H1 H2 H3 :=  intros H0 H1 H2; [apply H3 | .. ].
+---------------------------
+ , , 0.65
+Hoare, Number of Tactics, 46
+ , Average Tactic Size, 2.46
+ , Total Tactic Size, 113
+ , Max Tactic Size, 6
+ , Overall CP, 1.62

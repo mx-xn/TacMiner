@@ -1,0 +1,55 @@
+extracted tactics-----------
+custom_tac24: apply _i; auto
+custom_tac63: unfold _i; intros
+custom_tac36: intros; red; intros
+custom_tac19: rewrite _i; auto
+custom_tac122: simpl; intros
+custom_tac8: inv _i; constructor; auto with na
+custom_tac64: f_equal; apply _i
+custom_tac69: InvAgree; apply _i
+custom_tac110: auto; apply _i
+custom_tac5: simpl; auto
+custom_tac40: intros; apply _i
+custom_tac117: inv _i; rewrite _i
+custom_tac134: eelim _i; eauto
+custom_tac90: intros; apply ( _i _i ( _i _i _i _i)); auto
+custom_tac23: intros _o _o; unfold _i
+custom_tac17: autorewrite with ints; auto
+custom_tac59: eapply _i; eauto
+custom_tac2: red; auto
+custom_tac10: intros; constructor
+custom_tac99: unfold _i, _i; intros
+custom_tac106: unfold _i; InvAgree
+custom_tac125: auto; rewrite _i in _i
+custom_tac43: rewrite ! _i; apply _i
+custom_tac51: apply _i; lia
+custom_tac105: unfold _i; rewrite _i
+custom_tac29: rewrite _i; rewrite ! _i; auto
+custom_tac11: intro _o; destruct _i as [ | _o |]
+custom_tac33: intros; rewrite _i in _i
+custom_tac6: intros; inv _i
+custom_tac12: constructor; auto
+custom_tac22: constructor; intros
+custom_tac26: rewrite _i; apply _i
+custom_tac28: intros; congruence
+custom_tac30: red; intros
+custom_tac34: intros; rewrite _i
+custom_tac83: intros; auto
+custom_tac86: simpl in *; auto
+custom_tac96: intros; unfold _i
+custom_tac114: intros; subst _i
+---------------------------
+Num proofs: 103
+Num training proofs: 103
+Original size: 1360
+Training size: 1360
+Testing size: 1360
+Compressed total size: 1076 ( 883 corpus / 193 library )
+Compressed testing size: 1214
+[1] numTactics: 39
+[1] avrgTacticSize: 2.10
+[1] maxTacSize: 3
+[1] numAvgApplications: 3.46
+[1] numTotalApplications: 135
+Compression rate: 1.1202635914332784
+Num tactics in library: 39

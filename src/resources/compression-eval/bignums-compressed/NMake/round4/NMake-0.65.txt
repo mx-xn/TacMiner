@@ -1,0 +1,44 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 :=  case Z.compare_spec; [intros H2 | intros H0; [apply H3; [auto with zarith | .. ] | .. ] | intros H1 | .. ].
+Ltac custom1 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom2 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom3 H0 H1 :=  intros H0; [rewrite H1 | .. ].
+Ltac custom4 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1; [rewrite H2; [clear H0 H1apply H3; [intros H4 H5 H6; [simpl | .. ] | .. ] | .. ] | .. ].
+Ltac custom5 H0 :=  custom1 H0; [auto with zarith | auto with zarith | .. ].
+Ltac custom6 H0 H1 :=  case Z.compare_spec; [ | intros H0 | intros H1 | .. ].
+Ltac custom7 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom8 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom9 H0 :=  symmetry; [apply H0 | .. ].
+Ltac custom10 H0 :=  custom1 H0; [auto with zarith | .. ].
+Ltac custom11 H0 :=  rewrite H0; [assumption | .. ].
+Ltac custom12 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom13 H0 :=  rewrite H0; [auto with zarith | .. ].
+Ltac custom14 H0 H1 H2 :=  custom2 H0 H1; [rewrite H2 | .. ].
+Ltac custom15 H0 :=  generalize ( ZnZ.spec_to_Z H0 ); [auto with zarith | .. ].
+Ltac custom16 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom17 H0 H1 :=  rewrite H0; [custom10 H1 | .. ].
+Ltac custom18 H0 H1 :=  rewrite H0; [apply H1 | .. ].
+Ltac custom19 H0 :=  apply H0; [ | auto | .. ].
+Ltac custom20 H0 :=  apply H0; [auto | .. ].
+Ltac custom21 H0 :=  intros H0; [clear H0 | .. ].
+Ltac custom22 H0 H1 H2 :=  custom6 H0 H1; [intros H2 | .. ].
+Ltac custom23 H0 H1 H2 :=  intros H0 H1; [custom11 H2 | .. ].
+Ltac custom24 H0 H1 H2 :=  intros H0 H1; [rewrite H2 | .. ].
+---------------------------
+Num proofs: 52
+Num training proofs: 21
+Original size: 1112
+Compressed total size: 927
+Training size: 668
+(2) (3) Testing size: 444
+(2) (3) Compressed testing size: 382
+(2) (3) Compression rate: 116.23
+Compressed size + lib: 987 ( 927 corpus / 60 library )
+[1] numTactics: 25
+[1] avrgTacticSize: 2.40
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 16 / 31
+[1] numAvgApplications: 5.28
+[1] numTotalApplications: 132
+Compression rate: 1.126646403242148
+Num tactics in library: 25

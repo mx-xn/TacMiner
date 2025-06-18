@@ -1,0 +1,7 @@
+extracted tactics-----------
+---------------------------
+Num proofs: 1
+Original size: 21
+Compressed size: 21 ( 21 corpus / 0 library )
+Compression rate: 1.0
+Num tactics in library: 0

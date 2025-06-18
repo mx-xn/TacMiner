@@ -1,0 +1,149 @@
+coq-art/./chap9.v
+-----
+coq-art/./chap9_compr.v
+-----
+Ltac custom_tac11 H0 := elim H0; simpl; auto.
+Ltac custom_tac3 H0 := apply H0; assumption.
+Ltac custom_tac18 H0 := auto; apply H0; auto.
+Ltac custom_tac4 H0 H1 := intros H0 H1; elim H1.
+Ltac custom_tac16 H0 H1 := rewrite H0; rewrite H1.
+Ltac custom_tac6  := intros; discriminate.
+Ltac custom_tac13 H0 := intro; subst H0.
+Ltac custom_tac14  := split; try discriminate.
+-----
+pred''
+Proof. intros n; case n. right; apply refl_equal. intros p; left; exists p; reflexivity. Defined.
+pred_partial
+Proof. intros n; case n. intros h; elim h; reflexivity. intros p h'; exact p. Defined.
+le_2_n_not_zero
+Proof. intros n Hle; elim Hle; intros; discriminate. Qed.
+le_2_n_pred'
+Proof. intros n Hle; elim Hle. intros; discriminate. simpl; intros; apply le_2_n_not_zero; assumption. Qed.
+le_2_n_pred
+Proof. intros n h; exact (le_2_n_pred' n h (le_2_n_not_zero n h)). Qed.
+pred_strong
+Proof. intros n; case n. - intros H; elim H. trivial. - intros p H'; exists p. trivial. Defined.
+pred_strong2_th1
+Proof. intros; lia. Qed.
+pred_th1
+Proof. intros; subst n; auto. Qed.
+pred_strong2'
+Proof. intros n h; case (pred_strong n). - apply le_2_n_not_zero; assumption. - intros p h'; case (pred_strong p). + apply (pred_strong2_th1 n); assumption. + intros p' h''; exists p'; eapply pred_th1; eauto. Defined.
+divides_refl
+Proof. intro n; exists 1; simpl; auto. Qed.
+bad_get_prime
+Proof. intro n; case_eq (prime_test n). - intro; exact n. - intro Hfalse; apply (get_primediv_weak n); auto. Defined.
+stronger_prime_test
+Proof. intro n; case (prime_test n). - left. reflexivity. - right. reflexivity. Defined.
+get_primediv_ok
+Proof. intros n H; unfold get_prime. case (stronger_prime_test n); auto. split; auto. Qed.
+pred_partial'
+Proof. refine ( fun n => match n as x return x <> 0 -> nat with | O => fun h:0 <> 0 => _ | S p => fun h:S p <> 0 => p end). elim h; trivial. Defined.
+pred_partial_2'
+Proof. refine ( fun n h=>(fun h':n<>0 => pred_partial (pred_partial n h') _) _). - apply le_2_n_pred'; auto. - apply le_2_n_not_zero; auto. Defined.
+pred_strong2''
+Proof. refine ( fun n h => match pred_strong n _ with | exist _ p h' => match pred_strong p _ with exist _ p' h'' => exist _ p' _ end end). - apply le_2_n_not_zero; assumption. - eapply pred_strong2_th1; eauto. - rewrite <- h''; trivial. Qed.
+div2_rect
+Proof. intros H0 H1 H n; assert (X: ( P n * P (S n))%type). - induction n; intuition. - now destruct X. Defined.
+div2_le
+Proof. intro n; induction n using div2_rect; simpl; auto with arith. Qed.
+double_div2_le
+Proof. intro n; induction n using div2_rect; simpl; auto with arith. lia. Qed.
+plus'_O_n
+Proof. intros n; elim n; simpl; auto. Qed.
+plus'_Sn_m
+Proof. intros n m; elim m; simpl; auto. Qed.
+plus'_comm
+Proof. intros n m; elim m; simpl. - apply plus'_O_n. - intros p Hrec; rewrite <- plus'_Sn_m; auto. Qed.
+plus_plus'
+Proof. intros n m; rewrite plus'_comm; elim n; simpl; auto. Qed.
+plus''_Sn_m
+Proof. intros n m; generalize n; elim m; simpl. - auto. - now intros p Hrec n0. Qed.
+rem_1_1_interval
+Proof. split; lia. Qed.
+rem_1_even_interval
+Proof. intros n'; split. - auto with zarith. - reflexivity. Qed.
+rem_1_odd_interval
+Proof. split. - auto with zarith. - compute; auto. Qed.
+rem_even_ge_interval
+Proof. intros; lia. Qed.
+rem_even_lt_interval
+Proof. intros; lia. Qed.
+rem_odd_ge_interval
+Proof. intros; lia. Qed.
+rem_odd_lt_interval
+Proof. intros; lia. Qed.
+div_bin_rem_lt
+Proof. intros n m; div_bin_tac n m; unfold snd; auto. lia. Qed.
+div_bin_eq
+Proof. intros n m; div_bin_tac n m; rewrite Zpos_xI || (try rewrite Zpos_xO); try rewrite Hrec; unfold fst; unfold snd; ring. Qed.
+cmp_eq
+Proof. destruct lt_strict as [Hirr _]. intro x; destruct (cmp_ok x x). - reflexivity. - now destruct (Hirr x). - now destruct (Hirr x). Qed.
+cmp_eq_iff
+Proof. split. destruct lt_strict as [Hirr _]. destruct (cmp_ok x y); auto. - discriminate. - discriminate. - intro; subst y; now rewrite cmp_eq. Qed.
+cmp_lt_iff
+Proof. destruct lt_strict as [ Hirr Htrans]; intros x y; destruct ( cmp_ok x y); custom_tac14 ; auto. custom_tac13 y; now destruct ( Hirr x); auto. intro; destruct ( Hirr x); eapply Htrans; eauto. Qed.
+cmp_sym
+Proof. destruct lt_strict as [Hirr Htrans]. intros x y; destruct (cmp_ok x y); destruct (cmp_ok y x); split; try discriminate; auto. intro. - subst y; now destruct (Hirr x). - destruct (Hirr x); transitivity y; auto. - subst y; now destruct (Hirr x). - destruct (Hirr x); transitivity y; auto. Qed.
+max_eq
+Proof. intros x y; unfold max; destruct (cmp_ok x y); cbn; auto. Qed.
+le_max
+Proof. intros x y; unfold le, max; destruct (cmp_ok x y); cbn; auto. Qed.
+max_le
+Proof. intros x y z H H0; destruct (max_eq x y) as [e | e]; now rewrite e. Qed.
+cmp_correct
+Proof. red. induction x;destruct y;simpl;try constructor;auto with arith. destruct (IHx y). subst y;constructor;trivial. constructor;auto with arith. constructor;auto with arith. Qed.
+div2_ind
+Proof. intros P H0 H1 Hstep n. assert (P n /\ P(S n)). elim n; intuition. intuition. Qed.
+fib_ind
+Proof. intros P H0 H1 Hstep n. assert (P n /\ P(S n)). elim n; intuition. intuition. Qed.
+div2_rem2_eq
+Proof. intros n; elim n using div2_ind; try (simpl; auto with arith; fail). intros p IHp; pattern p at 3; rewrite <- IHp. simpl;ring. Qed.
+fib_fib2_equiv
+Proof. intros n; elim n using fib_ind; try(simpl;auto with arith;fail). intros p IHp IHSp. replace (fib (S (S p))) with (fib p + fib (S p)). rewrite IHp; rewrite IHSp. simpl. case (fib2 p); auto. auto. Qed.
+nat_ind3
+Proof. intros H0 H1 H2 HS n. assert (H: P n /\ P (S n) /\ P (S (S n))). induction n. split;auto. destruct IHn as [Hn [HSn HSSn]];repeat split;auto. - apply HS;auto. - tauto. Qed.
+div3_le
+Proof. induction n using nat_ind3; auto. - simpl; apply Nat.le_trans with (S n); auto with arith. Qed.
+Even_not_Odd
+Proof. intros n [p Hp] [q Hq]; rewrite Hp in Hq. lia. Qed.
+nat_double_rect
+Proof. intros P H0 H1 HS. assert (X : forall n, (P n * P (S n)%type)). - induction n as [| p IHp]. + auto. + destruct IHp; auto. - intro n; now destruct (X n). Qed.
+even_spec_SS
+Proof. intros n p [[q Hq] | [q Hq]]; constructor;exists (S q);lia. Qed.
+even_bool_correct
+Proof. intro n;induction n using nat_double_rect. constructor;exists 0;trivial. constructor;exists 0;trivial. cbn;apply even_spec_SS;assumption. Qed.
+even_bool_false
+Proof. intros n ;destruct (H n). - split; try discriminate; intro;destruct (Even_not_Odd n); auto. - tauto. Qed.
+nat_eq_dec
+Proof. red; simple induction a; simple destruct b. - now left. - right; red; discriminate 1. - right; red; discriminate 1. - intro n0; case (H n0); auto. Qed.
+fib_rect
+Proof. intros P H0 H1 HSSn n. assert (X: P n * P (S n)). - induction n as [ | n IHn]. + split; auto. + destruct IHn; split; auto. - now destruct X. Qed.
+fib_SSn
+Proof. intros. reflexivity. Qed.
+fib_pair_correct
+Proof. induction n as [| n IHn]; cbn. - reflexivity. - rewrite IHn; reflexivity. Qed.
+linear_fib_correct
+Proof. unfold linear_fib; intro n; now rewrite fib_pair_correct. Qed.
+general_fib_1
+Proof. intros. reflexivity. Qed.
+general_fib_S
+Proof. intros. reflexivity. Qed.
+general_fib_2
+Proof. intros a b n; generalize a b; induction n as [ | n IHn]. - reflexivity. - clear a b; intros a b. rewrite (general_fib_S _ _ (S (S n))), IHn. now rewrite (general_fib_S _ _ (S n)). Qed.
+linear_fibo_equiv
+Proof. intro n; induction n as [| | n IHn IHSn] using fib_ind. - reflexivity. - reflexivity. - unfold fib_tail in *; rewrite general_fib_2. rewrite IHn. rewrite IHSn. reflexivity. Qed.
+le_add_sub_r
+Proof. intro H; rewrite Nat.add_comm; rewrite Nat.sub_add; try assumption. reflexivity. Qed.
+sub_add
+Proof. intros. rewrite Nat.add_comm; rewrite Nat.add_sub. reflexivity. Qed.
+transpose_nb_occ
+Proof. intros l l' H; elim H; simpl. - intros a b l0 x; case (A_eq_dec x a); case (A_eq_dec x b); simpl; auto. - intros a l0 l'0 H0 H1 x; case (A_eq_dec x a); simpl; auto. Qed.
+perm_nb_occ
+Proof. intros l l' H; elim H; auto. intros l'0; intros; transitivity (nb_occ a l'0);auto. apply transpose_nb_occ; auto. Qed.
+eq_nat_bool_false
+Proof. induction n1; destruct n2; simpl; intros; try discriminate; auto. Qed.
+check_all_occs_false
+Proof. simple induction l3. - simpl; intros; discriminate. - intros n l IHl; simpl. generalize (@eq_nat_bool_false (nb_occ n l1) (nb_occ n l2)). case (Nat.eqb (nb_occ n l1) (nb_occ n l2)). + auto. + intros; exists n; auto. Qed.
+check_all_occs_not_perm
+Proof. intros l1 l2 Heq Hperm; elim (check_all_occs_false l1 l2 l1 Heq); intros n Hneq; elim Hneq; apply perm_nb_occ; assumption. Qed.
