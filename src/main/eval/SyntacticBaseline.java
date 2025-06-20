@@ -15,8 +15,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static main.config.Paths.baselineInputPath;
-import static main.config.Paths.compressionEvalPath;
+import static main.config.Path.baselineInputPath;
+import static main.config.Path.compressionEvalPath;
 import static main.eval.CompressionEval.countTacticNumArgs;
 import static main.eval.CompressionEval.writeToBaselineInputFormat;
 import static main.lib_assembler.LibAssemblerBaseline.assembleLibraryBaseline;

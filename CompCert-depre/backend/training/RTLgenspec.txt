@@ -1,7 +1,0 @@
-transl_stmt_charact
-transl_expr_charact
-tr_expr_incr
-transl_jumptable_charact
-add_vars_valid
-alloc_reg_fresh_or_in_map
-convert_builtin_res_charact

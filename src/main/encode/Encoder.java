@@ -1,6 +1,7 @@
 package main.encode;
 
 import main.config.BmConfig;
+import main.config.Path;
 import main.proofgraph.*;
 
 import java.awt.image.AreaAveragingScaleFilter;
@@ -13,8 +14,8 @@ import java.util.stream.IntStream;
 
 import org.json.*;
 
-import static main.config.Paths.compressionEvalPath;
-import static main.maxsat.MaxSATUtil.writeTo;
+import static main.config.Path.compressionEvalPath;
+import static main.decode.utils.writeTo;
 
 public class Encoder {
     public CoqProof proof;
@@ -117,12 +118,8 @@ public class Encoder {
         List<Integer> res = new ArrayList<>();
         Set<String> trainingLemmas = new HashSet<>();
         // get the training data file
-//        List<String> filenameTokens = new ArrayList<>(Arrays.asList(config.inputV.split("/")));
-//        filenameTokens.add(new String(filenameTokens.get(filenameTokens.size() - 1)));
-//        filenameTokens.set(filenameTokens.size() - 2, "training");
-////        String filename = config.inputV.replace(".v", "-training.txt");
-//        String filename = String.join("/", filenameTokens).replace(".v", ".txt");
-        String filename = String.join("/", new String[]{config.domain, config.topicPrefix, "training", config.topic + ".txt"});
+        // String filename = String.join("/", new String[]{config.domain, "training", config.topic + ".txt"});
+        String filename = Path.trainingPath + String.join("/", new String[]{config.domain, config.topic + ".txt"});
         try {
             // Read all lines from the file into a list of strings
             List<String> lines = Files.readAllLines(Paths.get(filename));
@@ -216,7 +213,6 @@ public class Encoder {
 //            double tacticExcludeThreshold = 0.75;
             double tacticExcludeThreshold = 0.75;
             double tacticCountThreshold = 0.65;
-            double sizeFracThreshold = 0.15;
             int numSimilarThreshold = 2;
             int numBranchesThreshold = 2;
 
@@ -279,7 +275,6 @@ public class Encoder {
                 // if it's just a singleton, skip it (unless if it's 40% longer than all of the remaining proofs)
                 Set<String> signaturesP = pSigCount.keySet();
                 int numSimilar = 0;
-                double currSizeFraction = (double) p.tactics.size() / numTacticsCorpus;
                 boolean add = false;
                 for (CoqProof p1: proofs) {
                     if (p1.equals(p)) continue;
@@ -348,6 +343,7 @@ public class Encoder {
         }
 
         List<String> filenameTokens = new ArrayList<>(Arrays.asList(config.getInputFilename().split("/")));
+        String trainingOutput = Path.trainingPath;
         filenameTokens.add(new String(filenameTokens.get(filenameTokens.size() - 1)));
         filenameTokens.set(filenameTokens.size() - 2, "training");
         String filename = String.join("/", filenameTokens).replace(".v", ".txt");

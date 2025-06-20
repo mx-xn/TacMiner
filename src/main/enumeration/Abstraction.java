@@ -7,7 +7,7 @@ import main.proofgraph.ProofGraph;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static main.maxsat.MaxSATUtil.tacticsToLtacScript;
+import static main.decode.utils.tacticsToLtacScript;
 
 public class Abstraction {
     public static class Hole {

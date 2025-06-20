@@ -1,12 +1,5 @@
 package main.config;
-
-import org.checkerframework.checker.units.qual.A;
-
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
-
-import static main.config.Paths.compressionEvalPath;
 
 public class BmConfig {
     public static final int[] seeds = { 42, 1128, 2524, 68, 767 };
@@ -16,7 +9,6 @@ public class BmConfig {
 
     public int timeout;
     public String domain;
-    public String topicPrefix;
     public String topic;
     public boolean visualizeGraphs = true;
     public Mode mode;
@@ -24,11 +16,10 @@ public class BmConfig {
     public boolean random;
     public double stopThresh;
 
-    public BmConfig(int timeout, String domain, String topicPrefix, String topic, Mode mode, boolean training,
+    public BmConfig(int timeout, String domain, String topic, Mode mode, boolean training,
                     boolean random, double stopThresh) {
         this.timeout = timeout;
         this.domain = domain;
-        this.topicPrefix = topicPrefix;
         this.topic = topic;
         this.mode = mode;
         this.training = training;
@@ -41,16 +32,14 @@ public class BmConfig {
         this.training = true;
     }
 
-    public BmConfig(String domain, String topicPrefix, String topic) {
+    public BmConfig(String domain, String topic) {
         this.domain = domain;
-        this.topicPrefix = topicPrefix;
         this.topic = topic;
     }
 
     public BmConfig(BmConfig c) {
         this.timeout = c.timeout;
         this.domain = c.domain;
-        this.topicPrefix = c.topicPrefix;
         this.topic = c.topic;
         this.mode = c.mode;
         this.training = c.training;
@@ -78,50 +67,38 @@ public class BmConfig {
     }};
 
     public static final BmConfig[] config = {
-        // 7
-        new BmConfig("cdf", ".", "Seplog"),
-        new BmConfig("cdf", ".", "CSL"),
-        new BmConfig("cdf", ".", "Hoare"),
-        new BmConfig("cdf", ".", "Separation"),
-        new BmConfig("cdf", ".", "Sequences"),
+        new BmConfig("program-logics", "CSL"),
+        new BmConfig("program-logics", "Hoare"),
+        new BmConfig("program-logics", "Separation"),
+        new BmConfig("program-logics", "Seplog"),
 
-        new BmConfig("CompCert", "backend", "Allocation"),
-        new BmConfig("CompCert", "backend", "Debugvarproof"),
-        new BmConfig("CompCert", "backend", "NeedDomain"),
-        new BmConfig("CompCert", "backend", "RTLgenspec"),
-        new BmConfig("CompCert", "backend", "SplitLongproof_ref"),
-        new BmConfig("CompCert", "common", "Events_ref"),
-        new BmConfig("CompCert", "aarch64", "Conventions1_ref"),
-        new BmConfig("CompCert", "lib", "Integers_ref"),
+        new BmConfig("comp-cert", "RegAlloc"),
+        new BmConfig("comp-cert", "LiveRange"),
+        new BmConfig("comp-cert", "Needness"),
+        new BmConfig("comp-cert", "RTLSpec"),
 
-        new BmConfig("bignums", "BigN", "NMake"),
-        new BmConfig("bignums", "BigQ", "QMake"),
-        new BmConfig("bignums", "BigZ", "ZMake"),
+        new BmConfig("bignums", "NMake"),
+        new BmConfig("bignums", "QMake"),
+        new BmConfig("bignums", "ZMake"),
 
-        new BmConfig("coq-art", ".", "chap3"),
-        new BmConfig("coq-art", ".", "chap5"),
-        new BmConfig("coq-art", ".", "chap8"),
-        new BmConfig("coq-art", ".", "chap6"),
-        new BmConfig("coq-art", ".", "chap11"),
-        new BmConfig("coq-art", ".", "chap15"),
-        new BmConfig("coq-art", ".", "chap16"),
-        new BmConfig("coq-art", ".", "impredicative"),
-        new BmConfig("coq-art", ".", "parsing")
+        new BmConfig("coq-art", "IndPred"),
+        new BmConfig("coq-art", "Reflection"),
+        new BmConfig("coq-art", "SearchTree")
     };
 
     public static final Map<String, List<BmConfig>> BmConfigMap = new HashMap<String, List<BmConfig>>() {{
-        put("cdf", Arrays.stream(config).toList().subList(0, 5));
-        put("CompCert", Arrays.stream(config).toList().subList(5, 13));
-        put("bignums", Arrays.stream(config).toList().subList(13, 16));
-        put("coq-art", Arrays.stream(config).toList().subList(16, config.length));
+        put("program-logics", Arrays.stream(config).toList().subList(0, 4));
+        put("comp-cert", Arrays.stream(config).toList().subList(4, 8));
+        put("bignums", Arrays.stream(config).toList().subList(8, 11));
+        put("coq-art", Arrays.stream(config).toList().subList(11, config.length));
     }};
 
     public String getJsonFilename() {
-        return String.join("/", new String[] {this.domain, this.topicPrefix, "json", this.topic}) + ".json";
+        return String.join("/", new String[] {"benchmarks", this.domain, "json", this.topic}) + ".json";
     }
 
     public String getInputFilename() {
-        return String.join("/", new String[] {this.domain, this.topicPrefix, this.topic}) + ".v";
+        return String.join("/", new String[] {"benchmarks", this.domain, "raw", this.topic}) + ".v";
     }
 
     public static List<BmConfig> getBmConfig(int timeoutInSeconds, int mode, String domain, String topic,

@@ -1,16 +1,10 @@
 package main.proofgraph;
 
-import main.Engine;
-import main.Main;
 import main.encode.CoqProof;
 import main.encode.CoqTactic;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static main.config.Paths.*;
-import static main.maxsat.MaxSATUtil.writeTo;
 
 public class ProofGraphUtil {
     // Function to perform DFS on the graph
@@ -96,45 +90,4 @@ public class ProofGraphUtil {
         return lemmas;
     }
     
-//    public static List<CoqProof> extractWithinOneGraph(ProofGraph pg, int timeout) {
-//        System.out.println("extracting next graph");
-//        // get all the splitted goals, store all splitted goals
-//        List<ProofGraph> subgraphs = getBranchSubgraphs(pg);
-//        List<String> subgoals = new ArrayList<>();
-//        for (ProofGraph subgraph: subgraphs) {
-//            // store the first subgoal of each subgraph
-//            CoqTactic root = subgraph.vertices.get(0);
-//            for (CoqTactic.Prop input: root.inputs) {
-//                if (input.type.equals(CoqTactic.PROP_TYPE.HYP)) continue;
-//                // if type is goal, extract the goal, and store the string
-//                subgoals.add(input.simpleName());
-//            }
-//        }
-//
-//        // for each pair, if they are similar enough, run maxSAT, and store extracted tactics
-//        Main.Config dummyConfig = new Main.Config(-1, timeout, "", "", "", false);
-//        List<CoqProof> customTactics = new ArrayList<>();
-//        for (int i = 0; i < subgraphs.size(); i++) {
-//            for (int j = i + 1; j < subgraphs.size(); j++) {
-//                if (areSubgraphsSimilar(subgraphs.get(i), subgraphs.get(j))) {
-//                    System.out.println("extracting subgoal " + i + " and subgoal " + j);
-//                    // extract common tactics
-//                    Engine engine = new Engine(Arrays.asList(subgraphs.get(i), subgraphs.get(j)), dummyConfig, true);
-//                    engine.runWithTimeout(dummyConfig.timeout);
-//                    if (engine.mcsScript == null) continue;
-//                    for (CoqProof mcs: engine.mcsScript) {
-//                        if (!mcs.tactics.isEmpty()) {
-//                            customTactics.add(mcs);
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//        // store goals in one file
-////        writeTo(String.join("\n\n" ,subgoals), proofSearchPath + pgName + "-subgoals.txt");
-//
-//        return customTactics;
-////        writeTo(customTactics.toString(), compressionEvalPath + "temp/" + pgName + "-tactics.txt");
-//    }
 }

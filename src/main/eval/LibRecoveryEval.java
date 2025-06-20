@@ -1,6 +1,6 @@
 package main.eval;
 
-import main.config.Paths;
+import main.config.Path;
 
 import java.io.*;
 import java.util.*;
@@ -154,7 +154,7 @@ public class LibRecoveryEval {
 
     // benchmark signature - body - usage-file-path
     private List<LibBenchmark> getBenchmarkInfo() {
-        String filename = Paths.libRecoveryPath + "benchmarks.txt";
+        String filename = Path.libRecoveryPath + "benchmarks.txt";
         String benchmarkFile = "";
 
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {

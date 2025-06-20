@@ -4,9 +4,9 @@ Sequences.vos Sequences.vok Sequences.required_vos: Sequences.v Ori_tacs.vos
 Hoare.vo Hoare.glob Hoare.v.beautified Hoare.required_vo: Hoare.v Sequences.vo
 Hoare.vio: Hoare.v Sequences.vio
 Hoare.vos Hoare.vok Hoare.required_vos: Hoare.v Sequences.vos
-Separation.vo Separation.glob Separation.v.beautified Separation.required_vo: Separation.v 
-Separation.vio: Separation.v 
-Separation.vos Separation.vok Separation.required_vos: Separation.v 
+Separation.vo Separation.glob Separation.v.beautified Separation.required_vo: Separation.v Ori_tacs.vo
+Separation.vio: Separation.v Ori_tacs.vio
+Separation.vos Separation.vok Separation.required_vos: Separation.v Ori_tacs.vos
 Seplog.vo Seplog.glob Seplog.v.beautified Seplog.required_vo: Seplog.v Sequences.vo Separation.vo
 Seplog.vio: Seplog.v Sequences.vio Separation.vio
 Seplog.vos Seplog.vok Seplog.required_vos: Seplog.v Sequences.vos Separation.vos

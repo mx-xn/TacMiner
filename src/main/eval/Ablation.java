@@ -1,6 +1,5 @@
 package main.eval;
 
-import main.Engine;
 import main.Main;
 import main.config.BmConfig;
 import main.encode.CoqProof;
@@ -10,6 +9,7 @@ import main.enumeration.GraphEnumerator;
 import main.lib_assembler.LibAssembler;
 import main.proofgraph.ProofGraph;
 import main.sampler.Sampler;
+import trash.Engine;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,10 +17,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static main.Main.getLibCandidatesEnumeration;
-import static main.config.Paths.ablationPath;
-import static main.config.Paths.compressionEvalPath;
-import static main.maxsat.MaxSATUtil.writeTo;
+import static main.config.Path.ablationPath;
+import static main.config.Path.compressionEvalPath;
 import static main.proofgraph.ProofGraphUtil.getSplitLemmasFromOneProof;
+import static main.decode.utils.writeTo;
 
 public class Ablation {
     public enum AblationType {
@@ -172,44 +172,6 @@ public class Ablation {
                         }
                     }
                 }
-//                for (int u = 1; u < pg.vertices.size() - 1; u++) {
-//                    distinctTacSigs.add(pg.vertices.get(u).sig_no_out_arg);
-//                    String sigU = pg.vertices.get(u).sig_no_out_arg;
-//                    String sigV = pg.vertices.get(u + 1).sig_no_out_arg;
-//                    if (!maxOutput.containsKey(sigU) || !maxInput.containsKey(sigV)) continue;
-//                    for (Set<List<Integer>> posPairs: distinctPos) {
-//                        Set<Integer> fromPoses = posPairs.stream().map(l -> l.get(0)).collect(Collectors.toSet());
-//                        Set<Integer> toPoses = posPairs.stream().map(l -> l.get(1)).collect(Collectors.toSet());
-//                        // if the fromPoses or toPoses are out of range, do not expand
-//                        boolean outRange = false;
-//                        for (Integer f: fromPoses) {
-//                            if (f > maxOutput.get(sigU)) {
-//                                outRange = true;
-//                                break;
-//                            }
-//                        }
-//                        if (outRange) continue;
-//                        for (Integer t: toPoses) {
-//                            if (t > maxInput.get(sigV)) {
-//                                outRange = true;
-//                                break;
-//                            }
-//                        }
-//                        if (outRange) continue;
-//
-//                        Abstraction.Hole h = new Abstraction.Hole(pg.vertices.get(u), posPairs.stream().map(l -> l.get(0)).collect(Collectors.toSet()));
-//                        if (!instMap.containsKey(h)) {
-//                            List<Abstraction.Instantiation> emptyList = new ArrayList<>();
-//                            emptyList.add(null);
-//                            instMap.put(h, emptyList);
-//                        }
-//                        Abstraction.Instantiation inst = new Abstraction.Instantiation(sigU,
-//                                sigV, posPairs);
-//                        if (!instMap.get(h).contains(inst)) {
-//                            instMap.get(h).add(inst);
-//                        }
-//                    }
-//                }
             }
 
             distinctTacSigs = distinctTacSigs.stream().filter(s -> !s.contains("Lemma ") && !s.contains("Remark ") &&
@@ -366,104 +328,4 @@ public class Ablation {
             return res;
         }
     }
-
-
-//    public static void learnTacsSATAblation(BmConfig config) throws IOException {
-//        // get total time, get total number of tactics extracted, get how many of these tactics are actually useful
-//        // ablation time: total SAT runtime - (time spent on extracting once from individual proofs + pairwise proofs)
-//        // learnTacs time: time spent on extracting within tactics
-//
-//        List<CoqProof> proofs = Encoder.inputCoqScripts(config.getJsonFilename());
-//        // Part 1: Candidate Tactic Extraction
-//
-//        // normal run:
-//        long startTime = System.nanoTime();
-//        Set<CoqProof> candidateTactics = extractAllTacticsFromCorpus(new ArrayList<>(proofs), config);
-//        long endTime = System.nanoTime();
-//        long elapsedExtract = endTime - startTime;
-//
-//        // SAT run:
-//        startTime = System.nanoTime();
-//        Set<CoqProof> candidateTacticsAblation = extractAllTacticsAblation(new ArrayList<>(proofs), config);
-//        endTime = System.nanoTime();
-//        long elapsedExtractAblation = endTime - startTime;
-//
-//
-//        startTime = System.nanoTime();
-//        LibAssembler.Library library = LibAssembler.assembleLibrary(proofs, candidateTactics, LibAssembler.AssemblyType.BEAM);
-//        endTime = System.nanoTime();
-//        long elapsedLibConstr = endTime - startTime;
-//
-//        startTime = System.nanoTime();
-//        LibAssembler.Library libraryAblation = LibAssembler.assembleLibrary(proofs, candidateTacticsAblation, LibAssembler.AssemblyType.BEAM);
-//        endTime = System.nanoTime();
-//        long elapsedLibConstrAblation = endTime - startTime;
-//
-//        // Print the elapsed time
-//        StringBuilder res = new StringBuilder();
-//        res.append("Extraction time in ms (normal vs SAT): " + elapsedExtract / 1_000_000 + ", " + elapsedExtractAblation / 1_000_000)
-//                .append("\nLib construction time in ms (normal vs SAT): " + elapsedLibConstr / 1_000_000 + ", " + elapsedLibConstrAblation / 1_000_000)
-//                .append("\n\nlibrary diagnostics\n")
-//                .append(library.printDiagnostics())
-//                .append("\n\nlibrary diagnostics ablation\n")
-//                .append(libraryAblation.printDiagnostics());
-//        String[] outputFile = config.inputV.split("/");
-//        writeTo(res.toString(), ablationPath + "ABL_" + outputFile[outputFile.length - 1].replace(".v", ".txt"));
-//    }
-
-//    public static Set<CoqProof> extractAllTacticsAblation(List<CoqProof> proofs, Main.Config config) throws IOException {
-//        Set<CoqProof> candidateTactics = new HashSet<>();
-//        for (CoqProof p : proofs) {
-//            if (p.tactics.isEmpty()) continue;
-//            if (p.pgraph == null) p.pgraph = new ProofGraph(p.tactics);
-//            List<CoqProof> lemmas = getSplitLemmasFromOneProof(p);
-//            candidateTactics.addAll(extractTacticsFromProofsAblation(lemmas, config, Sampler.SamplingType.COSINE));
-//        }
-//
-//        // Acquire sampled pairs
-////        List<List<CoqProof>> samplesCosine = Arrays.asList(Arrays.asList(proofs.get(1), proofs.get(2)));
-//        candidateTactics.addAll(extractTacticsFromProofsAblation(proofs, config, Sampler.SamplingType.COSINE));
-//
-////        // treat the extracted tactics as a corpus of proofs
-////        candidateTactics.addAll(extractTacticsFromProofsAblation(new ArrayList<>(candidateTactics), config, Sampler.SamplingType.COSINE));
-//
-//        candidateTactics = candidateTactics.stream().filter(t -> t.tactics.size() > 1).collect(Collectors.toSet());
-//        Set<String> distinctTacStrs = new HashSet<>();
-//        List<CoqProof> distinctTacs = new ArrayList<>();
-//        for (CoqProof c: candidateTactics) {
-//            if (!distinctTacStrs.contains(c.raw_string)) {
-//                distinctTacStrs.add(new String(c.raw_string));
-//                distinctTacs.add(c);
-//            }
-//        }
-//        candidateTactics = new HashSet<>(distinctTacs);
-//        System.out.println("distinct tacs: " + distinctTacStrs);
-////        Encoder.initPGs(proofs);
-////        Encoder.initPGs(candidateTactics);
-//
-//        System.out.println(candidateTactics.size() + " candidates tactics in ABLATION:");
-//        for (CoqProof tac: candidateTactics) {
-//            System.out.println(tac.raw_string);
-//        }
-//
-//        // Give tactics unique names
-//        int tacID = 0;
-//        for(CoqProof candidate : candidateTactics) {
-//            candidate.lemma_name = "custom" + tacID++;
-//        }
-//        return candidateTactics;
-//    }
-
-//    public static List<CoqProof> extractTacticsFromProofsAblation(List<CoqProof> proofs, Main.Config config, Sampler.SamplingType sampleType) throws IOException {
-//        List<CoqProof> res = new ArrayList<>();
-//        List<List<CoqProof>> tacticSamplesCosine = Sampler.getSamples(proofs, sampleType);
-//        for(List<CoqProof> pair : tacticSamplesCosine) {
-//            Engine engine = new Engine(pair, config);
-//            Set<CoqProof> extracted = engine.runAllCommonSubgraphs(config.timeout);
-//            if (extracted != null) {
-//                res.addAll(extracted);
-//            }
-//        }
-//        return res;
-//    }
 }

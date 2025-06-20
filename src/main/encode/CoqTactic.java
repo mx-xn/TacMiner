@@ -2,8 +2,6 @@ package main.encode;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
 
 /*
  A custom representation of Coq tactics, extracted from JSON inputs

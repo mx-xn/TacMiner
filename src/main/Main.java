@@ -17,30 +17,33 @@ import java.util.stream.Collectors;
 import java.nio.file.*;
 
 import static main.config.BmConfig.*;
-import static main.config.Paths.*;
+import static main.config.Path.*;
+import static main.decode.utils.*;
 import static main.encode.Encoder.sampleTrainingData;
 import static main.enumeration.GraphEnumerator.floydWarshall;
 import static main.eval.Ablation.AblationType.*;
 import static main.eval.SyntacticBaseline.baselineExtractRaw;
-import static main.maxsat.MaxSATUtil.tacticsToLtacScript;
-import static main.maxsat.MaxSATUtil.writeTo;
-// import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Main {
     public static int numRound;
     public static void main(String[] args) throws Exception, InterruptedException {
+        // arguments: mode (0: enumeration, 1: baseline, 2: pruning abl, 3: grammar abl, 4: fixed test data (RQ4)), 
+        //            domain, topic, trainPortion
         if (args.length == 0)
-            args = new String[] {"1200", "CompCert" , "Allocation", "100"};
-        if (args.length < 4) {
+            // args = new String[] {"1200", "coq-art" , "IndPred", "100"};
+            // mode, domain, topic, timeout-in-seconds
+            args = new String[] {"0", "coq-art" , "IndPred", "1200", "100"};
+        if (args.length < 5) {
             System.out.println("Not enough arguments were provided.");
             throw new IllegalArgumentException("need " + (4 - args.length) + " parameters!");
         }
 
-        int timeoutInSec = Integer.parseInt(args[0]);
-        int mode = 0;
+        int mode = Integer.parseInt(args[0]);
         String domain = args[1];
         String topic = args[2];
-        int trainPortion = Integer.parseInt(args[3]);
+        int timeoutInSec = Integer.parseInt(args[3]);
+        int trainPortion = Integer.parseInt(args[4]);
+
         String randSample = "False";
         boolean fixedTestData = mode == 4;
 
@@ -52,7 +55,7 @@ public class Main {
                 List<CoqProof> proofs = Encoder.inputCoqScripts(config.getJsonFilename());
 
                 // if we are in fixedTestData mode, we do things differently
-                if (fixedTestData) {
+                if (config.mode == BmConfig.Mode.ENUMERATION_SPLIT) {
                     // fix the testing indices
                     List<Integer> testingIndices = getFixedTestingIndices(proofs, i);
                     List<CoqProof> trainProofsCandidates = new ArrayList<>();
@@ -80,23 +83,22 @@ public class Main {
                         runOnce(config, proofsCopy);
                     }
                     continue;
-                }
-
-                sampleTrainingData(config, proofs);
-                switch (config.mode) {
-                    case ENUMERATION:
-                        runOnce(config, proofs);
-//                    runOnce(config, proofs);
-                        break;
-                    case BASELINE:
-                        baselineExtractRaw(config, proofs);
-                        break;
-                    case PRUNING_ABL:
-                    case GRAMMAR_ABL:
-                        Ablation ablP = new Ablation(config, proofs);
-//                        ablP.runExperiments();
-                        runOnce(config, proofs);
-                        break;
+                } else {
+                    sampleTrainingData(config, proofs);
+                    switch (config.mode) {
+                        case ENUMERATION:
+                            runOnce(config, proofs);
+                            break;
+                        case BASELINE:
+                            baselineExtractRaw(config, proofs);
+                            break;
+                        case PRUNING_ABL:
+                        case GRAMMAR_ABL:
+                            Ablation ablP = new Ablation(config, proofs);
+    //                        ablP.runExperiments();
+                            runOnce(config, proofs);
+                            break;
+                    }
                 }
             }
         }
@@ -108,24 +110,27 @@ public class Main {
         System.out.println("Current Working Directory: " + workingDirectory);
         if (selected.mode != BmConfig.Mode.ENUMERATION_SPLIT) {
             writeTo(lib.printDiagnostics(),
-                    compressionEvalPath + selected.domain +
-                            "-compressed/" + selected.topic +
-                            "/" + selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".txt");
+                    evalPath + RQ2 + selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".txt");
+                    // compressionEvalPath + selected.domain +
+                    //         "-compressed/" + selected.topic +
+                    //         "/" + selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".txt");
         }
 
         String expOutputLocation;
         if (selected.mode == BmConfig.Mode.ENUMERATION) {
-            expOutputLocation = compressionEvalPath + selected.domain +
-                    "-compressed/" + selected.topic +
-                    "/csv/" + selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".csv";
+            expOutputLocation = evalPath + RQ2 + "csv/" +
+                    selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".csv";
+            // compressionEvalPath + selected.domain +
+            //         "-compressed/" + selected.topic +
+            //         "/csv/" + selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".csv";
             System.out.println("writing to " + expOutputLocation);
             writeTo(lib.printDiagnostics(selected, true), expOutputLocation);
         }
 
         if (selected.mode == BmConfig.Mode.ENUMERATION_SPLIT) {
             writeTo(lib.printDiagnostics(),
-                    compressionEvalPath + selected.domain +
-                            "-compressed/" + selected.topic +
+                    main.config.Path.evalPath + RQ4 + selected.domain +
+                            "-compressed/" + selected.topic + 
                             "/round" + numRound + "/" + selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".txt");
 
             expOutputLocation = compressionEvalPath + selected.domain +
@@ -162,10 +167,6 @@ public class Main {
 
     public static LibAssembler.Library run(BmConfig config, List<CoqProof> proofs) throws IOException {
         // Part 1: Candidate Tactic Extraction
-        // Read in proof corpus
-//        List<CoqProof> proofs = Encoder.inputCoqScripts(config.inputJSON);
-
-        // todo: get only the training proofs
         List<Integer> trainingProofs = Encoder.getTrainingProofIndices(config, proofs);
 
         Set<CoqProof> candidateTactics = new LinkedHashSet<>();
@@ -237,7 +238,6 @@ public class Main {
                 if (p.pgraph == null) p.pgraph = new ProofGraph(p.tactics);
             }
             long startTime = System.currentTimeMillis();
-//            GraphEnumerator graphEnumerator;
 
             ExecutorService executorStart = Executors.newSingleThreadExecutor();
 
@@ -312,7 +312,7 @@ public class Main {
                     }
                     List<CoqProof> compressedProofs = new ArrayList<>();
                     List<Integer> compressedIndices = new ArrayList<>();
-                    List<Integer> matchesGraphs = t.matches.keySet().stream().toList();
+                    // List<Integer> matchesGraphs = t.matches.keySet().stream().toList();
                     // Create an ExecutorService with a single thread
 
                     for (CoqProof p: finalCurrProofs) {

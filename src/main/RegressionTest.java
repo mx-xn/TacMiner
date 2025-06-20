@@ -1,6 +1,6 @@
 package main;
 
-import main.config.Paths;
+import main.config.Path;
 import main.encode.CoqProof;
 
 import java.io.*;
@@ -20,6 +20,6 @@ public class RegressionTest {
                     .append("\n");
         }
         System.out.println("writing \n" + content.toString() + "------");
-        writeTo(content.toString(), Paths.regressionPath + filename);
+        writeTo(content.toString(), Path.regressionPath + filename);
     }
 }

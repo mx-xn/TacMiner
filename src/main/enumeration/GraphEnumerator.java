@@ -1,14 +1,10 @@
 package main.enumeration;
 
-import main.config.BmConfig;
 import main.encode.CoqProof;
 import main.encode.CoqTactic;
-import main.encode.Encoder;
-import main.proofgraph.GraphVisualizer;
 import main.proofgraph.ProofGraph;
 import main.enumeration.Abstraction.*;
 
-import java.sql.Array;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

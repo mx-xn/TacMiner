@@ -1,6 +1,5 @@
 package main.lib_assembler;
 
-import com.google.common.io.BaseEncoding;
 import main.Main;
 import main.config.BmConfig;
 import main.encode.CoqProof;
@@ -22,7 +21,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static main.config.Paths.maxsatFilesPath;
 import static main.eval.CompressionEval.compressLibTacs;
 import static main.eval.SyntacticBaseline.*;
 import static main.maxsat.MaxSATUtil.writeTo;
@@ -128,7 +126,7 @@ public class LibAssemblerBaseline {
                 this.testingCompressedSize += this.corpus.get(p).size();
             }
             String content = new String(Files.readAllBytes(Paths.get(config.getInputFilename())));
-            String outputName = main.config.Paths.baselineInputPath + config.domain + "/" + config.topic + "_tacs_verified.txt";
+            String outputName = main.config.Path.baselineInputPath + config.domain + "/" + config.topic + "_tacs_verified.txt";
 
             List<String> newProofs = new ArrayList<>();
             for (String p: originalProofs) {
@@ -265,7 +263,7 @@ public class LibAssemblerBaseline {
 
             // Write valid tactics to file
             String inputV = config.getInputFilename();
-            String outputName = main.config.Paths.baselineInputPath +
+            String outputName = main.config.Path.baselineInputPath +
                     config.domain + "/" + config.topic + "_tacs.txt";
             writeTo(inputV + "\n-----\n" + inputV.replace(".v", "_compr.v") + "\n-----\n" + allTactics.toString() + "-----\n" + contractedScript,
                    outputName);

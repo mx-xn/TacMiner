@@ -1,16 +1,10 @@
 package main.eval;
 
-import main.Engine;
 import main.config.BmConfig;
 import main.encode.*;
-import main.maxsat.MaxSatEncoder;
 import main.proofgraph.*;
-import org.junit.jupiter.engine.config.CachingJupiterConfiguration;
-import org.junit.platform.commons.util.StringUtils;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.desktop.SystemEventListener;
+// import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -20,18 +14,16 @@ import java.util.regex.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static main.config.Paths.*;
+import static main.config.Path.*;
 import static main.encode.CoqTactic.serializeArgs;
 import static main.enumeration.GraphEnumerator.floydWarshall;
-import static main.maxsat.MaxSATUtil.*;
+import static main.decode.utils.*;
 
 public class CompressionEval {
-    public CompressionEval(MaxSatEncoder enc) {
-        this.enc = enc;
+    public CompressionEval () {
     }
     static int numProofs = 0; //todo: to be deleted, just for hacks for now.
     public List<ProofGraph> shrinkedGraphs = new ArrayList<>();
-    MaxSatEncoder enc;
 
     //todo: not sure if this is the best way to store this, but it does prevent recalculation
     public static boolean[][] reachTac;
@@ -39,16 +31,10 @@ public class CompressionEval {
 //    public static Map<Integer, Integer> create
 
     public List<String> graphsToScripts() throws Exception {
-        // for (int i = 0; i < enc.pgraphs.size(); i++) {
-        //     shrinkedGraphs.add(shrinkGraph(i, enc.connCompMcsIDs));
-        // }
-        
-        // return this.shrinkedGraphs.stream().map(pg -> graphToScript(pg)).collect(Collectors.toList());
         throw new Exception ("unimplemented");
     }
 
     // returns a linearization of the proof graph
-    // todo: sort the vertices not only on in-degrees, but also on branch id's
     public static String graphToScript(CoqProof proof) {
         ProofGraph pg = proof.pgraph;
         // for each source, construct the list of tactics
@@ -99,24 +85,24 @@ public class CompressionEval {
         return firstTac.signature + "\nProof.\n" + formatted + "Qed.";
     }
 
-    public void updateCustomTacticsData(Map<String, String> data) {
-        // update fields: tactic num, tactic #i len, tactic #i num args, tactic #i valid
-        data.put("num-tactics-extracted", Integer.toString(this.enc.customTacticScripts.size()));
-//        data.put("tactics-len", this.enc.customTacticScripts.stream()
-//                .map(t -> Long.toString(t.chars().filter(ch -> ch == '.').count()))
-//                .collect(Collectors.toList())
-//                .toString());
-        data.put("tactics-len", this.enc.connCompMcsIDs.stream()
-                .map(l -> l.size()).collect(Collectors.toList()).toString());
-        data.put("tactics-args-len", this.enc.customTacticScripts.stream()
-                .map(t -> countTacticNumArgs(t.toString()))
-                .collect(Collectors.toList())
-                .toString());
-        data.put("tactics-valid?", this.enc.customTacticScripts.stream()
-                .map(t -> Boolean.toString(true)) //todo: change to call the actual function
-                .collect(Collectors.toList())
-                .toString());
-    }
+//     public void updateCustomTacticsData(Map<String, String> data) {
+//         // update fields: tactic num, tactic #i len, tactic #i num args, tactic #i valid
+//         data.put("num-tactics-extracted", Integer.toString(this.enc.customTacticScripts.size()));
+// //        data.put("tactics-len", this.enc.customTacticScripts.stream()
+// //                .map(t -> Long.toString(t.chars().filter(ch -> ch == '.').count()))
+// //                .collect(Collectors.toList())
+// //                .toString());
+//         data.put("tactics-len", this.enc.connCompMcsIDs.stream()
+//                 .map(l -> l.size()).collect(Collectors.toList()).toString());
+//         data.put("tactics-args-len", this.enc.customTacticScripts.stream()
+//                 .map(t -> countTacticNumArgs(t.toString()))
+//                 .collect(Collectors.toList())
+//                 .toString());
+//         data.put("tactics-valid?", this.enc.customTacticScripts.stream()
+//                 .map(t -> Boolean.toString(true)) //todo: change to call the actual function
+//                 .collect(Collectors.toList())
+//                 .toString());
+//     }
 
     public static int countTacticNumArgs(String customTactic) {
         String[] tokens = customTactic.substring(0, customTactic.indexOf(":=")).trim().split(" ");
@@ -239,177 +225,6 @@ public class CompressionEval {
                 compressionEvalPath + "coq-art-baseline/" + outputFile[outputFile.length - 1].replace(".v", ".txt"));
     }
 
-
-    /*
-     @g: proof graph id, @connComp: list of connComp represented by list of d(v)'s
-     @customTactics: script of customized tactics
-     returns the shrinked proof graph where vertices in each connComp is replaced by one vertex representing a customTactic
-     */
-    public ProofGraph shrinkGraph(int g, List<List<Integer>> connComps) {
-        ProofGraph pg = enc.pgraphs.get(g).pgraph;
-//        GraphVisualizer.visualize(pg);
-        List<CoqTactic> updatedVertices = pg.vertices;
-        for (int c = 0; c < connComps.size(); c++) {
-            if (!this.enc.validCustomTactics.get(c)) continue;
-
-            // get the corresponding list of vertex id in the current proof graph
-            List<Integer> cc = enc.getMappedVerticesFromInputGraph(connComps.get(c), g);
-
-
-            // for each connComp, shrink graph
-            updatedVertices = shrinkGraphVertices(updatedVertices, cc,
-                    getTacticScriptSignature(enc.customTacticScripts.get(c).toString()));
-        }
-        updatedVertices = updatedVertices.stream().distinct().collect(Collectors.toList());
-        for (int id = 0; id < updatedVertices.size(); id++) {
-            updatedVertices.get(id).id = id;
-        }
-        return new ProofGraph(updatedVertices);
-    }
-
-    public static String getTacticScriptSignature(String customScript) {
-        return customScript.split(" ")[1];
-    }
-
-    // returns the shrinked graph where ids contains vertex ids to be shrinked
-    public static List<CoqTactic> shrinkGraphVertices(List<CoqTactic> vertices, List<Integer> ids, String sig) {
-        CoqTactic customTac = mergeTactics(vertices, ids, sig);
-
-        List<CoqTactic> newVertices = new ArrayList<>();
-        for (int w = 0; w < vertices.size(); w++) {
-            CoqTactic v = vertices.get(w);
-            if (ids.contains(w)) {
-                // if w is to be shrinked
-                customTac.id = v.id; // Maintain one unique id
-                newVertices.add(customTac);
-            } else {
-                newVertices.add(new CoqTactic(v));
-            }
-        }
-        return newVertices;
-    }
-
-    public static CoqTactic mergeTactics(List<CoqTactic> vertices, List<Integer> mergeIds, String sig) {
-        CoqTactic newTactic = new CoqTactic(-1, sig, sig, new ArrayList<>(), new ArrayList<>());
-        List<CoqTactic.Prop> inputArgs = newTactic.inputs;
-        List<CoqTactic.Prop> outputArgs = newTactic.outputs;
-
-        //todo: are they in the right order?
-        List<CoqTactic> verticesToMerge = vertices.stream().filter(v -> mergeIds.contains(vertices.indexOf(v))).collect(Collectors.toList());
-//        System.out.println("MERGING ------ START");
-//        for (CoqTactic v: verticesToMerge) {
-//            System.out.println(v.toCoqScript());
-//        }
-//        System.out.println("MERGING ------ END");
-
-        // merge outputs
-        // if outputArgs contain a goal that is transformed, replace that goal with the result of the transformation
-        Map<CoqTactic.Prop, List<CoqTactic.Prop>> transformedGoalsMap = getTransformedGoals(verticesToMerge);
-
-        for (int v = 0; v < verticesToMerge.size(); v++) {
-            CoqTactic tactic = verticesToMerge.get(v);
-            if (isTacticGoalTransforming(tactic, outputArgs)) {
-//                System.out.println(output + " is transformed to " + transformedGoalsMap.get(output));
-                CoqTactic.Prop inputGoal = tactic.inputs.stream().filter(in -> in.type.equals(CoqTactic.PROP_TYPE.GOAL))
-                        .collect(Collectors.toList()).get(0);
-                int index = outputArgs.indexOf(inputGoal);
-                outputArgs.subList(index, index+1).clear();
-                outputArgs.addAll(index, transformedGoalsMap.get(inputGoal));
-            } else {
-                for (CoqTactic.Prop output: tactic.outputs) {
-                    if (!outputArgs.contains(output)) {
-                        outputArgs.add(output);
-                    }
-                }
-            }
-        }
-
-        // merge inputs
-        for (int v = 0; v < verticesToMerge.size(); v++) {
-            CoqTactic tactic = verticesToMerge.get(v);
-            // merge outputs
-            for (CoqTactic.Prop input: tactic.inputs) {
-                if (inputArgs.contains(input) || outputArgs.contains(input)) continue;
-                inputArgs.add(input);
-            }
-        }
-        newTactic.args = gatherCompositeArgs(verticesToMerge).keySet().stream().toList();
-    //    System.out.println("the args of " + newTactic.signature + " is " + String.join(" ", newTactic.args));
-        return newTactic;
-    }
-
-    /*
-     if G is transformed to [G1, G2, ...], return the map from G to GList.
-     for now, treat only tactics that input one goal
-     */
-    private static Map<CoqTactic.Prop, List<CoqTactic.Prop>> getTransformedGoals(List<CoqTactic> vertices) {
-        Map<CoqTactic.Prop, List<CoqTactic.Prop>> transformedMap = new HashMap<>();
-        // if a goal is in input of vertices but not in output, the goal is transformed
-        for (CoqTactic v: vertices) {
-            List<CoqTactic.Prop> inputGoals = v.inputs.stream()
-                    .filter(in -> in.type.equals(CoqTactic.PROP_TYPE.GOAL))
-                    .collect(Collectors.toList());
-            if (inputGoals.isEmpty()) continue;
-            CoqTactic.Prop inputGoal = inputGoals.get(0);
-            if (!v.outputs.contains(inputGoal)) {
-                // inputGoal is transformed to outputs goals
-                transformedMap.put(inputGoal,
-                        v.outputs.stream().filter(o -> o.type.equals(CoqTactic.PROP_TYPE.GOAL)).collect(Collectors.toList()));
-            }
-        }
-        for (Map.Entry<CoqTactic.Prop, List<CoqTactic.Prop>> entry: transformedMap.entrySet()) {
-        }
-
-        return transformedMap;
-    }
-
-    private static boolean isTacticGoalTransforming(CoqTactic tactic, List<CoqTactic.Prop> outputArgs) {
-        List<CoqTactic.Prop> inputGoals = tactic.inputs.stream()
-                .filter(in -> in.type.equals(CoqTactic.PROP_TYPE.GOAL))
-                .collect(Collectors.toList());
-        if (inputGoals.isEmpty()) return false;
-        CoqTactic.Prop inputGoal = inputGoals.get(0);
-
-        if (!outputArgs.contains(inputGoal)) return false;
-        return !tactic.outputs.contains(inputGoal);
-    }
-
-    public void updateCompressionData(List<String> original, List<String> contracted, Map<String,String> data) {
-//        List<Integer> proofsRawLen = original.stream().map(p -> countProofsLength(p)).collect(Collectors.toList());
-        List<Integer> proofsRawLen = this.enc.pgraphs.stream().map(p -> p.pgraph.vertices.size()).collect(Collectors.toList());
-//        for (ProofGraph pg: this.enc.pgraphs)
-//            GraphVisualizer.visualize(pg);
-
-        if (data.get("unsat?").equals(Boolean.toString(true)) || data.get("timeout?").equals(Boolean.toString(true))
-        || this.enc.connCompMcsIDs.isEmpty()) {
-            data.put("proofs-raw-len", proofsRawLen.toString());
-            data.put("proofs-contracted-len", proofsRawLen.toString());
-            data.put("compression-rate", Double.toString(1));
-            return;
-        }
-
-        // proof-ids, proofs-raw-len, proofs-contracted-len
-        List<Integer> proofsContractedLen = this.shrinkedGraphs.stream().map(pg -> pg.vertices.size()).collect(Collectors.toList());
-//        List<Integer> proofsContractedLen = contracted.stream().map(p -> countProofsLength(p)).collect(Collectors.toList());
-        // for (String c : contracted) System.out.println(c);
-        double compressionRate = proofsRawLen.stream().mapToDouble(Integer::doubleValue).sum() /
-                proofsContractedLen.stream().mapToDouble(Integer::doubleValue).sum();
-        data.put("proofs-raw-len", proofsRawLen.toString());
-        data.put("proofs-contracted-len", proofsContractedLen.toString());
-        data.put("compression-rate", Double.toString(compressionRate));
-
-//        StringBuilder stat = new StringBuilder("---------------------\n");
-//        stat.append("original length: ")
-//                .append(originalLen)
-//                .append("\ncontracted length: ")
-//                .append(contractedLen)
-//                .append("\ncompression rate: ")
-//                .append(originalLen/contractedLen)
-//                .append("\n---------------------");
-//        System.out.println(stat);
-//        return Arrays.asList(originalLen, contractedLen, originalLen/contractedLen);
-    }
-
     public static int countProofsLength(String script) {
         int count = 0;
 
@@ -466,44 +281,6 @@ public class CompressionEval {
         return res;
     }
 
-    public static List<List<Integer>> getSeedProofIDs(int id) {
-        List<List<List<Integer>>> seeds = Arrays.asList(
-                Arrays.asList(Arrays.asList(2, 8),
-                        Arrays.asList(8, 12),
-                        Arrays.asList(11, 18),
-                        Arrays.asList(12, 14),
-                        Arrays.asList(14, 16),
-                        Arrays.asList(16, 18),
-                        Arrays.asList(20, 22),
-                        Arrays.asList(20, 23),
-                        Arrays.asList(20, 25),
-                        Arrays.asList(23, 25)
-                ),
-                Arrays.asList(
-                        Arrays.asList(0, 24),
-                        Arrays.asList(1, 24),
-                        Arrays.asList(2, 24),
-                        Arrays.asList(3, 24),
-                        Arrays.asList(7, 24),
-                        Arrays.asList(8, 24),
-                        Arrays.asList(9, 24)
-                ),
-                Arrays.asList(Arrays.asList(0, 2),
-                        Arrays.asList(0, 3),
-                        Arrays.asList(0, 4),
-                        Arrays.asList(0, 6),
-                        Arrays.asList(1, 3),
-                        Arrays.asList(2, 3),
-                        Arrays.asList(2, 4)),
-                Arrays.asList(Arrays.asList(4, 5),
-                        Arrays.asList(4, 6),
-                        Arrays.asList(5, 6),
-                        Arrays.asList(5, 7),
-                        Arrays.asList(6, 7))
-        );
-
-        return (id <= 0 || id > seeds.size()) ? new ArrayList<>() : seeds.get(id - 1);
-    }
     /*
      @proofIDs: the proof script to extract
      @filename: proof script file
@@ -537,100 +314,6 @@ public class CompressionEval {
         return res;
     }
 
-    public static void displayCompressionEvalData(List<Map<String, String>> data) {
-//        StringBuilder sb = new StringBuilder("compression data START ------------------------\n");
-        displayCompressionTable(data);
-        displayTacticsTable(data);
-
-        // tactics data
-//        JFrame tacticsFrame = new JFrame("compression-run-time-data");
-//        tacticsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        tacticsFrame.setLayout(new GridLayout(data.size() + 1, 2));
-//
-//        // Add labels and text fields for each title and value pair
-//        for (String key : dataList.get(0).keySet()) {
-//            frame.add(new JLabel(key));
-//            frame.add(new JLabel()); // Empty label for value, will be filled later
-//        }
-//
-//        // Add values to the form
-//        for (HashMap<String, String> data : dataList) {
-//            for (String key : data.keySet()) {
-//                JLabel label = (JLabel) frame.getComponent(getComponentIndex(frame, key) + dataList.get(0).keySet().size());
-//                label.setText(data.get(key));
-//            }
-//        }
-//
-//        // Display the form
-//        frame.pack();
-//        frame.setVisible(true);
-    }
-
-    public static void displayCompressionTable(List<Map<String, String>> data) {
-        // compression data
-        List<String> keys = Arrays.asList("#run", "timeout?", "unsat?", "compression-rate", "proof-IDs", "proofs-raw-len", "proofs-contracted-len", "num-tactics-extracted", "runtime (s)");
-        JFrame compressionFrame = new JFrame("compression-run-time-data");
-        compressionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        compressionFrame.setLayout(new GridLayout(data.size() + 1, keys.size()));
-
-        for (String key : keys) {
-            compressionFrame.add(new JLabel(key));
-        }
-
-        // Add values to the form
-        int runId = 1;
-        for (Map<String, String> row: data) {
-            for (int i = 0; i < keys.size(); i++) {
-                String key = keys.get(i);
-                JLabel label = new JLabel();
-                if (key.equals("#run"))
-                    label.setText(Integer.toString(runId++));
-                else
-                    label.setText(row.get(key));
-                compressionFrame.add(label);
-            }
-        }
-
-        compressionFrame.pack();
-        compressionFrame.setVisible(true);
-    }
-    public static void displayTacticsTable(List<Map<String, String>> data) {
-        List<String> keys = Arrays.asList("#run", "num-tactics-extracted", "tactics-len", "tactics-args-len", "tactics-valid?");
-        JFrame compressionFrame = new JFrame("custom-tactics-data");
-        compressionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        compressionFrame.setLayout(new GridLayout(data.size() + 1, keys.size()));
-
-        for (String key : keys) {
-            compressionFrame.add(new JLabel(key));
-        }
-
-        // Add values to the form
-        int runId = 1;
-        for (Map<String, String> row: data) {
-            for (int i = 0; i < keys.size(); i++) {
-                String key = keys.get(i);
-                JLabel label = new JLabel();
-                if (key.equals("#run"))
-                    label.setText(Integer.toString(runId++));
-                else
-                    label.setText(row.get(key));
-                compressionFrame.add(label);
-            }
-        }
-
-        compressionFrame.pack();
-        compressionFrame.setVisible(true);
-    }
-
-    private static int getComponentIndex(Container container, String key) {
-        Component[] components = container.getComponents();
-        for (int i = 0; i < components.length; i++) {
-            if (components[i] instanceof JLabel && ((JLabel) components[i]).getText().equals(key)) {
-                return i;
-            }
-        }
-        return -1;
-    }
 
     public static String findLongestCommonTactics(String p1, String p2) {
         p1 = p1.replaceAll("Qed.", "")
@@ -1322,7 +1005,6 @@ public class CompressionEval {
             }
         } catch (Exception e) {
             System.out.println("init proof " + p + " in compressProof" + e.getMessage());
-            GraphVisualizer.visualize(compressed.pgraph);
         }
         return compressProof(compressed, customTac, p);
     }
