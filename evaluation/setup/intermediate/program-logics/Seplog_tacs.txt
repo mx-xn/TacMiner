@@ -1,0 +1,149 @@
+benchmarks/program-logics/raw/Seplog.v
+-----
+benchmarks/program-logics/raw/Seplog_compr.v
+-----
+-----
+immsafe_frame
+Proof. intros h' c h IMM; dependent induction IMM; intros DISJ. - constructor. - constructor; auto. - constructor. - destruct (isfinite (hunion h h')) as [l' FIN]. apply immsafe_alloc with (Z.max 1 l'). lia. intros. apply FIN. lia. - constructor. cbn. destruct (h l) as [z|]; congruence. - constructor. cbn. destruct (h l) as [z|]; congruence. - constructor. cbn. destruct (h l) as [z|]; congruence. - constructor. Qed.
+red_frame
+Proof. intros until h'; intros RED; dependent induction RED; intros IMM DISJ; inv IMM. - exists h1; intuition auto. constructor; auto. - exists h1; intuition auto. constructor; auto. - edestruct IHRED as (h1' & R & D & U); eauto. exists h1'; intuition auto. constructor; auto. - exists h1; intuition auto. constructor; auto. - exists (hinit l sz h1); intuition auto. + constructor; auto. intros. apply H in H1. cbn in H1. destruct (h1 i) as [z|]; congruence. + red; cbn; intros i. assert (EITHER: l <= i < l + Z.of_nat sz \/ (i < l \/ l + Z.of_nat sz <= i)) by lia. destruct EITHER. * right. apply H in H1. cbn in H1. destruct (h1 i) as [z|], (h2 i) as [z'|]; congruence. * rewrite hinit_outside by auto. apply DISJ. + apply heap_extensionality; intros i; cbn. assert (EITHER: l <= i < l + Z.of_nat sz \/ (i < l \/ l + Z.of_nat sz <= i)) by lia. destruct EITHER. * rewrite ! hinit_inside by auto. auto. * rewrite ! hinit_outside by auto. auto. - exists h1; intuition auto. constructor; auto. cbn in H. destruct (h1 l) as [z|]; congruence. - exists (hupdate l v h1); intuition auto. + constructor; auto. + intros i; cbn. generalize (DISJ i). destruct (Z.eq_dec l i); intuition congruence. + apply heap_extensionality; intros i; cbn. destruct (Z.eq_dec l i); auto. - exists (hfree l h1); intuition auto. + constructor; auto. + intros i; cbn. generalize (DISJ i). destruct (Z.eq_dec l i); intuition congruence. + apply heap_extensionality; intros i; cbn. destruct (Z.eq_dec l i); auto. subst i. generalize (DISJ l). intuition. Qed.
+safe_frame
+Proof. induction 2; intros DISJ. - constructor. exists h, h'; auto. - constructor. auto. apply immsafe_frame; auto. intros. edestruct red_frame as (h1' & RED1 & D & U); eauto. subst h'0. apply H3; auto. Qed.
+triple_frame
+Proof. intros P c Q R TR h (h1 & h2 & P1 & R2 & D & U). subst h. apply safe_frame; auto. Qed.
+triple_get
+Proof. intros l v h P. assert (L: h l = Some v). red in P. subst h. apply hupdate_same. constructor; auto. - constructor. congruence. - intros c' h' RED. inv RED. constructor. split; auto; congruence. Qed.
+triple_set
+Proof. intros l v h (v0 & P). assert (L: h l = Some v0). red in P; subst h; apply hupdate_same. constructor; auto. - constructor. congruence. - intros c' h' RED. inv RED. constructor. red in P; subst h. red. apply heap_extensionality; intros l'; cbn. destruct (Z.eq_dec l l'); auto. Qed.
+valid_N_init
+Proof. intro sz. induction sz as [ | sz]; intros l; cbn. - red; auto. - exists (hupdate l 0 hempty), (hinit (l + 1) sz hempty); intuition auto. + exists 0. red; auto. + intros x. unfold hupdate, hempty; cbn. destruct (Z.eq_dec l x); auto. right. rewrite hinit_outside by lia. auto. + apply heap_extensionality; intros x. cbn. destruct (Z.eq_dec l x); auto. Qed.
+triple_alloc
+Proof. intros sz h P. red in P. subst h. constructor; auto. - apply immsafe_alloc with 1; intros. + lia. + auto. - intros c' h' RED; inv RED. constructor. split; auto. apply valid_N_init; auto. Qed.
+triple_free
+Proof. intros l h (v0 & P). red in P. assert (L: h l = Some v0). subst h. apply hupdate_same. constructor; auto. - constructor. congruence. - intros c' h' RED; inv RED. constructor. red. apply heap_extensionality; intros x. cbn. destruct (Z.eq_dec l x); auto. Qed.
+safe_pure
+Proof. intros. inv H. - auto. - contradiction. Qed.
+safe_red
+Proof. intros. inv H. - inv H0. - eauto. Qed.
+safe_immsafe
+Proof. intros. inv H. - constructor. - auto. Qed.
+safe_let
+Proof. intros Q R f POST. induction 1. - constructor; auto. + constructor. constructor. + intros c' h' RED; inv RED. apply POST; auto. inv H1. - constructor; auto. + constructor; auto. + intros c' h' RED; inv RED. contradiction. eauto. Qed.
+safe_consequence
+Proof. intros Q Q' IMP. induction 1. - apply safe_done. apply IMP. assumption. - apply safe_step; auto. Qed.
+triple_pure
+Proof. intros; intros h Ph. constructor. apply H; auto. Qed.
+triple_let
+Proof. intros until R; intros HR1 HR2 h Ph. apply safe_let with Q. apply HR2. apply HR1. auto. Qed.
+triple_ifthenelse
+Proof. intros until Q; intros HR1 HR2 h Ph. constructor; auto. - constructor. - intros c' h' RED; inv RED. destruct (Z.eqb_spec b 0). + apply HR2. split; auto. + apply HR1. split; auto. Qed.
+triple_consequence
+Proof. intros; red; intros. apply safe_consequence with Q'; auto. Qed.
+triple_pick
+Proof. intros n h Ph. constructor; auto. - constructor. - intros c' h' RED; inv RED. constructor. split; auto. Qed.
+triple_consequence_pre
+Proof. intros. apply triple_consequence with P' Q; auto. intros; red; auto. Qed.
+triple_consequence_post
+Proof. intros. apply triple_consequence with P Q'; auto. red; auto. Qed.
+triple_lift_pure
+Proof. intros. intros h [P1 P2]. apply H; auto. Qed.
+triple_lift_exists
+Proof. intros. intros h (x & Px). apply (H x); auto. Qed.
+triple_ifthen
+Proof. intros. apply triple_ifthenelse; apply triple_lift_pure; intros. - auto. - lia. Qed.
+triple_ifelse
+Proof. intros. apply triple_ifthenelse; apply triple_lift_pure; intros. - lia. - auto. Qed.
+unroll_com
+Proof. destruct c; auto. Qed.
+list_cons_correct
+Proof. intros. eapply triple_let. rewrite <- sepconj_emp at 1. apply triple_frame. apply triple_alloc. intros b; simpl. rewrite lift_pureconj, ! sepconj_assoc, sepconj_emp. apply triple_lift_pure; intros H1. eapply triple_let. apply triple_frame. apply triple_set. simpl; intros _. eapply triple_let. rewrite sepconj_pick2. apply triple_frame. apply triple_set. simpl; intros _. rewrite sepconj_pick2. apply triple_pure. intros h A. split. auto. exists a; auto. Qed.
+list_length_rec_correct
+Proof. intro l. induction l as [ | h t]; intros; rewrite (unroll_com (list_length_rec a len)); cbn. - apply triple_lift_pure; intro H1. apply triple_ifelse; auto. apply triple_pure. intros h H2. split. lia. split; auto. - apply triple_lift_pure; intro H1. apply triple_lift_exists; intros a'. apply triple_ifthen; auto. eapply triple_let. rewrite sepconj_pick2. apply triple_frame. apply triple_get. simpl. intros a''. rewrite lift_pureconj. apply triple_lift_pure; intros H3. subst a''. rewrite sepconj_swap3. eapply triple_consequence_post. apply triple_frame. apply IHt. intros len'; simpl. rewrite lift_pureconj. rewrite <- sepconj_swap3, sepconj_pick2. intros h1 (A & B). split. lia. split. auto. exists a'; auto. Qed.
+list_length_correct
+Proof. intros. apply list_length_rec_correct. Qed.
+list_concat_rec_correct
+Proof. intros l2 a2 l1. induction l1 as [ | h1 t1]; intros; rewrite (unroll_com (list_concat_rec a1 a2)); simpl. - rewrite lift_pureconj. apply triple_lift_pure; intros. lia. - rewrite lift_pureconj. apply triple_lift_pure. intros H1. rewrite lift_aexists. apply triple_lift_exists. intros a'. rewrite sepconj_assoc. eapply triple_let. + rewrite sepconj_assoc, sepconj_pick2. apply triple_frame. apply triple_get. + intros t. simpl. rewrite lift_pureconj. apply triple_lift_pure. intros H2; subst t. apply triple_ifthenelse. * apply triple_lift_pure. intros H2. rewrite <- sepconj_assoc, sepconj_comm. eapply triple_consequence_post. apply triple_frame. apply IHt1. auto. simpl. intros _. rewrite sepconj_pick2, sepconj_swap3. intros h P. split; auto. exists a'; auto. * apply triple_lift_pure. intros H2. eapply triple_consequence_post. apply triple_frame. eapply triple_consequence_pre. apply triple_set. intros h P; exists a'; auto. simpl. intros _. rewrite sepconj_pick2, sepconj_pick3. destruct t1; simpl. ** rewrite lift_pureconj, sepconj_emp. intros h (A & B). split; auto. exists a2; auto. ** rewrite lift_pureconj. intros h (A & B). lia. Qed.
+list_concat_correct
+Proof. intros. unfold list_concat. apply triple_ifthenelse. - apply triple_lift_pure; intros H1. eapply triple_let. apply list_concat_rec_correct; auto. simpl. intros _. apply triple_pure. red; auto. - apply triple_lift_pure; intros H1. destruct l1; simpl. + apply triple_pure. rewrite lift_pureconj, sepconj_emp. intros h (A & B); auto. + rewrite lift_pureconj. apply triple_lift_pure. intros; lia. Qed.
+list_rev_rec_correct
+Proof. intro l. induction l as [ | hd l]; intros; rewrite (unroll_com (list_rev_rec a p)); simpl. - rewrite lift_pureconj, sepconj_emp. apply triple_lift_pure; intros H1. apply triple_ifelse; auto. apply triple_pure. red; auto. - rewrite lift_pureconj; apply triple_lift_pure; intros H1. rewrite lift_aexists; apply triple_lift_exists; intros a'. apply triple_ifthen; auto. eapply triple_let. rewrite ! sepconj_assoc, sepconj_pick2. apply triple_frame. apply triple_get. intros a''. simpl. rewrite lift_pureconj. apply triple_lift_pure. intros H3. subst a''. eapply triple_let. apply triple_frame. eapply triple_consequence_pre. apply triple_set. intros h P; exists a'; auto. simpl. intros _. rewrite sepconj_pick2, sepconj_pick3. eapply triple_consequence_pre. apply IHl. simpl. apply sepconj_imp_r. intros h A. split; auto. exists p; auto. Qed.
+list_rev_correct
+Proof. intros. rewrite List.rev_alt. eapply triple_consequence_pre. apply list_rev_rec_correct. simpl. rewrite sepconj_comm, lift_pureconj, sepconj_emp. intros h A; split; auto. Qed.
+triple_frame
+Proof. intros P c Q R TR R'. rewrite sepconj_assoc. replace (fun v => (Q v ** R) ** R') with (fun v => Q v ** (R ** R')). apply TR. apply functional_extensionality; intros. rewrite sepconj_assoc; auto. Qed.
+triple_get
+Proof. intros l v R h (h1 & h2 & H1 & H2 & D & U). assert (L1: h1 l = Some v). red in H1. subst h1. apply hupdate_same. assert (L: h l = Some v). intros. rewrite U; simpl. rewrite L1; auto. constructor; auto. - constructor. congruence. - intros c' h' RED. inv RED. constructor. exists h1, h2. unfold pureconj. intuition congruence. Qed.
+triple_set
+Proof. intros l v R h (h1 & h2 & H1 & H2 & D & U). destruct H1 as (v0 & H1). red in H1. assert (L1: h1 l = Some v0). subst h1; apply hupdate_same. assert (L: h l = Some v0). rewrite U; cbn. rewrite L1; auto. constructor; auto. - constructor. congruence. - intros c' h' RED. inv RED. constructor. exists (hupdate l v hempty), h2. split. red. auto. split. auto. split. intro l'. specialize (D l'). cbn in *. destruct D; auto. destruct (Z.eq_dec l l'); auto. congruence. apply heap_extensionality; intros l'; cbn. destruct (Z.eq_dec l l'); auto. Qed.
+valid_N_init
+Proof. intros R sz. induction sz as [ | sz]; intros l h Rh EMPTY; cbn. - rewrite sepconj_emp. auto. - rewrite sepconj_assoc. exists (hupdate l 0 hempty), (hinit (l + 1) sz h). split. exists 0. red; auto. split. apply IHsz. auto. intros. apply EMPTY. lia. split. intros x. unfold hupdate, hempty; cbn. destruct (Z.eq_dec l x); auto. right. rewrite hinit_outside by lia. apply EMPTY; lia. apply heap_extensionality; intros x. cbn. destruct (Z.eq_dec l x); auto. Qed.
+triple_alloc
+Proof. intros sz R h H. rewrite sepconj_emp in H. constructor; auto. - destruct (isfinite h) as (l0 & FIN). apply immsafe_alloc with (Z.max l0 1); intros. + lia. + apply FIN. lia. - intros c' h' RED; inv RED. constructor. rewrite lift_pureconj; split. auto. apply valid_N_init; auto. Qed.
+triple_free
+Proof. intros l R h (h1 & h2 & H1 & H2 & D & U). destruct H1 as (v0 & H1). assert (L1: h1 l = Some v0). rewrite H1. apply hupdate_same. assert (L: h l = Some v0). rewrite U; cbn. rewrite L1. auto. constructor; auto. - constructor. congruence. - intros c' h' RED; inv RED. constructor. rewrite sepconj_emp. replace (hfree l (hunion h1 h2)) with h2; auto. apply heap_extensionality; intros x. generalize (D x); rewrite H1; cbn. destruct (Z.eq_dec l x); auto. intuition congruence. Qed.
+Hoare_pure
+Proof. intros; intros h Ph. constructor. apply H; auto. Qed.
+triple_pure
+Proof. intros; intros R. apply Hoare_pure. apply sepconj_imp_l; auto. Qed.
+Hoare_let
+Proof. intros until R; intros HR1 HR2 h Ph. apply safe_let with Q. apply HR2. apply HR1. auto. Qed.
+triple_let
+Proof. intros c f P Q R TR1 TR2 R'. apply Hoare_let with (fun v => Q v ** R'). apply TR1. intros. apply TR2. Qed.
+Hoare_ifthenelse
+Proof. intros until Q; intros HR1 HR2 h Ph. constructor; auto. - constructor. - intros c' h' RED; inv RED. destruct (Z.eqb_spec b 0). + apply HR2. split; auto. + apply HR1. split; auto. Qed.
+triple_ifthenelse
+Proof. intros b c1 c2 P Q TR1 TR2 R. apply Hoare_ifthenelse; rewrite <- lift_pureconj; auto. Qed.
+Hoare_consequence
+Proof. intros; red; intros. apply safe_consequence with Q'; auto. Qed.
+triple_consequence
+Proof. intros; red; intros. apply Hoare_consequence with (P' ** R) (fun v => Q' v ** R). apply H. apply sepconj_imp_l; auto. intros; apply sepconj_imp_l; auto. Qed.
+Hoare_pick
+Proof. intros P n h Ph. constructor; auto. - constructor. - intros c' h' RED; inv RED. constructor. split; auto. Qed.
+triple_pick
+Proof. intros; intros R. rewrite sepconj_emp. eapply Hoare_consequence with (P' := R). apply Hoare_pick. red; auto. intros; red; intros. rewrite pureconj_sepconj. auto. Qed.
+triple_frame_consequence
+Proof. intros. apply triple_consequence with (P ** R) (fun v => Q v ** R); auto. apply triple_frame; auto. Qed.
+triple_ramification
+Proof. intros. eapply triple_frame_consequence with (R := aforall (fun v => Q v --* Q' v)). eassumption. assumption. intros v h (h1 & h2 & Q1 & W2 & D & U). apply (wand_cancel (Q v)). exists h1, h2; auto. Qed.
+wp_precond
+Proof. intros c Q h (P & T & C). apply T. auto. Qed.
+wp_weakest
+Proof. intros P c Q T h Ph. exists P; split; auto. Qed.
+wp_equiv
+Proof. intros; split; intros. - apply wp_weakest; auto. - apply triple_consequence_pre with (wp c Q); auto using wp_precond. Qed.
+wp'_precond
+Proof. intros c Q h SAFE. apply SAFE. Qed.
+wp'_weakest
+Proof. intros; intros h Ph. apply H. auto. Qed.
+wp_consequence
+Proof. intros. apply wp_weakest. apply triple_consequence_post with Q; auto using wp_precond. Qed.
+wp_frame
+Proof. intros. apply wp_weakest. apply triple_frame. apply wp_precond. Qed.
+wp_frame_consequence
+Proof. intros; red; intros. apply wp_consequence with (fun v => Q v ** R). assumption. apply wp_frame; auto. Qed.
+Ltac custom_tac3 H0 := intros; apply H0.
+
+Ltac custom_tac15 H0 H1 := exists H0, H1; auto.
+
+wp_ramification
+Proof. custom_tac3 wp_frame_consequence. intros v h ( h1 & h2 & A & B & D & U). apply ( wand_cancel ( Q v)). custom_tac15 h1 h2. Qed.
+wp_pure
+Proof. intros. apply wp_weakest. apply triple_pure. red; auto. Qed.
+wp_let
+Proof. intros. apply wp_weakest. eapply triple_let. apply wp_precond. intros. apply wp_precond. Qed.
+wp_ifthenelse
+Proof. intros. apply wp_weakest. apply triple_ifthenelse. - apply triple_consequence_pre with (wp c1 Q). apply wp_precond. intros h (A & B). rewrite <- Z.eqb_neq in A. rewrite A in B. auto. - apply triple_consequence_pre with (wp c2 Q). apply wp_precond. intros h (A & B). subst b. auto. Qed.
+wp_alloc
+Proof. intros; red; intros. apply wp_ramification with (Q := fun l => (l <> 0) //\\ valid_N l sz). apply sepconj_imp_l with emp. apply wp_weakest. apply triple_alloc. rewrite sepconj_emp. assumption. Qed.
+wp_get
+Proof. intros. assert (W: contains l v -->> wp (GET l) (fun v' => (v' = v) //\\ contains l v)). apply wp_weakest. apply triple_get. intros; red; intros. eapply wp_ramification. eapply sepconj_imp_l. eexact W. eapply sepconj_imp_r. 2: eexact H. intros h' H' v' h'' D (A & B). subst v'. apply H'; auto. Qed.
+wp_set
+Proof. intros. assert (W: valid l -->> wp (SET l v) (fun _ => contains l v)). apply wp_weakest. apply triple_set. intros; red; intros. eapply wp_ramification. eapply sepconj_imp_l. eexact W. eapply sepconj_imp_r. 2: eexact H. red; auto. Qed.
+wp_set'
+Proof. intros; red; intros. apply wp_set. eapply sepconj_imp_r. - instantiate (1 := contains l v --* Q). intros h' H' v'. auto. - eauto. Qed.
+wp_free
+Proof. intros. assert (W: valid l -->> wp (FREE l) (fun _ => emp)). apply wp_weakest. apply triple_free. intros; red; intros. eapply wp_ramification. eapply sepconj_imp_l. eexact W. eapply sepconj_imp_r. 2: eexact H. red; intros. intros v h' D E. rewrite E in *. rewrite hunion_comm, hunion_empty by HDISJ. apply H0. Qed.
+wp_free'
+Proof. intros; red; intros. apply wp_free. eapply sepconj_imp_r. - instantiate (1 := Q). intros h' H' v'. auto. - eauto. Qed.
+wp_pick
+Proof. intros. assert (W: emp -->> wp (PICK n) (fun i => pure (0 <= i < n))). apply wp_weakest. apply triple_pick. intros; red; intros. eapply wp_ramification. eapply sepconj_imp_l. eexact W. eapply sepconj_imp_r. 2: rewrite sepconj_emp; eexact H. red; auto. Qed.

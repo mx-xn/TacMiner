@@ -1,0 +1,9 @@
+Ltac custom_tac21 H0 := apply H0; auto.
+Ltac custom_tac7  := red; auto.
+Ltac custom_tac19 H0 := eapply H0; eauto.
+Ltac custom_tac4 H0 := exists H0; split.
+Ltac custom_tac51 H0 := intros; inv H0.
+Ltac custom_tac27 H0 H1 H2 H3 H4 := intros H0 H1 H2 H3 H4; dependent induction H4.
+Ltac custom_tac38 H0 H1 H2 H3 := intros H0 H1 H2; apply H3.
+Ltac custom_tac47 H0 := intros; apply H0.
+Ltac custom_tac53 H0 := unfold H0; congruence.

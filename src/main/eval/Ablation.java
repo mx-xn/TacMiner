@@ -1,25 +1,18 @@
 package main.eval;
 
-import main.Main;
 import main.config.BmConfig;
 import main.encode.CoqProof;
 import main.encode.Encoder;
 import main.enumeration.Abstraction;
 import main.enumeration.GraphEnumerator;
-import main.lib_assembler.LibAssembler;
 import main.proofgraph.ProofGraph;
-import main.sampler.Sampler;
-import trash.Engine;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static main.Main.getLibCandidatesEnumeration;
-import static main.config.Path.ablationPath;
 import static main.config.Path.compressionEvalPath;
-import static main.proofgraph.ProofGraphUtil.getSplitLemmasFromOneProof;
 import static main.decode.utils.writeTo;
 
 public class Ablation {

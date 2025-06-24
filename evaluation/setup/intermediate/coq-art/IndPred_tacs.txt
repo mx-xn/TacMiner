@@ -1,0 +1,129 @@
+benchmarks/coq-art/raw/IndPred.v
+-----
+benchmarks/coq-art/raw/IndPred_compr.v
+-----
+-----
+zero_cons_ord
+Proof. induction 1; auto with sorted_base arith. Qed.
+sorted1_inv
+Proof. inversion H; auto with sorted_base. Qed.
+sorted2_inv
+Proof. inversion H; auto with sorted_base. Qed.
+not_sorted_132
+Proof. intros H; generalize (sorted1_inv H); intro H0. generalize (sorted2_inv H0). lia. Qed.
+any_height_inj2
+Proof. intros n1 n2 t1 t2 H. injection H; intros H1 H2. dependent rewrite <- H1. trivial. Qed.
+any_height_inj2'
+Proof. intros n1 n2 t1 t2 H. change (match any_height n2 t2 with | any_height n t => JMeq t1 t end); now rewrite <- H. Qed.
+keep_length
+Proof. intros n v; induction v; simpl; auto. Qed.
+Vconseq
+Proof. intros a n m Heq; rewrite Heq. intros v w HJeq. rewrite HJeq; reflexivity. Qed.
+vect_to_list_and_back
+Proof. intros n v; induction v as [ | h n v IHv]. - reflexivity. - simpl; apply Vconseq. + now rewrite keep_length. + assumption. Qed.
+structured_intro_example1
+Proof. intros A B C [Ha [Hb Hc]]; assumption. Qed.
+structured_intro_example2
+Proof. intros A B [Ha | [Hb Hi]]. - assumption. - now apply Hi. Qed.
+sum_even
+Proof. (** False start intros n; elim n. auto. intros n' Hrec p Heven_Sn' Heven_p. Restart. *) intros n p Heven_n; induction Heven_n. - trivial. - intro H0; simpl; constructor; auto. Qed.
+lt_le
+Proof. intros n p H; induction H; repeat constructor; assumption. Qed.
+pfact3
+Proof. apply Pfact1 with (n := 3)(v := 2). discriminate. apply (Pfact1 2 1). discriminate. apply (Pfact1 1 1). discriminate. apply Pfact0. Qed.
+fact_def_pos
+Proof. intros x y H; induction H. - auto with zarith. - lia. Qed.
+Zle_Pfact
+Proof. intros x; induction x using (well_founded_ind (Zwf_well_founded 0)). intros Hle; destruct (Zle_lt_or_eq _ _ Hle). - destruct (H (x-1)). + unfold Zwf; lia. + lia. + exists (x*x0); apply Pfact1; auto with zarith. - subst x; exists 1; constructor. Qed.
+HoareWhileRule
+Proof. intros P b i s s' H. cut (forall i':inst, exec s i' s' -> i' = WhileDo b i -> P s -> P s' /\ evalB s' b = Some false); eauto. intros i' Hexec; elim Hexec; try (intros; discriminate). intros s0 i0 e Heval Heq; injection Heq; intros H1 H2. rewrite <- H2; auto. intros. injection H5. intros H' H''. subst i0 b; eauto. Qed.
+sqr_01
+Proof. induction 1; simpl; auto. Qed.
+elim_example
+Proof. intros n H. destruct (sqr_01 n); auto. inversion_clear H; auto. inversion_clear H0; auto. Qed.
+not_even_1
+Proof. unfold not; intros H. inversion H. Qed.
+plus_2_even_inv
+Proof. intros n H; inversion H; assumption. Qed.
+not_even_1'
+Proof. intro H. generalize (refl_equal 1). pattern 1 at -2. induction H. - discriminate. - discriminate. Qed.
+plus_2_even_inv'
+Proof. intros n H. generalize (refl_equal (S (S n))). pattern (S (S n)) at -2. induction H. - discriminate. - intros H0; injection H0; intro; now subst n0. Qed.
+isorted0
+Proof. red; intros; assumption. Qed.
+isorted1
+Proof. unfold impredicative_sorted; auto. Qed.
+isorted2
+Proof. intros x1 x2 l' Hr Hs P Hsn Hs1 Hs2. apply Hs2; auto. apply Hs; auto. Qed.
+sorted_to_impredicative_sorted
+Proof. induction 1; auto. Qed.
+impredicative_sorted_to_sorted
+Proof. intros l H; apply H; auto. Qed.
+wp_oc
+Proof. change (wp (open :: nil ++ close :: nil)) in |- *. apply wp_encapsulate. apply wp_nil. Qed.
+wp_o_head_c
+Proof. intros l1 l2 H1 H2. replace (open :: l1 ++ close :: l2) with ((open :: l1 ++ close :: nil) ++ l2). - apply wp_concat. apply wp_encapsulate; trivial. trivial. - repeat (simpl in |- *; rewrite <- app_assoc); simpl in |- *. trivial. Qed.
+Ltac custom_tac6 H0 := apply H0; trivial.
+
+wp_o_tail_c
+Proof. intros l1 l2 H1 H2; custom_tac6 wp_concat. - now apply wp_encapsulate. Qed.
+bin_to_string_wp
+Proof. simple induction t. - simpl ; apply wp_nil. - simpl ; intros t1 H1 t2 H2; apply wp_o_head_c; trivial. Qed.
+bin_to_string'_wp
+Proof. simple induction t; simpl ; auto. Qed.
+parse_rel_sound_aux
+Proof. intros l1 l2 t H; elim H; clear H l1 l2 t. - intros l1 l2 l3 t1 t2 Hp Hr1 Hp2 Hr2; simpl. rewrite <- app_assoc, Hr1; simpl. now rewrite Hr2. - reflexivity. - reflexivity. Qed.
+parse_rel_sound
+Proof. intros l [t H]; replace l with (bin_to_string t). - apply bin_to_string_wp. - symmetry; replace (bin_to_string t) with (bin_to_string t ++ nil). + apply parse_rel_sound_aux; auto. + rewrite app_nil_r; auto. Qed.
+wp'_concat
+Proof. intros l1 l2 H; generalize l2; clear l2. elim H. - simpl; auto. - intros l1' l2' Hb1' Hr1 Hb2' Hr2 l2 Hb2; simpl; rewrite <- app_assoc. simpl; apply wp'_cons; auto. Qed.
+wp'_encapsulate
+Proof. intros l H; elim H; auto. Qed.
+wp_imp_wp'
+Proof. intros l H; elim H. - apply wp'_nil. - intros; apply wp'_concat; trivial. - intros; apply wp'_encapsulate; trivial. Qed.
+wp'_imp_wp
+Proof. intros l H; elim H; auto. Qed.
+wp''_concat
+Proof. intros l1 l2 H1 H2; generalize l1 H1; clear H1 l1; elim H2. - intros; rewrite app_nil_r; trivial. - intros; rewrite app_assoc; auto. Qed.
+wp''_encapsulate
+Proof. intros l H; change (wp'' (nil ++ open :: l ++ close :: nil)); auto. Qed.
+wp_imp_wp''
+Proof. simple induction 1; auto. Qed.
+wp''_imp_wp
+Proof. simple induction 1; auto. Qed.
+recognize_complete_aux
+Proof. intros l H; elim H. - simpl; auto. - intros l1 l2 H1 Hrec1 H2 Hrec2 n l'. rewrite <- app_assoc; transitivity (recognize n (l2 ++ l')); auto. - intros l1 H1 Hrec n l'; simpl ; rewrite <- app_assoc; rewrite Hrec; simpl ; auto. Qed.
+recognize_complete
+Proof. intros l H; rewrite <- (app_nil_r l), recognize_complete_aux; auto. Qed.
+app_decompose
+Proof. simple induction l1. - intros l2 l3; case l3. + intros l4 H; left; exists (nil (A:=A)); auto. + intros a l3' Heq; right; exists a; exists l3'; auto. - clear l1; intros a l1 Hrec l2 l3; case l3. + intros l4 H; left; exists (a :: l1); auto. + simpl ; intros a' l3' l4 Heq; injection Heq; intros Heq' Heq''. elim Hrec with (1 := Heq'). intros [l1' [Heq3 Heq4]]; left; exists l1'; split; auto. rewrite Heq''; rewrite Heq3; auto. intros [a'' [l2' [Heq3 Heq4]]]; right; exists a'', l2'; split; auto. rewrite Heq''; rewrite Heq3; auto. Qed.
+length_app
+Proof. simple induction l1; simpl in |- *; auto. Qed.
+length_rev
+Proof. simple induction l; auto. - intros a l' H; simpl in |- *. rewrite length_app. simpl in |- *; rewrite <- plus_n_Sm; rewrite H; auto with arith. Qed.
+cons_to_app_end
+Proof. intros A l a. rewrite <- (rev_involutive (a :: l)). assert (H : 0 < length (rev (a :: l))) by (rewrite <- length_rev; simpl; auto with arith). destruct (rev (a :: l)) as [ | a0 l0]. - simpl ; elim (Nat.nlt_0_r 0); auto. - exists a0, (rev l0); simpl ; auto. Qed.
+last_same
+Proof. intros A a b l1 l2 H. assert (e: a :: rev l1 = b :: rev l2). - repeat rewrite <- rev_unit; now rewrite H. - injection e; intros H1 H2; split; auto. rewrite <- (rev_involutive l1), H1; apply rev_involutive. Qed.
+wp_remove_oc_aux
+Proof. intros l H; elim H. - intros l1 l2 H1; elim (app_eq_nil _ _ H1); auto. simpl in |- *; intros Heq1 Heq2; rewrite Heq1; rewrite Heq2; apply wp_oc. - intros l1 l2 Hp1 Hr1 Hp2 Hr2 l3 l4 Heq. elim app_decompose with (1 := Heq). intros [l1' [Heq1 Heq2]]; rewrite Heq1, <- app_assoc; apply wp_concat; auto. intros [a' [l2' [Heq1 Heq2]]]. rewrite Heq2. repeat rewrite app_comm_cons. rewrite app_assoc. apply wp_concat; auto. - idtac. intros l' Hp'' Hrec l1; case l1. simpl ; intros l2 Heq; rewrite Heq. change (wp (open :: nil ++ close :: open :: l' ++ close :: nil)); auto. simpl; intros c l1' l2; case l2. + intros Heq; injection Heq; intros Heq1 Heq2. rewrite app_nil_r in Heq1; rewrite Heq1; rewrite Heq2. rewrite app_comm_cons. apply wp_concat; auto. + intros c' l2'; elim (cons_to_app_end l2' c'). intros c'' [l2'' Heq]; rewrite Heq. rewrite app_assoc; intros Heq1. injection Heq1; intros Heq2 Heq3; elim last_same with (1 := Heq2). intros Heq4 Heq5; rewrite Heq5; rewrite Heq3. change (wp (open :: l1' ++ (open :: close :: l2'') ++ close :: nil)) . rewrite app_assoc; auto. Qed.
+wp_remove_oc
+Proof. intros; apply wp_remove_oc_aux with (l := l1 ++ l2); auto. Qed.
+make_list_end
+Proof. simple induction n; simpl. - trivial. - intros n' H l; rewrite H; trivial. Qed.
+recognize_sound_aux
+Proof. simple induction l; simpl. - intros n; case n. simpl ; intros; apply wp_nil. intros n' H; discriminate H. - intros a; case a; simpl ; clear a. + intros l' H n H0. rewrite <- make_list_end; auto. + intros l' H n; case n; clear n. intros H'; discriminate H'. intros n H0; rewrite make_list_end; apply wp_remove_oc;auto. Qed.
+recognize_sound
+Proof. intros l H; generalize (recognize_sound_aux _ _ H); simpl; auto. Qed.
+parse_reject_indep_t
+Proof. simple induction l. - intros s; case s. + simpl; intros t H; discriminate H. + intros t0 s0 t H s'; case s'. * simpl; intros t' Hle; discriminate Hle. * simpl; auto. - intros a; case a; simpl; clear a; intros l' Hrec s. + intros t H s' t' Hle. apply Hrec with (1 := H). simpl; auto with arith. + case s. * intros t H s'; case s'; simpl; auto. intros t0 s0 t' Hle; discriminate Hle. * intros t0 s0 t H s'; case s'; simpl. intros t' H0; discriminate H0. intros t'0 s'0 t' Hle; apply Hrec with (1 := H). simpl in Hle; auto with arith. Qed.
+parse_complete_aux
+Proof. simple induction 1. - simpl; intros; eapply parse_reject_indep_t; eauto. - intros l1 l2 Hp1 Hr1 Hp2 Hr2 s t l' Hrej s' t' Hle. apply Hr2 with (s := s') (t := N t L). change (parse (t :: s') L (close :: l2 ++ l') = None) in |- *. simpl in Hrej. rewrite <- app_assoc in Hrej. apply Hr1 with (1 := Hrej). simpl; auto with arith. auto. Qed.
+parse_complete
+Proof. intros l H; replace l with (l ++ nil). red in |- *; intros H'. assert (e : parse nil L nil = None). - apply parse_complete_aux with (2 := H'); auto. apply wp_imp_wp'; auto. - discriminate. - rewrite <- app_nil_r; auto. Qed.
+parse_invert_aux
+Proof. simple induction l. - intros s; case s. + simpl. intros t t' H; injection H; intros Heq. rewrite Heq. now rewrite app_nil_r. + simpl ; intros t0 s0 t t' H; discriminate H. - intros a; case a; simpl; clear a; intros l' Hrec s. + intros t t' H; rewrite Hrec with (1 := H). simpl; repeat (rewrite <- app_assoc; simpl); auto. + case s. * intros t t' H; discriminate H. * intros t0 s0 t t' Hp; rewrite Hrec with (1 := Hp); simpl; repeat (rewrite <- app_assoc; simpl); auto. Qed.
+parse_invert
+Proof. intros; replace l with (unparse_stack nil ++ bin_to_string' L ++ l); auto. apply parse_invert_aux; auto. Qed.
+parse_sound
+Proof. intros l t H; rewrite <- parse_invert with (1 := H). apply bin_to_string'_wp. Qed.

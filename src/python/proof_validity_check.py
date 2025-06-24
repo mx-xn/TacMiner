@@ -114,6 +114,7 @@ class CoqCustomFileExec:
                 raise
 
 if __name__ == "__main__":
+    print("running proof validity check script...")
     parser = argparse.ArgumentParser(description="Run the script with specific filename")
 
     # Add arguments for bench_repo and filename
@@ -133,7 +134,8 @@ if __name__ == "__main__":
     # bench_repo = "atpl"
     # bench_repo = "CompCert"
     # filename = "CSL1"
-    with open("src/resources/compression-eval/baseline-input/"+bench_repo+"/"+filename+"_tacs.txt", 'r') as fd:
+    with open("evaluation/setup/intermediate/"+bench_repo+"/"+filename+"_tacs.txt", 'r') as fd:
+    # with open("src/resources/compression-eval/baseline-input/"+bench_repo+"/"+filename+"_tacs.txt", 'r') as fd:
         file_content = fd.read().split("-----")
 
     # Parsing
@@ -166,13 +168,13 @@ if __name__ == "__main__":
                 relevant_tacs = []
             new_pdict[name] = proof_dict[name]
 
-    if in_file.startswith("CompCert/"):
+    if "comp-cert" in in_file:
         project_root = "CompCert/"
-    elif in_file.startswith("cdf/"):
+    elif "program-logics" in in_file:
         project_root = "cdf/"
-    elif in_file.startswith("bignums/"):
+    elif "bignums" in in_file:
         project_root = "bignums/"
-    elif in_file.startswith("coq-art/"):
+    elif "coq-art" in in_file:
         project_root = "coq-art/"
     else:
         project_root = None
@@ -181,7 +183,8 @@ if __name__ == "__main__":
         with open(out_file, 'w') as fd:
             # coq_exec.run_in_loop(fd, tactics, proof_dict)
             coq_exec.run_in_loop(fd, tactics, new_pdict, tac_dict)
-        with open("src/resources/compression-eval/baseline-input/"+bench_repo+"/"+filename+"_tacs_verified.txt", 'w') as fd:
+        # with open("src/resources/compression-eval/baseline-input/"+bench_repo+"/"+filename+"_tacs_verified.txt", 'w') as fd:
+        with open("evaluation/setup/intermediate/"+bench_repo+"/"+filename+"_tacs_verified.txt", 'w') as fd:
             fd.write("F" if coq_exec.failed_proofs else "T")
         # with open("src/resources/maxsat/tacticList_verified.txt", 'w') as fd:
         #     fd.write("F" if coq_exec.failed_proofs else "T")

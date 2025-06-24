@@ -1,0 +1,5 @@
+Ltac custom_tac8 H0 := apply H0; auto.
+Ltac custom_tac0  := simpl; auto.
+Ltac custom_tac2 H0 H1 := intros H0 H1; elim H1.
+Ltac custom_tac3 H0 H1 H2 := injection H0; intros H1 H2.
+Ltac custom_tac6 H0 := apply H0; trivial.

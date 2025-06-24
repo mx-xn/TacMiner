@@ -1,0 +1,14 @@
+Ltac custom_tac14 H0 := apply H0; auto.
+Ltac custom_tac54 H0 H1 := apply H0; apply H1.
+Ltac custom_tac64  := red; auto.
+Ltac custom_tac40  := split; auto.
+Ltac custom_tac26  := intros; red; intros.
+Ltac custom_tac3 H0 := intros; inv H0.
+Ltac custom_tac62 H0 H1 := rewrite H0; apply H1.
+Ltac custom_tac67 H0 H1 H2 := intros; intros H0 H1 H2.
+Ltac custom_tac10 H0 H1 := exists H0, H1; auto.
+Ltac custom_tac1 H0 := destruct H0 as [ |]; constructor; auto.
+Ltac custom_tac5 H0 H1 := inv H0; inv H1.
+Ltac custom_tac12 H0 := intros H0; inv H0.
+Ltac custom_tac32 H0 := intros; apply H0.
+Ltac custom_tac39 H0 := subst H0; auto.

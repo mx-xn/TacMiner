@@ -1,0 +1,14 @@
+Ltac custom0 H0 H1 H2 H3 :=  apply ( H0 H1 ); [apply H2 with H3; [auto | .. ] | .. ].
+Ltac custom1 H0 H1 :=  split; [intros H0 | intros H1 | .. ].
+Ltac custom2 H0 H1 H2 H10 H11 :=  apply H0 in H1; [destruct H2; [apply H11 | apply H10 | .. ] | .. ].
+Ltac custom3 H0 :=  apply H0; [assumption | .. ].
+Ltac custom4 H0 :=  unfold H0; [auto | .. ].
+Ltac custom5 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].
+Ltac custom6 H0 :=  apply H0; [auto | .. ].
+Ltac custom7 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom8 H0 H1 :=  rewrite H0 in H1; [auto].
+Ltac custom9  :=  red; [auto | .. ].
+Ltac custom10 H0 :=  apply H0; [custom9  | .. ].
+Ltac custom11 H0 H1 H2 H3 H4 :=  custom3 H0; [custom0 H1 H2 H3 H4 | .. ].
+Ltac custom12 H0 H3 H4 :=  destruct H0; [intros H3 H4 | auto | .. ].
+Ltac custom13 H0 H1 :=  intros H0 H1; [destruct H0; [ | .. ] | .. ].

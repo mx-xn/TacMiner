@@ -1,0 +1,13 @@
+Ltac custom_tac36 H0 := apply H0; auto with zarith.
+Ltac custom_tac9 H0 H1 := rewrite H0; apply H1.
+Ltac custom_tac2 H0 H1 := intros H0; rewrite H1.
+Ltac custom_tac15 H0 H1 := unfold H0; rewrite H1.
+Ltac custom_tac19 H0 := rewrite H0; auto.
+Ltac custom_tac31 H0 := rewrite H0; auto with zarith.
+Ltac custom_tac13 H0 H1 H2 := unfold H0, H1; rewrite H2.
+Ltac custom_tac5 H0 := rewrite H0; simpl.
+Ltac custom_tac20 H0 := symmetry; apply H0.
+Ltac custom_tac28 H0 := case Z.compare_spec; intros H0.
+Ltac custom_tac51 H0 H1 := apply H0; rewrite H1.
+Ltac custom_tac7 H0 H1 H2 := intros H0 H1; rewrite H2.
+Ltac custom_tac53 H0 H1 := apply H0; unfold H1.

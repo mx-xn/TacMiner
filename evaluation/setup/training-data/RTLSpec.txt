@@ -1,0 +1,17 @@
+transl_stmt_charact
+transl_expr_charact
+tr_expr_incr
+tr_stmt_incr
+transl_function_charact
+transl_jumptable_charact
+add_vars_valid
+alloc_reg_target_ok
+add_var_valid
+convert_builtin_res_charact
+alloc_reg_fresh_or_in_map
+target_reg_ok_append
+tr_exitexpr_incr
+bind_inversion
+add_vars_letenv
+alloc_optreg_map_ok
+alloc_reg_valid

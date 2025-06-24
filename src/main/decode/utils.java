@@ -324,6 +324,15 @@ public class utils {
         writer.close();
     }
 
+    public static void writeTo(String output, String fileName, boolean clear)
+        throws IOException {
+        File file = new File(fileName);
+        file.getParentFile().mkdirs(); // Create parent directories if they don't exist
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file, !clear));
+        writer.write(output);
+        writer.close();
+    }
+
     public static List<String> tacticsToLtacScript(List<CoqTactic> ltac, String ltacName) {
         // TODO: this doesn't quite work yet b/c it doesn't take goal scopes into account.
         // TODO: track fresh argument

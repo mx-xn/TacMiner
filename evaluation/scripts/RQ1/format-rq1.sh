@@ -1,0 +1,1 @@
+python ./evaluation/scripts/RQ1/format-rq1.py > ./evaluation/results/RQ1-tactics-stats/summary.txt

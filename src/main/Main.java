@@ -32,7 +32,7 @@ public class Main {
         if (args.length == 0)
             // args = new String[] {"1200", "coq-art" , "IndPred", "100"};
             // mode, domain, topic, timeout-in-seconds
-            args = new String[] {"0", "coq-art" , "IndPred", "1200", "100"};
+            args = new String[] {"1", "program-logics" , "CSL", "1200", "65"};
         if (args.length < 5) {
             System.out.println("Not enough arguments were provided.");
             throw new IllegalArgumentException("need " + (4 - args.length) + " parameters!");
@@ -44,13 +44,10 @@ public class Main {
         int timeoutInSec = Integer.parseInt(args[3]);
         int trainPortion = Integer.parseInt(args[4]);
 
-        String randSample = "False";
-        boolean fixedTestData = mode == 4;
-
-        int rounds = fixedTestData ? 5 : 1;
+        int rounds = (mode == 4) ? 5 : 1;
         for (int i = 0; i < rounds; i++) {
             numRound = i;
-            List<BmConfig> configs = BmConfig.getBmConfig(timeoutInSec, mode, domain, topic, trainPortion, randSample);
+            List<BmConfig> configs = BmConfig.getBmConfig(timeoutInSec, mode, domain, topic, trainPortion);
             for (BmConfig config: configs) {
                 List<CoqProof> proofs = Encoder.inputCoqScripts(config.getJsonFilename());
 
@@ -82,7 +79,7 @@ public class Main {
                         proofsCopy.addAll(testingProofs);
                         runOnce(config, proofsCopy);
                     }
-                    continue;
+                    // continue;
                 } else {
                     sampleTrainingData(config, proofs);
                     switch (config.mode) {
@@ -106,66 +103,52 @@ public class Main {
 
     public static void runOnce(BmConfig selected, List<CoqProof> proofs) throws Exception {
         LibAssembler.Library lib = run(selected, proofs);
-        String workingDirectory = Paths.get("").toAbsolutePath().toString();
-        System.out.println("Current Working Directory: " + workingDirectory);
-        if (selected.mode != BmConfig.Mode.ENUMERATION_SPLIT) {
-            writeTo(lib.printDiagnostics(),
-                    evalPath + RQ2 + selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".txt");
-                    // compressionEvalPath + selected.domain +
-                    //         "-compressed/" + selected.topic +
-                    //         "/" + selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".txt");
-        }
-
-        String expOutputLocation;
         if (selected.mode == BmConfig.Mode.ENUMERATION) {
-            expOutputLocation = evalPath + RQ2 + "csv/" +
-                    selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".csv";
-            // compressionEvalPath + selected.domain +
-            //         "-compressed/" + selected.topic +
-            //         "/csv/" + selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".csv";
-            System.out.println("writing to " + expOutputLocation);
-            writeTo(lib.printDiagnostics(selected, true), expOutputLocation);
+            if (!selected.training) {
+                // if no training, running exp RQ1
+                String tacsOutputLocation = evalPath + RQ1 + "tacminer/tactics/" + selected.topic + ".txt";
+                writeTo(lib.printTactics(), tacsOutputLocation);
+
+                String statsOutputLocation = evalPath + RQ1 + "tacminer/" + selected.topic + ".csv";
+                writeTo(lib.printTacticsStats(), statsOutputLocation);
+            } else {
+                // else, running exp RQ2
+                String tacsOutputLocation = evalPath + RQ2 + "tacminer/tactics/" + selected.topic + ".txt";
+                writeTo(lib.printTactics(), tacsOutputLocation);
+
+                String cpOutputLocation = evalPath + RQ2 + "tacminer/" + selected.topic + ".csv";
+                writeTo(lib.printCompressionRate(), cpOutputLocation);
+            }
         }
 
         if (selected.mode == BmConfig.Mode.ENUMERATION_SPLIT) {
-            writeTo(lib.printDiagnostics(),
-                    main.config.Path.evalPath + RQ4 + selected.domain +
-                            "-compressed/" + selected.topic + 
-                            "/round" + numRound + "/" + selected.topic + "-" + String.format("%.2f", selected.stopThresh) + ".txt");
-
-            expOutputLocation = compressionEvalPath + selected.domain +
-                    "-compressed/" + selected.topic +
-                     "/" + selected.topic + "_" + numRound + ".csv";
-            File csvFile = new File(expOutputLocation);
-            // Check if the file exists; if not, create an empty file
-            if (!csvFile.exists()) {
-                csvFile.getParentFile().mkdirs(); // Create directories if they don't exist
-                csvFile.createNewFile(); // Create the empty file
+            StringBuilder sb = new StringBuilder();
+            boolean clear = false;
+            if (selected.stopThresh == 0.2) {
+                // if at the lowest training portion, we denote the number of round currently in
+                if (numRound == 0) {
+                    // if at the first round, we add the header
+                    List<String> header = Arrays.asList("0.20", "0.25", "0.30", "0.35", "0.40",
+                            "0.45", "0.50", "0.55", "0.60", "0.65", "0.70",
+                            "0.75", "0.80", "0.85", "0.90", "0.95", "1.00");
+                    sb.append("ComprRate-per-TrainPortion, ").append(String.join(", ", header)).append("\n");
+                    clear = true;
+                }
+                sb.append("CR_round" + (numRound + 1) + ", ");
             }
-
-            List<String> csvLines = Files.readAllLines(Paths.get(expOutputLocation));
-            if (csvLines.isEmpty()) {
-                csvLines.add("\n");
-                csvLines.add("\n");
-                csvLines.add("\n");
+            sb.append(String.format("%.2f", (double) (lib.getCorpusSize() - lib.getTrainingSize()) / lib.getTestingCompressedSize()));
+            if (selected.stopThresh == 1) {
+                // if at the highest training portion, we add a new line
+                sb.append("\n");
+            } else {
+                sb.append(", ");
             }
-            String[] newValues = lib.printDiagnostics(selected, false).split("\n");
-
-            // Create a new list to hold the updated CSV lines
-            List<String> updatedCsvLines = new ArrayList<>();
-            for (int i = 0; i < csvLines.size(); i++) {
-                String line = csvLines.get(i);
-                line = line.trim() + ", " + newValues[i].trim(); // Append new value
-                updatedCsvLines.add(line); // Add updated line to list
-            }
-
-            // Write the updated lines back to the CSV file
-            writeTo(String.join("\n", updatedCsvLines), expOutputLocation);
+            writeTo(sb.toString(), evalPath + RQ4 + selected.topic + ".csv", clear);
         }
-        System.out.println(lib.printDiagnostics());
     }
 
     public static LibAssembler.Library run(BmConfig config, List<CoqProof> proofs) throws IOException {
+        System.out.println("Extracting tactics using tacminer for Topic: " + config.topic);
         // Part 1: Candidate Tactic Extraction
         List<Integer> trainingProofs = Encoder.getTrainingProofIndices(config, proofs);
 
@@ -206,6 +189,7 @@ public class Main {
         LibAssembler.Library library = null;
         // todo: we find the tactics to ignore in here
 
+        System.out.println("assembling library ... ");
         library = LibAssembler.assembleLibraryForEnumerateGreedy(proofs, compressedProofs, candidateTactics, assmType, trainingProofs);
 
         int a = 0;
@@ -214,7 +198,7 @@ public class Main {
                 // if (proof.lemma_name.equals("Hoare_safe"))
                 try {
                     String script = CompressionEval.graphToScript(proof);
-                    System.out.println(script);
+                    // System.out.println(script);
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -222,6 +206,8 @@ public class Main {
 //            a++;
 //        }
 
+
+        System.out.println("finished assembling tactic-library for: " + config.topic); 
         return library;
     }
 

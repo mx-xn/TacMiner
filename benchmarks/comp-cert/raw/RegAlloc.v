@@ -410,12 +410,12 @@ Module OrderedEquation <: OrderedType.
   Lemma eq_sym : forall x y : t, eq x y -> eq y x.
   Proof. unfold eq. auto. Qed.
   Lemma eq_trans : forall x y z : t, eq x y -> eq y z -> eq x z.
-  Proof. unfold eq. intros. rewrite H. exact H0. Qed.
+  Proof. intros. unfold eq. rewrite H. exact H0. Qed.
   Lemma lt_trans : forall x y z : t, lt x y -> lt y z -> lt x z.
   Proof.
     unfold lt; intros.
     destruct H.
-    destruct H0. left; eapply Plt_trans; eauto. 
+    destruct H0. left; eapply Plt_trans; eauto.
     destruct H0. rewrite <- H0. auto.
     destruct H. rewrite H.
     destruct H0. auto.
@@ -426,9 +426,11 @@ Module OrderedEquation <: OrderedType.
     left; congruence.
     right; split. congruence. eapply OrderedEqKind.lt_trans; eauto.
   Qed.
+
+
   Lemma lt_not_eq : forall x y : t, lt x y -> ~ eq x y.
   Proof.
-    unfold lt, eq; intros; red; intros. subst y. intuition.
+    unfold lt; unfold eq; red; intros. subst y. intuition.
     eelim Plt_strict; eauto.
     eelim OrderedLoc.lt_not_eq; eauto. red; auto.
     eelim OrderedEqKind.lt_not_eq; eauto. red; auto.
@@ -473,24 +475,7 @@ Module OrderedEquation' <: OrderedType.
   Proof. unfold eq. auto. Qed.
   Lemma eq_trans : forall x y z : t, eq x y -> eq y z -> eq x z.
   Proof. unfold eq. intros. rewrite H. auto. Qed.
-  Lemma eq_trans2 : forall x y z : t, eq x y -> eq y z -> eq x z.
-  Proof. unfold eq. intros. rewrite H. auto. Qed.
   Lemma lt_trans : forall x y z : t, lt x y -> lt y z -> lt x z.
-  Proof.
-    unfold lt; intros.
-    destruct H.
-    destruct H0. left; eapply OrderedLoc.lt_trans; eauto.
-    destruct H0. rewrite <- H0. auto.
-    destruct H. rewrite H.
-    destruct H0. auto.
-    destruct H0. right; split; auto.
-    intuition.
-    left; eapply Plt_trans; eauto.
-    left; congruence.
-    left; congruence.
-    right; split. congruence. eapply OrderedEqKind.lt_trans; eauto.
-  Qed.
-  Lemma lt_trans2 : forall x y z : t, lt x y -> lt y z -> lt x z.
   Proof.
     unfold lt; intros.
     destruct H.
@@ -512,13 +497,6 @@ Module OrderedEquation' <: OrderedType.
     eelim Plt_strict; eauto.
     eelim OrderedEqKind.lt_not_eq; eauto. red; auto.
   Qed.
-  Lemma lt_not_eq2 : forall x y : t, lt x y -> ~ eq x y.
-  Proof.
-    unfold lt, eq; intros; red; intros. subst y. intuition.
-    eelim OrderedLoc.lt_not_eq; eauto. red; auto.
-    eelim Plt_strict; eauto.
-    eelim OrderedEqKind.lt_not_eq; eauto. red; auto.
-  Qed.
   Definition compare : forall x y : t, Compare lt eq x y.
   Proof.
     intros.
@@ -530,21 +508,6 @@ Module OrderedEquation' <: OrderedType.
       * apply LT. red; auto.
       * apply EQ. red in e; red in e0; red in e1; red.
         destruct x; destruct y; simpl in *; congruence.
-      * apply GT. red; auto.
-   + apply GT. red; auto.
-  - apply GT. red; auto.
-  Defined.
-  Definition compare2 : forall x y : t, Compare lt eq x y.
-  Proof.
-    intros.
-    destruct (OrderedLoc.compare (eloc x) (eloc y)).
-  - apply LT. red; auto.
-  - destruct (OrderedPositive.compare (ereg x) (ereg y)).
-    + apply LT. red; auto.
-    + destruct (OrderedEqKind.compare (ekind x) (ekind y)).
-      * apply LT. red; auto.
-      * apply EQ. red in e; red in e0; red in e1; red.
-        destruct x as [???]; destruct y as [???]; simpl in *; congruence.
       * apply GT. red; auto.
    + apply GT. red; auto.
   - apply GT. red; auto.
@@ -584,30 +547,28 @@ Qed.
 
 (** Adding or removing an equation from a set. *)
 
-Ltac custom15  := split; intros.
-Ltac custom16 H0 := apply H0; auto.
 Program Definition add_equation (q: equation) (e: eqs) :=
   mkeqs (EqSet.add q (eqs1 e)) (EqSet2.add q (eqs2 e)) _.
 Next Obligation.
   split; intros.
   destruct (OrderedEquation'.eq_dec q q0).
-  apply EqSet.add_1; auto.
+  apply EqSet.add_1. assumption. 
   apply EqSet.add_2. apply (eqs_same e). apply EqSet2.add_3 with q; auto.
   destruct (OrderedEquation.eq_dec q q0).
-  apply EqSet2.add_1; auto.
+  apply EqSet2.add_1. assumption. 
   apply EqSet2.add_2. apply (eqs_same e). apply EqSet.add_3 with q; auto.
 Qed.
 
 Lemma add_equation_dup (q : equation) (e : eqs) q0 :
 EqSet2.In q0 (EqSet2.add q (eqs2 e)) <-> EqSet.In q0 (EqSet.add q e).
 Proof.
-split; intros.
-destruct (OrderedEquation'.eq_dec q q0).
-apply EqSet.add_1; auto.
-apply EqSet.add_2. apply (eqs_same e). apply EqSet2.add_3 with q; auto.
-destruct (OrderedEquation.eq_dec q q0).
-apply EqSet2.add_1; auto.
-apply EqSet2.add_2. apply (eqs_same e). apply EqSet.add_3 with q; auto.
+  split; intros.
+  destruct (OrderedEquation'.eq_dec q q0).
+  apply EqSet.add_1. assumption. 
+  apply EqSet.add_2. apply (eqs_same e). apply EqSet2.add_3 with q; auto.
+  destruct (OrderedEquation.eq_dec q q0).
+  apply EqSet2.add_1. assumption. 
+  apply EqSet2.add_2. apply (eqs_same e). apply EqSet.add_3 with q; auto.
 Qed.
 
 Program Definition remove_equation (q: equation) (e: eqs) :=
@@ -616,10 +577,10 @@ Next Obligation.
   split; intros.
   destruct (OrderedEquation'.eq_dec q q0).
   eelim EqSet2.remove_1; eauto.
-  apply EqSet.remove_2; auto. apply (eqs_same e). apply EqSet2.remove_3 with q; auto.
+  apply EqSet.remove_2. assumption. apply (eqs_same e). apply EqSet2.remove_3 with q; auto.
   destruct (OrderedEquation.eq_dec q q0).
   eelim EqSet.remove_1; eauto.
-  apply EqSet2.remove_2; auto. apply (eqs_same e). apply EqSet.remove_3 with q; auto.
+  apply EqSet2.remove_2. assumption. apply (eqs_same e). apply EqSet.remove_3 with q; auto.
 Qed.
 
 Lemma remove_equation_dup (q : equation) (e : eqs) q0 :
@@ -629,10 +590,10 @@ Proof.
 split; intros.
 destruct (OrderedEquation'.eq_dec q q0).
 eelim EqSet2.remove_1; eauto.
-apply EqSet.remove_2; auto. apply (eqs_same e). apply EqSet2.remove_3 with q; auto.
+apply EqSet.remove_2. assumption. apply (eqs_same e). apply EqSet2.remove_3 with q; auto.
 destruct (OrderedEquation.eq_dec q q0).
 eelim EqSet.remove_1; eauto.
-apply EqSet2.remove_2; auto. apply (eqs_same e). apply EqSet.remove_3 with q; auto.
+apply EqSet2.remove_2. assumption. apply (eqs_same e). apply EqSet.remove_3 with q; auto.
 Qed.
 
 (** [reg_unconstrained r e] is true if [e] contains no equations involving
@@ -1232,30 +1193,13 @@ Module LEq <: SEMILATTICE.
     intros; destruct x; simpl; auto. red; tauto.
   Qed.
 
-  Lemma eq_refl2: forall x, eq x x.
-  Proof.
-    intros; destruct x; simpl; auto. red; tauto.
-  Qed.
-
   Lemma eq_sym: forall x y, eq x y -> eq y x.
   Proof.
     unfold eq; intros; destruct x as [e|e]; destruct y as [e0|e0]; auto.
     red in H; red; intros. rewrite H; tauto.
   Qed.
 
-  Lemma eq_sym2: forall x y, eq x y -> eq y x.
-  Proof.
-    unfold eq; intros; destruct x as [e|e]; destruct y as [e0|e0]; auto.
-    red in H; red; intros. rewrite H; tauto.
-  Qed.
-
   Lemma eq_trans: forall x y z, eq x y -> eq y z -> eq x z.
-  Proof.
-    unfold eq; intros. destruct x as [e|e]; destruct y as [e0|e0]; try contradiction; destruct z as [e1|e1]; auto.
-    red in H; red in H0; red; intros. rewrite H. auto.
-  Qed.
-
-  Lemma eq_trans3: forall x y z, eq x y -> eq y z -> eq x z.
   Proof.
     unfold eq; intros. destruct x as [e|e]; destruct y as [e0|e0]; try contradiction; destruct z as [e1|e1]; auto.
     red in H; red in H0; red; intros. rewrite H. auto.
@@ -1285,14 +1229,13 @@ Module LEq <: SEMILATTICE.
     end.
 
   Lemma ge_refl: forall x y, eq x y -> ge x y.
-  Proof. 
-    unfold eq. unfold ge. unfold EqSet.Equal. unfold EqSet.Subset. intros.  
-    destruct x; destruct y; auto. intros; rewrite H; auto. 
+  Proof.
+    unfold eq, ge, EqSet.Equal, EqSet.Subset; intros.
+    destruct x as [e|e]; destruct y as [e0|e0]; auto. intros; rewrite H; auto.
   Qed.
-
   Lemma ge_trans: forall x y z, ge x y -> ge y z -> ge x z.
   Proof.
-    unfold ge. unfold EqSet.Subset; intros.
+    unfold ge, EqSet.Subset; intros.
     destruct x as [e|e]; auto; destruct y as [e0|e0]; try contradiction.
     destruct z as [e1|e1]; eauto.
   Qed.
@@ -1313,8 +1256,8 @@ Module LEq <: SEMILATTICE.
     | OK _, Error _ => y
     | Error _, _ => x
     end.
-  Next Obligation.
-    split; intros.
+  Next Obligation. 
+    split; intros. 
     apply EqSet2.union_1 in H. destruct H; rewrite eqs_same in H.
     apply EqSet.union_2; auto. apply EqSet.union_3; auto.
     apply EqSet.union_1 in H. destruct H; rewrite <- eqs_same in H.

@@ -1,0 +1,4 @@
+Ltac custom_tac18 H0 := elim H0; auto with searchtrees.
+Ltac custom_tac32 H0 := apply H0; auto with searchtrees.
+Ltac custom_tac3  := intros; auto with searchtrees.
+Ltac custom_tac11 H0 := eauto with searchtrees; rewrite H0.

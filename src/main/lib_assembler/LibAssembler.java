@@ -241,7 +241,6 @@ public class LibAssembler {
             for (CoqProof p: this.tactics) {
                 System.out.println(p.raw_string);
             }
-            System.out.println("-------------------------------------------------");
 
 
             List<Library> res = new ArrayList<>();
@@ -261,8 +260,6 @@ public class LibAssembler {
 
                     lib.compressedSize = candidateSize; // update sizes
                     lib.librarySize += (tacSize - libSizeDecrease);
-                    System.out.println();
-
 //                    System.out.println("adding lib");
 //                    System.out.println("lib decrease is " + libSizeDecrease);
 //                    System.out.println("candidates size is " + candidateSize);
@@ -279,6 +276,8 @@ public class LibAssembler {
         public int getCorpusSize() {
             return corpusSize;
         }
+        
+        public int getTrainingSize() { return trainingSize; }
 
         public void setTrainingIndices(List<Integer> trainingIndices) {
             int size = 0;
@@ -338,6 +337,61 @@ public class LibAssembler {
             return this.corpusHashCode + this.tactics.hashCode(); // avoid re-hashing the entire corpus
         }
 
+        public String printTactics() {
+            Set<String> tacticRawString = new HashSet<>();
+            StringBuilder sb = new StringBuilder();
+            for (CoqProof tac: this.tactics) {
+                if (tacticRawString.contains(tac.raw_string.split(" := ")[1])) {
+                    continue;
+                }
+                tacticRawString.add(tac.raw_string.split(" := ")[1]);
+                sb.append("Ltac ").append(tac.raw_string)
+                        .append("\n");
+            }
+            return sb.toString();
+        }
+
+        public String printCompressionRate() {
+            StringBuilder sb = new StringBuilder("compression_rate\n");
+            int testingSize = this.getCorpusSize() - this.trainingSize;
+
+            // original_size, compressed_size, compression_rate
+            sb.append(String.format("%.2f", (double) (testingSize) / this.testingCompressedSize))
+              .append("\n");
+
+            return sb.toString();
+        }
+
+        public String printTacticsStats() {
+            StringBuilder sb = new StringBuilder("tactics_learned,avg_tactic_size,max_tactic_size,tactic_usage_count\n");
+            int minusSize = 0;
+            Set<String> tacticRawString = new HashSet<>();
+            for (CoqProof tac: this.tactics) {
+                if (tacticRawString.contains(tac.raw_string.split(" := ")[1])) {
+                    minusSize += tac.tactics.size();
+                    continue;
+                }
+                tacticRawString.add(tac.raw_string.split(" := ")[1]);
+            }
+            int maxTacSize = 0;
+            for (CoqProof t: this.tactics) {
+                if (t.tactics.size() > 50) {
+                    tacticRawString.remove(t.raw_string.split(" := ")[1]);
+                    minusSize += t.tactics.size();
+                    continue;
+                }
+                if (t.tactics.size() > maxTacSize) {
+                    maxTacSize = t.tactics.size();
+                }
+            }
+            int numTotalApplications = this.tacticOccurrences.values().stream().map(l -> l.size()).toList()
+                    .stream().reduce(0, Integer::sum);
+            sb.append(tacticRawString.size()).append(",")
+              .append(String.format("%.2f", (double) (this.getLibrarySize() - minusSize) / tacticRawString.size())).append(",")
+              .append(maxTacSize).append(",")
+              .append(numTotalApplications).append("\n");
+            return sb.toString();
+        }
 
         public String printDiagnostics(BmConfig config, boolean verbose) {
             StringBuilder sb = new StringBuilder();
@@ -360,7 +414,6 @@ public class LibAssembler {
             }
             int maxTacSize = 0;
             for (CoqProof t: this.tactics) {
-                int ind = this.tactics.indexOf(t);
                 if (t.tactics.size() > 50) {
                     tacticRawString.remove(t.raw_string.split(" := ")[1]);
                     minusSize += t.tactics.size();
@@ -489,7 +542,6 @@ public class LibAssembler {
         for (int i = 0; i < corpus.size(); i++) {
             for (CoqTactic tactic: compressedCorpus.get(i).tactics) {
                 if (tactic.sig_no_out_arg.contains("custom")) {
-                    // hack
                     if (tactic.sig_no_out_arg.contains("custom0 _i _o _o _o _o _o _o _o _o _o _o _o _o _o _o _o _o _o _o _o _o _o _i _i _i _i _o _i _i _i _i _i _i _i _i _o _i _i _i _i _i _i _i _o _i _i _o _i _i _i _i _o _i _i _i _i _i _i _i _i _i _o _i _i _i _i _i _o _i _i _i _i _i _i _o _i _i")) {
                         if (trainingIndices.size() == lib.corpus.size() || !trainingIndices.contains(i)) {
                             lib.testingCompressedSize += (lib.tactics.get(0).tactics.size() - 1);
@@ -515,10 +567,6 @@ public class LibAssembler {
 
     public static Library assembleLibraryForEnumerate(List<CoqProof> corpus, Collection<CoqProof> customTacs,
                                                       AssemblyType type, List<Integer> trainingIndices) {
-        System.out.println("candidates in assemble: ");
-        for (CoqProof c: customTacs) {
-            System.out.println(c.raw_string);
-        }
         switch (type) {
             case GREEDY: {
 //                customTacs = customTacs.stream().sorted((t1, t2) -> Integer.compare(t2.tactics.size(), t1.tactics.size())).collect(Collectors.toList());
@@ -620,10 +668,6 @@ public class LibAssembler {
 
     public static Library assembleLibrary(List<CoqProof> corpus, Collection<CoqProof> customTacs, AssemblyType type) {
         customTacs = customTacs.stream().sorted((t1, t2) -> Integer.compare(t2.tactics.size(), t1.tactics.size())).collect(Collectors.toList());
-        System.out.println("candidates in assemble: ");
-        for (CoqProof c: customTacs) {
-            System.out.println(c.raw_string);
-        }
         // filter duplicate and empty customTac
         switch(type) {
             case NONE: {

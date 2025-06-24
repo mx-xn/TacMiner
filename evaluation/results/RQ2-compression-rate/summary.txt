@@ -1,0 +1,18 @@
+topic      |  CR-tacminer |  CR-baseline
+----------------------------------------
+AbsDomain  |         1.46 |         1.13
+CSL        |         1.52 |         1.10
+Hoare      |         1.60 |         1.07
+IndPred    |         1.13 |         1.08
+LiveRange  |         1.28 |         1.09
+NMake      |         1.24 |         1.10
+QMake      |         1.29 |         1.15
+RTLSpec    |         1.42 |         1.08
+Reflection |         1.18 |         1.06
+RegAlloc   |         1.44 |         1.11
+SearchTree |         1.28 |         1.04
+Separation |         1.17 |         1.10
+Seplog     |         1.52 |         1.10
+ZMake      |         1.17 |         1.04
+----------------------------------------
+average    |         1.34 |         1.09

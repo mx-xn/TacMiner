@@ -1,0 +1,15 @@
+Ltac custom_tac25 H0 := apply H0; auto.
+Ltac custom_tac41 H0 := unfold H0; intros.
+Ltac custom_tac21  := intros; red; intros.
+Ltac custom_tac40 H0 := intros; apply H0.
+Ltac custom_tac18 H0 H1 H2 := intros H0 H1; unfold H2.
+Ltac custom_tac48 H0 := InvAgree; apply H0.
+Ltac custom_tac9 H0 H1 H2 H3 := auto; destruct H0 as [ | H1 | H1 | H2 | H2 | H1 H3].
+Ltac custom_tac12  := autorewrite with ints; auto.
+Ltac custom_tac14 H0 := rewrite H0; auto.
+Ltac custom_tac58 H0 H1 := inv H0; rewrite H1.
+Ltac custom_tac10  := red; auto.
+Ltac custom_tac52 H0 := auto; apply H0.
+Ltac custom_tac6  := intros; constructor.
+Ltac custom_tac17  := constructor; intros.
+Ltac custom_tac64 H0 := intros; rewrite H0.

@@ -1,0 +1,7 @@
+Ltac custom_tac22 H0 := apply H0; auto.
+Ltac custom_tac3 H0 H1 := apply H0; intros H1.
+Ltac custom_tac15 H0 H1 := exists H0, H1; intuition auto.
+Ltac custom_tac0 H0 H1 H2 H3 := intros; destruct ( Z.eq_dec H0 H1) as [ H2 | H3].
+Ltac custom_tac19  := split; auto.
+Ltac custom_tac24 H0 H1 := exists H0, H1; auto.
+Ltac custom_tac29 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 := red; intros H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10.

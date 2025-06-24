@@ -1,0 +1,17 @@
+Ltac custom_tac29  := constructor; auto.
+Ltac custom_tac13  := induction 1; simpl.
+Ltac custom_tac10 H0 H1 H2 H3 := intros; unfold H0; destruct ( delta_state H1 H2) as [ killed born]; induction H3 as [ | [ v i] l]; simpl.
+Ltac custom_tac15  := econstructor; eauto.
+Ltac custom_tac24 H0 := apply H0; auto.
+Ltac custom_tac0 H0 := eapply H0; eauto.
+Ltac custom_tac2  := simpl; auto.
+Ltac custom_tac1 H0 := rewrite H0; auto.
+Ltac custom_tac11  := simpl; intros.
+Ltac custom_tac6 H0 := constructor; apply H0.
+Ltac custom_tac41 H0 H1 := inv H0; inv H1.
+Ltac custom_tac9 H0 := unfold H0; intros.
+Ltac custom_tac23 H0 := inv H0; auto.
+Ltac custom_tac45 H0 := eauto; intros H0.
+Ltac custom_tac3 H0 H1 := rewrite H0; rewrite H1.
+Ltac custom_tac16 H0 := inv H0; econstructor.
+Ltac custom_tac17 H0 := intros; inv H0.

@@ -5,7 +5,7 @@ import main.config.Path;
 import java.io.*;
 import java.util.*;
 
-import static main.maxsat.MaxSATUtil.writeTo;
+import static main.decode.utils.writeTo;
 
 public class LibRecoveryEval {
     private class LibBenchmark {

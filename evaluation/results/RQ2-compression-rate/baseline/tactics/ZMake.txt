@@ -1,0 +1,4 @@
+Ltac custom_tac0 H0 := rewrite H0; case Z.compare_spec.
+Ltac custom_tac1 H0 := rewrite H0; ring.
+Ltac custom_tac2 H0 H1 := unfold H0, H1; intros [ x | x] [ y | y].
+Ltac custom_tac7 H0 H1 H2 := intros H0 H1; unfold H2.

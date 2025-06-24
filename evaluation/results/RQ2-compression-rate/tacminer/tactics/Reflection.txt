@@ -1,0 +1,12 @@
+Ltac custom0  :=  simpl; [auto | .. ].
+Ltac custom1 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom2 H0 H1 :=  rewrite <- H0; [rewrite <- H1 | .. ].
+Ltac custom3 H0 :=  intros H0; [elim H0 | .. ].
+Ltac custom4 H0 :=  rewrite <- H0; [auto | .. ].
+Ltac custom5 H0 :=  elim ( Nat.lt_irrefl 0 ); [exact H0 | .. ].
+Ltac custom6 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom7 H0 :=  rewrite H0; [ | auto with zarith | .. ].
+Ltac custom8 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom9 H0 H1 H2 :=  case H0; [ | intros H1 H2 | .. ].
+Ltac custom10 H0 H1 H2 :=  elim H0; [intros H1 H2 | .. ].
+Ltac custom11 H0 H1 :=  intros H0 H1; [elim H1 | .. ].

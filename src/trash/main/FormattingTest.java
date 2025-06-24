@@ -6,8 +6,8 @@ import main.encode.*;
 import main.eval.*;
 import main.lib_assembler.LibAssembler;
 import main.proofgraph.*;
-import main.sampler.*;
 import trash.Engine;
+import trash.sampler.*;
 
 import java.io.IOException;
 import java.util.*;

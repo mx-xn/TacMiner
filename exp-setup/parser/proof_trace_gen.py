@@ -431,10 +431,10 @@ if __name__ == "__main__":
         # "SearchTree": ("coq-art", "chap11.v", "coq-art"),
         # "Reflection": ("coq-art", "chap16.v", "coq-art")
 
-        # "RegAlloc" : ("CompCert", "backend/Allocation.v", "comp-cert"),
-        "LiveRange" : ("CompCert", "backend/Debugvarproof.v", "comp-cert"),
-        "Needness" : ("CompCert", "backend/NeedDomain.v", "comp-cert"),
-        "RTLspec" : ("CompCert", "backend/RTLgenspec.v", "comp-cert")
+        "RegAlloc" : ("CompCert", "backend/Allocation.v", "comp-cert"),
+        # "LiveRange" : ("CompCert", "backend/Debugvarproof.v", "comp-cert"),
+        # "AbsDomain" : ("CompCert", "backend/NeedDomain.v", "comp-cert"),
+        # "RTLSpec" : ("CompCert", "backend/RTLgenspec.v", "comp-cert")
 
         # "Hoare" : ("cdf", "Hoare.v", "program-logics"),
         # "Separation" : ("cdf", "Separation.v", "program-logics"),

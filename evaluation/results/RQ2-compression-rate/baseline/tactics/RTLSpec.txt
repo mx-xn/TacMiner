@@ -1,0 +1,7 @@
+Ltac custom_tac4 H0 := intros; monadInv H0.
+Ltac custom_tac1 H0 H1 := intros until H0; unfold H1.
+Ltac custom_tac10 H0 := eapply H0; eauto.
+Ltac custom_tac16 H0 := intros; inv H0.
+Ltac custom_tac7 H0 := apply H0; eauto with rtlg.
+Ltac custom_tac0 H0 := exists H0; auto.
+Ltac custom_tac20  := econstructor; eauto with rtlg.

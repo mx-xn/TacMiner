@@ -13,7 +13,6 @@ public class BmConfig {
     public boolean visualizeGraphs = true;
     public Mode mode;
     public boolean training;
-    public boolean random;
     public double stopThresh;
 
     public BmConfig(int timeout, String domain, String topic, Mode mode, boolean training,
@@ -23,7 +22,6 @@ public class BmConfig {
         this.topic = topic;
         this.mode = mode;
         this.training = training;
-        this.random = random;
         this.stopThresh = stopThresh;
     }
 
@@ -43,7 +41,6 @@ public class BmConfig {
         this.topic = c.topic;
         this.mode = c.mode;
         this.training = c.training;
-        this.random = c.random;
         this.stopThresh = c.stopThresh;
     }
 
@@ -74,7 +71,7 @@ public class BmConfig {
 
         new BmConfig("comp-cert", "RegAlloc"),
         new BmConfig("comp-cert", "LiveRange"),
-        new BmConfig("comp-cert", "Needness"),
+        new BmConfig("comp-cert", "AbsDomain"),
         new BmConfig("comp-cert", "RTLSpec"),
 
         new BmConfig("bignums", "NMake"),
@@ -101,8 +98,7 @@ public class BmConfig {
         return String.join("/", new String[] {"benchmarks", this.domain, "raw", this.topic}) + ".v";
     }
 
-    public static List<BmConfig> getBmConfig(int timeoutInSeconds, int mode, String domain, String topic,
-                                                    int trainPortion, String random)  {
+    public static List<BmConfig> getBmConfig(int timeoutInSeconds, int mode, String domain, String topic, int trainPortion)  {
         List<BmConfig> res = new ArrayList<>();
         List<String> topics = topic.equals("all") ?
                 BmConfigMap.get(domain).stream().map(c -> c.topic).toList() :
@@ -126,52 +122,9 @@ public class BmConfig {
             currConfig.training = trainPortion < 100;
             if (trainPortion > 100) trainPortion = 100;
             currConfig.stopThresh = (double) trainPortion / 100;
-            currConfig.random = random.equals("True");
             res.add(currConfig);
         }
 
         return res;
     }
-
-//            new Config(1, 2, 600, "cdf/json/" + "Sequences.json", "cdf/Sequences.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 600, "cdf/json/" + "Separation.json", "cdf/Separation.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 1800, "cdf/json/" + "Seplog.json", "cdf/Seplog.v", compressionEvalPath + "", false),
-//            new Config(1, 2, 1800, "cdf/json/" + "CSL.json", "cdf/CSL.v", compressionEvalPath + "", false),
-//            new Config(1, 2, 600, "cdf/json/" + "Delay.json", "cdf/Delay.v", compressionEvalPath + "", false),
-//            new Config(1, 2, 10, "cdf/json/" + "Monads.json", "cdf/Monads.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 600, "cdf/json/" + "Hoare.json", "cdf/Hoare.v", compressionEvalPath + "", true),
-//
-//            // 14
-//            new Config(1, 2, 600, "atpl/json/" + "pi_calculus.json", "atpl/pi_calculus.v", compressionEvalPath + "", true),
-//
-//            // 15
-//            new Config(1, 2, 600, "CompCert/backend/json/" + "Allocation.json", "CompCert/backend/Allocation.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 600, "CompCert/backend/json/" + "Debugvarproof.json", "CompCert/backend/Debugvarproof.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 600, "CompCert/backend/json/" + "NeedDomain.json", "CompCert/backend/NeedDomain.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 600, "CompCert/backend/json/" + "RTLgenspec.json", "CompCert/backend/RTLgenspec.v", compressionEvalPath + "", true)
-
-//            new Config(1, 2, 500, "coq-art/json/" + "nth_length.json", "coq-art/nth_length.v", compressionEvalPath + "", false),
-//            new Config(1, 2, 500, "coq-art/json/" + "exo_frac.json", "coq-art/exo_frac1.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 500, "coq-art/json/" + "chap3.json", "coq-art/chap3_raw.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 500, "coq-art/json/" + "chap5.json", "coq-art/chap5_raw.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 500, "coq-art/json/" + "chap8.json", "coq-art/chap8_raw.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 500, "coq-art/json/" + "class.json", "coq-art/class.v", compressionEvalPath + "", true),
-//            new Config(1, 2, 500, "coq-art/json/" + "cut_example.json", "coq-art/cut_example.v", compressionEvalPath + "", true),
-
-//        new Config(1, 2, 500, "coq-art/json/" + "parsing.json", "coq-art/parsing.v", compressionEvalPath + ""),
-//        new Config(1, 2, 500, "coq-art/json/" + "chap9.json", "coq-art/chap9.v", compressionEvalPath + ""),
-//
-//        new Config(-1, 300, coqFilesPath + "SimpleProofs.json", coqFilesPath + "SimpleProofs.v", compressionEvalPath + "SimpleProofs_compressed.v"),
-//        new Config(2, 600, coqFilesPath + "IntvSets.json", compCertPath + "lib/IntvSets.v", compressionEvalPath + "IntvSets_compressed.v"),
-//        new Config(1, 2, 600, coqFilesPath + "Functor.json", categoryPath + "Theory/Functor_new.v", compressionEvalPath + "Functor_compressed.v"),
-//        new Config(1, 2, 600, coqFilesPath + "LiveLockServ.json", categoryPath + "lib/LiveLockServ_new.v", compressionEvalPath + "LiveLockServ_compressed.v"),
-//        new Config(1, 2, 1200, coqFilesPath + "Floats.json", categoryPath + "lib/Floats_new.v", compressionEvalPath + "Floats_compressed.v"),
-//        new Config(1, 2, 1200, coqFilesPath + "SplitLongproof.json", categoryPath + "backend/SplitLongproof_new.v", compressionEvalPath + "SplitLongproof_compressed.v"),
-//        new Config(1, 2, 300, coqFilesPath + "SelectOpproof.json", categoryPath + "arm/SelectOpproof_new.v", compressionEvalPath + "SelectOpproof_compressed.v"),
-//        new Config(1, 2, 1500, coqFilesPath + "ParE.json", categoryPath + "Instance/Coq/ParE_new.v", compressionEvalPath + "ParE_compressed.v"),
-//        new Config(7, 2, 30, coqFilesPath + "IntvSets.json", compCertPath + "lib/IntvSets.v", compressionEvalPath + "IntvSets_compressed.v"),
-//        new Config(40, 2, 90, coqFilesPath + "IntvSets.json", compCertPath + "lib/IntvSets.v", compressionEvalPath + "IntvSets_compressed.v"),
-//        new Config(1, 2, 90, coqFilesPath + "SimpleAlgebra.json", coqFilesPath + "SimpleAlgebra.v", compressionEvalPath + "SimpleAlgebra_compressed.v"),
-//        new Config(4, 2, 90, coqFilesPath + "SimpleAlgebra2.json", coqFilesPath + "SimpleAlgebra2.v", compressionEvalPath + "SimpleAlgebra2_compressed.v")
-
 }

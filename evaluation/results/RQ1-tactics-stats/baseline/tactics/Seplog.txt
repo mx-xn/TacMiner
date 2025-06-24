@@ -1,0 +1,16 @@
+Ltac custom_tac15 H0 := apply H0; auto.
+Ltac custom_tac25 H0 H1 := apply H0; intros H1.
+Ltac custom_tac0  := constructor; auto.
+Ltac custom_tac49  := intros; red; intros.
+Ltac custom_tac22  := split; auto.
+Ltac custom_tac3 H0 := intros; apply H0.
+Ltac custom_tac26  := red; auto.
+Ltac custom_tac89 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 := intros H0 H1 ( H2 & H3 & H4 & H5 & H6 & H7); apply ( H8 ( H9 H0)); exists H2, H3; auto.
+Ltac custom_tac51 H0 H1 H2 := intros; apply H0 with H1 H2; auto.
+Ltac custom_tac6 H0 H1 := apply H0; apply H1.
+Ltac custom_tac34 H0 := intros; inv H0.
+Ltac custom_tac39 H0 H1 := intros; intros H0 H1.
+Ltac custom_tac40 H0 H1 H2 H3 H4 := intros until H0; intros H1 H2 H3 H4.
+Ltac custom_tac73 H0 H1 := apply H0; eapply H1.
+Ltac custom_tac71 H0 := apply H0; intros.
+Ltac custom_tac87 H0 H1 H2 H3 := intros; apply H0 with ( H1 ** H2) ( fun v => H3 v ** H2).

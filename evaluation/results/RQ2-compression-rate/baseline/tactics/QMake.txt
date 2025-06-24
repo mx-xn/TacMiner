@@ -1,0 +1,14 @@
+Ltac custom_tac33 H0 := apply H0; auto.
+Ltac custom_tac13 H0 := rewrite H0; auto.
+Ltac custom_tac1 H0 := intros; rewrite H0.
+Ltac custom_tac32  := simpl; auto.
+Ltac custom_tac12 H0 H1 := unfold H0; apply H1.
+Ltac custom_tac22 H0 := intros; unfold H0.
+Ltac custom_tac29  := simpl; nzsimpl.
+Ltac custom_tac16 H0 H1 := rewrite H0, H1; auto.
+Ltac custom_tac51 H0 := apply H0; simpl.
+Ltac custom_tac35  := destr_eqb; nzsimpl.
+Ltac custom_tac44 H0 H1 := apply H0; apply H1.
+Ltac custom_tac2  := nzsimpl; destr_zcompare.
+Ltac custom_tac11 H0 := auto with zarith; apply H0.
+Ltac custom_tac21 H0 := unfold H0; intros.

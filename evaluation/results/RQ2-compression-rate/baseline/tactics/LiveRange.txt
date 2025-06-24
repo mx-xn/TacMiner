@@ -1,0 +1,6 @@
+Ltac custom_tac7  := induction 1; simpl.
+Ltac custom_tac21  := constructor; auto.
+Ltac custom_tac1  := simpl; auto.
+Ltac custom_tac5  := simpl; intros.
+Ltac custom_tac12 H0 := apply H0; auto.
+Ltac custom_tac11 H0 := inv H0; auto.

@@ -1,0 +1,16 @@
+Ltac custom_tac10 H0 := apply H0; auto.
+Ltac custom_tac3  := simpl; auto.
+Ltac custom_tac2 H0 H1 H2 := injection H0; intros H1 H2.
+Ltac custom_tac6 H0 H1 := intros H0 H1; elim H1.
+Ltac custom_tac13 H0 := apply H0; trivial.
+Ltac custom_tac17 H0 := rewrite H0; auto.
+Ltac custom_tac7 H0 := rewrite <- H0; auto.
+Ltac custom_tac0 H0 := inversion H0; auto with sorted_base.
+Ltac custom_tac4 H0 := simpl; apply H0.
+Ltac custom_tac5 H0 H1 H2 := intros H0 H1 H2; induction H2.
+Ltac custom_tac16 H0 H1 H2 H3 := simpl; intros H0 H1 H2 H3.
+Ltac custom_tac23 H0 := rewrite H0; trivial.
+Ltac custom_tac24  := simple induction 1; auto.
+Ltac custom_tac25 H0 H1 := rewrite <- H0; rewrite H1.
+Ltac custom_tac26 H0 H1 H2 := auto; intros H0 H1 H2.
+Ltac custom_tac12 H0 H1 := apply H0; apply H1.

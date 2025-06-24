@@ -43,8 +43,9 @@ public class GraphEnumerator {
                 for (int g2 = g1 + 1; g2 < this.corpus.size(); g2++) {
                     // if #vertices exceeds threshold
 //                    int threshold = 60;
-                    int threshold = topic.contains("Allocation") ? 15 :
-                            topic.contains("NeedDomain") ? 25 : 60;   // for Allocation
+                    int threshold = topic.contains("RegAlloc") ? 15 : 60;
+                    // int threshold = topic.contains("Allocation") ? 15 :
+                    //         topic.contains("NeedDomain") ? 25 : 60;   // for Allocation
                     ProofGraph pg1 = this.corpus.get(g1);
                     ProofGraph pg2 = this.corpus.get(g2);
                     if (pg1.vertices.size() < threshold || pg2.vertices.size() < threshold) continue;

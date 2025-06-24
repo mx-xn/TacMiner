@@ -415,7 +415,7 @@ public class CompressionEval {
         String[] outputFile = config.getInputFilename().split("/");
         System.out.println("formatted file");
         System.out.println(placeholderContent);
-        writeTo(placeholderContent, baselineInputPath + outputFile[0] + "/" + outputFile[outputFile.length - 1]);
+        writeTo(placeholderContent, baselineIntermediatePath + outputFile[0] + "/" + outputFile[outputFile.length - 1]);
     }
 
     public static String formatBaselineProof(String oriStr) {
@@ -461,9 +461,6 @@ public class CompressionEval {
                 end = closestInd > oriStr.length() ? oriStr.length(): closestInd + start;
                 oriStr = oriStr.substring(0, start) + convertBaselineSection(oriStr.substring(start, end), false)
                         + oriStr.substring(end);
-//                if (oriStr.contains("[                 +]")) {
-//                    System.out.println();
-//                }
             }
         }
 
@@ -1037,9 +1034,6 @@ public class CompressionEval {
                 if (skip) continue;
 
                 // try to compress parent, add compressed parent
-
-
-
             }
         }
 

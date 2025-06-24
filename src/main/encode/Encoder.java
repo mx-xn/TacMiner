@@ -2,20 +2,17 @@ package main.encode;
 
 import main.config.BmConfig;
 import main.config.Path;
-import main.proofgraph.*;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.json.*;
 
-import static main.config.Path.compressionEvalPath;
 import static main.decode.utils.writeTo;
+import static main.config.Path.trainingPath;
 
 public class Encoder {
     public CoqProof proof;
@@ -32,12 +29,8 @@ public class Encoder {
 
     public static List<CoqProof> inputCoqScripts(String file) {
         StringBuilder fullFile = new StringBuilder("");
-        String workingDirectory = Paths.get("").toAbsolutePath().toString();
-        System.out.println("Current Working Directory: " + workingDirectory);
-
         // Read in JSON file
         try (Scanner myReader = new Scanner(new File(file))) {
-            System.out.println("");
             while (myReader.hasNextLine()) {
                 fullFile.append(myReader.nextLine());
             }
@@ -119,7 +112,7 @@ public class Encoder {
         Set<String> trainingLemmas = new HashSet<>();
         // get the training data file
         // String filename = String.join("/", new String[]{config.domain, "training", config.topic + ".txt"});
-        String filename = Path.trainingPath + String.join("/", new String[]{config.domain, config.topic + ".txt"});
+        String filename = Path.trainingPath + config.topic + ".txt";
         try {
             // Read all lines from the file into a list of strings
             List<String> lines = Files.readAllLines(Paths.get(filename));
@@ -200,139 +193,133 @@ public class Encoder {
     //
     public static void sampleTrainingData(BmConfig config, List<CoqProof> corpus) throws IOException {
 //    public static void sampleTrainingData(Main.Config config, List<CoqProof> corpus, boolean random) throws IOException {
-        boolean random = config.random;
         List<CoqProof> sample = new ArrayList<>();
-        if (random) {
-            sampleRandomTrainingData(corpus, sample, config.stopThresh, config.stopThresh * 1.1);
-        } else {
-            List<CoqProof> proofs = new ArrayList<>(corpus);
-            proofs = proofs.stream().sorted((p1, p2) -> (p2.tactics.size() - p1.tactics.size())).toList();
+        List<CoqProof> proofs = new ArrayList<>(corpus);
+        proofs = proofs.stream().sorted((p1, p2) -> (p2.tactics.size() - p1.tactics.size())).toList();
 
-            double autoThreshold = 0.4;
-            double tacticIncludeThreshold = 0.3;
+        double autoThreshold = 0.4;
+        double tacticIncludeThreshold = 0.3;
 //            double tacticExcludeThreshold = 0.75;
-            double tacticExcludeThreshold = 0.75;
-            double tacticCountThreshold = 0.65;
-            int numSimilarThreshold = 2;
-            int numBranchesThreshold = 2;
+        double tacticExcludeThreshold = 0.75;
+        double tacticCountThreshold = 0.65;
+        int numSimilarThreshold = 2;
+        int numBranchesThreshold = 2;
 
 
-            List<CoqProof> skip = new ArrayList<>();
-            int numTacticsSample = 0;
-            int numTacticsCorpus = 0;
+        List<CoqProof> skip = new ArrayList<>();
+        int numTacticsSample = 0;
+        int numTacticsCorpus = 0;
 
-            // for each proof,
-            Map<String, Integer> renameMap = new HashMap<>();
-            int numLemmas = 0;
-            for (CoqProof p: proofs) {
-                numTacticsCorpus += p.tactics.size();
-            }
+        // for each proof,
+        Map<String, Integer> renameMap = new HashMap<>();
+        int numLemmas = 0;
+        for (CoqProof p: proofs) {
+            numTacticsCorpus += p.tactics.size();
+        }
 
-            double stopThreshold = config.stopThresh;
-            double exceedsThreshold = config.stopThresh * 1.1;
+        double stopThreshold = config.stopThresh;
+        double exceedsThreshold = config.stopThresh * 1.1;
 
 //            double stopThreshold = numTacticsCorpus >= 1000 ? 0.5 : 0.4;
 //            double exceedsThreshold = numTacticsCorpus >= 1000 ? 0.5 : 0.425;
-            boolean stop = false;
-            for (int g = 0; g < proofs.size(); g++) {
-                CoqProof p = proofs.get(g);
-                if (p.lemma_name == "" || p.lemma_name == null) {
-                    p.lemma_name = "cus_lemma_" + (numLemmas++);
+        boolean stop = false;
+        for (int g = 0; g < proofs.size(); g++) {
+            CoqProof p = proofs.get(g);
+            if (p.lemma_name == "" || p.lemma_name == null) {
+                p.lemma_name = "cus_lemma_" + (numLemmas++);
+            }
+            if (!renameMap.containsKey(p.lemma_name)) {
+                renameMap.put(p.lemma_name, 0);
+            }
+            renameMap.put(p.lemma_name, renameMap.get(p.lemma_name) + 1);
+
+            if (renameMap.get(p.lemma_name) > 1) {
+                p.lemma_name = p.lemma_name + renameMap.get(p.lemma_name);
+            }
+
+            if (stop) continue;
+            if (skip.contains(p)) continue;
+            if ((double) (numTacticsSample + p.tactics.size()) / numTacticsCorpus >= exceedsThreshold) continue;
+            Map<String, Integer> pSigCount = p.getSigCount();
+
+            // if 40% of it is just auto, skip it
+            if ((double)pSigCount.getOrDefault("auto .", 0) / p.tactics.size() >= autoThreshold) {
+                skip.add(p);
+                continue;
+            }
+
+            // if it contains just one branch, skip it
+            int numBranches = 1;
+            for (CoqTactic t: p.tactics) {
+                int numGoals = 0;
+                for (CoqTactic.Prop out: t.outputs) {
+                    if (out.type.equals(CoqTactic.PROP_TYPE.GOAL)) numGoals++;
                 }
-                if (!renameMap.containsKey(p.lemma_name)) {
-                    renameMap.put(p.lemma_name, 0);
+                if (numGoals > 1) {
+                    numBranches++;
                 }
-                renameMap.put(p.lemma_name, renameMap.get(p.lemma_name) + 1);
+            }
+            if (numBranches < numBranchesThreshold) continue;
 
-                if (renameMap.get(p.lemma_name) > 1) {
-                    p.lemma_name = p.lemma_name + renameMap.get(p.lemma_name);
+            // if it's just a singleton, skip it (unless if it's 40% longer than all of the remaining proofs)
+            Set<String> signaturesP = pSigCount.keySet();
+            int numSimilar = 0;
+            boolean add = false;
+            for (CoqProof p1: proofs) {
+                if (p1.equals(p)) continue;
+                if (sample.contains(p1)) continue;
+                Map<String, Integer> p1SigCount = p1.getSigCount();
+                Set<String> signaturesP1 = p1SigCount.keySet();
+                Set<String> sigOverlaps = new HashSet<>(signaturesP);
+                sigOverlaps.retainAll(signaturesP1);
+
+                double sigOverlapPortion = (double) sigOverlaps.size() / signaturesP1.size();
+                if (sigOverlapPortion < tacticIncludeThreshold) continue;
+
+                double overlapTacCount = 0;
+                double totalTacCount = 0;
+                for (String sig: sigOverlaps) {
+                    int pSigNumber = pSigCount.get(sig);
+                    int p1SigNumber = p1SigCount.get(sig);
+
+                    overlapTacCount += pSigNumber > p1SigNumber ? p1SigNumber : pSigNumber;
+                    totalTacCount += p1SigNumber;
                 }
+                double sigCountOverlapPortion = overlapTacCount / totalTacCount;
 
-                if (stop) continue;
-                if (skip.contains(p)) continue;
-                if ((double) (numTacticsSample + p.tactics.size()) / numTacticsCorpus >= exceedsThreshold) continue;
-                Map<String, Integer> pSigCount = p.getSigCount();
+                if (sigOverlapPortion >= tacticCountThreshold && sigCountOverlapPortion >= tacticExcludeThreshold) {
+                    add = true;
 
-                // if 40% of it is just auto, skip it
-                if ((double)pSigCount.getOrDefault("auto .", 0) / p.tactics.size() >= autoThreshold) {
-                    skip.add(p);
-                    continue;
-                }
-
-                // if it contains just one branch, skip it
-                int numBranches = 1;
-                for (CoqTactic t: p.tactics) {
-                    int numGoals = 0;
-                    for (CoqTactic.Prop out: t.outputs) {
-                        if (out.type.equals(CoqTactic.PROP_TYPE.GOAL)) numGoals++;
-                    }
-                    if (numGoals > 1) {
-                        numBranches++;
-                    }
-                }
-                if (numBranches < numBranchesThreshold) continue;
-
-                // if it's just a singleton, skip it (unless if it's 40% longer than all of the remaining proofs)
-                Set<String> signaturesP = pSigCount.keySet();
-                int numSimilar = 0;
-                boolean add = false;
-                for (CoqProof p1: proofs) {
-                    if (p1.equals(p)) continue;
-                    if (sample.contains(p1)) continue;
-                    Map<String, Integer> p1SigCount = p1.getSigCount();
-                    Set<String> signaturesP1 = p1SigCount.keySet();
-                    Set<String> sigOverlaps = new HashSet<>(signaturesP);
-                    sigOverlaps.retainAll(signaturesP1);
-
-                    double sigOverlapPortion = (double) sigOverlaps.size() / signaturesP1.size();
-                    if (sigOverlapPortion < tacticIncludeThreshold) continue;
-
-                    double overlapTacCount = 0;
-                    double totalTacCount = 0;
-                    for (String sig: sigOverlaps) {
-                        int pSigNumber = pSigCount.get(sig);
-                        int p1SigNumber = p1SigCount.get(sig);
-
-                        overlapTacCount += pSigNumber > p1SigNumber ? p1SigNumber : pSigNumber;
-                        totalTacCount += p1SigNumber;
-                    }
-                    double sigCountOverlapPortion = overlapTacCount / totalTacCount;
-
-                    if (sigOverlapPortion >= tacticCountThreshold && sigCountOverlapPortion >= tacticExcludeThreshold) {
+                    // if the current proof is chosen, remove all other proofs that are too similar
+                    skip.add(p1);
+                } else if (!add && sigCountOverlapPortion >= tacticIncludeThreshold) {
+                    numSimilar++;
+                    if (numSimilar >= numSimilarThreshold) {
                         add = true;
-
-                        // if the current proof is chosen, remove all other proofs that are too similar
-                        skip.add(p1);
-                    } else if (!add && sigCountOverlapPortion >= tacticIncludeThreshold) {
-                        numSimilar++;
-                        if (numSimilar >= numSimilarThreshold) {
-                            add = true;
-                        }
                     }
                 }
-                if (add) {
-                    sample.add(p);
-                    numTacticsSample += p.tactics.size();
-                }
-                // if we already found 40% of the proofs, stop process
-                if ((double) numTacticsSample / numTacticsCorpus >= stopThreshold) stop = true;
             }
-            if (stopThreshold >= 1) {
-                sample = new ArrayList<>();
-                for (CoqProof p: proofs) {
-                    sample.add(p);
-                }
+            if (add) {
+                sample.add(p);
+                numTacticsSample += p.tactics.size();
             }
-
-            int i = -1;
-            while ((double) numTacticsSample / numTacticsCorpus < stopThreshold && i < skip.size() - 1) {
-                i++;
-                if ((double) numTacticsSample / numTacticsCorpus >= exceedsThreshold) continue;
-                sample.add(skip.get(i));
-                numTacticsSample += skip.get(i).tactics.size();
+            // if we already found 40% of the proofs, stop process
+            if ((double) numTacticsSample / numTacticsCorpus >= stopThreshold) stop = true;
+        }
+        if (stopThreshold >= 1) {
+            sample = new ArrayList<>();
+            for (CoqProof p: proofs) {
+                sample.add(p);
             }
         }
 
+        int i = -1;
+        while ((double) numTacticsSample / numTacticsCorpus < stopThreshold && i < skip.size() - 1) {
+            i++;
+            if ((double) numTacticsSample / numTacticsCorpus >= exceedsThreshold) continue;
+            sample.add(skip.get(i));
+            numTacticsSample += skip.get(i).tactics.size();
+        }
         // sort the proofs in the descending order of their length
 
         StringBuilder sb = new StringBuilder();
@@ -342,11 +329,12 @@ public class Encoder {
             sb.append(s.lemma_name).append("\n");
         }
 
-        List<String> filenameTokens = new ArrayList<>(Arrays.asList(config.getInputFilename().split("/")));
-        String trainingOutput = Path.trainingPath;
-        filenameTokens.add(new String(filenameTokens.get(filenameTokens.size() - 1)));
-        filenameTokens.set(filenameTokens.size() - 2, "training");
-        String filename = String.join("/", filenameTokens).replace(".v", ".txt");
-        writeTo(sb.toString(), filename);
+        // todo: delete
+        // List<String> filenameTokens = new ArrayList<>(Arrays.asList(config.getInputFilename().split("/")));
+        // filenameTokens.add(new String(filenameTokens.get(filenameTokens.size() - 1)));
+        // filenameTokens.set(filenameTokens.size() - 2, "training");
+        // String filename = String.join("/", filenameTokens).replace(".v", ".txt");
+        writeTo(sb.toString(), trainingPath + config.topic + ".txt");
+        // writeTo(sb.toString(), filename);
     }
 }

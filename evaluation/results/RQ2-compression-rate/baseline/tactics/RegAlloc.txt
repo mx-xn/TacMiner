@@ -1,0 +1,4 @@
+Ltac custom_tac9  := split; intros.
+Ltac custom_tac12 H0 := apply H0; auto.
+Ltac custom_tac14 H0 H1 := destruct H0 as [ H1 | H1]; auto; intros.
+Ltac custom_tac10 H0 H1 := intros; destruct H0 as [ H1 | H1].

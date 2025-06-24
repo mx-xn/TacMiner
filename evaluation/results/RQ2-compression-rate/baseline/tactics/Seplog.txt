@@ -1,0 +1,7 @@
+Ltac custom_tac44  := intros; red; intros.
+Ltac custom_tac31  := split; auto.
+Ltac custom_tac6 H0 H1 := apply H0; apply H1.
+Ltac custom_tac11 H0 := apply H0; auto.
+Ltac custom_tac25  := red; auto.
+Ltac custom_tac3 H0 := intros; apply H0.
+Ltac custom_tac15 H0 H1 := exists H0, H1; auto.

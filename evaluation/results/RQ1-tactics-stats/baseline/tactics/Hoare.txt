@@ -1,0 +1,18 @@
+Ltac custom_tac14 H0 := apply H0; auto.
+Ltac custom_tac6  := split; auto.
+Ltac custom_tac7  := red; auto.
+Ltac custom_tac27 H0 := eapply H0; eauto.
+Ltac custom_tac22 H0 H1 := apply H0 with H1; auto.
+Ltac custom_tac5 H0 := exists H0; split.
+Ltac custom_tac1 H0 H1 H2 H3 := intros; apply H0 with ( H1 := H1) ( H2 := H2); unfold H3; auto.
+Ltac custom_tac99 H0 := intros; inv H0; auto; contradiction.
+Ltac custom_tac98 H0 := intros; inv H0.
+Ltac custom_tac0 H0 := unfold H0; intros.
+Ltac custom_tac32 H0 H1 := apply H0; eapply H1.
+Ltac custom_tac39 H0 H1 H2 H3 H4 := intros H0 H1 H2 H3 H4; dependent induction H4.
+Ltac custom_tac41 H0 := exists H0; auto.
+Ltac custom_tac46 H0 H1 H2 H3 := intros H0 H1 H2 H3; dependent induction H3.
+Ltac custom_tac67  := induction 1; intros.
+Ltac custom_tac68 H0 H1 := red in H0; subst H1.
+Ltac custom_tac75 H0 := unfold H0; congruence.
+Ltac custom_tac49 H0 H1 H2 H3 := intros H0 H1 H2; apply H3.

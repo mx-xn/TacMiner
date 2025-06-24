@@ -4,6 +4,6 @@ echo "Filename: $filename"
 echo "Domain: $domain"
 
 
-source /Users/maxxin-admin/miniconda3/etc/profile.d/conda.sh
-conda activate myenv
+source /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh
+conda activate tacminer
 python3 proof_validity_check.py --filename $filename --domain $domain

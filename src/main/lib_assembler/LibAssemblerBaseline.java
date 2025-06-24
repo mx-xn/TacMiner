@@ -1,13 +1,9 @@
 package main.lib_assembler;
 
-import main.Main;
 import main.config.BmConfig;
 import main.encode.CoqProof;
-import main.encode.CoqTactic;
 import main.encode.Encoder;
-import main.eval.CompressionEval;
 import main.eval.SyntacticBaseline.*;
-import main.maxsat.MaxSatEncoder;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,9 +17,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static main.eval.CompressionEval.compressLibTacs;
 import static main.eval.SyntacticBaseline.*;
-import static main.maxsat.MaxSATUtil.writeTo;
+import static main.decode.utils.*;
 
 public class LibAssemblerBaseline {
     public enum AssemblyType {
@@ -126,7 +121,7 @@ public class LibAssemblerBaseline {
                 this.testingCompressedSize += this.corpus.get(p).size();
             }
             String content = new String(Files.readAllBytes(Paths.get(config.getInputFilename())));
-            String outputName = main.config.Path.baselineInputPath + config.domain + "/" + config.topic + "_tacs_verified.txt";
+            String outputName = main.config.Path.baselineIntermediatePath + config.domain + "/" + config.topic + "_tacs_verified.txt";
 
             List<String> newProofs = new ArrayList<>();
             for (String p: originalProofs) {
@@ -178,10 +173,6 @@ public class LibAssemblerBaseline {
                         this.testingCompressedSize += (t.size() - 1) * numOccurBase;
                     }
                 }
-//                if (this.tacOccurrences.containsKey(t.name) && this.tacOccurrences.get(t.name).size() < 2) {
-//                    canRefactor = false;
-//                    this.testingCompressedSize += (t.size() - 1);
-//                }
 
                 // if nothing can be refactored, remove the tactic
                 if (!canRefactor) remove.add(t);
@@ -191,9 +182,9 @@ public class LibAssemblerBaseline {
                 this.tactics.remove(t);
             }
             // todo: delete
-            for (String p: newPs) {
-                System.out.println(p);
-            }
+            // for (String p: newPs) {
+            //     System.out.println(p);
+            // }
         }
 
         public static boolean isValidCoqScript(String coqContent, BaselineProof cusTac, BmConfig config, List<BaselineProof> tactics) throws IOException {
@@ -202,8 +193,8 @@ public class LibAssemblerBaseline {
             List<CoqProof> proofs = Encoder.inputCoqScripts(config.getJsonFilename());
             List<String> lemmaNames = proofs.stream().map(p -> p.lemma_name).toList();
             List<String> contractedProofs = retrieveProofsForRefactoring(coqContent);
-            if (config.topic.contains("Allocation")) contractedProofs = contractedProofs.stream().filter(p -> !p.contains("decide equality. Defined.")).toList();
-            if (config.topic.contains("Debugvarproof")) contractedProofs = contractedProofs.stream().filter(p -> !p.contains("apply (Genv.senv_match TRANSF). Qed.")).toList();
+            // if (config.topic.contains("Allocation")) contractedProofs = contractedProofs.stream().filter(p -> !p.contains("decide equality. Defined.")).toList();
+            // if (config.topic.contains("Debugvarproof")) contractedProofs = contractedProofs.stream().filter(p -> !p.contains("apply (Genv.senv_match TRANSF). Qed.")).toList();
 
             StringBuilder temp = new StringBuilder();
             StringBuilder sb = new StringBuilder("");
@@ -221,8 +212,8 @@ public class LibAssemblerBaseline {
             }
 
             for (int i = 0; i < lemmaNames.size(); i++) {
-                if (i >= lemmaNames.size())
-                    System.out.println();
+                // if (i >= lemmaNames.size())
+                //     System.out.println();
 
                 // if current lemma uses custom tactic, and custom tactic is not in allTacs, it was ignored, so add here
                 if (!lemmaNames.get(i).contains("_ignore") && contractedProofs.get(i).contains("custom")) {
@@ -263,7 +254,7 @@ public class LibAssemblerBaseline {
 
             // Write valid tactics to file
             String inputV = config.getInputFilename();
-            String outputName = main.config.Path.baselineInputPath +
+            String outputName = main.config.Path.baselineIntermediatePath +
                     config.domain + "/" + config.topic + "_tacs.txt";
             writeTo(inputV + "\n-----\n" + inputV.replace(".v", "_compr.v") + "\n-----\n" + allTactics.toString() + "-----\n" + contractedScript,
                    outputName);
@@ -271,7 +262,7 @@ public class LibAssemblerBaseline {
             try {
                 // Use python script to verify proofs
                 String command = "/bin/bash";
-                String scriptPath = "./runVerifier.sh";
+                // String scriptPath = "./runVerifier.sh";
 
                 String targetDir = System.getProperty("user.dir") + "/src/python/";
                 String targetName = "runVerifier_" + config.topic + config.mode + ".sh";
@@ -301,14 +292,10 @@ public class LibAssemblerBaseline {
                 Process process = processBuilder.start();
 
                 // Wait for the process to finish
-                int exitCode = process.waitFor();
+                int exitcode = process.waitFor();
 
                  // Clean up: delete the temporary script file
                 Files.delete(tempScriptPath);
-//                 ProcessBuilder processBuilder = new ProcessBuilder("python3", "src/python/proof_validity_check.py");
-//                 processBuilder.directory(new File(System.getProperty("user.dir")));
-//                 Process process = processBuilder.start();
-//                 int exitCode = process.waitFor();
             } catch (IOException | InterruptedException e) {
                  e.printStackTrace();
             }
@@ -321,7 +308,7 @@ public class LibAssemblerBaseline {
                 if ((line = br.readLine()) != null) {
                     if (line.equals("T")) {
                         valid = true;
-                        System.out.println(temp);
+                        // System.out.println(temp);
                     }
                 }
             } catch (IOException e) {
@@ -361,9 +348,9 @@ public class LibAssemblerBaseline {
                 String newToken = newCoqProof.completeTokens.get(newPtr);
 
                 if (oriToken.equals(newToken)) {
-                    if (tokenToStringEnd.get(oriPtr) > proof.length()) {
-                       System.out.println();
-                    }
+                    // if (tokenToStringEnd.get(oriPtr) > proof.length()) {
+                    //    System.out.println();
+                    // }
                     newProofSB.append(proof.substring(tokenToStringEnd.getOrDefault(oriPtr - 1, 0), tokenToStringEnd.get(oriPtr)));
                     oriPtr++;
                     newPtr++;
@@ -409,13 +396,8 @@ public class LibAssemblerBaseline {
 //                System.out.println("compressed size is: " + compressed.tactics.size() + " + " + tactic.tactics.size());
             }
 
-            System.out.println("adding " + tactic.prettyPrint() + " to the prev lib:");
-            List<Integer> tacticSizes = this.tactics.stream().map(t -> t.size()).collect(Collectors.toList());
-            for (BaselineProof p: this.tactics) {
-                System.out.println(p.prettyPrint());
-            }
-            System.out.println("-------------------------------------------------");
-
+            // System.out.println("adding " + tactic.prettyPrint() + " to the prev lib:");
+            // List<Integer> tacticSizes = this.tactics.stream().map(t -> t.size()).collect(Collectors.toList());
             // todo: tactics search
             List<List<BaselineProof>> libCopies = new ArrayList<>();
             if (type.equals(AssemblyType.EXH_COMPRESS)) {
@@ -429,9 +411,10 @@ public class LibAssemblerBaseline {
                 int libSizeDecrease = 0;
                 LibraryBaseline lib = new LibraryBaseline(this);
 
-                System.out.println("lib decrease is " + libSizeDecrease);
-                System.out.println("candidates size is " + candidateSize);
-                System.out.println();
+                // todo: delete
+                // System.out.println("lib decrease is " + libSizeDecrease);
+                // System.out.println("candidates size is " + candidateSize);
+                // System.out.println();
                 if (candidateSize < this.compressedSize) {
                     // This tactic is beneficial, so let's keep it
                     lib.corpus = compressedCorpus; // Compress corpus
@@ -449,12 +432,48 @@ public class LibAssemblerBaseline {
             return res;
         }
 
+        public String printTactics() {
+            StringBuilder sb = new StringBuilder();
+            int i = 0;
+            for (BaselineProof tac: this.tactics) {
+                sb.append(tac.cusTacticScript()).append("\n");
+                i++;
+            }
+            return sb.toString();
+        }
+
+        public String printCompressionRate() {
+            StringBuilder sb = new StringBuilder("compression_rate\n");
+            int testingOriSize = this.corpusSize - this.trainingSize;
+            sb.append(String.format("%.2f", (double) testingOriSize / this.testingCompressedSize)).append("\n");
+
+            return sb.toString();
+        }
+
+        public String printTacticsStats() {
+            int libSize = 0;
+            int maxTacSize = 0;
+            for (BaselineProof t: this.tactics) {
+                if (t.completeTokens.size() > maxTacSize)
+                    maxTacSize = t.completeTokens.size();
+                libSize += t.completeTokens.size();
+            }
+            int numTotalApplications = this.tacOccurrences.values().stream().map(l -> l.size()).toList()
+                    .stream().reduce(0, Integer::sum);
+            StringBuilder sb = new StringBuilder();
+            return sb.toString() + 
+                    "tactics_learned,avg_tactic_size,max_tactic_size,tactic_usage_count\n" +
+                    this.tactics.size() + "," +
+                    String.format("%.2f", (double) libSize / this.tactics.size()) + "," +
+                    maxTacSize + "," +
+                    numTotalApplications + "\n";
+        }
+
         public String printDiagnostics() {
             StringBuilder sb = new StringBuilder("extracted tactics-----------\n");
             int i = 0;
             for (BaselineProof tac: this.tactics) {
-                sb.append(tac.name + ": " + tac.prettyPrint())
-                        .append("\n");
+                sb.append(tac.cusTacticScript()).append("\n");
                 i++;
             }
             sb.append("---------------------------\n");
@@ -543,11 +562,6 @@ public class LibAssemblerBaseline {
 
     public static LibraryBaseline assembleLibraryBaseline(List<BaselineProof> corpus, List<BaselineProof> customTacs, AssemblyType type, List<Integer> trainingIndices) {
         customTacs = customTacs.stream().sorted((t1, t2) -> Integer.compare(t2.size(), t1.size())).collect(Collectors.toList());
-        System.out.println("candidates in assemble: ");
-        for (BaselineProof c : customTacs) {
-            System.out.println(String.join("", c.cleanCompleteTokens));
-        }
-
         // filter duplicate and empty customTac
         switch (type) {
             case EXHAUSTIVE: case EXH_COMPRESS: {
