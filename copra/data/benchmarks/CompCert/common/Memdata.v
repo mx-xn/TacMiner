@@ -7,10 +7,11 @@
 (*                                                                     *)
 (*  Copyright Institut National de Recherche en Informatique et en     *)
 (*  Automatique.  All rights reserved.  This file is distributed       *)
-(*  under the terms of the GNU General Public License as published by  *)
-(*  the Free Software Foundation, either version 2 of the License, or  *)
-(*  (at your option) any later version.  This file is also distributed *)
-(*  under the terms of the INRIA Non-Commercial License Agreement.     *)
+(*  under the terms of the GNU Lesser General Public License as        *)
+(*  published by the Free Software Foundation, either version 2.1 of   *)
+(*  the License, or  (at your option) any later version.               *)
+(*  This file is also distributed under the terms of the               *)
+(*  INRIA Non-Commercial License Agreement.                            *)
 (*                                                                     *)
 (* *********************************************************************)
 
@@ -32,6 +33,7 @@ Require Import Values.
 
 Definition size_chunk (chunk: memory_chunk) : Z :=
   match chunk with
+  | Mbool => 1
   | Mint8signed => 1
   | Mint8unsigned => 1
   | Mint16signed => 2
@@ -47,7 +49,7 @@ Definition size_chunk (chunk: memory_chunk) : Z :=
 Lemma size_chunk_pos:
   forall chunk, size_chunk chunk > 0.
 Proof.
-  intros. destruct chunk; simpl; omega.
+  intros. destruct chunk; simpl; lia.
 Qed.
 
 Definition size_chunk_nat (chunk: memory_chunk) : nat :=
@@ -65,7 +67,7 @@ Proof.
   intros.
   generalize (size_chunk_pos chunk). rewrite size_chunk_conv.
   destruct (size_chunk_nat chunk).
-  simpl; intros; omegaContradiction.
+  simpl; intros; extlia.
   intros; exists n; auto.
 Qed.
 
@@ -86,6 +88,7 @@ Qed.
 
 Definition align_chunk (chunk: memory_chunk) : Z :=
   match chunk with
+  | Mbool => 1
   | Mint8signed => 1
   | Mint8unsigned => 1
   | Mint16signed => 2
@@ -101,7 +104,7 @@ Definition align_chunk (chunk: memory_chunk) : Z :=
 Lemma align_chunk_pos:
   forall chunk, align_chunk chunk > 0.
 Proof.
-  intro. destruct chunk; simpl; omega.
+  intro. destruct chunk; simpl; lia.
 Qed.
 
 Lemma align_chunk_Mptr: align_chunk Mptr = if Archi.ptr64 then 8 else 4.
@@ -120,7 +123,7 @@ Lemma align_le_divides:
   align_chunk chunk1 <= align_chunk chunk2 -> (align_chunk chunk1 | align_chunk chunk2).
 Proof.
   intros. destruct chunk1; destruct chunk2; simpl in *;
-  solve [ omegaContradiction
+  solve [ extlia
         | apply Z.divide_refl
         | exists 2; reflexivity
         | exists 4; reflexivity
@@ -216,12 +219,12 @@ Proof.
   simpl. rewrite Zmod_1_r. auto.
 Opaque Byte.wordsize.
   rewrite Nat2Z.inj_succ. simpl.
-  replace (Z.succ (Z.of_nat n) * 8) with (Z.of_nat n * 8 + 8) by omega.
-  rewrite two_p_is_exp; try omega.
+  replace (Z.succ (Z.of_nat n) * 8) with (Z.of_nat n * 8 + 8) by lia.
+  rewrite two_p_is_exp; try lia.
   rewrite Zmod_recombine. rewrite IHn. rewrite Z.add_comm.
   change (Byte.unsigned (Byte.repr x)) with (Byte.Z_mod_modulus x).
   rewrite Byte.Z_mod_modulus_eq. reflexivity.
-  apply two_p_gt_ZERO. omega. apply two_p_gt_ZERO. omega.
+  apply two_p_gt_ZERO. lia. apply two_p_gt_ZERO. lia.
 Qed.
 
 Lemma rev_if_be_involutive:
@@ -280,15 +283,15 @@ Proof.
   intros; simpl; auto.
   intros until y.
   rewrite Nat2Z.inj_succ.
-  replace (Z.succ (Z.of_nat n) * 8) with (Z.of_nat n * 8 + 8) by omega.
-  rewrite two_p_is_exp; try omega.
+  replace (Z.succ (Z.of_nat n) * 8) with (Z.of_nat n * 8 + 8) by lia.
+  rewrite two_p_is_exp; try lia.
   intro EQM.
   simpl; decEq.
   apply Byte.eqm_samerepr. red.
   eapply eqmod_divides; eauto. apply Z.divide_factor_r.
   apply IHn.
   destruct EQM as [k EQ]. exists k. rewrite EQ.
-  rewrite <- Z_div_plus_full_l. decEq. change (two_p 8) with 256. ring. omega.
+  rewrite <- Z_div_plus_full_l. decEq. change (two_p 8) with 256. ring. lia.
 Qed.
 
 Lemma encode_int_8_mod:
@@ -368,23 +371,24 @@ Definition proj_value (q: quantity) (vl: list memval) : val :=
 
 Definition encode_val (chunk: memory_chunk) (v: val) : list memval :=
   match v, chunk with
-  | Vint n, (Mint8signed | Mint8unsigned) => inj_bytes (encode_int 1%nat (Int.unsigned n))
+  | Vint n, (Mbool | Mint8signed | Mint8unsigned) => inj_bytes (encode_int 1%nat (Int.unsigned n))
   | Vint n, (Mint16signed | Mint16unsigned) => inj_bytes (encode_int 2%nat (Int.unsigned n))
   | Vint n, Mint32 => inj_bytes (encode_int 4%nat (Int.unsigned n))
-  | Vptr b ofs, Mint32 => if Archi.ptr64 then list_repeat 4%nat Undef else inj_value Q32 v
+  | Vptr b ofs, Mint32 => if Archi.ptr64 then List.repeat Undef 4%nat else inj_value Q32 v
   | Vlong n, Mint64 => inj_bytes (encode_int 8%nat (Int64.unsigned n))
-  | Vptr b ofs, Mint64 => if Archi.ptr64 then inj_value Q64 v else list_repeat 8%nat Undef
+  | Vptr b ofs, Mint64 => if Archi.ptr64 then inj_value Q64 v else List.repeat Undef 8%nat
   | Vsingle n, Mfloat32 => inj_bytes (encode_int 4%nat (Int.unsigned (Float32.to_bits n)))
   | Vfloat n, Mfloat64 => inj_bytes (encode_int 8%nat (Int64.unsigned (Float.to_bits n)))
   | _, Many32 => inj_value Q32 v
   | _, Many64 => inj_value Q64 v
-  | _, _ => list_repeat (size_chunk_nat chunk) Undef
+  | _, _ => List.repeat Undef (size_chunk_nat chunk)
   end.
 
 Definition decode_val (chunk: memory_chunk) (vl: list memval) : val :=
   match proj_bytes vl with
   | Some bl =>
       match chunk with
+      | Mbool => Val.norm_bool (Vint (Int.zero_ext 8 (Int.repr (decode_int bl))))
       | Mint8signed => Vint(Int.sign_ext 8 (Int.repr (decode_int bl)))
       | Mint8unsigned => Vint(Int.zero_ext 8 (Int.repr (decode_int bl)))
       | Mint16signed => Vint(Int.sign_ext 16 (Int.repr (decode_int bl)))
@@ -425,7 +429,7 @@ Lemma check_inj_value:
 Proof.
   induction n; simpl. auto.
   unfold proj_sumbool. rewrite dec_eq_true. rewrite dec_eq_true.
-  rewrite <- beq_nat_refl. simpl; auto.
+  rewrite Nat.eqb_refl. simpl; auto.
 Qed.
 
 Lemma proj_inj_value:
@@ -457,10 +461,9 @@ Qed.
 Definition decode_encode_val (v1: val) (chunk1 chunk2: memory_chunk) (v2: val) : Prop :=
   match v1, chunk1, chunk2 with
   | Vundef, _, _ => v2 = Vundef
-  | Vint n, Mint8signed, Mint8signed => v2 = Vint(Int.sign_ext 8 n)
-  | Vint n, Mint8unsigned, Mint8signed => v2 = Vint(Int.sign_ext 8 n)
-  | Vint n, Mint8signed, Mint8unsigned => v2 = Vint(Int.zero_ext 8 n)
-  | Vint n, Mint8unsigned, Mint8unsigned => v2 = Vint(Int.zero_ext 8 n)
+  | Vint n, (Mbool | Mint8signed | Mint8unsigned), Mint8signed => v2 = Vint(Int.sign_ext 8 n)
+  | Vint n, (Mbool | Mint8signed | Mint8unsigned), Mint8unsigned => v2 = Vint(Int.zero_ext 8 n)
+  | Vint n, (Mbool | Mint8signed | Mint8unsigned), Mbool => v2 = Val.norm_bool (Vint (Int.zero_ext 8 n))
   | Vint n, Mint16signed, Mint16signed => v2 = Vint(Int.sign_ext 16 n)
   | Vint n, Mint16unsigned, Mint16signed => v2 = Vint(Int.sign_ext 16 n)
   | Vint n, Mint16signed, Mint16unsigned => v2 = Vint(Int.zero_ext 16 n)
@@ -479,18 +482,18 @@ Definition decode_encode_val (v1: val) (chunk1 chunk2: memory_chunk) (v2: val) :
   | Vlong n, Mint64, Mint64 => v2 = Vlong n
   | Vlong n, Mint64, Mfloat64 => v2 = Vfloat(Float.of_bits n)
   | Vlong n, Many64, Many64 => v2 = Vlong n
-  | Vlong n, (Mint8signed|Mint8unsigned|Mint16signed|Mint16unsigned|Mint32|Mfloat32|Mfloat64|Many32), _ => v2 = Vundef
+  | Vlong n, (Mbool|Mint8signed|Mint8unsigned|Mint16signed|Mint16unsigned|Mint32|Mfloat32|Mfloat64|Many32), _ => v2 = Vundef
   | Vlong n, _, _ => True (**r nothing meaningful to say about v2 *)
   | Vfloat f, Mfloat64, Mfloat64 => v2 = Vfloat f
   | Vfloat f, Mfloat64, Mint64 => v2 = Vlong(Float.to_bits f)
   | Vfloat f, Many64, Many64 => v2 = Vfloat f
-  | Vfloat f, (Mint8signed|Mint8unsigned|Mint16signed|Mint16unsigned|Mint32|Mfloat32|Mint64|Many32), _ => v2 = Vundef
+  | Vfloat f, (Mbool|Mint8signed|Mint8unsigned|Mint16signed|Mint16unsigned|Mint32|Mfloat32|Mint64|Many32), _ => v2 = Vundef
   | Vfloat f, _, _ => True   (* nothing interesting to say about v2 *)
   | Vsingle f, Mfloat32, Mfloat32 => v2 = Vsingle f
   | Vsingle f, Mfloat32, Mint32 => v2 = Vint(Float32.to_bits f)
   | Vsingle f, Many32, Many32 => v2 = Vsingle f
   | Vsingle f, Many64, Many64 => v2 = Vsingle f
-  | Vsingle f, (Mint8signed|Mint8unsigned|Mint16signed|Mint16unsigned|Mint32|Mint64|Mfloat64|Many64), _ => v2 = Vundef
+  | Vsingle f, (Mbool|Mint8signed|Mint8unsigned|Mint16signed|Mint16unsigned|Mint32|Mint64|Mfloat64|Many64), _ => v2 = Vundef
   | Vsingle f, _, _ => True (* nothing interesting to say about v2 *)
   end.
 
@@ -517,9 +520,9 @@ Ltac solve_decode_encode_val_general :=
   | |- context [ Int.repr(decode_int (encode_int 2 (Int.unsigned _))) ] => rewrite decode_encode_int_2
   | |- context [ Int.repr(decode_int (encode_int 4 (Int.unsigned _))) ] => rewrite decode_encode_int_4
   | |- context [ Int64.repr(decode_int (encode_int 8 (Int64.unsigned _))) ] => rewrite decode_encode_int_8
-  | |- Vint (Int.sign_ext _ (Int.sign_ext _ _)) = Vint _ => f_equal; apply Int.sign_ext_idem; omega
-  | |- Vint (Int.zero_ext _ (Int.zero_ext _ _)) = Vint _ => f_equal; apply Int.zero_ext_idem; omega
-  | |- Vint (Int.sign_ext _ (Int.zero_ext _ _)) = Vint _ => f_equal; apply Int.sign_ext_zero_ext; omega
+  | |- context [ Int.sign_ext _ (Int.sign_ext _ _) ] => rewrite Int.sign_ext_idem by lia
+  | |- context [ Int.zero_ext _ (Int.zero_ext _ _) ] => rewrite Int.zero_ext_idem by lia
+  | |- context [ Int.sign_ext _ (Int.zero_ext _ _) ] => rewrite Int.sign_ext_zero_ext by lia
   end.
 
 Lemma decode_encode_val_general:
@@ -543,28 +546,29 @@ Lemma decode_encode_val_similar:
   v2 = Val.load_result chunk2 v1.
 Proof.
   intros until v2; intros TY SZ DE.
-  destruct chunk1; destruct chunk2; simpl in TY; try discriminate; simpl in SZ; try omegaContradiction;
+  unfold decode_encode_val in DE; destruct chunk1; destruct chunk2;
+  simpl in TY; try discriminate; simpl in SZ; try extlia;
   destruct v1; auto.
 Qed.
 
-Lemma decode_val_rettype:
+Lemma decode_val_xtype:
   forall chunk cl,
-  Val.has_rettype (decode_val chunk cl) (rettype_of_chunk chunk).
+  Val.has_rettype (decode_val chunk cl) (xtype_of_chunk chunk).
 Proof.
   intros. unfold decode_val.
   destruct (proj_bytes cl).
-- destruct chunk; simpl; rewrite ? Int.sign_ext_idem, ? Int.zero_ext_idem by omega; auto.
+- destruct chunk; simpl; rewrite ? Int.sign_ext_idem, ? Int.zero_ext_idem by lia; auto.
+  destruct (Val.norm_bool_cases (Vint (Int.zero_ext 8 (Int.repr (decode_int l))))) as [A | [A | A]]; rewrite A; simpl; auto.
 - Local Opaque Val.load_result.
-  destruct chunk; simpl;
-  (exact I || apply Val.load_result_type || destruct Archi.ptr64; (exact I || apply Val.load_result_type)).
+  destruct chunk, Archi.ptr64; (apply Val.load_result_xtype || exact I).
 Qed.
 
 Lemma decode_val_type:
   forall chunk cl,
   Val.has_type (decode_val chunk cl) (type_of_chunk chunk).
 Proof.
-  intros. rewrite <- proj_rettype_of_chunk.
-  apply Val.has_proj_rettype. apply decode_val_rettype.
+  intros. rewrite <- proj_xtype_of_chunk.
+  apply Val.has_proj_xtype. apply decode_val_xtype.
 Qed.
 
 Lemma encode_val_int8_signed_unsigned:
@@ -608,6 +612,7 @@ Lemma decode_val_cast:
   forall chunk l,
   let v := decode_val chunk l in
   match chunk with
+  | Mbool => v = Val.norm_bool v
   | Mint8signed => v = Val.sign_ext 8 v
   | Mint8unsigned => v = Val.zero_ext 8 v
   | Mint16signed => v = Val.sign_ext 16 v
@@ -615,9 +620,10 @@ Lemma decode_val_cast:
   | _ => True
   end.
 Proof.
-  intros. 
-  assert (A: Val.has_rettype v (rettype_of_chunk chunk)) by apply decode_val_rettype.
-  destruct chunk; auto; simpl in A; destruct v; try contradiction; simpl; congruence.
+  intros. unfold v, decode_val.
+  destruct (proj_bytes l).
+- destruct chunk; simpl; rewrite ? Int.sign_ext_idem, ? Int.zero_ext_idem, ? Val.norm_bool_idem by lia; auto.
+- destruct chunk; auto.
 Qed.
 
 (** Pointers cannot be forged. *)
@@ -653,7 +659,7 @@ Proof.
              exists j, mv = Fragment v q j /\ S j <> size_quantity_nat q).
   {
     induction n; simpl; intros. contradiction. destruct H0.
-    exists n; split; auto. omega. apply IHn; auto. omega.
+    exists n; split; auto. lia. apply IHn; auto. lia.
   }
   assert (B: forall q,
              q = quantity_chunk chunk ->
@@ -663,7 +669,7 @@ Proof.
 Local Transparent inj_value.
     intros. unfold inj_value. destruct (size_quantity_nat_pos q) as [sz' EQ'].
     rewrite EQ'. simpl. constructor; auto.
-    intros; eapply A; eauto. omega.
+    intros; eapply A; eauto. lia.
   }
   assert (C: forall bl,
              match v with Vint _ => True | Vlong _ => True | Vfloat _ => True | Vsingle _ => True | _ => False end ->
@@ -674,10 +680,10 @@ Local Transparent inj_value.
     constructor; auto. unfold inj_bytes; intros. exploit list_in_map_inv; eauto.
     intros (b & P & Q); exists b; auto.
   }
-  assert (D: shape_encoding chunk v (list_repeat (size_chunk_nat chunk) Undef)).
+  assert (D: shape_encoding chunk v (List.repeat Undef (size_chunk_nat chunk))).
   {
     intros. rewrite EQ; simpl; constructor; auto.
-    intros. eapply in_list_repeat; eauto.
+    intros. eapply repeat_spec; eauto.
   }
   generalize (encode_val_length chunk v). intros LEN.
   unfold encode_val; unfold encode_val in LEN;
@@ -694,7 +700,7 @@ Inductive shape_decoding (chunk: memory_chunk): list memval -> val -> Prop :=
       (forall mv, In mv mvl -> exists j, mv = Fragment v q j /\ S j <> size_quantity_nat q) ->
       shape_decoding chunk (Fragment v q i :: mvl) (Val.load_result chunk v)
   | shape_decoding_b: forall b mvl v,
-      match v with Vint _ => True | Vlong _ => True | Vfloat _ => True | Vsingle _ => True |  _ => False end ->
+      match v with Vptr _ _ => False | _ => True end ->
       (forall mv, In mv mvl -> exists b', mv = Byte b') ->
       shape_decoding chunk (Byte b :: mvl) v
   | shape_decoding_u: forall mvl,
@@ -718,9 +724,9 @@ Proof.
   {
     induction n; destruct mvs; simpl; intros; try discriminate.
     contradiction.
-    destruct m; try discriminate. InvBooleans. apply beq_nat_true in H4. subst.
-    destruct H0. subst mv. exists n0; split; auto. omega.
-    eapply IHn; eauto. omega.
+    destruct m; try discriminate. InvBooleans. apply Nat.eqb_eq in H4. subst.
+    destruct H0. subst mv. exists n0; split; auto. lia.
+    eapply IHn; eauto. lia.
   }
   assert (U: forall mvs, shape_decoding chunk mvs (Val.load_result chunk Vundef)).
   {
@@ -737,15 +743,16 @@ Proof.
     destruct (quantity_eq q q0); auto.
     destruct (Nat.eqb sz n) eqn:EQN; auto.
     destruct (check_value sz v q mvl) eqn:CHECK; auto.
-    simpl. apply beq_nat_true in EQN. subst n q0. constructor. auto.
+    simpl. apply Nat.eqb_eq in EQN. subst n q0. constructor. auto.
     destruct H0 as [E|[E|[E|E]]]; subst chunk; destruct q; auto || discriminate.
     congruence.
-    intros. eapply B; eauto. omega.
+    intros. eapply B; eauto. lia.
   }
   unfold decode_val.
   destruct (proj_bytes (mv1 :: mvl)) as [bl|] eqn:PB.
   exploit (A mv1); eauto with coqlib. intros [b1 EQ1]; subst mv1.
   destruct chunk; (apply shape_decoding_u || apply shape_decoding_b); eauto with coqlib.
+  unfold Val.norm_bool; destruct Val.is_bool; auto.
   destruct chunk, Archi.ptr64; (apply shape_decoding_u || apply C); auto.
 Qed.
 
@@ -796,9 +803,9 @@ Lemma check_value_inject:
 Proof.
   induction 1; intros; destruct n; simpl in *; auto.
   inv H; auto.
-  InvBooleans. assert (n = n0) by (apply beq_nat_true; auto). subst v1 q0 n0.
+  InvBooleans. assert (n = n0) by (apply Nat.eqb_eq; auto). subst v1 q0 n0.
   replace v2 with v'.
-  unfold proj_sumbool; rewrite ! dec_eq_true. rewrite <- beq_nat_refl. simpl; eauto.
+  unfold proj_sumbool; rewrite ! dec_eq_true. rewrite Nat.eqb_refl. simpl; eauto.
   inv H2; try discriminate; inv H4; congruence.
   discriminate.
 Qed.
@@ -856,7 +863,8 @@ Proof.
   intros. unfold decode_val.
   destruct (proj_bytes vl1) as [bl1|] eqn:PB1.
   exploit proj_bytes_inject; eauto. intros PB2. rewrite PB2.
-  destruct chunk; constructor.
+  destruct chunk; auto.
+  unfold Val.norm_bool; destruct Val.is_bool; auto.
   assert (A: forall q fn,
      Val.inject f (Val.load_result chunk (proj_value q vl1))
                   (match proj_bytes vl2 with
@@ -882,21 +890,21 @@ Qed.
 
 Lemma repeat_Undef_inject_any:
   forall f vl,
-  list_forall2 (memval_inject f) (list_repeat (length vl) Undef) vl.
+  list_forall2 (memval_inject f) (List.repeat Undef (length vl)) vl.
 Proof.
   induction vl; simpl; constructor; auto. constructor.
 Qed.
 
 Lemma repeat_Undef_inject_encode_val:
   forall f chunk v,
-  list_forall2 (memval_inject f) (list_repeat (size_chunk_nat chunk) Undef) (encode_val chunk v).
+  list_forall2 (memval_inject f) (List.repeat Undef (size_chunk_nat chunk)) (encode_val chunk v).
 Proof.
   intros. rewrite <- (encode_val_length chunk v). apply repeat_Undef_inject_any.
 Qed.
 
 Lemma repeat_Undef_inject_self:
   forall f n,
-  list_forall2 (memval_inject f) (list_repeat n Undef) (list_repeat n Undef).
+  list_forall2 (memval_inject f) (List.repeat Undef n) (List.repeat Undef n).
 Proof.
   induction n; simpl; constructor; auto. constructor.
 Qed.
@@ -915,7 +923,7 @@ Theorem encode_val_inject:
   Val.inject f v1 v2 ->
   list_forall2 (memval_inject f) (encode_val chunk v1) (encode_val chunk v2).
 Proof.
-Local Opaque list_repeat.
+Local Opaque List.repeat.
   intros. inversion H; subst; simpl; destruct chunk;
   auto using inj_bytes_inject, inj_value_inject, repeat_Undef_inject_self, repeat_Undef_inject_encode_val.
 - destruct Archi.ptr64; auto using inj_value_inject, repeat_Undef_inject_self.
@@ -955,22 +963,22 @@ Proof.
   induction l1; simpl int_of_bytes; intros.
   simpl. ring.
   simpl length. rewrite Nat2Z.inj_succ.
-  replace (Z.succ (Z.of_nat (length l1)) * 8) with (Z.of_nat (length l1) * 8 + 8) by omega.
+  replace (Z.succ (Z.of_nat (length l1)) * 8) with (Z.of_nat (length l1) * 8 + 8) by lia.
   rewrite two_p_is_exp. change (two_p 8) with 256. rewrite IHl1. ring.
-  omega. omega.
+  lia. lia.
 Qed.
 
 Lemma int_of_bytes_range:
   forall l, 0 <= int_of_bytes l < two_p (Z.of_nat (length l) * 8).
 Proof.
   induction l; intros.
-  simpl. omega.
+  simpl. lia.
   simpl length. rewrite Nat2Z.inj_succ.
-  replace (Z.succ (Z.of_nat (length l)) * 8) with (Z.of_nat (length l) * 8 + 8) by omega.
+  replace (Z.succ (Z.of_nat (length l)) * 8) with (Z.of_nat (length l) * 8 + 8) by lia.
   rewrite two_p_is_exp. change (two_p 8) with 256.
   simpl int_of_bytes. generalize (Byte.unsigned_range a).
-  change Byte.modulus with 256. omega.
-  omega. omega.
+  change Byte.modulus with 256. lia.
+  lia. lia.
 Qed.
 
 Lemma length_proj_bytes:
@@ -1014,7 +1022,7 @@ Proof.
     intros. apply Int.unsigned_repr.
     generalize (int_of_bytes_range l). rewrite H2.
     change (two_p (Z.of_nat 4 * 8)) with (Int.max_unsigned + 1).
-    omega.
+    lia.
   apply Val.lessdef_same.
   unfold decode_int, rev_if_be. destruct Archi.big_endian; rewrite B1; rewrite B2.
   + rewrite <- (rev_length b1) in L1.
@@ -1036,18 +1044,18 @@ Lemma bytes_of_int_append:
   bytes_of_int n1 x1 ++ bytes_of_int n2 x2.
 Proof.
   induction n1; intros.
-- simpl in *. f_equal. omega.
+- simpl in *. f_equal. lia.
 - assert (E: two_p (Z.of_nat (S n1) * 8) = two_p (Z.of_nat n1 * 8) * 256).
   {
     rewrite Nat2Z.inj_succ. change 256 with (two_p 8). rewrite <- two_p_is_exp.
-    f_equal. omega. omega. omega.
+    f_equal. lia. lia. lia.
   }
   rewrite E in *. simpl. f_equal.
   apply Byte.eqm_samerepr. exists (x2 * two_p (Z.of_nat n1 * 8)).
   change Byte.modulus with 256. ring.
   rewrite Z.mul_assoc. rewrite Z_div_plus. apply IHn1.
-  apply Zdiv_interval_1. omega. apply two_p_gt_ZERO; omega. omega.
-  assumption. omega.
+  apply Zdiv_interval_1. lia. apply two_p_gt_ZERO; lia. lia.
+  assumption. lia.
 Qed.
 
 Lemma bytes_of_int64:

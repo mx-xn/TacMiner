@@ -1,0 +1,569 @@
+[
+    {
+        "lemma_name": "isorted0",
+        "proof": [
+            {
+                "tactic_sig": "Theorem isorted0 : impredicative_sorted nil .",
+                "tactic_sig_no_out_arg": "Theorem isorted0 : impredicative_sorted nil .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : impredicative_sorted nil",
+                    "c1_R : relation A",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "c1_goal : impredicative_sorted nil"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall (P : forall _ : list A, Prop) (_ : P nil)\n  (_ : forall x : A, P (cons x nil))\n  (_ : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2)\n         (_ : P (cons x2 l')), P (cons x1 (cons x2 l'))), \nP nil"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "c2_goal : forall (P : forall _ : list A, Prop) (_ : P nil)\n  (_ : forall x : A, P (cons x nil))\n  (_ : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2)\n         (_ : P (cons x2 l')), P (cons x1 (cons x2 l'))), \nP nil"
+                ],
+                "tactic_res": [
+                    "c3_goal : P nil",
+                    "c3_P : forall _ : list A, Prop",
+                    "c3_H : P nil",
+                    "c3_H0 : forall x : A, P (cons x nil)",
+                    "c3_H1 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c3_goal : P nil",
+                    "c3_H : P nil",
+                    "c3_P : forall _ : list A, Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "isorted2",
+        "proof": [
+            {
+                "tactic_sig": "Theorem isorted2 : forall ( x1 x2 : A ) ( l' : list A ) , R x1 x2 -> impredicative_sorted ( x2 :: l' ) -> impredicative_sorted ( x1 :: x2 :: l' ) .",
+                "tactic_sig_no_out_arg": "Theorem isorted2 : forall ( x1 x2 : A ) ( l' : list A ) , R x1 x2 -> impredicative_sorted ( x2 :: l' ) -> impredicative_sorted ( x1 :: x2 :: l' ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2)\n  (_ : impredicative_sorted (cons x2 l')),\nimpredicative_sorted (cons x1 (cons x2 l'))",
+                    "c1_R : relation A",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros x1 x2 l' Hr Hs P Hsn Hs1 Hs2 .",
+                "tactic_args": [
+                    "c1_goal : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2)\n  (_ : impredicative_sorted (cons x2 l')),\nimpredicative_sorted (cons x1 (cons x2 l'))"
+                ],
+                "tactic_res": [
+                    "c2_goal : P (cons x1 (cons x2 l'))",
+                    "c2_x1 : A",
+                    "c2_x2 : A",
+                    "c2_l' : list A",
+                    "c2_Hr : R x1 x2",
+                    "c2_Hs : impredicative_sorted (cons x2 l')",
+                    "c2_P : forall _ : list A, Prop",
+                    "c2_Hsn : P nil",
+                    "c2_Hs1 : forall x : A, P (cons x nil)",
+                    "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+                ]
+            },
+            {
+                "tactic_sig": "custom_tac1 _i .",
+                "tactic_sig_no_out_arg": "custom_tac1 _i .",
+                "tactic_args": [
+                    "c2_goal : P (cons x1 (cons x2 l'))",
+                    "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+                ],
+                "tactic_res": [
+                    "c3_goal : P (cons x2 l')"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c3_goal : P (cons x2 l')",
+                    "c2_Hs : impredicative_sorted (cons x2 l')"
+                ],
+                "tactic_res": [
+                    "c4_goal : P nil",
+                    "c5_goal : forall x : A, P (cons x nil)",
+                    "c6_goal : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : P nil",
+                    "c2_Hsn : P nil",
+                    "c2_P : forall _ : list A, Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c5_goal : forall x : A, P (cons x nil)",
+                    "c2_Hs1 : forall x : A, P (cons x nil)",
+                    "c2_P : forall _ : list A, Prop",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c6_goal : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))",
+                    "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))",
+                    "c2_P : forall _ : list A, Prop",
+                    "c1_R : relation A",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "sorted_to_impredicative_sorted",
+        "proof": [
+            {
+                "tactic_sig": "Theorem sorted_to_impredicative_sorted : forall l , sorted l -> impredicative_sorted l .",
+                "tactic_sig_no_out_arg": "Theorem sorted_to_impredicative_sorted : forall l , sorted l -> impredicative_sorted l .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (l : list A) (_ : sorted l), impredicative_sorted l",
+                    "c1_R : relation A",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "induction 1 .",
+                "tactic_sig_no_out_arg": "induction 1 .",
+                "tactic_args": [
+                    "c1_goal : forall (l : list A) (_ : sorted l), impredicative_sorted l"
+                ],
+                "tactic_res": [
+                    "c2_goal : impredicative_sorted nil",
+                    "c3_goal : impredicative_sorted (cons x nil)",
+                    "c3_x : A",
+                    "c4_goal : impredicative_sorted (cons x1 (cons x2 l'))",
+                    "c4_IHsorted : impredicative_sorted (cons x2 l')",
+                    "c4_H0 : sorted (cons x2 l')",
+                    "c4_H : R x1 x2",
+                    "c4_l' : list A",
+                    "c4_x2 : A",
+                    "c4_x1 : A"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c2_goal : impredicative_sorted nil",
+                    "c1_R : relation A",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c3_goal : impredicative_sorted (cons x nil)",
+                    "c3_x : A",
+                    "c1_R : relation A",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : impredicative_sorted (cons x1 (cons x2 l'))",
+                    "c4_IHsorted : impredicative_sorted (cons x2 l')",
+                    "c4_H : R x1 x2",
+                    "c4_l' : list A",
+                    "c4_x1 : A",
+                    "c4_x2 : A",
+                    "c1_R : relation A",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "impredicative_sorted_to_sorted",
+        "proof": [
+            {
+                "tactic_sig": "Theorem impredicative_sorted_to_sorted : forall l , impredicative_sorted l -> sorted l .",
+                "tactic_sig_no_out_arg": "Theorem impredicative_sorted_to_sorted : forall l , impredicative_sorted l -> sorted l .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (l : list A) (_ : impredicative_sorted l), sorted l",
+                    "c1_R : relation A",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros l H .",
+                "tactic_args": [
+                    "c1_goal : forall (l : list A) (_ : impredicative_sorted l), sorted l"
+                ],
+                "tactic_res": [
+                    "c2_goal : sorted l",
+                    "c2_l : list A",
+                    "c2_H : impredicative_sorted l"
+                ]
+            },
+            {
+                "tactic_sig": "custom_tac1 _i .",
+                "tactic_sig_no_out_arg": "custom_tac1 _i .",
+                "tactic_args": [
+                    "c2_goal : sorted l",
+                    "c2_H : impredicative_sorted l"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "impredicative_le_S",
+        "proof": [
+            {
+                "tactic_sig": "Theorem impredicative_le_S : forall n m : nat , impredicative_le n m -> impredicative_le n ( S m ) .",
+                "tactic_sig_no_out_arg": "Theorem impredicative_le_S : forall n m : nat , impredicative_le n m -> impredicative_le n ( S m ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n m : nat) (_ : impredicative_le n m), impredicative_le n (S m)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros n m Hle P Hn Hs .",
+                "tactic_args": [
+                    "c1_goal : forall (n m : nat) (_ : impredicative_le n m), impredicative_le n (S m)"
+                ],
+                "tactic_res": [
+                    "c2_goal : P (S m)",
+                    "c2_n : nat",
+                    "c2_m : nat",
+                    "c2_Hle : impredicative_le n m",
+                    "c2_P : forall _ : nat, Prop",
+                    "c2_Hn : P n",
+                    "c2_Hs : forall (m : nat) (_ : P m), P (S m)"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c2_goal : P (S m)",
+                    "c2_Hs : forall (m : nat) (_ : P m), P (S m)"
+                ],
+                "tactic_res": [
+                    "c3_goal : P m"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c3_goal : P m",
+                    "c2_Hle : impredicative_le n m"
+                ],
+                "tactic_res": [
+                    "c4_goal : P n",
+                    "c5_goal : forall (m : nat) (_ : P m), P (S m)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : P n",
+                    "c2_Hn : P n",
+                    "c2_P : forall _ : nat, Prop",
+                    "c2_n : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c5_goal : forall (m : nat) (_ : P m), P (S m)",
+                    "c2_Hs : forall (m : nat) (_ : P m), P (S m)",
+                    "c2_P : forall _ : nat, Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "le_to_impredicative",
+        "proof": [
+            {
+                "tactic_sig": "Theorem le_to_impredicative : forall n p , n <= p -> impredicative_le n p .",
+                "tactic_sig_no_out_arg": "Theorem le_to_impredicative : forall n p , n <= p -> impredicative_le n p .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n p : nat) (_ : le n p), impredicative_le n p"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros n p Hle .",
+                "tactic_args": [
+                    "c1_goal : forall (n p : nat) (_ : le n p), impredicative_le n p"
+                ],
+                "tactic_res": [
+                    "c2_goal : impredicative_le n p",
+                    "c2_n : nat",
+                    "c2_p : nat",
+                    "c2_Hle : le n p"
+                ]
+            },
+            {
+                "tactic_sig": "elim _i .",
+                "tactic_sig_no_out_arg": "elim _i .",
+                "tactic_args": [
+                    "c2_goal : impredicative_le n p",
+                    "c2_Hle : le n p"
+                ],
+                "tactic_res": [
+                    "c3_goal : impredicative_le n n",
+                    "c4_goal : forall (m : nat) (_ : le n m) (_ : impredicative_le n m),\nimpredicative_le n (S m)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c3_goal : impredicative_le n n",
+                    "c2_n : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : forall (m : nat) (_ : le n m) (_ : impredicative_le n m),\nimpredicative_le n (S m)",
+                    "c2_n : nat"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "impredicative_to_le",
+        "proof": [
+            {
+                "tactic_sig": "Theorem impredicative_to_le : forall n p , impredicative_le n p -> n <= p .",
+                "tactic_sig_no_out_arg": "Theorem impredicative_to_le : forall n p , impredicative_le n p -> n <= p .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n p : nat) (_ : impredicative_le n p), le n p"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros n p H .",
+                "tactic_args": [
+                    "c1_goal : forall (n p : nat) (_ : impredicative_le n p), le n p"
+                ],
+                "tactic_res": [
+                    "c2_goal : le n p",
+                    "c2_n : nat",
+                    "c2_p : nat",
+                    "c2_H : impredicative_le n p"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c2_goal : le n p",
+                    "c2_H : impredicative_le n p"
+                ],
+                "tactic_res": [
+                    "c3_goal : le n n",
+                    "c4_goal : forall (m : nat) (_ : le n m), le n (S m)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c3_goal : le n n",
+                    "c2_n : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : forall (m : nat) (_ : le n m), le n (S m)",
+                    "c2_n : nat"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "or_to_impredicative",
+        "proof": [
+            {
+                "tactic_sig": "Theorem or_to_impredicative : forall A B , A \\/ B -> impredicative_or A B .",
+                "tactic_sig_no_out_arg": "Theorem or_to_impredicative : forall A B , A \\/ B -> impredicative_or A B .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (A B : Prop) (_ : or A B), impredicative_or A B"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros A B H .",
+                "tactic_args": [
+                    "c1_goal : forall (A B : Prop) (_ : or A B), impredicative_or A B"
+                ],
+                "tactic_res": [
+                    "c2_goal : impredicative_or A B",
+                    "c2_A : Prop",
+                    "c2_B : Prop",
+                    "c2_H : or A B"
+                ]
+            },
+            {
+                "tactic_sig": "elim _i .",
+                "tactic_sig_no_out_arg": "elim _i .",
+                "tactic_args": [
+                    "c2_goal : impredicative_or A B",
+                    "c2_H : or A B"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall _ : A, impredicative_or A B",
+                    "c4_goal : forall _ : B, impredicative_or A B"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c3_goal : forall _ : A, impredicative_or A B",
+                    "c2_A : Prop",
+                    "c2_B : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : forall _ : B, impredicative_or A B",
+                    "c2_A : Prop",
+                    "c2_B : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "impredicative_to_or",
+        "proof": [
+            {
+                "tactic_sig": "Theorem impredicative_to_or : forall A B , impredicative_or A B -> A \\/ B .",
+                "tactic_sig_no_out_arg": "Theorem impredicative_to_or : forall A B , impredicative_or A B -> A \\/ B .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (A B : Prop) (_ : impredicative_or A B), or A B"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros A B H .",
+                "tactic_args": [
+                    "c1_goal : forall (A B : Prop) (_ : impredicative_or A B), or A B"
+                ],
+                "tactic_res": [
+                    "c2_goal : or A B",
+                    "c2_A : Prop",
+                    "c2_B : Prop",
+                    "c2_H : impredicative_or A B"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c2_goal : or A B",
+                    "c2_H : impredicative_or A B"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall _ : A, or A B",
+                    "c4_goal : forall _ : B, or A B"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c3_goal : forall _ : A, or A B",
+                    "c2_A : Prop",
+                    "c2_B : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : forall _ : B, or A B",
+                    "c2_A : Prop",
+                    "c2_B : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

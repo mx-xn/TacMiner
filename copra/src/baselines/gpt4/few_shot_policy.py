@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+import json
 
 root_dir = f"{__file__.split('src')[0]}"
 if root_dir not in sys.path:
@@ -21,6 +22,8 @@ from src.rl.simple_proof_env import ProofEnvInfo
 from src.tools.informal_proof_repo import InformalProofRepo
 
 
+with open('tactic_index.json') as f:
+    TACTIC_INDEX = json.load(f)
 class FewShotGptPolicy(Policy):
     def __init__(self,
         lemma_name: str, 
@@ -145,7 +148,16 @@ class FewShotGptPolicy(Policy):
                 raise Exception(f"Unsupported language {self.language}")
             while not success and tries > 0:
                 try:
-                    responses = self._policy_prompter.run_prompt(gpt_response)
+                    # responses = self._policy_prompter.run_prompt(gpt_response)
+                    # Should look up the index with state.theorem_name
+                    if state.theorem_name in TACTIC_INDEX['theorem_file']:
+                        theorem_file = TACTIC_INDEX['theorem_file'][state.theorem_name]
+                        custom_tactics = TACTIC_INDEX['custom_tactics'].get(theorem_file)
+                    else:
+                        custom_tactics = None
+                    responses = self._policy_prompter.run_prompt(
+                            gpt_response,
+                            custom_tactics_header=custom_tactics)
                     actions_tuple : typing.List[typing.Tuple[ProofAction, float]] = self._policy_prompter.parse_response(responses)
                     chosen_message = actions_tuple[0][0].original_message # Selecting only top action here
                     self.logger.info(f"Chosen message: \n\n{chosen_message['content']}")

@@ -34,6 +34,7 @@ eval_settings:
 
 # Few shot Coq
 # nohup python src/main/eval_benchmark.py prompt_settings=coq_few_shot env_settings=bm25_retrieval eval_settings=n_4_few_gpt35 benchmark=simple_benchmark_1  &
+# nohup python src/main/eval_benchmark.py prompt_settings=coq_few_shot env_settings=bm25_retrieval eval_settings=n_4_few_gpt4_turbo benchmark=simple_benchmark_1  &
 
 # Dfs Agent Coq
 # nohup python src/main/eval_benchmark.py prompt_settings=coq_dfs_always_retrieve env_settings=bm25_retrieval eval_settings=n_60_dfs_gpt35_always_retrieve_no_ex benchmark=simple_benchmark_1  &

@@ -7,10 +7,11 @@
 /*                                                                     */
 /*  Copyright Institut National de Recherche en Informatique et en     */
 /*  Automatique.  All rights reserved.  This file is distributed       */
-/*  under the terms of the GNU General Public License as published by  */
-/*  the Free Software Foundation, either version 2 of the License, or  */
-/*  (at your option) any later version.  This file is also distributed */
-/*  under the terms of the INRIA Non-Commercial License Agreement.     */
+/*  under the terms of the GNU Lesser General Public License as        */
+/*  published by the Free Software Foundation, either version 2.1 of   */
+/*  the License, or  (at your option) any later version.               */
+/*  This file is also distributed under the terms of the               */
+/*  INRIA Non-Commercial License Agreement.                            */
 /*                                                                     */
 /* *********************************************************************/
 
@@ -46,7 +47,7 @@
 %token<string * Pre_parser_aux.identifier_type ref * Cabs.loc>
   VAR_NAME TYPEDEF_NAME
 %token<Cabs.constant * Cabs.loc> CONSTANT
-%token<bool * int64 list * Cabs.loc> STRING_LITERAL
+%token<Cabs.encoding * int64 list * Cabs.loc> STRING_LITERAL
 %token<string * Cabs.loc> PRAGMA
 
 %token<Cabs.loc> SIZEOF PTR INC DEC LEFT RIGHT LEQ GEQ EQEQ EQ NEQ LT GT
@@ -54,10 +55,11 @@
   COLON AND MUL_ASSIGN DIV_ASSIGN MOD_ASSIGN ADD_ASSIGN SUB_ASSIGN LEFT_ASSIGN
   RIGHT_ASSIGN AND_ASSIGN XOR_ASSIGN OR_ASSIGN LPAREN RPAREN LBRACK RBRACK
   LBRACE RBRACE DOT COMMA SEMICOLON ELLIPSIS TYPEDEF EXTERN STATIC RESTRICT
-  AUTO REGISTER INLINE NORETURN CHAR SHORT INT LONG SIGNED UNSIGNED FLOAT DOUBLE
+  AUTO REGISTER INLINE NORETURN CHAR SHORT INT LONG SIGNED UNSIGNED 
+  FLOAT FLOAT16 DOUBLE
   UNDERSCORE_BOOL CONST VOLATILE VOID STRUCT UNION ENUM CASE DEFAULT IF ELSE
   SWITCH WHILE DO FOR GOTO CONTINUE BREAK RETURN BUILTIN_VA_ARG ALIGNOF
-  ATTRIBUTE ALIGNAS PACKED ASM BUILTIN_OFFSETOF
+  ATTRIBUTE ALIGNAS PACKED ASM BUILTIN_OFFSETOF STATIC_ASSERT GENERIC
 
 %token EOF
 
@@ -247,6 +249,21 @@ primary_expression:
 | CONSTANT
 | string_literals_list
 | LPAREN expression RPAREN
+| generic_selection
+    {}
+
+generic_selection:
+| GENERIC LPAREN assignment_expression COMMA generic_assoc_list RPAREN
+    {}
+
+generic_assoc_list:
+| generic_association
+| generic_assoc_list COMMA generic_association
+    {}
+
+generic_association:
+| type_name COLON assignment_expression
+| DEFAULT COLON assignment_expression
     {}
 
 postfix_expression:
@@ -404,6 +421,7 @@ expression:
 declaration(phantom):
 | declaration_specifiers(declaration(phantom)) init_declarator_list?    SEMICOLON
 | declaration_specifiers_typedef               typedef_declarator_list? SEMICOLON
+| static_assert_declaration
     {}
 
 init_declarator_list:
@@ -493,6 +511,7 @@ type_specifier_no_typedef_name:
 | INT
 | LONG
 | FLOAT
+| FLOAT16
 | DOUBLE
 | SIGNED
 | UNSIGNED
@@ -518,6 +537,7 @@ struct_declaration_list:
 
 struct_declaration:
 | specifier_qualifier_list(struct_declaration) struct_declarator_list? SEMICOLON
+| static_assert_declaration
     {}
 
 (* As in the standard, except it also encodes the constraint described
@@ -607,6 +627,10 @@ gcc_attribute_word:
 | PACKED
     {}
 
+static_assert_declaration:
+|  STATIC_ASSERT LPAREN constant_expression COMMA string_literals_list RPAREN SEMICOLON
+    {}
+
 function_specifier:
 | INLINE
 | NORETURN
@@ -669,6 +693,14 @@ direct_declarator:
 | LPAREN save_context x = declarator RPAREN
     { x }
 | x = direct_declarator LBRACK type_qualifier_list? optional(assignment_expression, RBRACK)
+    { match snd x with
+      | Decl_ident -> (fst x, Decl_other)
+      | _ -> x }
+| x = direct_declarator LBRACK STATIC type_qualifier_list? assignment_expression RBRACK
+    { match snd x with
+      | Decl_ident -> (fst x, Decl_other)
+      | _ -> x }
+| x = direct_declarator LBRACK type_qualifier_list STATIC assignment_expression RBRACK
     { match snd x with
       | Decl_ident -> (fst x, Decl_other)
       | _ -> x }
@@ -742,6 +774,8 @@ abstract_declarator(phantom):
 direct_abstract_declarator:
 | LPAREN save_context abstract_declarator(type_name) RPAREN
 | direct_abstract_declarator? LBRACK type_qualifier_list? optional(assignment_expression, RBRACK)
+| direct_abstract_declarator? LBRACK STATIC type_qualifier_list? assignment_expression RBRACK
+| direct_abstract_declarator? LBRACK type_qualifier_list STATIC assignment_expression RBRACK
 | ioption(direct_abstract_declarator) LPAREN context_parameter_type_list? RPAREN
     {}
 

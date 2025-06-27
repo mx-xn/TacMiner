@@ -1,0 +1,25 @@
+Ltac custom_tac18 H0 := intros; monadInv H0.
+Ltac custom_tac26 H0 H1 := apply H0 with H1; auto.
+Ltac custom_tac37 H0 := eapply H0; eauto.
+Ltac custom_tac63 H0 H1 H2 := pose ( AT := fun pc i => instr_at_incr H0 H1 pc i H2); induction 1; econstructor; eauto.
+Ltac custom_tac46  := constructor; auto.
+Ltac custom_tac1 H0 H1 := intros until H0; unfold H1.
+Ltac custom_tac9  := intros; red; intros.
+Ltac custom_tac4 H0 := unfold H0; intros.
+Ltac custom_tac58  := econstructor; eauto with rtlg.
+Ltac custom_tac5 H0 := intros; inv H0.
+Ltac custom_tac32 H0 := apply H0; eauto with rtlg.
+Ltac custom_tac2 H0 := exists H0; auto.
+Ltac custom_tac17 H0 := simpl; apply H0.
+Ltac custom_tac38  := simpl; intros.
+Ltac custom_tac42  := right; eauto with rtlg.
+Ltac custom_tac20 H0 H1 := intros; unfold H0 in H1.
+Ltac custom_tac10  := red; intros.
+Ltac custom_tac16  := intros; eauto with rtlg.
+Ltac custom_tac22 H0 := unfold H0; simpl.
+Ltac custom_tac23 H0 H1 := simpl in H0; rewrite H1 in H0.
+Ltac custom_tac47  := induction 1; intros.
+Ltac custom_tac72 H0 := monadInv H0; auto.
+Ltac custom_tac73 H0 H1 := constructor; unfold H0 in H1.
+Ltac custom_tac13 H0 := subst H0; auto.
+Ltac custom_tac59  := constructor; eauto with rtlg.

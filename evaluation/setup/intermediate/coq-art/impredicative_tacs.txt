@@ -1,0 +1,33 @@
+benchmarks/coq-art/raw/impredicative.v
+-----
+benchmarks/coq-art/raw/impredicative_compr.v
+-----
+-----
+isorted0
+Proof. red; intros; assumption. Qed.
+isorted1
+Proof. unfold impredicative_sorted; auto. Qed.
+isorted2
+Proof. intros x1 x2 l' Hr Hs P Hsn Hs1 Hs2. apply Hs2; auto. apply Hs; auto. Qed.
+sorted_to_impredicative_sorted
+Proof. induction 1; auto. Qed.
+impredicative_sorted_to_sorted
+Proof. intros l H; apply H; auto. Qed.
+impredicative_le_n
+Proof. unfold impredicative_le; auto. Qed.
+impredicative_le_S
+Proof. intros n m Hle P Hn Hs; apply Hs; apply Hle; auto. Qed.
+le_to_impredicative
+Proof. intros n p Hle; elim Hle; auto. Qed.
+impredicative_to_le
+Proof. intros n p H; apply H; auto. Qed.
+Ltac custom_tac0 H0 := unfold H0; auto.
+
+impredicative_or_intro1
+Proof. custom_tac0 impredicative_or. Qed.
+impredicative_or_intro2
+Proof. custom_tac0 impredicative_or. Qed.
+or_to_impredicative
+Proof. intros A B H; elim H; auto. Qed.
+impredicative_to_or
+Proof. intros A B H; apply H; auto. Qed.

@@ -127,6 +127,16 @@ class GptAccess(object):
             stop: list = ["\n"]) -> typing.Tuple[list, dict]:
         model = self.model_name if model is None else model
         if self.is_open_ai_model:
+            # HACK(gpoesia): Fixes the roles that are actually passed to the OpenAI API.
+            # It seems like all the prompt examples are passed as 'system', since the
+            # desired role is coming in a 'name' field that is not really mentioned in
+            # the OpenAI API anywhere (so I think it just ignores it, and uses "role").
+            for m in messages:
+                if m.get('name') == 'example_user':
+                    m['role'] = 'user'
+                elif m.get('name') == 'example_assistant':
+                    m['role'] = 'assistant'
+
             response = openai.ChatCompletion.create(
                 model=model,
                 messages=messages,
@@ -156,6 +166,7 @@ class GptAccess(object):
             self.usage["prompt_tokens"] += usage.prompt_tokens
             self.usage["completion_tokens"] += usage.completion_tokens
             self.usage["total_tokens"] += usage.total_tokens
+        print(model, 'response:', response.choices)
         return_responses = [{"role": choice.message.role, "content": choice.message.content} for choice in response.choices]
         for i in range(len(return_responses) - 1):
             return_responses[i]["finish_reason"] = "stop"

@@ -1,0 +1,131 @@
+benchmarks/coq-art/raw/chap5.v
+-----
+benchmarks/coq-art/raw/chap5_compr.v
+-----
+-----
+conv_example
+Proof. intros. assumption. Qed.
+imp_trans
+Proof. intros P Q R H H0 p. apply H0. apply H. assumption. Qed.
+one_neutral_left
+Proof. intro z; ring. Qed.
+le_i_SSi
+Proof. intro i. do 2 apply le_S; apply le_n. Qed.
+all_imp_dist
+Proof. intros A P Q H H0 z. apply H. apply H0. Qed.
+mult_le_compat_r
+Proof. intros m n p H. rewrite (Nat.mul_comm n m). rewrite (Nat.mul_comm p m). apply Nat.mul_le_mono_l. assumption. Qed.
+le_mult_mult
+Proof. intros a b c d H H0. apply Nat.le_trans with (m := c * b). - apply mult_le_compat_r; assumption. - apply Nat.mul_le_mono_l; assumption. Qed.
+le_mult_mult'
+Proof. intros a b c d H H0. eapply Nat.le_trans. - eapply Nat.mul_le_mono_l. eexact H0. - apply mult_le_compat_r. assumption. Qed.
+le_O_mult
+Proof. intros n p; apply le_n. Qed.
+lt_8_9
+Proof. unfold lt; apply le_n. Qed.
+lt_S
+Proof. intros n p H. unfold lt; apply le_S. assumption. Qed.
+unfold_example
+Proof. intros x y Heq. unfold Zsquare_diff at 1. rewrite Heq; ring. Qed.
+ex1
+Proof. apply False_ind. exact ff. Qed.
+absurd
+Proof. intros P Q p H. elim H. assumption. Qed.
+double_neg_i
+Proof. intros P p H. apply H; assumption. Qed.
+modus_ponens
+Proof. intros. auto. Qed.
+double_neg_i'
+Proof. intro P; exact (modus_ponens P False). Qed.
+contrap
+Proof. intros A B; unfold not. apply imp_trans. Qed.
+disj4_3'
+Proof. right; right; left; assumption. Qed.
+and_commutes
+Proof. intros A B H; destruct H. split; assumption. Qed.
+or_commutes
+Proof. intros A B H; destruct H as [H | H]; auto. Qed.
+ex_imp_ex
+Proof. intros A P Q H H0; destruct H as [a Ha]. exists a; apply H0; assumption. Qed.
+diff_of_squares
+Proof. intros; ring. Qed.
+eq_sym'
+Proof. intros A a b e; rewrite e; reflexivity. Qed.
+Zmult_distr_1
+Proof. intros n x ; rewrite Zmult_plus_distr_l. now rewrite Zmult_1_l. Qed.
+regroup
+Proof. intro x; pattern x at 1. rewrite <- Zmult_1_l. repeat rewrite Zmult_distr_1. reflexivity. Qed.
+le_lt_S_eq
+Proof. intros; lia. Qed.
+conditional_rewrite_example
+Proof. intros n H H0. rewrite <- (le_lt_S_eq 2 n). - reflexivity. - apply Nat.add_le_mono_l with (p := 6). rewrite Nat.add_comm in H; auto with arith. - apply Nat.add_lt_mono_l with (p:= 3); auto with arith. Qed.
+conditional_rewrite_example'
+Proof. intros n H H0. assert (n = 2) by lia. now subst n. Qed.
+eq_trans
+Proof. intros A x y z H. rewrite H; auto. Qed.
+my_I
+Proof. intros P p; assumption. Qed.
+my_False_ind
+Proof. intros P F; apply F. Qed.
+leibniz_sym
+Proof. intros x y H Q; apply H; trivial. Qed.
+excluded_middle_peirce
+Proof. unfold peirce. intros H P Q H0. destruct (H P) as [p | np]. ** assumption. ** apply H0. intro H1. now absurd P. Qed.
+peirce_classic
+Proof. intros HPeirce P H0. apply (HPeirce P False). intro H1. now destruct H0. Qed.
+classic_excluded_middle
+Proof. unfold excluded_middle. intros H P. apply H. intro H0. absurd P. - intro H1. apply H0. now left. - apply H. intro H1. apply H0. now right. Qed.
+excluded_middle_implies_to_or
+Proof. intros H P Q H0. destruct (H P) as [p | np]. - right. auto. - now left. Qed.
+implies_to_or_excluded_middle
+Proof. unfold excluded_middle. intros H P. destruct (H P P). - auto. - auto. - auto. Qed.
+classic_de_morgan_not_and_not
+Proof. unfold de_morgan_not_and_not. intros H P Q H0. apply H. intro H1. apply H0. split. - intro. apply H1. auto. - intro. apply H1. auto. Qed.
+de_morgan_not_and_not_excluded_middle
+Proof. unfold excluded_middle. intros H P. apply H. intros [H1 H2]. contradiction. Qed.
+my_le_n
+Proof. intros n P Hn HS ; assumption. Qed.
+Ltac custom_tac18 H0 H1 H2 H3 H4 H5 := intros H0 H1 H2 H3 H4 H5; apply H5.
+
+Ltac custom_tac1 H0 := apply H0; assumption.
+
+my_le_S
+Proof. custom_tac18 n p H P Hn HS; custom_tac1 H. Qed.
+my_le_le
+Proof. intros n p H; apply H; auto with arith. Qed.
+my_lt_le
+Proof. intros n p H;apply H. - apply my_le_S;apply my_le_n. - intros;apply my_le_S;assumption. Qed.
+my_le_trans
+Proof. intros n p q H;generalize q;clear q;apply H. - trivial. -intros q Hq r Hr;apply Hq; now apply my_lt_le. Qed.
+my_and_left
+Proof. intros P Q H; apply H; auto. Qed.
+my_and_right
+Proof. intros P Q H; apply H; auto. Qed.
+my_and_ind
+Proof. intros P Q R H H0; apply H0; assumption. Qed.
+my_or_introl
+Proof. unfold my_or; auto. Qed.
+my_or_intror
+Proof. unfold my_or; auto. Qed.
+my_or_ind
+Proof. intros P Q R H H0 H1; apply H1; assumption. Qed.
+my_or_False
+Proof. unfold my_False; intros P H; apply H; intro H0; apply H0. Qed.
+my_or_comm
+Proof. intros P Q H; apply H; intros H0 R; auto. Qed.
+my_ex_intro
+Proof. intros A P a Ha R H; eapply H; eauto. Qed.
+my_not_ex_all
+Proof. intros A P H a H'; apply H; eapply my_ex_intro; eauto. Qed.
+my_ex_ex
+Proof. intros A P H; apply H. intros x Hx; exists x; assumption. Qed.
+ex_my_ex
+Proof. intros A P H; elim H; intros x Hx R. intros H0; eapply H0; eapply Hx. Qed.
+not_False
+Proof. intro H; assumption. Qed.
+triple_neg
+Proof. unfold my_not; auto. Qed.
+P3PQ
+Proof. intros P Q H p; apply (triple_neg _ H p). Qed.
+imp_absurd
+Proof. intros P Q R H H0 p; apply (H0 p); auto. Qed.

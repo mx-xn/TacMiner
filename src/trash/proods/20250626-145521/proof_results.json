@@ -1,0 +1,120 @@
+{
+    "path": ".log/proofs/eval_driver/dfs/bignums_tacminer/20250626-145521/proof_results.json",
+    "theorem_map": {
+        "../raw-data/bignums/BigQ/QMake_comp_TM.v": {
+            "spec_power_norm": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "spec_power_norm",
+                "proof_steps": [],
+                "proof_time_in_secs": 0,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 1,
+                    "total_queries": 0,
+                    "queries": 0
+                },
+                "language": "COQ"
+            },
+            "spec_red": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "spec_red  : forall x, [ red x ] == [ x ] .",
+                "proof_steps": [],
+                "proof_time_in_secs": 46.371212005615234,
+                "inferences_taken": 36,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 7,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 29,
+                    "attempt_idx": 1,
+                    "total_queries": 38
+                },
+                "language": "COQ"
+            },
+            "strong_spec_red": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "strong_spec_red  : forall x, [red x] = Qred [x].",
+                "proof_steps": [],
+                "proof_time_in_secs": 41.10194516181946,
+                "inferences_taken": 26,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 4,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 22,
+                    "attempt_idx": 1,
+                    "total_queries": 31
+                },
+                "language": "COQ"
+            },
+            "spec_norm_denum": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "spec_norm_denum",
+                "proof_steps": [],
+                "proof_time_in_secs": 0,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 1,
+                    "total_queries": 0,
+                    "queries": 0
+                },
+                "language": "COQ"
+            },
+            "strong_spec_check_int": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "strong_spec_check_int  : forall n d, [check_int n d] = [Qq n d].",
+                "proof_steps": [],
+                "proof_time_in_secs": 28.897608041763306,
+                "inferences_taken": 12,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 3,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 9,
+                    "attempt_idx": 0,
+                    "total_queries": 9
+                },
+                "language": "COQ"
+            },
+            "strong_spec_of_Q": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "strong_spec_of_Q",
+                "proof_steps": [],
+                "proof_time_in_secs": 22.866104125976562,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0,
+                    "total_queries": 0
+                },
+                "language": "COQ"
+            }
+        }
+    }
+}

@@ -427,11 +427,25 @@ class CoqCustomFileExec:
 if __name__ == "__main__":
     files_to_process = {
         # topic-name: (original_dir, original_filename, bench_dir)
+        "chap3_TM": ("coq-art", "chap3_TM.v", "coq-art"),
+        "chap3_PN": ("coq-art", "chap3_PN.v", "coq-art"),
+
+        "chap5_TM": ("coq-art", "chap5_TM.v", "coq-art"),
+        "chap5_PN": ("coq-art", "chap5_PN.v", "coq-art"),
+
+        "IndPred_TM": ("coq-art", "IndPred_TM.v", "coq-art"),
+        "IndPred_PN": ("coq-art", "IndPred_PN.v", "coq-art"),
+
+        "impredicative_TM": ("coq-art", "impredicative_TM.v", "coq-art"),
+        "impredicative_PN": ("coq-art", "impredicative_PN.v", "coq-art"),
+
+        "parsing_TM": ("coq-art", "parsing_TM.v", "coq-art"),
+        "parsing_PN": ("coq-art", "parsing_PN.v", "coq-art"),
         # "IndPred": ("coq-art", "chap8.v", "coq-art"),
         # "SearchTree": ("coq-art", "chap11.v", "coq-art"),
         # "Reflection": ("coq-art", "chap16.v", "coq-art")
 
-        "RegAlloc" : ("CompCert", "backend/Allocation.v", "comp-cert"),
+        # "RegAlloc" : ("CompCert", "backend/Allocation.v", "comp-cert"),
         # "LiveRange" : ("CompCert", "backend/Debugvarproof.v", "comp-cert"),
         # "AbsDomain" : ("CompCert", "backend/NeedDomain.v", "comp-cert"),
         # "RTLSpec" : ("CompCert", "backend/RTLgenspec.v", "comp-cert")
@@ -454,27 +468,7 @@ if __name__ == "__main__":
         if not os.path.exists(os.path.dirname(json_path)):
             os.makedirs(os.path.dirname(json_path))
 
-        coq_file = "%s/%s" % (original_dir, original_fn)
-        shutil.copy(coq_file, "benchmarks/%s/raw/%s.v" % (bench_dir, topic))
-        with CoqCustomFileExec(coq_file, "%s/%s.json" % (json_path, topic), project_root="%s/" % original_dir) as coq_exec:
+        coq_file = "raw-data/%s/%s" % (original_dir, original_fn)
+        # shutil.copy(coq_file, "benchmarks/%s/raw/%s.v" % (bench_dir, topic))
+        with CoqCustomFileExec(coq_file, "%s/%s.json" % (json_path, topic), project_root="raw-data/%s/" % original_dir) as coq_exec:
             coq_exec.run_in_loop()
-
-    # with CoqCustomFileExec("coq-art/chap8.v", "benchmarks/coq-art/json/IndPred.json", project_root = "coq-art/") as coq_exec:
-    #     coq_exec.run_in_loop()
-    # with CoqCustomFileExec("cdf/Sequences.v", "cdf/json/Sequences.json", project_root = "cdf/") as coq_exec:
-    # with CoqCustomFileExec("cdf/Seplog.v", "cdf/json/Seplog.json", project_root = "cdf/") as coq_exec:
-    # with CoqCustomFileExec("cdf/Sequences.v", "cdf/json/Sequences.json", project_root = "cdf/") as coq_exec:
-    # with CoqCustomFileExec("cdf/Separation.v", "cdf/json/Separation.json", project_root = "cdf/") as coq_exec:
-    # with CoqCustomFileExec("cdf/Delay.v", "cdf/json/Delay.json", project_root = "cdf/") as coq_exec:
-    # with CoqCustomFileExec("cdf/Monads.v", "cdf/json/Monads.json", project_root = "cdf/") as coq_exec:
-    # with CoqCustomFileExec("cdf/Hoare.v", "cdf/json/Hoare.json", project_root = "cdf/") as coq_exec:
-    # with CoqCustomFileExec("cdf/CSL.v", "cdf/json/CSL.json", project_root = "cdf/") as coq_exec:
-    # with CoqCustomFileExec("CompCert/backend/Allocation.v", "CompCert/backend/json/Allocation.json", project_root = "CompCert/") as coq_exec:
-    # with CoqCustomFileExec("CompCert/backend/Debugvarproof.v", "CompCert/backend/json/Debugvarproof.json", project_root = "CompCert/") as coq_exec:
-    # with CoqCustomFileExec("CompCert/backend/NeedDomain.v", "CompCert/backend/json/NeedDomain.json", project_root = "CompCert/") as coq_exec:
-    # with CoqCustomFileExec("CompCert/backend/NeedDomain_comp.v", "CompCert/backend/json/NeedDomain_comp.json", project_root = "CompCert/") as coq_exec:
-    # with CoqCustomFileExec("CompCert/backend/NeedDomain_temp.v", "CompCert/backend/json/NeedDomain_temp.json", project_root = "CompCert/") as coq_exec:
-    # with CoqCustomFileExec("CompCert/backend/RTLgenspec.v", "CompCert/backend/json/RTLgenspec.json", project_root = "CompCert/") as coq_exec:
-    # with CoqCustomFileExec("bignums/bigN/NMake_compBS.v", "bignums/bigN/json/NMake_compBS.json", project_root = "bignums/") as coq_exec:
-    # with CoqCustomFileExec("bignums/bigQ/QMake.v", "bignums/bigQ/json/QMake.json", project_root = "bignums/") as coq_exec:
-    # with CoqCustomFileExec("bignums/bigZ/ZMake.v", "bignums/bigZ/json/ZMake.json", project_root = "bignums/") as coq_exec:

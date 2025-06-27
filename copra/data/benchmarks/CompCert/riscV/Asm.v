@@ -93,6 +93,7 @@ Module Pregmap := EMap(PregEq).
 
 (** Conventional names for stack pointer ([SP]) and return address ([RA]). *)
 
+Declare Scope asm.
 Notation "'SP'" := X2 (only parsing) : asm.
 Notation "'RA'" := X1 (only parsing) : asm.
 
@@ -256,7 +257,9 @@ Inductive instruction : Type :=
   (* floating point register move *)
   | Pfmv     (rd: freg) (rs: freg)                  (**r move *)
   | Pfmvxs   (rd: ireg) (rs: freg)                  (**r move FP single to integer register *)
+  | Pfmvsx   (rd: freg) (rs: ireg)                  (**r move integer register to FP single *)
   | Pfmvxd   (rd: ireg) (rs: freg)                  (**r move FP double to integer register *)
+  | Pfmvdx   (rd: freg) (rs: ireg)                  (**r move integer register to FP double *)
 
   (* 32-bit (single-precision) floating point *)
   | Pfls     (rd: freg) (ra: ireg) (ofs: offset)    (**r load float *)
@@ -345,7 +348,10 @@ Inductive instruction : Type :=
   | Pbtbl   (r: ireg)  (tbl: list label)            (**r N-way branch through a jump table *)
   | Pbuiltin: external_function -> list (builtin_arg preg)
               -> builtin_res preg -> instruction    (**r built-in function (pseudo) *)
-  | Pnop : instruction.                             (**r nop instruction *)
+  | Pnop : instruction                             (**r nop instruction *)
+  | Pcfi_rel_offset (ofs: int)                      (**r .cfi_rel_offset debug directive *)
+  | Pcfi_adjust (ofs: int).                         (**r .cfi_adjust debug directive *)
+
 
 
 (** The pseudo-instructions are the following:
@@ -749,7 +755,7 @@ Definition exec_instr (f: function) (i: instruction) (rs: regset) (m: mem) : out
   | Pj_l l =>
       goto_label f l rs m
   | Pj_s s sg =>
-      Next (rs#PC <- (Genv.symbol_address ge s Ptrofs.zero)) m
+      Next (rs#PC <- (Genv.symbol_address ge s Ptrofs.zero) #X31 <- Vundef) m
   | Pj_r r sg =>
       Next (rs#PC <- (rs#r)) m
   | Pjal_s s sg =>
@@ -961,15 +967,20 @@ Definition exec_instr (f: function) (i: instruction) (rs: regset) (m: mem) : out
           end
       | _ => Stuck
       end
+  | Pcfi_rel_offset _ =>
+      Next (nextinstr rs) m
   | Pbuiltin ef args res =>
       Stuck (**r treated specially below *)
 
   (** The following instructions and directives are not generated directly by Asmgen,
       so we do not model them. *)
+  | Pcfi_adjust _
   | Pfence
 
   | Pfmvxs _ _
+  | Pfmvsx _ _
   | Pfmvxd _ _
+  | Pfmvdx _ _
 
   | Pfmins _ _ _
   | Pfmaxs _ _ _
@@ -1076,7 +1087,7 @@ Inductive step: state -> trace -> state -> Prop :=
       rs' = nextinstr
               (set_res res vres
                 (undef_regs (map preg_of (destroyed_by_builtin ef))
-                   (rs#X31 <- Vundef))) ->
+                   (rs #X1 <- Vundef #X31 <- Vundef))) ->
       step (State rs m) t (State rs' m')
   | exec_step_external:
       forall b ef args res rs m t rs' m',
@@ -1157,7 +1168,7 @@ Ltac Equalities :=
   split. auto. intros. destruct B; auto. subst. auto.
 - (* trace length *)
   red; intros. inv H; simpl.
-  omega.
+  lia.
   eapply external_call_trace_length; eauto.
   eapply external_call_trace_length; eauto.
 - (* initial states *)

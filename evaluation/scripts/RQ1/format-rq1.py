@@ -65,19 +65,19 @@ for topic in all_topics:
 # ========== FORMAT & WRITE ==========
 
 def format_row(domain, topic, tool, stats, show_domain=False, show_topic=False):
-    return f"{domain if show_domain else '':<12} | {topic if show_topic else '':<12} | {tool:<8} | {stats['tactics']:>8} | {stats['avg_size']:>7.1f} | {stats['max_size']:>8} | {stats['usage']:>11}"
+    return f"{domain if show_domain else '':<14} | {topic if show_topic else '':<12} | {tool:<8} | {stats['tactics']:>8} | {stats['avg_size']:>7.1f} | {stats['max_size']:>8} | {stats['usage']:>11}"
 
-print("Domain       | Topic       | Tool     | #Tactics | AvgSize | MaxSize | UsageCount\n")
-print("-" * 80 + "\n")
+print("Domain         | Topic       | Tool     | #Tactics | AvgSize | MaxSize | UsageCount")
+print("-" * 86)
 
 total_tool1 = {"tactics": 0, "avg_size": [], "max_size": 0, "usage": 0}
 total_tool2 = {"tactics": 0, "avg_size": [], "max_size": 0, "usage": 0}
 
 for domain in grouped:
     for topic, stats1, stats2 in grouped[domain]:
-        print(format_row(domain, topic, tool1_name, stats1, show_domain=True, show_topic=True) + "\n")
-        print(format_row("", "", tool2_name, stats2) + "\n")
-        print("-" * 80 + "\n")
+        print(format_row(domain, topic, tool1_name, stats1, show_domain=True, show_topic=True))
+        print(format_row("", "", tool2_name, stats2))
+        print("-" * 86)
 
         # Accumulate for overall
         total_tool1["tactics"] += stats1["tactics"]
@@ -90,19 +90,20 @@ for domain in grouped:
         total_tool2["max_size"] = max(total_tool2["max_size"], stats2["max_size"])
         total_tool2["usage"] += stats2["usage"]
 
+print("-" * 86)
 print(format_row("Overall", "", tool1_name, {
     "tactics": total_tool1["tactics"],
     "avg_size": sum(total_tool1["avg_size"]) / len(total_tool1["avg_size"]),
     "max_size": total_tool1["max_size"],
     "usage": total_tool1["usage"]
-}, show_domain=True) + "\n")
+}, show_domain=True))
 
 print(format_row("", "", tool2_name, {
     "tactics": total_tool2["tactics"],
     "avg_size": sum(total_tool2["avg_size"]) / len(total_tool2["avg_size"]),
     "max_size": total_tool2["max_size"],
     "usage": total_tool2["usage"]
-}) + "\n")
+}))
 
 # # ========== DONE ==========
 

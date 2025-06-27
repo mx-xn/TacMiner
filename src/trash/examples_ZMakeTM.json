@@ -1,0 +1,118 @@
+{
+    "custom31": [
+      {
+        "lemma_name": "spec_ltb",
+        "tactic_sig": "custom31 Bool.eq_iff_eq_true Z.ltb_lt Z.lt ltb spec_compare .",
+        "tactic_args": [
+          "c1_goal : Logic.eq (ltb x y) (Z.ltb (to_Z x) (to_Z y))"
+        ],
+        "tactic_res": [
+          "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Lt => true\n     | _ => false\n     end true) (Logic.eq (Z.compare (to_Z x) (to_Z y)) Lt)"
+        ]
+      },
+      {
+        "lemma_name": "spec_leb",
+        "tactic_sig": "custom31 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+        "tactic_args": [
+          "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+        ],
+        "tactic_res": [
+          "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+        ]
+      }
+    ],
+    "custom41": [
+      {
+        "lemma_name": "spec_ltb",
+        "tactic_sig": "custom41 .",
+        "tactic_args": [
+          "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Lt => true\n     | _ => false\n     end true) (Logic.eq (Z.compare (to_Z x) (to_Z y)) Lt)"
+        ],
+        "tactic_res": []
+      }
+    ],
+    "custom60": [
+      {
+        "lemma_name": "spec_opp",
+        "tactic_sig": "custom60 x .",
+        "tactic_args": [
+          "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+        ],
+        "tactic_res": [
+          "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+          "c2_x : t_",
+          "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+          "c3_x : t_"
+        ]
+      }
+    ],
+    "custom26": [
+      {
+        "lemma_name": "spec_opp",
+        "tactic_sig": "custom26 .",
+        "tactic_args": [
+          "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+        ],
+        "tactic_res": []
+      },
+      {
+        "lemma_name": "spec_opp",
+        "tactic_sig": "custom26 .",
+        "tactic_args": [
+          "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+        ],
+        "tactic_res": []
+      },
+      {
+        "lemma_name": "spec_norm_pos",
+        "tactic_sig": "custom26 .",
+        "tactic_args": [
+          "c6_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+        ],
+        "tactic_res": []
+      },
+      {
+        "lemma_name": "spec_norm_pos",
+        "tactic_sig": "custom26 .",
+        "tactic_args": [
+          "c7_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+        ],
+        "tactic_res": []
+      }
+    ],
+    "custom48": [
+      {
+        "lemma_name": "spec_norm_pos",
+        "tactic_sig": "custom48 NN.spec_eqb NN.spec_0 .",
+        "tactic_args": [
+          "c5_goal : Logic.eq (to_Z (if NN.eqb x NN.zero then Pos x else Neg x))\n  (Z.opp (NN.to_Z x))"
+        ],
+        "tactic_res": [
+          "c6_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))",
+          "c7_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+        ]
+      },
+      {
+        "lemma_name": "spec_norm_pos_pos",
+        "tactic_sig": "custom48 NN.spec_eqb NN.spec_0 .",
+        "tactic_args": [
+          "c5_goal : forall _ : Logic.eq (if NN.eqb x NN.zero then Pos x else Neg x) (Neg y),\nZ.lt 0 (NN.to_Z y)"
+        ],
+        "tactic_res": [
+          "c6_goal : forall (_ : Logic.eq (NN.to_Z x) 0) (_ : Logic.eq (Pos x) (Neg y)),\nZ.lt 0 (NN.to_Z y)",
+          "c7_goal : forall (_ : not (Logic.eq (NN.to_Z x) 0))\n  (_ : Logic.eq (Neg x) (Neg y)), Z.lt 0 (NN.to_Z y)"
+        ]
+      }
+    ],
+    "custom51": [
+      {
+        "lemma_name": "spec_norm_pos_pos",
+        "tactic_sig": "custom51 _i .",
+        "tactic_args": [
+          "c8_goal : Z.lt 0 (NN.to_Z y)",
+          "c3_y : NN.t"
+        ],
+        "tactic_res": []
+      }
+    ]
+  }

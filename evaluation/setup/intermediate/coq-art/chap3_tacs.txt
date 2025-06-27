@@ -1,0 +1,29 @@
+benchmarks/coq-art/raw/chap3.v
+-----
+benchmarks/coq-art/raw/chap3_compr.v
+-----
+-----
+imp_trans
+Proof. intros H H' p. apply H'. apply H. assumption. Qed.
+imp_trans'
+Proof. intros H H' p. apply H'. apply H. assumption. Qed.
+Ltac custom_tac3 H0 H1 H2 := intros H0 H1 H2; apply H0.
+
+apply_example
+Proof. custom_tac3 H H0 p. exact ( H0 p). Qed.
+imp_dist
+Proof. intros H H' p. apply H. - assumption. - apply H'. assumption. Qed.
+K
+Proof. intros p q. assumption. Qed.
+triple_impl_one_liner
+Proof. intros H p. apply H. intro H0. apply H0. assumption. Qed.
+imp_dist'
+Proof. intros H H' p. apply H. - assumption. - apply H'; assumption. Qed.
+assert_example
+Proof. assert (H3 : P -> R). - intro p; apply H0; apply H; assumption. - apply H1. + assumption. + apply H2; assumption. Qed.
+Q0
+Proof. apply H1. - intro p; apply H0; apply H; assumption. - apply H2. + intro p. apply H0; apply H; assumption. Qed.
+Q1
+Proof. cut (P -> R). - intro H3. cut T. + intro H4; apply H1; assumption. + apply H2; assumption. - intro p; apply H0; apply H; assumption. Qed.
+Q2
+Proof. assert (H3 : P -> R). - intro p; apply H0; apply H; assumption. - assert (H4 : T). + apply H2; assumption. + apply H1; assumption. Qed.

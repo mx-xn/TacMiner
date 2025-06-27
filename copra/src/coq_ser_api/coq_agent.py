@@ -114,6 +114,9 @@ class CoqAgent:
     def run_stmt(self, stmt: str, timeout: Optional[int] = None,
                  force_update_nonfg_goals: bool = False) -> None:
         eprint(f"Running statement: {stmt.strip()}", guard=self.verbosity >= 2)
+        # debugging_mx
+        print("in run stmt of coq_agent with stmt = %s" % stmt)
+
         self._run_stmt_with_f(
             stmt,
             lambda stmt: self.backend.addStmt(
@@ -122,12 +125,17 @@ class CoqAgent:
 
     def _run_stmt_with_f(self, stmt: str, f: Callable) -> None:
         # Kill the comments early so we can recognize comments earlier
+        # debugging_mx
+        print("in run_stmt_with_f with stmt = %s" % stmt)
         stmt = kill_comments(stmt)
         if stmt.strip() == "":
             return
         for stm in preprocess_command(stmt):
+            # print("before addStmt in backend")
             f(stm)
+            # print("after addStmt in backend")
             if not self._file_state.in_proof:
+                print("not in proof")
                 self._file_state.add_potential_smstack_cmd(stm)
                 self._file_state.add_potential_local_lemmas(stm)
                 if possibly_starting_proof(stm) and self.backend.isInProof():

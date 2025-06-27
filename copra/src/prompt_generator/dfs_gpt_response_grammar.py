@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import re
 import sys
 root_dir = f"{__file__.split('src')[0]}"
 if root_dir not in sys.path:
@@ -7,8 +8,10 @@ if root_dir not in sys.path:
 import typing
 from enum import Enum
 from src.prompt_generator.interpreter import Grammar
-from src.tools.training_data_format import Goal, TrainingDataFormat
+from src.tools.training_data_format import Goal, TrainingDataFormat, LemmaReferences
 from dataclasses import dataclass, field
+import src.main.config as config
+
 from dataclasses_json import dataclass_json
 
 class CoqGptResponseActions(object):
@@ -164,8 +167,9 @@ ErrorString:;
             'ErrorString': CoqGPTResponseDfsGrammar.error_string
         }
         super(CoqGPTResponseDfsGrammar, self).__init__(CoqGPTResponseDfsGrammar.grammar, CoqGPTResponseDfsGrammar.keywords, recognizers=recognizers)
-    
+
     def format_as_per_grammar(self, coq_gpt_response: CoqGptResponse, k: typing.Optional[int] = None, max_token_cnt: typing.Optional[int] = None, characters_per_token: float = 4.0) -> str:
+        print("in format as per grammar")
         # Add algorithm for trimming the right amount of goals, theorems and defintions, steps, etc. based on the max_token_cnt
         char_cnt = int(max_token_cnt * characters_per_token) if max_token_cnt is not None else None # 4 is the average length of a token as per OpenAI
         text = ""
@@ -225,6 +229,7 @@ ErrorString:;
                     for hyp in goal.hypotheses:
                         new_line = f"{CoqGPTResponseDfsGrammar.Keywords.HYPOTHESIS} {hyp}"
                         lines_map[CoqGPTResponseDfsGrammar.Keywords.GOALS].append(new_line)
+                
                 if len(goal.relevant_defns) > 0 and (k is None or k > 0):
                     dfns = goal.relevant_defns
                     if k is not None:
@@ -236,17 +241,90 @@ ErrorString:;
                     else:
                         lines_map[CoqGPTResponseDfsGrammar.Keywords.DEFINITIONS].append(new_line)
                     lines_map[CoqGPTResponseDfsGrammar.Keywords.DEFINITIONS].extend([f"{CoqGPTResponseDfsGrammar.Keywords.DEFINITION} {dfn}" for dfn in dfns])
-                if len(goal.possible_useful_theorems_external) + len(goal.possible_useful_theorems_local) > 0 and (k is None or k > 0):
-                    thms = goal.possible_useful_theorems_local + goal.possible_useful_theorems_external
-                    if k is not None:
-                        thms = thms[:k]
-                    thms = [str(coq_gpt_response.training_data_format.all_useful_defns_theorems[thm.lemma_idx]) for thm in thms]
-                    new_line = f"{CoqGPTResponseDfsGrammar.Keywords.THEOREMS} {i + 1}"
-                    if len(lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS]) == 0:
-                        lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS] = [new_line]
-                    else:
-                        lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS].append(new_line)
-                    lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS].extend([f"{CoqGPTResponseDfsGrammar.Keywords.THEOREM} {thm}" for thm in thms])
+                # if len(goal.possible_useful_theorems_external) + len(goal.possible_useful_theorems_local) > 0 and (k is None or k > 0):
+                #     thms = goal.possible_useful_theorems_local + goal.possible_useful_theorems_external
+                #     if k is not None:
+                #         thms = thms[:k]
+                #     thms = [str(coq_gpt_response.training_data_format.all_useful_defns_theorems[thm.lemma_idx]) for thm in thms]
+                #     new_line = f"{CoqGPTResponseDfsGrammar.Keywords.THEOREMS} {i + 1}"
+                #     if len(lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS]) == 0:
+                #         lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS] = [new_line]
+                #     else:
+                #         lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS].append(new_line)
+                #     lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS].extend([f"{CoqGPTResponseDfsGrammar.Keywords.THEOREM} {thm}" for thm in thms])
+                # # if len(goal.relevant_defns) > 0 and (k is None or k > 0):
+                # if len(goal.relevant_defns) >= 0 and (k is None or k > 0):
+                #     # return the lemma references
+                #     dfns_append, dfns_names_remove = [], []
+
+                #     if len(goal.relevant_defns) > 0 or len(dfns_append) > 0:
+                #         dfns = goal.relevant_defns
+                #         if k is not None:
+                #             dfns = dfns[:k]
+                #         print("dfs_append:")
+                #         print(dfns_append)
+                #         # convert dfs_append to a list of LemmaRefs
+                #         print("original defs:")
+                #         print(dfns)
+
+                #         # filter out duplicate
+                #         seen = set()
+                #         remove = set()
+                #         for dfn in dfns:
+                #             l_name = coq_gpt_response.training_data_format.all_useful_defns_theorems[dfn.lemma_idx].lemma_name
+                #             seen.add(l_name)
+
+                #             # if current lemma is in fact irrelevant
+                #             if l_name in dfns_names_remove:
+                #                 remove.add(dfn.lemma_idx)
+
+                #         num_can_add = len(remove)
+                #         dfns = [d for d in dfns if d.lemma_idx not in remove]
+                #         dfns = [str(coq_gpt_response.training_data_format.all_useful_defns_theorems[dfn.lemma_idx]) for dfn in dfns]
+                #         len_thm = len(coq_gpt_response.training_data_format.all_useful_defns_theorems)
+                #         for lemma in dfns_append:
+                #             if lemma.lemma_name not in seen:
+                #                 if lemma.lemma_idx >= len_thm: 
+                #                     coq_gpt_response.training_data_format.all_useful_defns_theorems.append(lemma)
+                #                 dfns.append(str(lemma))
+                #                 num_can_add -= 1
+
+                #         # add more lemmas if there's more to add
+                #         add_ind = k
+                #         while num_can_add > 0:
+                #             if len(goal.relevant_defns) <= add_ind:
+                #                 break
+                #             print("add_ind: ", add_ind)
+                #             print("len(goal.relevant_defns): ", len(goal.relevant_defns))
+                #             lem_ind = goal.relevant_defns[add_ind].lemma_idx
+                #             lem = coq_gpt_response.training_data_format.all_useful_defns_theorems[lem_ind]
+                #             if lem.lemma_name in dfns_names_remove or lem.lemma_name in seen:
+                #                 add_ind += 1
+                #                 continue
+                #             # if current lem can be added
+                #             dfns.append(str(lem))
+                #             add_ind += 1
+                #             num_can_add -= 1
+
+                #         print("combined: ")
+                #         print(dfns)
+                #         new_line = f"{CoqGPTResponseDfsGrammar.Keywords.DEFINITIONS} {i + 1}"
+                #         if len(lines_map[CoqGPTResponseDfsGrammar.Keywords.DEFINITIONS]) == 0:
+                #             lines_map[CoqGPTResponseDfsGrammar.Keywords.DEFINITIONS] = [new_line]
+                #         else:
+                #             lines_map[CoqGPTResponseDfsGrammar.Keywords.DEFINITIONS].append(new_line)
+                #         lines_map[CoqGPTResponseDfsGrammar.Keywords.DEFINITIONS].extend([f"{CoqGPTResponseDfsGrammar.Keywords.DEFINITION} {dfn}" for dfn in dfns])
+                # if len(goal.possible_useful_theorems_external) + len(goal.possible_useful_theorems_local) > 0 and (k is None or k > 0):
+                #     thms = goal.possible_useful_theorems_local + goal.possible_useful_theorems_external
+                #     if k is not None:
+                #         thms = thms[:k]
+                #     thms = [str(coq_gpt_response.training_data_format.all_useful_defns_theorems[thm.lemma_idx]) for thm in thms]
+                #     new_line = f"{CoqGPTResponseDfsGrammar.Keywords.THEOREMS} {i + 1}"
+                #     if len(lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS]) == 0:
+                #         lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS] = [new_line]
+                #     else:
+                #         lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS].append(new_line)
+                #     lines_map[CoqGPTResponseDfsGrammar.Keywords.THEOREMS].extend([f"{CoqGPTResponseDfsGrammar.Keywords.THEOREM} {thm}" for thm in thms])
             if len(coq_gpt_response.steps) > 0:
                 new_line = f"\n{CoqGPTResponseDfsGrammar.Keywords.STEPS}"
                 lines_map[CoqGPTResponseDfsGrammar.Keywords.STEPS] = [new_line]
@@ -268,6 +346,18 @@ ErrorString:;
                 new_line = f"\n{CoqGPTResponseDfsGrammar.Keywords.ERROR_MESSAGE}"
                 lines_map[CoqGPTResponseDfsGrammar.Keywords.ERROR_MESSAGE] = [new_line]
                 lines_map[CoqGPTResponseDfsGrammar.Keywords.ERROR_MESSAGE].append(coq_gpt_response.error_message)
+            
+            # TODO: we need to turn this into a mode
+            # if there is informal proofs
+            # nl_theorem, nl_proof = self.informal_theorem_proof()
+            # if nl_theorem is not None:
+            #     new_line = f"\n{CoqGPTResponseDfsGrammar.Keywords.INFORMAL_THEOREM}"
+            #     lines_map[CoqGPTResponseDfsGrammar.Keywords.INFORMAL_THEOREM] = [new_line]
+            #     lines_map[CoqGPTResponseDfsGrammar.Keywords.INFORMAL_THEOREM].append(nl_theorem)
+            # if nl_proof is not None:
+            #     new_line = f"\n{CoqGPTResponseDfsGrammar.Keywords.INFORMAL_PROOF}"
+            #     lines_map[CoqGPTResponseDfsGrammar.Keywords.INFORMAL_PROOF] = [new_line]
+            #     lines_map[CoqGPTResponseDfsGrammar.Keywords.INFORMAL_PROOF].append(nl_proof)
             if coq_gpt_response.informal_theorem is not None:
                 new_line = f"\n{CoqGPTResponseDfsGrammar.Keywords.INFORMAL_THEOREM}"
                 lines_map[CoqGPTResponseDfsGrammar.Keywords.INFORMAL_THEOREM] = [new_line]

@@ -57,9 +57,9 @@ Proof.
   intros. specialize (H r). InvBooleans. auto.
 Qed.
 
-Instance Decidable_eq_mreg : forall (x y: mreg), Decidable (eq x y) := Decidable_eq mreg_eq.
+Global Instance Decidable_eq_mreg : forall (x y: mreg), Decidable (eq x y) := Decidable_eq mreg_eq.
 
-Instance Finite_mreg : Finite mreg := {
+Global Instance Finite_mreg : Finite mreg := {
   Finite_elements := all_mregs;
   Finite_elements_spec := all_mregs_complete
 }.
@@ -149,7 +149,7 @@ Definition destroyed_by_load (chunk: memory_chunk) (addr: addressing): list mreg
 
 Definition destroyed_by_store (chunk: memory_chunk) (addr: addressing): list mreg :=
   match chunk with
-  | Mint8signed | Mint8unsigned => if Archi.ptr64 then nil else AX :: CX :: nil
+  | Mbool | Mint8signed | Mint8unsigned => if Archi.ptr64 then nil else AX :: CX :: nil
   | _ => nil
   end.
 
@@ -334,6 +334,8 @@ Definition two_address_op (op: operation) : bool :=
   | Osubf => true
   | Omulf => true
   | Odivf => true
+  | Omaxf => true
+  | Ominf => true
   | Onegfs => true
   | Oabsfs => true
   | Oaddfs => true

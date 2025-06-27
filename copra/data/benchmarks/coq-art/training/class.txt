@@ -1,0 +1,2 @@
+classic_excluded_middle
+excluded_middle_peirce

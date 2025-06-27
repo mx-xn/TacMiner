@@ -6,10 +6,11 @@
 (*                                                                     *)
 (*  Copyright Institut National de Recherche en Informatique et en     *)
 (*  Automatique.  All rights reserved.  This file is distributed       *)
-(*  under the terms of the GNU General Public License as published by  *)
-(*  the Free Software Foundation, either version 2 of the License, or  *)
-(*  (at your option) any later version.  This file is also distributed *)
-(*  under the terms of the INRIA Non-Commercial License Agreement.     *)
+(*  under the terms of the GNU Lesser General Public License as        *)
+(*  published by the Free Software Foundation, either version 2.1 of   *)
+(*  the License, or  (at your option) any later version.               *)
+(*  This file is also distributed under the terms of the               *)
+(*  INRIA Non-Commercial License Agreement.                            *)
 (*                                                                     *)
 (* *********************************************************************)
 
@@ -28,6 +29,16 @@ Require Import Smallstep.
 Require Import Ctypes.
 Require Import Cop.
 Require Import Clight.
+
+Section CLIGHT.
+
+(** As in the case of the small-step semantics, there are two big-step
+    semantics for Clight, depending on whether function parameters are treated
+    like variables (Clight1) or like temporaries (Clight2).
+    We abstract over both parameter semantics using the same [function_entry]
+    predicate as in the small-step semantics. *)
+
+Variable function_entry: genv -> function -> list val -> mem -> env -> temp_env -> mem -> Prop.
 
 Section BIGSTEP.
 
@@ -78,11 +89,11 @@ Inductive exec_stmt: env -> temp_env -> mem -> statement -> trace -> temp_env ->
   | exec_Sskip:   forall e le m,
       exec_stmt e le m Sskip
                E0 le m Out_normal
-  | exec_Sassign:   forall e le m a1 a2 loc ofs v2 v m',
-      eval_lvalue ge e le m a1 loc ofs ->
+  | exec_Sassign:   forall e le m a1 a2 loc ofs bf v2 v m',
+      eval_lvalue ge e le m a1 loc ofs bf ->
       eval_expr ge e le m a2 v2 ->
       sem_cast v2 (typeof a2) (typeof a1) m = Some v ->
-      assign_loc ge (typeof a1) m loc ofs v m' ->
+      assign_loc ge (typeof a1) m loc ofs bf v m' ->
       exec_stmt e le m (Sassign a1 a2)
                E0 le m' Out_normal
   | exec_Sset:     forall e le m id a v,
@@ -163,14 +174,12 @@ Inductive exec_stmt: env -> temp_env -> mem -> statement -> trace -> temp_env ->
   by the call.  *)
 
 with eval_funcall: mem -> fundef -> list val -> trace -> mem -> val -> Prop :=
-  | eval_funcall_internal: forall le m f vargs t e m1 m2 m3 out vres m4,
-      alloc_variables ge empty_env m (f.(fn_params) ++ f.(fn_vars)) e m1 ->
-      list_norepet (var_names f.(fn_params) ++ var_names f.(fn_vars)) ->
-      bind_parameters ge e m1 f.(fn_params) vargs m2 ->
-      exec_stmt e (create_undef_temps f.(fn_temps)) m2 f.(fn_body) t le m3 out ->
-      outcome_result_value out f.(fn_return) vres m3 ->
-      Mem.free_list m3 (blocks_of_env ge e) = Some m4 ->
-      eval_funcall m (Internal f) vargs t m4 vres
+  | eval_funcall_internal: forall m f vargs t e le1 le2 m1 m2 out vres m3,
+      function_entry ge f vargs m e le1 m1 ->
+      exec_stmt e le1 m1 f.(fn_body) t le2 m2 out ->
+      outcome_result_value out f.(fn_return) vres m2 ->
+      Mem.free_list m2 (blocks_of_env ge e) = Some m3 ->
+      eval_funcall m (Internal f) vargs t m3 vres
   | eval_funcall_external: forall m ef targs tres cconv vargs t vres m',
       external_call ef ge vargs m t vres m' ->
       eval_funcall m (External ef targs tres cconv) vargs t m' vres.
@@ -231,11 +240,9 @@ CoInductive execinf_stmt: env -> temp_env -> mem -> statement -> traceinf -> Pro
     [fd] on arguments [args] diverges, with observable trace [t]. *)
 
 with evalinf_funcall: mem -> fundef -> list val -> traceinf -> Prop :=
-  | evalinf_funcall_internal: forall m f vargs t e m1 m2,
-      alloc_variables ge empty_env m (f.(fn_params) ++ f.(fn_vars)) e m1 ->
-      list_norepet (var_names f.(fn_params) ++ var_names f.(fn_vars)) ->
-      bind_parameters ge e m1 f.(fn_params) vargs m2 ->
-      execinf_stmt e (create_undef_temps f.(fn_temps)) m2 f.(fn_body) t ->
+  | evalinf_funcall_internal: forall m f vargs t e m1 le1,
+      function_entry ge f vargs m e le1 m1 ->
+      execinf_stmt e le1 m1 f.(fn_body) t ->
       evalinf_funcall m (Internal f) vargs t.
 
 End BIGSTEP.
@@ -248,7 +255,7 @@ Inductive bigstep_program_terminates (p: program): trace -> int -> Prop :=
       Genv.init_mem p = Some m0 ->
       Genv.find_symbol ge p.(prog_main) = Some b ->
       Genv.find_funct_ptr ge b = Some f ->
-      type_of_fundef f = Tfunction Tnil type_int32s cc_default ->
+      type_of_fundef f = Tfunction nil type_int32s cc_default ->
       eval_funcall ge m0 f nil t m1 (Vint r) ->
       bigstep_program_terminates p t r.
 
@@ -258,7 +265,7 @@ Inductive bigstep_program_diverges (p: program): traceinf -> Prop :=
       Genv.init_mem p = Some m0 ->
       Genv.find_symbol ge p.(prog_main) = Some b ->
       Genv.find_funct_ptr ge b = Some f ->
-      type_of_fundef f = Tfunction Tnil type_int32s cc_default ->
+      type_of_fundef f = Tfunction nil type_int32s cc_default ->
       evalinf_funcall ge m0 f nil t ->
       bigstep_program_diverges p t.
 
@@ -296,18 +303,24 @@ Proof.
   destruct k; simpl; intros; contradiction || auto.
 Qed.
 
+Definition step_fe (ge: genv) := step ge (function_entry ge).
+
+Definition semantics_fe (p: program) :=
+  let ge := globalenv p in
+  Semantics_gen step_fe (initial_state p) final_state ge ge.
+
 Lemma exec_stmt_eval_funcall_steps:
   (forall e le m s t le' m' out,
    exec_stmt ge e le m s t le' m' out ->
    forall f k, exists S,
-   star step1 ge (State f s k e le m) t S
+   star step_fe ge (State f s k e le m) t S
    /\ outcome_state_match e le' m' f k out S)
 /\
   (forall m fd args t m' res,
    eval_funcall ge m fd args t m' res ->
    forall k,
    is_call_cont k ->
-   star step1 ge (Callstate fd args k m) t (Returnstate res k m')).
+   star step_fe ge (Callstate fd args k m) t (Returnstate res k m')).
 Proof.
   apply exec_stmt_funcall_ind; intros.
 
@@ -450,23 +463,23 @@ Proof.
   unfold S2. inv B1; simpl; econstructor; eauto.
 
 (* call internal *)
-  destruct (H3 f k) as [S1 [A1 B1]].
-  eapply star_left. eapply step_internal_function; eauto. econstructor; eauto.
+  destruct (H1 f k) as [S1 [A1 B1]].
+  eapply star_left. eapply step_internal_function; eauto.
   eapply star_right. eexact A1.
    inv B1; simpl in H4; try contradiction.
   (* Out_normal *)
   assert (fn_return f = Tvoid /\ vres = Vundef).
     destruct (fn_return f); auto || contradiction.
-  destruct H7. subst vres. apply step_skip_call; auto.
+  destruct H5. subst vres. apply step_skip_call; auto.
   (* Out_return None *)
   assert (fn_return f = Tvoid /\ vres = Vundef).
     destruct (fn_return f); auto || contradiction.
-  destruct H8. subst vres.
-  rewrite <- (is_call_cont_call_cont k H6). rewrite <- H7.
+  destruct H6. subst vres.
+  rewrite <- (is_call_cont_call_cont k H4). rewrite <- H5.
   apply step_return_0; auto.
   (* Out_return Some *)
-  destruct H4.
-  rewrite <- (is_call_cont_call_cont k H6). rewrite <- H7.
+  destruct H2.
+  rewrite <- (is_call_cont_call_cont k H4). rewrite <- H5.
   eapply step_return_1; eauto.
   reflexivity. traceEq.
 
@@ -478,7 +491,7 @@ Lemma exec_stmt_steps:
    forall e le m s t le' m' out,
    exec_stmt ge e le m s t le' m' out ->
    forall f k, exists S,
-   star step1 ge (State f s k e le m) t S
+   star step_fe ge (State f s k e le m) t S
    /\ outcome_state_match e le' m' f k out S.
 Proof (proj1 exec_stmt_eval_funcall_steps).
 
@@ -487,7 +500,7 @@ Lemma eval_funcall_steps:
    eval_funcall ge m fd args t m' res ->
    forall k,
    is_call_cont k ->
-   star step1 ge (Callstate fd args k m) t (Returnstate res k m').
+   star step_fe ge (Callstate fd args k m) t (Returnstate res k m').
 Proof (proj2 exec_stmt_eval_funcall_steps).
 
 Definition order (x y: unit) := False.
@@ -495,12 +508,12 @@ Definition order (x y: unit) := False.
 Lemma evalinf_funcall_forever:
   forall m fd args T k,
   evalinf_funcall ge m fd args T ->
-  forever_N step1 order ge tt (Callstate fd args k m) T.
+  forever_N step_fe order ge tt (Callstate fd args k m) T.
 Proof.
   cofix CIH_FUN.
   assert (forall e le m s T f k,
           execinf_stmt ge e le m s T ->
-          forever_N step1 order ge tt (State f s k e le m) T).
+          forever_N step_fe order ge tt (State f s k e le m) T).
   cofix CIH_STMT.
   intros. inv H.
 
@@ -559,13 +572,13 @@ Proof.
 (* call internal *)
   intros. inv H0.
   eapply forever_N_plus.
-  eapply plus_one. econstructor; eauto. econstructor; eauto.
+  eapply plus_one. econstructor; eauto.
   apply H; eauto.
   traceEq.
 Qed.
 
 Theorem bigstep_semantics_sound:
-  bigstep_sound (bigstep_semantics prog) (semantics1 prog).
+  bigstep_sound (bigstep_semantics prog) (semantics_fe prog).
 Proof.
   constructor; simpl; intros.
 (* termination *)
@@ -582,3 +595,41 @@ Proof.
 Qed.
 
 End BIGSTEP_TO_TRANSITIONS.
+
+End CLIGHT.
+
+(** ** Specialized definitions for Clight1 and Clight2 *)
+
+(** Clight1: function parameters are variables. *)
+
+Module Clight1.
+
+Definition exec_stmt := exec_stmt function_entry1.
+Definition eval_funcall := eval_funcall function_entry1.
+Definition bigstep_program_terminates := bigstep_program_terminates function_entry1.
+Definition execinf_stmt := execinf_stmt function_entry1.
+Definition evalinf_funcall := evalinf_funcall function_entry1.
+Definition bigstep_program_diverges := bigstep_program_diverges function_entry1.
+Definition bigstep_semantics := bigstep_semantics function_entry1.
+Theorem bigstep_semantics_sound: forall prog,
+  bigstep_sound (bigstep_semantics prog) (Clight.semantics1 prog).
+Proof (bigstep_semantics_sound function_entry1).
+
+End Clight1.
+
+(** Clight2: function parameters are temporaries. *)
+
+Module Clight2.
+
+Definition exec_stmt := exec_stmt function_entry2.
+Definition eval_funcall := eval_funcall function_entry2.
+Definition bigstep_program_terminates := bigstep_program_terminates function_entry2.
+Definition execinf_stmt := execinf_stmt function_entry2.
+Definition evalinf_funcall := evalinf_funcall function_entry2.
+Definition bigstep_program_diverges := bigstep_program_diverges function_entry2.
+Definition bigstep_semantics := bigstep_semantics function_entry2.
+Theorem bigstep_semantics_sound: forall prog,
+  bigstep_sound (bigstep_semantics prog) (Clight.semantics2 prog).
+Proof (bigstep_semantics_sound function_entry2).
+
+End Clight2.

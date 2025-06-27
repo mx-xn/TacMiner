@@ -133,15 +133,12 @@ Definition eval_static_operation (op: operation) (vl: list aval): aval :=
   | Osingleoffloat, v1::nil => singleoffloat v1
   | Ofloatofsingle, v1::nil => floatofsingle v1
   | Ointoffloat, v1::nil => intoffloat v1
-  | Ointuoffloat, v1::nil => intuoffloat v1
-  | Ofloatofint, v1::nil => floatofint v1
-  | Ofloatofintu, v1::nil => floatofintu v1
   | Ofloatofwords, v1::v2::nil => floatofwords v1 v2
   | Omakelong, v1::v2::nil => longofwords v1 v2
   | Olowlong, v1::nil => loword v1
   | Ohighlong, v1::nil => hiword v1
   | Ocmp c, _ => of_optbool (eval_static_condition c vl)
-  | Osel c ty, v1::v2::vl => select (eval_static_condition c vl) v1 v2
+  | Osel c ty, v1::v2::vl => select (eval_static_condition c vl) v1 v2 ty
   | _, _ => Vbot
   end.
 

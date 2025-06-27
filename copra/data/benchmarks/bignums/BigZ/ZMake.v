@@ -47,12 +47,13 @@ Module Make (NN:NType) <: ZType.
   | Neg nx => Z.opp (NN.to_Z nx)
   end.
 
+Ltac custom0 H0 := rewrite H0; auto.
+Ltac custom2 H0 := intros H0; case H0.
  Theorem spec_of_Z: forall x, to_Z (of_Z x) = x.
- Proof.
- intros x; case x; unfold to_Z, of_Z, zero.
-   exact NN.spec_0.
-   intros; rewrite NN.spec_of_N; auto.
-   intros; rewrite NN.spec_of_N; auto.
+ Proof. 
+ custom2 x; unfold to_Z, of_Z, zero. 
+ exact NN.spec_0. intros; custom0 NN.spec_of_N. 
+ intros; custom0 NN.spec_of_N. 
  Qed.
 
  Definition eq x y := (to_Z x = to_Z y).
@@ -70,7 +71,6 @@ Module Make (NN:NType) <: ZType.
  Qed.
 
  Theorem spec_m1: to_Z minus_one = -1.
- Proof. 
  simpl; rewrite NN.spec_1; auto.
  Qed.
 
@@ -118,9 +118,7 @@ Module Make (NN:NType) <: ZType.
  Proof.
  apply Bool.eq_iff_eq_true.
  unfold eqb. rewrite Z.eqb_eq, <- Z.compare_eq_iff, spec_compare.
- split. 
- - now destruct Z.compare.
- - now intros ->.
+ split; [now destruct Z.compare | now intros ->].
  Qed.
 
  Definition lt n m := to_Z n < to_Z m.
@@ -137,9 +135,7 @@ Module Make (NN:NType) <: ZType.
  Proof.
  apply Bool.eq_iff_eq_true.
  rewrite Z.ltb_lt. unfold Z.lt, ltb. rewrite spec_compare.
- split.
- - now destruct Z.compare.
- - now intros ->.
+ split; [now destruct Z.compare | now intros ->].
  Qed.
 
  Definition leb (x y : t) : bool :=
@@ -148,12 +144,12 @@ Module Make (NN:NType) <: ZType.
   | _  => true
   end.
 
+Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. 
  Theorem spec_leb x y : leb x y = Z.leb (to_Z x) (to_Z y).
- Proof.
- apply Bool.eq_iff_eq_true.
- rewrite Z.leb_le. unfold Z.le, leb. rewrite spec_compare.
- now destruct Z.compare; split.
- Qed.
+ Proof. 
+ custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare.
+ now destruct Z.compare; split. 
+Qed. 
 
  Definition min n m := match compare n m with Gt => m | _ => n end.
  Definition max n m := match compare n m with Lt => m | _ => n end.
@@ -189,10 +185,9 @@ Module Make (NN:NType) <: ZType.
   | Neg nx => Pos nx
   end.
 
- Theorem spec_opp: forall x, to_Z (opp x) = - to_Z x.
- Proof.
- intros x; case x; simpl; auto with zarith.
- Qed.
+Ltac custom10 := simpl; auto with zarith. 
+Theorem spec_opp: forall x, to_Z (opp x) = - to_Z x.
+Proof. custom2 x; custom10. Qed. 
 
  Definition succ x :=
   match x with
@@ -433,10 +428,13 @@ Module Make (NN:NType) <: ZType.
    (to_Z q, to_Z r) = Z.div_eucl (to_Z x) (to_Z y).
  Proof.
  unfold div_eucl, to_Z. intros [x | x] [y | y].
+ (* Pos Pos *)
  generalize (NN.spec_div_eucl x y); destruct (NN.div_eucl x y); auto.
+ (* Pos Neg *)
  generalize (NN.spec_div_eucl x y); destruct (NN.div_eucl x y) as (q,r).
+ {
   break_nonneg x px EQx; break_nonneg y py EQy;
-    rewrite NN.spec_eqb; rewrite NN.spec_0; cbn.
+    rewrite NN.spec_eqb, NN.spec_0; cbn.
   - intros [= EQq EQr]. rewrite EQr, EQq. cbn. now rewrite NN.spec_0.
   - intros [= EQq EQr]. rewrite EQr, EQq. cbn. now rewrite NN.spec_0.
   - intros [= EQq EQr]. rewrite EQr, ?NN.spec_eqb, ?EQy, ?NN.spec_0, <- ?EQx. cbn.
@@ -449,22 +447,27 @@ Module Make (NN:NType) <: ZType.
     + subst. rewrite NN.spec_eqb, EQy, NN.spec_0. cbn.
       rewrite NN.spec_succ, NN.spec_sub, EQy, EQr', <- Z.pos_sub_opp. cbn.
       f_equal. rewrite Z.pos_sub_gt; lia.
- - generalize (NN.spec_div_eucl x y); destruct (NN.div_eucl x y) as (q,r).
+ }
+ (* Neg Pos *)
+ generalize (NN.spec_div_eucl x y); destruct (NN.div_eucl x y) as (q,r).
+ {
   break_nonneg x px EQx; break_nonneg y py EQy;
     rewrite NN.spec_eqb, NN.spec_0; cbn.
-  + intros [= EQq EQr]. rewrite EQr, EQq. cbn. now rewrite NN.spec_0.
-  + intros [= EQq EQr]. rewrite EQr, EQq. cbn. now rewrite NN.spec_0.
-  + intros [= EQq EQr]. rewrite EQr, ?NN.spec_eqb, ?EQy, ?NN.spec_0. cbn.
+  - intros [= EQq EQr]. rewrite EQr, EQq. cbn. now rewrite NN.spec_0.
+  - intros [= EQq EQr]. rewrite EQr, EQq. cbn. now rewrite NN.spec_0.
+  - intros [= EQq EQr]. rewrite EQr, ?NN.spec_eqb, ?EQy, ?NN.spec_0. cbn.
     now rewrite NN.spec_0, <- ?Pos2Z.opp_pos, ?EQx, ?EQq.
-  + pose proof (B := Z.pos_div_eucl_bound px (Zpos py)).
+  - pose proof (B := Z.pos_div_eucl_bound px (Zpos py)).
     destruct (Z.pos_div_eucl px (Zpos py)) as (q',r').
     cbn in B.
     intros [= EQq EQr]. break_nonneg r pr' EQr'.
-    * subst. cbn. now rewrite NN.spec_0.
-    * subst. rewrite NN.spec_eqb, EQy, NN.spec_0. cbn.
+    + subst. cbn. now rewrite NN.spec_0.
+    + subst. rewrite NN.spec_eqb, EQy, NN.spec_0. cbn.
       rewrite NN.spec_succ, NN.spec_sub, EQy, EQr'. cbn.
       f_equal. rewrite Z.pos_sub_gt; lia.
- - generalize (NN.spec_div_eucl x y); destruct (NN.div_eucl x y) as (q,r).
+ }
+ (* Neg Neg *)
+ generalize (NN.spec_div_eucl x y); destruct (NN.div_eucl x y) as (q,r).
  break_nonneg x px EQx; break_nonneg y py EQy;
  try (injection 1 as -> ->; auto).
  simpl. intros <-; auto.
@@ -511,6 +514,7 @@ Module Make (NN:NType) <: ZType.
  Lemma spec_quot : forall x y, to_Z (quot x y) = (to_Z x) ÷ (to_Z y).
  Proof.
   intros [x|x] [y|y]; simpl; symmetry; rewrite NN.spec_div;
+  (* Nota: we rely here on [forall a b, a ÷ 0 = b / 0] *)
   destruct (Z.eq_dec (NN.to_Z y) 0) as [EQ|NEQ];
     try (rewrite EQ; now destruct (NN.to_Z x));
   rewrite ?Z.quot_opp_r, ?Z.quot_opp_l, ?Z.opp_involutive, ?Z.opp_inj_wd;
@@ -523,10 +527,12 @@ Module Make (NN:NType) <: ZType.
  Proof.
   intros x y. unfold rem. rewrite spec_eqb, spec_0.
   case Z.eqb_spec; intros Hy.
+  (* Nota: we rely here on [Z.rem a 0 = a] *)
   rewrite Hy. now destruct (to_Z x).
   destruct x as [x|x], y as [y|y]; simpl in *; symmetry;
    rewrite ?Z.eq_opp_l, ?Z.opp_0 in Hy;
-   rewrite NN.spec_modulo, ?Z.rem_opp_r, ?Z.rem_opp_l, ?Z.opp_involutive, ?Z.opp_inj_wd;
+   rewrite NN.spec_modulo, ?Z.rem_opp_r, ?Z.rem_opp_l, ?Z.opp_involutive,
+    ?Z.opp_inj_wd;
    trivial; apply Z.rem_mod_nonneg;
     generalize (NN.spec_pos x) (NN.spec_pos y); Z.order.
  Qed.
@@ -659,11 +665,17 @@ Module Make (NN:NType) <: ZType.
  Qed.
 
  Lemma spec_norm_pos : forall x, to_Z (norm_pos x) = to_Z x.
+ Proof. 
+ intros [ x|x]; simpl; trivial. rewrite NN.spec_eqb, NN.spec_0.
+ case Z.eqb_spec; custom10.
+ Qed.
+
+ (* Lemma spec_norm_pos : forall x, to_Z (norm_pos x) = to_Z x.
  Proof.
   intros [x|x]; simpl; trivial.
   rewrite NN.spec_eqb, NN.spec_0.
   case Z.eqb_spec; simpl; auto with zarith.
- Qed.
+ Qed. *)
 
  Lemma spec_norm_pos_pos : forall x y, norm_pos x = Neg y ->
   0 < NN.to_Z y.
@@ -702,7 +714,8 @@ Module Make (NN:NType) <: ZType.
   rewrite !NN.spec_shiftl.
   rewrite !Z.shiftl_mul_pow2 by apply NN.spec_pos.
   symmetry. apply Z.mul_opp_l.
-  rewrite Z.shiftl_opp_r, NN.spec_succ, NN.spec_shiftr, NN.spec_pred, Z.max_r by auto with zarith.
+  rewrite Z.shiftl_opp_r, NN.spec_succ, NN.spec_shiftr, NN.spec_pred, Z.max_r
+   by auto with zarith.
   now rewrite Zlnot_alt1, Z.lnot_shiftr, Zlnot_alt2.
  Qed.
 
@@ -716,7 +729,8 @@ Module Make (NN:NType) <: ZType.
  Proof.
   intros x y. unfold land.
   destr_norm_pos x; destr_norm_pos y; simpl;
-   rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor, ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; auto with zarith.
+   rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor,
+    ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; auto with zarith.
   now rewrite Z.ldiff_land, Zlnot_alt2.
   now rewrite Z.ldiff_land, Z.land_comm, Zlnot_alt2.
   now rewrite Z.lnot_lor, !Zlnot_alt2.
@@ -726,7 +740,8 @@ Module Make (NN:NType) <: ZType.
  Proof.
   intros x y. unfold lor.
   destr_norm_pos x; destr_norm_pos y; simpl;
-   rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor, ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; auto with zarith.
+   rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor,
+    ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; auto with zarith.
   now rewrite Z.lnot_ldiff, Z.lor_comm, Zlnot_alt2.
   now rewrite Z.lnot_ldiff, Zlnot_alt2.
   now rewrite Z.lnot_land, !Zlnot_alt2.
@@ -736,7 +751,8 @@ Module Make (NN:NType) <: ZType.
  Proof.
   intros x y. unfold ldiff.
   destr_norm_pos x; destr_norm_pos y; simpl;
-   rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor, ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; auto with zarith.
+   rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor,
+    ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; auto with zarith.
   now rewrite Z.ldiff_land, Zlnot_alt3.
   now rewrite Z.lnot_lor, Z.ldiff_land, <- Zlnot_alt2.
   now rewrite 2 Z.ldiff_land, Zlnot_alt2, Z.land_comm, Zlnot_alt3.

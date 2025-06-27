@@ -1,0 +1,15 @@
+Ltac custom_tac1 H0 := apply H0; assumption.
+Ltac custom_tac8 H0 H1 H2 := intros H0 H1 H2; apply H2.
+Ltac custom_tac11 H0 H1 := apply H0; intro H1.
+Ltac custom_tac14 H0 H1 H2 := unfold H0; intros H1 H2.
+Ltac custom_tac20 H0 := unfold H0; auto.
+Ltac custom_tac0 H0 H1 := apply H0; apply H1.
+Ltac custom_tac5 H0 H1 := eapply H0; eapply H1.
+Ltac custom_tac7 H0 H1 := unfold H0; apply H1.
+Ltac custom_tac9 H0 H1 := intros H0 H1; apply H1.
+Ltac custom_tac10 H0 := apply H0; trivial.
+Ltac custom_tac12 H0 H1 H2 H3 := intros H0 H1 H2 H3; destruct ( H0 H1) as [ p | np].
+Ltac custom_tac17 H0 := apply H0; auto.
+Ltac custom_tac22 H0 := eapply H0; eauto.
+Ltac custom_tac13 H0 H1 H2 H3 H4 := unfold H0; intros H1 H2 H3 H4.
+Ltac custom_tac18 H0 H1 H2 H3 H4 H5 := intros H0 H1 H2 H3 H4 H5; apply H5.

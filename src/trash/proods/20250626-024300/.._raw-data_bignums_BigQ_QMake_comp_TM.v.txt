@@ -1,0 +1,452 @@
+File: ../raw-data/bignums/BigQ/QMake_comp_TM.v
+Dataset:
+ {
+    "project": "../raw-data/bignums",
+    "files": [
+        {
+            "path": "BigQ/QMake_comp_TM.v",
+            "theorems": [
+                "spec_power_norm",
+                "spec_red",
+                "strong_spec_red",
+                "spec_norm_denum",
+                "strong_spec_check_int",
+                "strong_spec_of_Q"
+            ],
+            "max_retry_attempts_limits": {},
+            "max_time_limits_in_secs": {}
+        }
+    ]
+}
+Evaluation Settings:
+ {
+    "name": "n_60_dfs_gpt4_o_always_retrieve",
+    "use_hammer": "ALLOW",
+    "setting_type": "Agent",
+    "max_proof_depth": 100,
+    "timeout_in_secs": 200,
+    "proof_retries": 4,
+    "max_tokens_per_action": 100,
+    "max_theorems_in_prompt": 3,
+    "gpt_model_name": "gpt-4o",
+    "max_number_of_episodes": 1,
+    "max_steps_per_episode": 60,
+    "render": false,
+    "checkpoint_dir": ".log/checkpoints/bignums_tacminer/n_60_dfs_gpt4_o_always_retrieve/coq_dfs_always_retrieve",
+    "should_checkpoint": false,
+    "temperature": 0.7,
+    "max_history_messages": 0,
+    "policy_name": "Dfs",
+    "proof_dump_dir": ".log/proofs/eval_driver/dfs/bignums_tacminer/20250626-024300",
+    "use_human_readable_proof_context": true,
+    "sample": 1.0,
+    "sample_seed": 3840,
+    "use_example_retrieval": false,
+    "always_use_useful_theorem_retrieval": true,
+    "num_goal_per_prompt": null
+}
+
+
+spec_power_norm  : forall x z, [power_norm x z] == [x]^z.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_power_norm  : forall x z, [power_norm x z] == [x]^z.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 28
+SearchTimeInSecs: 37.442049980163574
+NumberOfBacktracks: 6
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 22}
+
+
+
+spec_red  : forall x, [ red x ] == [ x ] .
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_red  : forall x, [ red x ] == [ x ] .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 23
+SearchTimeInSecs: 27.122123956680298
+NumberOfBacktracks: 5
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 18}
+
+
+
+strong_spec_red  : forall x, [red x] = Qred [x].
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_red  : forall x, [red x] = Qred [x].
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 14.712090253829956
+NumberOfBacktracks: 2
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+
+spec_norm_denum  : forall n d,
+  [norm_denum n d] == [Qq n d].
+Proof.
+    custom82 norm_denum n d.
+    custom81.
+    rewrite e.
+    simpl.
+    custom71.
+Qed.
+
+ProofFile: None
+LemmaName: spec_norm_denum  : forall n d,
+  [norm_denum n d] == [Qq n d].
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 10
+SearchTimeInSecs: 27.250812292099
+NumberOfBacktracks: 1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 8}
+
+
+
+strong_spec_check_int  : forall n d, [check_int n d] = [Qq n d].
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_check_int  : forall n d, [check_int n d] = [Qq n d].
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 13
+SearchTimeInSecs: 30.145080089569092
+NumberOfBacktracks: 3
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 10}
+
+
+
+strong_spec_of_Q  : forall q: Q, [of_Q q] = q.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_of_Q  : forall q: Q, [of_Q q] = q.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 46
+SearchTimeInSecs: 88.67651295661926
+NumberOfBacktracks: 19
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 27}
+
+
+
+spec_power_norm  : forall x z, [power_norm x z] == [x]^z.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_power_norm  : forall x z, [power_norm x z] == [x]^z.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 17
+SearchTimeInSecs: 22.55455994606018
+NumberOfBacktracks: 4
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 13}
+
+
+
+spec_red  : forall x, [ red x ] == [ x ] .
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_red  : forall x, [ red x ] == [ x ] .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 14
+SearchTimeInSecs: 19.03377914428711
+NumberOfBacktracks: 2
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 12}
+
+
+
+strong_spec_red  : forall x, [red x] = Qred [x].
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_red  : forall x, [red x] = Qred [x].
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 19
+SearchTimeInSecs: 28.311173915863037
+NumberOfBacktracks: 3
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 16}
+
+
+
+strong_spec_check_int  : forall n d, [check_int n d] = [Qq n d].
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_check_int  : forall n d, [check_int n d] = [Qq n d].
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 11
+SearchTimeInSecs: 26.174726963043213
+NumberOfBacktracks: 3
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 8}
+
+
+
+strong_spec_of_Q  : forall q: Q, [of_Q q] = q.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_of_Q  : forall q: Q, [of_Q q] = q.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 12.180083990097046
+NumberOfBacktracks: 2
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+
+spec_power_norm  : forall x z, [power_norm x z] == [x]^z.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_power_norm  : forall x z, [power_norm x z] == [x]^z.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 22
+SearchTimeInSecs: 26.415343046188354
+NumberOfBacktracks: 5
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 17}
+
+
+
+spec_red  : forall x, [ red x ] == [ x ] .
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_red  : forall x, [ red x ] == [ x ] .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 43
+SearchTimeInSecs: 55.89731287956238
+NumberOfBacktracks: 7
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 36}
+
+
+
+strong_spec_red  : forall x, [red x] = Qred [x].
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_red  : forall x, [red x] = Qred [x].
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 9
+SearchTimeInSecs: 16.545197010040283
+NumberOfBacktracks: 2
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 7}
+
+
+
+strong_spec_check_int  : forall n d, [check_int n d] = [Qq n d].
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_check_int  : forall n d, [check_int n d] = [Qq n d].
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 14
+SearchTimeInSecs: 30.784642934799194
+NumberOfBacktracks: 3
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 11}
+
+
+
+strong_spec_of_Q  : forall q: Q, [of_Q q] = q.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_of_Q  : forall q: Q, [of_Q q] = q.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 13
+SearchTimeInSecs: 16.757215976715088
+NumberOfBacktracks: 4
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 9}
+
+
+
+spec_power_norm  : forall x z, [power_norm x z] == [x]^z.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_power_norm  : forall x z, [power_norm x z] == [x]^z.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 14
+SearchTimeInSecs: 16.937233924865723
+NumberOfBacktracks: 4
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 10}
+
+
+
+spec_red  : forall x, [ red x ] == [ x ] .
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_red  : forall x, [ red x ] == [ x ] .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 19
+SearchTimeInSecs: 25.8973650932312
+NumberOfBacktracks: 4
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 15}
+
+
+
+strong_spec_red  : forall x, [red x] = Qred [x].
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_red  : forall x, [red x] = Qred [x].
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 4
+SearchTimeInSecs: 12.312958002090454
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 4}
+
+
+
+strong_spec_check_int  : forall n d, [check_int n d] = [Qq n d].
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_check_int  : forall n d, [check_int n d] = [Qq n d].
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 14
+SearchTimeInSecs: 30.617199182510376
+NumberOfBacktracks: 3
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 11}
+
+
+
+strong_spec_of_Q  : forall q: Q, [of_Q q] = q.
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_of_Q  : forall q: Q, [of_Q q] = q.
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 13.003757953643799
+NumberOfBacktracks: 2
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+

@@ -364,7 +364,7 @@ Proof.
 
 - (* Inop, skipped over *)
   assert (s0 = pc') by congruence. subst s0.
-  right; exists n; split. omega. split. auto.
+  right; exists n; split. lia. split. auto.
   apply match_states_intro; auto.
 
 - (* Iop *)
@@ -528,7 +528,7 @@ Opaque builtin_strength_reduction.
 
 - (* Icond, skipped over *)
   rewrite H1 in H; inv H.
-  right; exists n; split. omega. split. auto.
+  right; exists n; split. lia. split. auto.
   econstructor; eauto.
 
 - (* Ijumptable *)
@@ -558,7 +558,7 @@ Opaque builtin_strength_reduction.
   intros [m2' [A B]].
   simpl. unfold transf_function.
   left; exists O; econstructor; split.
-  eapply exec_function_internal; simpl; eauto.
+  eapply exec_function_internal; simpl; eauto using Val.has_argtype_list_lessdef.
   simpl. econstructor; eauto.
   constructor.
   apply init_regs_lessdef; auto.

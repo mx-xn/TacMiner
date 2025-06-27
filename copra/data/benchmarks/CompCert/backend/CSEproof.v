@@ -74,6 +74,17 @@ Proof.
 - econstructor; eauto. rewrite valnums_val_exten by assumption. auto.
 Qed.
 
+Lemma rhs_valid_exten:
+  forall r,
+  rhs_valid valu1 ge sp r ->
+  (forall v, In v (valnums_rhs r) -> Plt v upto) ->
+  rhs_valid valu2 ge sp r.
+Proof.
+  intros. inv H; simpl in *.
+- constructor.
+- econstructor; eauto. rewrite valnums_val_exten by assumption. auto.
+Qed.
+
 Lemma equation_holds_exten:
   forall e,
   equation_holds valu1 ge sp m e ->
@@ -82,7 +93,9 @@ Lemma equation_holds_exten:
 Proof.
   intros. destruct e. destruct H0. inv H.
 - constructor. rewrite AGREE by auto. apply rhs_eval_to_exten; auto.
+  apply rhs_valid_exten; auto.
 - econstructor. apply rhs_eval_to_exten; eauto. rewrite AGREE by auto. auto.
+  apply rhs_valid_exten; auto.
 Qed.
 
 Lemma numbering_holds_exten:
@@ -128,9 +141,9 @@ Proof.
   exists valu2; splitall.
 + constructor; simpl; intros.
 * constructor; simpl; intros.
-  apply wf_equation_incr with (num_next n). eauto with cse. xomega.
+  apply wf_equation_incr with (num_next n). eauto with cse. extlia.
   rewrite PTree.gsspec in H0. destruct (peq r0 r).
-  inv H0; xomega.
+  inv H0; extlia.
   apply Plt_trans_succ; eauto with cse.
   rewrite PMap.gsspec in H0. destruct (peq v (num_next n)).
   replace r0 with r by (simpl in H0; intuition). rewrite PTree.gss. subst; auto.
@@ -142,8 +155,8 @@ Proof.
   rewrite peq_false. eauto with cse. apply Plt_ne; eauto with cse.
 + unfold valu2. rewrite peq_true; auto.
 + auto.
-+ xomega.
-+ xomega.
++ extlia.
++ extlia.
 Qed.
 
 Lemma valnum_regs_holds:
@@ -158,7 +171,7 @@ Lemma valnum_regs_holds:
   /\ Ple n.(num_next) n'.(num_next).
 Proof.
   induction rl; simpl; intros.
-- inv H0. exists valu1; splitall; auto. red; auto. simpl; tauto. xomega.
+- inv H0. exists valu1; splitall; auto. red; auto. simpl; tauto. extlia.
 - destruct (valnum_reg n a) as [n1 v1] eqn:V1.
   destruct (valnum_regs n1 rl) as [n2 vs] eqn:V2.
   inv H0.
@@ -169,31 +182,33 @@ Proof.
   exists valu3; splitall.
   + auto.
   + simpl; f_equal; auto. rewrite R; auto.
-  + red; intros. transitivity (valu2 v); auto. apply R. xomega.
-  + simpl; intros. destruct H0; auto. subst v1; xomega.
-  + xomega.
+  + red; intros. transitivity (valu2 v); auto. apply R. extlia.
+  + simpl; intros. destruct H0; auto. subst v1; extlia.
+  + extlia.
 Qed.
 
 Lemma find_valnum_rhs_charact:
   forall rh v eqs,
-  find_valnum_rhs rh eqs = Some v -> In (Eq v true rh) eqs.
+    find_valnum_rhs rh eqs = Some v ->
+    exists rh', In (Eq v true rh') eqs /\ rhs_compat rh rh'.
 Proof.
   induction eqs; simpl; intros.
 - inv H.
-- destruct a. destruct (strict && eq_rhs rh r) eqn:T.
-  + InvBooleans. inv H. left; auto.
-  + right; eauto.
+- destruct a. destruct (strict && compat_rhs rh r) eqn:T.
+  + InvBooleans. inv H. exists r; auto using compat_rhs_sound.
+  + destruct IHeqs as (rh' & A & B); auto. exists rh'; auto.
 Qed.
 
 Lemma find_valnum_rhs'_charact:
   forall rh v eqs,
-  find_valnum_rhs' rh eqs = Some v -> exists strict, In (Eq v strict rh) eqs.
+    find_valnum_rhs' rh eqs = Some v ->
+    exists strict rh', In (Eq v strict rh') eqs /\ rhs_compat rh rh'.
 Proof.
   induction eqs; simpl; intros.
 - inv H.
-- destruct a. destruct (eq_rhs rh r) eqn:T.
-  + inv H. exists strict; auto.
-  + exploit IHeqs; eauto. intros [s IN]. exists s; auto.
+- destruct a. destruct (compat_rhs rh r) eqn:T.
+  + inv H. exists strict, r; auto using compat_rhs_sound.
+  + exploit IHeqs; eauto. intros (s & rh' & A & B). exists s, rh'; auto.
 Qed.
 
 Lemma find_valnum_num_charact:
@@ -238,22 +253,11 @@ Lemma find_rhs_sound:
   exists v, rhs_eval_to valu ge sp m rh v /\ Val.lessdef v rs#r.
 Proof.
   unfold find_rhs; intros. destruct (find_valnum_rhs' rh (num_eqs n)) as [vres|] eqn:E; try discriminate.
-  exploit find_valnum_rhs'_charact; eauto. intros [strict IN].
+  exploit find_valnum_rhs'_charact; eauto. intros (strict & rh' & IN & COMPAT).
   erewrite reg_valnum_sound by eauto.
   exploit num_holds_eq; eauto. intros EH. inv EH.
-- exists (valu vres); auto.
-- exists v; auto.
-Qed.
-
-Remark in_remove:
-  forall (A: Type) (eq: forall (x y: A), {x=y}+{x<>y}) x y l,
-  In y (List.remove eq x l) <-> x <> y /\ In y l.
-Proof.
-  induction l; simpl.
-  tauto.
-  destruct (eq x a).
-  subst a. rewrite IHl. tauto.
-  simpl. rewrite IHl. intuition congruence.
+- exists (valu vres); eauto using rhs_eval_to_compat, rhs_compat_sym.
+- exists v; eauto using rhs_eval_to_compat, rhs_compat_sym.
 Qed.
 
 Lemma forget_reg_charact:
@@ -264,7 +268,7 @@ Proof.
   unfold forget_reg; intros.
   destruct (PTree.get rd n.(num_reg)) as [vd|] eqn:GET.
 - rewrite PMap.gsspec in H0. destruct (peq v vd).
-  + subst v. rewrite in_remove in H0. intuition.
+  + subst v. apply List.in_remove in H0. tauto.
   + split; auto. exploit wf_num_val; eauto. congruence.
 - split; auto. exploit wf_num_val; eauto. congruence.
 Qed.
@@ -296,6 +300,7 @@ Qed.
 Lemma add_rhs_holds:
   forall valu1 ge sp rs m n rd rh rs',
   numbering_holds valu1 ge sp rs m n ->
+  rhs_valid valu1 ge sp rh ->
   rhs_eval_to valu1 ge sp m rh (rs'#rd) ->
   wf_rhs n.(num_next) rh ->
   (forall r, r <> rd -> rs'#r = rs#r) ->
@@ -305,10 +310,11 @@ Proof.
   destruct (find_valnum_rhs rh n.(num_eqs)) as [vres|] eqn:FIND.
 
 - (* A value number exists already *)
-  exploit find_valnum_rhs_charact; eauto. intros IN.
+  exploit find_valnum_rhs_charact; eauto. intros (rh' & IN & COMPAT).
   exploit wf_num_eqs; eauto with cse. intros [A B].
   exploit num_holds_eq; eauto. intros EH. inv EH.
-  assert (rs'#rd = valu1 vres) by (eapply rhs_eval_to_inj; eauto).
+  assert (rs'#rd = valu1 vres) by
+    (eapply rhs_eval_to_inj; eauto using rhs_eval_to_compat, rhs_compat_sym).
   exists valu1; constructor; simpl; intros.
 + constructor; simpl; intros.
   * eauto with cse.
@@ -319,7 +325,7 @@ Proof.
 + eauto with cse.
 + rewrite PTree.gsspec in H5. destruct (peq r rd).
   congruence.
-  rewrite H2 by auto. eauto with cse.
+  rewrite H3 by auto. eauto with cse.
 
 - (* Assigning a new value number *)
   set (valu2 := fun v => if peq v n.(num_next) then rs'#rd else valu1 v).
@@ -327,20 +333,21 @@ Proof.
   { red; intros. unfold valu2. apply peq_false. apply Plt_ne; auto. }
   exists valu2; constructor; simpl; intros.
 + constructor; simpl; intros.
-  * destruct H3. inv H3. simpl; split. xomega.
+  * destruct H4. inv H4. simpl; split. extlia.
     red; intros. apply Plt_trans_succ; eauto.
-    apply wf_equation_incr with (num_next n). eauto with cse. xomega.
-  * rewrite PTree.gsspec in H3. destruct (peq r rd).
-    inv H3. xomega.
+    apply wf_equation_incr with (num_next n). eauto with cse. extlia.
+  * rewrite PTree.gsspec in H4. destruct (peq r rd).
+    inv H4. extlia.
     apply Plt_trans_succ; eauto with cse.
   * apply update_reg_charact; eauto with cse.
-+ destruct H3. inv H3.
++ destruct H4. inv H4.
   constructor. unfold valu2 at 2; rewrite peq_true.
   eapply rhs_eval_to_exten; eauto.
+  eapply rhs_valid_exten; eauto.
   eapply equation_holds_exten; eauto with cse.
-+ rewrite PTree.gsspec in H3. unfold valu2. destruct (peq r rd).
-  inv H3. rewrite peq_true; auto.
-  rewrite peq_false. rewrite H2 by auto. eauto with cse.
++ rewrite PTree.gsspec in H4. unfold valu2. destruct (peq r rd).
+  inv H4. rewrite peq_true; auto.
+  rewrite peq_false. rewrite H3 by auto. eauto with cse.
   apply Plt_ne; eauto with cse.
 Qed.
 
@@ -373,22 +380,25 @@ Proof.
   exploit valnum_regs_holds; eauto.
   intros (valu2 & A & B & C & D & E).
   eapply add_rhs_holds; eauto.
++ constructor.
 + constructor. rewrite Regmap.gss. congruence.
 + intros. apply Regmap.gso; auto.
 Qed.
 
 Lemma add_load_holds:
-  forall valu1 ge sp rs m n addr (args: list reg) a chunk v dst,
-  numbering_holds valu1 ge sp rs m n ->
-  eval_addressing ge sp addr rs##args = Some a ->
-  Mem.loadv chunk m a = Some v ->
-  exists valu2, numbering_holds valu2 ge sp (rs#dst <- v) m (add_load n dst chunk addr args).
+  forall valu1 ge sp rs m n addr (args: list reg) ap b ofs chunk v dst bc,
+  numbering_holds valu1 ge (Vptr sp Ptrofs.zero) rs m n ->
+  eval_addressing ge (Vptr sp Ptrofs.zero) addr rs##args = Some (Vptr b ofs) ->
+  Mem.loadv chunk m (Vptr b ofs) = Some v ->
+  pmatch bc b ofs ap -> genv_match bc ge -> bc sp = BCstack ->
+  exists valu2, numbering_holds valu2 ge (Vptr sp Ptrofs.zero) (rs#dst <- v) m (add_load n dst chunk addr args ap).
 Proof.
   unfold add_load; intros.
   destruct (valnum_regs n args) as [n1 vl] eqn:VN.
   exploit valnum_regs_holds; eauto.
   intros (valu2 & A & B & C & D & E).
   eapply add_rhs_holds; eauto.
++ econstructor; eauto. rewrite <- B; auto. 
 + econstructor. rewrite <- B; eauto. rewrite Regmap.gss; auto.
 + intros. apply Regmap.gso; auto.
 Qed.
@@ -437,6 +447,7 @@ Lemma kill_equations_hold:
   numbering_holds valu ge sp rs m n ->
   (forall r v,
       pred r = false ->
+      rhs_valid valu ge sp r ->
       rhs_eval_to valu ge sp m r v ->
       rhs_eval_to valu ge sp m' r v) ->
   numbering_holds valu ge sp rs m' (kill_equations pred n).
@@ -455,8 +466,8 @@ Lemma kill_all_loads_hold:
   numbering_holds valu ge sp rs m' (kill_all_loads n).
 Proof.
   intros. eapply kill_equations_hold; eauto.
-  unfold filter_loads; intros. inv H1.
-  constructor. rewrite <- H2. apply op_depends_on_memory_correct; auto.
+  unfold filter_loads; intros. inv H2.
+  constructor. rewrite <- H3. apply op_depends_on_memory_correct; auto.
   discriminate.
 Qed.
 
@@ -473,19 +484,18 @@ Lemma kill_loads_after_store_holds:
                            (kill_loads_after_store approx n chunk addr args).
 Proof.
   intros. apply kill_equations_hold with m; auto.
-  intros. unfold filter_after_store in H6; inv H7.
-- constructor. rewrite <- H8. apply op_depends_on_memory_correct; auto.
-- destruct (regs_valnums n vl) as [rl|] eqn:RV; try discriminate.
-  econstructor; eauto. rewrite <- H9.
+  intros. unfold filter_after_store in H6; inv H8.
+- constructor. rewrite <- H9. apply op_depends_on_memory_correct; auto.
+- econstructor; eauto. rewrite <- H10.
   destruct a; simpl in H1; try discriminate.
-  destruct a0; simpl in H9; try discriminate.
+  destruct a0; simpl in H10; try discriminate.
   simpl.
   rewrite negb_false_iff in H6. unfold aaddressing in H6.
+  inv H7. rewrite H9 in H14; inv H14.
   eapply Mem.load_store_other. eauto.
-  eapply pdisjoint_sound. eauto.
+  eapply pdisjoint_sound_strong with (bc1 := bc0) (bc2 := bc); eauto.
   apply match_aptr_of_aval. eapply eval_static_addressing_sound; eauto.
-  erewrite <- regs_valnums_sound by eauto. eauto with va.
-  apply match_aptr_of_aval. eapply eval_static_addressing_sound; eauto with va.
+  eauto with va.
 Qed.
 
 Lemma store_normalized_range_sound:
@@ -495,10 +505,11 @@ Lemma store_normalized_range_sound:
 Proof.
   intros. unfold Val.load_result; remember Archi.ptr64 as ptr64.
   destruct chunk; simpl in *; destruct v; auto.
-- inv H. rewrite is_sgn_sign_ext in H4 by omega. rewrite H4; auto.
-- inv H. rewrite is_uns_zero_ext in H4 by omega. rewrite H4; auto.
-- inv H. rewrite is_sgn_sign_ext in H4 by omega. rewrite H4; auto.
-- inv H. rewrite is_uns_zero_ext in H4 by omega. rewrite H4; auto.
+- inv H. apply is_uns_1 in H4; destruct H4; subst i; auto.
+- inv H. rewrite is_sgn_sign_ext in H4 by lia. rewrite H4; auto.
+- inv H. rewrite is_uns_zero_ext in H4 by lia. rewrite H4; auto.
+- inv H. rewrite is_sgn_sign_ext in H4 by lia. rewrite H4; auto.
+- inv H. rewrite is_uns_zero_ext in H4 by lia. rewrite H4; auto.
 - destruct ptr64; auto.
 - destruct ptr64; auto.
 - destruct ptr64; auto.
@@ -506,15 +517,17 @@ Qed.
 
 Lemma add_store_result_hold:
   forall valu1 ge sp rs m' n addr args a chunk m src bc ae approx am,
-  numbering_holds valu1 ge sp rs m' n ->
-  eval_addressing ge sp addr rs##args = Some a ->
+  numbering_holds valu1 ge (Vptr sp Ptrofs.zero) rs m' n ->
+  eval_addressing ge (Vptr sp Ptrofs.zero) addr rs##args = Some a ->
   Mem.storev chunk m a rs#src = Some m' ->
+  genv_match bc ge ->
+  bc sp = BCstack ->
   ematch bc rs ae ->
   approx = VA.State ae am ->
-  exists valu2, numbering_holds valu2 ge sp rs m' (add_store_result approx n chunk addr args src).
+  exists valu2, numbering_holds valu2 ge (Vptr sp Ptrofs.zero) rs m' (add_store_result approx n chunk addr args src).
 Proof.
   unfold add_store_result; intros.
-  unfold avalue; rewrite H3.
+  unfold avalue; rewrite H5.
   destruct (vincl (AE.get src ae) (store_normalized_range chunk)) eqn:INCL.
 - destruct (valnum_reg n src) as [n1 vsrc] eqn:VR1.
   destruct (valnum_regs n1 args) as [n2 vargs] eqn:VR2.
@@ -522,46 +535,40 @@ Proof.
   exploit valnum_regs_holds; eauto. intros (valu3 & P & Q & R & S & T).
   exists valu3. constructor; simpl; intros.
 + constructor; simpl; intros; eauto with cse.
-  destruct H4; eauto with cse. subst e. split.
+  destruct H6; eauto with cse. subst e. split.
   eapply Pos.lt_le_trans; eauto.
   red; simpl; intros. auto.
-+ destruct H4; eauto with cse. subst eq. apply eq_holds_lessdef with (Val.load_result chunk rs#src).
-  apply load_eval_to with a. rewrite <- Q; auto.
-  destruct a; try discriminate. simpl. eapply Mem.load_store_same; eauto.
-  rewrite B. rewrite R by auto. apply store_normalized_range_sound with bc.
-  rewrite <- B. eapply vmatch_ge. apply vincl_ge; eauto. apply H2.
++ destruct H6; eauto with cse. subst eq. apply eq_holds_lessdef with (Val.load_result chunk rs#src).
+  * apply load_eval_to with a. rewrite <- Q; auto.
+    destruct a; try discriminate. simpl. eapply Mem.load_store_same; eauto.
+  * rewrite B. rewrite R by auto. apply store_normalized_range_sound with bc.
+    rewrite <- B. eapply vmatch_ge. apply vincl_ge; eauto. apply H4.
+  * destruct a; try discriminate. econstructor; eauto. rewrite <- Q. eassumption.
+    apply match_aptr_of_aval. eapply eval_static_addressing_sound; eauto with va.
 + eauto with cse.
-
 - exists valu1; auto.
 Qed.
 
 Lemma kill_loads_after_storebytes_holds:
-  forall valu ge sp rs m n dst b ofs bytes m' bc approx ae am sz,
+  forall valu ge sp rs m n dst b ofs bytes m' bc sz,
   numbering_holds valu ge (Vptr sp Ptrofs.zero) rs m n ->
   pmatch bc b ofs dst ->
   Mem.storebytes m b (Ptrofs.unsigned ofs) bytes = Some m' ->
   genv_match bc ge ->
   bc sp = BCstack ->
-  ematch bc rs ae ->
-  approx = VA.State ae am ->
   length bytes = Z.to_nat sz -> sz >= 0 ->
   numbering_holds valu ge (Vptr sp Ptrofs.zero) rs m'
-                           (kill_loads_after_storebytes approx n dst sz).
+                           (kill_loads_after_storebytes n dst sz).
 Proof.
   intros. apply kill_equations_hold with m; auto.
-  intros. unfold filter_after_store in H8; inv H9.
-- constructor. rewrite <- H10. apply op_depends_on_memory_correct; auto.
-- destruct (regs_valnums n vl) as [rl|] eqn:RV; try discriminate.
-  econstructor; eauto. rewrite <- H11.
-  destruct a; simpl in H10; try discriminate.
-  simpl.
-  rewrite negb_false_iff in H8.
+  intros. unfold filter_after_store in H6; inv H8.
+- constructor. rewrite <- H9. apply op_depends_on_memory_correct; auto.
+- inv H7. rewrite H9 in H15; inv H15.
+  econstructor; eauto. rewrite <- H10. simpl.
+  rewrite negb_false_iff in H6.
   eapply Mem.load_storebytes_other. eauto.
-  rewrite H6. rewrite Z2Nat.id by omega.
-  eapply pdisjoint_sound. eauto.
-  unfold aaddressing. apply match_aptr_of_aval. eapply eval_static_addressing_sound; eauto.
-  erewrite <- regs_valnums_sound by eauto. eauto with va.
-  auto.
+  rewrite H4. rewrite Z2Nat.id by lia.
+  eapply pdisjoint_sound_strong with (bc1 := bc0) (bc2 := bc); eauto.
 Qed.
 
 Lemma load_memcpy:
@@ -578,39 +585,39 @@ Proof.
   set (n1 := i - ofs1).
   set (n2 := size_chunk chunk).
   set (n3 := sz - (n1 + n2)).
-  replace sz with (n1 + (n2 + n3)) in H by (unfold n3, n2, n1; omega).
+  replace sz with (n1 + (n2 + n3)) in H by (unfold n3, n2, n1; lia).
   exploit Mem.loadbytes_split; eauto.
-  unfold n1; omega.
-  unfold n3, n2, n1; omega.
+  unfold n1; lia.
+  unfold n3, n2, n1; lia.
   intros (bytes1 & bytes23 & LB1 & LB23 & EQ).
   clear H.
   exploit Mem.loadbytes_split; eauto.
-  unfold n2; omega.
-  unfold n3, n2, n1; omega.
+  unfold n2; lia.
+  unfold n3, n2, n1; lia.
   intros (bytes2 & bytes3 & LB2 & LB3 & EQ').
   subst bytes23; subst bytes.
   exploit Mem.load_loadbytes; eauto. intros (bytes2' & A & B).
   assert (bytes2' = bytes2).
-  { replace (ofs1 + n1) with i in LB2 by (unfold n1; omega). unfold n2 in LB2. congruence.  }
+  { replace (ofs1 + n1) with i in LB2 by (unfold n1; lia). unfold n2 in LB2. congruence.  }
   subst bytes2'.
   exploit Mem.storebytes_split; eauto. intros (m1 & SB1 & SB23).
   clear H0.
   exploit Mem.storebytes_split; eauto. intros (m2 & SB2 & SB3).
   clear SB23.
   assert (L1: Z.of_nat (length bytes1) = n1).
-  { erewrite Mem.loadbytes_length by eauto. apply Z2Nat.id. unfold n1; omega. }
+  { erewrite Mem.loadbytes_length by eauto. apply Z2Nat.id. unfold n1; lia. }
   assert (L2: Z.of_nat (length bytes2) = n2).
-  { erewrite Mem.loadbytes_length by eauto. apply Z2Nat.id. unfold n2; omega. }
+  { erewrite Mem.loadbytes_length by eauto. apply Z2Nat.id. unfold n2; lia. }
   rewrite L1 in *. rewrite L2 in *.
   assert (LB': Mem.loadbytes m2 b2 (ofs2 + n1) n2 = Some bytes2).
   { rewrite <- L2. eapply Mem.loadbytes_storebytes_same; eauto. }
   assert (LB'': Mem.loadbytes m' b2 (ofs2 + n1) n2 = Some bytes2).
   { rewrite <- LB'. eapply Mem.loadbytes_storebytes_other; eauto.
-    unfold n2; omega.
-    right; left; omega. }
+    unfold n2; lia.
+    right; left; lia. }
   exploit Mem.load_valid_access; eauto. intros [P Q].
   rewrite B. apply Mem.loadbytes_load.
-  replace (i + (ofs2 - ofs1)) with (ofs2 + n1) by (unfold n1; omega).
+  replace (i + (ofs2 - ofs1)) with (ofs2 + n1) by (unfold n1; lia).
   exact LB''.
   apply Z.divide_add_r; auto.
 Qed.
@@ -655,21 +662,24 @@ Proof with (try discriminate).
     Mem.loadv chunk m (Vptr sp ofs) = Some v ->
     Mem.loadv chunk m' (Vptr sp (Ptrofs.repr j)) = Some v).
   {
-    simpl; intros. rewrite Ptrofs.unsigned_repr by omega.
+    simpl; intros. rewrite Ptrofs.unsigned_repr by lia.
     unfold j, delta. eapply load_memcpy; eauto.
-    apply Zmod_divide; auto. generalize (align_chunk_pos chunk); omega.
+    apply Zmod_divide; auto. generalize (align_chunk_pos chunk); lia.
   }
+  rename a into ap.
+  assert (eval_addressing ge (Vptr sp Ptrofs.zero) (Ainstack (Ptrofs.repr j)) nil = Some (Vptr sp (Ptrofs.repr j))).
+  { rewrite eval_addressing_Ainstack. simpl. rewrite Ptrofs.add_zero_l. auto. }
   inv H2.
-+ inv H3. exploit eval_addressing_Ainstack_inv; eauto. intros [E1 E2].
++ inv H5. exploit eval_addressing_Ainstack_inv; eauto. intros [E1 E2].
   simpl in E2; rewrite Ptrofs.add_zero_l in E2. subst a.
-  apply eq_holds_strict. econstructor. rewrite eval_addressing_Ainstack.
-  simpl. rewrite Ptrofs.add_zero_l. eauto.
-  apply LD; auto.
-+ inv H4. exploit eval_addressing_Ainstack_inv; eauto. intros [E1 E2].
+  apply eq_holds_strict.
+  * econstructor; eauto.
+  * inv H7. econstructor; eauto with va.
++ inv H6. exploit eval_addressing_Ainstack_inv; eauto. intros [E1 E2].
   simpl in E2; rewrite Ptrofs.add_zero_l in E2. subst a.
   apply eq_holds_lessdef with v; auto.
-  econstructor. rewrite eval_addressing_Ainstack. simpl. rewrite Ptrofs.add_zero_l. eauto.
-  apply LD; auto.
+  * econstructor; eauto.
+  * inv H8. econstructor; eauto with va.
 Qed.
 
 Lemma add_memcpy_eqs_charact:
@@ -775,6 +785,71 @@ Proof.
 Qed.
 
 End REDUCE.
+
+
+Section REDUCELD.
+
+Variable A: Type.
+Variable f: (valnum -> option rhs) -> A -> list valnum -> option (A * list valnum).
+Variable ge: genv.
+Variable sp: val.
+Variable rs: regset.
+Variable m: mem.
+Variable sem: A -> list val -> option val.
+Hypothesis f_sound:
+  forall eqs valu op args op' args' r,
+  (forall v rhs, eqs v = Some rhs -> rhs_eval_to valu ge sp m rhs (valu v)) ->
+  f eqs op args = Some(op', args') ->
+  sem op (map valu args) = Some r ->
+  exists r',
+  sem op' (map valu args') = Some r' /\ Val.lessdef r r'.
+Variable n: numbering.
+Variable valu: valnum -> val.
+Hypothesis n_holds: numbering_holds valu ge sp rs m n.
+
+Lemma reduce_rec_lessdef_sound:
+  forall niter op args op' rl' r,
+  reduce_rec A f n niter op args = Some(op', rl') ->
+  sem op (map valu args) = Some r ->
+  exists r',
+  sem op' (rs##rl') = Some r' /\ Val.lessdef r r'.
+Proof.
+  induction niter; simpl; intros.
+  discriminate.
+  destruct (f (fun v : valnum => find_valnum_num v (num_eqs n)) op args)
+           as [[op1 args1] | ] eqn:?; try discriminate.
+  assert (exists r': val, sem op1 (map valu args1) = Some r' /\ Val.lessdef r r').
+  { exploit f_sound; eauto.
+    simpl; intros.
+    exploit num_holds_eq; eauto.
+    eapply find_valnum_num_charact; eauto with cse.
+    intros EH; inv EH; auto.
+  }
+  destruct (reduce_rec A f n niter op1 args1) as [[op2 rl2] | ] eqn:?.
+  destruct H1. destruct H1.
+  exploit IHniter. eexact Heqo0. eexact H1. inv H.
+  intros. destruct H. destruct H. exists x0. split; eauto.
+  eapply Val.lessdef_trans. eexact H2. eexact H3.
+  destruct (regs_valnums n args1) as [rl|] eqn:?; try discriminate.
+  inv H. erewrite regs_valnums_sound; eauto.
+Qed.
+
+
+Lemma reduce_lessdef_sound:
+  forall op rl vl op' rl' r,
+  reduce A f n op rl vl = (op', rl') ->
+  map valu vl = rs##rl ->
+  sem op rs##rl = Some r ->
+  exists r', sem op' rs##rl' = Some r' /\ Val.lessdef r r'.
+Proof.
+  unfold reduce; intros.
+  destruct (reduce_rec A f n 4%nat op vl) as [[op1 rl1] | ] eqn:?.
+  eapply reduce_rec_lessdef_sound; eauto. inv H. eexact Heqo. congruence.
+  exists r. inv H. auto.
+Qed.
+
+End REDUCELD.
+
 
 (** The numberings associated to each instruction by the static analysis
   are inductively satisfiable, in the following sense: the numbering
@@ -1016,25 +1091,25 @@ Proof.
   eapply Val.lessdef_trans; eauto.
 * (* possibly simplified *)
   destruct (reduce operation combine_op n1 op args vl) as [op' args'] eqn:?.
-  assert (RES: eval_operation ge sp op' rs##args' m = Some v).
-    eapply reduce_sound with (sem := fun op vl => eval_operation ge sp op vl m); eauto.
-    intros; eapply combine_op_sound; eauto.
-  exploit eval_operation_lessdef. eapply regs_lessdef_regs; eauto. eauto. eauto.
-  intros [v' [A B]].
+  exploit (reduce_lessdef_sound operation combine_op ge sp rs m (fun op vl => eval_operation ge sp op vl m)); intros;eauto.
+  exploit combine_op_sound; eauto.
+  destruct H1 as (v' & EV' & LD').
+  exploit (eval_operation_lessdef). eapply regs_lessdef_regs; eauto. eexact MEXT. eexact EV'.
+  intros [v'' [EV'' LD'']].
   econstructor; split.
-  eapply exec_Iop with (v := v'); eauto.
-  rewrite <- A. apply eval_operation_preserved. exact symbols_preserved.
+  eapply exec_Iop. eexact C. erewrite eval_operation_preserved. eexact EV''.
+  exact symbols_preserved.
   econstructor; eauto.
   eapply analysis_correct_1; eauto. simpl; auto.
   unfold transfer; rewrite H.
   eapply add_op_holds; eauto.
   apply set_reg_lessdef; auto.
-
+  eapply (Val.lessdef_trans v v' v''); auto.
 - (* Iload *)
   destruct (valnum_regs approx!!pc args) as [n1 vl] eqn:?.
   destruct SAT as [valu1 NH1].
   exploit valnum_regs_holds; eauto. intros (valu2 & NH2 & EQ & AG & P & Q).
-  destruct (find_rhs n1 (Load chunk addr vl)) as [r|] eqn:?.
+  destruct (find_rhs n1 (Load chunk addr vl Ptop)) as [r|] eqn:?.
 + (* replaced by move *)
   exploit find_rhs_sound; eauto. intros (v' & EV & LD).
   assert (v' = v) by (inv EV; congruence). subst v'.
@@ -1043,7 +1118,10 @@ Proof.
   econstructor; eauto.
   eapply analysis_correct_1; eauto. simpl; auto.
   unfold transfer; rewrite H.
+  destruct a; try discriminate. InvSoundState.
   eapply add_load_holds; eauto.
+  unfold aaddressing, vanalyze. rewrite AN. apply match_aptr_of_aval.
+  eapply eval_static_addressing_sound; eauto with va.
   apply set_reg_lessdef; auto. eapply Val.lessdef_trans; eauto.
 + (* load is preserved, but addressing is possibly simplified *)
   destruct (reduce addressing combine_addr n1 addr args vl) as [addr' args'] eqn:?.
@@ -1061,7 +1139,10 @@ Proof.
   econstructor; eauto.
   eapply analysis_correct_1; eauto. simpl; auto.
   unfold transfer; rewrite H.
+  destruct a; try discriminate. InvSoundState.
   eapply add_load_holds; eauto.
+  unfold aaddressing, vanalyze. rewrite AN. apply match_aptr_of_aval.
+  eapply eval_static_addressing_sound; eauto with va.
   apply set_reg_lessdef; auto.
 
 - (* Istore *)
@@ -1160,16 +1241,24 @@ Proof.
   destruct (valnum_regs approx!!pc args) as [n1 vl] eqn:?.
   elim SAT; intros valu1 NH1.
   exploit valnum_regs_holds; eauto. intros (valu2 & NH2 & EQ & AG & P & Q).
-  destruct (reduce condition combine_cond n1 cond args vl) as [cond' args'] eqn:?.
-  assert (RES: eval_condition cond' rs##args' m = Some b).
-  { eapply reduce_sound with (sem := fun cond vl => eval_condition cond vl m); eauto.
-    intros; eapply combine_cond_sound; eauto. }
-  econstructor; split.
-  eapply exec_Icond; eauto.
-  eapply eval_condition_lessdef; eauto. apply regs_lessdef_regs; auto.
-  econstructor; eauto.
-  destruct b; eapply analysis_correct_1; eauto; simpl; auto;
-  unfold transfer; rewrite H; auto.
+  destruct (combine_cond' cond vl) eqn:?; auto.
+  + econstructor; split.
+    eapply exec_Inop; eauto.
+    assert (eval_condition cond (map valu2 vl) m = Some b) by (rewrite <- EQ; auto).
+    rewrite (combine_cond'_sound m valu2 cond vl b b0); eauto.
+    econstructor; eauto.
+    destruct b0; eapply analysis_correct_1; eauto; simpl; auto;
+    unfold transfer; rewrite H; auto.
+  + destruct (reduce condition combine_cond n1 cond args vl) as [cond' args'] eqn:?.
+    assert (RES: eval_condition cond' rs##args' m = Some b).
+    { eapply reduce_sound with (sem := fun cond vl => eval_condition cond vl m); eauto.
+      intros; eapply combine_cond_sound; eauto. }
+    econstructor; split.
+    eapply exec_Icond; eauto.
+    eapply eval_condition_lessdef; eauto. apply regs_lessdef_regs; auto.
+    econstructor; eauto.
+    destruct b; eapply analysis_correct_1; eauto; simpl; auto;
+    unfold transfer; rewrite H; auto.
 
 - (* Ijumptable *)
   generalize (RLD arg); rewrite H0; intro LD; inv LD.
@@ -1192,7 +1281,7 @@ Proof.
   exploit Mem.alloc_extends; eauto. apply Z.le_refl. apply Z.le_refl.
   intros (m'' & A & B).
   econstructor; split.
-  eapply exec_function_internal; simpl; eauto.
+  eapply exec_function_internal; simpl; eauto using Val.has_argtype_list_lessdef.
   simpl. econstructor; eauto.
   eapply analysis_correct_entry; eauto.
   apply init_regs_lessdef; auto.

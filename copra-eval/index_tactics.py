@@ -14,7 +14,21 @@ def extract_custom_tactics(file_path):
         content = file.read()
 
     match = re.search(r'\(\*\* BEGIN_DREAMPROVER_TACTICS \*\*\)(.*?)\(\*\* END_DREAMPROVER_TACTICS \*\*\)', content, re.DOTALL)
-    return match.group(1).strip() if match else None
+    if not match:
+        return {}
+
+    tactic_block = match.group(1).strip()
+
+    # Match lines like: Ltac custom0 H0 := tactic_body.
+    # Supports optional arguments and multiline bodies
+    tactic_defs = re.findall(r'Ltac\s+(\w+)[^:=]*:=\s*(.*?)(?=\nLtac|\Z)', tactic_block, re.DOTALL)
+
+    # Create a dictionary mapping tactic names to definitions
+    tactic_dict = {name: body.strip() for name, body in tactic_defs}
+    return tactic_dict
+
+    # match = re.search(r'\(\*\* BEGIN_DREAMPROVER_TACTICS \*\*\)(.*?)\(\*\* END_DREAMPROVER_TACTICS \*\*\)', content, re.DOTALL)
+    # return match.group(1).strip() if match else None
 
 def extract_theorems(file_path):
     with open(file_path, 'r') as file:

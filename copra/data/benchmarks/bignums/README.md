@@ -9,8 +9,8 @@ Follow the instructions on https://github.com/coq-community/templates to regener
 [![Code of Conduct][conduct-shield]][conduct-link]
 [![Zulip][zulip-shield]][zulip-link]
 
-[docker-action-shield]: https://github.com/coq-community/bignums/workflows/Docker%20CI/badge.svg?branch=v8.15
-[docker-action-link]: https://github.com/coq-community/bignums/actions?query=workflow:"Docker%20CI"
+[docker-action-shield]: https://github.com/coq-community/bignums/actions/workflows/docker-action.yml/badge.svg?branch=v8.20
+[docker-action-link]: https://github.com/coq-community/bignums/actions/workflows/docker-action.yml
 
 [contributing-shield]: https://img.shields.io/badge/contributions-welcome-%23f7931e.svg
 [contributing-link]: https://github.com/coq-community/manifesto/blob/master/CONTRIBUTING.md
@@ -26,7 +26,6 @@ Follow the instructions on https://github.com/coq-community/templates to regener
 This Coq library provides BigN, BigZ, and BigQ that used to
 be part of the standard library.
 
-
 ## Meta
 
 - Author(s):
@@ -39,7 +38,7 @@ be part of the standard library.
   - Pierre Roux ([**@proux01**](https://github.com/proux01))
   - Érik Martin-Dorel ([**@erikmd**](https://github.com/erikmd))
 - License: [GNU Lesser General Public License v2.1](LICENSE)
-- Compatible Coq versions: The v8.15 branch tracks version 8.15 of Coq, see releases for compatibility with released versions of Coq
+- Compatible Coq versions: master (use the corresponding branch or release for other Coq versions)
 - Compatible OCaml versions: all versions supported by Coq
 - Additional dependencies: none
 - Coq namespace: `Bignums`

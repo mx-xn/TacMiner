@@ -364,10 +364,18 @@ class DFSTreeSearch(TreeSearchAlgorithm):
             raise Exception("The last node's next state should either be the current state or a failed state")
 
     def _check_if_state_is_harder(self, current_state_action_pair: StateActionPair, next_state_action_pair: StateActionPair) -> bool:
+        print("Checking if state is harder:", current_state_action_pair, next_state_action_pair)
         if current_state_action_pair <= next_state_action_pair:
             return True
         else:
             for node in self._search_stack:
                 if node.next_state_action_pair <= next_state_action_pair:
                     return True
+
+            # if the number of goals exploded
+            num_curr_goals = len(current_state_action_pair.state.training_data_format.start_goals)
+            num_next_goals = len(next_state_action_pair.state.training_data_format.start_goals)
+            if num_next_goals > num_curr_goals + 30:
+                return True
+
             return False

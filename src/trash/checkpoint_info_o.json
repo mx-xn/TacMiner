@@ -1,0 +1,17 @@
+{
+    "checkpoint_file": ".log/checkpoints/bignums_tacminer/n_60_dfs_gpt4_o_always_retrieve/coq_dfs_always_retrieve/checkpoint_info.json",
+    "logging_dirs": [
+        ".log/evals/benchmark/bignums_tacminer/20250626-150715"
+    ],
+    "proof_dump_dir": ".log/proofs/eval_driver/dfs/bignums_tacminer/20250626-150715",
+    "theorem_maps": {
+        "../raw-data/bignums/BigQ/QMake_comp_TM.v": {
+            "spec_power_norm": true,
+            "spec_red": true,
+            "strong_spec_red": true,
+            "spec_norm_denum": true,
+            "strong_spec_check_int": true,
+            "strong_spec_of_Q": true
+        }
+    }
+}

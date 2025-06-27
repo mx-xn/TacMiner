@@ -6,10 +6,11 @@
 (*                                                                     *)
 (*  Copyright Institut National de Recherche en Informatique et en     *)
 (*  Automatique.  All rights reserved.  This file is distributed       *)
-(*  under the terms of the GNU General Public License as published by  *)
-(*  the Free Software Foundation, either version 2 of the License, or  *)
-(*  (at your option) any later version.  This file is also distributed *)
-(*  under the terms of the INRIA Non-Commercial License Agreement.     *)
+(*  under the terms of the GNU Lesser General Public License as        *)
+(*  published by the Free Software Foundation, either version 2.1 of   *)
+(*  the License, or  (at your option) any later version.               *)
+(*  This file is also distributed under the terms of the               *)
+(*  INRIA Non-Commercial License Agreement.                            *)
 (*                                                                     *)
 (* *********************************************************************)
 
@@ -27,15 +28,23 @@ let name_of_type = function
   | Tany32 -> "any32"
   | Tany64 -> "any64"
 
-let name_of_rettype = function
-  | Tret t -> name_of_type t
-  | Tvoid -> "void"
-  | Tint8signed -> "int8s"
-  | Tint8unsigned -> "int8u"
-  | Tint16signed -> "int16s"
-  | Tint16unsigned -> "int16u"
+let name_of_xtype = function
+  | Xbool -> "bool"
+  | Xint8signed -> "int8s"
+  | Xint8unsigned -> "int8u"
+  | Xint16signed -> "int16s"
+  | Xint16unsigned -> "int16u"
+  | Xint -> "int"
+  | Xfloat -> "float"
+  | Xlong -> "long"
+  | Xsingle -> "single"
+  | Xany32 -> "any32"
+  | Xany64 -> "any64"
+  | Xptr -> "ptr"
+  | Xvoid -> "void"
 
 let name_of_chunk = function
+  | Mbool -> "bool"
   | Mint8signed -> "int8s"
   | Mint8unsigned -> "int8u"
   | Mint16signed -> "int16s"

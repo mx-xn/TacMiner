@@ -14,9 +14,10 @@ def extract_tactic_usage_examples(tactic_index, trace_data):
     # Get all custom tactics from the tactic index
     custom_tactics = set()
     for file_tactics in tactic_index['custom_tactics'].values():
-        print(file_tactics)
-        for theorem_tactics in file_tactics.values():
-            custom_tactics.update(tactic['name'] for tactic in theorem_tactics['available_tactics'])
+        for (tactic_name, theorem_tactics) in file_tactics.items():
+            print(tactic_name, theorem_tactics)
+            custom_tactics.add(tactic_name)
+            # update(tactic['name'] for tactic in theorem_tactics['available_tactics'])
 
     # Initialize a dictionary to store usage examples for each custom tactic
     usage_examples = defaultdict(list)
@@ -27,6 +28,7 @@ def extract_tactic_usage_examples(tactic_index, trace_data):
         for step in lemma['proof']:
             tactic_name = step['tactic_sig_no_out_arg'].split()[0]
             if tactic_name in custom_tactics:
+                print("tactic_name:", tactic_name)
                 usage_examples[tactic_name].append({
                     'lemma_name': lemma_name,
                     'tactic_sig': step['tactic_sig'],

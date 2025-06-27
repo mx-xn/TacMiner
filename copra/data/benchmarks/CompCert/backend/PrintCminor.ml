@@ -6,10 +6,11 @@
 (*                                                                     *)
 (*  Copyright Institut National de Recherche en Informatique et en     *)
 (*  Automatique.  All rights reserved.  This file is distributed       *)
-(*  under the terms of the GNU General Public License as published by  *)
-(*  the Free Software Foundation, either version 2 of the License, or  *)
-(*  (at your option) any later version.  This file is also distributed *)
-(*  under the terms of the INRIA Non-Commercial License Agreement.     *)
+(*  under the terms of the GNU Lesser General Public License as        *)
+(*  published by the Free Software Foundation, either version 2.1 of   *)
+(*  the License, or  (at your option) any later version.               *)
+(*  This file is also distributed under the terms of the               *)
+(*  INRIA Non-Commercial License Agreement.                            *)
 (*                                                                     *)
 (* *********************************************************************)
 
@@ -39,9 +40,41 @@ let precedence = function
   | Ebinop((Oor|Oorl), _, _) -> (6, LtoR)
   | Eload _ -> (15, RtoL)
 
+(* Reserved keywords *)
+
+module StringSet = Set.Make(String)
+
+let keywords = StringSet.of_list [
+  "absf"; "abss"; "any32"; "any64";
+  "builtin";
+  "case";
+  "default";
+  "else"; "exit"; "extern";
+  "float"; "float32"; "float64"; "floatofint"; "floatofintu";
+    "floatoflong"; "floatoflongu";
+  "goto";
+  "if"; "int"; "int16"; "int16s"; "int16u"; "int32"; "int64";
+    "int8"; "int8s"; "int8u"; "intoffloat"; "intoflong";
+    "intofsingle"; "intuoffloat"; "intuofsingle";
+  "long"; "longoffloat"; "longofint"; "longofintu"; "longuoffloat"; "loop";
+  "match";
+  "readonly"; "return";
+  "single"; "singleofint"; "singleofintu"; "singleoflong"; "singleoflongu";
+  "stack"; "switch"; "switchl";
+  "tailcall";
+  "var"; "void"; "volatile";
+  "while"
+]
+
 (* Naming idents. *)
 
-let ident_name id = "'" ^ Camlcoq.extern_atom id ^ "'"
+let re_ident = Str.regexp {|[A-Za-z_][A-Za-z_$0-9]*$\|\$[1-9][0-9]*$|}
+
+let ident_name id =
+  let s = Camlcoq.extern_atom id in
+  if Str.string_match re_ident s 0 && not (StringSet.mem s keywords)
+  then s
+  else "'" ^ s ^ "'"
 
 (* Naming operators *)
 
@@ -191,9 +224,9 @@ let name_of_type = function
 
 let print_sig p sg =
   List.iter
-    (fun t -> fprintf p "%s ->@ " (name_of_type t))
+    (fun t -> fprintf p "%s ->@ " (name_of_xtype t))
     sg.sig_args;
-  fprintf p "%s" (name_of_rettype sg.sig_res)
+  fprintf p "%s" (name_of_xtype sg.sig_res)
 
 let rec just_skips s =
   match s with

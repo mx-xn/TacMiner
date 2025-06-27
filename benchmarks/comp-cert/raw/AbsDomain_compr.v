@@ -833,19 +833,9 @@ Lemma nlive_lub_l:
   forall nm1 nm2 b i, nlive nm1 b i -> nlive (nmem_lub nm1 nm2) b i.
 Proof. intros. inversion H; subst b0 ofs nm1. destruct nm2; simpl. auto. constructor; simpl; intros. - rewrite ISet.In_inter. intros [P Q]. eelim STK; eauto. - rewrite PTree.gcombine in H1 by auto. destruct gl!id as [iv1|] eqn:NG1; try discriminate; destruct gl0!id as [iv2|] eqn:NG2; inv H1. rewrite ISet.In_inter. intros [P Q]. eelim GL; eauto. Qed.
 
-Ltac custom_tac73 H0 H1 H2 H3 := intros; inversion H0; subst H1 H2 H3.
-
-Ltac custom_tac1  := simpl; auto.
-
-Ltac custom_tac72 H0 H1 H2 H3 := simpl; intros; rewrite H0; intros [ H1 H2]; eelim H3; eauto.
-
-Ltac custom_tac58 H0 H1 := inv H0; rewrite H1.
-
-Ltac custom_tac70 H0 := eelim H0; eauto.
-
 Lemma nlive_lub_r:
-  forall nm1 nm2 b i, nlive nm2 b i -> nlive (nmem_lub nm1 nm2) b i. Proof. intros. inversion H; subst b0 ofs nm2. destruct nm1; simpl. auto. constructor; simpl; intros. - rewrite ISet.In_inter. intros [P Q]. eelim STK; eauto. - rewrite PTree.gcombine in H1 by auto. destruct gl0!id as [iv1|] eqn:NG1; try discriminate;
-  destruct gl!id as [iv2|] eqn:NG2; inv H1. rewrite ISet.In_inter. intros [P Q]. eelim GL; eauto. Qed.
+  forall nm1 nm2 b i, nlive nm2 b i -> nlive (nmem_lub nm1 nm2) b i.
+Proof. intros. inversion H; subst b0 ofs nm2. destruct nm1; simpl. auto. constructor; simpl; intros. - rewrite ISet.In_inter. intros [P Q]. eelim STK; eauto. - rewrite PTree.gcombine in H1 by auto. destruct gl0!id as [iv1|] eqn:NG1; try discriminate; destruct gl!id as [iv2|] eqn:NG2; inv H1. rewrite ISet.In_inter. intros [P Q]. eelim GL; eauto. Qed.
 
 Definition nmem_beq (nm1 nm2: nmem) : bool :=
   match nm1, nm2 with
@@ -854,11 +844,18 @@ Definition nmem_beq (nm1 nm2: nmem) : bool :=
   | _, _ => false
   end.
 
+Ltac custom_tac63 H0 := unfold H0; intros.
+
+Ltac custom_tac9 H0 := inv H0; constructor.
+
+Ltac custom_tac129 H0 H1 H2 := specialize ( H0 H1); rewrite H2 in H0.
+
+Ltac custom_tac139 H0 := eauto; rewrite H0.
+
 Lemma nmem_beq_sound:
   forall nm1 nm2 b ofs,
   nmem_beq nm1 nm2 = true ->
-  (nlive nm1 b ofs <-> nlive nm2 b ofs).
-Proof. unfold nmem_beq; intros. destruct nm1 as [ | stk1 gl1]; destruct nm2 as [ | stk2 gl2]; try discriminate. - split; intros L; inv L. - InvBooleans. rewrite ISet.beq_spec in H0. rewrite PTree.beq_correct in H1. split; intros L; inv L; constructor; intros. + rewrite <- H0. eauto. + specialize (H1 id). rewrite H2 in H1. destruct gl1!id as [iv1|] eqn: NG; try contradiction. rewrite ISet.beq_spec in H1. rewrite <- H1. eauto. + rewrite H0. eauto. + specialize (H1 id). rewrite H2 in H1. destruct gl2!id as [iv2|] eqn: NG; try contradiction. rewrite ISet.beq_spec in H1. rewrite H1. eauto. Qed.
+  (nlive nm1 b ofs <-> nlive nm2 b ofs). Proof. unfold nmem_beq; intros. destruct nm1 as [ | stk1 gl1]; destruct nm2 as [ | stk2 gl2]; try discriminate. - split; intros L; inv L. - InvBooleans. rewrite ISet.beq_spec in H0. rewrite PTree.beq_correct in H1. split; intros L; inv L; constructor; intros. + rewrite <- H0. eauto. + specialize (H1 id). rewrite H2 in H1. destruct gl1!id as [iv1|] eqn: NG; try contradiction. rewrite ISet.beq_spec in H1. rewrite <- H1. eauto. + rewrite H0. eauto. + specialize (H1 id). rewrite H2 in H1. destruct gl2!id as [iv2|] eqn: NG; try contradiction. rewrite ISet.beq_spec in H1. rewrite H1. eauto. Qed.
 
 End LOCATIONS.
 

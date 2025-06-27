@@ -673,6 +673,42 @@ Lemma add_move_charact:
   tr_move s'.(st_code) ns rs nd rd.
 Proof. intros. unfold add_move in H. destruct (Reg.eq rs rd). inv H. constructor. constructor. eauto with rtlg. Qed.
 
+Ltac custom_tac5 H0 := intros; inv H0.
+
+Ltac custom_tac60  := econstructor; eauto.
+
+Ltac custom_tac42  := right; eauto with rtlg.
+
+Ltac custom_tac37 H0 := eapply H0; eauto.
+
+Ltac custom_tac69 H0 := eauto with rtlg; eapply H0; eauto with rtlg.
+
+Ltac custom_tac58  := econstructor; eauto with rtlg.
+
+Ltac custom_tac26 H0 H1 := apply H0 with H1; auto.
+
+Ltac custom_tac46  := constructor; auto.
+
+Ltac custom_tac32 H0 := apply H0; eauto with rtlg.
+
+Ltac custom_tac22 H0 := unfold H0; simpl.
+
+Ltac custom_tac2 H0 := exists H0; auto.
+
+Ltac custom_tac50 H0 H1 H2 := apply H0 with H1 H2; auto; eauto with rtlg.
+
+Ltac custom_tac40  := eauto with rtlg; eauto with rtlg.
+
+Ltac custom_tac51 H0 H1 H2 H3 H4 := generalize H0; unfold H1; caseEq ( nth_error ( map_letvars H2) H3); intros; inv H4.
+
+Ltac custom_tac65 H0 := inv H0; constructor.
+
+Ltac custom_tac41 H0 H1 := apply H0; apply H1.
+
+Ltac custom_tac10  := red; intros.
+
+Ltac custom_tac29 H0 H1 := eauto with rtlg; apply H0 with H1; eauto with rtlg.
+
 Lemma transl_expr_charact:
   forall a map rd nd s ns s' pr INCR
      (TR: transl_expr map a rd nd s = OK ns s' INCR)
@@ -696,8 +732,7 @@ with transl_condexpr_charact:
      (TR: transl_condexpr map a ntrue nfalse s = OK ns s' INCR)
      (WF: map_valid map s)
      (VALID: regs_valid pr s),
-   tr_condition s'.(st_code) map pr a ns ntrue nfalse.
-Proof. intro a. induction a; intros; try (monadInv TR); saturateTrans. generalize EQ; unfold find_var. caseEq (map_vars map)!i; intros; inv EQ1. econstructor; eauto. inv OK. left; split; congruence. right; eauto with rtlg. eapply add_move_charact; eauto. inv OK. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto with rtlg. inv OK. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto with rtlg. inv OK. econstructor. eauto with rtlg. apply tr_expr_incr with s1; auto. eapply transl_expr_charact; eauto 2 with rtlg. constructor; auto. apply tr_expr_incr with s0; auto. eapply transl_expr_charact; eauto 2 with rtlg. constructor; auto. inv OK. econstructor. eapply new_reg_not_in_map; eauto with rtlg. eapply transl_expr_charact; eauto 3 with rtlg. apply tr_expr_incr with s1; auto. eapply transl_expr_charact. eauto. apply add_letvar_valid; eauto with rtlg. constructor; auto. red; unfold reg_in_map. simpl. intros [[id A] | [B | C]]. elim H. left; exists id; auto. subst x. apply valid_fresh_absurd with rd s. auto. eauto with rtlg. elim H. right; auto. eauto with rtlg. eauto with rtlg. generalize EQ; unfold find_letvar. caseEq (nth_error (map_letvars map) n); intros; inv EQ0. monadInv EQ1. econstructor; eauto with rtlg. inv OK. left; split; congruence. right; eauto with rtlg. eapply add_move_charact; eauto. monadInv EQ1. inv OK. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto with rtlg. inv OK. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto with rtlg. induction al; intros; try (monadInv TR); saturateTrans. destruct rl; inv TR. constructor. destruct rl; simpl in TR; monadInv TR. inv OK. econstructor. eapply transl_expr_charact; eauto with rtlg. generalize (VALID2 r (in_eq _ _)). eauto with rtlg. apply tr_exprlist_incr with s0; auto. eapply transl_exprlist_charact; eauto with rtlg. apply regs_valid_cons. apply VALID2. auto with coqlib. auto. red; intros; apply VALID2; auto with coqlib. induction a; intros; try (monadInv TR); saturateTrans. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto with rtlg. econstructor; eauto with rtlg. apply tr_condition_incr with s1; eauto with rtlg. apply tr_condition_incr with s0; eauto with rtlg. econstructor; eauto with rtlg. eapply transl_expr_charact; eauto with rtlg. apply tr_condition_incr with s1; eauto with rtlg. eapply transl_condexpr_charact; eauto with rtlg. apply add_letvar_valid; eauto with rtlg. Qed.
+   tr_condition s'.(st_code) map pr a ns ntrue nfalse. Proof. intro a. induction a; intros; try (monadInv TR); saturateTrans. generalize EQ; unfold find_var. caseEq (map_vars map)!i; intros; inv EQ1. econstructor; eauto. inv OK. left; split; congruence. right; eauto with rtlg. eapply add_move_charact; eauto. inv OK. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto with rtlg. inv OK. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto with rtlg. inv OK. econstructor. eauto with rtlg. apply tr_expr_incr with s1; auto. eapply transl_expr_charact; eauto 2 with rtlg. constructor; auto. apply tr_expr_incr with s0; auto. eapply transl_expr_charact; eauto 2 with rtlg. constructor; auto. inv OK. econstructor. eapply new_reg_not_in_map; eauto with rtlg. eapply transl_expr_charact; eauto 3 with rtlg. apply tr_expr_incr with s1; auto. eapply transl_expr_charact. eauto. apply add_letvar_valid; eauto with rtlg. constructor; auto. red; unfold reg_in_map. simpl. intros [[id A] | [B | C]]. elim H. left; exists id; auto. subst x. apply valid_fresh_absurd with rd s. auto. eauto with rtlg. elim H. right; auto. eauto with rtlg. eauto with rtlg. generalize EQ; unfold find_letvar. caseEq (nth_error (map_letvars map) n); intros; inv EQ0. monadInv EQ1. econstructor; eauto with rtlg. inv OK. left; split; congruence. right; eauto with rtlg. eapply add_move_charact; eauto. monadInv EQ1. inv OK. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto with rtlg. inv OK. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto with rtlg. induction al; intros; try (monadInv TR); saturateTrans. destruct rl; inv TR. constructor. destruct rl; simpl in TR; monadInv TR. inv OK. econstructor. eapply transl_expr_charact; eauto with rtlg. generalize (VALID2 r (in_eq _ _)). eauto with rtlg. apply tr_exprlist_incr with s0; auto. eapply transl_exprlist_charact; eauto with rtlg. apply regs_valid_cons. apply VALID2. auto with coqlib. auto. red; intros; apply VALID2; auto with coqlib. induction a; intros; try (monadInv TR); saturateTrans. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto with rtlg. econstructor; eauto with rtlg. apply tr_condition_incr with s1; eauto with rtlg. apply tr_condition_incr with s0; eauto with rtlg. econstructor; eauto with rtlg. eapply transl_expr_charact; eauto with rtlg. apply tr_condition_incr with s1; eauto with rtlg. eapply transl_condexpr_charact; eauto with rtlg. apply add_letvar_valid; eauto with rtlg. Qed.
 
 Lemma transl_expr_assign_charact:
   forall id a map rd nd s ns s' INCR
@@ -740,21 +775,12 @@ Lemma transl_jumptable_charact:
   tr_jumptable nexits tbl nl /\ s' = s.
 Proof. intros nexits tbl. induction tbl; intros. monadInv H. split. red. simpl. intros. discriminate. auto. monadInv H. exploit transl_exit_charact; eauto. intros [A B]. exploit IHtbl; eauto. intros [C D]. split. red. simpl. intros. destruct (zeq v 0). inv H. exists x; auto. auto. congruence. Qed.
 
-Ltac custom_tac11  := simpl; intros.
-
-Ltac custom_tac17  := econstructor; eauto.
-
-Ltac custom_tac5 H0 H1 := eauto with rtlg; apply H0 with H1; eauto with rtlg.
-
-Ltac custom_tac22 H0 := eauto with rtlg; eapply H0; eauto with rtlg.
-
-Ltac custom_tac7 H0 := apply H0; eauto with rtlg.
-
 Lemma transl_exitexpr_charact:
   forall nexits a map s ns s' INCR
      (TR: transl_exitexpr map a nexits s = OK ns s' INCR)
      (WF: map_valid map s),
-  tr_exitexpr s'.(st_code) map a ns nexits. Proof. intros nexits a. induction a; simpl; intros; try (monadInv TR); saturateTrans. - exploit transl_exit_charact; eauto. intros [A B]. econstructor; eauto. - exploit transl_jumptable_charact; eauto. intros [A B]. econstructor; eauto. eapply transl_expr_charact; eauto with rtlg. eauto with rtlg. - econstructor. eapply transl_condexpr_charact; eauto with rtlg. apply tr_exitexpr_incr with s1; eauto with rtlg. apply tr_exitexpr_incr with s0; eauto with rtlg. - econstructor; eauto with rtlg. eapply transl_expr_charact; eauto with rtlg. apply tr_exitexpr_incr with s1; auto. eapply IHa; eauto with rtlg. apply add_letvar_valid; eauto with rtlg. Qed.
+  tr_exitexpr s'.(st_code) map a ns nexits.
+Proof. intros nexits a. induction a; simpl; intros; try (monadInv TR); saturateTrans. - exploit transl_exit_charact; eauto. intros [A B]. econstructor; eauto. - exploit transl_jumptable_charact; eauto. intros [A B]. econstructor; eauto. eapply transl_expr_charact; eauto with rtlg. eauto with rtlg. - econstructor. eapply transl_condexpr_charact; eauto with rtlg. apply tr_exitexpr_incr with s1; eauto with rtlg. apply tr_exitexpr_incr with s0; eauto with rtlg. - econstructor; eauto with rtlg. eapply transl_expr_charact; eauto with rtlg. apply tr_exitexpr_incr with s1; auto. eapply IHa; eauto with rtlg. apply add_letvar_valid; eauto with rtlg. Qed.
 
 Lemma convert_builtin_res_charact:
   forall map oty res s res' s' INCR
@@ -762,4 +788,18 @@ Lemma convert_builtin_res_charact:
     (WF: map_valid map s),
   tr_builtin_res map res res'.
 Proof. intros map oty res. destruct res; simpl; intros. - monadInv TR. constructor. unfold find_var in EQ. destruct (map_vars map)!x; inv EQ; auto. - destruct (xtype_eq oty Xvoid); monadInv TR. + constructor. + constructor. eauto with rtlg. - monadInv TR. Qed.
+
+Lemma transl_stmt_charact:
+  forall map stmt nd nexits ngoto nret rret s ns s' INCR
+    (TR: transl_stmt map stmt nd nexits ngoto nret rret s = OK ns s' INCR)
+    (WF: map_valid map s)
+    (OK: return_reg_ok s map rret),
+  tr_stmt s'.(st_code) map stmt ns nd nexits ngoto nret rret.
+Proof. intros map stmt. induction stmt; intros; simpl in TR; try (monadInv TR); saturateTrans. constructor. revert EQ. unfold find_var. case_eq (map_vars map)!i; intros; monadInv EQ. eapply tr_Sassign; eauto. eapply transl_expr_assign_charact; eauto with rtlg. constructor. auto. econstructor; eauto with rtlg. eapply transl_exprlist_charact; eauto 3 with rtlg. apply tr_expr_incr with s3; auto. eapply transl_expr_charact; eauto 4 with rtlg. destruct s0 as [b | id]; monadInv TR; saturateTrans. econstructor; eauto 4 with rtlg. eapply transl_expr_charact; eauto 3 with rtlg. apply tr_exprlist_incr with s5. auto. eapply transl_exprlist_charact; eauto 3 with rtlg. eapply alloc_regs_target_ok with (s1 := s0); eauto 3 with rtlg. apply regs_valid_cons; eauto 3 with rtlg. apply regs_valid_incr with s0; eauto 3 with rtlg. apply regs_valid_cons; eauto 3 with rtlg. apply regs_valid_incr with s2; eauto 3 with rtlg. eapply alloc_optreg_map_ok with (s1 := s2); eauto 3 with rtlg. econstructor; eauto 4 with rtlg. eapply transl_exprlist_charact; eauto 3 with rtlg. eapply alloc_optreg_map_ok with (s1 := s0); eauto 3 with rtlg. destruct s0 as [b | id]; monadInv TR; saturateTrans. assert (RV: regs_valid (x :: nil) s0). apply regs_valid_cons; eauto 3 with rtlg. econstructor; eauto 3 with rtlg. eapply transl_expr_charact; eauto 3 with rtlg. apply tr_exprlist_incr with s4; auto. eapply transl_exprlist_charact; eauto 4 with rtlg. econstructor; eauto 3 with rtlg. eapply transl_exprlist_charact; eauto 4 with rtlg. econstructor; eauto 4 with rtlg. eapply transl_exprlist_charact; eauto 3 with rtlg. eapply convert_builtin_res_charact; eauto with rtlg. econstructor. apply tr_stmt_incr with s0; auto. eapply IHstmt2; eauto with rtlg. eapply IHstmt1; eauto with rtlg. destruct (more_likely c stmt1 stmt2); monadInv TR. econstructor. apply tr_stmt_incr with s1; auto. eapply IHstmt1; eauto with rtlg. apply tr_stmt_incr with s0; auto. eapply IHstmt2; eauto with rtlg. eapply transl_condexpr_charact; eauto with rtlg. econstructor. apply tr_stmt_incr with s0; auto. eapply IHstmt1; eauto with rtlg. apply tr_stmt_incr with s1; auto. eapply IHstmt2; eauto with rtlg. eapply transl_condexpr_charact; eauto with rtlg. econstructor. apply tr_stmt_incr with s1; auto. eapply IHstmt; eauto with rtlg. eauto with rtlg. eauto with rtlg. econstructor. eapply IHstmt; eauto with rtlg. exploit transl_exit_charact; eauto. intros [A B]. econstructor. eauto. econstructor. eapply transl_exitexpr_charact; eauto. destruct o. destruct rret; inv TR. inv OK. econstructor; eauto with rtlg. eapply transl_expr_charact; eauto with rtlg. constructor. auto. simpl; tauto. monadInv TR. constructor. generalize EQ0; clear EQ0. case_eq (ngoto!l); intros; monadInv EQ0. generalize EQ1; clear EQ1. unfold handle_error. case_eq (update_instr n (Inop ns) s0); intros; inv EQ1. econstructor. eauto. eauto with rtlg. eapply tr_stmt_incr with s0; eauto with rtlg. generalize TR; clear TR. case_eq (ngoto!l); intros; monadInv TR. econstructor. auto. Qed.
+
+Lemma transl_function_charact:
+  forall f tf,
+  transl_function f = Errors.OK tf ->
+  tr_function f tf.
+Proof. intros until tf. unfold transl_function. caseEq (transl_fun f init_state). congruence. intros [nentry rparams] sfinal INCR TR E. inv E. monadInv TR. exploit add_vars_valid. eexact EQ1. apply init_mapping_valid. intros [A B]. exploit add_vars_valid. eexact EQ0. auto. intros [C D]. eapply tr_function_intro; eauto with rtlg. eapply transl_stmt_charact; eauto with rtlg. unfold ret_reg. destruct (xtype_eq (sig_res (CminorSel.fn_sig f)) Xvoid). constructor. constructor; eauto with rtlg. Qed.
 

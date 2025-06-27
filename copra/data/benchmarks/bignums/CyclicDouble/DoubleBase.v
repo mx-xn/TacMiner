@@ -10,7 +10,7 @@
 
 Set Implicit Arguments.
 
-Require Import ZArith Ndigits.
+Require Import ZArith.
 Require Import BigNumPrelude.
 Require Import DoubleType.
 
@@ -207,14 +207,8 @@ Section DoubleBase.
   Proof.
    assert (H:= wB_pos);rewrite wwB_wBwB;rewrite <-(Z.mul_1_r 1).
    rewrite Z.pow_2_r.
-   apply Zmult_lt_compat2. 
-   - split.
-     + unfold Z.lt;reflexivity.
-     + trivial.
-      apply Z.lt_le_incl;trivial.
-   - split. 
-     + unfold Z.lt. reflexivity.  
-     + trivial. 
+   apply Zmult_lt_compat2;(split;[unfold Z.lt;reflexivity|trivial]).
+   apply Z.lt_le_incl;trivial.
   Qed.
 
   Theorem wB_div_2:  2 * (wB / 2) = wB.
@@ -252,9 +246,7 @@ Section DoubleBase.
    destruct (spec_to_Z x);split;trivial.
    change [|x|] with (0*wB+[|x|]). rewrite wwB_wBwB.
    rewrite Z.pow_2_r;rewrite <- (Z.add_0_r (wB*wB));apply beta_lex_inv.
-   apply lt_0_wB. apply spec_to_Z. split.
-   - apply Z.le_refl.
-   - apply lt_0_wB.
+   apply lt_0_wB. apply spec_to_Z. split;[apply Z.le_refl | apply lt_0_wB].
  Qed.
 
   Lemma wB_div : forall x y, ([|x|] * wB + [|y|]) / wB = [|x|].
@@ -292,10 +284,8 @@ Section DoubleBase.
   Proof.
    clear spec_w_0 spec_w_1 spec_w_Bm1 w_0 w_1 w_Bm1.
    destruct x as [ |h l];simpl.
-   split.
-   - apply Z.le_refl.
-   - apply lt_0_wwB.
-   - assert (H:=spec_to_Z h);assert (L:=spec_to_Z l);split.
+   split;[apply Z.le_refl|apply lt_0_wwB].
+   assert (H:=spec_to_Z h);assert (L:=spec_to_Z l);split.
    apply Z.add_nonneg_nonneg;auto with zarith.
    rewrite <- (Z.add_0_r wwB);rewrite wwB_wBwB; rewrite Z.pow_2_r;
     apply beta_lex_inv;auto with zarith.
@@ -348,9 +338,8 @@ Section DoubleBase.
   apply Z.mul_le_mono_nonneg_r;auto with zarith.
   auto with zarith.
   rewrite <- double_wB_wwB.
-  replace ((double_wB n - 1) * double_wB n + double_wB n) with (double_wB n * double_wB n).
-  - auto with zarith.
-  - ring.
+  replace ((double_wB n - 1) * double_wB n + double_wB n) with (double_wB n * double_wB n);
+   [auto with zarith | ring].
   Qed.
 
   Lemma spec_get_low:
@@ -362,14 +351,16 @@ Section DoubleBase.
   intros n Hrec x; case x; clear x; auto.
   intros xx yy; simpl.
   destruct (spec_double_to_Z n xx) as [F1 _]. Z.le_elim F1.
-  - intros; exfalso.
+  - (* 0 < [!n | xx!] *)
+    intros; exfalso.
     assert (F3 := double_wB_more_digits n).
     destruct (spec_double_to_Z n yy) as [F4 _].
     assert (F5: 1 * wB <=  [!n | xx!] * double_wB n);
      auto with zarith.
     apply Z.mul_le_mono_nonneg; auto with zarith.
     unfold base; auto with zarith.
-  - rewrite <- F1; rewrite Z.mul_0_l, Z.add_0_l.
+  - (* 0 = [!n | xx!] *)
+    rewrite <- F1; rewrite Z.mul_0_l, Z.add_0_l.
     intros; apply Hrec; auto.
   Qed.
 
@@ -419,6 +410,7 @@ Section DoubleBase.
     ww_compare x y = Z.compare [[x]] [[y]].
   Proof.
    destruct x as [ |xh xl];destruct y as [ |yh yl];simpl;trivial.
+   (* 1st case *)
    rewrite 2 spec_w_compare, spec_w_0.
    destruct (Z.compare_spec 0 [|yh|]) as [H|H|H].
    rewrite <- H;simpl. reflexivity.
@@ -427,6 +419,7 @@ Section DoubleBase.
    apply wB_lex_inv;trivial.
    absurd (0 <= [|yh|]). apply Z.lt_nge; trivial.
    destruct (spec_to_Z yh);trivial.
+   (* 2nd case *)
    rewrite 2 spec_w_compare, spec_w_0.
    destruct (Z.compare_spec [|xh|] 0) as [H|H|H].
    rewrite H;simpl;reflexivity.
@@ -435,6 +428,7 @@ Section DoubleBase.
    comp2ord.
    change 0 with (0*wB+0). rewrite <- spec_w_0 at 2.
    apply wB_lex_inv;trivial.
+   (* 3rd case *)
    rewrite 2 spec_w_compare.
    destruct (Z.compare_spec [|xh|] [|yh|]) as [H|H|H].
    rewrite H.

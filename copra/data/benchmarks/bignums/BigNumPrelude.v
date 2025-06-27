@@ -18,14 +18,10 @@ Require Import ArithRing.
 Require Export ZArith.
 Require Export Znumtheory.
 Require Export Zpow_facts.
-Require Int63.
+Require Uint63.
 Require Import Lia.
 
-Declare Scope bigN_scope.
-Declare Scope bigZ_scope.
-Declare Scope bigQ_scope.
-
-Declare ML Module "bignums_syntax_plugin".
+Declare ML Module "bignums_syntax_plugin:coq-bignums.plugin".
 
 (* *** Nota Bene ***
    All results that were general enough have been moved in ZArith.
@@ -49,21 +45,23 @@ Definition Z_div_plus_l a b c H := Zdiv.Z_div_plus_full_l a b c (Zlt0_not_eq _ H
 
 (* Automation *)
 
-Hint  Extern 2 (Z.le _ _) =>
+#[global]
+Hint Extern 2 (Z.le _ _) =>
  (match goal with
    |- Zpos _ <= Zpos _ => exact (eq_refl _)
 |   H: _ <=  ?p |- _ <= ?p => apply Z.le_trans with (2 := H)
 |   H: _ <  ?p |- _ <= ?p => apply Z.lt_le_incl; apply Z.le_lt_trans with (2 := H)
-  end).
+  end) : core.
 
-Hint  Extern 2 (Z.lt _ _) =>
+#[global]
+Hint Extern 2 (Z.lt _ _) =>
  (match goal with
    |- Zpos _ < Zpos _ => exact (eq_refl _)
 |      H: _ <=  ?p |- _ <= ?p => apply Z.lt_le_trans with (2 := H)
 |   H: _ <  ?p |- _ <= ?p => apply Z.le_lt_trans with (2 := H)
-  end).
+  end) : core.
 
-
+#[global]
 Hint Resolve Z.lt_gt Z.le_ge Z_div_pos: zarith.
 
 (**************************************
@@ -124,6 +122,7 @@ Theorem mult_add_ineq3: forall x y c cross beta,
    0 <= x * y + (c*beta + cross) < beta^2.
  Proof. nia. Qed.
 
+#[global]
 Hint Rewrite Z.mul_1_r Z.mul_0_r Z.mul_1_l Z.mul_0_l Z.add_0_l Z.add_0_r Z.sub_0_r: rm10.
 
 
@@ -205,7 +204,7 @@ Theorem Zmod_le_first: forall a b, 0 <= a -> 0 < b -> 0 <= a mod b <= a.
    assert (Eq: t < 2 ^ b); auto with zarith.
    apply Z.lt_le_trans with (1 := H5); auto with zarith.
    apply Zpower_le_monotone; auto with zarith.
-   pattern (r * 2 ^ a) at 1; rewrite Z_div_mod_eq with (b := 2 ^ b);
+   pattern (r * 2 ^ a) at 1; rewrite Z_div_mod_eq_full with (b := 2 ^ b);
     auto with zarith.
    rewrite <- Z.add_assoc.
    rewrite <- Zmod_shift_r; auto with zarith.
@@ -224,7 +223,7 @@ Theorem Zmod_le_first: forall a b, 0 <= a -> 0 < b -> 0 <= a mod b <= a.
   intros n p a H1 H2.
   pattern (a*2^p) at 1;replace (a*2^p) with
      (a*2^p/2^n * 2^n + a*2^p mod 2^n).
-  2:symmetry;rewrite (Z.mul_comm (a*2^p/2^n));apply Z_div_mod_eq.
+  2:symmetry;rewrite (Z.mul_comm (a*2^p/2^n));apply Z_div_mod_eq_full.
   replace (a * 2 ^ p / 2 ^ n) with (a / 2 ^ (n - p));trivial.
   replace (2^n) with (2^(n-p)*2^p).
   symmetry;apply Zdiv_mult_cancel_r.
@@ -233,7 +232,6 @@ Theorem Zmod_le_first: forall a b, 0 <= a -> 0 < b -> 0 <= a mod b <= a.
   rewrite <- Zpower_exp.
   replace (n-p+p) with n;trivial. ring.
   lia. lia.
-  apply Z.lt_gt. apply Z.pow_pos_nonneg;auto with zarith.
  Qed.
 
 

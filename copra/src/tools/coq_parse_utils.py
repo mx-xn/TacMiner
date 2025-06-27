@@ -63,7 +63,8 @@ class CoqLineByLineReader:
         special_context_starting_chars = ["+", "-", "*", "{", "}"]
         while idx < len(all_code):
             ch = all_code[idx]
-            if mode == CODE_MODE and ch == '.' and idx + 1 < len(all_code) and len(all_code[idx + 1].strip()) == 0:
+            if mode == CODE_MODE and ch == '.' and idx + 1 < len(all_code) and len(all_code[idx + 1].strip()) == 0 and not all_code[idx+1] == '.' and not all_code[idx-1] == '.':
+            # if mode == CODE_MODE and ch == '.' and idx + 1 < len(all_code) and len(all_code[idx + 1].strip()) == 0:
                 code_to_yield = all_code[instr_start: idx + 1].strip()
                 contexts = []
                 context = ""

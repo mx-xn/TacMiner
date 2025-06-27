@@ -1,0 +1,39 @@
+name: coq_art_tacminer
+num_files: 1
+language: COQ
+few_shot_data_path_for_retrieval: 
+few_shot_metadata_filename_for_retrieval: 
+dfs_data_path_for_retrieval: 
+dfs_metadata_filename_for_retrieval: 
+datasets:
+  # - project: data/benchmarks/coq-art
+  - project: ../raw-data/coq-art
+    files:
+      - path: chap3_comp_TM.v
+        theorems:
+          - imp_trans # custom1
+      # - path: chap5.v
+      #   theorems:
+          # - contrap # custom1
+          # - conv_example # custom2
+          # - ex_imp_ex # custom0
+          # - imp_trans # custom0
+          # - le_mult_mult # custom0
+          # - lt_8_9 # custom1
+          # - lt_S # custom0
+          # - mult_le_compat_r # custom0
+          # - my_I # custom2
+      # - path: chap8.v
+      #   theorems:
+      #     - keep_length # custom0
+      # - path: parsing.v
+      #   theorems:
+      #     - bin_to_string_wp # custom13, custom23
+      #     - wp_o_head_c # custom7
+      #     - wp_o_tail_c # custom7
+      # - path: impredicative.v
+      #   theorems:
+      #     - impredicative_le_n # custom2
+      #     - impredicative_sorted_to_sorted # custom3
+      #     - isorted1 # custom2
+      #     - isorted2 # custom3

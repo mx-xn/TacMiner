@@ -191,7 +191,7 @@ Definition mfunction_entry :=
 
 Definition analyze (rm: romem) (f: function): PMap.t VA.t :=
   let lu := Liveness.last_uses f in
-  let entry := VA.State (einit_regs f.(fn_params)) mfunction_entry in
+  let entry := VA.State (einit_regs f.(fn_params) f.(fn_sig).(sig_args)) mfunction_entry in
   match DS.fixpoint f.(fn_code) successors_instr (transfer' f lu rm)
                     f.(fn_entrypoint) entry with
   | None => PMap.init (VA.State AE.top mtop)
@@ -259,6 +259,7 @@ Definition romem_for (p: program) : romem :=
 Lemma analyze_entrypoint:
   forall rm f vl m bc,
   (forall v, In v vl -> vmatch bc v (Ifptr Nonstack)) ->
+  Val.has_argtype_list vl f.(fn_sig).(sig_args) ->
   mmatch bc m mfunction_entry ->
   exists ae am,
      (analyze rm f)!!(fn_entrypoint f) = VA.State ae am
@@ -268,7 +269,7 @@ Proof.
   intros.
   unfold analyze.
   set (lu := Liveness.last_uses f).
-  set (entry := VA.State (einit_regs f.(fn_params)) mfunction_entry).
+  set (entry := VA.State (einit_regs f.(fn_params) f.(fn_sig).(sig_args)) mfunction_entry).
   destruct (DS.fixpoint (fn_code f) successors_instr (transfer' f lu rm)
                         (fn_entrypoint f) entry) as [res|] eqn:FIX.
 - assert (A: VA.ge res!!(fn_entrypoint f) entry) by (eapply DS.fixpoint_entry; eauto).
@@ -280,7 +281,7 @@ Proof.
   auto.
 - exists AE.top, mtop.
   split. apply PMap.gi.
-  split. apply ematch_ge with (einit_regs (fn_params f)).
+  split. apply ematch_ge with (einit_regs (fn_params f) f.(fn_sig).(sig_args)).
   apply ematch_init; auto. apply AE.ge_top.
   eapply mmatch_top'; eauto.
 Qed.
@@ -295,7 +296,7 @@ Lemma analyze_successor:
 Proof.
   unfold analyze; intros.
   set (lu := Liveness.last_uses f) in *.
-  set (entry := VA.State (einit_regs f.(fn_params)) mfunction_entry) in *.
+  set (entry := VA.State (einit_regs f.(fn_params) f.(fn_sig).(sig_args)) mfunction_entry) in *.
   destruct (DS.fixpoint (fn_code f) successors_instr (transfer' f lu rm)
                         (fn_entrypoint f) entry) as [res|] eqn:FIX.
 - assert (A: VA.ge res!!s (transfer' f lu rm n res#n)).
@@ -339,10 +340,10 @@ Qed.
 Lemma aregs_sound:
   forall bc e ae rl, ematch bc e ae -> list_forall2 (vmatch bc) (e##rl) (aregs ae rl).
 Proof.
-  induction rl; simpl; intros. constructor. constructor; auto. apply areg_sound; auto.
+  induction rl; simpl; intros. constructor. constructor; [apply areg_sound|]; auto.
 Qed.
 
-Hint Resolve areg_sound aregs_sound: va.
+Global Hint Resolve areg_sound aregs_sound: va.
 
 Lemma abuiltin_arg_sound:
   forall bc ge rs sp m ae rm am,
@@ -527,7 +528,7 @@ Proof.
 - (* romatch *)
   apply romatch_exten with bc.
   eapply romatch_alloc; eauto. eapply mmatch_below; eauto.
-  simpl; intros. destruct (eq_block b sp); intuition.
+  simpl; intros. destruct (eq_block b sp); intuition auto with va.
 - (* mmatch *)
   constructor; simpl; intros.
   + (* stack *)
@@ -544,8 +545,8 @@ Proof.
     eapply SM; auto. eapply mmatch_top; eauto.
   + (* below *)
     red; simpl; intros. rewrite NB. destruct (eq_block b sp).
-    subst b; rewrite SP; xomega.
-    exploit mmatch_below; eauto. xomega.
+    subst b; rewrite SP; extlia.
+    exploit mmatch_below; eauto. extlia.
 - (* unchanged *)
   simpl; intros. apply dec_eq_false. apply Plt_ne. auto.
 - (* values *)
@@ -621,7 +622,7 @@ Proof.
   simpl; intros. destruct (eq_block b sp); auto.
 - (* romatch *)
   apply romatch_exten with bc; auto.
-  simpl; intros. destruct (eq_block b sp); intuition.
+  simpl; intros. destruct (eq_block b sp); intuition auto with va.
 - (* mmatch top *)
   constructor; simpl; intros.
   + destruct (eq_block b sp). congruence. elim n. eapply bc_stack; eauto.
@@ -708,7 +709,7 @@ Proof.
   simpl; intros. destruct (eq_block b sp); congruence.
 - (* romatch *)
   apply romatch_exten with bc; auto.
-  simpl; intros. destruct (eq_block b sp); intuition.
+  simpl; intros. destruct (eq_block b sp); intuition auto with va.
 - (* mmatch top *)
   constructor; simpl; intros.
   + destruct (eq_block b sp). congruence. elim n. eapply bc_stack; eauto.
@@ -791,7 +792,7 @@ Proof.
   eapply ematch_incr; eauto.
 - (* romem *)
   apply romatch_exten with callee; auto.
-  intros; simpl. destruct (eq_block b sp); intuition.
+  intros; simpl. destruct (eq_block b sp); intuition auto with va.
 - (* mmatch *)
   constructor; simpl; intros.
   + (* stack *)
@@ -902,7 +903,7 @@ Proof.
   eapply ematch_incr; eauto.
 - (* romem *)
   apply romatch_exten with callee; auto.
-  intros; simpl. destruct (eq_block b sp); intuition.
+  intros; simpl. destruct (eq_block b sp); intuition auto with va.
 - (* mmatch *)
   constructor; simpl; intros.
   + (* stack *)
@@ -1147,11 +1148,11 @@ Proof.
 - constructor.
 - assert (Plt sp bound') by eauto with va.
   eapply sound_stack_public_call; eauto. apply IHsound_stack; intros.
-  apply INV. xomega. rewrite SAME; auto with ordered_type. xomega. auto. auto.
+  apply INV. extlia. rewrite SAME; auto with ordered_type. extlia. auto. auto.
 - assert (Plt sp bound') by eauto with va.
   eapply sound_stack_private_call; eauto. apply IHsound_stack; intros.
-  apply INV. xomega. rewrite SAME; auto with ordered_type. xomega. auto. auto.
-  apply bmatch_ext with m; auto. intros. apply INV. xomega. auto. auto. auto.
+  apply INV. extlia. rewrite SAME; auto with ordered_type. extlia. auto. auto.
+  apply bmatch_ext with m; auto. intros. apply INV. extlia. auto. auto. auto.
 Qed.
 
 Lemma sound_stack_inv:
@@ -1210,8 +1211,8 @@ Lemma sound_stack_new_bound:
 Proof.
   intros. inv H.
 - constructor.
-- eapply sound_stack_public_call with (bound' := bound'0); eauto. xomega.
-- eapply sound_stack_private_call with (bound' := bound'0); eauto. xomega.
+- eapply sound_stack_public_call with (bound' := bound'0); eauto. extlia.
+- eapply sound_stack_private_call with (bound' := bound'0); eauto. extlia.
 Qed.
 
 Lemma sound_stack_exten:
@@ -1224,12 +1225,12 @@ Proof.
 - constructor.
 - assert (Plt sp bound') by eauto with va.
   eapply sound_stack_public_call; eauto.
-  rewrite H0; auto. xomega.
-  intros. rewrite H0; auto. xomega.
+  rewrite H0; auto. extlia.
+  intros. rewrite H0; auto. extlia.
 - assert (Plt sp bound') by eauto with va.
   eapply sound_stack_private_call; eauto.
-  rewrite H0; auto. xomega.
-  intros. rewrite H0; auto. xomega.
+  rewrite H0; auto. extlia.
+  intros. rewrite H0; auto. extlia.
 Qed.
 
 (** ** Preservation of the semantic invariant by one step of execution *)
@@ -1912,7 +1913,7 @@ Proof.
 - exact NOSTACK.
 Qed.
 
-Hint Resolve areg_sound aregs_sound: va.
+Global Hint Resolve areg_sound aregs_sound: va.
 
 (** * Interface with other optimizations *)
 

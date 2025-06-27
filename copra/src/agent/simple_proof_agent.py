@@ -75,6 +75,8 @@ class ProofAgent(Agent):
             action = self._policy(next_state)
             assert isinstance(action, ProofAction)
             self.logger.info(f"Got Action: {action}")
+            # debugging_mx
+            print("action %s" % action)
             if action.action_type != ProofAction.ActionType.EXIT:
                 state, action, next_state, reward, done, info = env.step(action)
                 # **IMPORTANT NOTE**: Here we update the action because sometimes the proof env can optimize the action

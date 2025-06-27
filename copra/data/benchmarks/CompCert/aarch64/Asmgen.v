@@ -15,6 +15,7 @@
 Require Import Recdef Coqlib Zwf Zbits.
 Require Import Errors AST Integers Floats Op.
 Require Import Locations Mach Asm.
+Require SelectOp.
 
 Local Open Scope string_scope.
 Local Open Scope list_scope.
@@ -284,7 +285,7 @@ Definition shrx64 (rd r1: ireg) (n: int) (k: code) : code :=
 (** Load the address [id + ofs] in [rd] *)
 
 Definition loadsymbol (rd: ireg) (id: ident) (ofs: ptrofs) (k: code) : code :=
-  if Archi.pic_code tt then
+  if SelectOp.symbol_is_relocatable id then
     if Ptrofs.eq ofs Ptrofs.zero then
       Ploadsymbol rd id :: k
     else
@@ -896,10 +897,16 @@ Definition transl_op
       match preg_of res with
       | IR r => 
           do r1 <- ireg_of a1; do r2 <- ireg_of a2;
-          transl_cond cmp args (Pcsel r r1 r2 (cond_for_cond cmp) :: k)
+          if ireg_eq r1 r2 then
+            OK (Pmov r r1 :: k)
+          else
+            transl_cond cmp args (Pcsel r r1 r2 (cond_for_cond cmp) :: k)
       | FR r =>
           do r1 <- freg_of a1; do r2 <- freg_of a2;
-          transl_cond cmp args (Pfsel r r1 r2 (cond_for_cond cmp) :: k)
+          if freg_eq r1 r2 then
+            OK (Pfmov r r1 :: k)
+          else
+            transl_cond cmp args (Pfsel r r1 r2 (cond_for_cond cmp) :: k)
       | _ =>
           Error(msg "Asmgen.Osel")
       end
@@ -946,7 +953,7 @@ Definition transl_addressing (sz: Z) (addr: Op.addressing) (args: list mreg)
         OK (arith_extended Paddext (Padd X) X16 r1 r2 x a
                            (insn (ADimm X16 Int64.zero) :: k))
   | Aglobal id ofs, nil =>
-      assertion (negb (Archi.pic_code tt));
+      assertion (negb (SelectOp.symbol_is_relocatable id));
       if Ptrofs.eq (Ptrofs.modu ofs (Ptrofs.repr sz)) Ptrofs.zero && symbol_is_aligned id sz
       then OK (Padrp X16 id ofs :: insn (ADadr X16 id ofs) :: k)
       else OK (loadsymbol X16 id ofs (insn (ADimm X16 Int64.zero) :: k))
@@ -985,14 +992,16 @@ Definition transl_load (chunk: memory_chunk) (addr: Op.addressing)
       do rd <- ireg_of dst; transl_addressing 4 addr args (Pldrw_a rd) k
   | Many64 =>
       do rd <- ireg_of dst; transl_addressing 8 addr args (Pldrx_a rd) k
+  | _ =>
+      Error (msg "Asmgen.transl_load")
   end.
 
 Definition transl_store (chunk: memory_chunk) (addr: Op.addressing)
                         (args: list mreg) (src: mreg) (k: code) : res code :=
   match chunk with
-  | Mint8unsigned | Mint8signed =>
+  | Mint8unsigned =>
       do r1 <- ireg_of src; transl_addressing 1 addr args (Pstrb r1) k
-  | Mint16unsigned | Mint16signed =>
+  | Mint16unsigned =>
       do r1 <- ireg_of src; transl_addressing 2 addr args (Pstrh r1) k
   | Mint32 =>
       do r1 <- ireg_of src; transl_addressing 4 addr args (Pstrw r1) k
@@ -1006,6 +1015,8 @@ Definition transl_store (chunk: memory_chunk) (addr: Op.addressing)
       do r1 <- ireg_of src; transl_addressing 4 addr args (Pstrw_a r1) k
   | Many64 =>
       do r1 <- ireg_of src; transl_addressing 8 addr args (Pstrx_a r1) k
+  | _ =>
+      Error (msg "Asmgen.transl_store")
   end.
 
 (** Register-indexed loads and stores *)
@@ -1056,7 +1067,7 @@ Definition make_epilogue (f: Mach.function) (k: code) :=
 (** Translation of a Mach instruction. *)
 
 Definition transl_instr (f: Mach.function) (i: Mach.instruction)
-                        (r29_is_parent: bool) (k: code) : res code :=
+                        (r15_is_parent: bool) (k: code) : res code :=
   match i with
   | Mgetstack ofs ty dst =>
       loadind XSP ofs ty dst k
@@ -1064,8 +1075,8 @@ Definition transl_instr (f: Mach.function) (i: Mach.instruction)
       storeind src XSP ofs ty k
   | Mgetparam ofs ty dst =>
       (* load via the frame pointer if it is valid *)
-      do c <- loadind X29 ofs ty dst k;
-      OK (if r29_is_parent then c else loadptr XSP f.(fn_link_ofs) X29 c)
+      do c <- loadind X15 ofs ty dst k;
+      OK (if r15_is_parent then c else loadptr XSP f.(fn_link_ofs) X15 c)
   | Mop op args res =>
       transl_op op args res k
   | Mload chunk addr args dst =>
@@ -1101,8 +1112,8 @@ Definition transl_instr (f: Mach.function) (i: Mach.instruction)
 Definition it1_is_parent (before: bool) (i: Mach.instruction) : bool :=
   match i with
   | Msetstack src ofs ty => before
-  | Mgetparam ofs ty dst => negb (mreg_eq dst R29)
-  | Mop op args res => before && negb (mreg_eq res R29)
+  | Mgetparam ofs ty dst => negb (mreg_eq dst R15)
+  | Mop op args res => before && negb (mreg_eq res R15)
   | _ => false
   end.
 
@@ -1141,7 +1152,8 @@ Definition transl_function (f: Mach.function) :=
   do c <- transl_code' f f.(Mach.fn_code) true;
   OK (mkfunction f.(Mach.fn_sig)
         (Pallocframe f.(fn_stacksize) f.(fn_link_ofs) ::
-         storeptr RA XSP f.(fn_retaddr_ofs) c)).
+         storeptr RA XSP f.(fn_retaddr_ofs)
+          (Pcfi_rel_offset (Ptrofs.to_int f.(fn_retaddr_ofs)):: c))).
 
 Definition transf_function (f: Mach.function) : res Asm.function :=
   do tf <- transl_function f;

@@ -8,6 +8,7 @@
 body {
   color: black; background: white;
   margin-left: 5%; margin-right: 5%;
+  max-width:750px;
 }
 h2 { margin-left: -5%;}
 h3 { margin-left: -3%; }
@@ -24,11 +25,11 @@ a:active {color : Red; text-decoration : underline; }
 
 <H1 align="center">The CompCert verified compiler</H1>
 <H2 align="center">Commented Coq development</H2>
-<H3 align="center">Version 3.7, 2020-03-31</H3>
+<H3 align="center">Version 3.15, 2024-12-13</H3>
 
 <H2>Introduction</H2>
 
-<P>CompCert is a compiler that generates PowerPC, ARM, RISC-V and x86 assembly
+<P>CompCert is a compiler that generates ARM, PowerPC, RISC-V and x86 assembly
 code from CompCert C, a large subset of the C programming language.
 The particularity of this compiler is that it is written mostly within
 the specification language of the Coq proof assistant, and its
@@ -46,9 +47,9 @@ Journal of Automated Reasoning 43(4):363-446, 2009.
 
 <P>This Web site gives a commented listing of the underlying Coq
 specifications and proofs.  Proof scripts are folded by default, but
-can be viewed by clicking on "Proof".  Some modules (written in <I>italics</I> below) differ between the four target architectures.  The
-PowerPC versions of these modules are shown below; the ARM, x86 and RISC-V
-versions can be found in the source distribution.
+can be viewed by clicking on "Proof".  Some modules (written in <I>italics</I> below) differ between the five target architectures.  The
+PowerPC versions of these modules are shown below; the AArch64, ARM,
+x86 and RISC-V versions can be found in the source distribution.
 </P>
 
 <P> This development is a work in progress; some parts have
@@ -56,12 +57,14 @@ substantially changed since the overview papers above were
 written.</P>
 
 <P>The complete sources for CompCert can be downloaded from
-<A HREF="http://compcert.inria.fr/">the CompCert Web site</A>.</P>
+<A HREF="https://github.com/AbsInt/CompCert/">the Git repository</A>
+or <A HREF="https://compcert.org/">the CompCert Web site</A>.
+</P>
 
 <P>This document and the CompCert sources are copyright Institut
 National de Recherche en Informatique et en Automatique (INRIA) and
 AbsInt Angewandte Informatik GmbH, and are distributed under the terms of the
-following <A HREF="LICENSE">license</A>.
+following <A HREF="LICENSE.txt">license</A>.
 </P>
 
 <H2>Table of contents</H2>
@@ -198,7 +201,7 @@ code.
 </TR>
 
 <TR valign="top">
-  <TD>Construction of the CFG, <br>3-address code generation</TD>
+  <TD>Construction of the CFG; 3-address code generation</TD>
   <TD>CminorSel to RTL</TD>
   <TD><A HREF="html/compcert.backend.RTLgen.html">RTLgen</A></TD>
   <TD><A HREF="html/compcert.backend.RTLgenspec.html">RTLgenspec</A><BR>
@@ -348,7 +351,7 @@ reconstruction.
 </UL>
 
 <HR>
-<ADDRESS>Xavier.Leroy@inria.fr</ADDRESS>
+<ADDRESS>xavier.leroy@college-de-france.fr</ADDRESS>
 <HR>
 
 </BODY>

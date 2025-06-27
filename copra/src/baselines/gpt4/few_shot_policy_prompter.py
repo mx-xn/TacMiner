@@ -120,7 +120,8 @@ class FewShotGptPolicyPrompter(PolicyPrompter):
         self._message_history_token_count.append(message_token_count)
         self._history_token_count += message_token_count
 
-    def _get_prompt_message(self, request: FewShotGptResponse, max_tokens_in_prompt: int):
+    # def _get_prompt_message(self, request: FewShotGptResponse, max_tokens_in_prompt: int):
+    def _get_prompt_message(self, request: FewShotGptResponse, max_tokens_in_prompt: int, custom_tactics_header: str = None):
         assert max_tokens_in_prompt > 0, "Max token per prompt must be greater than 0, please decrease max_tokens_per_action"
         characters_per_token = 5
         prompt_message_tokens_underlimit = False
@@ -196,6 +197,14 @@ class FewShotGptPolicyPrompter(PolicyPrompter):
             characters_per_token -= 1
         assert prompt_token_count <= max_token_for_problem, f"Prompt token count {prompt_token_count} is greater than max token per prompt {max_token_for_problem}"
         assert prompt_token_count + custom_system_message_count <= max_tokens_in_prompt, f"Prompt token count {prompt_token_count} + custom system message token count {custom_system_message_count} is greater than max token per prompt {max_tokens_in_prompt}"
+        # Also return the custom system messages here
+        if custom_tactics_header is not None:
+            custom_tactics_prefix = \
+                    (f'In your next proof, you SHOULD use the following custom tactics that were defined for this particular domain:\n' +
+                     f'{custom_tactics_header}' +
+                     f'\nThese tactics are known to be very useful: always use them when appropriate. Remember, to use a custom tactic in Coq (e.g., suppose its name is t and takes 2 arguments), you can use `t arg1 arg2.` in your proof.')
+            prompt_message['content'] = custom_tactics_prefix + '\n\n' + prompt_message['content']
+
         return prompt_message, prompt_token_count, custom_system_messages, custom_system_message_count
 
     def _constrain_tokens_in_history(self, prompt_message, custom_example_system_messages : typing.List[dict[str, str]], custom_system_message_count: int, prompt_token_count: int, max_tokens_per_action: int) -> list:
@@ -256,9 +265,12 @@ class FewShotGptPolicyPrompter(PolicyPrompter):
             self._rate_limiter.reset()
             self.logger.info("Rate limit reset now.")
 
-    def run_prompt(self, request: FewShotGptRequest) -> list:
+    # def run_prompt(self, request: FewShotGptRequest) -> list:
+    def run_prompt(self, request: FewShotGptRequest, custom_tactics_header: str = None) -> list:
         max_tokens_in_prompt = self._max_token_per_prompt - self.system_token_count - self._max_tokens_per_action
-        prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
+        # prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
+        prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(
+                request, max_tokens_in_prompt, custom_tactics_header=custom_tactics_header)
         messages, total_token_count = self._constrain_tokens_in_history(prompt_message, custom_system_msg, custom_system_msg_cnt, prompt_token_count, self._max_tokens_per_action)
         success = False
         retries = 3

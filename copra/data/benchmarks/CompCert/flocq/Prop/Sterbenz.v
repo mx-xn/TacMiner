@@ -1,6 +1,6 @@
 (**
 This file is part of the Flocq formalization of floating-point
-arithmetic in Coq: http://flocq.gforge.inria.fr/
+arithmetic in Coq: https://flocq.gitlabpages.inria.fr/
 
 Copyright (C) 2010-2018 Sylvie Boldo
 #<br />#
@@ -19,7 +19,9 @@ COPYING file for more details.
 
 (** * Sterbenz conditions for exact subtraction *)
 
-Require Import Raux Defs Generic_fmt Operations.
+From Coq Require Import ZArith Reals.
+
+Require Import Zaux Raux Defs Generic_fmt Operations.
 
 Section Fprop_Sterbenz.
 
@@ -67,7 +69,7 @@ rewrite <- F2R_plus.
 apply generic_format_F2R.
 intros _.
 case_eq (Fplus fx fy).
-intros mxy exy Pxy.
+intros mxy exy Pxy; simpl.
 rewrite <- Pxy, F2R_plus, <- Hx, <- Hy.
 unfold cexp.
 replace exy with (fexp (Z.min ex ey)).

@@ -1,0 +1,1570 @@
+{
+  "theorem_file": {
+    "zero_cons_ord": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "sorted1_inv": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "sorted2_inv": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "not_sorted_132": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "any_height_inj2": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "keep_length": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "Vconseq": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "vect_to_list_and_back": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "structured_intro_example1": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "structured_intro_example2": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "sum_even": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "lt_le": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "pfact3": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "fact_def_pos": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "Zle_Pfact": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "HoareWhileRule": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "sqr_01": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "elim_example": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "not_even_1": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "plus_2_even_inv": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "isorted0": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "isorted1": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "isorted2": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "sorted_to_impredicative_sorted": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "impredicative_sorted_to_sorted": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "wp_oc": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "wp_o_head_c": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "wp_o_tail_c": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "bin_to_string_wp": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "bin_to_string": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "parse_rel_sound_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "parse_rel_sound": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "wp": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "wp_imp_wp": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "recognize_complete_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "recognize_complete": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "app_decompose": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "length_app": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "length_rev": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "cons_to_app_end": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "last_same": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "wp_remove_oc_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "wp_remove_oc": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "make_list_end": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "recognize_sound_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "recognize_sound": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "parse_reject_indep_t": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "parse_complete_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "parse_complete": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "parse_invert_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "parse_invert": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v",
+    "parse_sound": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v"
+  },
+  "custom_tactics": {
+    "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/IndPred_TM.v": {
+      "zero_cons_ord": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "sorted1_inv": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "sorted2_inv": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "not_sorted_132": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "any_height_inj2": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "keep_length": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom1"
+        ]
+      },
+      "Vconseq": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "vect_to_list_and_back": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "structured_intro_example1": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "structured_intro_example2": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "sum_even": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "lt_le": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "pfact3": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "fact_def_pos": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "Zle_Pfact": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "HoareWhileRule": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "sqr_01": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "elim_example": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "not_even_1": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "plus_2_even_inv": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "isorted0": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "isorted1": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "isorted2": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "sorted_to_impredicative_sorted": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "impredicative_sorted_to_sorted": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_oc": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_o_head_c": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_o_tail_c": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "bin_to_string_wp": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "bin_to_string": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_rel_sound_aux": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_rel_sound": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_imp_wp": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_complete_aux": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_complete": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "app_decompose": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "length_app": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "length_rev": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "cons_to_app_end": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "last_same": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_remove_oc_aux": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_remove_oc": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "make_list_end": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_sound_aux": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_sound": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_reject_indep_t": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_complete_aux": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_complete": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_invert_aux": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_invert": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_sound": {
+        "available_tactics": [
+          {
+            "name": "custom1",
+            "definition": "Ltac custom1  :=  simpl; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom1": [
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c3_goal : eq (length (vector_to_list 0 (nil A))) 0"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "keep_length",
+              "tactic_sig": "custom1 .",
+              "tactic_args": [
+                "c4_goal : eq (length (vector_to_list (S n) (cons A h n v))) (S n)"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      }
+    }
+  }
+}

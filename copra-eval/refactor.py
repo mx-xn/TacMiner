@@ -344,7 +344,8 @@ def update_tactic_index(scripts, tactic_index_file, disable=False):
 
 
 def extract_tactic_usage_examples(script_path, tactic_name) -> list:
-    json_path = script_path.replace(".v", '.json')
+    json_path = script_path.replace(".v", '.json').replace("raw", "json")
+    print("json_path:", json_path)
     with open(json_path) as f:
         trace_data = json.load(f)
 
@@ -378,11 +379,11 @@ def main():
     parser.add_argument("--print-uses-custom", action="store_true", help="Print theorems that use custom tactics")
     args = parser.parse_args()
 
-    if args.inline:
-        original_script = CoqScript(args.original)
-        output_path = os.path.splitext(args.original)[0] + ".inlined.v"
-        original_script.write_inlined(output_path)
-        return
+    # if args.inline:
+    #     original_script = CoqScript(args.original)
+    #     output_path = os.path.splitext(args.original)[0] + ".inlined.v"
+    #     original_script.write_inlined(output_path)
+    #     return
 
     if args.index:
         dir = args.original
@@ -431,14 +432,14 @@ def main():
     original_script = CoqScript(args.original)
     original_script.index()
 
-    print("Original script summary:")
-    original_script.summarize()
+    # print("Original script summary:")
+    # original_script.summarize()
 
-    if args.new:
-        new_script = CoqScript(args.new)
-        new_script.index()
-        print("\nStarting refactoring process...")
-        original_script.refactor(new_script)
+    # if args.new:
+    #     new_script = CoqScript(args.new)
+    #     new_script.index()
+    #     print("\nStarting refactoring process...")
+    #     original_script.refactor(new_script)
 
     # Update tactic index
     update_tactic_index([original_script], args.tactic_index, args.disable)

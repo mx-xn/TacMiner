@@ -1,0 +1,726 @@
+{
+    "path": ".log/proofs/eval_driver/dfs/comp_cert_tacminer/20250626-014742/proof_results.json",
+    "theorem_map": {
+        "../raw-data/CompCert/backend/Allocation_comp_TM.v": {
+            "lt_not_eq2": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "lt_not_eq2  : forall x y : t, lt x y -> ~ eq x y.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom5 lt eq x y H H0."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom12."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom17."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 45.999596118927,
+                "inferences_taken": 10,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 8,
+                    "attempt_idx": 0,
+                    "total_queries": 8
+                },
+                "language": "COQ"
+            },
+            "eq_trans2": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "eq_trans2  : forall x y z : t, eq x y -> eq y z -> eq x z.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros x y z Hxy Hyz."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply eq_trans with (y := y); assumption."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 20.83169412612915,
+                "inferences_taken": 3,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 0,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 2,
+                    "attempt_idx": 0,
+                    "total_queries": 2
+                },
+                "language": "COQ"
+            },
+            "beq_correct": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "beq_correct  : forall x y, beq x y = true -> eq x y.",
+                "proof_steps": [],
+                "proof_time_in_secs": 52.00559735298157,
+                "inferences_taken": 13,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 3,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 10,
+                    "attempt_idx": 3,
+                    "total_queries": 25
+                },
+                "language": "COQ"
+            },
+            "ge_refl": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "ge_refl  : forall x y, eq x y -> ge x y.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros x y H."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "unfold eq in H; unfold ge; destruct x, y; try contradiction; try auto."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom15 H."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "reflexivity."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 64.96971106529236,
+                "inferences_taken": 13,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 2,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 10,
+                    "attempt_idx": 0,
+                    "total_queries": 10
+                },
+                "language": "COQ"
+            },
+            "ge_trans": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "ge_trans  : forall x y z, ge x y -> ge y z -> ge x z.",
+                "proof_steps": [],
+                "proof_time_in_secs": 126.6568672657013,
+                "inferences_taken": 40,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 10,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 30,
+                    "attempt_idx": 3,
+                    "total_queries": 48
+                },
+                "language": "COQ"
+            },
+            "ge_lub_left": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "ge_lub_left  : forall x y, ge (lub x y) x.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom6 lub ge EqSet.Subset x y a H EqSet.union_2."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply H."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 24.966237783432007,
+                "inferences_taken": 7,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 5,
+                    "attempt_idx": 0,
+                    "total_queries": 5
+                },
+                "language": "COQ"
+            },
+            "ge_lub_right": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "ge_lub_right  : forall x y, ge (lub x y) y.",
+                "proof_steps": [],
+                "proof_time_in_secs": 31.58347797393799,
+                "inferences_taken": 12,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 3,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 9,
+                    "attempt_idx": 3,
+                    "total_queries": 19
+                },
+                "language": "COQ"
+            }
+        },
+        "../raw-data/CompCert/backend/NeedDomain_comp_TM.v": {
+            "lessdef_vagree_list": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "lessdef_vagree_list  : forall vl1 vl2, vagree_list vl1 vl2 nil -> Val.lessdef_list vl1 vl2 .",
+                "proof_steps": [],
+                "proof_time_in_secs": 58.871023178100586,
+                "inferences_taken": 72,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 21,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 51,
+                    "attempt_idx": 3,
+                    "total_queries": 58
+                },
+                "language": "COQ"
+            },
+            "vagree_lessdef_list": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "vagree_lessdef_list  : forall vl1 vl2, Val.lessdef_list vl1 vl2 -> forall nvl, vagree_list vl1 vl2 nvl .",
+                "proof_steps": [],
+                "proof_time_in_secs": 12.356121063232422,
+                "inferences_taken": 14,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 3,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 11,
+                    "attempt_idx": 3,
+                    "total_queries": 23
+                },
+                "language": "COQ"
+            },
+            "iagree_not": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "iagree_not  : forall x y m, iagree x y m -> iagree ( Int.not x ) ( Int.not y ) m .",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros x y m H.",
+                            "custom23 i H0 H1."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom80."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 29.36927604675293,
+                "inferences_taken": 4,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 0,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 3,
+                    "attempt_idx": 0,
+                    "total_queries": 3
+                },
+                "language": "COQ"
+            },
+            "iagree_or": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "iagree_or  :\n  forall x y n m,\n  iagree x y (Int.and m (Int.not n)) -> iagree (Int.or x n) (Int.or y n) m.",
+                "proof_steps": [],
+                "proof_time_in_secs": 38.03065276145935,
+                "inferences_taken": 10,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 2,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 8,
+                    "attempt_idx": 3,
+                    "total_queries": 37
+                },
+                "language": "COQ"
+            },
+            "andimm_sound": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "andimm_sound  :\n  forall v w x n,\n  vagree v w (andimm x n) ->\n  vagree (Val.and v (Vint n)) (Val.and w (Vint n)) x.",
+                "proof_steps": [],
+                "proof_time_in_secs": 66.02336883544922,
+                "inferences_taken": 15,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 4,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 11,
+                    "attempt_idx": 3,
+                    "total_queries": 24
+                },
+                "language": "COQ"
+            },
+            "orimm_sound": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "orimm_sound  :\n  forall v w x n,\n  vagree v w (orimm x n) ->\n  vagree (Val.or v (Vint n)) (Val.or w (Vint n)) x.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom35 orimm v w x n H Val.or iagree_or."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom100 Val.lessdef_same."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom73 iagree_mone."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom79 iagree_or Int.and_commut."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom16 Int.and_mone."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 70.88613200187683,
+                "inferences_taken": 8,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 0,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 7,
+                    "attempt_idx": 0,
+                    "total_queries": 7
+                },
+                "language": "COQ"
+            },
+            "sub_sound": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "sub_sound  :\n  forall v1 w1 v2 w2 x,\n  vagree v1 w1 (modarith x) -> vagree v2 w2 (modarith x) ->\n  Archi.ptr64 = true ->\n  vagree (Val.sub v1 v2) (Val.sub w1 w2) x.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros v1 w1 v2 w2 x H H0 H1."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom0 x H H0 w1."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom88 Val.sub H1."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom62 eqmod_iagree eqmod_sub iagree_eqmod."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "custom1 iagree_eqmod."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 57.46530795097351,
+                "inferences_taken": 8,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 0,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 7,
+                    "attempt_idx": 0,
+                    "total_queries": 7
+                },
+                "language": "COQ"
+            },
+            "modarith_idem": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "modarith_idem  : forall nv, modarith (modarith nv) = modarith nv.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros nv; destruct nv; simpl."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "-",
+                            "reflexivity."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "-",
+                            "f_equal; apply complete_mask_idem."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "-",
+                            "reflexivity."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 25.996838331222534,
+                "inferences_taken": 7,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 0,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 6,
+                    "attempt_idx": 1,
+                    "total_queries": 15
+                },
+                "language": "COQ"
+            }
+        }
+    }
+}

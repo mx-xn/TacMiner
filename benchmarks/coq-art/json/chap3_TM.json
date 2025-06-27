@@ -1,0 +1,1009 @@
+[
+    {
+        "lemma_name": "imp_trans",
+        "proof": [
+            {
+                "tactic_sig": "Theorem imp_trans : ( P -> Q ) -> ( Q -> R ) -> P -> R .",
+                "tactic_sig_no_out_arg": "Theorem imp_trans : ( P -> Q ) -> ( Q -> R ) -> P -> R .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (_ : forall _ : P, Q) (_ : forall _ : Q, R) (_ : P), R",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros H H' p .",
+                "tactic_args": [
+                    "c1_goal : forall (_ : forall _ : P, Q) (_ : forall _ : Q, R) (_ : P), R"
+                ],
+                "tactic_res": [
+                    "c2_goal : R",
+                    "c2_H : forall _ : P, Q",
+                    "c2_H' : forall _ : Q, R",
+                    "c2_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c2_goal : R",
+                    "c2_H' : forall _ : Q, R"
+                ],
+                "tactic_res": [
+                    "c3_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "custom0 _i .",
+                "tactic_sig_no_out_arg": "custom0 _i .",
+                "tactic_args": [
+                    "c3_goal : Q",
+                    "c2_H : forall _ : P, Q"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "imp_trans'",
+        "proof": [
+            {
+                "tactic_sig": "Theorem imp_trans' : ( P -> Q ) -> ( Q -> R ) -> P -> R .",
+                "tactic_sig_no_out_arg": "Theorem imp_trans' : ( P -> Q ) -> ( Q -> R ) -> P -> R .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (_ : forall _ : P, Q) (_ : forall _ : Q, R) (_ : P), R",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros H H' p .",
+                "tactic_args": [
+                    "c1_goal : forall (_ : forall _ : P, Q) (_ : forall _ : Q, R) (_ : P), R"
+                ],
+                "tactic_res": [
+                    "c2_goal : R",
+                    "c2_H : forall _ : P, Q",
+                    "c2_H' : forall _ : Q, R",
+                    "c2_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c2_goal : R",
+                    "c2_H' : forall _ : Q, R"
+                ],
+                "tactic_res": [
+                    "c3_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c3_goal : Q",
+                    "c2_H : forall _ : P, Q"
+                ],
+                "tactic_res": [
+                    "c4_goal : P"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c4_goal : P",
+                    "c2_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "apply_example",
+        "proof": [
+            {
+                "tactic_sig": "Lemma apply_example : ( Q -> R -> T ) -> ( P -> Q ) -> P -> R -> T .",
+                "tactic_sig_no_out_arg": "Lemma apply_example : ( Q -> R -> T ) -> ( P -> Q ) -> P -> R -> T .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (_ : forall (_ : Q) (_ : R), T) (_ : forall _ : P, Q) \n  (_ : P) (_ : R), T",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros H H0 p .",
+                "tactic_args": [
+                    "c1_goal : forall (_ : forall (_ : Q) (_ : R), T) (_ : forall _ : P, Q) \n  (_ : P) (_ : R), T"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall _ : R, T",
+                    "c2_H : forall (_ : Q) (_ : R), T",
+                    "c2_H0 : forall _ : P, Q",
+                    "c2_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c2_goal : forall _ : R, T",
+                    "c2_H : forall (_ : Q) (_ : R), T"
+                ],
+                "tactic_res": [
+                    "c3_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "exact ( _i _i ) .",
+                "tactic_sig_no_out_arg": "exact ( _i _i ) .",
+                "tactic_args": [
+                    "c3_goal : Q",
+                    "c2_H0 : forall _ : P, Q",
+                    "c2_p : P"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "imp_dist",
+        "proof": [
+            {
+                "tactic_sig": "Theorem imp_dist : ( P -> Q -> R ) -> ( P -> Q ) -> ( P -> R ) .",
+                "tactic_sig_no_out_arg": "Theorem imp_dist : ( P -> Q -> R ) -> ( P -> Q ) -> ( P -> R ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (_ : forall (_ : P) (_ : Q), R) (_ : forall _ : P, Q) (_ : P), R",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros H H' p .",
+                "tactic_args": [
+                    "c1_goal : forall (_ : forall (_ : P) (_ : Q), R) (_ : forall _ : P, Q) (_ : P), R"
+                ],
+                "tactic_res": [
+                    "c2_goal : R",
+                    "c2_H : forall (_ : P) (_ : Q), R",
+                    "c2_H' : forall _ : P, Q",
+                    "c2_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c2_goal : R",
+                    "c2_H : forall (_ : P) (_ : Q), R"
+                ],
+                "tactic_res": [
+                    "c3_goal : P",
+                    "c4_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c3_goal : P",
+                    "c2_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c4_goal : Q",
+                    "c2_H' : forall _ : P, Q"
+                ],
+                "tactic_res": [
+                    "c5_goal : P"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c5_goal : P",
+                    "c2_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "K",
+        "proof": [
+            {
+                "tactic_sig": "Theorem K : P -> Q -> P .",
+                "tactic_sig_no_out_arg": "Theorem K : P -> Q -> P .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (_ : P) (_ : Q), P",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros p q .",
+                "tactic_args": [
+                    "c1_goal : forall (_ : P) (_ : Q), P"
+                ],
+                "tactic_res": [
+                    "c2_goal : P",
+                    "c2_p : P",
+                    "c2_q : Q"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c2_goal : P",
+                    "c2_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "triple_impl_one_liner",
+        "proof": [
+            {
+                "tactic_sig": "Theorem triple_impl_one_liner : ( ( ( P -> Q ) -> Q ) -> Q ) -> P -> Q .",
+                "tactic_sig_no_out_arg": "Theorem triple_impl_one_liner : ( ( ( P -> Q ) -> Q ) -> Q ) -> P -> Q .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (_ : forall _ : forall _ : forall _ : P, Q, Q, Q) (_ : P), Q",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros H p .",
+                "tactic_args": [
+                    "c1_goal : forall (_ : forall _ : forall _ : forall _ : P, Q, Q, Q) (_ : P), Q"
+                ],
+                "tactic_res": [
+                    "c2_goal : Q",
+                    "c2_H : forall _ : forall _ : forall _ : P, Q, Q, Q",
+                    "c2_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c2_goal : Q",
+                    "c2_H : forall _ : forall _ : forall _ : P, Q, Q, Q"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall _ : forall _ : P, Q, Q"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H0 .",
+                "tactic_args": [
+                    "c3_goal : forall _ : forall _ : P, Q, Q"
+                ],
+                "tactic_res": [
+                    "c4_goal : Q",
+                    "c4_H0 : forall _ : P, Q"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c4_goal : Q",
+                    "c4_H0 : forall _ : P, Q"
+                ],
+                "tactic_res": [
+                    "c5_goal : P"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c5_goal : P",
+                    "c2_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "imp_dist'",
+        "proof": [
+            {
+                "tactic_sig": "Lemma imp_dist' : ( P -> Q -> R ) -> ( P -> Q ) -> ( P -> R ) .",
+                "tactic_sig_no_out_arg": "Lemma imp_dist' : ( P -> Q -> R ) -> ( P -> Q ) -> ( P -> R ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (_ : forall (_ : P) (_ : Q), R) (_ : forall _ : P, Q) (_ : P), R",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros H H' p .",
+                "tactic_args": [
+                    "c1_goal : forall (_ : forall (_ : P) (_ : Q), R) (_ : forall _ : P, Q) (_ : P), R"
+                ],
+                "tactic_res": [
+                    "c2_goal : R",
+                    "c2_H : forall (_ : P) (_ : Q), R",
+                    "c2_H' : forall _ : P, Q",
+                    "c2_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c2_goal : R",
+                    "c2_H : forall (_ : P) (_ : Q), R"
+                ],
+                "tactic_res": [
+                    "c3_goal : P",
+                    "c4_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c3_goal : P",
+                    "c2_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c4_goal : Q",
+                    "c2_H' : forall _ : P, Q"
+                ],
+                "tactic_res": [
+                    "c5_goal : P"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c5_goal : P",
+                    "c2_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "assert_example",
+        "proof": [
+            {
+                "tactic_sig": "Lemma assert_example : Q .",
+                "tactic_sig_no_out_arg": "Lemma assert_example : Q .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : Q",
+                    "c1_H2 : forall _ : forall _ : P, R, T",
+                    "c1_H1 : forall (_ : forall _ : P, R) (_ : T), Q",
+                    "c1_H0 : forall _ : Q, R",
+                    "c1_H : forall _ : P, Q",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "assert ( H3 : _i -> _i ) .",
+                "tactic_sig_no_out_arg": "assert ( H3 : _i -> _i ) .",
+                "tactic_args": [
+                    "c1_goal : Q",
+                    "c1_P : Prop",
+                    "c1_R : Prop"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall _ : P, R",
+                    "c3_goal : Q",
+                    "c3_H3 : forall _ : P, R"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro p .",
+                "tactic_args": [
+                    "c2_goal : forall _ : P, R"
+                ],
+                "tactic_res": [
+                    "c4_goal : R",
+                    "c4_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c4_goal : R",
+                    "c1_H0 : forall _ : Q, R"
+                ],
+                "tactic_res": [
+                    "c5_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c5_goal : Q",
+                    "c1_H : forall _ : P, Q"
+                ],
+                "tactic_res": [
+                    "c6_goal : P"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c6_goal : P",
+                    "c4_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c3_goal : Q",
+                    "c1_H1 : forall (_ : forall _ : P, R) (_ : T), Q"
+                ],
+                "tactic_res": [
+                    "c7_goal : forall _ : P, R",
+                    "c8_goal : T"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c7_goal : forall _ : P, R",
+                    "c3_H3 : forall _ : P, R",
+                    "c1_P : Prop",
+                    "c1_R : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c8_goal : T",
+                    "c1_H2 : forall _ : forall _ : P, R, T"
+                ],
+                "tactic_res": [
+                    "c9_goal : forall _ : P, R"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c9_goal : forall _ : P, R",
+                    "c3_H3 : forall _ : P, R",
+                    "c1_P : Prop",
+                    "c1_R : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "Q0",
+        "proof": [
+            {
+                "tactic_sig": "Lemma Q0 : Q .",
+                "tactic_sig_no_out_arg": "Lemma Q0 : Q .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : Q",
+                    "c1_H2 : forall _ : forall _ : P, R, T",
+                    "c1_H1 : forall (_ : forall _ : P, R) (_ : T), Q",
+                    "c1_H0 : forall _ : Q, R",
+                    "c1_H : forall _ : P, Q",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c1_goal : Q",
+                    "c1_H1 : forall (_ : forall _ : P, R) (_ : T), Q"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall _ : P, R",
+                    "c3_goal : T"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro p .",
+                "tactic_args": [
+                    "c2_goal : forall _ : P, R"
+                ],
+                "tactic_res": [
+                    "c4_goal : R",
+                    "c4_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c4_goal : R",
+                    "c1_H0 : forall _ : Q, R"
+                ],
+                "tactic_res": [
+                    "c5_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c5_goal : Q",
+                    "c1_H : forall _ : P, Q"
+                ],
+                "tactic_res": [
+                    "c6_goal : P"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c6_goal : P",
+                    "c4_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c3_goal : T",
+                    "c1_H2 : forall _ : forall _ : P, R, T"
+                ],
+                "tactic_res": [
+                    "c7_goal : forall _ : P, R"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro p .",
+                "tactic_args": [
+                    "c7_goal : forall _ : P, R"
+                ],
+                "tactic_res": [
+                    "c8_goal : R",
+                    "c8_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c8_goal : R",
+                    "c1_H0 : forall _ : Q, R"
+                ],
+                "tactic_res": [
+                    "c9_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c9_goal : Q",
+                    "c1_H : forall _ : P, Q"
+                ],
+                "tactic_res": [
+                    "c10_goal : P"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c10_goal : P",
+                    "c8_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "Q1",
+        "proof": [
+            {
+                "tactic_sig": "Lemma Q1 : Q .",
+                "tactic_sig_no_out_arg": "Lemma Q1 : Q .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : Q",
+                    "c1_H2 : forall _ : forall _ : P, R, T",
+                    "c1_H1 : forall (_ : forall _ : P, R) (_ : T), Q",
+                    "c1_H0 : forall _ : Q, R",
+                    "c1_H : forall _ : P, Q",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "cut ( _i -> _i ) .",
+                "tactic_sig_no_out_arg": "cut ( _i -> _i ) .",
+                "tactic_args": [
+                    "c1_goal : Q",
+                    "c1_P : Prop",
+                    "c1_R : Prop"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall _ : forall _ : P, R, Q",
+                    "c3_goal : forall _ : P, R"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H3 .",
+                "tactic_args": [
+                    "c2_goal : forall _ : forall _ : P, R, Q"
+                ],
+                "tactic_res": [
+                    "c4_goal : Q",
+                    "c4_H3 : forall _ : P, R"
+                ]
+            },
+            {
+                "tactic_sig": "cut _i .",
+                "tactic_sig_no_out_arg": "cut _i .",
+                "tactic_args": [
+                    "c4_goal : Q",
+                    "c1_T : Prop"
+                ],
+                "tactic_res": [
+                    "c5_goal : forall _ : T, Q",
+                    "c6_goal : T"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro H4 .",
+                "tactic_args": [
+                    "c5_goal : forall _ : T, Q"
+                ],
+                "tactic_res": [
+                    "c7_goal : Q",
+                    "c7_H4 : T"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c7_goal : Q",
+                    "c1_H1 : forall (_ : forall _ : P, R) (_ : T), Q"
+                ],
+                "tactic_res": [
+                    "c8_goal : forall _ : P, R",
+                    "c9_goal : T"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c8_goal : forall _ : P, R",
+                    "c4_H3 : forall _ : P, R",
+                    "c1_P : Prop",
+                    "c1_R : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c9_goal : T",
+                    "c7_H4 : T",
+                    "c1_T : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c6_goal : T",
+                    "c1_H2 : forall _ : forall _ : P, R, T"
+                ],
+                "tactic_res": [
+                    "c10_goal : forall _ : P, R"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c10_goal : forall _ : P, R",
+                    "c4_H3 : forall _ : P, R",
+                    "c1_P : Prop",
+                    "c1_R : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro p .",
+                "tactic_args": [
+                    "c3_goal : forall _ : P, R"
+                ],
+                "tactic_res": [
+                    "c11_goal : R",
+                    "c11_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c11_goal : R",
+                    "c1_H0 : forall _ : Q, R"
+                ],
+                "tactic_res": [
+                    "c12_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c12_goal : Q",
+                    "c1_H : forall _ : P, Q"
+                ],
+                "tactic_res": [
+                    "c13_goal : P"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c13_goal : P",
+                    "c11_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "Q2",
+        "proof": [
+            {
+                "tactic_sig": "Lemma Q2 : Q .",
+                "tactic_sig_no_out_arg": "Lemma Q2 : Q .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : Q",
+                    "c1_H2 : forall _ : forall _ : P, R, T",
+                    "c1_H1 : forall (_ : forall _ : P, R) (_ : T), Q",
+                    "c1_H0 : forall _ : Q, R",
+                    "c1_H : forall _ : P, Q",
+                    "c1_T : Prop",
+                    "c1_R : Prop",
+                    "c1_Q : Prop",
+                    "c1_P : Prop"
+                ]
+            },
+            {
+                "tactic_sig": "assert ( H3 : _i -> _i ) .",
+                "tactic_sig_no_out_arg": "assert ( H3 : _i -> _i ) .",
+                "tactic_args": [
+                    "c1_goal : Q",
+                    "c1_P : Prop",
+                    "c1_R : Prop"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall _ : P, R",
+                    "c3_goal : Q",
+                    "c3_H3 : forall _ : P, R"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro p .",
+                "tactic_args": [
+                    "c2_goal : forall _ : P, R"
+                ],
+                "tactic_res": [
+                    "c4_goal : R",
+                    "c4_p : P"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c4_goal : R",
+                    "c1_H0 : forall _ : Q, R"
+                ],
+                "tactic_res": [
+                    "c5_goal : Q"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c5_goal : Q",
+                    "c1_H : forall _ : P, Q"
+                ],
+                "tactic_res": [
+                    "c6_goal : P"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c6_goal : P",
+                    "c4_p : P",
+                    "c1_P : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "assert ( H4 : _i ) .",
+                "tactic_sig_no_out_arg": "assert ( H4 : _i ) .",
+                "tactic_args": [
+                    "c3_goal : Q",
+                    "c1_T : Prop"
+                ],
+                "tactic_res": [
+                    "c7_goal : T",
+                    "c8_goal : Q",
+                    "c8_H4 : T"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c7_goal : T",
+                    "c1_H2 : forall _ : forall _ : P, R, T"
+                ],
+                "tactic_res": [
+                    "c9_goal : forall _ : P, R"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c9_goal : forall _ : P, R",
+                    "c3_H3 : forall _ : P, R",
+                    "c1_P : Prop",
+                    "c1_R : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c8_goal : Q",
+                    "c1_H1 : forall (_ : forall _ : P, R) (_ : T), Q"
+                ],
+                "tactic_res": [
+                    "c10_goal : forall _ : P, R",
+                    "c11_goal : T"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c10_goal : forall _ : P, R",
+                    "c3_H3 : forall _ : P, R",
+                    "c1_P : Prop",
+                    "c1_R : Prop"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c11_goal : T",
+                    "c8_H4 : T",
+                    "c1_T : Prop"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

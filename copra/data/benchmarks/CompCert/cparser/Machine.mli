@@ -6,10 +6,11 @@
 (*                                                                     *)
 (*  Copyright Institut National de Recherche en Informatique et en     *)
 (*  Automatique.  All rights reserved.  This file is distributed       *)
-(*  under the terms of the GNU General Public License as published by  *)
-(*  the Free Software Foundation, either version 2 of the License, or  *)
-(*  (at your option) any later version.  This file is also distributed *)
-(*  under the terms of the INRIA Non-Commercial License Agreement.     *)
+(*  under the terms of the GNU Lesser General Public License as        *)
+(*  published by the Free Software Foundation, either version 2.1 of   *)
+(*  the License, or  (at your option) any later version.               *)
+(*  This file is also distributed under the terms of the               *)
+(*  INRIA Non-Commercial License Agreement.                            *)
 (*                                                                     *)
 (* *********************************************************************)
 
@@ -39,8 +40,7 @@ type t = {
   sizeof_longdouble: int;
   sizeof_void: int option;
   sizeof_fun: int option;
-  sizeof_wchar: int;
-  wchar_signed: bool;
+  wchar_ikind: C.ikind;
   sizeof_size_t: int;
   sizeof_ptrdiff_t: int;
   sizeof_intreg: int;
@@ -71,7 +71,7 @@ val ilp32ll64 : t
 val i32lpll64 : t
 val il32pll64 : t
 val x86_32 : t
-val x86_32_macosx : t
+val x86_32_macos : t
 val x86_32_bsd : t
 val x86_64 : t
 val win32 : t
@@ -87,6 +87,7 @@ val arm_bigendian : t
 val rv32 : t
 val rv64 : t
 val aarch64 : t
+val aarch64_apple : t
 
 val gcc_extensions : t -> t
 val compcert_interpreter : t -> t

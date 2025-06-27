@@ -33,6 +33,9 @@ class PolicyName(Enum):
     def __str__(self):
         return self.value
 
+# ASSIST_LEMMAS_DIR = ".log/evals/benchmark/{}".format("Znumbertheory")
+# CURR_LEMMA = "curr_lemma.txt"
+
 @dataclass_json
 @dataclass
 class EnvSettings(object):

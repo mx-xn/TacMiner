@@ -5,8 +5,10 @@ root_dir = f"{__file__.split('src')[0]}"
 if root_dir not in sys.path:
     sys.path.append(root_dir)
 import copy
+import json
 import typing
 import os
+import re
 import time
 import logging
 from openai.error import InvalidRequestError
@@ -22,6 +24,90 @@ from src.prompt_generator.gpt_request_grammar import CoqGPTRequestGrammar, CoqGp
 from src.prompt_generator.dfs_agent_grammar import DfsAgentGrammar
 from src.prompt_generator.dfs_gpt_response_grammar import CoqGPTResponseDfsGrammar, CoqGptResponse, CoqGptResponseActions
 from src.tools.informal_proof_repo import InformalProofRepo
+
+with open('tactic_index.json') as f:
+    TACTIC_INDEX = json.load(f)
+
+def format_custom_tactic_for_prompt(
+        definition: str,
+        examples: list[dict],
+) -> str:
+    if not examples:
+        return f"Tactic definition: {definition}"
+
+    example = examples[0]
+
+    # Parse tactic_args into a list of (name, type) tuples
+    args_list = []
+    for arg in example.get('tactic_args', []):
+        if ' : ' in arg:
+            name, type_ = arg.split(' : ', 1)
+            if "_goal" in name:
+                args_list.append(("_" + name.split("_", 1)[1].strip(), type_.strip()))
+            else:
+                args_list.append((name.split("_", 1)[1].strip(), type_.strip()))
+
+    # Extract goal type and context variables while preserving order
+    goal_type = ''
+    context_vars = []
+    for name, type_ in args_list:
+        if name == '_goal':
+            goal_type = type_
+        else:
+            context_vars.append((name, type_))
+
+    tactic_sig = example.get('tactic_sig', '')
+
+    def replace_placeholders(tactic_sig, context_vars):
+        # Find all placeholders in the tactic signature in order
+        placeholders = re.findall(r'\b(_[a-zA-Z0-9_]*)\b', tactic_sig)
+        arg_names = [name for name, _ in context_vars]
+        # Replace each placeholder occurrence sequentially
+        def replacer(match):
+            # Use nonlocal variables to keep track of the index
+            if replacer.idx < len(arg_names):
+                replacement = arg_names[replacer.idx]
+                replacer.idx += 1
+            else:
+                replacement = match.group(0)  # Keep the original placeholder
+            return replacement
+        replacer.idx = 0
+        # Replace placeholders in the tactic_sig
+        tactic_sig = re.sub(r'\b(_[a-zA-Z0-9_]*)\b', replacer, tactic_sig)
+        return tactic_sig
+
+    # Modify the tactic signature if context variables are present
+    if context_vars:
+        action = replace_placeholders(tactic_sig, context_vars)
+    else:
+        action = tactic_sig
+
+    # Format the output string
+    output = f"Tactic definition: {definition}\n\nReal example of this tactic being used in context:\n"
+    output += f"  Goal: {goal_type}\n"
+    if context_vars:
+        output += "  Relevant Context:\n"
+        for name, type_ in context_vars:
+            output += f"  {name} : {type_}\n"
+    output += f"  Action: {action}\n"
+
+    return output
+
+
+def format_custom_tactics_header(available_tactics: list) -> str:
+    header = '### Available domain-specific tactics ###\n'
+    n = 0
+
+    for definition, examples in available_tactics:
+        if not examples:
+            continue
+        n += 1
+        header += format_custom_tactic_for_prompt(definition, examples)
+        header += '\n\n'
+    if not n:
+        return None
+
+    return header
 
 class DfsCoqGptPolicyPrompter(PolicyPrompter):
     _cache: typing.Dict[str, typing.Any] = {}
@@ -187,7 +273,8 @@ class DfsCoqGptPolicyPrompter(PolicyPrompter):
             self._rate_limiter.reset()
             self.logger.info("Rate limit reset now.")
 
-    def _get_prompt_message(self, request: CoqGptResponse, max_tokens_in_prompt: int) -> str:
+    def _get_prompt_message(self, request: CoqGptResponse, max_tokens_in_prompt: int, custom_tactics_header: str = None) -> str:
+    # def _get_prompt_message(self, request: CoqGptResponse, max_tokens_in_prompt: int) -> str:
         assert max_tokens_in_prompt > 0, "Max token per prompt must be greater than 0, please decrease max_tokens_per_action"
         retrieve_prompt_examples = self._retrieve_prompt_examples and request.training_data_format is not None and len(request.training_data_format.start_goals) > 0
 
@@ -222,6 +309,9 @@ class DfsCoqGptPolicyPrompter(PolicyPrompter):
         custom_system_messages = []
         custom_system_message_count = 0
         characters_per_token = 4.0
+
+        # todo: modify training data format here .all_useful_defns_theorems
+
         if retrieve_prompt_examples:
             full_example_theorems = [
                 self.coq_gpt_response_grammar.format_as_per_grammar(
@@ -321,12 +411,24 @@ class DfsCoqGptPolicyPrompter(PolicyPrompter):
         prompt_token_count = self._gpt_access.num_tokens_from_messages(prompt_messages)
         assert prompt_token_count <= max_token_for_problem, f"Prompt token count {prompt_token_count} is greater than max token per prompt {max_token_for_problem}"
         assert prompt_token_count + custom_system_message_count <= max_tokens_in_prompt, f"Prompt token count {prompt_token_count} + custom system message token count {custom_system_message_count} is greater than max token per prompt {max_tokens_in_prompt}"
+
+        if custom_tactics_header is not None:
+            custom_tactics_prefix = \
+                    (f'In your proof, you can use the following custom tactics that were defined for this particular domain:\n' +
+                     f'{custom_tactics_header}' +
+                     f'\nWhen used properly, these tactics can save you several steps in your proof, and increase your chances of success, so use them whenever appropriate.\n' +
+                     f'If the most promising custom tactic fails to apply, *EXHAUSTIVELY* use standard Coq tactics to incrementally TRANSFORM the goal into an APPLICABLE STATE for custom tactic to succeed. ' +
+                      'If it still fails after EXHAUSTIVE attempt, try to prove without custom tactics.\n')
+            prompt_message['content'] = custom_tactics_prefix + '\n\n' + prompt_message['content']
         return prompt_message, prompt_token_count, custom_system_messages, custom_system_message_count
 
-    def run_prompt(self, request: CoqGptResponse) -> list:
+    # def run_prompt(self, request: CoqGptResponse) -> list:
+    def run_prompt(self, request: CoqGptResponse, custom_tactics_header: str = None) -> list:
         max_tokens_in_prompt = self._max_token_per_prompt - self.system_token_count - self._max_tokens_per_action
-        prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
+        # prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
+        prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt, custom_tactics_header=custom_tactics_header)
         messages, total_token_count = self._constrain_tokens_in_history(prompt_message, custom_system_msg, custom_system_msg_cnt, prompt_token_count, self._max_tokens_per_action)
+        print("messages: %s" % messages)
         success = False
         retries = 3
         time_to_sleep = 60
@@ -354,6 +456,7 @@ class DfsCoqGptPolicyPrompter(PolicyPrompter):
                     temperature=temperature,
                     max_tokens=tokens_to_generate,
                     stop=["[END]"])
+                print("debugging_mx response messages: %s" % responses)
                 request_end_time = time.time()
                 time_taken = request_end_time - request_start_time
                 apporx_output_tokens = usage["total_tokens"] - total_token_count
@@ -366,7 +469,7 @@ class DfsCoqGptPolicyPrompter(PolicyPrompter):
                     self.logger.info(f"Retrying with {tokens_to_generate} tokens. Earlier response was not complete for reason: {reason}.")
                     self.logger.info(f"Incomplete Response messages: \n{responses}")
                     max_token_per_prompt = self._max_token_per_prompt - self.system_token_count - tokens_to_generate
-                    prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_token_per_prompt) # Re-generate the prompt message within new token limit
+                    prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_token_per_prompt, custom_tactics_header=custom_tactics_header) # Re-generate the prompt message within new token limit
                     messages, total_token_count = self._constrain_tokens_in_history(prompt_message, custom_system_msg, custom_system_msg_cnt, prompt_token_count, tokens_to_generate)
                     # temperature = max(max_temp, temperature + temp_factor)
                     # don't change temperature for now
@@ -401,9 +504,11 @@ class DfsCoqGptPolicyPrompter(PolicyPrompter):
 
     def parse_response(self, responses: list) -> typing.List[typing.Tuple[ProofAction, float]]:
         message_contents =  self.agent_grammar.parse_openai_messages(responses, "assistant")
+        # print("debugging_mx message contents: ")
         actions = []
         total = len(message_contents)
         for idx, message in enumerate(message_contents):
+            # print(message) #debugging_mx
             try:
                 coq_gpt_request, parsed_message = self.coq_gpt_request_grammar.get_openai_request(message)
                 open_ai_message = self.agent_grammar.get_openai_main_message_from_string(parsed_message, "assistant")
@@ -473,12 +578,29 @@ class DfsCoqGptPolicyPrompter(PolicyPrompter):
         incorrect_action_repeat_count = 0
         while not success and tries > 0:
             try:
-                responses = self.run_prompt(gpt_response)
+                # responses = self.run_prompt(gpt_response)
+                # Should look up the index with state.theorem_name
+                if state.theorem_name in TACTIC_INDEX['theorem_file']:
+                    theorem_file = TACTIC_INDEX['theorem_file'][state.theorem_name]
+                    custom_tactics = TACTIC_INDEX['custom_tactics'].get(theorem_file)
+                    custom_tactics_declared_before_this_theorem = custom_tactics.get(state.theorem_name)
+                    available_tactics = [
+                        (t['definition'], custom_tactics_declared_before_this_theorem['examples'][t['name']])
+                        for t in custom_tactics_declared_before_this_theorem['available_tactics']
+                    ]
+                    custom_header = format_custom_tactics_header(available_tactics)
+                else:
+                    custom_header = None
+                responses = self.run_prompt(gpt_response, custom_tactics_header=custom_header)
                 actions_tuple = self.parse_response(responses)
                 chosen_message = actions_tuple[0][0].original_message # Selecting only top action here
                 self.add_to_history(chosen_message)
+                # print("debugging_mx\n responses: %s, \n chosen message: %s" % (responses, chosen_message))
                 if self.last_message_has_error:
+                    # print("debugging_mx has error?: true")
                     self.last_message_has_error = False
+                # else: 
+                    # print("debugging_mx has error?: false")
 
                 if (self.incorrect_repeat_count > 0) and (len(incorrect_steps) > 0 or (gpt_response.last_step is not None and not gpt_response.success)):
                     # Create invalid requests first and then match with the chosen one

@@ -1,0 +1,36 @@
+name: bignums
+num_files: 1
+language: COQ
+few_shot_data_path_for_retrieval: #.log/tools/coq_raw_proofs/data/benchmarks/CompCert/2023-09-06-03-44-06/CompCert/train
+few_shot_metadata_filename_for_retrieval: #single.meta.json
+dfs_data_path_for_retrieval: #.log/run_data_generation_transforms/data/benchmarks/CompCert/train
+dfs_metadata_filename_for_retrieval: #local.meta.json
+datasets:
+  - project: ../raw-data/bignums
+    files:
+      # - path: BigZ/ZMake.v
+      #   theorems:
+      #     # BS-1, PN-2, TM-4, total 5
+      #     - spec_norm_pos          # BS-failed,  PN failed,  TM success
+      #     - spec_norm_pos_pos      # BS-failed,  PN failed,  TM failed
+      #     - spec_ltb               # BS-failed,  PN failed,  TM success
+      #     - spec_leb               # BS-failed,  PN success, TM success
+      #     - spec_opp               # BS-success, PN success, TM success, Pass@1 = true
+      - path: BigQ/QMake.v
+        theorems:
+          # BS-1, PN-1, TM-4, total 6
+          - spec_power_norm        # BS-failed,  PN failed,  TM-failed
+          - spec_red               # BS-success, PN success, TM-sucesss, Pass@1 = false
+          - strong_spec_red        # BS-failed,  PN failed,  TM-success
+          - spec_norm_denum        # BS-failed,  PN failed,  TM-success
+          - strong_spec_check_int  # BS-failed,  PN failed,  TM-failed
+          - strong_spec_of_Q       # BS-failed,  PN failed,  TM-success
+      # - path: BigN/NMake.v
+      #   theorems:
+      #     # BS-0, PN-2, TM-2, total 6
+      #     - spec_testbit    # BS-failed, PN success, TM-success
+      #     - spec_div2       # BS-failed, PN failed,  TM-failed
+      #     - spec_ltb        # BS-failed, PN failed,  TM-success
+      #     - spec_max        # BS-failed, PN-success, TM-success
+      #     - spec_pred0      # BS-failed, PN-failed,  TM-failed
+      #     - spec_sub0       # BS-failed, PN-failed,  TM-failed

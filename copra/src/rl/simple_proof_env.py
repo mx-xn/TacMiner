@@ -328,8 +328,10 @@ class ProofEnv(Env):
 
     def _run_tactics(self, tactics: typing.List[str], state: ProofState, action: ProofAction, env_info: ProofEnvInfo):
         env_info = copy.deepcopy(env_info)
+        # debugging_mx
         tactic_line_num, ran_successfully = self._dynamic_proof_executor.run_tactics(tactics)
         proof_progressed = False
+        # print("in run_tactics of simple proof env, ran successfully? %s" % ran_successfully)
         if ran_successfully:
             previous_proof_state = state
             previous_proof_state.training_data_format.proof_steps = copy.deepcopy(tactics)
@@ -511,7 +513,7 @@ class ProofEnv(Env):
                 lemma_name = self._dynamic_proof_executor.get_lemma_name_if_running()
                 if lemma_name is not None:
                     lemma_name = lemma_name.strip()
-                lemma_found = lemma_name.startswith(self.lemma_name) if lemma_name is not None else False
+                lemma_found = lemma_name == self.lemma_name if lemma_name is not None else False
                 if not lemma_found:
                     _ = list(self._dynamic_proof_executor.run_to_finish_lemma_return_exec())
                     if self._dynamic_proof_executor.execution_complete:
@@ -529,7 +531,7 @@ class ProofEnv(Env):
                 lemma_name = self._dynamic_proof_executor.get_lemma_name_if_running()
                 if lemma_name is not None:
                     lemma_name = lemma_name.strip()
-                lemma_found = lemma_name.startswith(self.lemma_name) if lemma_name is not None else False
+                lemma_found = lemma_name == self.lemma_name if lemma_name is not None else False
                 if not lemma_found:
                     _ = list(self._dynamic_proof_executor.run_to_finish_lemma_return_exec())
                     if self._dynamic_proof_executor.execution_complete:

@@ -40,14 +40,14 @@ Lemma ireg_of_not_R14:
 Proof.
   intros. erewrite <- ireg_of_eq; eauto with asmgen.
 Qed.
-Hint Resolve ireg_of_not_R14: asmgen.
+Global Hint Resolve ireg_of_not_R14: asmgen.
 
 Lemma ireg_of_not_R14':
   forall m r, ireg_of m = OK r -> r <> IR14.
 Proof.
   intros. generalize (ireg_of_not_R14 _ _ H). congruence.
 Qed.
-Hint Resolve ireg_of_not_R14': asmgen.
+Global Hint Resolve ireg_of_not_R14': asmgen.
 
 (** [undef_flags] and [nextinstr_nf] *)
 
@@ -75,7 +75,7 @@ Proof.
   intros; red; intros; subst; discriminate.
 Qed.
 
-Hint Resolve data_if_preg if_preg_not_PC: asmgen.
+Global Hint Resolve data_if_preg if_preg_not_PC: asmgen.
 
 Lemma nextinstr_nf_inv:
   forall r rs, if_preg r = true -> (nextinstr_nf rs)#r = rs#r.
@@ -352,15 +352,15 @@ Proof.
   apply exec_straight_one. simpl; eauto. auto. split; intros; Simpl.
   econstructor; split.
   eapply exec_straight_two. simpl; reflexivity. simpl; reflexivity. auto. auto.
-  split; intros; Simpl. simpl. f_equal. rewrite Int.zero_ext_and by omega.
+  split; intros; Simpl. simpl. f_equal. rewrite Int.zero_ext_and by lia.
   rewrite Int.and_assoc. change 65535 with (two_p 16 - 1). rewrite Int.and_idem.
   apply Int.same_bits_eq; intros.
   rewrite Int.bits_or, Int.bits_and, Int.bits_shl, Int.testbit_repr by auto.
-  rewrite Ztestbit_two_p_m1 by omega. change (Int.unsigned (Int.repr 16)) with 16.
+  rewrite Ztestbit_two_p_m1 by lia. change (Int.unsigned (Int.repr 16)) with 16.
   destruct (zlt i 16).
   rewrite andb_true_r, orb_false_r; auto.
-  rewrite andb_false_r; simpl. rewrite Int.bits_shru by omega.
-  change (Int.unsigned (Int.repr 16)) with 16. rewrite zlt_true by omega. f_equal; omega.
+  rewrite andb_false_r; simpl. rewrite Int.bits_shru by lia.
+  change (Int.unsigned (Int.repr 16)) with 16. rewrite zlt_true by lia. f_equal; lia.
 }
   destruct (Nat.leb l1 l2).
 { (* mov - orr* *)
@@ -696,10 +696,10 @@ Lemma int_not_lt:
 Proof.
   intros. unfold Int.lt. rewrite int_signed_eq. unfold proj_sumbool.
   destruct (zlt (Int.signed y) (Int.signed x)).
-  rewrite zlt_false. rewrite zeq_false. auto. omega. omega.
+  rewrite zlt_false. rewrite zeq_false. auto. lia. lia.
   destruct (zeq (Int.signed x) (Int.signed y)).
-  rewrite zlt_false. auto. omega.
-  rewrite zlt_true. auto. omega.
+  rewrite zlt_false. auto. lia.
+  rewrite zlt_true. auto. lia.
 Qed.
 
 Lemma int_lt_not:
@@ -713,10 +713,10 @@ Lemma int_not_ltu:
 Proof.
   intros. unfold Int.ltu, Int.eq.
   destruct (zlt (Int.unsigned y) (Int.unsigned x)).
-  rewrite zlt_false. rewrite zeq_false. auto. omega. omega.
+  rewrite zlt_false. rewrite zeq_false. auto. lia. lia.
   destruct (zeq (Int.unsigned x) (Int.unsigned y)).
-  rewrite zlt_false. auto. omega.
-  rewrite zlt_true. auto. omega.
+  rewrite zlt_false. auto. lia.
+  rewrite zlt_true. auto. lia.
 Qed.
 
 Lemma int_ltu_not:
@@ -1197,17 +1197,17 @@ Lemma transl_op_correct_same:
 Proof.
   intros until v; intros TR EV NOCMP.
   unfold transl_op in TR; destruct op; ArgsInv; simpl in EV; inv EV; try (TranslOpSimpl; fail).
-  (* Omove *)
+- (* Omove *)
   destruct (preg_of res) eqn:RES; try discriminate;
   destruct (preg_of m0) eqn:ARG; inv TR.
   econstructor; split. apply exec_straight_one; simpl; eauto. intuition Simpl.
   econstructor; split. apply exec_straight_one; simpl; eauto. intuition Simpl.
-  (* Ointconst *)
+- (* Ointconst *)
   generalize (loadimm_correct x i k rs m). intros [rs' [A [B C]]].
   exists rs'; auto with asmgen.
-  (* Oaddrstack *)
+- (* Oaddrstack *)
   contradiction.
-  (* Ocast8signed *)
+- (* Ocast8signed *)
   destruct Archi.thumb2_support.
   econstructor; split. apply exec_straight_one; simpl; eauto. intuition Simpl.
   destruct (rs x0); auto; simpl. rewrite Int.shru_zero. reflexivity.
@@ -1218,9 +1218,9 @@ Proof.
   split. unfold rs2; Simpl. unfold rs1; Simpl.
   unfold Val.shr, Val.shl; destruct (rs x0); auto.
   change (Int.ltu (Int.repr 24) Int.iwordsize) with true; simpl.
-  f_equal. symmetry. apply (Int.sign_ext_shr_shl 8). compute; auto.
+  f_equal. symmetry. apply (Int.sign_ext_shr_shl 8). compute; intuition congruence.
   intros. unfold rs2, rs1; Simpl.
-  (* Ocast16signed *)
+- (* Ocast16signed *)
   destruct Archi.thumb2_support.
   econstructor; split. apply exec_straight_one; simpl; eauto. intuition Simpl.
   destruct (rs x0); auto; simpl. rewrite Int.shru_zero. reflexivity.
@@ -1231,46 +1231,50 @@ Proof.
   split. unfold rs2; Simpl. unfold rs1; Simpl.
   unfold Val.shr, Val.shl; destruct (rs x0); auto.
   change (Int.ltu (Int.repr 16) Int.iwordsize) with true; simpl.
-  f_equal. symmetry. apply (Int.sign_ext_shr_shl 16). compute; auto.
+  f_equal. symmetry. apply (Int.sign_ext_shr_shl 16). compute; intuition congruence.
   intros. unfold rs2, rs1; Simpl.
-  (* Oaddimm *)
+- (* Oaddimm *)
   generalize (addimm_correct x x0 i k rs m).
   intros [rs' [A [B C]]].
   exists rs'; auto with asmgen.
-  (* Orsbimm *)
+- (* Orsbimm *)
   generalize (rsubimm_correct x x0 i k rs m).
   intros [rs' [A [B C]]].
   exists rs'; auto with asmgen.
-  (* divs *)
-Local Transparent destroyed_by_op.
-  econstructor. split. apply exec_straight_one. simpl. rewrite H0. reflexivity. auto.
-  split. Simpl. simpl; intros. intuition Simpl.
-  (* divu *)
-  econstructor. split. apply exec_straight_one. simpl. rewrite H0. reflexivity. auto.
-  split. Simpl. simpl; intros. intuition Simpl.
-  (* Oandimm *)
+- (* divs *)
+  Local Transparent destroyed_by_op.
+  unfold destroyed_by_op.
+  destruct (Archi.hardware_idiv tt) eqn:?; monadInv EQ3;
+  econstructor; split; try apply exec_straight_one; simpl; try rewrite H0; try rewrite Heqb; auto;split; Simpl;
+  intros; intuition Simpl.
+- (* divu *)
+  unfold destroyed_by_op.
+  destruct (Archi.hardware_idiv tt) eqn:?; monadInv EQ3;
+  econstructor; split; try apply exec_straight_one; simpl; try rewrite H0; try rewrite Heqb; auto;split; Simpl;
+  intros; intuition Simpl.
+- (* Oandimm *)
   generalize (andimm_correct x x0 i k rs m).
   intros [rs' [A [B C]]].
   exists rs'; auto with asmgen.
-  (* Oorimm *)
+- (* Oorimm *)
   generalize (orimm_correct x x0 i k rs m).
   intros [rs' [A [B C]]].
   exists rs'; auto with asmgen.
-  (* Oxorimm *)
+- (* Oxorimm *)
   generalize (xorimm_correct x x0 i k rs m).
   intros [rs' [A [B C]]].
   exists rs'; auto with asmgen.
-  (* Oshrximm *)
+- (* Oshrximm *)
   destruct (rs x0) eqn: X0; simpl in H0; try discriminate.
   destruct (Int.ltu i (Int.repr 31)) eqn: LTU; inv H0.
   revert EQ2. predSpec Int.eq Int.eq_spec i Int.zero; intros EQ2.
-  (* i = 0 *)
++ (* i = 0 *)
   inv EQ2. econstructor.
   split. apply exec_straight_one. simpl. reflexivity. auto.
   split. Simpl. unfold Int.shrx. rewrite Int.shl_zero. unfold Int.divs.
   change (Int.signed Int.one) with 1. rewrite Z.quot_1_r. rewrite Int.repr_signed. auto.
   intros. Simpl.
-  (* i <> 0 *)
++ (* i <> 0 *)
   inv EQ2.
   assert (LTU': Int.ltu (Int.sub Int.iwordsize i) Int.iwordsize = true).
   {
@@ -1279,16 +1283,16 @@ Local Transparent destroyed_by_op.
     rewrite Int.unsigned_repr. apply zlt_true.
     assert (Int.unsigned i <> 0).
     { red; intros; elim H. rewrite <- (Int.repr_unsigned i). rewrite H1; reflexivity. }
-    omega.
+    lia.
     change (Int.unsigned (Int.repr 31)) with (Int.zwordsize - 1) in H0.
-    generalize Int.wordsize_max_unsigned; omega.
+    generalize Int.wordsize_max_unsigned; lia.
   }
   assert (LTU'': Int.ltu i Int.iwordsize = true).
   {
     generalize (Int.ltu_inv _ _ LTU). intros.
     unfold Int.ltu. rewrite Int.unsigned_repr_wordsize. apply zlt_true.
     change (Int.unsigned (Int.repr 31)) with (Int.zwordsize - 1) in H0.
-    omega.
+    lia.
   }
   set (j := Int.sub Int.iwordsize i) in *.
   set (rs1 := nextinstr_nf (rs#IR14 <- (Val.shr (Vint i0) (Vint (Int.repr 31))))).
@@ -1306,34 +1310,34 @@ Local Transparent destroyed_by_op.
   rewrite LTU'; simpl. rewrite LTU''; simpl.
   f_equal. symmetry. apply Int.shrx_shr_2. assumption.
   intros. unfold rs3; Simpl. unfold rs2; Simpl. unfold rs1; Simpl.
-  (* intoffloat *)
+- (* intoffloat *)
   econstructor; split. apply exec_straight_one; simpl. rewrite H0; simpl. eauto. auto.
 Transparent destroyed_by_op.
   simpl. intuition Simpl.
-  (* intuoffloat *)
+- (* intuoffloat *)
   econstructor; split. apply exec_straight_one; simpl. rewrite H0; simpl. eauto. auto.
   simpl. intuition Simpl.
-  (* floatofint *)
+- (* floatofint *)
   econstructor; split. apply exec_straight_one; simpl. rewrite H0; simpl. eauto. auto.
   intuition Simpl.
-  (* floatofintu *)
+- (* floatofintu *)
   econstructor; split. apply exec_straight_one; simpl. rewrite H0; simpl. eauto. auto.
   intuition Simpl.
-  (* intofsingle *)
+- (* intofsingle *)
   econstructor; split. apply exec_straight_one; simpl. rewrite H0; simpl. eauto. auto.
   simpl. intuition Simpl.
-  (* intuofsingle *)
+- (* intuofsingle *)
   econstructor; split. apply exec_straight_one; simpl. rewrite H0; simpl. eauto. auto.
   simpl. intuition Simpl.
-  (* singleofint *)
+- (* singleofint *)
   econstructor; split. apply exec_straight_one; simpl. rewrite H0; simpl. eauto. auto.
   intuition Simpl.
-  (* singleofintu *)
+- (* singleofintu *)
   econstructor; split. apply exec_straight_one; simpl. rewrite H0; simpl. eauto. auto.
   intuition Simpl.
-  (* Ocmp *)
+- (* Ocmp *)
   contradiction.
-  (* Osel *)
+- (* Osel *)
   contradiction.
 Qed.
 
@@ -1377,21 +1381,33 @@ Proof.
   assert (D2: data_preg (preg_of m1) = true) by auto with asmgen.
   destruct (preg_of res) eqn:RES; monadInv H.
 + inv EQ2. rewrite (ireg_of_eq _ _ EQ), (ireg_of_eq _ _ EQ1) in *.
-  exploit transl_cond_correct; eauto. instantiate (1 := rs). instantiate (1 := m). intros [rs1 [A [B C]]].
-  econstructor; split.
-  eapply exec_straight_trans. eexact A. apply exec_straight_one. simpl; eauto. auto.
-  split; intros; Simpl.
-  rewrite ! C by auto.
-  destruct (eval_condition c0 rs ## (preg_of ## args) m) as [b|]; simpl; auto.
-  destruct B as [B1 B2]; rewrite B1. destruct b; apply Val.lessdef_normalize.
+  destruct (ireg_eq x x0); inv H0.
+  * econstructor; split.
+    apply exec_straight_one; simpl; eauto.
+    split; intros; Simpl.
+    destruct (eval_condition c0 rs ## (preg_of ## args) m); simpl; eauto.
+    destruct b; eauto using Val.lessdef_normalize.
+  * exploit transl_cond_correct; eauto. instantiate (1 := rs). instantiate (1 := m). intros [rs1 [A [B C]]].
+    econstructor; split.
+    eapply exec_straight_trans. eexact A. apply exec_straight_one. simpl; eauto. auto.
+    split; intros; Simpl.
+    rewrite ! C by auto.
+    destruct (eval_condition c0 rs ## (preg_of ## args) m) as [b|]; simpl; auto.
+    destruct B as [B1 B2]; rewrite B1. destruct b; apply Val.lessdef_normalize.
 + inv EQ2. rewrite (freg_of_eq _ _ EQ), (freg_of_eq _ _ EQ1) in *.
-  exploit transl_cond_correct; eauto. instantiate (1 := rs). instantiate (1 := m). intros [rs1 [A [B C]]].
-  econstructor; split.
-  eapply exec_straight_trans. eexact A. apply exec_straight_one. simpl; eauto. auto.
-  split; intros; Simpl.
-  rewrite ! C by auto.
-  destruct (eval_condition c0 rs ## (preg_of ## args) m) as [b|]; simpl; auto.
-  destruct B as [B1 B2]; rewrite B1. destruct b; apply Val.lessdef_normalize.
+  destruct (freg_eq x x0); inv H0.
+  * econstructor; split.
+    apply exec_straight_one; simpl; eauto.
+    split; intros; Simpl.
+    destruct (eval_condition c0 rs ## (preg_of ## args) m); simpl; eauto.
+    destruct b; eauto using Val.lessdef_normalize.
+  * exploit transl_cond_correct; eauto. instantiate (1 := rs). instantiate (1 := m). intros [rs1 [A [B C]]].
+    econstructor; split.
+    eapply exec_straight_trans. eexact A. apply exec_straight_one. simpl; eauto. auto.
+    split; intros; Simpl.
+    rewrite ! C by auto.
+    destruct (eval_condition c0 rs ## (preg_of ## args) m) as [b|]; simpl; auto.
+    destruct B as [B1 B2]; rewrite B1. destruct b; apply Val.lessdef_normalize.
 Qed.
 
 (** Translation of loads and stores. *)
@@ -1549,17 +1565,8 @@ Lemma transl_load_correct:
    /\ rs'#(preg_of dst) = v
    /\ forall r, data_preg r = true -> r <> preg_of dst -> rs'#r = rs#r.
 Proof.
-  intros. destruct chunk; simpl in H.
-  eapply transl_load_int_correct; eauto.
-  eapply transl_load_int_correct; eauto.
-  eapply transl_load_int_correct; eauto.
-  eapply transl_load_int_correct; eauto.
-  eapply transl_load_int_correct; eauto.
-  discriminate.
-  eapply transl_load_float_correct; eauto.
-  eapply transl_load_float_correct; eauto.
-  discriminate.
-  discriminate.
+  intros. destruct chunk; simpl in H; try discriminate;
+  eauto using transl_load_int_correct, transl_load_float_correct.
 Qed.
 
 Lemma transl_store_correct:
@@ -1571,21 +1578,8 @@ Lemma transl_store_correct:
       exec_straight ge fn c rs m k rs' m'
    /\ forall r, data_preg r = true -> preg_notin r (destroyed_by_store chunk addr) -> rs'#r = rs#r.
 Proof.
-  intros. destruct chunk; simpl in H.
-- assert (Mem.storev Mint8unsigned m a (rs (preg_of src)) = Some m').
-    rewrite <- H1. destruct a; simpl; auto. symmetry. apply Mem.store_signed_unsigned_8.
-  clear H1. eapply transl_store_int_correct; eauto.
-- eapply transl_store_int_correct; eauto.
-- assert (Mem.storev Mint16unsigned m a (rs (preg_of src)) = Some m').
-    rewrite <- H1. destruct a; simpl; auto. symmetry. apply Mem.store_signed_unsigned_16.
-  clear H1. eapply transl_store_int_correct; eauto.
-- eapply transl_store_int_correct; eauto.
-- eapply transl_store_int_correct; eauto.
-- discriminate.
-- eapply transl_store_float_correct; eauto.
-- eapply transl_store_float_correct; eauto.
-- discriminate.
-- discriminate.
+  intros. destruct chunk; simpl in H; try discriminate;
+  eauto using transl_store_int_correct, transl_store_float_correct.
 Qed.
 
 End CONSTRUCTORS.

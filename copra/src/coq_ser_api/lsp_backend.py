@@ -215,12 +215,14 @@ class CoqLSPyInstance(CoqBackend):
 
     def addStmt(self, stmt: str, timeout:Optional[int] = None,
                 force_update_nonfg_goals: bool = False) -> None:
+        print("in addStmt of lsp_backend")
         del force_update_nonfg_goals
         self.addStmt_noupdate(stmt, timeout)
         self.getProofContext()
 
     def addStmt_noupdate(self, stmt: str, timeout:Optional[int] = None) -> None:
         self.doc_sentences.append(stmt.strip("\n"))
+        print("appending stmtm in addStmt_noupdate")
         self.state_dirty = True
 
     def cancelLastStmt(self, cancelled: str, force_update_nonfg_goals: bool = False) -> None:
@@ -238,7 +240,9 @@ class CoqLSPyInstance(CoqBackend):
             return self.cached_context
 
         doc = "\n".join(self.doc_sentences)
+        # print("doc: %s" % doc)
         file_uri = os.path.join(self.root_uri, self.open_doc)
+        print("file_uri: %s" % file_uri)
         self.doc_version += 1
         self.lsp_client.didChange(
             {"uri": file_uri,
@@ -277,6 +281,7 @@ class CoqLSPyInstance(CoqBackend):
         line = len(doc.split("\n")) - 1
         character = len(doc.split("\n")[-1]) if len(doc) > 0 else 0
         try:
+            # mx_here
             response = self.endpoint.call_method(
                 "proof/goals", textDocument={"uri": file_uri},
                 position={"line": line,

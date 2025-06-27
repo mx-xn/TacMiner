@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 
 import static main.Main.getLibCandidatesEnumeration;
 import static main.config.Path.compressionEvalPath;
+import static main.config.Path.evalPath;
+import static main.config.Path.RQ5;
 import static main.decode.utils.writeTo;
 
 public class Ablation {
@@ -35,15 +37,17 @@ public class Ablation {
 
     public void runExperiments() throws IOException {
         if (this.ablationType != AblationType.NONE) {
+            String ablType = ablationType == AblationType.GRAMMAR ? "grammar" : "pruning";
+            System.out.println("running ablation (no " + ablType + ") for " + config.topic);
             Set<CoqProof> candidateTactics = new LinkedHashSet<>();
             List<Long> timePerTac = new ArrayList<>();
             getLibCandidatesEnumeration(proofs, trainingProofs, candidateTactics, true,
                     this.ablationType, timePerTac, this.config.timeout, this.config.topic);
 
             // File name
-            String ablType = ablationType == AblationType.GRAMMAR ? "grammar" : "pruning";
-            String fileName = compressionEvalPath + config.domain + "-compressed/ablation/" + ablType + "/" +
-                    config.topic + "_" + config.timeout + ".csv";
+            // String fileName = compressionEvalPath + config.domain + "-compressed/ablation/" + ablType + "/" +
+            //         config.topic + "_" + config.timeout + ".csv";
+            String fileName = evalPath + RQ5 + "no-" + ablType + "-abl/" + config.domain + "/" + config.topic + ".csv";
 
             // Write to CSV file
             StringBuilder sb = new StringBuilder("numTacs,Time\n");
@@ -52,6 +56,7 @@ public class Ablation {
                 sb.append((i + 1) + "," + timePerTac.get(i) + "\n");
             }
             writeTo(sb.toString(), fileName);
+            System.out.println("finished running ablation (no " + ablType + ") for " + config.topic);
         }
     }
 
@@ -80,10 +85,10 @@ public class Ablation {
             }
             double avrgHoles = (double) totalHoles / this.holeMap.size();
             double avrgInsts = (double) totalInsts / this.instMap.size();
-            System.out.println("#h: " + totalHoles + "\n" +
-                    "#i: " + totalInsts + "\n" +
-                    "avrg #h: " + avrgHoles + "\n" +
-                    "avrg #i: " + avrgInsts);
+            // System.out.println("#h: " + totalHoles + "\n" +
+            //         "#i: " + totalInsts + "\n" +
+            //         "avrg #h: " + avrgHoles + "\n" +
+            //         "avrg #i: " + avrgInsts);
         }
 
         @Override
@@ -173,7 +178,7 @@ public class Ablation {
             // instantiation rule for the starting dummy root A?? := ({∅}, {∅}, {})
             instMap.put(new Abstraction.Hole(null, new HashSet<>(Arrays.asList(-1))),
                     distinctTacSigs.stream().map(s -> new Abstraction.Instantiation(null, s, new HashSet<>(Arrays.asList(Arrays.asList(-1, -1))))).collect(Collectors.toList()));
-            System.out.println(instMap.get(new Abstraction.Hole(null, new HashSet<>(Arrays.asList(-1)))).size());
+            // System.out.println(instMap.get(new Abstraction.Hole(null, new HashSet<>(Arrays.asList(-1)))).size());
             return instMap;
         }
 

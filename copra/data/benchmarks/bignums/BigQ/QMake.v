@@ -13,7 +13,6 @@
 Require Import BigNumPrelude Lia.
 Require Import QArith Qcanon Qpower Qminmax.
 Require Import NSig ZSig QSig.
-Require Import Depend. 
 
 (** We will build rationals out of an implementation of integers [ZType]
     for numerators and an implementation of natural numbers [NType] for
@@ -85,6 +84,7 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
    | _ => idtac
   end.
 
+#[global]
  Hint Rewrite
   Z.add_0_r Z.add_0_l Z.mul_0_r Z.mul_0_l Z.mul_1_r Z.mul_1_l
   ZZ.spec_0 NN.spec_0 ZZ.spec_1 NN.spec_1 ZZ.spec_m1 ZZ.spec_opp
@@ -101,11 +101,19 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
   rewrite ?Z2Pos.id by auto;
   auto.
 
- Theorem strong_spec_of_Q: forall q: Q, [of_Q q] = q.
+Ltac custom28  :=  simpl; [rewrite ?ZZ.spec_of_Z; [destr_eqb; [now rewrite ?NN.spec_0, ?NN.spec_of_N | now rewrite ?NN.spec_0, ?NN.spec_of_N | .. ] | .. ] | .. ].
+Theorem strong_spec_of_Q: forall q: Q, [of_Q q] = q.
+Proof.
+  intros ( x, y ). destruct y as [  | | ]. 
+    - custom28.
+    - custom28.
+    - simpl. rewrite ?ZZ.spec_of_Z. auto.
+ Qed.
+ (* Theorem strong_spec_of_Q: forall q: Q, [of_Q q] = q.
  Proof.
  intros(x,y); destruct y; simpl; rewrite ?ZZ.spec_of_Z; auto;
   destr_eqb; now rewrite ?NN.spec_0, ?NN.spec_of_N.
- Qed.
+ Qed. *)
 
  Theorem spec_of_Q: forall q: Q, [of_Q q] == q.
  Proof.
@@ -193,7 +201,17 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
   | Gt => zero  (* n/0 encodes 0 *)
   end.
 
- Theorem strong_spec_check_int : forall n d, [check_int n d] = [Qq n d].
+  Ltac custom25 H0 H1 H2 :=  intros H0 H1; [unfold H2; [nzsimpl; [destr_zcompare; [ | .. ] | .. ] | .. ] | .. ].
+  Ltac custom81  :=  qsimpl; [congruence | .. ].
+  Theorem strong_spec_check_int : forall n d, [check_int n d] = [Qq n d].
+  Proof.
+  custom25 n d check_int. 
+     - simpl. rewrite <- H. custom81.
+     - reflexivity.
+     - qsimpl. lia.
+  Qed.
+
+ (* Theorem strong_spec_check_int : forall n d, [check_int n d] = [Qq n d].
  Proof.
  intros; unfold check_int.
  nzsimpl.
@@ -201,7 +219,7 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
  simpl. rewrite <- H; qsimpl. congruence.
  reflexivity.
  qsimpl. lia.
- Qed.
+ Qed. *)
 
  (** Normalisation function *)
 
@@ -220,13 +238,16 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
  assert (Hq := NN.spec_pos q).
  nzsimpl.
  destr_zcompare.
+ (* Eq *)
  rewrite strong_spec_check_int; reflexivity.
+ (* Lt *)
  rewrite strong_spec_check_int.
  qsimpl.
  generalize (Zgcd_div_pos (ZZ.to_Z p) (NN.to_Z q)). lia.
- replace (NN.to_Z q) with 0%Z in * by assumption.
+ replace (NN.to_Z q) with 0%Z in * by (symmetry; assumption).
  rewrite Zdiv_0_l in *; auto with zarith.
  apply Zgcd_div_swap0; lia.
+ (* Gt *)
  qsimpl.
  assert (H' : Z.gcd (ZZ.to_Z p) (NN.to_Z q) = 0%Z).
   generalize (Z.gcd_nonneg (ZZ.to_Z p) (NN.to_Z q)); lia.
@@ -236,14 +257,17 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
  Theorem strong_spec_norm : forall p q, [norm p q] = Qred [Qq p q].
  Proof.
  intros.
- replace (Qred [Qq p q]) with (Qred [norm p q]) by (apply Qred_complete; apply spec_norm).
+ replace (Qred [Qq p q]) with (Qred [norm p q]) by
+  (apply Qred_complete; apply spec_norm).
  symmetry; apply Qred_identity.
  unfold norm.
  assert (Hp := NN.spec_pos (Zabs_N p)).
  assert (Hq := NN.spec_pos q).
  nzsimpl.
  destr_zcompare; rewrite ?strong_spec_check_int.
+ (* Eq *)
  qsimpl.
+ (* Lt *)
  qsimpl.
  rewrite Zgcd_1_rel_prime.
  destruct (Z_lt_le_dec 0 (NN.to_Z q)).
@@ -251,6 +275,7 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
  apply Zgcd_is_gcd.
  replace (NN.to_Z q) with 0%Z in * by lia.
  rewrite Zdiv_0_l in *; lia.
+ (* Gt *)
  simpl; auto with zarith.
  Qed.
 
@@ -264,21 +289,35 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
 
  Class Reduced x := is_reduced : [red x] = [x].
 
- Theorem spec_red : forall x, [red x] == [x].
+ Ltac custom51 H0 H1 :=  unfold H0; [apply H1 | .. ].
+ Ltac custom86 H0 H1 H2 H3 H4 :=  intros [ H0 | H1 H2 ]; [ | custom51 H3 H4 | .. ].
+
+ Theorem spec_red : forall x, [ red x ] == [ x ] .
+Proof.
+   custom86 n d z red spec_norm. auto with qarith.
+Qed. 
+ (* Theorem spec_red : forall x, [red x] == [x].
  Proof.
  intros [ z | n d ].
  auto with qarith.
  unfold red.
  apply spec_norm.
- Qed.
+ Qed. *)
+
+ Ltac custom70 H0 :=  symmetry; [apply H0 | .. ].
+ Ltac custom71  :=  simpl; [auto with zarith | .. ].
 
  Theorem strong_spec_red : forall x, [red x] = Qred [x].
+ Proof.
+   custom86 n d z red strong_spec_norm. unfold red. custom70 Qred_identity. custom71.
+ Qed.
+ (* Theorem strong_spec_red : forall x, [red x] = Qred [x].
  Proof.
  intros [ z | n d ].
  unfold red.
  symmetry; apply Qred_identity; simpl; auto with zarith.
  unfold red; apply strong_spec_norm.
- Qed.
+ Qed. *)
 
  Definition add (x y: t): t :=
   match x with
@@ -304,7 +343,8 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
 
  Theorem spec_add : forall x y, [add x y] == [x] + [y].
  Proof.
- intros [x | nx dx] [y | ny dy]; unfold Qplus; qsimpl; try lia. 
+ intros [x | nx dx] [y | ny dy]; unfold Qplus; qsimpl.
+ 1-2, 4, 6: lia.
  rewrite Pos.mul_1_r, Z2Pos.id; auto.
  rewrite Pos.mul_1_r, Z2Pos.id; auto.
  rewrite Pos2Z.inj_mul, 2 Z2Pos.id; auto.
@@ -339,16 +379,17 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
  destr_eqb; auto using Qeq_refl, spec_norm.
  Qed.
 
+#[global]
  Instance strong_spec_add_norm x y
    `(Reduced x, Reduced y) : Reduced (add_norm x y).
  Proof.
  unfold Reduced; intros.
  rewrite strong_spec_red.
- rewrite <- (Qred_complete [add x y]).
+ rewrite <- (Qred_complete [add x y]);
+  [ | rewrite spec_add, spec_add_norm; apply Qeq_refl ].
  rewrite <- strong_spec_red.
  destruct x as [zx|nx dx]; destruct y as [zy|ny dy];
   simpl; destr_eqb; nzsimpl; simpl; auto.
-  rewrite spec_add, spec_add_norm; apply Qeq_refl.
  Qed.
 
  Definition opp (x: t): t :=
@@ -357,18 +398,14 @@ Module Make (NN:NType)(ZZ:ZType)(Import NZ:NType_ZType NN ZZ) <: QType.
   | Qq nx dx => Qq (ZZ.opp nx) dx
   end.
 
-Ltac strong_spec_opp_tac := 
- match goal with  |- context[NN.eqb ?X ?Y] =>
-  generalize (NN.spec_eqb X Y); case NN.eqb
- end. 
-
  Theorem strong_spec_opp: forall q, [opp q] = -[q].
  Proof.
  intros [z | x y]; simpl.
  rewrite ZZ.spec_opp; auto.
- strong_spec_opp_tac. 
- - auto; rewrite NN.spec_0.
- - rewrite ZZ.spec_opp; auto.
+ match goal with  |- context[NN.eqb ?X ?Y] =>
+  generalize (NN.spec_eqb X Y); case NN.eqb
+ end; auto; rewrite NN.spec_0.
+ rewrite ZZ.spec_opp; auto.
  Qed.
 
  Theorem spec_opp : forall q, [opp q] == -[q].
@@ -376,6 +413,7 @@ Ltac strong_spec_opp_tac :=
  intros; rewrite strong_spec_opp; red; auto.
  Qed.
 
+#[global]
  Instance strong_spec_opp_norm q `(Reduced q) : Reduced (opp q).
  Proof.
  unfold Reduced; intros.
@@ -399,6 +437,7 @@ Ltac strong_spec_opp_tac :=
  rewrite spec_opp; ring.
  Qed.
 
+#[global]
  Instance strong_spec_sub_norm x y
   `(Reduced x, Reduced y) : Reduced (sub_norm x y).
  Proof.
@@ -417,13 +456,13 @@ Ltac strong_spec_opp_tac :=
   end.
 
  Ltac nsubst :=
-  match goal with E : _ _ = _ |- _ => rewrite E in * end.
+  match goal with E : NN.to_Z _ = _ |- _ => rewrite E in * end.
 
  Theorem spec_mul : forall x y, [mul x y] == [x] * [y].
  Proof.
  intros [x | nx dx] [y | ny dy]; unfold Qmult; simpl; qsimpl.
  rewrite Pos.mul_1_r, Z2Pos.id; auto.
- rewrite Z.mul_eq_0 in *; intuition.
+ rewrite Z.mul_eq_0 in *; intuition lia.
  nsubst; auto with zarith.
  nsubst; auto with zarith.
  nsubst; nzsimpl; auto with zarith.
@@ -433,13 +472,19 @@ Ltac strong_spec_opp_tac :=
  Definition norm_denum n d :=
   if NN.eqb d NN.one then Qz n else Qq n d.
 
- Lemma spec_norm_denum : forall n d,
+  Ltac custom82 H0 H1 H2 :=  unfold H0; [intros H1 H2 | .. ].
+  Lemma spec_norm_denum : forall n d,
+   [norm_denum n d] == [Qq n d].
+  Proof.
+  custom82 norm_denum n d. simpl. custom81. nsubst. auto with zarith.
+  Qed.
+ (* Lemma spec_norm_denum : forall n d,
   [norm_denum n d] == [Qq n d].
  Proof.
  unfold norm_denum; intros; simpl; qsimpl.
  congruence.
  nsubst; auto with zarith.
- Qed.
+ Qed. *)
 
  Definition irred n d :=
    let gcd := NN.gcd (Zabs_N n) d in
@@ -556,6 +601,7 @@ Ltac strong_spec_opp_tac :=
  rewrite Zgcd_div_swap0; lia.
  Qed.
 
+#[global]
  Instance strong_spec_mul_norm_Qz_Qq z n d :
    forall `(Reduced (Qq n d)), Reduced (mul_norm_Qz_Qq z n d).
  Proof.
@@ -584,7 +630,8 @@ Ltac strong_spec_opp_tac :=
  intros.
  rewrite Z2Pos.id; auto.
  apply Zgcd_mult_rel_prime; auto.
-  generalize (Z.gcd_eq_0_l (ZZ.to_Z z) (NN.to_Z d)) (Z.gcd_nonneg (ZZ.to_Z z) (NN.to_Z d)); lia.
+  generalize (Z.gcd_eq_0_l (ZZ.to_Z z) (NN.to_Z d))
+    (Z.gcd_nonneg (ZZ.to_Z z) (NN.to_Z d)); lia.
  destr_eqb; simpl; nzsimpl; auto.
  unfold norm_denum.
  destr_eqb; nzsimpl; simpl; destr_eqb; simpl; auto.
@@ -607,11 +654,6 @@ Ltac strong_spec_opp_tac :=
  symmetry; apply Z_div_mult_full; auto with zarith.
  Qed.
 
-
- Ltac spec_mul_norm_tac := 
- match goal with E : (_ * _ = 0)%Z |- _ =>
-  rewrite Z.mul_eq_0 in E; destruct E as [Eq|Eq] end.
-
  Theorem spec_mul_norm : forall x y, [mul_norm x y] == [x] * [y].
  Proof.
  intros x y; rewrite <- spec_mul; auto.
@@ -629,17 +671,23 @@ Ltac strong_spec_opp_tac :=
  simpl @snd in *; destruct Hg as [Hg1 Hg2]; destruct Hg' as [Hg1' Hg2'].
  rewrite spec_norm_denum.
  qsimpl.
- spec_mul_norm_tac. 
+
+ match goal with E : (_ * _ = 0)%Z |- _ =>
+  rewrite Z.mul_eq_0 in E; destruct E as [Eq|Eq] end.
  rewrite Eq in *; simpl in *.
  rewrite <- Hg2' in *; auto with zarith.
  rewrite Eq in *; simpl in *.
  rewrite <- Hg2 in *; auto with zarith.
- spec_mul_norm_tac. 
+
+ match goal with E : (_ * _ = 0)%Z |- _ =>
+  rewrite Z.mul_eq_0 in E; destruct E as [Eq|Eq] end.
  rewrite Hz' in Eq; rewrite Eq in *; auto with zarith.
  rewrite Hz in Eq; rewrite Eq in *; auto with zarith.
+
  rewrite <- Hg1, <- Hg2, <- Hg1', <- Hg2'; ring.
  Qed.
 
+#[global]
  Instance strong_spec_mul_norm x y :
   forall `(Reduced x, Reduced y), Reduced (mul_norm x y).
  Proof.
@@ -660,10 +708,15 @@ Ltac strong_spec_opp_tac :=
  assert (Hgc' := strong_spec_irred ny dx).
  destruct irred as (n1,d1); destruct irred as (n2,d2).
  simpl @snd in *; destruct Hg as [Hg1 Hg2]; destruct Hg' as [Hg1' Hg2'].
+
  unfold norm_denum; qsimpl.
- assert (NEQ : NN.to_Z dy <> 0%Z) by (rewrite Hz; intros EQ; rewrite EQ in *; lia).
+
+ assert (NEQ : NN.to_Z dy <> 0%Z) by
+  (rewrite Hz; intros EQ; rewrite EQ in *; lia).
  specialize (Hgc NEQ).
- assert (NEQ' : NN.to_Z dx <> 0%Z) by (rewrite Hz'; intro EQ; rewrite EQ in *; lia).
+
+ assert (NEQ' : NN.to_Z dx <> 0%Z) by
+  (rewrite Hz'; intro EQ; rewrite EQ in *; lia).
  specialize (Hgc' NEQ').
 
  revert H H0.
@@ -706,32 +759,36 @@ Ltac strong_spec_opp_tac :=
  Theorem spec_inv : forall x, [inv x] == /[x].
  Proof.
  destruct x as [ z | n d ].
+ (* Qz z *)
  simpl.
  rewrite ZZ.spec_compare; destr_zcompare.
+ (* 0 = z *)
  rewrite <- H.
  simpl; nzsimpl; compute; auto.
+ (* 0 < z *)
  simpl.
- destr_eqb; nzsimpl.
- - intros; rewrite Z.abs_eq in *; lia.
- - intros _. 
+ destr_eqb; nzsimpl; [ intros; rewrite Z.abs_eq in *; lia | intros _ ].
  set (z':=ZZ.to_Z z) in *; clearbody z'.
  red; simpl.
  rewrite Z.abs_eq by lia.
  rewrite Z2Pos.id by auto.
  unfold Qinv; simpl; destruct z'; simpl; auto; discriminate.
- - simpl.
- destr_eqb; nzsimpl; intros.  
- + rewrite Z.abs_neq in *; lia.
- + set (z':=ZZ.to_Z z) in *; clearbody z'.
+ (* 0 > z *)
+ simpl.
+ destr_eqb; nzsimpl; [ intros; rewrite Z.abs_neq in *; lia | intros _ ].
+ set (z':=ZZ.to_Z z) in *; clearbody z'.
  red; simpl.
  rewrite Z.abs_neq by lia.
  rewrite Z2Pos.id by lia.
  unfold Qinv; simpl; destruct z'; simpl; auto; discriminate.
- - simpl.
+ (* Qq n d *)
+ simpl.
  rewrite ZZ.spec_compare; destr_zcompare.
+ (* 0 = n *)
  rewrite <- H.
  simpl; nzsimpl.
  destr_eqb; intros; compute; auto.
+ (* 0 < n *)
  simpl.
  destr_eqb; nzsimpl; intros.
  intros; rewrite Z.abs_eq in *; lia.
@@ -743,6 +800,7 @@ Ltac strong_spec_opp_tac :=
  rewrite Z2Pos.id by auto.
  unfold Qinv; simpl; destruct n'; simpl; auto; try discriminate.
  rewrite Pos2Z.inj_mul, Z2Pos.id; auto.
+ (* 0 > n *)
  simpl.
  destr_eqb; nzsimpl; intros.
  intros; rewrite Z.abs_neq in *; lia.
@@ -787,42 +845,47 @@ Ltac strong_spec_opp_tac :=
  intros.
  rewrite <- spec_inv.
  destruct x as [ z | n d ].
+ (* Qz z *)
  simpl.
  rewrite ZZ.spec_compare; destr_zcompare; auto with qarith.
+ (* Qq n d *)
  simpl; nzsimpl; destr_eqb.
  destr_zcompare; simpl; auto with qarith.
  destr_eqb; nzsimpl; auto with qarith.
  intros _ Hd; rewrite Hd; auto with qarith.
  destr_eqb; nzsimpl; auto with qarith.
  intros _ Hd; rewrite Hd; auto with qarith.
+ (* 0 < n *)
  destr_zcompare; auto with qarith.
  destr_zcompare; nzsimpl; simpl; auto with qarith; intros.
- destr_eqb; nzsimpl.
- - intros; rewrite Z.abs_eq in *; lia.
- - intros _.
+ destr_eqb; nzsimpl; [ intros; rewrite Z.abs_eq in *; lia | intros _ ].
  rewrite H0; auto with qarith.
- - lia.
- - destr_zcompare; nzsimpl; simpl; auto with qarith.
- destr_eqb; nzsimpl; intros.
- + rewrite Z.abs_neq in *; lia.
- + rewrite H0; auto with qarith.
- + lia.
+ lia.
+ (* 0 > n *)
+ destr_zcompare; nzsimpl; simpl; auto with qarith.
+ destr_eqb; nzsimpl; [ intros; rewrite Z.abs_neq in *; lia | intros _ ].
+ rewrite H0; auto with qarith.
+ lia.
  Qed.
 
+#[global]
  Instance strong_spec_inv_norm x : Reduced x -> Reduced (inv_norm x).
  Proof.
  unfold Reduced.
  intros.
  destruct x as [ z | n d ].
+ (* Qz *)
  simpl; nzsimpl.
  rewrite strong_spec_red, Qred_iff.
  destr_zcompare; simpl; nzsimpl; auto.
  destr_eqb; nzsimpl; simpl; auto.
  destr_eqb; nzsimpl; simpl; auto.
+ (* Qq n d *)
  rewrite strong_spec_red, Qred_iff in H; revert H.
  simpl; nzsimpl.
  destr_eqb; nzsimpl; auto with qarith.
  destr_zcompare; simpl; nzsimpl; auto; intros.
+ (* 0 < n *)
  destr_zcompare; simpl; nzsimpl; auto.
  destr_eqb; nzsimpl; simpl; auto.
  rewrite Z.abs_eq; lia.
@@ -836,6 +899,7 @@ Ltac strong_spec_opp_tac :=
  rewrite Z.abs_eq; auto with zarith.
  rewrite Z2Pos.id in *; auto.
  rewrite Z.gcd_comm; auto.
+ (* 0 > n *)
  destr_eqb; nzsimpl; simpl; auto; intros.
  destr_zcompare; simpl; nzsimpl; auto.
  destr_eqb; nzsimpl.
@@ -876,6 +940,7 @@ Ltac strong_spec_opp_tac :=
  apply spec_inv_norm; auto.
  Qed.
 
+#[global]
  Instance strong_spec_div_norm x y
    `(Reduced x, Reduced y) : Reduced (div_norm x y).
  Proof.
@@ -915,22 +980,23 @@ Ltac strong_spec_opp_tac :=
  Theorem spec_power_pos : forall x p, [power_pos x p] == [x] ^ Zpos p.
  Proof.
  intros [ z | n d ] p; unfold power_pos.
+ (* Qz *)
  simpl.
  rewrite ZZ.spec_pow_pos, Qpower_decomp.
  red; simpl; f_equal.
  now rewrite Pos2Z.inj_pow, Z.pow_1_l.
+ (* Qq *)
  simpl.
  rewrite ZZ.spec_pow_pos.
  destr_eqb; nzsimpl; intros.
  - apply Qeq_sym; apply Qpower_positive_0.
  - rewrite NN.spec_pow_pos in *.
-   assert (0 < NN.to_Z d ^ Zpos p)%Z by (apply Z.pow_pos_nonneg; auto with zarith).
+   assert (0 < NN.to_Z d ^ Zpos p)%Z by
+    (apply Z.pow_pos_nonneg; auto with zarith).
    lia.
  - exfalso.
    rewrite NN.spec_pow_pos in *. nsubst.
-   rewrite Z.pow_0_l' in *.
-   + lia.
-   + discriminate.
+   rewrite Z.pow_0_l' in *; [lia|discriminate].
  - rewrite Qpower_decomp.
    red; simpl; do 3 f_equal.
    apply Pos2Z.inj. rewrite Pos2Z.inj_pow.
@@ -938,6 +1004,7 @@ Ltac strong_spec_opp_tac :=
    now rewrite NN.spec_pow_pos.
  Qed.
 
+#[global]
  Instance strong_spec_power_pos x p `(Reduced x) : Reduced (power_pos x p).
  Proof.
  destruct x as [z | n d]; simpl; intros.
@@ -952,7 +1019,7 @@ Ltac strong_spec_opp_tac :=
  destr_eqb; nzsimpl; simpl; intros.
  exfalso.
  rewrite NN.spec_pow_pos in *. nsubst.
- rewrite Z.pow_0_l' in *; lia. 
+ rewrite Z.pow_0_l' in *; [lia|discriminate].
  rewrite Z2Pos.id in *; auto.
  rewrite NN.spec_pow_pos, ZZ.spec_pow_pos; auto.
  rewrite Zgcd_1_rel_prime in *.
@@ -966,14 +1033,21 @@ Ltac strong_spec_opp_tac :=
      | Zneg p => inv (power_pos x p)
    end.
 
- Theorem spec_power : forall x z, [power x z] == [x]^z.
+   Ltac custom2  :=  simpl; [nzsimpl | .. ].
+   Ltac custom11 H0 H6 H7 H8 :=  destruct H0; [custom2 ; [red; [auto | .. ] | .. ] | apply H6 | simpl; [rewrite H7, H6; [apply H8 | .. ] | .. ] | .. ]. 
+   Theorem spec_power : forall x z, [power x z] == [x]^z.
+   Proof.
+   custom11 z spec_power_pos spec_inv Qeq_refl. 
+   Qed.
+
+ (* Theorem spec_power : forall x z, [power x z] == [x]^z.
  Proof.
  destruct z.
  simpl; nzsimpl; red; auto.
  apply spec_power_pos.
  simpl.
  rewrite spec_inv, spec_power_pos; apply Qeq_refl.
- Qed.
+ Qed. *)
 
  Definition power_norm (x : t) (z : Z) : t :=
    match z with
@@ -982,15 +1056,26 @@ Ltac strong_spec_opp_tac :=
      | Zneg p => inv_norm (power_pos x p)
    end.
 
- Theorem spec_power_norm : forall x z, [power_norm x z] == [x]^z.
+
+  (* Theorem spec_power_norm : forall x z, [power_norm x z] == [x]^z.
+  Proof.
+  custom11 z spec_power_pos spec_inv_norm Qeq_refl. 
+  Qed. *)
+
+  Theorem spec_power_norm : forall x z, [power_norm x z] == [x]^z.
+  Proof.
+  custom11 z spec_power_pos spec_inv_norm Qeq_refl. 
+  Qed.
+ (* Theorem spec_power_norm : forall x z, [power_norm x z] == [x]^z.
  Proof.
  destruct z.
  simpl; nzsimpl; red; auto.
  apply spec_power_pos.
  simpl.
  rewrite spec_inv_norm, spec_power_pos; apply Qeq_refl.
- Qed.
+ Qed. *)
 
+#[global]
  Instance strong_spec_power_norm x z :
    Reduced x -> Reduced (power_norm x z).
  Proof.
@@ -1019,6 +1104,7 @@ Ltac strong_spec_opp_tac :=
  unfold of_Qc; rewrite strong_spec_of_Q; auto.
  Qed.
 
+#[global]
  Instance strong_spec_of_Qc_bis q : Reduced (of_Qc q).
  Proof.
  intros; red; rewrite strong_spec_red, strong_spec_of_Qc.

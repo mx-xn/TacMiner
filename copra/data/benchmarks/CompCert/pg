@@ -1,6 +1,6 @@
 #!/bin/sh
 # Start Proof General with the right Coq version
-# Use the _CoqProject to rebuild dependencies if needed
+# Use the Makefile to rebuild dependencies if needed
 # Recompile the modified file after editing
 
 make -q ${1}o || {

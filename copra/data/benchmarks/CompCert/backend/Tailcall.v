@@ -82,7 +82,7 @@ Definition transf_instr (f: function) (pc: node) (instr: instruction) :=
   | Icall sig ros args res s =>
       if is_return niter f s res
       && tailcall_is_possible sig
-      && rettype_eq sig.(sig_res) f.(fn_sig).(sig_res)
+      && xtype_eq sig.(sig_res) f.(fn_sig).(sig_res)
       then Itailcall sig ros args
       else instr
   | _ => instr
@@ -93,6 +93,7 @@ Definition transf_instr (f: function) (pc: node) (instr: instruction) :=
 
 Definition transf_function (f: function) : function :=
   if zeq f.(fn_stacksize) 0
+  && option_eq zeq f.(fn_sig).(sig_cc).(cc_vararg) None
   then RTL.transf_function (transf_instr f) f
   else f.
 

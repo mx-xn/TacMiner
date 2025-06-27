@@ -58,7 +58,7 @@ Lemma slot_outgoing_argument_valid:
 Proof.
   intros. exploit loc_arguments_acceptable_2; eauto. intros [A B].
   unfold slot_valid. unfold proj_sumbool.
-  rewrite zle_true by omega.
+  rewrite zle_true by lia.
   rewrite pred_dec_true by auto.
   auto.
 Qed.
@@ -126,7 +126,7 @@ Proof.
   destruct (wt_function f); simpl negb.
   destruct (zlt Ptrofs.max_unsigned (fe_size (make_env (function_bounds f)))).
   intros; discriminate.
-  intros. unfold fe. unfold b. omega.
+  intros. unfold fe. unfold b. lia.
   intros; discriminate.
 Qed.
 
@@ -200,7 +200,7 @@ Next Obligation.
 - exploit H4; eauto. intros (v & A & B). exists v; split; auto.
   eapply Mem.load_unchanged_on; eauto.
   simpl; intros. rewrite size_type_chunk, typesize_typesize in H8.
-  split; auto. omega.
+  split; auto. lia.
 Qed.
 Next Obligation.
   eauto with mem.
@@ -215,7 +215,7 @@ Remark valid_access_location:
 Proof.
   intros; split.
 - red; intros. apply Mem.perm_implies with Freeable; auto with mem.
-  apply H0. rewrite size_type_chunk, typesize_typesize in H4. omega.
+  apply H0. rewrite size_type_chunk, typesize_typesize in H4. lia.
 - rewrite align_type_chunk. apply Z.divide_add_r.
   apply Z.divide_trans with 8; auto.
   exists (8 / (4 * typealign ty)); destruct ty; reflexivity.
@@ -233,7 +233,7 @@ Proof.
   intros. destruct H as (D & E & F & G & H).
   exploit H; eauto. intros (v & U & V). exists v; split; auto.
   unfold load_stack; simpl. rewrite Ptrofs.add_zero_l, Ptrofs.unsigned_repr; auto.
-  unfold Ptrofs.max_unsigned. generalize (typesize_pos ty). omega.
+  unfold Ptrofs.max_unsigned. generalize (typesize_pos ty). lia.
 Qed.
 
 Lemma set_location:
@@ -252,19 +252,19 @@ Proof.
   { red; intros; eauto with mem. }
   exists m'; split.
 - unfold store_stack; simpl. rewrite Ptrofs.add_zero_l, Ptrofs.unsigned_repr; eauto.
-  unfold Ptrofs.max_unsigned. generalize (typesize_pos ty). omega.
+  unfold Ptrofs.max_unsigned. generalize (typesize_pos ty). lia.
 - simpl. intuition auto.
 + unfold Locmap.set.
   destruct (Loc.eq (S sl ofs ty) (S sl ofs0 ty0)); [|destruct (Loc.diff_dec (S sl ofs ty) (S sl ofs0 ty0))].
 * (* same location *)
   inv e. rename ofs0 into ofs. rename ty0 into ty.
   exists (Val.load_result (chunk_of_type ty) v'); split.
-  eapply Mem.load_store_similar_2; eauto. omega.
+  eapply Mem.load_store_similar_2; eauto. lia.
   apply Val.load_result_inject; auto.
 * (* different locations *)
   exploit H; eauto. intros (v0 & X & Y). exists v0; split; auto.
   rewrite <- X; eapply Mem.load_store_other; eauto.
-  destruct d. congruence. right. rewrite ! size_type_chunk, ! typesize_typesize. omega.
+  destruct d. congruence. right. rewrite ! size_type_chunk, ! typesize_typesize. lia.
 * (* overlapping locations *)
   destruct (Mem.valid_access_load m' (chunk_of_type ty0) sp (pos + 4 * ofs0)) as [v'' LOAD].
   apply Mem.valid_access_implies with Writable; auto with mem.
@@ -273,7 +273,7 @@ Proof.
 + apply (m_invar P) with m; auto.
   eapply Mem.store_unchanged_on; eauto.
   intros i; rewrite size_type_chunk, typesize_typesize. intros; red; intros.
-  eelim C; eauto. simpl. split; auto. omega.
+  eelim C; eauto. simpl. split; auto. lia.
 Qed.
 
 Lemma initial_locations:
@@ -810,29 +810,39 @@ Qed.
 Definition no_callee_saves (l: list mreg) : Prop :=
   existsb is_callee_save l = false.
 
+Ltac ByCases :=
+  reflexivity ||
+  match goal with
+  | |- no_callee_saves (match ?x with _ => _ end) => destruct x; ByCases
+  | _ => idtac
+  end.
+
 Remark destroyed_by_op_caller_save:
   forall op, no_callee_saves (destroyed_by_op op).
 Proof.
-  unfold no_callee_saves; destruct op; (reflexivity || destruct c; reflexivity).
+Local Transparent destroyed_by_op.
+  intros; unfold destroyed_by_op; ByCases.
 Qed.
 
 Remark destroyed_by_load_caller_save:
   forall chunk addr, no_callee_saves (destroyed_by_load chunk addr).
 Proof.
-  unfold no_callee_saves; destruct chunk; reflexivity.
+Local Transparent destroyed_by_load.
+  intros; unfold destroyed_by_load; ByCases.
 Qed.
 
 Remark destroyed_by_store_caller_save:
   forall chunk addr, no_callee_saves (destroyed_by_store chunk addr).
 Proof.
 Local Transparent destroyed_by_store.
-  unfold no_callee_saves, destroyed_by_store; intros; destruct chunk; try reflexivity; destruct Archi.ptr64; reflexivity.
+  intros; unfold destroyed_by_store; ByCases.
 Qed.
 
 Remark destroyed_by_cond_caller_save:
   forall cond, no_callee_saves (destroyed_by_cond cond).
 Proof.
-  unfold no_callee_saves; destruct cond; reflexivity.
+Local Transparent destroyed_by_cond.
+  intros; unfold destroyed_by_cond; ByCases.
 Qed.
 
 Remark destroyed_by_jumptable_caller_save:
@@ -933,13 +943,13 @@ Local Opaque mreg_type.
   { unfold pos1. apply Z.divide_trans with sz.
     unfold sz; rewrite <- size_type_chunk. apply align_size_chunk_divides.
     apply align_divides; auto. }
-  apply range_drop_left with (mid := pos1) in SEP; [ | omega ].
-  apply range_split with (mid := pos1 + sz) in SEP; [ | omega ].
+  apply range_drop_left with (mid := pos1) in SEP; [ | lia ].
+  apply range_split with (mid := pos1 + sz) in SEP; [ | lia ].
   unfold sz at 1 in SEP. rewrite <- size_type_chunk in SEP.
   apply range_contains in SEP; auto.
   exploit (contains_set_stack (fun v' => Val.inject j (ls (R r)) v') (rs r)).
   eexact SEP.
-  apply load_result_inject; auto. apply wt_ls.
+  apply load_result_inject; [auto|apply wt_ls].
   clear SEP; intros (m1 & STORE & SEP).
   set (rs1 := undef_regs (destroyed_by_setstack ty) rs).
   assert (AG1: agree_regs j ls rs1).
@@ -1073,7 +1083,7 @@ Local Opaque b fe.
   instantiate (1 := fe_stack_data fe). tauto.
   reflexivity.
   instantiate (1 := fe_stack_data fe + bound_stack_data b). rewrite Z.max_comm. reflexivity.
-  generalize (bound_stack_data_pos b) size_no_overflow; omega.
+  generalize (bound_stack_data_pos b) size_no_overflow; lia.
   tauto.
   tauto.
   clear SEP. intros (j' & SEP & INCR & SAME).
@@ -1299,6 +1309,42 @@ Proof.
 Qed.
 
 End FRAME_PROPERTIES.
+
+(** * Simplification of loads and stores *)
+
+Lemma simplify_load_correct: forall chunk m a v,
+  Mem.loadv chunk m a = Some v ->
+  exists v', Mem.loadv (simplify_load chunk) m a = Some v' /\ Val.lessdef v v'.
+Proof.
+  intros. destruct a; simpl in *; try discriminate.
+  destruct chunk; simpl; try (exists v; auto; fail).
+  rewrite Mem.load_bool_int8_unsigned in H.
+  destruct (Mem.load Mint8unsigned m b (Ptrofs.unsigned i)) as [v'|]; simpl in H; inv H.
+  exists v'; auto using Val.norm_bool_is_lessdef.
+Qed.
+
+Lemma simplify_store_correct: forall chunk m a v m',
+  Mem.storev chunk m a v = Some m' ->
+  Mem.storev (simplify_store chunk) m a v = Some m'.
+Proof.
+  intros. destruct a; simpl in *; try discriminate. rewrite <- H. symmetry.
+  destruct chunk; simpl; auto.
+- apply Mem.store_bool_unsigned_8.
+- apply Mem.store_signed_unsigned_8.
+- apply Mem.store_signed_unsigned_16.
+Qed.
+
+Lemma simplify_load_destroyed: forall chunk addr,
+  destroyed_by_load (simplify_load chunk) addr = destroyed_by_load chunk addr.
+Proof.
+  intros; destruct chunk; reflexivity.
+Qed.
+
+Lemma simplify_store_destroyed: forall chunk addr,
+  destroyed_by_store (simplify_store chunk) addr = destroyed_by_store chunk addr.
+Proof.
+  intros; destruct chunk; reflexivity.
+Qed.
 
 (** * Call stack invariants *)
 
@@ -1607,7 +1653,7 @@ Proof.
 + simpl in SEP. unfold parent_sp.
   assert (slot_valid f Outgoing pos ty = true).
   { destruct H0. unfold slot_valid, proj_sumbool.
-    rewrite zle_true by omega. rewrite pred_dec_true by auto. reflexivity. }
+    rewrite zle_true by lia. rewrite pred_dec_true by auto. reflexivity. }
   assert (slot_within_bounds (function_bounds f) Outgoing pos ty) by eauto.
   exploit frame_get_outgoing; eauto. intros (v & A & B).
   exists v; split.
@@ -1909,12 +1955,16 @@ Proof.
   apply sep_proj2 in SEP. apply sep_proj2 in SEP. apply sep_proj1 in SEP. eexact SEP.
   eauto. eauto.
   intros [v' [C D]].
+  exploit simplify_load_correct; eauto. 
+  intros [v'' [E F]].
+  assert (G: Val.inject j v v'').
+  { inv F; auto. inv D; auto. }
   econstructor; split.
   apply plus_one. econstructor.
   instantiate (1 := a'). rewrite <- A. apply eval_addressing_preserved. exact symbols_preserved.
-  eexact C. eauto.
+  eexact E. eauto.
   econstructor; eauto with coqlib.
-  apply agree_regs_set_reg. rewrite transl_destroyed_by_load. apply agree_regs_undef_regs; auto. auto.
+  apply agree_regs_set_reg. rewrite transl_destroyed_by_load, simplify_load_destroyed. apply agree_regs_undef_regs; auto. auto.
   apply agree_locs_set_reg. apply agree_locs_undef_locs. auto. apply destroyed_by_load_caller_save. auto.
 
 - (* Lstore *)
@@ -1932,9 +1982,9 @@ Proof.
   econstructor; split.
   apply plus_one. econstructor.
   instantiate (1 := a'). rewrite <- A. apply eval_addressing_preserved. exact symbols_preserved.
-  eexact C. eauto.
+  apply simplify_store_correct. eexact C. eauto.
   econstructor. eauto. eauto. eauto.
-  rewrite transl_destroyed_by_store. apply agree_regs_undef_regs; auto.
+  rewrite transl_destroyed_by_store, simplify_store_destroyed. apply agree_regs_undef_regs; auto.
   apply agree_locs_undef_locs. auto. apply destroyed_by_store_caller_save.
   auto. eauto with coqlib.
   eapply frame_undef_regs; eauto.

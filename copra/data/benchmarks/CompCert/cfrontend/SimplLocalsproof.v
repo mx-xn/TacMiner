@@ -173,10 +173,10 @@ Proof.
   eapply H1; eauto.
   destruct (f' b) as [[b' delta]|] eqn:?; auto.
   exploit H2; eauto. unfold Mem.valid_block. intros [A B].
-  xomegaContradiction.
+  extlia.
   intros. destruct (f b) as [[b'' delta']|] eqn:?. eauto.
   exploit H2; eauto. unfold Mem.valid_block. intros [A B].
-  xomegaContradiction.
+  extlia.
 Qed.
 
 (** Properties of values resulting from a cast *)
@@ -222,12 +222,12 @@ Proof.
   induction 1; intros tyl F; inv F; constructor; eauto. eapply val_casted_inject; eauto.
 Qed.
 
-Inductive val_casted_list: list val -> typelist -> Prop :=
+Inductive val_casted_list: list val -> list type -> Prop :=
   | vcl_nil:
-      val_casted_list nil Tnil
+      val_casted_list nil nil
   | vcl_cons: forall v1 vl ty1 tyl,
       val_casted v1 ty1 -> val_casted_list vl tyl ->
-      val_casted_list (v1 :: vl) (Tcons  ty1 tyl).
+      val_casted_list (v1 :: vl) (ty1 :: tyl).
 
 Lemma val_casted_list_params:
   forall params vl,
@@ -391,7 +391,7 @@ Lemma match_envs_assign_lifted:
   e!id = Some(b, ty) ->
   val_casted v ty ->
   Val.inject f v tv ->
-  assign_loc ge ty m b Ptrofs.zero v m' ->
+  assign_loc ge ty m b Ptrofs.zero Full v m' ->
   VSet.mem id cenv = true ->
   match_envs f cenv e le m' lo hi te (PTree.set id tv tle) tlo thi.
 Proof.
@@ -606,7 +606,7 @@ Proof.
   generalize (alloc_variables_nextblock _ _ _ _ _ _ H0). intros A B C.
   subst b. split. apply Ple_refl. eapply Pos.lt_le_trans; eauto. rewrite B. apply Plt_succ.
   auto.
-  right. exploit Mem.nextblock_alloc; eauto. intros B. rewrite B in A. xomega.
+  right. exploit Mem.nextblock_alloc; eauto. intros B. rewrite B in A. extlia.
 Qed.
 
 Lemma alloc_variables_injective:
@@ -622,12 +622,12 @@ Proof.
   repeat rewrite PTree.gsspec; intros.
   destruct (peq id1 id); destruct (peq id2 id).
   congruence.
-  inv H6. exploit Mem.alloc_result; eauto. exploit H2; eauto. unfold block; xomega.
-  inv H7. exploit Mem.alloc_result; eauto. exploit H2; eauto. unfold block; xomega.
+  inv H6. exploit Mem.alloc_result; eauto. exploit H2; eauto. unfold block; extlia.
+  inv H7. exploit Mem.alloc_result; eauto. exploit H2; eauto. unfold block; extlia.
   eauto.
   intros. rewrite PTree.gsspec in H6. destruct (peq id0 id). inv H6.
-  exploit Mem.alloc_result; eauto. exploit Mem.nextblock_alloc; eauto. unfold block; xomega.
-  exploit H2; eauto. exploit Mem.nextblock_alloc; eauto. unfold block; xomega.
+  exploit Mem.alloc_result; eauto. exploit Mem.nextblock_alloc; eauto. unfold block; extlia.
+  exploit H2; eauto. exploit Mem.nextblock_alloc; eauto. unfold block; extlia.
 Qed.
 
 Lemma match_alloc_variables:
@@ -719,7 +719,7 @@ Proof.
     eapply Mem.valid_new_block; eauto.
     eapply Q; eauto. unfold Mem.valid_block in *.
     exploit Mem.nextblock_alloc. eexact A. exploit Mem.alloc_result. eexact A.
-    unfold block; xomega.
+    unfold block; extlia.
   split. intros. destruct (ident_eq id0 id).
     (* same var *)
     subst id0.
@@ -760,7 +760,7 @@ Proof.
     destruct ty; try destruct i; try destruct s; try destruct f; inv H; auto;
     unfold Mptr; simpl; destruct Archi.ptr64; auto.
   }
-  omega.
+  lia.
 Qed.
 
 Definition env_initial_value (e: env) (m: mem) :=
@@ -778,7 +778,7 @@ Proof.
   apply IHalloc_variables. red; intros. rewrite PTree.gsspec in H2.
   destruct (peq id0 id). inv H2.
   eapply Mem.load_alloc_same'; eauto.
-  omega. rewrite Z.add_0_l. eapply sizeof_by_value; eauto.
+  lia. rewrite Z.add_0_l. eapply sizeof_by_value; eauto.
   apply Z.divide_0_r.
   eapply Mem.load_alloc_other; eauto.
 Qed.
@@ -935,7 +935,6 @@ Proof.
   (* local var, lifted *)
   destruct R as [U V]. exploit H2; eauto. intros [chunk X].
   eapply match_var_lifted with (v := Vundef) (tv := Vundef); eauto.
-  rewrite U; apply PTree.gempty.
   eapply alloc_variables_initial_value; eauto.
   red. unfold empty_env; intros. rewrite PTree.gempty in H4; congruence.
   apply create_undef_temps_charact with ty.
@@ -985,7 +984,7 @@ Proof.
   (* flat *)
   exploit alloc_variables_range. eexact A. eauto.
   rewrite PTree.gempty. intros [P|P]. congruence.
-  exploit K; eauto. unfold Mem.valid_block. xomega.
+  exploit K; eauto. unfold Mem.valid_block. extlia.
   intros [id0 [ty0 [U [V W]]]]. split; auto.
   destruct (ident_eq id id0). congruence.
   assert (b' <> b').
@@ -1004,13 +1003,13 @@ Proof.
 Qed.
 
 Lemma assign_loc_inject:
-  forall f ty m loc ofs v m' tm loc' ofs' v',
-  assign_loc ge ty m loc ofs v m' ->
+  forall f ty m loc ofs bf v m' tm loc' ofs' v',
+  assign_loc ge ty m loc ofs bf v m' ->
   Val.inject f (Vptr loc ofs) (Vptr loc' ofs') ->
   Val.inject f v v' ->
   Mem.inject f m tm ->
   exists tm',
-     assign_loc tge ty tm loc' ofs' v' tm'
+     assign_loc tge ty tm loc' ofs' bf v' tm'
   /\ Mem.inject f m' tm'
   /\ (forall b chunk v,
       f b = None -> Mem.load chunk m b 0 = Some v -> Mem.load chunk m' b 0 = Some v).
@@ -1032,34 +1031,34 @@ Proof.
 + (* special case size = 0 *)
   assert (bytes = nil).
   { exploit (Mem.loadbytes_empty m bsrc (Ptrofs.unsigned osrc) (sizeof tge ty)).
-    omega. congruence. }
+    lia. congruence. }
   subst.
   destruct (Mem.range_perm_storebytes tm bdst' (Ptrofs.unsigned (Ptrofs.add odst (Ptrofs.repr delta))) nil)
   as [tm' SB].
-  simpl. red; intros; omegaContradiction.
+  simpl. red; intros; extlia.
   exists tm'.
   split. eapply assign_loc_copy; eauto.
-  intros; omegaContradiction.
-  intros; omegaContradiction.
-  rewrite e; right; omega.
-  apply Mem.loadbytes_empty. omega.
+  intros; extlia.
+  intros; extlia.
+  rewrite e; right; lia.
+  apply Mem.loadbytes_empty. lia.
   split. eapply Mem.storebytes_empty_inject; eauto.
   intros. rewrite <- H0. eapply Mem.load_storebytes_other; eauto.
   left. congruence.
 + (* general case size > 0 *)
   exploit Mem.loadbytes_length; eauto. intros LEN.
   assert (SZPOS: sizeof tge ty > 0).
-  { generalize (sizeof_pos tge ty); omega. }
+  { generalize (sizeof_pos tge ty); lia. }
   assert (RPSRC: Mem.range_perm m bsrc (Ptrofs.unsigned osrc) (Ptrofs.unsigned osrc + sizeof tge ty) Cur Nonempty).
     eapply Mem.range_perm_implies. eapply Mem.loadbytes_range_perm; eauto. auto with mem.
   assert (RPDST: Mem.range_perm m bdst (Ptrofs.unsigned odst) (Ptrofs.unsigned odst + sizeof tge ty) Cur Nonempty).
     replace (sizeof tge ty) with (Z.of_nat (List.length bytes)).
     eapply Mem.range_perm_implies. eapply Mem.storebytes_range_perm; eauto. auto with mem.
-    rewrite LEN. apply Z2Nat.id. omega.
+    rewrite LEN. apply Z2Nat.id. lia.
   assert (PSRC: Mem.perm m bsrc (Ptrofs.unsigned osrc) Cur Nonempty).
-    apply RPSRC. omega.
+    apply RPSRC. lia.
   assert (PDST: Mem.perm m bdst (Ptrofs.unsigned odst) Cur Nonempty).
-    apply RPDST. omega.
+    apply RPDST. lia.
   exploit Mem.address_inject.  eauto. eexact PSRC. eauto. intros EQ1.
   exploit Mem.address_inject.  eauto. eexact PDST. eauto. intros EQ2.
   exploit Mem.loadbytes_inject; eauto. intros [bytes2 [A B]].
@@ -1078,15 +1077,25 @@ Proof.
   split. auto.
   intros. rewrite <- H0. eapply Mem.load_storebytes_other; eauto.
   left. congruence.
+- (* bitfield *)
+  inv H3.
+  exploit Mem.loadv_inject; eauto. intros (vc' & LD' & INJ). inv INJ.
+  exploit Mem.storev_mapped_inject; eauto. intros [tm' [A B]].
+  inv H1.
+  exists tm'; split. eapply assign_loc_bitfield; eauto. econstructor; eauto.
+  split. auto.
+  intros. rewrite <- H3. eapply Mem.load_store_other; eauto.
+  left. inv H0. congruence.
 Qed.
 
 Lemma assign_loc_nextblock:
-  forall ge ty m b ofs v m',
-  assign_loc ge ty m b ofs v m' -> Mem.nextblock m' = Mem.nextblock m.
+  forall ge ty m b ofs bf v m',
+  assign_loc ge ty m b ofs bf v m' -> Mem.nextblock m' = Mem.nextblock m.
 Proof.
   induction 1.
   simpl in H0. eapply Mem.nextblock_store; eauto.
   eapply Mem.nextblock_storebytes; eauto.
+  inv H. eapply Mem.nextblock_store; eauto.
 Qed.
 
 Theorem store_params_correct:
@@ -1108,23 +1117,37 @@ Theorem store_params_correct:
   /\ match_envs j cenv e le m' lo hi te tle tlo thi
   /\ Mem.nextblock tm' = Mem.nextblock tm.
 Proof.
+Local Opaque Conventions1.parameter_needs_normalization.
   induction 1; simpl; intros until targs; intros NOREPET CASTED VINJ MENV MINJ TLE LE.
-  (* base case *)
+- (* base case *)
   inv VINJ. exists tle2; exists tm; split. apply star_refl. split. auto. split. auto.
   split. apply match_envs_temps_exten with tle1; auto. auto.
-  (* inductive case *)
+- (* inductive case *)
   inv NOREPET. inv CASTED. inv VINJ.
   exploit me_vars; eauto. instantiate (1 := id); intros MV.
-  destruct (VSet.mem id cenv) eqn:?.
-  (* lifted to temp *)
-  eapply IHbind_parameters with (tle1 := PTree.set id v' tle1); eauto.
-  eapply match_envs_assign_lifted; eauto.
-  inv MV; try congruence. rewrite ENV in H; inv H.
-  inv H0; try congruence.
-  unfold Mem.storev in H2. eapply Mem.store_unmapped_inject; eauto.
-  intros. repeat rewrite PTree.gsspec. destruct (peq id0 id). auto.
-  apply TLE. intuition.
-  (* still in memory *)
+  destruct (VSet.mem id cenv) eqn:LIFTED.
++ (* lifted to temp *)
+  exploit (IHbind_parameters s tm (PTree.set id v' tle1) (PTree.set id v' tle2)).
+    eauto. eauto. eauto.
+    eapply match_envs_assign_lifted; eauto.
+    inv MV; try congruence. rewrite ENV in H; inv H.
+    inv H0; try congruence.
+    unfold Mem.storev in H2. eapply Mem.store_unmapped_inject; eauto.
+    intros. repeat rewrite PTree.gsspec. destruct (peq id0 id). auto.
+    apply TLE. intuition.
+    eauto.
+  intros (tle & tm' & U & V & X & Y & Z).
+  exists tle, tm'; split; [|auto].
+  destruct (Conventions1.parameter_needs_normalization (argtype_of_type ty)); [|assumption].
+  assert (A: tle!id = Some v').
+  { erewrite bind_parameter_temps_inv by eauto. apply PTree.gss. }
+  eapply star_left. constructor.
+  eapply star_left. econstructor. eapply make_cast_correct.
+    constructor; eauto. apply cast_val_casted; auto. eapply val_casted_inject; eauto.
+  rewrite PTree.gsident by auto.
+  eapply star_left. constructor. eassumption.
+  traceEq. traceEq. traceEq.
++ (* still in memory *)
   inv MV; try congruence. rewrite ENV in H; inv H.
   exploit assign_loc_inject; eauto.
   intros [tm1 [A [B C]]].
@@ -1154,7 +1177,7 @@ Proof.
   reflexivity. reflexivity.
   eexact U.
   traceEq.
-  rewrite (assign_loc_nextblock _ _ _ _ _ _ _ A) in Z. auto.
+  rewrite (assign_loc_nextblock _ _ _ _ _ _ _ _ A) in Z. auto.
 Qed.
 
 Lemma bind_parameters_nextblock:
@@ -1244,7 +1267,7 @@ Proof.
   destruct (Mem.range_perm_free m b lo hi) as [m1 A]; auto.
   rewrite A. apply IHl; auto.
   intros. red; intros. eapply Mem.perm_free_1; eauto.
-  exploit H1; eauto. intros [B|B]. auto. right; omega.
+  exploit H1; eauto. intros [B|B]. auto. right; lia.
   eapply H; eauto.
 Qed.
 
@@ -1276,11 +1299,11 @@ Proof.
       change id' with (fst (id', (b', ty'))). apply List.in_map; auto. }
     assert (Mem.perm m b0 0 Max Nonempty).
     { apply Mem.perm_cur_max. apply Mem.perm_implies with Freeable.
-      eapply PERMS; eauto. omega. auto with mem. }
+      eapply PERMS; eauto. lia. auto with mem. }
     assert (Mem.perm m b0' 0 Max Nonempty).
     { apply Mem.perm_cur_max. apply Mem.perm_implies with Freeable.
-      eapply PERMS; eauto. omega. auto with mem. }
-    exploit Mem.mi_no_overlap; eauto. intros [A|A]. auto. omegaContradiction.
+      eapply PERMS; eauto. lia. auto with mem. }
+    exploit Mem.mi_no_overlap; eauto. intros [A|A]. auto. extlia.
 Qed.
 
 Lemma free_list_right_inject:
@@ -1326,7 +1349,7 @@ Local Opaque ge tge.
     unfold block_of_binding in EQ; inv EQ.
     exploit me_mapped; eauto. eapply PTree.elements_complete; eauto.
     intros [b [A B]].
-    change 0 with (0 + 0). replace (sizeof ge ty) with (sizeof ge ty + 0) by omega.
+    change 0 with (0 + 0). replace (sizeof ge ty) with (sizeof ge ty + 0) by lia.
     eapply Mem.range_perm_inject; eauto.
     eapply free_blocks_of_env_perm_2; eauto.
   - (* no overlap *)
@@ -1343,7 +1366,7 @@ Local Opaque ge tge.
   intros [[id [b' ty]] [EQ IN]]. unfold block_of_binding in EQ. inv EQ.
   exploit me_flat; eauto. apply PTree.elements_complete; eauto.
   intros [P Q]. subst delta. eapply free_blocks_of_env_perm_1 with (m := m); eauto.
-  rewrite <- comp_env_preserved. omega.
+  rewrite <- comp_env_preserved. lia.
 Qed.
 
 (** Matching global environments *)
@@ -1386,19 +1409,22 @@ Proof.
 Qed.
 
 Lemma deref_loc_inject:
-  forall ty loc ofs v loc' ofs',
-  deref_loc ty m loc ofs v ->
+  forall ty loc ofs bf v loc' ofs',
+  deref_loc ty m loc ofs bf v ->
   Val.inject f (Vptr loc ofs) (Vptr loc' ofs') ->
-  exists tv, deref_loc ty tm loc' ofs' tv /\ Val.inject f v tv.
+  exists tv, deref_loc ty tm loc' ofs' bf tv /\ Val.inject f v tv.
 Proof.
   intros. inv H.
-  (* by value *)
+- (* by value *)
   exploit Mem.loadv_inject; eauto. intros [tv [A B]].
   exists tv; split; auto. eapply deref_loc_value; eauto.
-  (* by reference *)
+- (* by reference *)
   exists (Vptr loc' ofs'); split; auto. eapply deref_loc_reference; eauto.
-  (* by copy *)
+- (* by copy *)
   exists (Vptr loc' ofs'); split; auto. eapply deref_loc_copy; eauto.
+- (* bitfield *)
+  inv H1.   exploit Mem.loadv_inject; eauto. intros [tc [A B]]. inv B. 
+  econstructor; split. eapply deref_loc_bitfield. econstructor; eauto. constructor.
 Qed.
 
 Lemma eval_simpl_expr:
@@ -1408,11 +1434,11 @@ Lemma eval_simpl_expr:
   exists tv, eval_expr tge te tle tm (simpl_expr cenv a) tv /\ Val.inject f v tv
 
 with eval_simpl_lvalue:
-  forall a b ofs,
-  eval_lvalue ge e le m a b ofs ->
+  forall a b ofs bf,
+  eval_lvalue ge e le m a b ofs bf ->
   compat_cenv (addr_taken_expr a) cenv ->
   match a with Evar id ty => VSet.mem id cenv = false | _ => True end ->
-  exists b', exists ofs', eval_lvalue tge te tle tm (simpl_expr cenv a) b' ofs' /\ Val.inject f (Vptr b ofs) (Vptr b' ofs').
+  exists b', exists ofs', eval_lvalue tge te tle tm (simpl_expr cenv a) b' ofs' bf /\ Val.inject f (Vptr b ofs) (Vptr b' ofs').
 
 Proof.
   destruct 1; simpl; intros.
@@ -1458,7 +1484,7 @@ Proof.
   subst a. simpl. rewrite OPT.
   exploit me_vars; eauto. instantiate (1 := id). intros MV.
   inv H; inv MV; try congruence.
-  rewrite ENV in H6; inv H6.
+  rewrite ENV in H7; inv H7.
   inv H0; try congruence.
   assert (chunk0 = chunk). simpl in H. congruence. subst chunk0.
   assert (v0 = v). unfold Mem.loadv in H2. rewrite Ptrofs.unsigned_zero in H2. congruence. subst v0.
@@ -1502,7 +1528,8 @@ Proof.
   exploit eval_simpl_expr; eauto. intros [tv [A B]].
   inversion B. subst.
   econstructor; econstructor; split.
-  eapply eval_Efield_union; eauto. rewrite typeof_simpl_expr; eauto. auto.
+  eapply eval_Efield_union; eauto. rewrite typeof_simpl_expr; eauto.
+  econstructor; eauto. repeat rewrite Ptrofs.add_assoc. decEq. apply Ptrofs.add_commut.
 Qed.
 
 Lemma eval_simpl_exprlist:
@@ -1577,34 +1604,36 @@ Proof.
   induction 1; intros LOAD INCR INJ1 INJ2; econstructor; eauto.
 (* globalenvs *)
   inv H. constructor; intros; eauto.
-  assert (f b1 = Some (b2, delta)). rewrite <- H; symmetry; eapply INJ2; eauto. xomega.
+  assert (f b1 = Some (b2, delta)). rewrite <- H; symmetry; eapply INJ2; eauto. extlia.
   eapply IMAGE; eauto.
 (* call *)
   eapply match_envs_invariant; eauto.
-  intros. apply LOAD; auto. xomega.
-  intros. apply INJ1; auto; xomega.
-  intros. eapply INJ2; eauto; xomega.
+  intros. apply LOAD; auto. extlia.
+  intros. apply INJ1; auto; extlia.
+  intros. eapply INJ2; eauto; extlia.
   eapply IHmatch_cont; eauto.
-  intros; apply LOAD; auto. inv H0; xomega.
-  intros; apply INJ1. inv H0; xomega.
-  intros; eapply INJ2; eauto. inv H0; xomega.
+  intros; apply LOAD; auto. inv H0; extlia.
+  intros; apply INJ1. inv H0; extlia.
+  intros; eapply INJ2; eauto. inv H0; extlia.
 Qed.
 
 (** Invariance by assignment to location "above" *)
 
 Lemma match_cont_assign_loc:
-  forall f cenv k tk m bound tbound ty loc ofs v m',
+  forall f cenv k tk m bound tbound ty loc ofs bf v m',
   match_cont f cenv k tk m bound tbound ->
-  assign_loc ge ty m loc ofs v m' ->
+  assign_loc ge ty m loc ofs bf v m' ->
   Ple bound loc ->
   match_cont f cenv k tk m' bound tbound.
 Proof.
   intros. eapply match_cont_invariant; eauto.
   intros. rewrite <- H4. inv H0.
-  (* scalar *)
-  simpl in H6. eapply Mem.load_store_other; eauto. left. unfold block; xomega.
-  (* block copy *)
-  eapply Mem.load_storebytes_other; eauto. left. unfold block; xomega.
+- (* scalar *)
+  simpl in H6. eapply Mem.load_store_other; eauto. left. unfold block; extlia.
+- (* block copy *)
+  eapply Mem.load_storebytes_other; eauto. left. unfold block; extlia.
+- (* bitfield *)
+  inv H5. eapply Mem.load_store_other; eauto. left. unfold block; extlia.
 Qed.
 
 (** Invariance by external calls *)
@@ -1622,9 +1651,9 @@ Proof.
   intros. eapply Mem.load_unchanged_on; eauto.
   red in H2. intros. destruct (f b) as [[b' delta] | ] eqn:?. auto.
   destruct (f' b) as [[b' delta] | ] eqn:?; auto.
-  exploit H2; eauto. unfold Mem.valid_block. intros [A B]. xomegaContradiction.
+  exploit H2; eauto. unfold Mem.valid_block. intros [A B]. extlia.
   red in H2. intros. destruct (f b) as [[b'' delta''] | ] eqn:?. auto.
-  exploit H2; eauto. unfold Mem.valid_block. intros [A B]. xomegaContradiction.
+  exploit H2; eauto. unfold Mem.valid_block. intros [A B]. extlia.
 Qed.
 
 (** Invariance by change of bounds *)
@@ -1636,7 +1665,7 @@ Lemma match_cont_incr_bounds:
   Ple bound bound' -> Ple tbound tbound' ->
   match_cont f cenv k tk m bound' tbound'.
 Proof.
-  induction 1; intros; econstructor; eauto; xomega.
+  induction 1; intros; econstructor; eauto; extlia.
 Qed.
 
 (** [match_cont] and call continuations. *)
@@ -1690,7 +1719,7 @@ Proof.
   inv H; auto.
   destruct a. destruct p. destruct (Mem.free m b z0 z) as [m1|] eqn:?; try discriminate.
   transitivity (Mem.load chunk m1 b' 0). eauto.
-  eapply Mem.load_free. eauto. left. assert (Plt b' b) by eauto. unfold block; xomega.
+  eapply Mem.load_free. eauto. left. assert (Plt b' b) by eauto. unfold block; extlia.
 Qed.
 
 Lemma match_cont_free_env:
@@ -1708,9 +1737,9 @@ Proof.
   intros. rewrite <- H7. eapply free_list_load; eauto.
   unfold blocks_of_env; intros. exploit list_in_map_inv; eauto.
   intros [[id [b1 ty]] [P Q]]. simpl in P. inv P.
-  exploit me_range; eauto. eapply PTree.elements_complete; eauto. xomega.
-  rewrite (free_list_nextblock _ _ _ H3). inv H; xomega.
-  rewrite (free_list_nextblock _ _ _ H4). inv H; xomega.
+  exploit me_range; eauto. eapply PTree.elements_complete; eauto. extlia.
+  rewrite (free_list_nextblock _ _ _ H3). inv H; extlia.
+  rewrite (free_list_nextblock _ _ _ H4). inv H; extlia.
 Qed.
 
 (** Matching of global environments *)
@@ -1979,7 +2008,7 @@ Lemma find_label_store_params:
   forall s k params, find_label lbl (store_params cenv params s) k = find_label lbl s k.
 Proof.
   induction params; simpl. auto.
-  destruct a as [id ty]. destruct (VSet.mem id cenv); auto.
+  destruct a as [id ty]. destruct (VSet.mem id cenv); [destruct Conventions1.parameter_needs_normalization|]; auto.
 Qed.
 
 Lemma find_label_add_debug_vars:
@@ -2018,7 +2047,7 @@ Proof.
   eapply step_Sset_debug. eauto. rewrite typeof_simpl_expr. eauto.
   econstructor; eauto with compat.
   eapply match_envs_assign_lifted; eauto. eapply cast_val_is_casted; eauto.
-  eapply match_cont_assign_loc; eauto. exploit me_range; eauto. xomega.
+  eapply match_cont_assign_loc; eauto. exploit me_range; eauto. extlia.
   inv MV; try congruence. inv H2; try congruence. unfold Mem.storev in H3.
   eapply Mem.store_unmapped_inject; eauto. congruence.
   erewrite assign_loc_nextblock; eauto.
@@ -2068,7 +2097,7 @@ Proof.
   eapply match_envs_set_opttemp; eauto.
   eapply match_envs_extcall; eauto.
   eapply match_cont_extcall; eauto.
-  inv MENV; xomega. inv MENV; xomega.
+  inv MENV; extlia. inv MENV; extlia.
   eapply Ple_trans; eauto. eapply external_call_nextblock; eauto.
   eapply Ple_trans; eauto. eapply external_call_nextblock; eauto.
 
@@ -2212,11 +2241,11 @@ Proof.
   eapply bind_parameters_load; eauto. intros.
   exploit alloc_variables_range. eexact H1. eauto.
   unfold empty_env. rewrite PTree.gempty. intros [?|?]. congruence.
-  red; intros; subst b'. xomega.
+  red; intros; subst b'. extlia.
   eapply alloc_variables_load; eauto.
   apply compat_cenv_for.
-  rewrite (bind_parameters_nextblock _ _ _ _ _ _ H2). xomega.
-  rewrite T; xomega.
+  rewrite (bind_parameters_nextblock _ _ _ _ _ _ H2). extlia.
+  rewrite T; extlia.
 
 (* external function *)
   monadInv TRFD. inv FUNTY.
@@ -2227,7 +2256,7 @@ Proof.
   apply plus_one. econstructor; eauto. eapply external_call_symbols_preserved; eauto. apply senv_preserved.
   econstructor; eauto.
   intros. apply match_cont_incr_bounds with (Mem.nextblock m) (Mem.nextblock tm).
-  eapply match_cont_extcall; eauto. xomega. xomega.
+  eapply match_cont_extcall; eauto. extlia. extlia.
   eapply external_call_nextblock; eauto.
   eapply external_call_nextblock; eauto.
 
@@ -2262,7 +2291,7 @@ Proof.
   eapply Genv.find_symbol_not_fresh; eauto.
   eapply Genv.find_funct_ptr_not_fresh; eauto.
   eapply Genv.find_var_info_not_fresh; eauto.
-  xomega. xomega.
+  extlia. extlia.
   eapply Genv.initmem_inject; eauto.
   constructor.
 Qed.
@@ -2290,7 +2319,7 @@ End PRESERVATION.
 
 (** ** Commutation with linking *)
 
-Instance TransfSimplLocalsLink : TransfLink match_prog.
+Global Instance TransfSimplLocalsLink : TransfLink match_prog.
 Proof.
   red; intros. eapply Ctypes.link_match_program; eauto. 
 - intros.
@@ -2299,7 +2328,5 @@ Local Transparent Linker_fundef.
   destruct f1; monadInv H3; destruct f2; monadInv H4; try discriminate.
   destruct e; inv H2. exists (Internal x); split; auto. simpl; rewrite EQ; auto.
   destruct e; inv H2. exists (Internal x); split; auto. simpl; rewrite EQ; auto.
-  destruct (external_function_eq e e0 && typelist_eq t t1 &&
-            type_eq t0 t2 && calling_convention_eq c c0); inv H2.
-  econstructor; split; eauto. 
+  destruct andb; inv H2. econstructor; split; eauto. 
 Qed.

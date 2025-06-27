@@ -30,7 +30,6 @@ Require Import Op.
 Require Import RTL.
 
 (** * Neededness for values *)
-
 Inductive nval : Type :=
   | Nothing              (**r value is entirely unused *)
   | I (m: int)           (**r only need the bits that are 1 in [m] *)
@@ -47,7 +46,7 @@ Definition iagree (p q mask: int) : Prop :=
   forall i, 0 <= i < Int.zwordsize -> Int.testbit mask i = true ->
             Int.testbit p i = Int.testbit q i.
 
-Fixpoint vagree (v w: val) (x: nval) {struct x}: Prop :=
+Definition vagree (v w: val) (x: nval) : Prop :=
   match x with
   | Nothing => True
   | I m =>
@@ -59,10 +58,15 @@ Fixpoint vagree (v w: val) (x: nval) {struct x}: Prop :=
   | All => Val.lessdef v w
   end.
 
+Ltac custom1 := red; auto.
+Ltac custom4 := simpl; auto.
 Lemma vagree_same: forall v x, vagree v v x.
-Proof.
-  intros. destruct x; simpl; auto; destruct v; auto. red; auto.
+Proof. 
+intros. destruct x; custom4 ; destruct v; auto. custom1. 
 Qed.
+(* Proof.
+  intros. destruct x; simpl; auto; destruct v; auto. red; auto.
+Qed. *)
 
 Lemma vagree_lessdef: forall v w x, Val.lessdef v w -> vagree v w x.
 Proof.
@@ -74,7 +78,7 @@ Proof.
   intros. simpl in H. auto.
 Qed.
 
-Hint Resolve vagree_same vagree_lessdef lessdef_vagree: na.
+Global Hint Resolve vagree_same vagree_lessdef lessdef_vagree: na.
 
 Inductive vagree_list: list val -> list val -> list nval -> Prop :=
   | vagree_list_nil: forall nvl,
@@ -89,7 +93,7 @@ Inductive vagree_list: list val -> list val -> list nval -> Prop :=
 Lemma lessdef_vagree_list:
   forall vl1 vl2, vagree_list vl1 vl2 nil -> Val.lessdef_list vl1 vl2.
 Proof.
-  induction vl1; intros; inv H; constructor; auto with na.
+  intro vl1. induction vl1; intros; inv H; constructor; auto with na.
 Qed.
 
 Lemma vagree_lessdef_list:
@@ -100,7 +104,7 @@ Proof.
   destruct nvl; constructor; auto with na.
 Qed.
 
-Hint Resolve lessdef_vagree_list vagree_lessdef_list: na.
+Global Hint Resolve lessdef_vagree_list vagree_lessdef_list: na.
 
 (** ** Ordering and least upper bound between value needs *)
 
@@ -113,11 +117,11 @@ Inductive nge: nval -> nval -> Prop :=
 
 Lemma nge_refl: forall x, nge x x.
 Proof.
-  destruct x; constructor; auto.
+  intro x. destruct x; constructor; auto.
 Qed.
 
-Hint Constructors nge: na.
-Hint Resolve nge_refl: na.
+Global Hint Constructors nge: na.
+Global Hint Resolve nge_refl: na.
 
 Lemma nge_trans: forall x y, nge x y -> forall z, nge y z -> nge x z.
 Proof.
@@ -143,14 +147,14 @@ Definition nlub (x y: nval) : nval :=
 Lemma nge_lub_l:
   forall x y, nge (nlub x y) x.
 Proof.
-  unfold nlub; destruct x, y; auto with na.
+  intros x y. unfold nlub; destruct x, y; auto with na.
   constructor. intros. autorewrite with ints; auto. rewrite H0; auto.
 Qed.
 
 Lemma nge_lub_r:
   forall x y, nge (nlub x y) y.
 Proof.
-  unfold nlub; destruct x, y; auto with na.
+  intros x y. unfold nlub; destruct x, y; auto with na.
   constructor. intros. autorewrite with ints; auto. rewrite H0. apply orb_true_r; auto.
 Qed.
 
@@ -200,12 +204,17 @@ Proof.
   intros. rewrite iagree_and_eq in *. rewrite ! Int.and_assoc.
   rewrite (Int.and_commut n). auto.
 Qed.
-
+ 
+Ltac custom14 := autorewrite with ints; auto.
+Ltac custom33 := intros; red; intros.
 Lemma iagree_not:
   forall x y m, iagree x y m -> iagree (Int.not x) (Int.not y) m.
 Proof.
+  custom33; custom14; f_equal; auto.
+Qed. 
+(* Proof.
   intros; red; intros; autorewrite with ints; auto. f_equal; auto.
-Qed.
+Qed. *)
 
 Lemma iagree_not':
   forall x y m, iagree (Int.not x) (Int.not y) m -> iagree x y m.
@@ -214,13 +223,22 @@ Proof.
   apply iagree_not; auto.
 Qed.
 
+Ltac custom21 H0 := apply H0; auto.
+Ltac custom37 H0 := intros; apply H0.
+Ltac custom40 H0 H1 := rewrite ! H0; apply H1.
+
 Lemma iagree_or:
   forall x y n m,
   iagree x y (Int.and m (Int.not n)) -> iagree (Int.or x n) (Int.or y n) m.
-Proof.
+Proof. 
+custom37 iagree_not'. 
+custom40 Int.not_or_and_not iagree_and. 
+custom21 iagree_not. 
+Qed.
+(* Proof.
   intros. apply iagree_not'. rewrite ! Int.not_or_and_not. apply iagree_and.
   apply iagree_not; auto.
-Qed.
+Qed. *)
 
 Lemma iagree_bitwise_binop:
   forall sem f,
@@ -228,9 +246,12 @@ Lemma iagree_bitwise_binop:
        Int.testbit (f x y) i = sem (Int.testbit x i) (Int.testbit y i)) ->
   forall x1 x2 y1 y2 m,
   iagree x1 y1 m -> iagree x2 y2 m -> iagree (f x1 x2) (f y1 y2) m.
-Proof.
-  intros; red; intros. rewrite ! H by auto. f_equal; auto.
+Proof. 
+custom33. rewrite ! H by auto. f_equal; auto. 
 Qed.
+(* Proof.
+  intros; red; intros. rewrite ! H by auto. f_equal; auto.
+Qed. *)
 
 Lemma iagree_shl:
   forall x y m n,
@@ -240,9 +261,9 @@ Proof.
   destruct (zlt i (Int.unsigned n)).
 - auto.
 - generalize (Int.unsigned_range n); intros.
-  apply H. omega. rewrite Int.bits_shru by omega.
-  replace (i - Int.unsigned n + Int.unsigned n) with i by omega.
-  rewrite zlt_true by omega. auto.
+  apply H. lia. rewrite Int.bits_shru by lia.
+  replace (i - Int.unsigned n + Int.unsigned n) with i by lia.
+  rewrite zlt_true by lia. auto.
 Qed.
 
 Lemma iagree_shru:
@@ -252,9 +273,9 @@ Proof.
   intros; red; intros. autorewrite with ints; auto.
   destruct (zlt (i + Int.unsigned n) Int.zwordsize).
 - generalize (Int.unsigned_range n); intros.
-  apply H. omega. rewrite Int.bits_shl by omega.
-  replace (i + Int.unsigned n - Int.unsigned n) with i by omega.
-  rewrite zlt_false by omega. auto.
+  apply H. lia. rewrite Int.bits_shl by lia.
+  replace (i + Int.unsigned n - Int.unsigned n) with i by lia.
+  rewrite zlt_false by lia. auto.
 - auto.
 Qed.
 
@@ -266,7 +287,7 @@ Proof.
   intros; red; intros. rewrite <- H in H2. rewrite Int.bits_shru in H2 by auto.
   rewrite ! Int.bits_shr by auto.
   destruct (zlt (i + Int.unsigned n) Int.zwordsize).
-- apply H0; auto. generalize (Int.unsigned_range n); omega.
+- apply H0; auto. generalize (Int.unsigned_range n); lia.
 - discriminate.
 Qed.
 
@@ -277,15 +298,13 @@ Lemma iagree_shr:
 Proof.
   intros; red; intros. rewrite ! Int.bits_shr by auto.
   generalize (Int.unsigned_range n); intros.
-  set (j := if zlt (i + Int.unsigned n) Int.zwordsize
-            then i + Int.unsigned n
-            else Int.zwordsize - 1).
+  set (j := if zlt (i + Int.unsigned n) Int.zwordsize then i + Int.unsigned n else Int.zwordsize - 1).
   assert (0 <= j < Int.zwordsize).
-  { unfold j; destruct (zlt (i + Int.unsigned n) Int.zwordsize); omega. }
+    unfold j; destruct (zlt (i + Int.unsigned n) Int.zwordsize); lia.
   apply H; auto. autorewrite with ints; auto. apply orb_true_intro.
   unfold j; destruct (zlt (i + Int.unsigned n) Int.zwordsize).
-- left. rewrite zlt_false by omega.
-  replace (i + Int.unsigned n - Int.unsigned n) with i by omega.
+- left. rewrite zlt_false by lia.
+  replace (i + Int.unsigned n - Int.unsigned n) with i by lia.
   auto.
 - right. reflexivity.
 Qed.
@@ -299,11 +318,10 @@ Proof.
   red; intros. rewrite ! Int.bits_rol by auto. apply H.
   apply Z_mod_lt; auto.
   rewrite Int.bits_ror.
-  replace (((i - Int.unsigned amount) mod Int.zwordsize + Int.unsigned amount)
-   mod Int.zwordsize) with i. auto.
+  replace (((i - Int.unsigned amount) mod Int.zwordsize + Int.unsigned amount) mod Int.zwordsize) with i. auto.
   apply eqmod_small_eq with Int.zwordsize; auto.
   apply eqmod_trans with ((i - Int.unsigned amount) + Int.unsigned amount).
-  apply eqmod_refl2; omega.
+  apply eqmod_refl2; lia.
   eapply eqmod_trans. 2: apply eqmod_mod; auto.
   apply eqmod_add.
   apply eqmod_mod; auto.
@@ -330,12 +348,12 @@ Lemma eqmod_iagree:
 Proof.
   intros. set (p := Z.to_nat (Int.size m)).
   generalize (Int.size_range m); intros RANGE.
-  assert (EQ: Int.size m = Z.of_nat p). { symmetry; apply Z2Nat.id. omega. }
+  assert (EQ: Int.size m = Z.of_nat p).   symmetry; apply Z2Nat.id. lia.
   rewrite EQ in H; rewrite <- two_power_nat_two_p in H.
   red; intros. rewrite ! Int.testbit_repr by auto.
   destruct (zlt i (Int.size m)).
-  eapply same_bits_eqmod; eauto. omega.
-  assert (Int.testbit m i = false) by (eapply Int.bits_size_2; omega).
+  eapply same_bits_eqmod; eauto. lia.
+  assert (Int.testbit m i = false) by (eapply Int.bits_size_2; lia).
   congruence.
 Qed.
 
@@ -348,11 +366,11 @@ Lemma iagree_eqmod:
 Proof.
   intros. set (p := Z.to_nat (Int.size m)).
   generalize (Int.size_range m); intros RANGE.
-  assert (EQ: Int.size m = Z.of_nat p). { symmetry; apply Z2Nat.id. omega. }
+  assert (EQ: Int.size m = Z.of_nat p).   symmetry; apply Z2Nat.id. lia.
   rewrite EQ; rewrite <- two_power_nat_two_p.
-  apply eqmod_same_bits. intros. apply H. omega.
-  unfold complete_mask. rewrite Int.bits_zero_ext by omega.
-  rewrite zlt_true by omega. rewrite Int.bits_mone by omega. auto.
+  apply eqmod_same_bits. intros. apply H. lia.
+  unfold complete_mask. rewrite Int.bits_zero_ext by lia.
+  rewrite zlt_true by lia. rewrite Int.bits_mone by lia. auto.
 Qed.
 
 Lemma complete_mask_idem:
@@ -361,14 +379,14 @@ Proof.
   unfold complete_mask; intros. destruct (Int.eq_dec m Int.zero).
 + subst m; reflexivity.
 + assert (Int.unsigned m <> 0).
-  { red; intros; elim n. rewrite <- (Int.repr_unsigned m). rewrite H; auto. }
+    red; intros; elim n. rewrite <- (Int.repr_unsigned m). rewrite H; auto.
   assert (0 < Int.size m).
-  { apply Zsize_pos'. generalize (Int.unsigned_range m); omega. }
+    apply Zsize_pos'. generalize (Int.unsigned_range m); lia.
   generalize (Int.size_range m); intros.
   f_equal. apply Int.bits_size_4. tauto.
-  rewrite Int.bits_zero_ext by omega. rewrite zlt_true by omega.
-  apply Int.bits_mone; omega.
-  intros. rewrite Int.bits_zero_ext by omega. apply zlt_false; omega.
+  rewrite Int.bits_zero_ext by lia. rewrite zlt_true by lia.
+  apply Int.bits_mone; lia.
+  intros. rewrite Int.bits_zero_ext by lia. apply zlt_false; lia.
 Qed.
 
 (** ** Abstract operations over value needs. *)
@@ -427,8 +445,9 @@ Qed.
 Definition bitwise (x: nval) := x.
 
 Remark bitwise_idem: forall nv, bitwise (bitwise nv) = bitwise nv.
-Proof. auto. Qed.
+Proof. intros. auto. Qed.
 
+Ltac custom60 H0 := unfold H0; intros.
 Lemma vagree_bitwise_binop:
   forall f,
   (forall p1 p2 q1 q2 m,
@@ -438,30 +457,34 @@ Lemma vagree_bitwise_binop:
   vagree (match v1, v2 with Vint i1, Vint i2 => Vint(f i1 i2) | _, _ => Vundef end)
          (match w1, w2 with Vint i1, Vint i2 => Vint(f i1 i2) | _, _ => Vundef end)
          x.
-Proof.
+Proof. 
+custom60 bitwise. 
+destruct x; simpl in *. auto. InvAgree. 
+- inv H0; auto. inv H1; auto. destruct w1; auto.
+Qed.
+(* Proof.
   unfold bitwise; intros. destruct x; simpl in *.
 - auto.
 - InvAgree.
-- inv H0; auto. inv H1; auto. destruct w1; auto.
-Qed.
+Qed. *)
 
 Lemma and_sound:
   forall v1 w1 v2 w2 x,
   vagree v1 w1 (bitwise x) -> vagree v2 w2 (bitwise x) ->
   vagree (Val.and v1 v2) (Val.and w1 w2) x.
-Proof (vagree_bitwise_binop Int.and (iagree_bitwise_binop andb Int.and Int.bits_and)).
+Proof. intros. apply (vagree_bitwise_binop Int.and (iagree_bitwise_binop andb Int.and Int.bits_and)); auto. Qed.
 
 Lemma or_sound:
   forall v1 w1 v2 w2 x,
   vagree v1 w1 (bitwise x) -> vagree v2 w2 (bitwise x) ->
   vagree (Val.or v1 v2) (Val.or w1 w2) x.
-Proof (vagree_bitwise_binop Int.or (iagree_bitwise_binop orb Int.or Int.bits_or)).
+Proof. intros. apply (vagree_bitwise_binop Int.or (iagree_bitwise_binop orb Int.or Int.bits_or)); auto. Qed.
 
 Lemma xor_sound:
   forall v1 w1 v2 w2 x,
   vagree v1 w1 (bitwise x) -> vagree v2 w2 (bitwise x) ->
   vagree (Val.xor v1 v2) (Val.xor w1 w2) x.
-Proof (vagree_bitwise_binop Int.xor (iagree_bitwise_binop xorb Int.xor Int.bits_xor)).
+Proof. intros. apply (vagree_bitwise_binop Int.xor (iagree_bitwise_binop xorb Int.xor Int.bits_xor)); auto. Qed.
 
 Lemma notint_sound:
   forall v w x,
@@ -524,23 +547,6 @@ Definition shrimm (x: nval) (n: int) :=
   | All => I (Int.or (Int.shl Int.mone n) (Int.repr Int.min_signed))
   end.
 
-Lemma shrimm_sound:
-  forall v w x n,
-  vagree v w (shrimm x n) ->
-  vagree (Val.shr v (Vint n)) (Val.shr w (Vint n)) x.
-Proof.
-  unfold shrimm; intros. unfold Val.shr.
-  destruct (Int.ltu n Int.iwordsize).
-  destruct x; simpl in *.
-- auto.
-- InvAgree.
-  destruct (Int.eq_dec (Int.shru (Int.shl m n) n) m).
-  apply iagree_shr_1; auto.
-  apply iagree_shr; auto.
-- InvAgree. apply Val.lessdef_same. f_equal. apply iagree_mone. apply iagree_shr. auto.
-- destruct v; auto with na.
-Qed.
-
 Definition rol (x: nval) (amount: int) :=
   match x with
   | Nothing => Nothing
@@ -588,7 +594,8 @@ Lemma rolm_sound:
 Proof.
   unfold rolm; intros.
   assert (X: forall u, Val.rolm u amount mask = Val.and (Val.rol u (Vint amount)) (Vint mask)).
-  { destruct u; auto. }
+  - destruct u; auto.
+  -
   rewrite ! X.
   apply andimm_sound. apply rol_sound. auto.
 Qed.
@@ -616,23 +623,35 @@ Proof.
 - inv H; auto. inv H0; auto. destruct w1; auto.
 Qed.
 
+Ltac custom65 H0 := InvAgree; apply H0.
 Lemma sub_sound:
   forall v1 w1 v2 w2 x,
   vagree v1 w1 (modarith x) -> vagree v2 w2 (modarith x) ->
   Archi.ptr64 = true ->
   vagree (Val.sub v1 v2) (Val.sub w1 w2) x.
-Proof.
+Proof. 
+custom60 modarith. 
+destruct x; simpl in *. auto. unfold Val.sub. 
+- rewrite H1; custom65 eqmod_iagree. 
+  apply eqmod_sub; custom21 iagree_eqmod. 
+- inv H; auto. inv H0; auto. destruct w1; auto.
+Qed.
+(* Proof.
   unfold modarith; intros. destruct x; simpl in *.
 - auto.
 - unfold Val.sub; rewrite H1; InvAgree.
   apply eqmod_iagree. apply eqmod_sub; apply iagree_eqmod; auto.
 - inv H; auto. inv H0; auto. destruct w1; auto.
-Qed.
+Qed. *)
 
+Ltac custom61 H0 := f_equal; apply H0.
 Remark modarith_idem: forall nv, modarith (modarith nv) = modarith nv.
-Proof.
-  destruct nv; simpl; auto. f_equal; apply complete_mask_idem.
+Proof. 
+intro nv. destruct nv; custom4. custom61 complete_mask_idem. 
 Qed.
+(* Proof.
+  intro nv. destruct nv; simpl; auto. f_equal; apply complete_mask_idem.
+Qed. *)
 
 Lemma mul_sound:
   forall v1 w1 v2 w2 x,
@@ -676,12 +695,12 @@ Proof.
   destruct x; simpl in *.
 - auto.
 - unfold Val.zero_ext; InvAgree.
-  red; intros. autorewrite with ints; try omega.
+  red; intros. autorewrite with ints; try lia.
   destruct (zlt i1 n); auto. apply H; auto.
-  autorewrite with ints; try omega. rewrite zlt_true; auto.
+  autorewrite with ints; try lia. rewrite zlt_true; auto.
 - unfold Val.zero_ext; InvAgree; auto. apply Val.lessdef_same. f_equal.
-  Int.bit_solve; try omega. destruct (zlt i1 n); auto. apply H; auto.
-  autorewrite with ints; try omega. apply zlt_true; auto.
+  Int.bit_solve; try lia. destruct (zlt i1 n); auto. apply H; auto.
+  autorewrite with ints; try lia. apply zlt_true; auto.
 Qed.
 
 Definition sign_ext (n: Z) (x: nval) :=
@@ -700,32 +719,32 @@ Proof.
   unfold sign_ext; intros. destruct x; simpl in *.
 - auto.
 - unfold Val.sign_ext; InvAgree.
-  red; intros. autorewrite with ints; try omega.
+  red; intros. autorewrite with ints; try lia.
   set (j := if zlt i1 n then i1 else n - 1).
   assert (0 <= j < Int.zwordsize).
-  { unfold j; destruct (zlt i1 n); omega. }
+    unfold j; destruct (zlt i1 n); lia.
   apply H; auto.
-  autorewrite with ints; try omega. apply orb_true_intro.
+  autorewrite with ints; try lia. apply orb_true_intro.
   unfold j; destruct (zlt i1 n).
   left. rewrite zlt_true; auto.
-  right. rewrite Int.unsigned_repr. rewrite zlt_false by omega.
-  replace (n - 1 - (n - 1)) with 0 by omega. reflexivity.
-  generalize Int.wordsize_max_unsigned; omega.
+  right. rewrite Int.unsigned_repr. rewrite zlt_false by lia.
+  replace (n - 1 - (n - 1)) with 0 by lia. reflexivity.
+  generalize Int.wordsize_max_unsigned; lia.
 - unfold Val.sign_ext; InvAgree; auto. apply Val.lessdef_same. f_equal.
-  Int.bit_solve; try omega.
+  Int.bit_solve; try lia.
   set (j := if zlt i1 n then i1 else n - 1).
   assert (0 <= j < Int.zwordsize).
-  { unfold j; destruct (zlt i1 n); omega. }
-  apply H; auto. rewrite Int.bits_zero_ext; try omega.
+    unfold j; destruct (zlt i1 n); lia.
+  apply H; auto. rewrite Int.bits_zero_ext; try lia.
   rewrite zlt_true. apply Int.bits_mone; auto.
-  unfold j. destruct (zlt i1 n); omega.
+  unfold j. destruct (zlt i1 n); lia.
 Qed.
 
 (** The needs of a memory store concerning the value being stored. *)
 
 Definition store_argument (chunk: memory_chunk) :=
   match chunk with
-  | Mint8signed | Mint8unsigned => I (Int.repr 255)
+  | Mbool | Mint8signed | Mint8unsigned => I (Int.repr 255)
   | Mint16signed | Mint16unsigned => I (Int.repr 65535)
   | _ => All
   end.
@@ -736,22 +755,15 @@ Lemma store_argument_sound:
   list_forall2 memval_lessdef (encode_val chunk v) (encode_val chunk w).
 Proof.
   intros.
-  assert (UNDEF: list_forall2 memval_lessdef
-                     (list_repeat (size_chunk_nat chunk) Undef)
-                     (encode_val chunk w)).
-  {
-     rewrite <- (encode_val_length chunk w).
+  assert (UNDEF: list_forall2 memval_lessdef (List.repeat Undef (size_chunk_nat chunk)) (encode_val chunk w)).
+    rewrite <- (encode_val_length chunk w).
      apply repeat_Undef_inject_any.
-  }
-  assert (SAME: forall vl1 vl2,
-                vl1 = vl2 ->
-                list_forall2 memval_lessdef vl1 vl2).
-  {
-     intros. subst vl2. revert vl1. induction vl1; constructor; auto.
+  assert (SAME: forall vl1 vl2, vl1 = vl2 -> list_forall2 memval_lessdef vl1 vl2).
+    intros. subst vl2. revert vl1. induction vl1; constructor; auto.
      apply memval_lessdef_refl.
-  }
-
   intros. unfold store_argument in H; destruct chunk.
+- InvAgree. apply SAME. simpl; f_equal. apply encode_int_8_mod.
+  change 8 with (Int.size (Int.repr 255)). apply iagree_eqmod; auto.
 - InvAgree. apply SAME. simpl; f_equal. apply encode_int_8_mod.
   change 8 with (Int.size (Int.repr 255)). apply iagree_eqmod; auto.
 - InvAgree. apply SAME. simpl; f_equal. apply encode_int_8_mod.
@@ -775,14 +787,17 @@ Lemma store_argument_load_result:
 Proof.
   unfold store_argument; intros; destruct chunk;
   auto using Val.load_result_lessdef; InvAgree; simpl.
+- apply Val.norm_bool_lessdef.
+  apply zero_ext_sound with (v := Vint i) (w := Vint i0) (x := All) (n := 8).
+  auto. lia.
 - apply sign_ext_sound with (v := Vint i) (w := Vint i0) (x := All) (n := 8).
   auto. compute; auto.
 - apply zero_ext_sound with (v := Vint i) (w := Vint i0) (x := All) (n := 8).
-  auto. omega.
+  auto. lia.
 - apply sign_ext_sound with (v := Vint i) (w := Vint i0) (x := All) (n := 16).
   auto. compute; auto.
 - apply zero_ext_sound with (v := Vint i) (w := Vint i0) (x := All) (n := 16).
-  auto. omega.
+  auto. lia.
 Qed.
 
 (** The needs of a comparison *)
@@ -807,9 +822,9 @@ Lemma normalize_sound:
   vagree v w x ->
   vagree (Val.normalize v ty) (Val.normalize w ty) x.
 Proof.
-  intros. destruct x; simpl in *. 
+  intros. destruct x; simpl in *.
 - auto.
-- unfold Val.normalize. destruct v. 
+- unfold Val.normalize. destruct v.
   auto.
   destruct w; try contradiction. destruct ty; auto.
   destruct ty; auto.
@@ -863,8 +878,10 @@ Proof.
   unfold inject_id; intros. inv H. rewrite Ptrofs.add_zero.
   rewrite Mem.weak_valid_pointer_spec in *.
   rewrite ! Mem.valid_pointer_nonempty_perm in *.
-  destruct H0; [left|right]; eauto.
-Qed.
+  destruct H0.
+  - left. eauto.
+  - right. eauto.
+Defined.
 
 Let weak_valid_pointer_no_overflow:
   forall b1 ofs b2 delta,
@@ -873,7 +890,7 @@ Let weak_valid_pointer_no_overflow:
   0 <= Ptrofs.unsigned ofs + Ptrofs.unsigned (Ptrofs.repr delta) <= Ptrofs.max_unsigned.
 Proof.
   unfold inject_id; intros. inv H. rewrite Z.add_0_r. apply Ptrofs.unsigned_range_2.
-Qed.
+Defined.
 
 Let valid_different_pointers_inj:
   forall b1 ofs1 b2 ofs2 b1' delta1 b2' delta2,
@@ -886,7 +903,7 @@ Let valid_different_pointers_inj:
   Ptrofs.unsigned (Ptrofs.add ofs1 (Ptrofs.repr delta1)) <> Ptrofs.unsigned (Ptrofs.add ofs2 (Ptrofs.repr delta2)).
 Proof.
   unfold inject_id; intros. left; congruence.
-Qed.
+Defined.
 
 Lemma default_needs_of_condition_sound:
   forall cond args1 b args2,
@@ -913,13 +930,11 @@ Proof.
   intros. assert (default nv = All) by (destruct nv; simpl; congruence).
   rewrite H2 in H0.
   assert (Val.lessdef_list args1 args2).
-  {
-    destruct H0. auto with na.
+  - destruct H0. auto with na.
     destruct H0. inv H0; constructor; auto with na.
-    destruct H0. inv H0. constructor. inv H8; constructor; auto with na. 
+    destruct H0. inv H0. constructor. inv H8; constructor; auto with na.
     inv H0; constructor; auto with na. inv H8; constructor; auto with na. inv H9; constructor; auto with na.
-  }
-  exploit (@eval_operation_inj _ _ _ _ ge ge inject_id).
+  - exploit (@eval_operation_inj _ _ _ _ ge ge inject_id).
   eassumption. auto. auto. auto.
   instantiate (1 := op). intros. apply val_inject_lessdef; auto.
   apply val_inject_lessdef. instantiate (1 := Vptr sp Ptrofs.zero). instantiate (1 := Vptr sp Ptrofs.zero). auto.
@@ -990,9 +1005,9 @@ Proof.
   unfold rolm_redundant; intros; InvBooleans. subst amount. rewrite Val.rolm_zero.
   apply andimm_redundant_sound; auto.
   assert (forall n, Int.ror n Int.zero = n).
-  { intros. rewrite Int.ror_rol_neg by apply int_wordsize_divides_modulus.
-    rewrite Int.neg_zero. apply Int.rol_zero. }
-  unfold rolm, rol, andimm in *. destruct x; auto.
+  - intros. rewrite Int.ror_rol_neg by apply int_wordsize_divides_modulus.
+    rewrite Int.neg_zero. apply Int.rol_zero.
+  - unfold rolm, rol, andimm in *. destruct x; auto.
   rewrite H in H0. auto.
   rewrite H in H0. auto.
 Qed.
@@ -1014,9 +1029,9 @@ Proof.
   unfold zero_ext_redundant; intros. destruct x; try discriminate.
 - auto.
 - simpl in *; InvAgree. simpl. InvBooleans. rewrite <- H.
-  red; intros; autorewrite with ints; try omega.
+  red; intros; autorewrite with ints; try lia.
   destruct (zlt i1 n). apply H0; auto.
-  rewrite Int.bits_zero_ext in H3 by omega. rewrite zlt_false in H3 by auto. discriminate.
+  rewrite Int.bits_zero_ext in H3 by lia. rewrite zlt_false in H3 by auto. discriminate.
 Qed.
 
 Definition sign_ext_redundant (n: Z) (x: nval) :=
@@ -1036,10 +1051,10 @@ Proof.
   unfold sign_ext_redundant; intros. destruct x; try discriminate.
 - auto.
 - simpl in *; InvAgree. simpl. InvBooleans. rewrite <- H.
-  red; intros; autorewrite with ints; try omega.
+  red; intros; autorewrite with ints; try lia.
   destruct (zlt i1 n). apply H0; auto.
   rewrite Int.bits_or; auto. rewrite H3; auto.
-  rewrite Int.bits_zero_ext in H3 by omega. rewrite zlt_false in H3 by auto. discriminate.
+  rewrite Int.bits_zero_ext in H3 by lia. rewrite zlt_false in H3 by auto. discriminate.
 Qed.
 
 (** * Neededness for register environments *)
@@ -1064,9 +1079,9 @@ Module NVal <: SEMILATTICE.
   Proof. intros. constructor. Qed.
   Definition lub := nlub.
   Lemma ge_lub_left: forall x y, ge (lub x y) x.
-  Proof nge_lub_l.
+  Proof. intros. apply nge_lub_l. Qed.
   Lemma ge_lub_right: forall x y, ge (lub x y) y.
-  Proof nge_lub_r.
+  Proof. intros. apply nge_lub_r. Qed.
 End NVal.
 
 Module NE := LPMap1(NVal).
@@ -1080,11 +1095,12 @@ Definition eagree (e1 e2: regset) (ne: nenv) : Prop :=
 
 Lemma nreg_agree:
   forall rs1 rs2 ne r, eagree rs1 rs2 ne -> vagree rs1#r rs2#r (nreg ne r).
-Proof.
+Proof. custom37 H. Qed.
+(* Proof.
   intros. apply H.
-Qed.
+Qed. *)
 
-Hint Resolve nreg_agree: na.
+Global Hint Resolve nreg_agree: na.
 
 Lemma eagree_ge:
   forall e1 e2 ne ne',
@@ -1131,7 +1147,7 @@ Lemma eagree_update_dead:
   eagree e1 e2 ne -> eagree (e1#r <- v1) e2 ne.
 Proof.
   intros; red; intros. rewrite PMap.gsspec.
-  destruct (peq r0 r); auto. subst. unfold nreg in H. rewrite H. red; auto.
+  destruct (peq r0 r); auto. subst r0. unfold nreg in H. rewrite H. red; auto.
 Qed.
 
 (** * Neededness for memory locations *)
@@ -1205,8 +1221,7 @@ Lemma nlive_add:
 Proof.
   intros. unfold nmem_add. destruct nm. apply nlive_all.
   inv H1; try (apply nlive_all).
-  - (* Gl id ofs *)
-    assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto).
+  - assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto).
     destruct gl!id as [iv|] eqn:NG.
   + constructor; simpl; intros.
     congruence.
@@ -1217,18 +1232,15 @@ Proof.
     congruence.
     assert (id0 = id) by (eapply Genv.genv_vars_inj; eauto). subst id0.
     congruence.
-  - (* Glo id *)
-    assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto).
+  - assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto).
     constructor; simpl; intros.
     congruence.
     assert (id0 = id) by (eapply Genv.genv_vars_inj; eauto). subst id0.
     rewrite PTree.grs in H5. congruence.
-  - (* Stk ofs *)
-    constructor; simpl; intros.
+  - constructor; simpl; intros.
     rewrite ISet.In_remove. intros [A B]. elim A; auto.
     assert (bc b = BCglob id) by (eapply H; eauto). congruence.
-  - (* Stack *)
-    constructor; simpl; intros.
+  - constructor; simpl; intros.
     apply ISet.In_empty.
     assert (bc b = BCglob id) by (eapply H; eauto). congruence.
 Qed.
@@ -1237,22 +1249,18 @@ Lemma incl_nmem_add:
   forall nm b i p sz,
   nlive nm b i -> nlive (nmem_add nm p sz) b i.
 Proof.
-  intros. inversion H; subst. unfold nmem_add; destruct p; try (apply nlive_all).
-- (* Gl id ofs *)
-  destruct gl!id as [iv|] eqn:NG.
+  intros. inversion H; subst b0 ofs nm. unfold nmem_add; destruct p; try (apply nlive_all).
+- destruct gl!id as [iv|] eqn:NG.
   + split; simpl; intros. auto.
     rewrite PTree.gsspec in H1. destruct (peq id0 id); eauto. inv H1.
     rewrite ISet.In_remove. intros [P Q]. eelim GL; eauto.
   + auto.
-- (* Glo id *)
-  split; simpl; intros. auto.
+- split; simpl; intros. auto.
   rewrite PTree.grspec in H1. destruct (PTree.elt_eq id0 id). congruence. eauto.
-- (* Stk ofs *)
-  split; simpl; intros.
+- split; simpl; intros.
   rewrite ISet.In_remove. intros [P Q]. eelim STK; eauto.
   eauto.
-- (* Stack *)
-  split; simpl; intros.
+- split; simpl; intros.
   apply ISet.In_empty.
   eauto.
 Qed.
@@ -1287,26 +1295,18 @@ Lemma nlive_remove:
   b' <> b \/ i < Ptrofs.unsigned ofs \/ Ptrofs.unsigned ofs + sz <= i ->
   nlive (nmem_remove nm p sz) b' i.
 Proof.
-  intros. inversion H2; subst. unfold nmem_remove; inv H1; auto.
-- (* Gl id ofs *)
-  set (iv' := match gl!id with
-                  | Some iv =>
-                      ISet.add (Ptrofs.unsigned ofs) (Ptrofs.unsigned ofs + sz) iv
-                  | None =>
-                      ISet.interval (Ptrofs.unsigned ofs)
-                        (Ptrofs.unsigned ofs + sz)
-              end).
+  intros. inversion H2; subst b0 ofs0 nm. unfold nmem_remove; inv H1; auto.
+- set (iv' := match gl!id with | Some iv => ISet.add (Ptrofs.unsigned ofs) (Ptrofs.unsigned ofs + sz) iv | None => ISet.interval (Ptrofs.unsigned ofs) (Ptrofs.unsigned ofs + sz) end).
   assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto).
   split; simpl; auto; intros.
   rewrite PTree.gsspec in H6. destruct (peq id0 id).
 + inv H6. destruct H3. congruence. destruct gl!id as [iv0|] eqn:NG.
-  unfold iv'; rewrite ISet.In_add. intros [P|P]. omega. eelim GL; eauto.
-  unfold iv'; rewrite ISet.In_interval. omega.
+  unfold iv'; rewrite ISet.In_add. intros [P|P]. lia. eelim GL; eauto.
+  unfold iv'; rewrite ISet.In_interval. lia.
 + eauto.
-- (* Stk ofs *)
-  split; simpl; auto; intros. destruct H3.
+- split; simpl; auto; intros. destruct H3.
   elim H3. subst b'. eapply bc_stack; eauto.
-  rewrite ISet.In_add. intros [P|P]. omega. eapply STK; eauto.
+  rewrite ISet.In_add. intros [P|P]. lia. eapply STK; eauto.
 Qed.
 
 (** Test (conservatively) whether some locations in the range delimited
@@ -1339,13 +1339,11 @@ Lemma nlive_contains:
 Proof.
   unfold nmem_contains; intros. red; intros L; inv L.
   inv H1; try discriminate.
-- (* Gl id ofs *)
-  assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto).
+- assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto).
   destruct gl!id as [iv|] eqn:HG; inv H2.
   destruct (ISet.contains (Ptrofs.unsigned ofs) (Ptrofs.unsigned ofs + sz) iv) eqn:IC; try discriminate.
   rewrite ISet.contains_spec in IC. eelim GL; eauto.
-- (* Stk ofs *)
-  destruct (ISet.contains (Ptrofs.unsigned ofs) (Ptrofs.unsigned ofs + sz) stk) eqn:IC; try discriminate.
+- destruct (ISet.contains (Ptrofs.unsigned ofs) (Ptrofs.unsigned ofs + sz) stk) eqn:IC; try discriminate.
   rewrite ISet.contains_spec in IC. eelim STK; eauto. eapply bc_stack; eauto.
 Qed.
 
@@ -1384,7 +1382,7 @@ Definition nmem_lub (nm1 nm2: nmem) : nmem :=
 Lemma nlive_lub_l:
   forall nm1 nm2 b i, nlive nm1 b i -> nlive (nmem_lub nm1 nm2) b i.
 Proof.
-  intros. inversion H; subst. destruct nm2; simpl. auto.
+  intros. inversion H; subst b0 ofs nm1. destruct nm2; simpl. auto.
   constructor; simpl; intros.
 - rewrite ISet.In_inter. intros [P Q]. eelim STK; eauto.
 - rewrite PTree.gcombine in H1 by auto.
@@ -1396,7 +1394,7 @@ Qed.
 Lemma nlive_lub_r:
   forall nm1 nm2 b i, nlive nm2 b i -> nlive (nmem_lub nm1 nm2) b i.
 Proof.
-  intros. inversion H; subst. destruct nm1; simpl. auto.
+  intros. inversion H; subst b0 ofs nm2. destruct nm1; simpl. auto.
   constructor; simpl; intros.
 - rewrite ISet.In_inter. intros [P Q]. eelim STK; eauto.
 - rewrite PTree.gcombine in H1 by auto.
@@ -1447,17 +1445,17 @@ Module NA <: SEMILATTICE.
 
   Lemma eq_refl: forall x, eq x x.
   Proof.
-    unfold eq; destruct x; simpl; split. apply NE.eq_refl. tauto.
+    intro x. unfold eq; destruct x; simpl; split. apply NE.eq_refl. tauto.
   Qed.
   Lemma eq_sym: forall x y, eq x y -> eq y x.
   Proof.
-    unfold eq; destruct x, y; simpl. intros [A B].
+    intros x y. unfold eq; destruct x, y; simpl. intros [A B].
     split. apply NE.eq_sym; auto.
     intros. rewrite B. tauto.
   Qed.
   Lemma eq_trans: forall x y z, eq x y -> eq y z -> eq x z.
   Proof.
-    unfold eq; destruct x, y, z; simpl. intros [A B] [C D]; split.
+    intros x y z. unfold eq; destruct x, y, z; simpl. intros [A B] [C D]; split.
     eapply NE.eq_trans; eauto.
     intros. rewrite B; auto.
   Qed.
@@ -1467,7 +1465,13 @@ Module NA <: SEMILATTICE.
 
   Lemma beq_correct: forall x y, beq x y = true -> eq x y.
   Proof.
-    unfold beq, eq; destruct x, y; simpl; intros. InvBooleans. split.
+    intros x y. unfold beq, eq; destruct x, y; simpl; intros. InvBooleans. split.
+    apply NE.beq_correct; auto.
+    intros. apply nmem_beq_sound; auto.
+  Qed.
+  Lemma beq_correct2: forall x y, beq x y = true -> eq x y.
+  Proof.
+    intros x y. unfold beq, eq; destruct x, y; simpl; intros. InvBooleans. split.
     apply NE.beq_correct; auto.
     intros. apply nmem_beq_sound; auto.
   Qed.
@@ -1478,13 +1482,26 @@ Module NA <: SEMILATTICE.
 
   Lemma ge_refl: forall x y, eq x y -> ge x y.
   Proof.
-    unfold eq, ge; destruct x, y; simpl. intros [A B]; split.
+    intros x y. unfold eq, ge; destruct x, y; simpl. intros [A B]; split.
     apply NE.ge_refl; auto.
     intros. apply B; auto.
   Qed.
+  Lemma ge_refl2: forall x y, eq x y -> ge x y.
+  Proof.
+    intros x y. unfold eq, ge; destruct x, y; simpl. intros [A B]; split.
+    apply NE.ge_refl; auto.
+    intros. apply B; auto.
+  Qed.
+
   Lemma ge_trans: forall x y z, ge x y -> ge y z -> ge x z.
   Proof.
-    unfold ge; destruct x, y, z; simpl. intros [A B] [C D]; split.
+    intros x y z. unfold ge; destruct x, y, z; simpl. intros [A B] [C D]; split.
+    eapply NE.ge_trans; eauto.
+    auto.
+  Qed.
+  Lemma ge_trans2: forall x y z, ge x y -> ge y z -> ge x z.
+  Proof.
+    intros x y z. unfold ge; destruct x, y, z; simpl. intros [A B] [C D]; split.
     eapply NE.ge_trans; eauto.
     auto.
   Qed.
@@ -1493,7 +1510,13 @@ Module NA <: SEMILATTICE.
 
   Lemma ge_bot: forall x, ge x bot.
   Proof.
-    unfold ge, bot; destruct x; simpl. split.
+    intro x. unfold ge, bot; destruct x; simpl. split.
+    apply NE.ge_bot.
+    intros. inv H.
+  Qed.
+  Lemma ge_bot2: forall x, ge x bot.
+  Proof.
+    intro x. unfold ge, bot; destruct x; simpl. split.
     apply NE.ge_bot.
     intros. inv H.
   Qed.
@@ -1503,16 +1526,29 @@ Module NA <: SEMILATTICE.
 
   Lemma ge_lub_left: forall x y, ge (lub x y) x.
   Proof.
-    unfold ge; destruct x, y; simpl; split.
+    intros x y. unfold ge; destruct x, y; simpl; split.
     apply NE.ge_lub_left.
     intros; apply nlive_lub_l; auto.
   Qed.
+
+  Lemma ge_lub_left2: forall x y, ge (lub x y) x.
+  Proof.
+    intros x y. unfold ge; destruct x, y; simpl; split.
+    apply NE.ge_lub_left.
+    intros; apply nlive_lub_l; auto.
+  Qed.
+
   Lemma ge_lub_right: forall x y, ge (lub x y) y.
   Proof.
-    unfold ge; destruct x, y; simpl; split.
+    intros x y. unfold ge; destruct x, y; simpl; split.
+    apply NE.ge_lub_right.
+    intros; apply nlive_lub_r; auto.
+  Qed.
+  Lemma ge_lub_right2: forall x y, ge (lub x y) y.
+  Proof.
+    intros x y. unfold ge; destruct x, y; simpl; split.
     apply NE.ge_lub_right.
     intros; apply nlive_lub_r; auto.
   Qed.
 
 End NA.
-

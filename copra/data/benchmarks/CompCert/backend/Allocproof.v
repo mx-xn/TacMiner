@@ -548,7 +548,7 @@ Proof.
   unfold select_reg_l; intros. destruct H.
   red in H. congruence.
   rewrite Pos.leb_le in *. red in H. destruct H as [A | [A B]].
-  red in A. zify; omega.
+  red in A. zify; lia.
   rewrite <- A; auto.
 Qed.
 
@@ -560,7 +560,7 @@ Proof.
   unfold select_reg_h; intros. destruct H.
   red in H. congruence.
   rewrite Pos.leb_le in *. red in H. destruct H as [A | [A B]].
-  red in A. zify; omega.
+  red in A. zify; lia.
   rewrite A; auto.
 Qed.
 
@@ -568,7 +568,7 @@ Remark select_reg_charact:
   forall r q, select_reg_l r q = true /\ select_reg_h r q = true <-> ereg q = r.
 Proof.
   unfold select_reg_l, select_reg_h; intros; split.
-  rewrite ! Pos.leb_le. unfold reg; zify; omega.
+  rewrite ! Pos.leb_le. unfold reg; zify; lia.
   intros. rewrite H. rewrite ! Pos.leb_refl; auto.
 Qed.
 
@@ -1892,7 +1892,7 @@ Qed.
 
 Inductive match_stackframes: list RTL.stackframe -> list LTL.stackframe -> signature -> Prop :=
   | match_stackframes_nil: forall sg,
-      sg.(sig_res) = Tint ->
+      sg.(sig_res) = Xint ->
       match_stackframes nil nil sg
   | match_stackframes_cons:
       forall res f sp pc rs s tf bb ls ts sg an e env
@@ -1936,7 +1936,7 @@ Inductive match_states: RTL.state -> LTL.state -> Prop :=
         (ARGS: Val.lessdef_list args (map (fun p => Locmap.getpair p ls) (loc_arguments (funsig tf))))
         (AG: agree_callee_save (parent_locset ts) ls)
         (MEM: Mem.extends m m')
-        (WTARGS: Val.has_type_list args (sig_args (funsig tf))),
+        (WTARGS: Val.has_type_list args (proj_sig_args (funsig tf))),
       match_states (RTL.Callstate s f args m)
                    (LTL.Callstate ts tf ls m')
   | match_states_return:
@@ -1976,7 +1976,7 @@ Remark addressing_not_long:
 Proof.
   intros. inv H.
   assert (A: forall ty, In ty (type_of_addressing addr) -> ty = Tptr).
-  { intros. destruct addr; simpl in H; intuition. }
+  { intros. try (apply diff_false_true in H0). destruct addr; simpl in H; intuition auto. }
   assert (B: In (env r) (type_of_addressing addr)).
   { rewrite <- H5. apply in_map; auto. }
   assert (C: env r = Tint).
@@ -2436,10 +2436,10 @@ Proof.
 (* internal function *)
 - monadInv FUN. simpl in *.
   destruct (transf_function_inv _ _ EQ).
-  exploit Mem.alloc_extends; eauto. apply Z.le_refl. rewrite H8; apply Z.le_refl.
+  exploit Mem.alloc_extends; eauto. apply Z.le_refl. rewrite H9; apply Z.le_refl.
   intros [m'' [U V]].
   assert (WTRS: wt_regset env (init_regs args (fn_params f))).
-  { apply wt_init_regs. inv H0. rewrite wt_params. rewrite H9. auto. }
+  { apply wt_init_regs. inv H1. rewrite wt_params. rewrite H10. auto. }
   exploit (exec_moves mv). eauto. eauto.
     eapply can_undef_satisf; eauto. eapply compat_entry_satisf; eauto.
     rewrite call_regs_param_values. eexact ARGS.

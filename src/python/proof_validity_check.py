@@ -169,13 +169,13 @@ if __name__ == "__main__":
             new_pdict[name] = proof_dict[name]
 
     if "comp-cert" in in_file:
-        project_root = "CompCert/"
+        project_root = "raw-data/CompCert/"
     elif "program-logics" in in_file:
-        project_root = "cdf/"
+        project_root = "raw-data/cdf/"
     elif "bignums" in in_file:
-        project_root = "bignums/"
+        project_root = "raw-data/bignums/"
     elif "coq-art" in in_file:
-        project_root = "coq-art/"
+        project_root = "raw-data/coq-art/"
     else:
         project_root = None
 

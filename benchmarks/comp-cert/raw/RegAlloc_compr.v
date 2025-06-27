@@ -908,7 +908,8 @@ Proof. intros; destruct x; simpl; auto. red; tauto. Qed.
 Lemma eq_sym: forall x y, eq x y -> eq y x.
 Proof. unfold eq; intros; destruct x as [e|e]; destruct y as [e0|e0]; auto. red in H; red; intros. rewrite H; tauto. Qed.
 
-Lemma eq_trans: forall x y z, eq x y -> eq y z -> eq x z. Proof. unfold eq; intros. destruct x as [e|e]; destruct y as [e0|e0]; try contradiction; destruct z as [e1|e1]; auto. red in H; red in H0; red; intros. rewrite H. auto. Qed.
+Lemma eq_trans: forall x y z, eq x y -> eq y z -> eq x z.
+Proof. unfold eq; intros. destruct x as [e|e]; destruct y as [e0|e0]; try contradiction; destruct z as [e1|e1]; auto. red in H; red in H0; red; intros. rewrite H. auto. Qed.
 
 Definition beq (x y: t) :=
     match x, y with
@@ -919,12 +920,9 @@ Definition beq (x y: t) :=
 
 Ltac custom_tac19 H0 H1 := intros; destruct H0 as [ e|e]; destruct H1 as [ e0|e0].
 
-Ltac custom_tac8 H0 H1 := red in H0; red in H1; red.
+Ltac custom_tac24 H0 := apply H0; auto.
 
-Ltac custom_tac10 H0 := intros; rewrite H0; auto.
-
-Lemma beq_correct: forall x y, beq x y = true -> eq x y.
-Proof. unfold beq, eq; intros. destruct x as [e|e]; destruct y as [e0|e0]. apply EqSet.equal_2. auto. discriminate. discriminate. auto. Qed.
+Lemma beq_correct: forall x y, beq x y = true -> eq x y. Proof. unfold beq, eq; intros. destruct x as [e|e]; destruct y as [e0|e0]. apply EqSet.equal_2. auto. discriminate. discriminate. auto. Qed.
 
 Definition ge (x y: t) :=
     match x, y with

@@ -31,12 +31,10 @@ lt_not_eq
 Proof. unfold lt, eq; intros; red; intros. subst y. intuition. eelim OrderedLoc.lt_not_eq; eauto. red; auto. eelim Plt_strict; eauto. eelim OrderedEqKind.lt_not_eq; eauto. red; auto. Qed.
 compare
 Proof. intros. destruct (OrderedLoc.compare (eloc x) (eloc y)). - apply LT. red; auto. - destruct (OrderedPositive.compare (ereg x) (ereg y)). + apply LT. red; auto. + destruct (OrderedEqKind.compare (ekind x) (ekind y)). * apply LT. red; auto. * apply EQ. red in e; red in e0; red in e1; red. destruct x; destruct y; simpl in *; congruence. * apply GT. red; auto. + apply GT. red; auto. - apply GT. red; auto. Defined.
-Ltac custom_tac12  := split; intros; eelim EqSet2.empty_1; eauto; eelim EqSet.empty_1; eauto.
 
-
-Next Obligation. custom_tac12 . Qed.
+Next Obligation. split; intros. eelim EqSet2.empty_1; eauto. eelim EqSet.empty_1; eauto. Qed.
 empty_eqs_dup
-Proof. custom_tac12 . Qed.
+Proof. split; intros. eelim EqSet2.empty_1; eauto. eelim EqSet.empty_1; eauto. Qed.
 
 Next Obligation. split; intros. destruct (OrderedEquation'.eq_dec q q0). apply EqSet.add_1. assumption. apply EqSet.add_2. apply (eqs_same e). apply EqSet2.add_3 with q; auto. destruct (OrderedEquation.eq_dec q q0). apply EqSet2.add_1. assumption. apply EqSet2.add_2. apply (eqs_same e). apply EqSet.add_3 with q; auto. Qed.
 add_equation_dup
@@ -51,8 +49,12 @@ eq_sym
 Proof. unfold eq; intros; destruct x as [e|e]; destruct y as [e0|e0]; auto. red in H; red; intros. rewrite H; tauto. Qed.
 eq_trans
 Proof. unfold eq; intros. destruct x as [e|e]; destruct y as [e0|e0]; try contradiction; destruct z as [e1|e1]; auto. red in H; red in H0; red; intros. rewrite H. auto. Qed.
+Ltac custom_tac19 H0 H1 := intros; destruct H0 as [ e|e]; destruct H1 as [ e0|e0].
+
+Ltac custom_tac24 H0 := apply H0; auto.
+
 beq_correct
-Proof. unfold beq, eq; intros. destruct x as [e|e]; destruct y as [e0|e0]. apply EqSet.equal_2. auto. discriminate. discriminate. auto. Qed.
+Proof. unfold beq, eq; custom_tac19 x y; custom_tac24 EqSet.equal_2. discriminate. discriminate. auto. Qed.
 ge_refl
 Proof. unfold eq, ge, EqSet.Equal, EqSet.Subset; intros. destruct x as [e|e]; destruct y as [e0|e0]; auto. intros; rewrite H; auto. Qed.
 ge_trans

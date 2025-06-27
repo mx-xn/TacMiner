@@ -32,7 +32,7 @@ public class Main {
         if (args.length == 0)
             // args = new String[] {"1200", "coq-art" , "IndPred", "100"};
             // mode, domain, topic, timeout-in-seconds
-            args = new String[] {"1", "program-logics" , "CSL", "1200", "65"};
+            args = new String[] {"1", "coq-art" , "impredicative", "3600", "100"};
         if (args.length < 5) {
             System.out.println("Not enough arguments were provided.");
             throw new IllegalArgumentException("need " + (4 - args.length) + " parameters!");
@@ -92,7 +92,7 @@ public class Main {
                         case PRUNING_ABL:
                         case GRAMMAR_ABL:
                             Ablation ablP = new Ablation(config, proofs);
-    //                        ablP.runExperiments();
+                            ablP.runExperiments();
                             runOnce(config, proofs);
                             break;
                     }
@@ -160,8 +160,9 @@ public class Main {
                 true, NONE, timePerTac, config.timeout, config.topic);
 
         if (config.mode == BmConfig.Mode.PRUNING_ABL || config.mode == BmConfig.Mode.GRAMMAR_ABL) {
-            String fileName = compressionEvalPath + config.domain + "-compressed/ablation/" +
-                    config.topic + "Ours.csv";
+            // String fileName = compressionEvalPath + config.domain + "-compressed/ablation/" +
+            //         config.topic + "Ours.csv";
+            String fileName = evalPath + RQ5 + "tacminer/" + config.domain + "/" + config.topic + ".csv";
             // Write to CSV file
             StringBuilder sb = new StringBuilder("numTacs,Time\n");
             // Write the data rows

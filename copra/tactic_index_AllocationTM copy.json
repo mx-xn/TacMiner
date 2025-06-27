@@ -1,0 +1,2646 @@
+{
+  "theorem_file": {
+    "index_inj": "Allocation.v",
+    "eq_refl": "Allocation.v",
+    "eq_sym": "Allocation.v",
+    "eq_trans": "Allocation.v",
+    "lt_trans": "Allocation.v",
+    "lt_not_eq": "Allocation.v",
+    "eq_trans2": "Allocation.v",
+    "lt_trans2": "Allocation.v",
+    "lt_not_eq2": "Allocation.v",
+    "empty_eqs_dup": "Allocation.v",
+    "add_equation_dup": "Allocation.v",
+    "remove_equation_dup": "Allocation.v",
+    "eq_refl2": "Allocation.v",
+    "eq_sym2": "Allocation.v",
+    "eq_trans3": "Allocation.v",
+    "beq_correct": "Allocation.v",
+    "ge_refl": "Allocation.v",
+    "ge_trans": "Allocation.v",
+    "ge_bot": "Allocation.v",
+    "lub_dup": "Allocation.v",
+    "ge_lub_left": "Allocation.v",
+    "ge_lub_right": "Allocation.v"
+  },
+  "custom_tactics": {
+    "Allocation.v": {
+      "index_inj": {
+        "available_tactics": [],
+        "examples": {},
+        "used_tactics": []
+      },
+      "eq_refl": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "eq_sym": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom11"
+        ]
+      },
+      "eq_trans": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "lt_trans": {
+        "available_tactics": [],
+        "examples": {},
+        "used_tactics": []
+      },
+      "lt_not_eq": {
+        "available_tactics": [],
+        "examples": {},
+        "used_tactics": []
+      },
+      "eq_trans2": {
+        "available_tactics": [],
+        "examples": {},
+        "used_tactics": []
+      },
+      "lt_trans2": {
+        "available_tactics": [],
+        "examples": {},
+        "used_tactics": []
+      },
+      "lt_not_eq2": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom5",
+          "custom17",
+          "custom12"
+        ]
+      },
+      "empty_eqs_dup": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "add_equation_dup": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "remove_equation_dup": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "eq_refl2": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "eq_sym2": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "eq_trans3": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "beq_correct": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom11"
+        ]
+      },
+      "ge_refl": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom15",
+            "definition": "Ltac custom15 H0 :=  rewrite H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom16",
+            "definition": "Ltac custom16 H0 H1 :=  unfold H0; [unfold H1 | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom15": [
+            {
+              "lemma_name": "eq_trans",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c3_goal : Logic.eq x z",
+                "c3_H : Logic.eq x y"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c9_goal : EqSet.In a e",
+                "c7_H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ],
+          "custom16": [
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 eq ge .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : eq x y), ge x y"
+              ],
+              "tactic_res": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 EqSet.Equal EqSet.Subset .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b =>\n               forall a0 : EqSet.elt,\n               iff (EqSet.In a0 a) (EqSet.In a0 b)\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom15",
+          "custom16"
+        ]
+      },
+      "ge_trans": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom15",
+            "definition": "Ltac custom15 H0 :=  rewrite H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom16",
+            "definition": "Ltac custom16 H0 H1 :=  unfold H0; [unfold H1 | .. ].\n"
+          },
+          {
+            "name": "custom10",
+            "definition": "Ltac custom10 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5; [destruct H1 as [ e|e ]; [destruct H2 as [ e0|e0 ]; [destruct H3 as [ e1|e1 ] | try contradiction | .. ] | .. ] | .. ] | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom15": [
+            {
+              "lemma_name": "eq_trans",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c3_goal : Logic.eq x z",
+                "c3_H : Logic.eq x y"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c9_goal : EqSet.In a e",
+                "c7_H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ],
+          "custom16": [
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 eq ge .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : eq x y), ge x y"
+              ],
+              "tactic_res": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 EqSet.Equal EqSet.Subset .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b =>\n               forall a0 : EqSet.elt,\n               iff (EqSet.In a0 a) (EqSet.In a0 b)\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            }
+          ],
+          "custom10": [
+            {
+              "lemma_name": "ge_trans",
+              "tactic_sig": "custom10 EqSet.Subset x y z H H0 .",
+              "tactic_args": [
+                "c2_goal : forall (x y z : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Subset b a\n           | Error _ => False\n           end\n       | Error _ => True\n       end)\n  (_ : match y with\n       | OK a =>\n           match z with\n           | OK b => EqSet.Subset b a\n           | Error _ => False\n           end\n       | Error _ => True\n       end),\nmatch x with\n| OK a =>\n    match z with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e",
+                "c3_H0 : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e0",
+                "c3_H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                "c3_e1 : eqs",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H0 : False",
+                "c4_H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                "c4_e1 : errmsg",
+                "c4_e0 : eqs",
+                "c4_e : eqs",
+                "c5_goal : True",
+                "c5_H0 : match y with\n| OK a =>\n    match z with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                "c5_H : True",
+                "c5_z : True",
+                "c5_y : True",
+                "c5_e : errmsg"
+              ]
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom10"
+        ]
+      },
+      "ge_bot": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom15",
+            "definition": "Ltac custom15 H0 :=  rewrite H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom16",
+            "definition": "Ltac custom16 H0 H1 :=  unfold H0; [unfold H1 | .. ].\n"
+          },
+          {
+            "name": "custom10",
+            "definition": "Ltac custom10 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5; [destruct H1 as [ e|e ]; [destruct H2 as [ e0|e0 ]; [destruct H3 as [ e1|e1 ] | try contradiction | .. ] | .. ] | .. ] | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom15": [
+            {
+              "lemma_name": "eq_trans",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c3_goal : Logic.eq x z",
+                "c3_H : Logic.eq x y"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c9_goal : EqSet.In a e",
+                "c7_H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ],
+          "custom16": [
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 eq ge .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : eq x y), ge x y"
+              ],
+              "tactic_res": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 EqSet.Equal EqSet.Subset .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b =>\n               forall a0 : EqSet.elt,\n               iff (EqSet.In a0 a) (EqSet.In a0 b)\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            }
+          ],
+          "custom10": [
+            {
+              "lemma_name": "ge_trans",
+              "tactic_sig": "custom10 EqSet.Subset x y z H H0 .",
+              "tactic_args": [
+                "c2_goal : forall (x y z : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Subset b a\n           | Error _ => False\n           end\n       | Error _ => True\n       end)\n  (_ : match y with\n       | OK a =>\n           match z with\n           | OK b => EqSet.Subset b a\n           | Error _ => False\n           end\n       | Error _ => True\n       end),\nmatch x with\n| OK a =>\n    match z with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e",
+                "c3_H0 : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e0",
+                "c3_H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                "c3_e1 : eqs",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H0 : False",
+                "c4_H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                "c4_e1 : errmsg",
+                "c4_e0 : eqs",
+                "c4_e : eqs",
+                "c5_goal : True",
+                "c5_H0 : match y with\n| OK a =>\n    match z with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                "c5_H : True",
+                "c5_z : True",
+                "c5_y : True",
+                "c5_e : errmsg"
+              ]
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "lub_dup": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom15",
+            "definition": "Ltac custom15 H0 :=  rewrite H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom16",
+            "definition": "Ltac custom16 H0 H1 :=  unfold H0; [unfold H1 | .. ].\n"
+          },
+          {
+            "name": "custom10",
+            "definition": "Ltac custom10 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5; [destruct H1 as [ e|e ]; [destruct H2 as [ e0|e0 ]; [destruct H3 as [ e1|e1 ] | try contradiction | .. ] | .. ] | .. ] | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom15": [
+            {
+              "lemma_name": "eq_trans",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c3_goal : Logic.eq x z",
+                "c3_H : Logic.eq x y"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c9_goal : EqSet.In a e",
+                "c7_H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ],
+          "custom16": [
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 eq ge .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : eq x y), ge x y"
+              ],
+              "tactic_res": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 EqSet.Equal EqSet.Subset .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b =>\n               forall a0 : EqSet.elt,\n               iff (EqSet.In a0 a) (EqSet.In a0 b)\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            }
+          ],
+          "custom10": [
+            {
+              "lemma_name": "ge_trans",
+              "tactic_sig": "custom10 EqSet.Subset x y z H H0 .",
+              "tactic_args": [
+                "c2_goal : forall (x y z : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Subset b a\n           | Error _ => False\n           end\n       | Error _ => True\n       end)\n  (_ : match y with\n       | OK a =>\n           match z with\n           | OK b => EqSet.Subset b a\n           | Error _ => False\n           end\n       | Error _ => True\n       end),\nmatch x with\n| OK a =>\n    match z with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e",
+                "c3_H0 : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e0",
+                "c3_H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                "c3_e1 : eqs",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H0 : False",
+                "c4_H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                "c4_e1 : errmsg",
+                "c4_e0 : eqs",
+                "c4_e : eqs",
+                "c5_goal : True",
+                "c5_H0 : match y with\n| OK a =>\n    match z with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                "c5_H : True",
+                "c5_z : True",
+                "c5_y : True",
+                "c5_e : errmsg"
+              ]
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "ge_lub_left": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom15",
+            "definition": "Ltac custom15 H0 :=  rewrite H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom16",
+            "definition": "Ltac custom16 H0 H1 :=  unfold H0; [unfold H1 | .. ].\n"
+          },
+          {
+            "name": "custom10",
+            "definition": "Ltac custom10 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5; [destruct H1 as [ e|e ]; [destruct H2 as [ e0|e0 ]; [destruct H3 as [ e1|e1 ] | try contradiction | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom6",
+            "definition": "Ltac custom6 H0 H1 H2 H3 H4 H11 H12 H13 :=  unfold H0, H1, H2; [intros H3 H4; [destruct H3; [destruct H4; [intros H11 H12; [apply H13 | .. ] | auto | .. ] | destruct H4; [auto | auto | .. ] | .. ] | .. ] | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom15": [
+            {
+              "lemma_name": "eq_trans",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c3_goal : Logic.eq x z",
+                "c3_H : Logic.eq x y"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c9_goal : EqSet.In a e",
+                "c7_H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ],
+          "custom16": [
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 eq ge .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : eq x y), ge x y"
+              ],
+              "tactic_res": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 EqSet.Equal EqSet.Subset .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b =>\n               forall a0 : EqSet.elt,\n               iff (EqSet.In a0 a) (EqSet.In a0 b)\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            }
+          ],
+          "custom10": [
+            {
+              "lemma_name": "ge_trans",
+              "tactic_sig": "custom10 EqSet.Subset x y z H H0 .",
+              "tactic_args": [
+                "c2_goal : forall (x y z : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Subset b a\n           | Error _ => False\n           end\n       | Error _ => True\n       end)\n  (_ : match y with\n       | OK a =>\n           match z with\n           | OK b => EqSet.Subset b a\n           | Error _ => False\n           end\n       | Error _ => True\n       end),\nmatch x with\n| OK a =>\n    match z with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e",
+                "c3_H0 : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e0",
+                "c3_H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                "c3_e1 : eqs",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H0 : False",
+                "c4_H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                "c4_e1 : errmsg",
+                "c4_e0 : eqs",
+                "c4_e : eqs",
+                "c5_goal : True",
+                "c5_H0 : match y with\n| OK a =>\n    match z with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                "c5_H : True",
+                "c5_z : True",
+                "c5_y : True",
+                "c5_e : errmsg"
+              ]
+            }
+          ],
+          "custom6": [
+            {
+              "lemma_name": "ge_lub_left",
+              "tactic_sig": "custom6 lub ge EqSet.Subset x y a H EqSet.union_2 .",
+              "tactic_args": [
+                "c1_goal : forall x y : t, ge (lub x y) x"
+              ],
+              "tactic_res": [
+                "c2_goal : EqSet.In a e",
+                "c2_H : EqSet.In a e",
+                "c2_a : EqSet.elt",
+                "c2_e0 : eqs",
+                "c2_e : eqs"
+              ]
+            },
+            {
+              "lemma_name": "ge_lub_right",
+              "tactic_sig": "custom6 lub ge EqSet.Subset x y a H EqSet.union_3 .",
+              "tactic_args": [
+                "c1_goal : forall x y : t, ge (lub x y) y"
+              ],
+              "tactic_res": [
+                "c2_goal : EqSet.In a e0",
+                "c2_H : EqSet.In a e0",
+                "c2_a : EqSet.elt",
+                "c2_e0 : eqs",
+                "c2_e : eqs"
+              ]
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom6"
+        ]
+      },
+      "ge_lub_right": {
+        "available_tactics": [
+          {
+            "name": "custom5",
+            "definition": "Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom17",
+            "definition": "Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].\n"
+          },
+          {
+            "name": "custom15",
+            "definition": "Ltac custom15 H0 :=  rewrite H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom11",
+            "definition": "Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom16",
+            "definition": "Ltac custom16 H0 H1 :=  unfold H0; [unfold H1 | .. ].\n"
+          },
+          {
+            "name": "custom10",
+            "definition": "Ltac custom10 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5; [destruct H1 as [ e|e ]; [destruct H2 as [ e0|e0 ]; [destruct H3 as [ e1|e1 ] | try contradiction | .. ] | .. ] | .. ] | .. ].\n"
+          },
+          {
+            "name": "custom6",
+            "definition": "Ltac custom6 H0 H1 H2 H3 H4 H11 H12 H13 :=  unfold H0, H1, H2; [intros H3 H4; [destruct H3; [destruct H4; [intros H11 H12; [apply H13 | .. ] | auto | .. ] | destruct H4; [auto | auto | .. ] | .. ] | .. ] | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom5": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : Plt (ereg x) (ereg x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c3_H : Logic.eq (ereg x) (ereg x)",
+                "c3_x : True"
+              ]
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom5 lt eq x y H H0 .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : lt x y), not (eq x y)"
+              ],
+              "tactic_res": [
+                "c2_goal : False",
+                "c2_H0 : OrderedLoc.lt (eloc x) (eloc x)",
+                "c2_x : True",
+                "c3_goal : False",
+                "c3_H0 : Plt (ereg x) (ereg x)",
+                "c3_H : Logic.eq (eloc x) (eloc x)",
+                "c3_x : True"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom12 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom17": [
+            {
+              "lemma_name": "lt_not_eq",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c2_goal : False"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "lt_not_eq2",
+              "tactic_sig": "custom17 .",
+              "tactic_args": [
+                "c3_goal : False"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom15": [
+            {
+              "lemma_name": "eq_trans",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c3_goal : Logic.eq x z",
+                "c3_H : Logic.eq x y"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom15 _i .",
+              "tactic_args": [
+                "c9_goal : EqSet.In a e",
+                "c7_H : forall a : EqSet.elt, iff (EqSet.In a e) (EqSet.In a e0)"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom11": [
+            {
+              "lemma_name": "eq_sym",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch y with\n| OK a => match x with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match x with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e0 e",
+                "c3_H : EqSet.Equal e e0",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : False",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : False",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            },
+            {
+              "lemma_name": "beq_correct",
+              "tactic_sig": "custom11 x y H .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : Logic.eq\n         match x with\n         | OK a =>\n             match y with\n             | OK b => EqSet.equal a b\n             | Error _ => false\n             end\n         | Error _ =>\n             match y with\n             | OK _ => false\n             | Error _ => true\n             end\n         end true),\nmatch x with\n| OK a => match y with\n          | OK b => EqSet.Equal a b\n          | Error _ => False\n          end\n| Error _ => match y with\n             | OK _ => False\n             | Error _ => True\n             end\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : EqSet.Equal e e0",
+                "c3_H : Logic.eq (EqSet.equal e e0) true",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H : Logic.eq false true",
+                "c4_e0 : errmsg",
+                "c4_e : eqs",
+                "c5_goal : False",
+                "c5_H : Logic.eq false true",
+                "c5_e0 : eqs",
+                "c5_e : errmsg"
+              ]
+            }
+          ],
+          "custom16": [
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 eq ge .",
+              "tactic_args": [
+                "c1_goal : forall (x y : t) (_ : eq x y), ge x y"
+              ],
+              "tactic_res": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            },
+            {
+              "lemma_name": "ge_refl",
+              "tactic_sig": "custom16 EqSet.Equal EqSet.Subset .",
+              "tactic_args": [
+                "c2_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Equal a b\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (x y : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b =>\n               forall a0 : EqSet.elt,\n               iff (EqSet.In a0 a) (EqSet.In a0 b)\n           | Error _ => False\n           end\n       | Error _ => match y with\n                    | OK _ => False\n                    | Error _ => True\n                    end\n       end),\nmatch x with\n| OK a =>\n    match y with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ]
+            }
+          ],
+          "custom10": [
+            {
+              "lemma_name": "ge_trans",
+              "tactic_sig": "custom10 EqSet.Subset x y z H H0 .",
+              "tactic_args": [
+                "c2_goal : forall (x y z : t)\n  (_ : match x with\n       | OK a =>\n           match y with\n           | OK b => EqSet.Subset b a\n           | Error _ => False\n           end\n       | Error _ => True\n       end)\n  (_ : match y with\n       | OK a =>\n           match z with\n           | OK b => EqSet.Subset b a\n           | Error _ => False\n           end\n       | Error _ => True\n       end),\nmatch x with\n| OK a =>\n    match z with\n    | OK b => EqSet.Subset b a\n    | Error _ => False\n    end\n| Error _ => True\nend"
+              ],
+              "tactic_res": [
+                "c3_goal : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e",
+                "c3_H0 : forall (a : EqSet.elt) (_ : EqSet.In a e1), EqSet.In a e0",
+                "c3_H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                "c3_e1 : eqs",
+                "c3_e0 : eqs",
+                "c3_e : eqs",
+                "c4_goal : False",
+                "c4_H0 : False",
+                "c4_H : forall (a : EqSet.elt) (_ : EqSet.In a e0), EqSet.In a e",
+                "c4_e1 : errmsg",
+                "c4_e0 : eqs",
+                "c4_e : eqs",
+                "c5_goal : True",
+                "c5_H0 : match y with\n| OK a =>\n    match z with\n    | OK b =>\n        forall (a0 : EqSet.elt) (_ : EqSet.In a0 b), EqSet.In a0 a\n    | Error _ => False\n    end\n| Error _ => True\nend",
+                "c5_H : True",
+                "c5_z : True",
+                "c5_y : True",
+                "c5_e : errmsg"
+              ]
+            }
+          ],
+          "custom6": [
+            {
+              "lemma_name": "ge_lub_left",
+              "tactic_sig": "custom6 lub ge EqSet.Subset x y a H EqSet.union_2 .",
+              "tactic_args": [
+                "c1_goal : forall x y : t, ge (lub x y) x"
+              ],
+              "tactic_res": [
+                "c2_goal : EqSet.In a e",
+                "c2_H : EqSet.In a e",
+                "c2_a : EqSet.elt",
+                "c2_e0 : eqs",
+                "c2_e : eqs"
+              ]
+            },
+            {
+              "lemma_name": "ge_lub_right",
+              "tactic_sig": "custom6 lub ge EqSet.Subset x y a H EqSet.union_3 .",
+              "tactic_args": [
+                "c1_goal : forall x y : t, ge (lub x y) y"
+              ],
+              "tactic_res": [
+                "c2_goal : EqSet.In a e0",
+                "c2_H : EqSet.In a e0",
+                "c2_a : EqSet.elt",
+                "c2_e0 : eqs",
+                "c2_e : eqs"
+              ]
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom6"
+        ]
+      }
+    }
+  }
+}

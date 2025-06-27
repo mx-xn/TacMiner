@@ -3,7 +3,7 @@
 
 opam-version: "2.0"
 maintainer: "palmskog@gmail.com"
-version: "8.15.dev"
+version: "8.20.dev"
 
 homepage: "https://github.com/coq-community/bignums"
 dev-repo: "git+https://github.com/coq-community/bignums.git"
@@ -13,14 +13,16 @@ license: "LGPL-2.1-only"
 synopsis: "Bignums, the Coq library of arbitrarily large numbers"
 description: """
 This Coq library provides BigN, BigZ, and BigQ that used to
-be part of the standard library.
-"""
+be part of the standard library."""
 
 build: [make "-j%{jobs}%"]
-install: [make "install"]
+install: [
+  [make "install"]
+  [make "-C" "tests" "-j%{jobs}%"] {with-test}
+]
 depends: [
-  "ocaml" 
-  "coq" {>= "8.15" & < "8.16~"}
+  "ocaml"
+  "coq" {>= "8.20" & < "8.21~"}
 ]
 
 tags: [

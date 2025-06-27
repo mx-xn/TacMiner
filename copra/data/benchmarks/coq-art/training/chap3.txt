@@ -1,0 +1,16 @@
+Q1
+Q2
+Q0
+assert_example
+imp_dist
+triple_impl_one_liner
+imp_dist'
+imp_trans
+imp_trans'
+apply_example
+K
+Q0
+assert_example
+imp_dist'
+imp_trans
+imp_trans'

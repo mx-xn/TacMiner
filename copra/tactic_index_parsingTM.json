@@ -1,0 +1,2176 @@
+{
+  "theorem_file": {
+    "wp_oc": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "wp_o_head_c": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "wp_o_tail_c": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "bin_to_string_wp": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "bin_to_string": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "parse_rel_sound_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "parse_rel_sound": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "wp": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "wp_imp_wp": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "recognize_complete_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "recognize_complete": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "app_decompose": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "length_app": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "length_rev": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "cons_to_app_end": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "last_same": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "wp_remove_oc_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "wp_remove_oc": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "make_list_end": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "recognize_sound_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "recognize_sound": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "parse_reject_indep_t": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "parse_complete_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "parse_complete": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "parse_invert_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "parse_invert": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v",
+    "parse_sound": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v"
+  },
+  "custom_tactics": {
+    "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_TM.v": {
+      "wp_oc": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_o_head_c": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom18",
+          "custom7"
+        ]
+      },
+      "wp_o_tail_c": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom7"
+        ]
+      },
+      "bin_to_string_wp": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom12",
+          "custom22"
+        ]
+      },
+      "bin_to_string": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_rel_sound_aux": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_rel_sound": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_imp_wp": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_complete_aux": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_complete": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "app_decompose": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "length_app": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "length_rev": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "cons_to_app_end": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "last_same": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_remove_oc_aux": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_remove_oc": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "make_list_end": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_sound_aux": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_sound": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_reject_indep_t": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_complete_aux": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_complete": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_invert_aux": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_invert": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_sound": {
+        "available_tactics": [
+          {
+            "name": "custom7",
+            "definition": "Ltac custom7 H0 :=  apply H0; [trivial | .. ].\n"
+          },
+          {
+            "name": "custom12",
+            "definition": "Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].\n"
+          },
+          {
+            "name": "custom18",
+            "definition": "Ltac custom18  :=  simpl in *; [auto | .. ]. \n"
+          },
+          {
+            "name": "custom22",
+            "definition": "Ltac custom22 H0 :=  custom7 H0; [trivial | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom7": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom7 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "wp_o_tail_c",
+              "tactic_sig": "custom7 wp_concat .",
+              "tactic_args": [
+                "c2_goal : wp (app l1 (cons open (app l2 (cons close nil))))"
+              ],
+              "tactic_res": [
+                "c3_goal : wp (cons open (app l2 (cons close nil)))"
+              ]
+            }
+          ],
+          "custom12": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom12 t1 H1 t2 H2 .",
+              "tactic_args": [
+                "c3_goal : forall (b : bin) (_ : wp (bin_to_string b)) (b0 : bin)\n  (_ : wp (bin_to_string b0)), wp (bin_to_string (N b b0))"
+              ],
+              "tactic_res": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))",
+                "c5_H2 : wp (bin_to_string t2)",
+                "c5_t2 : bin",
+                "c5_H1 : wp (bin_to_string t1)",
+                "c5_t1 : bin"
+              ]
+            }
+          ],
+          "custom18": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom18 .",
+              "tactic_args": [
+                "c7_goal : eq (cons open (app l1 (app (cons close nil) l2)))\n  (cons open (app l1 (cons close l2)))"
+              ],
+              "tactic_res": []
+            }
+          ],
+          "custom22": [
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom22 wp_o_head_c .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      }
+    }
+  }
+}

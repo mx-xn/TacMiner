@@ -4,12 +4,12 @@ shortname: bignums
 organization: coq-community
 community: true
 action: true
-branch: 'v8.15'
+branch: v8.20
 
 synopsis: >-
   Bignums, the Coq library of arbitrarily large numbers
 
-description: |
+description: |-
   This Coq library provides BigN, BigZ, and BigQ that used to
   be part of the standard library.
 
@@ -28,7 +28,7 @@ maintainers:
 
 opam-file-maintainer: palmskog@gmail.com
 
-opam-file-version: '8.15.dev'
+opam-file-version: 8.20.dev
 
 license:
   fullname: GNU Lesser General Public License v2.1
@@ -40,13 +40,13 @@ supported_ocaml_versions:
   text: all versions supported by Coq
 
 supported_coq_versions:
-  text: >-
-    The v8.15 branch tracks version 8.15 of Coq, see
-    releases for compatibility with released versions of Coq
-  opam: '{>= "8.15" & < "8.16~"}'
+  text: master (use the corresponding branch or release for other Coq versions)
+  opam: '{>= "8.20" & < "8.21~"}'
 
 tested_coq_opam_versions:
-- version: '8.15'
+- version: 8.20
+
+ci_cron_schedule: '0 4 * * *'
 
 namespace: Bignums
 

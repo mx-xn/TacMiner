@@ -1,0 +1,2703 @@
+[
+    {
+        "lemma_name": "month_equal",
+        "proof": [
+            {
+                "tactic_sig": "Theorem month_equal : forall m : month , m = January \\/ m = February \\/ m = March \\/ m = April \\/ m = May \\/ m = June \\/ m = July \\/ m = August \\/ m = September \\/ m = October \\/ m = November \\/ m = December .",
+                "tactic_sig_no_out_arg": "Theorem month_equal : forall m : month , m = January \\/ m = February \\/ m = March \\/ m = April \\/ m = May \\/ m = June \\/ m = July \\/ m = August \\/ m = September \\/ m = October \\/ m = November \\/ m = December .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall m : month,\nor (eq m January)\n  (or (eq m February)\n     (or (eq m March)\n        (or (eq m April)\n           (or (eq m May)\n              (or (eq m June)\n                 (or (eq m July)\n                    (or (eq m August)\n                       (or (eq m September)\n                          (or (eq m October)\n                             (or (eq m November) (eq m December)))))))))))"
+                ]
+            },
+            {
+                "tactic_sig": "destruct m as [  | | | | | | | | | | | ] .",
+                "tactic_sig_no_out_arg": "destruct m .",
+                "tactic_args": [
+                    "c1_goal : forall m : month,\nor (eq m January)\n  (or (eq m February)\n     (or (eq m March)\n        (or (eq m April)\n           (or (eq m May)\n              (or (eq m June)\n                 (or (eq m July)\n                    (or (eq m August)\n                       (or (eq m September)\n                          (or (eq m October)\n                             (or (eq m November) (eq m December)))))))))))"
+                ],
+                "tactic_res": [
+                    "c2_goal : or (eq January January)\n  (or (eq January February)\n     (or (eq January March)\n        (or (eq January April)\n           (or (eq January May)\n              (or (eq January June)\n                 (or (eq January July)\n                    (or (eq January August)\n                       (or (eq January September)\n                          (or (eq January October)\n                             (or (eq January November)\n                                (eq January December)))))))))))",
+                    "c3_goal : or (eq February January)\n  (or (eq February February)\n     (or (eq February March)\n        (or (eq February April)\n           (or (eq February May)\n              (or (eq February June)\n                 (or (eq February July)\n                    (or (eq February August)\n                       (or (eq February September)\n                          (or (eq February October)\n                             (or (eq February November)\n                                (eq February December)))))))))))",
+                    "c4_goal : or (eq March January)\n  (or (eq March February)\n     (or (eq March March)\n        (or (eq March April)\n           (or (eq March May)\n              (or (eq March June)\n                 (or (eq March July)\n                    (or (eq March August)\n                       (or (eq March September)\n                          (or (eq March October)\n                             (or (eq March November)\n                                (eq March December)))))))))))",
+                    "c5_goal : or (eq April January)\n  (or (eq April February)\n     (or (eq April March)\n        (or (eq April April)\n           (or (eq April May)\n              (or (eq April June)\n                 (or (eq April July)\n                    (or (eq April August)\n                       (or (eq April September)\n                          (or (eq April October)\n                             (or (eq April November)\n                                (eq April December)))))))))))",
+                    "c6_goal : or (eq May January)\n  (or (eq May February)\n     (or (eq May March)\n        (or (eq May April)\n           (or (eq May May)\n              (or (eq May June)\n                 (or (eq May July)\n                    (or (eq May August)\n                       (or (eq May September)\n                          (or (eq May October)\n                             (or (eq May November) (eq May December)))))))))))",
+                    "c7_goal : or (eq June January)\n  (or (eq June February)\n     (or (eq June March)\n        (or (eq June April)\n           (or (eq June May)\n              (or (eq June June)\n                 (or (eq June July)\n                    (or (eq June August)\n                       (or (eq June September)\n                          (or (eq June October)\n                             (or (eq June November) (eq June December)))))))))))",
+                    "c8_goal : or (eq July January)\n  (or (eq July February)\n     (or (eq July March)\n        (or (eq July April)\n           (or (eq July May)\n              (or (eq July June)\n                 (or (eq July July)\n                    (or (eq July August)\n                       (or (eq July September)\n                          (or (eq July October)\n                             (or (eq July November) (eq July December)))))))))))",
+                    "c9_goal : or (eq August January)\n  (or (eq August February)\n     (or (eq August March)\n        (or (eq August April)\n           (or (eq August May)\n              (or (eq August June)\n                 (or (eq August July)\n                    (or (eq August August)\n                       (or (eq August September)\n                          (or (eq August October)\n                             (or (eq August November)\n                                (eq August December)))))))))))",
+                    "c10_goal : or (eq September January)\n  (or (eq September February)\n     (or (eq September March)\n        (or (eq September April)\n           (or (eq September May)\n              (or (eq September June)\n                 (or (eq September July)\n                    (or (eq September August)\n                       (or (eq September September)\n                          (or (eq September October)\n                             (or (eq September November)\n                                (eq September December)))))))))))",
+                    "c11_goal : or (eq October January)\n  (or (eq October February)\n     (or (eq October March)\n        (or (eq October April)\n           (or (eq October May)\n              (or (eq October June)\n                 (or (eq October July)\n                    (or (eq October August)\n                       (or (eq October September)\n                          (or (eq October October)\n                             (or (eq October November)\n                                (eq October December)))))))))))",
+                    "c12_goal : or (eq November January)\n  (or (eq November February)\n     (or (eq November March)\n        (or (eq November April)\n           (or (eq November May)\n              (or (eq November June)\n                 (or (eq November July)\n                    (or (eq November August)\n                       (or (eq November September)\n                          (or (eq November October)\n                             (or (eq November November)\n                                (eq November December)))))))))))",
+                    "c13_goal : or (eq December January)\n  (or (eq December February)\n     (or (eq December March)\n        (or (eq December April)\n           (or (eq December May)\n              (or (eq December June)\n                 (or (eq December July)\n                    (or (eq December August)\n                       (or (eq December September)\n                          (or (eq December October)\n                             (or (eq December November)\n                                (eq December December)))))))))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c2_goal : or (eq January January)\n  (or (eq January February)\n     (or (eq January March)\n        (or (eq January April)\n           (or (eq January May)\n              (or (eq January June)\n                 (or (eq January July)\n                    (or (eq January August)\n                       (or (eq January September)\n                          (or (eq January October)\n                             (or (eq January November)\n                                (eq January December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c3_goal : or (eq February January)\n  (or (eq February February)\n     (or (eq February March)\n        (or (eq February April)\n           (or (eq February May)\n              (or (eq February June)\n                 (or (eq February July)\n                    (or (eq February August)\n                       (or (eq February September)\n                          (or (eq February October)\n                             (or (eq February November)\n                                (eq February December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c4_goal : or (eq March January)\n  (or (eq March February)\n     (or (eq March March)\n        (or (eq March April)\n           (or (eq March May)\n              (or (eq March June)\n                 (or (eq March July)\n                    (or (eq March August)\n                       (or (eq March September)\n                          (or (eq March October)\n                             (or (eq March November)\n                                (eq March December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c5_goal : or (eq April January)\n  (or (eq April February)\n     (or (eq April March)\n        (or (eq April April)\n           (or (eq April May)\n              (or (eq April June)\n                 (or (eq April July)\n                    (or (eq April August)\n                       (or (eq April September)\n                          (or (eq April October)\n                             (or (eq April November)\n                                (eq April December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c6_goal : or (eq May January)\n  (or (eq May February)\n     (or (eq May March)\n        (or (eq May April)\n           (or (eq May May)\n              (or (eq May June)\n                 (or (eq May July)\n                    (or (eq May August)\n                       (or (eq May September)\n                          (or (eq May October)\n                             (or (eq May November) (eq May December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c7_goal : or (eq June January)\n  (or (eq June February)\n     (or (eq June March)\n        (or (eq June April)\n           (or (eq June May)\n              (or (eq June June)\n                 (or (eq June July)\n                    (or (eq June August)\n                       (or (eq June September)\n                          (or (eq June October)\n                             (or (eq June November) (eq June December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c8_goal : or (eq July January)\n  (or (eq July February)\n     (or (eq July March)\n        (or (eq July April)\n           (or (eq July May)\n              (or (eq July June)\n                 (or (eq July July)\n                    (or (eq July August)\n                       (or (eq July September)\n                          (or (eq July October)\n                             (or (eq July November) (eq July December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c9_goal : or (eq August January)\n  (or (eq August February)\n     (or (eq August March)\n        (or (eq August April)\n           (or (eq August May)\n              (or (eq August June)\n                 (or (eq August July)\n                    (or (eq August August)\n                       (or (eq August September)\n                          (or (eq August October)\n                             (or (eq August November)\n                                (eq August December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c10_goal : or (eq September January)\n  (or (eq September February)\n     (or (eq September March)\n        (or (eq September April)\n           (or (eq September May)\n              (or (eq September June)\n                 (or (eq September July)\n                    (or (eq September August)\n                       (or (eq September September)\n                          (or (eq September October)\n                             (or (eq September November)\n                                (eq September December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c11_goal : or (eq October January)\n  (or (eq October February)\n     (or (eq October March)\n        (or (eq October April)\n           (or (eq October May)\n              (or (eq October June)\n                 (or (eq October July)\n                    (or (eq October August)\n                       (or (eq October September)\n                          (or (eq October October)\n                             (or (eq October November)\n                                (eq October December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c12_goal : or (eq November January)\n  (or (eq November February)\n     (or (eq November March)\n        (or (eq November April)\n           (or (eq November May)\n              (or (eq November June)\n                 (or (eq November July)\n                    (or (eq November August)\n                       (or (eq November September)\n                          (or (eq November October)\n                             (or (eq November November)\n                                (eq November December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c13_goal : or (eq December January)\n  (or (eq December February)\n     (or (eq December March)\n        (or (eq December April)\n           (or (eq December May)\n              (or (eq December June)\n                 (or (eq December July)\n                    (or (eq December August)\n                       (or (eq December September)\n                          (or (eq December October)\n                             (or (eq December November)\n                                (eq December December)))))))))))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "month_equal'",
+        "proof": [
+            {
+                "tactic_sig": "Theorem month_equal' : forall m : month , m = January \\/ m = February \\/ m = March \\/ m = April \\/ m = May \\/ m = June \\/ m = July \\/ m = August \\/ m = September \\/ m = October \\/ m = November \\/ m = December .",
+                "tactic_sig_no_out_arg": "Theorem month_equal' : forall m : month , m = January \\/ m = February \\/ m = March \\/ m = April \\/ m = May \\/ m = June \\/ m = July \\/ m = August \\/ m = September \\/ m = October \\/ m = November \\/ m = December .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall m : month,\nor (eq m January)\n  (or (eq m February)\n     (or (eq m March)\n        (or (eq m April)\n           (or (eq m May)\n              (or (eq m June)\n                 (or (eq m July)\n                    (or (eq m August)\n                       (or (eq m September)\n                          (or (eq m October)\n                             (or (eq m November) (eq m December)))))))))))"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro m .",
+                "tactic_args": [
+                    "c1_goal : forall m : month,\nor (eq m January)\n  (or (eq m February)\n     (or (eq m March)\n        (or (eq m April)\n           (or (eq m May)\n              (or (eq m June)\n                 (or (eq m July)\n                    (or (eq m August)\n                       (or (eq m September)\n                          (or (eq m October)\n                             (or (eq m November) (eq m December)))))))))))"
+                ],
+                "tactic_res": [
+                    "c2_goal : or (eq m January)\n  (or (eq m February)\n     (or (eq m March)\n        (or (eq m April)\n           (or (eq m May)\n              (or (eq m June)\n                 (or (eq m July)\n                    (or (eq m August)\n                       (or (eq m September)\n                          (or (eq m October)\n                             (or (eq m November) (eq m December)))))))))))",
+                    "c2_m : month"
+                ]
+            },
+            {
+                "tactic_sig": "pattern _i .",
+                "tactic_sig_no_out_arg": "pattern _i .",
+                "tactic_args": [
+                    "c2_goal : or (eq m January)\n  (or (eq m February)\n     (or (eq m March)\n        (or (eq m April)\n           (or (eq m May)\n              (or (eq m June)\n                 (or (eq m July)\n                    (or (eq m August)\n                       (or (eq m September)\n                          (or (eq m October)\n                             (or (eq m November) (eq m December)))))))))))",
+                    "c2_m : month"
+                ],
+                "tactic_res": [
+                    "c3_goal : (fun m : month =>\n or (eq m January)\n   (or (eq m February)\n      (or (eq m March)\n         (or (eq m April)\n            (or (eq m May)\n               (or (eq m June)\n                  (or (eq m July)\n                     (or (eq m August)\n                        (or (eq m September)\n                           (or (eq m October)\n                              (or (eq m November) (eq m December))))))))))))\n  m"
+                ]
+            },
+            {
+                "tactic_sig": "apply _i .",
+                "tactic_sig_no_out_arg": "apply _i .",
+                "tactic_args": [
+                    "c3_goal : (fun m : month =>\n or (eq m January)\n   (or (eq m February)\n      (or (eq m March)\n         (or (eq m April)\n            (or (eq m May)\n               (or (eq m June)\n                  (or (eq m July)\n                     (or (eq m August)\n                        (or (eq m September)\n                           (or (eq m October)\n                              (or (eq m November) (eq m December))))))))))))\n  m",
+                    "_global_month_ind : forall (P : forall _ : month, Prop) (_ : P January) \n         (_ : P February) (_ : P March) (_ : P April) \n         (_ : P May) (_ : P June) (_ : P July) (_ : P August)\n         (_ : P September) (_ : P October) (_ : P November) \n         (_ : P December) (m : month), P m"
+                ],
+                "tactic_res": [
+                    "c4_goal : or (eq January January)\n  (or (eq January February)\n     (or (eq January March)\n        (or (eq January April)\n           (or (eq January May)\n              (or (eq January June)\n                 (or (eq January July)\n                    (or (eq January August)\n                       (or (eq January September)\n                          (or (eq January October)\n                             (or (eq January November)\n                                (eq January December)))))))))))",
+                    "c5_goal : or (eq February January)\n  (or (eq February February)\n     (or (eq February March)\n        (or (eq February April)\n           (or (eq February May)\n              (or (eq February June)\n                 (or (eq February July)\n                    (or (eq February August)\n                       (or (eq February September)\n                          (or (eq February October)\n                             (or (eq February November)\n                                (eq February December)))))))))))",
+                    "c6_goal : or (eq March January)\n  (or (eq March February)\n     (or (eq March March)\n        (or (eq March April)\n           (or (eq March May)\n              (or (eq March June)\n                 (or (eq March July)\n                    (or (eq March August)\n                       (or (eq March September)\n                          (or (eq March October)\n                             (or (eq March November)\n                                (eq March December)))))))))))",
+                    "c7_goal : or (eq April January)\n  (or (eq April February)\n     (or (eq April March)\n        (or (eq April April)\n           (or (eq April May)\n              (or (eq April June)\n                 (or (eq April July)\n                    (or (eq April August)\n                       (or (eq April September)\n                          (or (eq April October)\n                             (or (eq April November)\n                                (eq April December)))))))))))",
+                    "c8_goal : or (eq May January)\n  (or (eq May February)\n     (or (eq May March)\n        (or (eq May April)\n           (or (eq May May)\n              (or (eq May June)\n                 (or (eq May July)\n                    (or (eq May August)\n                       (or (eq May September)\n                          (or (eq May October)\n                             (or (eq May November) (eq May December)))))))))))",
+                    "c9_goal : or (eq June January)\n  (or (eq June February)\n     (or (eq June March)\n        (or (eq June April)\n           (or (eq June May)\n              (or (eq June June)\n                 (or (eq June July)\n                    (or (eq June August)\n                       (or (eq June September)\n                          (or (eq June October)\n                             (or (eq June November) (eq June December)))))))))))",
+                    "c10_goal : or (eq July January)\n  (or (eq July February)\n     (or (eq July March)\n        (or (eq July April)\n           (or (eq July May)\n              (or (eq July June)\n                 (or (eq July July)\n                    (or (eq July August)\n                       (or (eq July September)\n                          (or (eq July October)\n                             (or (eq July November) (eq July December)))))))))))",
+                    "c11_goal : or (eq August January)\n  (or (eq August February)\n     (or (eq August March)\n        (or (eq August April)\n           (or (eq August May)\n              (or (eq August June)\n                 (or (eq August July)\n                    (or (eq August August)\n                       (or (eq August September)\n                          (or (eq August October)\n                             (or (eq August November)\n                                (eq August December)))))))))))",
+                    "c12_goal : or (eq September January)\n  (or (eq September February)\n     (or (eq September March)\n        (or (eq September April)\n           (or (eq September May)\n              (or (eq September June)\n                 (or (eq September July)\n                    (or (eq September August)\n                       (or (eq September September)\n                          (or (eq September October)\n                             (or (eq September November)\n                                (eq September December)))))))))))",
+                    "c13_goal : or (eq October January)\n  (or (eq October February)\n     (or (eq October March)\n        (or (eq October April)\n           (or (eq October May)\n              (or (eq October June)\n                 (or (eq October July)\n                    (or (eq October August)\n                       (or (eq October September)\n                          (or (eq October October)\n                             (or (eq October November)\n                                (eq October December)))))))))))",
+                    "c14_goal : or (eq November January)\n  (or (eq November February)\n     (or (eq November March)\n        (or (eq November April)\n           (or (eq November May)\n              (or (eq November June)\n                 (or (eq November July)\n                    (or (eq November August)\n                       (or (eq November September)\n                          (or (eq November October)\n                             (or (eq November November)\n                                (eq November December)))))))))))",
+                    "c15_goal : or (eq December January)\n  (or (eq December February)\n     (or (eq December March)\n        (or (eq December April)\n           (or (eq December May)\n              (or (eq December June)\n                 (or (eq December July)\n                    (or (eq December August)\n                       (or (eq December September)\n                          (or (eq December October)\n                             (or (eq December November)\n                                (eq December December)))))))))))"
+                ]
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c4_goal : or (eq January January)\n  (or (eq January February)\n     (or (eq January March)\n        (or (eq January April)\n           (or (eq January May)\n              (or (eq January June)\n                 (or (eq January July)\n                    (or (eq January August)\n                       (or (eq January September)\n                          (or (eq January October)\n                             (or (eq January November)\n                                (eq January December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c5_goal : or (eq February January)\n  (or (eq February February)\n     (or (eq February March)\n        (or (eq February April)\n           (or (eq February May)\n              (or (eq February June)\n                 (or (eq February July)\n                    (or (eq February August)\n                       (or (eq February September)\n                          (or (eq February October)\n                             (or (eq February November)\n                                (eq February December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c6_goal : or (eq March January)\n  (or (eq March February)\n     (or (eq March March)\n        (or (eq March April)\n           (or (eq March May)\n              (or (eq March June)\n                 (or (eq March July)\n                    (or (eq March August)\n                       (or (eq March September)\n                          (or (eq March October)\n                             (or (eq March November)\n                                (eq March December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c7_goal : or (eq April January)\n  (or (eq April February)\n     (or (eq April March)\n        (or (eq April April)\n           (or (eq April May)\n              (or (eq April June)\n                 (or (eq April July)\n                    (or (eq April August)\n                       (or (eq April September)\n                          (or (eq April October)\n                             (or (eq April November)\n                                (eq April December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c8_goal : or (eq May January)\n  (or (eq May February)\n     (or (eq May March)\n        (or (eq May April)\n           (or (eq May May)\n              (or (eq May June)\n                 (or (eq May July)\n                    (or (eq May August)\n                       (or (eq May September)\n                          (or (eq May October)\n                             (or (eq May November) (eq May December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c9_goal : or (eq June January)\n  (or (eq June February)\n     (or (eq June March)\n        (or (eq June April)\n           (or (eq June May)\n              (or (eq June June)\n                 (or (eq June July)\n                    (or (eq June August)\n                       (or (eq June September)\n                          (or (eq June October)\n                             (or (eq June November) (eq June December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c10_goal : or (eq July January)\n  (or (eq July February)\n     (or (eq July March)\n        (or (eq July April)\n           (or (eq July May)\n              (or (eq July June)\n                 (or (eq July July)\n                    (or (eq July August)\n                       (or (eq July September)\n                          (or (eq July October)\n                             (or (eq July November) (eq July December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c11_goal : or (eq August January)\n  (or (eq August February)\n     (or (eq August March)\n        (or (eq August April)\n           (or (eq August May)\n              (or (eq August June)\n                 (or (eq August July)\n                    (or (eq August August)\n                       (or (eq August September)\n                          (or (eq August October)\n                             (or (eq August November)\n                                (eq August December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c12_goal : or (eq September January)\n  (or (eq September February)\n     (or (eq September March)\n        (or (eq September April)\n           (or (eq September May)\n              (or (eq September June)\n                 (or (eq September July)\n                    (or (eq September August)\n                       (or (eq September September)\n                          (or (eq September October)\n                             (or (eq September November)\n                                (eq September December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c13_goal : or (eq October January)\n  (or (eq October February)\n     (or (eq October March)\n        (or (eq October April)\n           (or (eq October May)\n              (or (eq October June)\n                 (or (eq October July)\n                    (or (eq October August)\n                       (or (eq October September)\n                          (or (eq October October)\n                             (or (eq October November)\n                                (eq October December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c14_goal : or (eq November January)\n  (or (eq November February)\n     (or (eq November March)\n        (or (eq November April)\n           (or (eq November May)\n              (or (eq November June)\n                 (or (eq November July)\n                    (or (eq November August)\n                       (or (eq November September)\n                          (or (eq November October)\n                             (or (eq November November)\n                                (eq November December)))))))))))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto 12 .",
+                "tactic_sig_no_out_arg": "auto 12 .",
+                "tactic_args": [
+                    "c15_goal : or (eq December January)\n  (or (eq December February)\n     (or (eq December March)\n        (or (eq December April)\n           (or (eq December May)\n              (or (eq December June)\n                 (or (eq December July)\n                    (or (eq December August)\n                       (or (eq December September)\n                          (or (eq December October)\n                             (or (eq December November)\n                                (eq December December)))))))))))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "at_least_28",
+        "proof": [
+            {
+                "tactic_sig": "Theorem at_least_28 : forall ( leap : bool ) ( m : month ) , 28 <= month_length leap m .",
+                "tactic_sig_no_out_arg": "Theorem at_least_28 : forall ( leap : bool ) ( m : month ) , 28 <= month_length leap m .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (leap : bool) (m : month), le 28 (month_length leap m)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros leap m .",
+                "tactic_args": [
+                    "c1_goal : forall (leap : bool) (m : month), le 28 (month_length leap m)"
+                ],
+                "tactic_res": [
+                    "c2_goal : le 28 (month_length leap m)",
+                    "c2_leap : bool",
+                    "c2_m : month"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c2_goal : le 28 (month_length leap m)",
+                    "c2_m : month"
+                ],
+                "tactic_res": [
+                    "c3_goal : le 28 (month_length leap January)",
+                    "c4_goal : le 28 (month_length leap February)",
+                    "c5_goal : le 28 (month_length leap March)",
+                    "c6_goal : le 28 (month_length leap April)",
+                    "c7_goal : le 28 (month_length leap May)",
+                    "c8_goal : le 28 (month_length leap June)",
+                    "c9_goal : le 28 (month_length leap July)",
+                    "c10_goal : le 28 (month_length leap August)",
+                    "c11_goal : le 28 (month_length leap September)",
+                    "c12_goal : le 28 (month_length leap October)",
+                    "c13_goal : le 28 (month_length leap November)",
+                    "c14_goal : le 28 (month_length leap December)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c3_goal : le 28 (month_length leap January)"
+                ],
+                "tactic_res": [
+                    "c15_goal : le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c15_goal : le 28 31"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c4_goal : le 28 (month_length leap February)"
+                ],
+                "tactic_res": [
+                    "c16_goal : le 28 (if leap then 29 else 28)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c5_goal : le 28 (month_length leap March)"
+                ],
+                "tactic_res": [
+                    "c17_goal : le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c17_goal : le 28 31"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c6_goal : le 28 (month_length leap April)"
+                ],
+                "tactic_res": [
+                    "c18_goal : le 28 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c18_goal : le 28 30"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c7_goal : le 28 (month_length leap May)"
+                ],
+                "tactic_res": [
+                    "c19_goal : le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c19_goal : le 28 31"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c8_goal : le 28 (month_length leap June)"
+                ],
+                "tactic_res": [
+                    "c20_goal : le 28 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c20_goal : le 28 30"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c9_goal : le 28 (month_length leap July)"
+                ],
+                "tactic_res": [
+                    "c21_goal : le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c21_goal : le 28 31"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c10_goal : le 28 (month_length leap August)"
+                ],
+                "tactic_res": [
+                    "c22_goal : le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c22_goal : le 28 31"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c11_goal : le 28 (month_length leap September)"
+                ],
+                "tactic_res": [
+                    "c23_goal : le 28 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c23_goal : le 28 30"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c12_goal : le 28 (month_length leap October)"
+                ],
+                "tactic_res": [
+                    "c24_goal : le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c24_goal : le 28 31"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c13_goal : le 28 (month_length leap November)"
+                ],
+                "tactic_res": [
+                    "c25_goal : le 28 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c25_goal : le 28 30"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c14_goal : le 28 (month_length leap December)"
+                ],
+                "tactic_res": [
+                    "c26_goal : le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c26_goal : le 28 31"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c16_goal : le 28 (if leap then 29 else 28)",
+                    "c2_leap : bool"
+                ],
+                "tactic_res": [
+                    "c27_goal : le 28 29",
+                    "c28_goal : le 28 28"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c27_goal : le 28 29"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c28_goal : le 28 28"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "next_august_then_july",
+        "proof": [
+            {
+                "tactic_sig": "Theorem next_august_then_july : forall m : month , next_month m = August -> m = July .",
+                "tactic_sig_no_out_arg": "Theorem next_august_then_july : forall m : month , next_month m = August -> m = July .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (m : month) (_ : eq (next_month m) August), eq m July"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros m .",
+                "tactic_args": [
+                    "c1_goal : forall (m : month) (_ : eq (next_month m) August), eq m July"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall _ : eq (next_month m) August, eq m July",
+                    "c2_m : month"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c2_goal : forall _ : eq (next_month m) August, eq m July",
+                    "c2_m : month"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall _ : eq (next_month January) August, eq January July",
+                    "c4_goal : forall _ : eq (next_month February) August, eq February July",
+                    "c5_goal : forall _ : eq (next_month March) August, eq March July",
+                    "c6_goal : forall _ : eq (next_month April) August, eq April July",
+                    "c7_goal : forall _ : eq (next_month May) August, eq May July",
+                    "c8_goal : forall _ : eq (next_month June) August, eq June July",
+                    "c9_goal : forall _ : eq (next_month July) August, eq July July",
+                    "c10_goal : forall _ : eq (next_month August) August, eq August July",
+                    "c11_goal : forall _ : eq (next_month September) August, eq September July",
+                    "c12_goal : forall _ : eq (next_month October) August, eq October July",
+                    "c13_goal : forall _ : eq (next_month November) August, eq November July",
+                    "c14_goal : forall _ : eq (next_month December) August, eq December July"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c3_goal : forall _ : eq (next_month January) August, eq January July"
+                ],
+                "tactic_res": [
+                    "c15_goal : forall _ : eq February August, eq January July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c15_goal : forall _ : eq February August, eq January July"
+                ],
+                "tactic_res": [
+                    "c16_goal : eq January July",
+                    "c16_Hnext_eq : eq February August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c16_goal : eq January July",
+                    "c16_Hnext_eq : eq February August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c4_goal : forall _ : eq (next_month February) August, eq February July"
+                ],
+                "tactic_res": [
+                    "c17_goal : forall _ : eq March August, eq February July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c17_goal : forall _ : eq March August, eq February July"
+                ],
+                "tactic_res": [
+                    "c18_goal : eq February July",
+                    "c18_Hnext_eq : eq March August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c18_goal : eq February July",
+                    "c18_Hnext_eq : eq March August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c5_goal : forall _ : eq (next_month March) August, eq March July"
+                ],
+                "tactic_res": [
+                    "c19_goal : forall _ : eq April August, eq March July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c19_goal : forall _ : eq April August, eq March July"
+                ],
+                "tactic_res": [
+                    "c20_goal : eq March July",
+                    "c20_Hnext_eq : eq April August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c20_goal : eq March July",
+                    "c20_Hnext_eq : eq April August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c6_goal : forall _ : eq (next_month April) August, eq April July"
+                ],
+                "tactic_res": [
+                    "c21_goal : forall _ : eq May August, eq April July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c21_goal : forall _ : eq May August, eq April July"
+                ],
+                "tactic_res": [
+                    "c22_goal : eq April July",
+                    "c22_Hnext_eq : eq May August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c22_goal : eq April July",
+                    "c22_Hnext_eq : eq May August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c7_goal : forall _ : eq (next_month May) August, eq May July"
+                ],
+                "tactic_res": [
+                    "c23_goal : forall _ : eq June August, eq May July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c23_goal : forall _ : eq June August, eq May July"
+                ],
+                "tactic_res": [
+                    "c24_goal : eq May July",
+                    "c24_Hnext_eq : eq June August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c24_goal : eq May July",
+                    "c24_Hnext_eq : eq June August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c8_goal : forall _ : eq (next_month June) August, eq June July"
+                ],
+                "tactic_res": [
+                    "c25_goal : forall _ : eq July August, eq June July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c25_goal : forall _ : eq July August, eq June July"
+                ],
+                "tactic_res": [
+                    "c26_goal : eq June July",
+                    "c26_Hnext_eq : eq July August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c26_goal : eq June July",
+                    "c26_Hnext_eq : eq July August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c9_goal : forall _ : eq (next_month July) August, eq July July"
+                ],
+                "tactic_res": [
+                    "c27_goal : forall _ : eq August August, eq July July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c27_goal : forall _ : eq August August, eq July July"
+                ],
+                "tactic_res": [
+                    "c28_goal : eq July July",
+                    "c28_Hnext_eq : eq August August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c28_goal : eq July July",
+                    "c28_Hnext_eq : eq August August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c10_goal : forall _ : eq (next_month August) August, eq August July"
+                ],
+                "tactic_res": [
+                    "c29_goal : forall _ : eq September August, eq August July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c29_goal : forall _ : eq September August, eq August July"
+                ],
+                "tactic_res": [
+                    "c30_goal : eq August July",
+                    "c30_Hnext_eq : eq September August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c30_goal : eq August July",
+                    "c30_Hnext_eq : eq September August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c11_goal : forall _ : eq (next_month September) August, eq September July"
+                ],
+                "tactic_res": [
+                    "c31_goal : forall _ : eq October August, eq September July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c31_goal : forall _ : eq October August, eq September July"
+                ],
+                "tactic_res": [
+                    "c32_goal : eq September July",
+                    "c32_Hnext_eq : eq October August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c32_goal : eq September July",
+                    "c32_Hnext_eq : eq October August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c12_goal : forall _ : eq (next_month October) August, eq October July"
+                ],
+                "tactic_res": [
+                    "c33_goal : forall _ : eq November August, eq October July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c33_goal : forall _ : eq November August, eq October July"
+                ],
+                "tactic_res": [
+                    "c34_goal : eq October July",
+                    "c34_Hnext_eq : eq November August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c34_goal : eq October July",
+                    "c34_Hnext_eq : eq November August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c13_goal : forall _ : eq (next_month November) August, eq November July"
+                ],
+                "tactic_res": [
+                    "c35_goal : forall _ : eq December August, eq November July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c35_goal : forall _ : eq December August, eq November July"
+                ],
+                "tactic_res": [
+                    "c36_goal : eq November July",
+                    "c36_Hnext_eq : eq December August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c36_goal : eq November July",
+                    "c36_Hnext_eq : eq December August"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c14_goal : forall _ : eq (next_month December) August, eq December July"
+                ],
+                "tactic_res": [
+                    "c37_goal : forall _ : eq January August, eq December July"
+                ]
+            },
+            {
+                "tactic_sig": "intros Hnext_eq .",
+                "tactic_sig_no_out_arg": "intros Hnext_eq .",
+                "tactic_args": [
+                    "c37_goal : forall _ : eq January August, eq December July"
+                ],
+                "tactic_res": [
+                    "c38_goal : eq December July",
+                    "c38_Hnext_eq : eq January August"
+                ]
+            },
+            {
+                "tactic_sig": "( reflexivity || discriminate _i ) .",
+                "tactic_sig_no_out_arg": "( reflexivity || discriminate _i ) .",
+                "tactic_args": [
+                    "c38_goal : eq December July",
+                    "c38_Hnext_eq : eq January August"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "not_January_eq_February'",
+        "proof": [
+            {
+                "tactic_sig": "Theorem not_January_eq_February' : January <> February .",
+                "tactic_sig_no_out_arg": "Theorem not_January_eq_February' : January <> February .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : not (eq January February)"
+                ]
+            },
+            {
+                "tactic_sig": "unfold _i .",
+                "tactic_sig_no_out_arg": "unfold _i .",
+                "tactic_args": [
+                    "c1_goal : not (eq January February)",
+                    "_global_not : forall _ : Prop, Prop"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall _ : eq January February, False"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros H .",
+                "tactic_args": [
+                    "c2_goal : forall _ : eq January February, False"
+                ],
+                "tactic_res": [
+                    "c3_goal : False",
+                    "c3_H : eq January February"
+                ]
+            },
+            {
+                "tactic_sig": "change ( ( fun m : month => match m with | January => True | _ => False end ) February ) .",
+                "tactic_sig_no_out_arg": "change ( ( fun m : month => match m with | January => True | _ => False end ) February ) .",
+                "tactic_args": [
+                    "c3_goal : False"
+                ],
+                "tactic_res": [
+                    "c4_goal : (fun m : month => match m with\n                  | January => True\n                  | _ => False\n                  end) February"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite <- _i .",
+                "tactic_sig_no_out_arg": "rewrite <- _i .",
+                "tactic_args": [
+                    "c4_goal : (fun m : month => match m with\n                  | January => True\n                  | _ => False\n                  end) February",
+                    "c3_H : eq January February"
+                ],
+                "tactic_res": [
+                    "c5_goal : True"
+                ]
+            },
+            {
+                "tactic_sig": "trivial .",
+                "tactic_sig_no_out_arg": "trivial .",
+                "tactic_args": [
+                    "c5_goal : True"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "bicycle_eq_seats",
+        "proof": [
+            {
+                "tactic_sig": "Theorem bicycle_eq_seats : forall x1 y1 : nat , bicycle x1 = bicycle y1 -> x1 = y1 .",
+                "tactic_sig_no_out_arg": "Theorem bicycle_eq_seats : forall x1 y1 : nat , bicycle x1 = bicycle y1 -> x1 = y1 .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (x1 y1 : nat) (_ : eq (bicycle x1) (bicycle y1)), eq x1 y1"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros x1 y1 H .",
+                "tactic_args": [
+                    "c1_goal : forall (x1 y1 : nat) (_ : eq (bicycle x1) (bicycle y1)), eq x1 y1"
+                ],
+                "tactic_res": [
+                    "c2_goal : eq x1 y1",
+                    "c2_x1 : nat",
+                    "c2_y1 : nat",
+                    "c2_H : eq (bicycle x1) (bicycle y1)"
+                ]
+            },
+            {
+                "tactic_sig": "injection _i .",
+                "tactic_sig_no_out_arg": "injection _i .",
+                "tactic_args": [
+                    "c2_goal : eq x1 y1",
+                    "c2_H : eq (bicycle x1) (bicycle y1)"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall _ : eq x1 y1, eq x1 y1"
+                ]
+            },
+            {
+                "tactic_sig": "trivial .",
+                "tactic_sig_no_out_arg": "trivial .",
+                "tactic_args": [
+                    "c3_goal : forall _ : eq x1 y1, eq x1 y1"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "bicycle_eq_seats'",
+        "proof": [
+            {
+                "tactic_sig": "Theorem bicycle_eq_seats' : forall x1 y1 : nat , bicycle x1 = bicycle y1 -> x1 = y1 .",
+                "tactic_sig_no_out_arg": "Theorem bicycle_eq_seats' : forall x1 y1 : nat , bicycle x1 = bicycle y1 -> x1 = y1 .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (x1 y1 : nat) (_ : eq (bicycle x1) (bicycle y1)), eq x1 y1"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros x1 y1 H .",
+                "tactic_args": [
+                    "c1_goal : forall (x1 y1 : nat) (_ : eq (bicycle x1) (bicycle y1)), eq x1 y1"
+                ],
+                "tactic_res": [
+                    "c2_goal : eq x1 y1",
+                    "c2_x1 : nat",
+                    "c2_y1 : nat",
+                    "c2_H : eq (bicycle x1) (bicycle y1)"
+                ]
+            },
+            {
+                "tactic_sig": "change ( nb_seats ( bicycle _i ) = nb_seats ( bicycle _i ) ) .",
+                "tactic_sig_no_out_arg": "change ( nb_seats ( bicycle _i ) = nb_seats ( bicycle _i ) ) .",
+                "tactic_args": [
+                    "c2_goal : eq x1 y1",
+                    "c2_x1 : nat",
+                    "c2_y1 : nat"
+                ],
+                "tactic_res": [
+                    "c3_goal : eq (nb_seats (bicycle x1)) (nb_seats (bicycle y1))"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "c3_goal : eq (nb_seats (bicycle x1)) (nb_seats (bicycle y1))",
+                    "c2_H : eq (bicycle x1) (bicycle y1)"
+                ],
+                "tactic_res": [
+                    "c4_goal : eq (nb_seats (bicycle y1)) (nb_seats (bicycle y1))"
+                ]
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "c4_goal : eq (nb_seats (bicycle y1)) (nb_seats (bicycle y1))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "next_march_shorter",
+        "proof": [
+            {
+                "tactic_sig": "Theorem next_march_shorter : forall ( leap : bool ) ( m1 m2 : month ) , next_month m1 = March -> month_length leap m1 <= month_length leap m2 .",
+                "tactic_sig_no_out_arg": "Theorem next_march_shorter : forall ( leap : bool ) ( m1 m2 : month ) , next_month m1 = March -> month_length leap m1 <= month_length leap m2 .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (leap : bool) (m1 m2 : month) (_ : eq (next_month m1) March),\nle (month_length leap m1) (month_length leap m2)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros leap m1 m2 H .",
+                "tactic_args": [
+                    "c1_goal : forall (leap : bool) (m1 m2 : month) (_ : eq (next_month m1) March),\nle (month_length leap m1) (month_length leap m2)"
+                ],
+                "tactic_res": [
+                    "c2_goal : le (month_length leap m1) (month_length leap m2)",
+                    "c2_leap : bool",
+                    "c2_m1 : month",
+                    "c2_m2 : month",
+                    "c2_H : eq (next_month m1) March"
+                ]
+            },
+            {
+                "tactic_sig": "case_eq _i .",
+                "tactic_sig_no_out_arg": "case_eq _i .",
+                "tactic_args": [
+                    "c2_goal : le (month_length leap m1) (month_length leap m2)",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall _ : eq m1 January,\nle (month_length leap January) (month_length leap m2)",
+                    "c4_goal : forall _ : eq m1 February,\nle (month_length leap February) (month_length leap m2)",
+                    "c5_goal : forall _ : eq m1 March,\nle (month_length leap March) (month_length leap m2)",
+                    "c6_goal : forall _ : eq m1 April,\nle (month_length leap April) (month_length leap m2)",
+                    "c7_goal : forall _ : eq m1 May, le (month_length leap May) (month_length leap m2)",
+                    "c8_goal : forall _ : eq m1 June,\nle (month_length leap June) (month_length leap m2)",
+                    "c9_goal : forall _ : eq m1 July,\nle (month_length leap July) (month_length leap m2)",
+                    "c10_goal : forall _ : eq m1 August,\nle (month_length leap August) (month_length leap m2)",
+                    "c11_goal : forall _ : eq m1 September,\nle (month_length leap September) (month_length leap m2)",
+                    "c12_goal : forall _ : eq m1 October,\nle (month_length leap October) (month_length leap m2)",
+                    "c13_goal : forall _ : eq m1 November,\nle (month_length leap November) (month_length leap m2)",
+                    "c14_goal : forall _ : eq m1 December,\nle (month_length leap December) (month_length leap m2)"
+                ]
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c3_goal : forall _ : eq m1 January,\nle (month_length leap January) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c5_goal : forall _ : eq m1 March,\nle (month_length leap March) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c6_goal : forall _ : eq m1 April,\nle (month_length leap April) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c7_goal : forall _ : eq m1 May, le (month_length leap May) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c8_goal : forall _ : eq m1 June,\nle (month_length leap June) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c9_goal : forall _ : eq m1 July,\nle (month_length leap July) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c10_goal : forall _ : eq m1 August,\nle (month_length leap August) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c11_goal : forall _ : eq m1 September,\nle (month_length leap September) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c12_goal : forall _ : eq m1 October,\nle (month_length leap October) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c13_goal : forall _ : eq m1 November,\nle (month_length leap November) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_sig_no_out_arg": "try ( intro H0 ; rewrite H0 in _i ; simpl in _i ; discriminate _i ) .",
+                "tactic_args": [
+                    "c14_goal : forall _ : eq m1 December,\nle (month_length leap December) (month_length leap m2)",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March",
+                    "c2_H : eq (next_month m1) March"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c4_goal : forall _ : eq m1 February,\nle (month_length leap February) (month_length leap m2)",
+                    "c2_leap : bool"
+                ],
+                "tactic_res": [
+                    "c15_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true m2)",
+                    "c16_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false m2)"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c15_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true m2)",
+                    "c2_m2 : month"
+                ],
+                "tactic_res": [
+                    "c17_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true January)",
+                    "c18_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true February)",
+                    "c19_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true March)",
+                    "c20_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true April)",
+                    "c21_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true May)",
+                    "c22_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true June)",
+                    "c23_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true July)",
+                    "c24_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true August)",
+                    "c25_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true September)",
+                    "c26_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true October)",
+                    "c27_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true November)",
+                    "c28_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true December)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c17_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true January)"
+                ],
+                "tactic_res": [
+                    "c29_goal : forall _ : eq m1 February, le 29 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c29_goal : forall _ : eq m1 February, le 29 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c18_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true February)"
+                ],
+                "tactic_res": [
+                    "c30_goal : forall _ : eq m1 February, le 29 29"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c30_goal : forall _ : eq m1 February, le 29 29",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c19_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true March)"
+                ],
+                "tactic_res": [
+                    "c31_goal : forall _ : eq m1 February, le 29 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c31_goal : forall _ : eq m1 February, le 29 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c20_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true April)"
+                ],
+                "tactic_res": [
+                    "c32_goal : forall _ : eq m1 February, le 29 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c32_goal : forall _ : eq m1 February, le 29 30",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c21_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true May)"
+                ],
+                "tactic_res": [
+                    "c33_goal : forall _ : eq m1 February, le 29 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c33_goal : forall _ : eq m1 February, le 29 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c22_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true June)"
+                ],
+                "tactic_res": [
+                    "c34_goal : forall _ : eq m1 February, le 29 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c34_goal : forall _ : eq m1 February, le 29 30",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c23_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true July)"
+                ],
+                "tactic_res": [
+                    "c35_goal : forall _ : eq m1 February, le 29 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c35_goal : forall _ : eq m1 February, le 29 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c24_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true August)"
+                ],
+                "tactic_res": [
+                    "c36_goal : forall _ : eq m1 February, le 29 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c36_goal : forall _ : eq m1 February, le 29 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c25_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true September)"
+                ],
+                "tactic_res": [
+                    "c37_goal : forall _ : eq m1 February, le 29 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c37_goal : forall _ : eq m1 February, le 29 30",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c26_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true October)"
+                ],
+                "tactic_res": [
+                    "c38_goal : forall _ : eq m1 February, le 29 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c38_goal : forall _ : eq m1 February, le 29 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c27_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true November)"
+                ],
+                "tactic_res": [
+                    "c39_goal : forall _ : eq m1 February, le 29 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c39_goal : forall _ : eq m1 February, le 29 30",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c28_goal : forall _ : eq m1 February,\nle (month_length true February) (month_length true December)"
+                ],
+                "tactic_res": [
+                    "c40_goal : forall _ : eq m1 February, le 29 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c40_goal : forall _ : eq m1 February, le 29 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c16_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false m2)",
+                    "c2_m2 : month"
+                ],
+                "tactic_res": [
+                    "c41_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false January)",
+                    "c42_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false February)",
+                    "c43_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false March)",
+                    "c44_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false April)",
+                    "c45_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false May)",
+                    "c46_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false June)",
+                    "c47_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false July)",
+                    "c48_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false August)",
+                    "c49_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false September)",
+                    "c50_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false October)",
+                    "c51_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false November)",
+                    "c52_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false December)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c41_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false January)"
+                ],
+                "tactic_res": [
+                    "c53_goal : forall _ : eq m1 February, le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c53_goal : forall _ : eq m1 February, le 28 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c42_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false February)"
+                ],
+                "tactic_res": [
+                    "c54_goal : forall _ : eq m1 February, le 28 28"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c54_goal : forall _ : eq m1 February, le 28 28",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c43_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false March)"
+                ],
+                "tactic_res": [
+                    "c55_goal : forall _ : eq m1 February, le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c55_goal : forall _ : eq m1 February, le 28 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c44_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false April)"
+                ],
+                "tactic_res": [
+                    "c56_goal : forall _ : eq m1 February, le 28 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c56_goal : forall _ : eq m1 February, le 28 30",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c45_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false May)"
+                ],
+                "tactic_res": [
+                    "c57_goal : forall _ : eq m1 February, le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c57_goal : forall _ : eq m1 February, le 28 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c46_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false June)"
+                ],
+                "tactic_res": [
+                    "c58_goal : forall _ : eq m1 February, le 28 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c58_goal : forall _ : eq m1 February, le 28 30",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c47_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false July)"
+                ],
+                "tactic_res": [
+                    "c59_goal : forall _ : eq m1 February, le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c59_goal : forall _ : eq m1 February, le 28 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c48_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false August)"
+                ],
+                "tactic_res": [
+                    "c60_goal : forall _ : eq m1 February, le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c60_goal : forall _ : eq m1 February, le 28 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c49_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false September)"
+                ],
+                "tactic_res": [
+                    "c61_goal : forall _ : eq m1 February, le 28 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c61_goal : forall _ : eq m1 February, le 28 30",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c50_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false October)"
+                ],
+                "tactic_res": [
+                    "c62_goal : forall _ : eq m1 February, le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c62_goal : forall _ : eq m1 February, le 28 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c51_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false November)"
+                ],
+                "tactic_res": [
+                    "c63_goal : forall _ : eq m1 February, le 28 30"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c63_goal : forall _ : eq m1 February, le 28 30",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c52_goal : forall _ : eq m1 February,\nle (month_length false February) (month_length false December)"
+                ],
+                "tactic_res": [
+                    "c64_goal : forall _ : eq m1 February, le 28 31"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c64_goal : forall _ : eq m1 February, le 28 31",
+                    "c2_m1 : month"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "plus_assoc",
+        "proof": [
+            {
+                "tactic_sig": "Theorem plus_assoc : forall x y z : nat , ( x + y ) + z = x + ( y + z ) .",
+                "tactic_sig_no_out_arg": "Theorem plus_assoc : forall x y z : nat , ( x + y ) + z = x + ( y + z ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall x y z : nat,\neq (Init.Nat.add (Init.Nat.add x y) z)\n  (Init.Nat.add x (Init.Nat.add y z))"
+                ]
+            },
+            {
+                "tactic_sig": "induction x as [ | x0 IHx0 ] .",
+                "tactic_sig_no_out_arg": "induction x as [ | x0 IHx0 ] .",
+                "tactic_args": [
+                    "c1_goal : forall x y z : nat,\neq (Init.Nat.add (Init.Nat.add x y) z)\n  (Init.Nat.add x (Init.Nat.add y z))"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall y z : nat,\neq (Init.Nat.add (Init.Nat.add 0 y) z)\n  (Init.Nat.add 0 (Init.Nat.add y z))",
+                    "c3_goal : forall y z : nat,\neq (Init.Nat.add (Init.Nat.add (S x0) y) z)\n  (Init.Nat.add (S x0) (Init.Nat.add y z))",
+                    "c3_IHx0 : forall y z : nat,\neq (Init.Nat.add (Init.Nat.add x0 y) z)\n  (Init.Nat.add x0 (Init.Nat.add y z))",
+                    "c3_x0 : nat"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c2_goal : forall y z : nat,\neq (Init.Nat.add (Init.Nat.add 0 y) z)\n  (Init.Nat.add 0 (Init.Nat.add y z))"
+                ],
+                "tactic_res": [
+                    "c4_goal : forall y z : nat, eq (Init.Nat.add y z) (Init.Nat.add y z)"
+                ]
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "c4_goal : forall y z : nat, eq (Init.Nat.add y z) (Init.Nat.add y z)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c3_goal : forall y z : nat,\neq (Init.Nat.add (Init.Nat.add (S x0) y) z)\n  (Init.Nat.add (S x0) (Init.Nat.add y z))"
+                ],
+                "tactic_res": [
+                    "c5_goal : forall y z : nat,\neq (S (Init.Nat.add (Init.Nat.add x0 y) z))\n  (S (Init.Nat.add x0 (Init.Nat.add y z)))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros y z .",
+                "tactic_args": [
+                    "c5_goal : forall y z : nat,\neq (S (Init.Nat.add (Init.Nat.add x0 y) z))\n  (S (Init.Nat.add x0 (Init.Nat.add y z)))"
+                ],
+                "tactic_res": [
+                    "c6_goal : eq (S (Init.Nat.add (Init.Nat.add x0 y) z))\n  (S (Init.Nat.add x0 (Init.Nat.add y z)))",
+                    "c6_y : nat",
+                    "c6_z : nat"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "c6_goal : eq (S (Init.Nat.add (Init.Nat.add x0 y) z))\n  (S (Init.Nat.add x0 (Init.Nat.add y z)))",
+                    "c3_IHx0 : forall y z : nat,\neq (Init.Nat.add (Init.Nat.add x0 y) z)\n  (Init.Nat.add x0 (Init.Nat.add y z))"
+                ],
+                "tactic_res": [
+                    "c7_goal : eq (S (Init.Nat.add x0 (Init.Nat.add y z)))\n  (S (Init.Nat.add x0 (Init.Nat.add y z)))"
+                ]
+            },
+            {
+                "tactic_sig": "reflexivity .",
+                "tactic_sig_no_out_arg": "reflexivity .",
+                "tactic_args": [
+                    "c7_goal : eq (S (Init.Nat.add x0 (Init.Nat.add y z)))\n  (S (Init.Nat.add x0 (Init.Nat.add y z)))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "strange_empty",
+        "proof": [
+            {
+                "tactic_sig": "Theorem strange_empty : forall x : strange , False .",
+                "tactic_sig_no_out_arg": "Theorem strange_empty : forall x : strange , False .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall _ : strange, False"
+                ]
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro x .",
+                "tactic_args": [
+                    "c1_goal : forall _ : strange, False"
+                ],
+                "tactic_res": [
+                    "c2_goal : False",
+                    "c2_x : strange"
+                ]
+            },
+            {
+                "tactic_sig": "induction _i .",
+                "tactic_sig_no_out_arg": "induction _i .",
+                "tactic_args": [
+                    "c2_x : strange"
+                ],
+                "tactic_res": [
+                    "c2_IHx : False"
+                ]
+            },
+            {
+                "tactic_sig": "assumption .",
+                "tactic_sig_no_out_arg": "assumption .",
+                "tactic_args": [
+                    "c2_goal : False",
+                    "c2_IHx : False"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "b_one",
+        "proof": [
+            {
+                "tactic_sig": "Lemma b_one : bezout 1 1 .",
+                "tactic_sig_no_out_arg": "Lemma b_one : bezout 1 1 .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : bezout 1 1"
+                ]
+            },
+            {
+                "tactic_sig": "split with 1 0 .",
+                "tactic_sig_no_out_arg": "split with 1 0 .",
+                "tactic_args": [
+                    "c1_goal : bezout 1 1"
+                ],
+                "tactic_res": [
+                    "c2_goal : lt 0 1",
+                    "c3_goal : lt 0 1",
+                    "c4_goal : eq (Z.add (Z.mul (Z.of_nat 1%nat) 1) (Z.mul (Z.of_nat 1%nat) 0)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c2_goal : lt 0 1"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c3_goal : lt 0 1"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c4_goal : eq (Z.add (Z.mul (Z.of_nat 1%nat) 1) (Z.mul (Z.of_nat 1%nat) 0)) 1"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "b_n",
+        "proof": [
+            {
+                "tactic_sig": "Lemma b_n : forall a b : nat , bezout a b -> bezout ( a + b ) % nat b .",
+                "tactic_sig_no_out_arg": "Lemma b_n : forall a b : nat , bezout a b -> bezout ( a + b ) % nat b .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b : nat) (_ : bezout a b), bezout (Init.Nat.add a b) b"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros a b H .",
+                "tactic_args": [
+                    "c1_goal : forall (a b : nat) (_ : bezout a b), bezout (Init.Nat.add a b) b"
+                ],
+                "tactic_res": [
+                    "c2_goal : bezout (Init.Nat.add a b) b",
+                    "c2_a : nat",
+                    "c2_b : nat",
+                    "c2_H : bezout a b"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c2_goal : bezout (Init.Nat.add a b) b",
+                    "c2_H : bezout a b"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall (u v : Z) (_ : lt 0 a) (_ : lt 0 b)\n  (_ : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1),\nbezout (Init.Nat.add a b) b"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros u v H0 HA e .",
+                "tactic_args": [
+                    "c3_goal : forall (u v : Z) (_ : lt 0 a) (_ : lt 0 b)\n  (_ : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1),\nbezout (Init.Nat.add a b) b"
+                ],
+                "tactic_res": [
+                    "c4_goal : bezout (Init.Nat.add a b) b",
+                    "c4_u : Z",
+                    "c4_v : Z",
+                    "c4_H0 : lt 0 a",
+                    "c4_HA : lt 0 b",
+                    "c4_e : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "split with _i ( _i - _i ) .",
+                "tactic_sig_no_out_arg": "split with _i ( _i - _i ) .",
+                "tactic_args": [
+                    "c4_goal : bezout (Init.Nat.add a b) b",
+                    "c4_u : Z",
+                    "c4_v : Z",
+                    "c4_u : Z"
+                ],
+                "tactic_res": [
+                    "c5_goal : lt 0 (Init.Nat.add a b)",
+                    "c6_goal : lt 0 b",
+                    "c7_goal : eq\n  (Z.add (Z.mul (Z.of_nat (Init.Nat.add a b)) u)\n     (Z.mul (Z.of_nat b) (Z.sub v u))) 1"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c5_goal : lt 0 (Init.Nat.add a b)",
+                    "c4_H0 : lt 0 a",
+                    "c2_a : nat",
+                    "c2_b : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c6_goal : lt 0 b",
+                    "c4_HA : lt 0 b",
+                    "c2_b : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "c7_goal : eq\n  (Z.add (Z.mul (Z.of_nat (Init.Nat.add a b)) u)\n     (Z.mul (Z.of_nat b) (Z.sub v u))) 1",
+                    "_global_inj_plus : forall n m : nat,\n       eq (Z.of_nat (Init.Nat.add n m)) (Z.add (Z.of_nat n) (Z.of_nat m))"
+                ],
+                "tactic_res": [
+                    "c8_goal : eq\n  (Z.add (Z.mul (Z.add (Z.of_nat a) (Z.of_nat b)) u)\n     (Z.mul (Z.of_nat b) (Z.sub v u))) 1"
+                ]
+            },
+            {
+                "tactic_sig": "now ring_simplify .",
+                "tactic_sig_no_out_arg": "now ring_simplify .",
+                "tactic_args": [
+                    "c8_goal : eq\n  (Z.add (Z.mul (Z.add (Z.of_nat a) (Z.of_nat b)) u)\n     (Z.mul (Z.of_nat b) (Z.sub v u))) 1"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "b_d",
+        "proof": [
+            {
+                "tactic_sig": "Lemma b_d : forall a b : nat , bezout a b -> bezout a ( a + b ) % nat .",
+                "tactic_sig_no_out_arg": "Lemma b_d : forall a b : nat , bezout a b -> bezout a ( a + b ) % nat .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (a b : nat) (_ : bezout a b), bezout a (Init.Nat.add a b)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros a b H .",
+                "tactic_args": [
+                    "c1_goal : forall (a b : nat) (_ : bezout a b), bezout a (Init.Nat.add a b)"
+                ],
+                "tactic_res": [
+                    "c2_goal : bezout a (Init.Nat.add a b)",
+                    "c2_a : nat",
+                    "c2_b : nat",
+                    "c2_H : bezout a b"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "c2_goal : bezout a (Init.Nat.add a b)",
+                    "c2_H : bezout a b"
+                ],
+                "tactic_res": [
+                    "c3_goal : forall (u v : Z) (_ : lt 0 a) (_ : lt 0 b)\n  (_ : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1),\nbezout a (Init.Nat.add a b)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros u v H0 HA e .",
+                "tactic_args": [
+                    "c3_goal : forall (u v : Z) (_ : lt 0 a) (_ : lt 0 b)\n  (_ : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1),\nbezout a (Init.Nat.add a b)"
+                ],
+                "tactic_res": [
+                    "c4_goal : bezout a (Init.Nat.add a b)",
+                    "c4_u : Z",
+                    "c4_v : Z",
+                    "c4_H0 : lt 0 a",
+                    "c4_HA : lt 0 b",
+                    "c4_e : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "split with ( _i - _i ) _i .",
+                "tactic_sig_no_out_arg": "split with ( _i - _i ) _i .",
+                "tactic_args": [
+                    "c4_goal : bezout a (Init.Nat.add a b)",
+                    "c4_u : Z",
+                    "c4_v : Z",
+                    "c4_v : Z"
+                ],
+                "tactic_res": [
+                    "c5_goal : lt 0 a",
+                    "c6_goal : lt 0 (Init.Nat.add a b)",
+                    "c7_goal : eq\n  (Z.add (Z.mul (Z.of_nat a) (Z.sub u v))\n     (Z.mul (Z.of_nat (Init.Nat.add a b)) v)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c5_goal : lt 0 a",
+                    "c4_H0 : lt 0 a",
+                    "c2_a : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto with zarith .",
+                "tactic_sig_no_out_arg": "auto with zarith .",
+                "tactic_args": [
+                    "c6_goal : lt 0 (Init.Nat.add a b)",
+                    "c2_a : nat",
+                    "c2_b : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "rewrite _i .",
+                "tactic_sig_no_out_arg": "rewrite _i .",
+                "tactic_args": [
+                    "c7_goal : eq\n  (Z.add (Z.mul (Z.of_nat a) (Z.sub u v))\n     (Z.mul (Z.of_nat (Init.Nat.add a b)) v)) 1",
+                    "_global_inj_plus : forall n m : nat,\n       eq (Z.of_nat (Init.Nat.add n m)) (Z.add (Z.of_nat n) (Z.of_nat m))"
+                ],
+                "tactic_res": [
+                    "c8_goal : eq\n  (Z.add (Z.mul (Z.of_nat a) (Z.sub u v))\n     (Z.mul (Z.add (Z.of_nat a) (Z.of_nat b)) v)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "ring_simplify .",
+                "tactic_sig_no_out_arg": "ring_simplify .",
+                "tactic_args": [
+                    "c8_goal : eq\n  (Z.add (Z.mul (Z.of_nat a) (Z.sub u v))\n     (Z.mul (Z.add (Z.of_nat a) (Z.of_nat b)) v)) 1"
+                ],
+                "tactic_res": [
+                    "c9_goal : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul v (Z.of_nat b))) 1"
+                ]
+            },
+            {
+                "tactic_sig": "now rewrite ( Zmult_comm _i ( Z_of_nat _i ) ) .",
+                "tactic_sig_no_out_arg": "now rewrite ( Zmult_comm _i ( Z_of_nat _i ) ) .",
+                "tactic_args": [
+                    "c9_goal : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul v (Z.of_nat b))) 1",
+                    "c4_v : Z",
+                    "c2_b : nat"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "fractionsimplified",
+        "proof": [
+            {
+                "tactic_sig": "Lemma fractionsimplified : forall f : F , simplified ( fraction f ) .",
+                "tactic_sig_no_out_arg": "Lemma fractionsimplified : forall f : F , simplified ( fraction f ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall f : F, simplified (fraction f)"
+                ]
+            },
+            {
+                "tactic_sig": "simple induction f .",
+                "tactic_sig_no_out_arg": "simple induction f .",
+                "tactic_args": [
+                    "c1_goal : forall f : F, simplified (fraction f)"
+                ],
+                "tactic_res": [
+                    "c2_goal : simplified (fraction one)",
+                    "c2_f : F",
+                    "c3_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (fraction (n f))",
+                    "c3_f : F",
+                    "c4_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (fraction (d f))",
+                    "c4_f : F"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c2_goal : simplified (fraction one)"
+                ],
+                "tactic_res": [
+                    "c5_goal : simplified (pair 1%nat 1%nat)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c3_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (fraction (n f))"
+                ],
+                "tactic_res": [
+                    "c6_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (let (a, b) := fraction f in pair (Init.Nat.add a b) b)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c4_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (fraction (d f))"
+                ],
+                "tactic_res": [
+                    "c7_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (let (a, b) := fraction f in pair a (Init.Nat.add a b))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c5_goal : simplified (pair 1%nat 1%nat)"
+                ],
+                "tactic_res": [
+                    "c8_goal : bezout 1 1"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c8_goal : bezout 1 1"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro f0 .",
+                "tactic_args": [
+                    "c6_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (let (a, b) := fraction f in pair (Init.Nat.add a b) b)"
+                ],
+                "tactic_res": [
+                    "c9_goal : forall _ : simplified (fraction f0),\nsimplified (let (a, b) := fraction f0 in pair (Init.Nat.add a b) b)",
+                    "c9_f0 : F"
+                ]
+            },
+            {
+                "tactic_sig": "case ( fraction _i ) .",
+                "tactic_sig_no_out_arg": "case ( fraction _i ) .",
+                "tactic_args": [
+                    "c9_goal : forall _ : simplified (fraction f0),\nsimplified (let (a, b) := fraction f0 in pair (Init.Nat.add a b) b)",
+                    "c9_f0 : F"
+                ],
+                "tactic_res": [
+                    "c10_goal : forall (n n0 : nat) (_ : simplified (pair n n0)),\nsimplified (pair (Init.Nat.add n n0) n0)"
+                ]
+            },
+            {
+                "tactic_sig": "inversion_clear 1 .",
+                "tactic_sig_no_out_arg": "inversion_clear 1 .",
+                "tactic_args": [
+                    "c10_goal : forall (n n0 : nat) (_ : simplified (pair n n0)),\nsimplified (pair (Init.Nat.add n n0) n0)"
+                ],
+                "tactic_res": [
+                    "c11_goal : simplified (pair (Init.Nat.add n0 n1) n1)",
+                    "c11_H0 : bezout n0 n1",
+                    "c11_n1 : nat",
+                    "c11_n0 : nat"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c11_goal : simplified (pair (Init.Nat.add n0 n1) n1)"
+                ],
+                "tactic_res": [
+                    "c12_goal : bezout (Init.Nat.add n0 n1) n1"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c12_goal : bezout (Init.Nat.add n0 n1) n1",
+                    "c11_H0 : bezout n0 n1",
+                    "c11_n0 : nat",
+                    "c11_n1 : nat"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro f0 .",
+                "tactic_args": [
+                    "c7_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (let (a, b) := fraction f in pair a (Init.Nat.add a b))"
+                ],
+                "tactic_res": [
+                    "c13_goal : forall _ : simplified (fraction f0),\nsimplified (let (a, b) := fraction f0 in pair a (Init.Nat.add a b))",
+                    "c13_f0 : F"
+                ]
+            },
+            {
+                "tactic_sig": "case ( fraction _i ) .",
+                "tactic_sig_no_out_arg": "case ( fraction _i ) .",
+                "tactic_args": [
+                    "c13_goal : forall _ : simplified (fraction f0),\nsimplified (let (a, b) := fraction f0 in pair a (Init.Nat.add a b))",
+                    "c13_f0 : F"
+                ],
+                "tactic_res": [
+                    "c14_goal : forall (n n0 : nat) (_ : simplified (pair n n0)),\nsimplified (pair n (Init.Nat.add n n0))"
+                ]
+            },
+            {
+                "tactic_sig": "inversion_clear 1 .",
+                "tactic_sig_no_out_arg": "inversion_clear 1 .",
+                "tactic_args": [
+                    "c14_goal : forall (n n0 : nat) (_ : simplified (pair n n0)),\nsimplified (pair n (Init.Nat.add n n0))"
+                ],
+                "tactic_res": [
+                    "c15_goal : simplified (pair n0 (Init.Nat.add n0 n1))",
+                    "c15_H0 : bezout n0 n1",
+                    "c15_n1 : nat",
+                    "c15_n0 : nat"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c15_goal : simplified (pair n0 (Init.Nat.add n0 n1))"
+                ],
+                "tactic_res": [
+                    "c16_goal : bezout n0 (Init.Nat.add n0 n1)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c16_goal : bezout n0 (Init.Nat.add n0 n1)",
+                    "c15_H0 : bezout n0 n1",
+                    "c15_n0 : nat",
+                    "c15_n1 : nat"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "nth_length",
+        "proof": [
+            {
+                "tactic_sig": "Lemma nth_length { A : Type } : forall ( n : nat ) ( l : list A ) , nth_option n l = None <- > length l <= n .",
+                "tactic_sig_no_out_arg": "Lemma nth_length { A : Type } : forall ( n : nat ) ( l : list A ) , nth_option n l = None <- > length l <= n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n : nat) (l : list A),\niff (eq (nth_option n l) None) (le (length l) n)",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "induction n0 as [ | p IHp ] .",
+                "tactic_sig_no_out_arg": "induction n0 as [ | p IHp ] .",
+                "tactic_args": [
+                    "c1_goal : forall (n : nat) (l : list A),\niff (eq (nth_option n l) None) (le (length l) n)"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall l : list A, iff (eq (nth_option 0 l) None) (le (length l) 0)",
+                    "c3_goal : forall l : list A,\niff (eq (nth_option (S p) l) None) (le (length l) (S p))",
+                    "c3_IHp : forall l : list A, iff (eq (nth_option p l) None) (le (length l) p)",
+                    "c3_p : nat"
+                ]
+            },
+            {
+                "tactic_sig": "destruct l as [  | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct l .",
+                "tactic_args": [
+                    "c2_goal : forall l : list A, iff (eq (nth_option 0 l) None) (le (length l) 0)",
+                    "c1_A : Type"
+                ],
+                "tactic_res": [
+                    "c4_goal : iff (eq (nth_option 0 nil) None) (le (length nil) 0)",
+                    "c5_goal : iff (eq (nth_option 0 (cons a l)) None) (le (length (cons a l)) 0)",
+                    "c5_l : list A",
+                    "c5_a : A"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c4_goal : iff (eq (nth_option 0 nil) None) (le (length nil) 0)"
+                ],
+                "tactic_res": [
+                    "c6_goal : iff (eq None None) (le 0 0)"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c6_goal : iff (eq None None) (le 0 0)"
+                ],
+                "tactic_res": [
+                    "c7_goal : forall _ : eq None None, le 0 0",
+                    "c8_goal : forall _ : le 0 0, eq None None"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c7_goal : forall _ : eq None None, le 0 0",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "c8_goal : forall _ : le 0 0, eq None None",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c5_goal : iff (eq (nth_option 0 (cons a l)) None) (le (length (cons a l)) 0)"
+                ],
+                "tactic_res": [
+                    "c9_goal : iff (eq (Some a) None) (le (S (length l)) 0)"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c9_goal : iff (eq (Some a) None) (le (S (length l)) 0)"
+                ],
+                "tactic_res": [
+                    "c10_goal : forall _ : eq (Some a) None, le (S (length l)) 0",
+                    "c11_goal : forall _ : le (S (length l)) 0, eq (Some a) None"
+                ]
+            },
+            {
+                "tactic_sig": "discriminate 1 .",
+                "tactic_sig_no_out_arg": "discriminate 1 .",
+                "tactic_args": [
+                    "c10_goal : forall _ : eq (Some a) None, le (S (length l)) 0"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "inversion 1 .",
+                "tactic_sig_no_out_arg": "inversion 1 .",
+                "tactic_args": [
+                    "c11_goal : forall _ : le (S (length l)) 0, eq (Some a) None"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro l .",
+                "tactic_args": [
+                    "c3_goal : forall l : list A,\niff (eq (nth_option (S p) l) None) (le (length l) (S p))"
+                ],
+                "tactic_res": [
+                    "c12_goal : iff (eq (nth_option (S p) l) None) (le (length l) (S p))",
+                    "c12_l : list A"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [ | a l' ] .",
+                "tactic_sig_no_out_arg": "destruct _i as [ | a l' ] .",
+                "tactic_args": [
+                    "c12_goal : iff (eq (nth_option (S p) l) None) (le (length l) (S p))",
+                    "c12_l : list A",
+                    "c3_IHp : forall l : list A, iff (eq (nth_option p l) None) (le (length l) p)",
+                    "c3_p : nat",
+                    "c1_A : Type"
+                ],
+                "tactic_res": [
+                    "c13_goal : iff (eq (nth_option (S p) nil) None) (le (length nil) (S p))",
+                    "c14_goal : iff (eq (nth_option (S p) (cons a l')) None)\n  (le (length (cons a l')) (S p))",
+                    "c14_l' : list A",
+                    "c14_a : A"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c13_goal : iff (eq (nth_option (S p) nil) None) (le (length nil) (S p))"
+                ],
+                "tactic_res": [
+                    "c15_goal : forall _ : eq (nth_option (S p) nil) None, le (length nil) (S p)",
+                    "c16_goal : forall _ : le (length nil) (S p), eq (nth_option (S p) nil) None"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c15_goal : forall _ : eq (nth_option (S p) nil) None, le (length nil) (S p)"
+                ],
+                "tactic_res": [
+                    "c17_goal : forall _ : eq None None, le 0 (S p)"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c17_goal : forall _ : eq None None, le 0 (S p)",
+                    "c3_p : nat",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c16_goal : forall _ : le (length nil) (S p), eq (nth_option (S p) nil) None"
+                ],
+                "tactic_res": [
+                    "c18_goal : forall _ : le 0 (S p), eq None None"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c18_goal : forall _ : le 0 (S p), eq None None",
+                    "c3_p : nat",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c14_goal : iff (eq (nth_option (S p) (cons a l')) None)\n  (le (length (cons a l')) (S p))"
+                ],
+                "tactic_res": [
+                    "c19_goal : iff (eq (nth_option p l') None) (le (S (length l')) (S p))"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite ( _i _i ) .",
+                "tactic_sig_no_out_arg": "rewrite ( _i _i ) .",
+                "tactic_args": [
+                    "c19_goal : iff (eq (nth_option p l') None) (le (S (length l')) (S p))",
+                    "c3_IHp : forall l : list A, iff (eq (nth_option p l) None) (le (length l) p)",
+                    "c14_l' : list A"
+                ],
+                "tactic_res": [
+                    "c20_goal : iff (le (length l') p) (le (S (length l')) (S p))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c20_goal : iff (le (length l') p) (le (S (length l')) (S p))"
+                ],
+                "tactic_res": [
+                    "c21_goal : forall _ : le (length l') p, le (S (length l')) (S p)",
+                    "c22_goal : forall _ : le (S (length l')) (S p), le (length l') p"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c21_goal : forall _ : le (length l') p, le (S (length l')) (S p)",
+                    "c14_l' : list A",
+                    "c3_p : nat",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c22_goal : forall _ : le (S (length l')) (S p), le (length l') p",
+                    "c14_l' : list A",
+                    "c3_p : nat",
+                    "c1_A : Type"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

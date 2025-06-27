@@ -1,0 +1,3 @@
+Ltac custom_tac1 H0 := apply H0; auto.
+Ltac custom_tac2 H0 H1 H2 := intros H0 H1 H2; elim H2; auto.
+Ltac custom_tac0 H0 := unfold H0; auto.

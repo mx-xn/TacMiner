@@ -269,6 +269,7 @@ Inductive step: state -> trace -> state -> Prop :=
         E0 (Returnstate s (regmap_optget or Vundef rs) m')
   | exec_function_internal:
       forall s f args m m' stk,
+      Val.has_argtype_list args f.(fn_sig).(sig_args) ->
       Mem.alloc m 0 f.(fn_stacksize) = (m', stk) ->
       step (Callstate s (Internal f) args m)
         E0 (State s
@@ -352,7 +353,7 @@ Proof.
   exploit external_call_receptive; eauto. intros [vres2 [m2 EC2]].
   exists (Returnstate s0 vres2 m2). econstructor; eauto.
 (* trace length *)
-  red; intros; inv H; simpl; try omega.
+  red; intros; inv H; simpl; try lia.
   eapply external_call_trace_length; eauto.
   eapply external_call_trace_length; eauto.
 Qed.
@@ -450,8 +451,8 @@ Proof.
   rewrite PTree.gempty. congruence.
   (* inductive case *)
   intros. rewrite PTree.gsspec in H2. destruct (peq pc k).
-  inv H2. xomega.
-  apply Ple_trans with a. auto. xomega.
+  inv H2. extlia.
+  apply Ple_trans with a. auto. extlia.
 Qed.
 
 (** Maximum pseudo-register mentioned in a function.  All results or arguments
@@ -489,9 +490,9 @@ Proof.
   assert (X: forall l n, Ple m n -> Ple m (fold_left Pos.max l n)).
   { induction l; simpl; intros.
     auto.
-    apply IHl. xomega. }
-  destruct i; simpl; try (destruct s0); repeat (apply X); try xomega.
-  destruct o; xomega.
+    apply IHl. extlia. }
+  destruct i; simpl; try (destruct s0); repeat (apply X); try extlia.
+  destruct o; extlia.
 Qed.
 
 Remark max_reg_instr_def:
@@ -499,12 +500,12 @@ Remark max_reg_instr_def:
 Proof.
   intros.
   assert (X: forall l n, Ple r n -> Ple r (fold_left Pos.max l n)).
-  { induction l; simpl; intros. xomega. apply IHl. xomega. }
+  { induction l; simpl; intros. extlia. apply IHl. extlia. }
   destruct i; simpl in *; inv H.
-- apply X. xomega.
-- apply X. xomega.
-- destruct s0; apply X; xomega.
-- destruct b; inv H1. apply X. simpl. xomega.
+- apply X. extlia.
+- apply X. extlia.
+- destruct s0; apply X; extlia.
+- destruct b; inv H1. apply X. simpl. extlia.
 Qed.
 
 Remark max_reg_instr_uses:
@@ -514,14 +515,14 @@ Proof.
   assert (X: forall l n, In r l \/ Ple r n -> Ple r (fold_left Pos.max l n)).
   { induction l; simpl; intros.
     tauto.
-    apply IHl. destruct H0 as [[A|A]|A]. right; subst; xomega. auto. right; xomega. }
+    apply IHl. destruct H0 as [[A|A]|A]. right; subst; extlia. auto. right; extlia. }
   destruct i; simpl in *; try (destruct s0); try (apply X; auto).
 - contradiction.
-- destruct H. right; subst; xomega. auto.
-- destruct H. right; subst; xomega. auto.
-- destruct H. right; subst; xomega. auto.
-- intuition. subst; xomega.
-- destruct o; simpl in H; intuition. subst; xomega.
+- destruct H. right; subst; extlia. auto.
+- destruct H. right; subst; extlia. auto.
+- destruct H. right; subst; extlia. auto.
+- intuition. subst; extlia.
+- destruct o; simpl in H; intuition. subst; extlia.
 Qed.
 
 Lemma max_reg_function_def:
@@ -539,7 +540,7 @@ Proof.
      + inv H3. eapply max_reg_instr_def; eauto.
      + apply Ple_trans with a. auto. apply max_reg_instr_ge.
   }
-  unfold max_reg_function. xomega.
+  unfold max_reg_function. extlia.
 Qed.
 
 Lemma max_reg_function_use:
@@ -557,7 +558,7 @@ Proof.
      + inv H3. eapply max_reg_instr_uses; eauto.
      + apply Ple_trans with a. auto. apply max_reg_instr_ge.
   }
-  unfold max_reg_function. xomega.
+  unfold max_reg_function. extlia.
 Qed.
 
 Lemma max_reg_function_params:
@@ -567,8 +568,8 @@ Proof.
   assert (X: forall l n, In r l \/ Ple r n -> Ple r (fold_left Pos.max l n)).
   { induction l; simpl; intros.
     tauto.
-    apply IHl. destruct H0 as [[A|A]|A]. right; subst; xomega. auto. right; xomega. }
+    apply IHl. destruct H0 as [[A|A]|A]. right; subst; extlia. auto. right; extlia. }
   assert (Y: Ple r (fold_left Pos.max f.(fn_params) 1%positive)).
   { apply X; auto. }
-  unfold max_reg_function. xomega.
+  unfold max_reg_function. extlia.
 Qed.

@@ -1,0 +1,719 @@
+{
+  "theorem_file": {
+    "isorted0": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "isorted1": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "isorted2": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "sorted_to_impredicative_sorted": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "impredicative_sorted_to_sorted": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "impredicative_le_n": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "impredicative_le_S": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "le_to_impredicative": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "impredicative_to_le": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "impredicative_or_intro1": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "impredicative_or_intro2": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "or_to_impredicative": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
+    "impredicative_to_or": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v"
+  },
+  "custom_tactics": {
+    "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v": {
+      "isorted0": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "isorted1": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom2"
+        ]
+      },
+      "isorted2": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom0",
+          "custom3"
+        ]
+      },
+      "sorted_to_impredicative_sorted": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "impredicative_sorted_to_sorted": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom3"
+        ]
+      },
+      "impredicative_le_n": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": [
+          "custom2"
+        ]
+      },
+      "impredicative_le_S": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "le_to_impredicative": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "impredicative_to_le": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "impredicative_or_intro1": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "impredicative_or_intro2": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "or_to_impredicative": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "impredicative_to_or": {
+        "available_tactics": [
+          {
+            "name": "custom0",
+            "definition": "Ltac custom0 H0 :=  apply H0; [auto | auto | .. ].\n"
+          },
+          {
+            "name": "custom2",
+            "definition": "Ltac custom2 H0 :=  unfold H0; [auto | .. ].\n"
+          },
+          {
+            "name": "custom3",
+            "definition": "Ltac custom3 H0 :=  custom0 H0; [auto | .. ].\n"
+          }
+        ],
+        "examples": {
+          "custom0": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom0 _i .",
+              "tactic_args": [
+                "c2_goal : P (cons x1 (cons x2 l'))",
+                "c2_Hs2 : forall (x1 x2 : A) (l' : list A) (_ : R x1 x2) (_ : P (cons x2 l')),\nP (cons x1 (cons x2 l'))"
+              ],
+              "tactic_res": [
+                "c3_goal : P (cons x2 l')"
+              ]
+            }
+          ],
+          "custom2": [],
+          "custom3": [
+            {
+              "lemma_name": "isorted2",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c3_goal : P (cons x2 l')",
+                "c2_Hs : impredicative_sorted (cons x2 l')"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_sorted_to_sorted",
+              "tactic_sig": "custom3 _i .",
+              "tactic_args": [
+                "c2_goal : sorted l",
+                "c2_H : impredicative_sorted l"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      }
+    }
+  }
+}

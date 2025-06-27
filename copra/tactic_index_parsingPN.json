@@ -1,0 +1,818 @@
+{
+  "theorem_file": {
+    "wp_oc": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "wp_o_head_c": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "wp_o_tail_c": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "bin_to_string_wp": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "bin_to_string": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "parse_rel_sound_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "parse_rel_sound": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "wp": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "wp_imp_wp": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "recognize_complete_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "recognize_complete": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "app_decompose": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "length_app": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "length_rev": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "cons_to_app_end": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "last_same": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "wp_remove_oc_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "wp_remove_oc": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "make_list_end": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "recognize_sound_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "recognize_sound": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "parse_reject_indep_t": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "parse_complete_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "parse_complete": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "parse_invert_aux": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "parse_invert": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v",
+    "parse_sound": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v"
+  },
+  "custom_tactics": {
+    "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/parsing_PN.v": {
+      "wp_oc": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_o_head_c": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_o_tail_c": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "bin_to_string_wp": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "bin_to_string": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_rel_sound_aux": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_rel_sound": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_imp_wp": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_complete_aux": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_complete": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "app_decompose": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "length_app": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "length_rev": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "cons_to_app_end": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "last_same": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_remove_oc_aux": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "wp_remove_oc": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "make_list_end": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_sound_aux": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "recognize_sound": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_reject_indep_t": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_complete_aux": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_complete": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_invert_aux": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_invert": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      },
+      "parse_sound": {
+        "available_tactics": [
+          {
+            "name": "custom_tac1",
+            "definition": "Ltac custom_tac1 H0 := apply H0; trivial.\n"
+          }
+        ],
+        "examples": {
+          "custom_tac1": [
+            {
+              "lemma_name": "wp_o_head_c",
+              "tactic_sig": "custom_tac1 wp_encapsulate .",
+              "tactic_args": [
+                "c5_goal : wp (cons open (app l1 (cons close nil)))"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "bin_to_string_wp",
+              "tactic_sig": "custom_tac1 wp_o_head_c .",
+              "tactic_args": [
+                "c6_goal : wp (cons open (app (bin_to_string t1) (cons close (bin_to_string t2))))"
+              ],
+              "tactic_res": []
+            }
+          ]
+        },
+        "used_tactics": []
+      }
+    }
+  }
+}

@@ -91,6 +91,23 @@ Definition float_callee_save_regs :=
 Definition dummy_int_reg := R3.     (**r Used in [Coloring]. *)
 Definition dummy_float_reg := F0.   (**r Used in [Coloring]. *)
 
+(** How to use registers for register allocation.
+    We favor the use of caller-save registers, using callee-save registers
+    only when no caller-save is available. *)
+
+Record alloc_regs := mk_alloc_regs {
+  preferred_int_regs: list mreg;
+  remaining_int_regs: list mreg;
+  preferred_float_regs: list mreg;
+  remaining_float_regs: list mreg
+}.
+
+Definition allocatable_registers (_: unit) :=
+  {| preferred_int_regs := int_caller_save_regs;
+     remaining_int_regs := int_callee_save_regs;
+     preferred_float_regs := float_caller_save_regs;
+     remaining_float_regs := float_callee_save_regs |}.
+
 (** * Function calling conventions *)
 
 (** The functions in this section determine the locations (machine registers
@@ -243,7 +260,7 @@ Fixpoint loc_arguments_rec
   when calling a function with signature [s].  *)
 
 Definition loc_arguments (s: signature) : list (rpair loc) :=
-  loc_arguments_rec s.(sig_args) 0 0 0.
+  loc_arguments_rec (proj_sig_args s) 0 0 0.
 
 (** Argument locations are either caller-save registers or [Outgoing]
   stack slots at nonnegative offsets. *)
@@ -268,7 +285,7 @@ Remark loc_arguments_rec_charact:
   forall_rpair (loc_argument_charact ofs) p.
 Proof.
   assert (X: forall ofs1 ofs2 l, loc_argument_charact ofs2 l -> ofs1 <= ofs2 -> loc_argument_charact ofs1 l).
-  { destruct l; simpl; intros; auto. destruct sl; auto. intuition omega. }
+  { destruct l; simpl; intros; auto. destruct sl; auto. intuition lia. }
   assert (Y: forall ofs1 ofs2 p, forall_rpair (loc_argument_charact ofs2) p -> ofs1 <= ofs2 -> forall_rpair (loc_argument_charact ofs1) p).
   { destruct p; simpl; intuition eauto. }
 Opaque list_nth_z.
@@ -279,52 +296,52 @@ Opaque list_nth_z.
   destruct (list_nth_z int_param_regs ir) as [r|] eqn:E; destruct H.
   subst. left. eapply list_nth_z_in; eauto.
   eapply IHtyl; eauto.
-  subst. split. omega. apply Z.divide_1_l.
-  eapply Y; eauto. omega.
+  subst. split. lia. apply Z.divide_1_l.
+  eapply Y; eauto. lia.
 - (* float *)
-  assert (ofs <= align ofs 2) by (apply align_le; omega).
+  assert (ofs <= align ofs 2) by (apply align_le; lia).
   destruct (list_nth_z float_param_regs fr) as [r|] eqn:E; destruct H.
   subst. right. eapply list_nth_z_in; eauto.
   eapply IHtyl; eauto.
-  subst. split. omega. apply Z.divide_1_l.
-  eapply Y; eauto. omega.
+  subst. split. lia. apply Z.divide_1_l.
+  eapply Y; eauto. lia.
 - (* long *)
-  assert (ofs <= align ofs 2) by (apply align_le; omega).
+  assert (ofs <= align ofs 2) by (apply align_le; lia).
   set (ir' := align ir 2) in *.
   destruct (list_nth_z int_param_regs ir') as [r1|] eqn:E1.
   destruct (list_nth_z int_param_regs (ir' + 1)) as [r2|] eqn:E2.
   destruct H. subst; split; left; eapply list_nth_z_in; eauto.
   eapply IHtyl; eauto.
   destruct H.
-  subst. destruct Archi.ptr64; [split|split;split]; try omega.
-  apply align_divides; omega. apply Z.divide_1_l. apply Z.divide_1_l.
-  eapply Y; eauto. omega.
+  subst. destruct Archi.ptr64; [split|split;split]; try lia.
+  apply align_divides; lia. apply Z.divide_1_l. apply Z.divide_1_l.
+  eapply Y; eauto. lia.
   destruct H.
-  subst. destruct Archi.ptr64; [split|split;split]; try omega.
-  apply align_divides; omega. apply Z.divide_1_l. apply Z.divide_1_l.
-  eapply Y; eauto. omega.
+  subst. destruct Archi.ptr64; [split|split;split]; try lia.
+  apply align_divides; lia. apply Z.divide_1_l. apply Z.divide_1_l.
+  eapply Y; eauto. lia.
 - (* single *)
-  assert (ofs <= align ofs 1) by (apply align_le; omega).
-  assert (ofs <= align ofs 2) by (apply align_le; omega).
+  assert (ofs <= align ofs 1) by (apply align_le; lia).
+  assert (ofs <= align ofs 2) by (apply align_le; lia).
   destruct (list_nth_z float_param_regs fr) as [r|] eqn:E; destruct H.
   subst. right. eapply list_nth_z_in; eauto.
   eapply IHtyl; eauto.
-  subst. split. destruct Archi.single_passed_as_single; simpl; omega.
+  subst. split. destruct Archi.single_passed_as_single; simpl; lia.
   destruct Archi.single_passed_as_single; simpl; apply Z.divide_1_l.
-  eapply Y; eauto. destruct Archi.single_passed_as_single; simpl; omega.
+  eapply Y; eauto. destruct Archi.single_passed_as_single; simpl; lia.
 - (* any32 *)
   destruct (list_nth_z int_param_regs ir) as [r|] eqn:E; destruct H.
   subst. left. eapply list_nth_z_in; eauto.
   eapply IHtyl; eauto.
-  subst. split. omega. apply Z.divide_1_l.
-  eapply Y; eauto. omega.
+  subst. split. lia. apply Z.divide_1_l.
+  eapply Y; eauto. lia.
 - (* float *)
-  assert (ofs <= align ofs 2) by (apply align_le; omega).
+  assert (ofs <= align ofs 2) by (apply align_le; lia).
   destruct (list_nth_z float_param_regs fr) as [r|] eqn:E; destruct H.
   subst. right. eapply list_nth_z_in; eauto.
   eapply IHtyl; eauto.
-  subst. split. omega. apply Z.divide_1_l.
-  eapply Y; eauto. omega.
+  subst. split. lia. apply Z.divide_1_l.
+  eapply Y; eauto. lia.
 Qed.
 
 Lemma loc_arguments_acceptable:
@@ -341,7 +358,7 @@ Proof.
   unfold forall_rpair; destruct p; intuition auto.
 Qed.
 
-Hint Resolve loc_arguments_acceptable: locs.
+Global Hint Resolve loc_arguments_acceptable: locs.
 
 Lemma loc_arguments_main:
   loc_arguments signature_main = nil.
@@ -349,8 +366,9 @@ Proof.
   reflexivity.
 Qed.
 
-(** ** Normalization of function results *)
+(** ** Normalization of function results and parameters *)
 
 (** No normalization needed. *)
 
-Definition return_value_needs_normalization (t: rettype) := false.
+Definition return_value_needs_normalization (t: xtype) := false.
+Definition parameter_needs_normalization (t: xtype) := false.

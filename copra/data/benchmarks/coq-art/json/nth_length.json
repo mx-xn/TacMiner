@@ -1,0 +1,219 @@
+[
+    {
+        "lemma_name": "nth_length",
+        "proof": [
+            {
+                "tactic_sig": "Lemma nth_length { A : Type } : forall ( n : nat ) ( l : list A ) , nth_option n l = None <- > length l <= n .",
+                "tactic_sig_no_out_arg": "Lemma nth_length { A : Type } : forall ( n : nat ) ( l : list A ) , nth_option n l = None <- > length l <= n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (n : nat) (l : list A),\niff (eq (nth_option n l) None) (le (length l) n)",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "induction n as [ | p IHp ] .",
+                "tactic_sig_no_out_arg": "induction n as [ | p IHp ] .",
+                "tactic_args": [
+                    "c1_goal : forall (n : nat) (l : list A),\niff (eq (nth_option n l) None) (le (length l) n)"
+                ],
+                "tactic_res": [
+                    "c2_goal : forall l : list A, iff (eq (nth_option O l) None) (le (length l) O)",
+                    "c3_goal : forall l : list A,\niff (eq (nth_option (S p) l) None) (le (length l) (S p))",
+                    "c3_IHp : forall l : list A, iff (eq (nth_option p l) None) (le (length l) p)",
+                    "c3_p : nat"
+                ]
+            },
+            {
+                "tactic_sig": "destruct l as [  | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct l .",
+                "tactic_args": [
+                    "c2_goal : forall l : list A, iff (eq (nth_option O l) None) (le (length l) O)"
+                ],
+                "tactic_res": [
+                    "c4_goal : iff (eq (nth_option O nil) None) (le (length nil) O)",
+                    "c5_goal : iff (eq (nth_option O (cons a l)) None) (le (length (cons a l)) O)",
+                    "c5_l : list A",
+                    "c5_a : A"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c4_goal : iff (eq (nth_option O nil) None) (le (length nil) O)"
+                ],
+                "tactic_res": [
+                    "c6_goal : iff (eq None None) (le O O)"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c6_goal : iff (eq None None) (le O O)"
+                ],
+                "tactic_res": [
+                    "c7_goal : forall _ : eq None None, le O O",
+                    "c8_goal : forall _ : le O O, eq None None"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c7_goal : forall _ : eq None None, le O O"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c8_goal : forall _ : le O O, eq None None"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c5_goal : iff (eq (nth_option O (cons a l)) None) (le (length (cons a l)) O)"
+                ],
+                "tactic_res": [
+                    "c9_goal : iff (eq (Some a) None) (le (S (length l)) O)"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c9_goal : iff (eq (Some a) None) (le (S (length l)) O)"
+                ],
+                "tactic_res": [
+                    "c10_goal : forall _ : eq (Some a) None, le (S (length l)) O",
+                    "c11_goal : forall _ : le (S (length l)) O, eq (Some a) None"
+                ]
+            },
+            {
+                "tactic_sig": "discriminate 1 .",
+                "tactic_sig_no_out_arg": "discriminate 1 .",
+                "tactic_args": [
+                    "c10_goal : forall _ : eq (Some a) None, le (S (length l)) O"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "inversion 1 .",
+                "tactic_sig_no_out_arg": "inversion 1 .",
+                "tactic_args": [
+                    "c11_goal : forall _ : le (S (length l)) O, eq (Some a) None"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "intro _o .",
+                "tactic_sig_no_out_arg": "intro l .",
+                "tactic_args": [
+                    "c3_goal : forall l : list A,\niff (eq (nth_option (S p) l) None) (le (length l) (S p))"
+                ],
+                "tactic_res": [
+                    "c12_goal : iff (eq (nth_option (S p) l) None) (le (length l) (S p))",
+                    "c12_l : list A"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [ | a l' ] .",
+                "tactic_sig_no_out_arg": "destruct _i as [ | a l' ] .",
+                "tactic_args": [
+                    "c12_goal : iff (eq (nth_option (S p) l) None) (le (length l) (S p))",
+                    "c12_l : list A"
+                ],
+                "tactic_res": [
+                    "c13_goal : iff (eq (nth_option (S p) nil) None) (le (length nil) (S p))",
+                    "c14_goal : iff (eq (nth_option (S p) (cons a l')) None)\n  (le (length (cons a l')) (S p))",
+                    "c14_l' : list A",
+                    "c14_a : A"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c13_goal : iff (eq (nth_option (S p) nil) None) (le (length nil) (S p))"
+                ],
+                "tactic_res": [
+                    "c15_goal : forall _ : eq (nth_option (S p) nil) None, le (length nil) (S p)",
+                    "c16_goal : forall _ : le (length nil) (S p), eq (nth_option (S p) nil) None"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c15_goal : forall _ : eq (nth_option (S p) nil) None, le (length nil) (S p)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c16_goal : forall _ : le (length nil) (S p), eq (nth_option (S p) nil) None"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "c14_goal : iff (eq (nth_option (S p) (cons a l')) None)\n  (le (length (cons a l')) (S p))"
+                ],
+                "tactic_res": [
+                    "c17_goal : iff (eq (nth_option p l') None) (le (S (length l')) (S p))"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite ( _i _i ) .",
+                "tactic_sig_no_out_arg": "rewrite ( _i _i ) .",
+                "tactic_args": [
+                    "c17_goal : iff (eq (nth_option p l') None) (le (S (length l')) (S p))",
+                    "c3_IHp : forall l : list A, iff (eq (nth_option p l) None) (le (length l) p)",
+                    "c14_l' : list A"
+                ],
+                "tactic_res": [
+                    "c18_goal : iff (le (length l') p) (le (S (length l')) (S p))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "c18_goal : iff (le (length l') p) (le (S (length l')) (S p))"
+                ],
+                "tactic_res": [
+                    "c19_goal : forall _ : le (length l') p, le (S (length l')) (S p)",
+                    "c20_goal : forall _ : le (S (length l')) (S p), le (length l') p"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c19_goal : forall _ : le (length l') p, le (S (length l')) (S p)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "c20_goal : forall _ : le (S (length l')) (S p), le (length l') p"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

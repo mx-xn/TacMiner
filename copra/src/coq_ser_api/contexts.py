@@ -124,8 +124,23 @@ class ProofContext(NamedTuple):
                             [Obligation.from_structeq(gg) for gg in obj.given_up_goals])
     
     def __str__(self) -> str:
-        return f"ProofContext(fg_goals={self.fg_goals}, bg_goals={self.bg_goals}, "\
-            f"shelved_goals={self.shelved_goals}, given_up_goals={self.given_up_goals})"
+        res = ""
+        if len(self.fg_goals) > 0:
+            res += "fg_goals:\n"
+            res += "\n".join([str(g) for g in self.fg_goals])
+        if len(self.bg_goals) > 0:
+            res += "bg_goals:\n"
+            res += "\n".join([str(g) for g in self.bg_goals])
+        if len(self.shelved_goals) > 0:
+            res += "shelved_goals:\n"
+            res += "\n".join([str(g) for g in self.shelved_goals])
+        if len(self.given_up_goals) > 0:
+            res += "given_up_goals:\n"
+            res += "\n".join([str(g) for g in self.given_up_goals])
+        return res
+
+        # return f"ProofContext(fg_goals={self.fg_goals}, bg_goals={self.bg_goals}, "\
+        #     f"shelved_goals={self.shelved_goals}, given_up_goals={self.given_up_goals})"
 
 
 def assert_proof_context_matches(context1: ProofContext, context2: ProofContext) -> None:

@@ -108,6 +108,7 @@ class CoqSeraPyInstance(CoqBackend, threading.Thread):
 
     def addStmt(self, stmt: str, timeout:Optional[int] = None,
                 force_update_nonfg_goals: bool = False) -> None:
+        print("in add stmt in serapi_backend with stmt = %s" % stmt)
         if stmt.strip() == "":
             return
         if timeout:

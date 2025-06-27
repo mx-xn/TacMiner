@@ -167,8 +167,10 @@ Definition check_succ (s: node) (b: LTL.bblock) : bool :=
   | _ => false
   end.
 
+Declare Scope option_monad_scope.
+
 Notation "'do' X <- A ; B" := (match A with Some X => B | None => None end)
-         (at level 200, X ident, A at level 100, B at level 200)
+         (at level 200, X name, A at level 100, B at level 200)
          : option_monad_scope.
 
 Notation "'assertion' A ; B" := (if A then B else None)
@@ -424,13 +426,22 @@ Module OrderedEquation <: OrderedType.
     left; congruence.
     right; split. congruence. eapply OrderedEqKind.lt_trans; eauto.
   Qed.
+Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].
+Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].
   Lemma lt_not_eq : forall x y : t, lt x y -> ~ eq x y.
+  Proof.
+   custom5 lt eq x y H H0. 
+    - custom17.
+    - custom12.
+  Qed.
+  (* Lemma lt_not_eq : forall x y : t, lt x y -> ~ eq x y.
   Proof.
     unfold lt, eq; intros; red; intros. subst y. intuition.
     eelim Plt_strict; eauto.
     eelim OrderedLoc.lt_not_eq; eauto. red; auto.
     eelim OrderedEqKind.lt_not_eq; eauto. red; auto.
-  Qed.
+  Qed. *)
   Definition compare : forall x y : t, Compare lt eq x y.
   Proof.
     intros.
@@ -469,6 +480,11 @@ Module OrderedEquation' <: OrderedType.
   Proof (@eq_refl t).
   Lemma eq_sym : forall x y : t, eq x y -> eq y x.
   Proof (@eq_sym t).
+  Ltac custom15 H0 :=  rewrite H0; [auto | .. ].
+  Lemma eq_trans2 : forall x y z : t, eq x y -> eq y z -> eq x z.
+  Proof.
+   unfold eq. intros x y z H H0. custom15 H.
+  Qed.
   Lemma eq_trans : forall x y z : t, eq x y -> eq y z -> eq x z.
   Proof (@eq_trans t).
   Lemma lt_trans : forall x y z : t, lt x y -> lt y z -> lt x z.
@@ -486,6 +502,22 @@ Module OrderedEquation' <: OrderedType.
     left; congruence.
     right; split. congruence. eapply OrderedEqKind.lt_trans; eauto.
   Qed.
+Ltac custom5 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [red; [intros H5; [subst H3; [intuition; [ |  | eelim OrderedEqKind.lt_not_eq; [eauto | red; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom12  :=  eelim OrderedLoc.lt_not_eq; [eauto | red; [auto | .. ] | .. ].
+Ltac custom17  :=  eelim Plt_strict; [eauto | .. ].
+  Lemma lt_not_eq2 : forall x y : t, lt x y -> ~ eq x y.
+  Proof.
+  custom5 lt eq x y H H0. 
+  - custom12.
+  - custom17.
+  Qed.
+  (* Lemma lt_not_eq2 : forall x y : t, lt x y -> ~ eq x y.
+  Proof.
+    unfold lt, eq; intros; red; intros. subst y. intuition.
+    eelim OrderedLoc.lt_not_eq; eauto. red; auto.
+    eelim Plt_strict; eauto.
+    eelim OrderedEqKind.lt_not_eq; eauto. red; auto.
+  Qed. *)
   Lemma lt_not_eq : forall x y : t, lt x y -> ~ eq x y.
   Proof.
     unfold lt, eq; intros; red; intros. subst y. intuition.
@@ -1079,15 +1111,15 @@ Definition transfer_aux (f: RTL.function) (env: regenv)
                          (map R (regs_of_rpair res')));
       assertion (no_caller_saves e2);
       do e3 <- add_equation_ros ros ros' e2;
-      do e4 <- add_equations_args args (sig_args sg) args' e3;
+      do e4 <- add_equations_args args (proj_sig_args sg) args' e3;
       track_moves env mv1 e4
   | BStailcall sg ros args mv1 ros' =>
       let args' := loc_arguments sg in
       assertion (tailcall_is_possible sg);
-      assertion (rettype_eq sg.(sig_res) f.(RTL.fn_sig).(sig_res));
+      assertion (xtype_eq sg.(sig_res) f.(RTL.fn_sig).(sig_res));
       assertion (ros_compatible_tailcall ros');
       do e1 <- add_equation_ros ros ros' empty_eqs;
-      do e2 <- add_equations_args args (sig_args sg) args' e1;
+      do e2 <- add_equations_args args (proj_sig_args sg) args' e1;
       track_moves env mv1 e2
   | BSbuiltin ef args res mv1 args' res' mv2 s =>
       do e1 <- track_moves env mv2 e;
@@ -1159,11 +1191,19 @@ Module LEq <: SEMILATTICE.
     intros; destruct x; simpl; auto. red; tauto.
   Qed.
 
+Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0 as [ e|e ]; [destruct H1 as [ e0|e0 ] | destruct H1 as [ e0|e0 ]; [ | auto | .. ] | .. ] | .. ].
   Lemma eq_sym: forall x y, eq x y -> eq y x.
+  Proof.
+   unfold eq. custom11 x y H. 
+    - red. intros a. rewrite H. tauto.
+    - auto.
+    - auto.
+Qed.
+  (* Lemma eq_sym: forall x y, eq x y -> eq y x.
   Proof.
     unfold eq; intros; destruct x; destruct y; auto.
     red in H; red; intros. rewrite H; tauto.
-  Qed.
+  Qed. *)
 
   Lemma eq_trans: forall x y z, eq x y -> eq y z -> eq x z.
   Proof.
@@ -1177,15 +1217,23 @@ Module LEq <: SEMILATTICE.
     | Error _, Error _ => true
     | _, _ => false
     end.
-
+    
   Lemma beq_correct: forall x y, beq x y = true -> eq x y.
+  Proof.
+   unfold beq, eq. custom11 x y H. 
+    - apply EqSet.equal_2. auto.
+    - discriminate.
+    - discriminate.
+  Qed.
+
+  (* Lemma beq_correct: forall x y, beq x y = true -> eq x y.
   Proof.
     unfold beq, eq; intros. destruct x; destruct y.
     apply EqSet.equal_2. auto.
     discriminate.
     discriminate.
     auto.
-  Qed.
+  Qed. *)
 
   Definition ge (x y: t) :=
     match x, y with
@@ -1194,17 +1242,38 @@ Module LEq <: SEMILATTICE.
     | _, Error _ => False
     end.
 
+Ltac custom15 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom16 H0 H1 :=  unfold H0; [unfold H1 | .. ].
   Lemma ge_refl: forall x y, eq x y -> ge x y.
+  Proof.
+    custom16 eq ge. custom16 EqSet.Equal EqSet.Subset. intros x y H. 
+    destruct x. 
+    - destruct y. 
+      -- intros a H0. custom15 H.
+      -- auto.
+    - destruct y. 
+      -- auto.
+      -- auto.
+Qed.
+  (* Lemma ge_refl: forall x y, eq x y -> ge x y.
   Proof.
     unfold eq, ge, EqSet.Equal, EqSet.Subset; intros.
     destruct x; destruct y; auto. intros; rewrite H; auto.
-  Qed.
+  Qed. *)
+  Ltac custom10 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5; [destruct H1 as [ e|e ]; [destruct H2 as [ e0|e0 ]; [destruct H3 as [ e1|e1 ] | try contradiction | .. ] | .. ] | .. ] | .. ].
   Lemma ge_trans: forall x y z, ge x y -> ge y z -> ge x z.
+  Proof.
+   unfold ge. custom10 EqSet.Subset x y z H H0. 
+    - eauto.
+    - eauto.
+    - auto.
+  Qed.
+  (* Lemma ge_trans: forall x y z, ge x y -> ge y z -> ge x z.
   Proof.
     unfold ge, EqSet.Subset; intros.
     destruct x; auto; destruct y; try contradiction.
     destruct z; eauto.
-  Qed.
+  Qed. *)
 
   Definition bot: t := OK empty_eqs.
 
@@ -1230,19 +1299,28 @@ Module LEq <: SEMILATTICE.
     apply EqSet2.union_2; auto. apply EqSet2.union_3; auto.
   Qed.
 
+  Ltac custom6 H0 H1 H2 H3 H4 H11 H12 H13 :=  unfold H0, H1, H2; [intros H3 H4; [destruct H3; [destruct H4; [intros H11 H12; [apply H13 | .. ] | auto | .. ] | destruct H4; [auto | auto | .. ] | .. ] | .. ] | .. ].
   Lemma ge_lub_left: forall x y, ge (lub x y) x.
+  Proof.
+   custom6 lub ge EqSet.Subset x y a H EqSet.union_2. auto.
+  Qed.
+  (* Lemma ge_lub_left: forall x y, ge (lub x y) x.
   Proof.
     unfold lub, ge, EqSet.Subset; intros.
     destruct x; destruct y; auto.
     intros; apply EqSet.union_2; auto.
-  Qed.
+  Qed. *)
 
   Lemma ge_lub_right: forall x y, ge (lub x y) y.
+  Proof.
+   custom6 lub ge EqSet.Subset x y a H EqSet.union_3. auto.
+  Qed.
+  (* Lemma ge_lub_right: forall x y, ge (lub x y) y.
   Proof.
     unfold lub, ge, EqSet.Subset; intros.
     destruct x; destruct y; auto.
     intros; apply EqSet.union_3; auto.
-  Qed.
+  Qed. *)
 
 End LEq.
 

@@ -30,12 +30,9 @@ Remark delta_state_same:
   forall s, delta_state s s = (nil, nil).
 Proof. intro s. destruct s; simpl. rewrite ! diff_same; auto. auto. Qed.
 
-Ltac custom_tac15  := simpl; constructor.
-
-Ltac custom_tac0 H0 := rewrite H0; auto.
-
 Lemma transf_code_match:
-  forall lm c before, match_code c (transf_code lm before c). Proof. intros lm. fix REC 1. intros c. destruct c; intros before; simpl. - constructor. - assert (DEFAULT: forall before after, match_code (i :: c) (i :: add_delta_ranges before after (transf_code lm after c))). intros. constructor. apply REC. destruct i; auto. destruct c; auto. destruct i; auto. set (after := get_label l0 lm). set (c1 := Llabel l0 :: add_delta_ranges before after (transf_code lm after c)). replace c1 with (add_delta_ranges before before c1). constructor. constructor. apply REC. unfold add_delta_ranges. rewrite delta_state_same. auto. Qed.
+  forall lm c before, match_code c (transf_code lm before c).
+Proof. intros lm. fix REC 1. intros c. destruct c; intros before; simpl. - constructor. - assert (DEFAULT: forall before after, match_code (i :: c) (i :: add_delta_ranges before after (transf_code lm after c))). intros. constructor. apply REC. destruct i; auto. destruct c; auto. destruct i; auto. set (after := get_label l0 lm). set (c1 := Llabel l0 :: add_delta_ranges before after (transf_code lm after c)). replace c1 with (add_delta_ranges before before c1). constructor. constructor. apply REC. unfold add_delta_ranges. rewrite delta_state_same. auto. Qed.
 
 Inductive match_function: function -> function -> Prop :=
   | match_function_intro: forall f c,
@@ -221,11 +218,28 @@ Lemma parent_locset_match:
   parent_locset ts = parent_locset s.
 Proof. induction 1; simpl. auto. inv H; auto. Qed.
 
+Ltac custom_tac29  := constructor; auto.
+
+Ltac custom_tac15  := econstructor; eauto.
+
+Ltac custom_tac25 H0 := split; apply H0.
+
+Ltac custom_tac24 H0 := apply H0; auto.
+
+Ltac custom_tac45 H0 := eauto; intros H0.
+
+Ltac custom_tac0 H0 := eapply H0; eauto.
+
+Ltac custom_tac31 H0 := auto; apply H0.
+
+Ltac custom_tac47  := constructor; simpl.
+
+Ltac custom_tac41 H0 H1 := inv H0; inv H1.
+
 Theorem transf_step_correct:
   forall s1 t s2, step ge s1 t s2 ->
   forall ts1 (MS: match_states s1 ts1),
-  exists ts2, plus step tge ts1 t ts2 /\ match_states s2 ts2.
-Proof. induction 1; intros ts1 MS; inv MS; try (inv TRC). - econstructor; split. eapply plus_left. constructor; auto. apply eval_add_delta_ranges. traceEq. constructor; auto. - econstructor; split. eapply plus_left. constructor; auto. apply eval_add_delta_ranges. traceEq. constructor; auto. - econstructor; split. eapply plus_left. econstructor; eauto. instantiate (1 := v). rewrite <- H; apply eval_operation_preserved; exact symbols_preserved. apply eval_add_delta_ranges. traceEq. constructor; auto. - econstructor; split. eapply plus_left. eapply exec_Lload with (a := a). rewrite <- H; apply eval_addressing_preserved; exact symbols_preserved. eauto. eauto. apply eval_add_delta_ranges. traceEq. constructor; auto. - econstructor; split. eapply plus_left. eapply exec_Lstore with (a := a). rewrite <- H; apply eval_addressing_preserved; exact symbols_preserved. eauto. eauto. apply eval_add_delta_ranges. traceEq. constructor; auto. - exploit find_function_translated; eauto. intros (tf' & A & B). econstructor; split. apply plus_one. econstructor. eexact A. symmetry; apply sig_preserved; auto. traceEq. constructor; auto. constructor; auto. constructor; auto. - exploit find_function_translated; eauto. intros (tf' & A & B). exploit parent_locset_match; eauto. intros PLS. econstructor; split. apply plus_one. econstructor. eauto. rewrite PLS. eexact A. symmetry; apply sig_preserved; auto. inv TRF; eauto. traceEq. rewrite PLS. constructor; auto. - econstructor; split. eapply plus_left. econstructor; eauto. eapply eval_builtin_args_preserved with (ge1 := ge); eauto. exact symbols_preserved. eapply external_call_symbols_preserved; eauto. apply senv_preserved. apply eval_add_delta_ranges. traceEq. constructor; auto. - econstructor; split. eapply plus_left. constructor; auto. apply eval_add_delta_ranges. traceEq. constructor; auto. - exploit find_label_match; eauto. intros (before' & after' & tc' & A & B). econstructor; split. eapply plus_left. constructor; eauto. apply eval_add_delta_ranges; eauto. traceEq. constructor; auto. - exploit find_label_match; eauto. intros (before' & after' & tc' & A & B). econstructor; split. eapply plus_left. eapply exec_Lcond_true; eauto. apply eval_add_delta_ranges; eauto. traceEq. constructor; auto. - econstructor; split. eapply plus_left. eapply exec_Lcond_false; auto. apply eval_add_delta_ranges. traceEq. constructor; auto. - exploit find_label_match; eauto. intros (before' & after' & tc' & A & B). econstructor; split. eapply plus_left. econstructor; eauto. apply eval_add_delta_ranges. reflexivity. traceEq. constructor; auto. - econstructor; split. apply plus_one. constructor. inv TRF; eauto. traceEq. rewrite (parent_locset_match _ _ STACKS). constructor; auto. - monadInv H7. rename x into tf. assert (MF: match_function f tf) by (apply transf_function_match; auto). inversion MF; subst. econstructor; split. apply plus_one. constructor. simpl; eauto. reflexivity. constructor; auto. - monadInv H8. econstructor; split. apply plus_one. econstructor; eauto. eapply external_call_symbols_preserved; eauto. apply senv_preserved. constructor; auto. - inv H3. inv H1. econstructor; split. eapply plus_left. econstructor. apply eval_add_delta_ranges. traceEq. constructor; auto. Qed.
+  exists ts2, plus step tge ts1 t ts2 /\ match_states s2 ts2. Proof. induction 1; intros ts1 MS; inv MS; try (inv TRC). - econstructor; split. eapply plus_left. constructor; auto. apply eval_add_delta_ranges. traceEq. constructor; auto. - econstructor; split. eapply plus_left. constructor; auto. apply eval_add_delta_ranges. traceEq. constructor; auto. - econstructor; split. eapply plus_left. econstructor; eauto. instantiate (1 := v). rewrite <- H; apply eval_operation_preserved; exact symbols_preserved. apply eval_add_delta_ranges. traceEq. constructor; auto. - econstructor; split. eapply plus_left. eapply exec_Lload with (a := a). rewrite <- H; apply eval_addressing_preserved; exact symbols_preserved. eauto. eauto. apply eval_add_delta_ranges. traceEq. constructor; auto. - econstructor; split. eapply plus_left. eapply exec_Lstore with (a := a). rewrite <- H; apply eval_addressing_preserved; exact symbols_preserved. eauto. eauto. apply eval_add_delta_ranges. traceEq. constructor; auto. - exploit find_function_translated; eauto. intros (tf' & A & B). econstructor; split. apply plus_one. econstructor. eexact A. symmetry; apply sig_preserved; auto. traceEq. constructor; auto. constructor; auto. constructor; auto. - exploit find_function_translated; eauto. intros (tf' & A & B). exploit parent_locset_match; eauto. intros PLS. econstructor; split. apply plus_one. econstructor. eauto. rewrite PLS. eexact A. symmetry; apply sig_preserved; auto. inv TRF; eauto. traceEq. rewrite PLS. constructor; auto. - econstructor; split. eapply plus_left. econstructor; eauto. eapply eval_builtin_args_preserved with (ge1 := ge); eauto. exact symbols_preserved. eapply external_call_symbols_preserved; eauto. apply senv_preserved. apply eval_add_delta_ranges. traceEq. constructor; auto. - econstructor; split. eapply plus_left. constructor; auto. apply eval_add_delta_ranges. traceEq. constructor; auto. - exploit find_label_match; eauto. intros (before' & after' & tc' & A & B). econstructor; split. eapply plus_left. constructor; eauto. apply eval_add_delta_ranges; eauto. traceEq. constructor; auto. - exploit find_label_match; eauto. intros (before' & after' & tc' & A & B). econstructor; split. eapply plus_left. eapply exec_Lcond_true; eauto. apply eval_add_delta_ranges; eauto. traceEq. constructor; auto. - econstructor; split. eapply plus_left. eapply exec_Lcond_false; auto. apply eval_add_delta_ranges. traceEq. constructor; auto. - exploit find_label_match; eauto. intros (before' & after' & tc' & A & B). econstructor; split. eapply plus_left. econstructor; eauto. apply eval_add_delta_ranges. reflexivity. traceEq. constructor; auto. - econstructor; split. apply plus_one. constructor. inv TRF; eauto. traceEq. rewrite (parent_locset_match _ _ STACKS). constructor; auto. - monadInv H7. rename x into tf. assert (MF: match_function f tf) by (apply transf_function_match; auto). inversion MF; subst. econstructor; split. apply plus_one. constructor. simpl; eauto. reflexivity. constructor; auto. - monadInv H8. econstructor; split. apply plus_one. econstructor; eauto. eapply external_call_symbols_preserved; eauto. apply senv_preserved. constructor; auto. - inv H3. inv H1. econstructor; split. eapply plus_left. econstructor. apply eval_add_delta_ranges. traceEq. constructor; auto. Qed.
 
 Lemma transf_initial_states:
   forall st1, initial_state prog st1 ->

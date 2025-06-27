@@ -1,0 +1,45 @@
+{
+    "path": ".log/proofs/eval_driver/dfs/bignums_tacminer/20250626-154413/proof_results.json",
+    "theorem_map": {
+        "../raw-data/bignums/BigQ/QMake_comp_TM.v": {
+            "spec_red": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "spec_red  : forall x, [ red x ] == [ x ] .",
+                "proof_steps": [],
+                "proof_time_in_secs": 62.64875912666321,
+                "inferences_taken": 51,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 11,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 40,
+                    "attempt_idx": 3,
+                    "total_queries": 64
+                },
+                "language": "COQ"
+            },
+            "strong_spec_red": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "strong_spec_red  : forall x, [red x] = Qred [x].",
+                "proof_steps": [],
+                "proof_time_in_secs": 48.938925981521606,
+                "inferences_taken": 30,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 6,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 24,
+                    "attempt_idx": 3,
+                    "total_queries": 48
+                },
+                "language": "COQ"
+            }
+        }
+    }
+}

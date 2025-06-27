@@ -6,14 +6,21 @@
 #                                                                     #
 #  Copyright Institut National de Recherche en Informatique et en     #
 #  Automatique.  All rights reserved.  This file is distributed       #
-#  under the terms of the GNU General Public License as published by  #
-#  the Free Software Foundation, either version 2 of the License, or  #
-#  (at your option) any later version.  This file is also distributed #
-#  under the terms of the INRIA Non-Commercial License Agreement.     #
+#  under the terms of the GNU Lesser General Public License as        #
+#  published by the Free Software Foundation, either version 2.1 of   #
+#  the License, or (at your option) any later version.                #
+#  This file is also distributed under the terms of the               #
+#  INRIA Non-Commercial License Agreement.                            #
 #                                                                     #
 #######################################################################
 
 include Makefile.config
+include VERSION
+
+BUILDVERSION ?= $(version)
+BUILDNR ?= $(buildnr)
+TAG ?= $(tag)
+BRANCH ?= $(branch)
 
 ifeq ($(wildcard $(ARCH)_$(BITSIZE)),)
 ARCHDIRS=$(ARCH)
@@ -21,20 +28,89 @@ else
 ARCHDIRS=$(ARCH)_$(BITSIZE) $(ARCH)
 endif
 
-DIRS=lib common $(ARCHDIRS) backend cfrontend driver \
-  flocq/Core flocq/Prop flocq/Calc flocq/IEEE754 \
-  exportclight MenhirLib cparser
+DIRS := lib common $(ARCHDIRS) backend cfrontend driver cparser
 
-RECDIRS=lib common $(ARCHDIRS) backend cfrontend driver flocq exportclight \
-  MenhirLib cparser
+ifeq ($(CLIGHTGEN),true)
+DIRS += export
+endif
 
-COQINCLUDES=$(foreach d, $(RECDIRS), -R $(d) compcert.$(d))
+COQINCLUDES := $(foreach d, $(DIRS), -R $(d) compcert.$(d))
 
-COQCOPTS ?= -w -undeclared-scope
+ifeq ($(LIBRARY_FLOCQ),local)
+DIRS += flocq/Core flocq/Prop flocq/Calc flocq/IEEE754
+COQINCLUDES += -R flocq Flocq
+endif
+
+ifeq ($(LIBRARY_MENHIRLIB),local)
+DIRS += MenhirLib
+COQINCLUDES += -R MenhirLib MenhirLib
+endif
+
+# Notes on silenced Coq warnings:
+#
+# unused-pattern-matching-variable:
+#    warning introduced in 8.13
+#    the code rewrite that avoids the warning is not desirable
+# undeclared-scope:
+#    warning introduced in 8.12, addressed in the main CompCert files
+#    triggered by MenhirLib, to be solved upstream
+# deprecated-instance-without-locality:
+#    warning introduced in 8.14
+#    triggered by Menhir-generated files, to be solved upstream in Menhir
+# deprecated-since-8.19
+# deprecated-since-8.20
+#    renamings performed in Coq's standard library;
+#    using the new names would break compatibility with earlier Coq versions.
+
+COQCOPTS ?= \
+  -w -unused-pattern-matching-variable \
+  -w -deprecated-since-8.19 \
+  -w -deprecated-since-8.20
+
+cparser/Parser.vo: COQCOPTS += -w -deprecated-instance-without-locality
+MenhirLib/Interpreter.vo: COQCOPTS += -w -undeclared-scope
+
+# Flocq and Menhirlib run into other renaming issues.
+# These warnings can only be addressed upstream.
+
+flocq/%.vo: COQCOPTS+=-w -deprecated-syntactic-definition
+MenhirLib/%.vo: COQCOPTS+=-w -deprecated-syntactic-definition
+
+# For the extraction phase, we silence other warnings:
+# change-dir-deprecated:
+#    warning introduced in 8.20, no alternative before 8.20
+# extraction-default-directory:
+#    warning introduced in 8.20, no alternative before 8.20
+COQEXTRACTOPTS ?= \
+  -w -change-dir-deprecated \
+  -w -extraction-default-directory
+
+ifneq ($(INSTALL_COQDEV),true)
+# Disable costly generation of .cmx files, which are not used locally
+  COQCOPTS += -w -deprecated-native-compiler-option -native-compiler no
+endif
+
+ifneq (,$(TIMING))
+  # does this coq version support -time-file ? (Coq >= 8.18)
+  ifeq (,$(shell "$(COQBIN)coqc" -time-file /dev/null 2>&1))
+    COQCOPTS += -time-file $<.timing
+  endif
+endif
+
+ifneq (,$(PROFILING))
+  # does this coq version dupport -profile ? (Coq >= 8.19)
+  ifeq (,$(shell "$(COQBIN)coqc" -profile /dev/null 2>&1))
+    COQCOPTS += -profile $<.prof.json
+    PROFILE_ZIP = gzip -f $<.prof.json
+  else
+  endif
+endif
+PROFILE_ZIP ?= true
+
 COQC="$(COQBIN)coqc" -q $(COQINCLUDES) $(COQCOPTS)
 COQDEP="$(COQBIN)coqdep" $(COQINCLUDES)
 COQDOC="$(COQBIN)coqdoc"
-COQEXEC="$(COQBIN)coqtop" $(COQINCLUDES) -batch -load-vernac-source
+COQEXEC="$(COQBIN)coqtop" $(COQINCLUDES) $(COQEXTRACTOPTS) -batch -load-vernac-source
 COQCHK="$(COQBIN)coqchk" $(COQINCLUDES)
 MENHIR=menhir
 CP=cp
@@ -44,13 +120,17 @@ GPATH=$(DIRS)
 
 # Flocq
 
+ifeq ($(LIBRARY_FLOCQ),local)
 FLOCQ=\
   Raux.v Zaux.v Defs.v Digits.v Float_prop.v FIX.v FLT.v FLX.v FTZ.v \
   Generic_fmt.v Round_pred.v Round_NE.v Ulp.v Core.v \
-  Bracket.v Div.v Operations.v Round.v Sqrt.v \
+  Bracket.v Div.v Operations.v Plus.v Round.v Sqrt.v \
   Div_sqrt_error.v Mult_error.v Plus_error.v \
   Relative.v Sterbenz.v Round_odd.v Double_rounding.v \
-  Binary.v Bits.v
+  BinarySingleNaN.v Binary.v Bits.v
+else
+FLOCQ=
+endif
 
 # General-purpose libraries (in lib/)
 
@@ -111,18 +191,30 @@ PARSER=Cabs.v Parser.v
 
 # MenhirLib
 
+ifeq ($(LIBRARY_MENHIRLIB),local)
 MENHIRLIB=Alphabet.v Automaton.v Grammar.v Interpreter_complete.v \
   Interpreter_correct.v Interpreter.v Main.v Validator_complete.v \
   Validator_safe.v Validator_classes.v
+else
+MENHIRLIB=
+endif
 
 # Putting everything together (in driver/)
 
 DRIVER=Compopts.v Compiler.v Complements.v
 
+# Library for .v files generated by clightgen
+
+ifeq ($(CLIGHTGEN),true)
+EXPORTLIB=Ctypesdefs.v Clightdefs.v Csyntaxdefs.v
+else
+EXPORTLIB=
+endif
+
 # All source files
 
 FILES=$(VLIB) $(COMMON) $(BACKEND) $(CFRONTEND) $(DRIVER) $(FLOCQ) \
-  $(MENHIRLIB) $(PARSER)
+  $(MENHIRLIB) $(PARSER) $(EXPORTLIB)
 
 # Generated source files
 
@@ -142,17 +234,22 @@ endif
 ifeq ($(CLIGHTGEN),true)
 	$(MAKE) clightgen
 endif
+ifeq ($(INSTALL_COQDEV),true)
+	$(MAKE) compcert.config
+endif
 
 proof: $(FILES:.v=.vo)
-
-# Turn off some warnings for compiling Flocq
-flocq/%.vo: COQCOPTS+=-w -compatibility-notation
 
 extraction: extraction/STAMP
 
 extraction/STAMP: $(FILES:.v=.vo) extraction/extraction.v $(ARCH)/extractionMachdep.v
 	rm -f extraction/*.ml extraction/*.mli
 	$(COQEXEC) extraction/extraction.v
+	@if grep 'AXIOM TO BE REALIZED' extraction/*.ml; then \
+            echo "An error occured during extraction to OCaml code."; \
+            echo "Check the versions of Flocq and MenhirLib used."; \
+            exit 2; \
+         fi
 	touch extraction/STAMP
 
 .depend.extr: extraction/STAMP tools/modorder driver/Version.ml
@@ -163,9 +260,9 @@ ccomp: .depend.extr compcert.ini driver/Version.ml FORCE
 ccomp.byte: .depend.extr compcert.ini driver/Version.ml FORCE
 	$(MAKE) -f Makefile.extr ccomp.byte
 
-clightgen: .depend.extr compcert.ini exportclight/Clightdefs.vo driver/Version.ml FORCE
+clightgen: .depend.extr compcert.ini driver/Version.ml FORCE
 	$(MAKE) -f Makefile.extr clightgen
-clightgen.byte: .depend.extr compcert.ini exportclight/Clightdefs.vo driver/Version.ml FORCE
+clightgen.byte: .depend.extr compcert.ini driver/Version.ml FORCE
 	$(MAKE) -f Makefile.extr clightgen.byte
 
 runtime:
@@ -178,13 +275,23 @@ FORCE:
 documentation: $(FILES)
 	mkdir -p doc/html
 	rm -f doc/html/*.html
-	coq2html -d doc/html/ -base compcert -short-names doc/*.glob \
-          $(filter-out doc/coq2html cparser/Parser.v, $^)
+	coq2html -d doc/html/ -base compcert -short-names \
+	  $(patsubst %, %/*.glob, $(DIRS)) \
+          $(filter-out cparser/Parser.v, $^)
 
 tools/ndfun: tools/ndfun.ml
-	ocamlopt -o tools/ndfun str.cmxa tools/ndfun.ml
+ifeq ($(OCAML_NATIVE_COMP),true)
+	ocamlopt -o tools/ndfun -I +str str.cmxa tools/ndfun.ml
+else
+	ocamlc -o tools/ndfun -I +str str.cma tools/ndfun.ml
+endif
+
 tools/modorder: tools/modorder.ml
-	ocamlopt -o tools/modorder str.cmxa tools/modorder.ml
+ifeq ($(OCAML_NATIVE_COMP),true)
+	ocamlopt -o tools/modorder -I +str str.cmxa tools/modorder.ml
+else
+	ocamlc -o tools/modorder -I +str str.cma tools/modorder.ml
+endif
 
 latexdoc:
 	cd doc; $(COQDOC) --latex -o doc/doc.tex -g $(FILES)
@@ -192,7 +299,8 @@ latexdoc:
 %.vo: %.v
 	@rm -f doc/$(*F).glob
 	@echo "COQC $*.v"
-	@$(COQC) -dump-glob doc/$(*F).glob $*.v
+	@$(COQC) $*.v
+	@$(PROFILE_ZIP)
 
 %.v: %.vp tools/ndfun
 	@rm -f $*.v
@@ -219,19 +327,34 @@ compcert.ini: Makefile.config
 	 echo "response_file_style=$(RESPONSEFILE)";) \
         > compcert.ini
 
+compcert.config: Makefile.config
+	(echo "# CompCert configuration parameters"; \
+        echo "COMPCERT_ARCH=$(ARCH)"; \
+        echo "COMPCERT_MODEL=$(MODEL)"; \
+        echo "COMPCERT_ABI=$(ABI)"; \
+        echo "COMPCERT_ENDIANNESS=$(ENDIANNESS)"; \
+        echo "COMPCERT_BITSIZE=$(BITSIZE)"; \
+        echo "COMPCERT_SYSTEM=$(SYSTEM)"; \
+        echo "COMPCERT_VERSION=$(BUILDVERSION)"; \
+        echo "COMPCERT_BUILDNR=$(BUILDNR)"; \
+        echo "COMPCERT_TAG=$(TAG)"; \
+        echo "COMPCERT_BRANCH=$(BRANCH)" \
+        ) > compcert.config
+
 driver/Version.ml: VERSION
-	cat VERSION \
-	| sed -e 's|\(.*\)=\(.*\)|let \1 = \"\2\"|g' \
-	>driver/Version.ml
+	(echo 'let version = "$(BUILDVERSION)"'; \
+         echo 'let buildnr = "$(BUILDNR)"'; \
+         echo 'let tag = "$(TAG)"'; \
+         echo 'let branch = "$(BRANCH)"') > driver/Version.ml
 
 cparser/Parser.v: cparser/Parser.vy
 	@rm -f $@
-	$(MENHIR) --coq --coq-lib-path compcert.MenhirLib --coq-no-version-check cparser/Parser.vy
+	$(MENHIR) --coq --coq-no-version-check cparser/Parser.vy
 	@chmod a-w $@
 
 depend: $(GENERATED) depend1
 
-depend1: $(FILES) exportclight/Clightdefs.v
+depend1: $(FILES)
 	@echo "Analyzing Coq dependencies"
 	@$(COQDEP) $^ > .depend
 
@@ -249,10 +372,16 @@ endif
 ifeq ($(INSTALL_COQDEV),true)
 	install -d $(DESTDIR)$(COQDEVDIR)
 	for d in $(DIRS); do \
-          install -d $(DESTDIR)$(COQDEVDIR)/$$d && \
-          install -m 0644 $$d/*.vo $(DESTDIR)$(COQDEVDIR)/$$d/; \
+          set -e; \
+          install -d $(DESTDIR)$(COQDEVDIR)/$$d; \
+          install -m 0644 $$d/*.v $$d/*.vo $$d/*.glob $(DESTDIR)$(COQDEVDIR)/$$d/; \
+          if test -d $$d/.coq-native; then \
+            install -d $(DESTDIR)$(COQDEVDIR)/$$d/.coq-native; \
+            install -m 0644 $$d/.coq-native/* $(DESTDIR)$(COQDEVDIR)/$$d/.coq-native/; \
+          fi \
 	done
 	install -m 0644 ./VERSION $(DESTDIR)$(COQDEVDIR)
+	install -m 0644 ./compcert.config $(DESTDIR)$(COQDEVDIR)
 	@(echo "To use, pass the following to coq_makefile or add the following to _CoqProject:"; echo "-R $(COQDEVDIR) compcert") > $(DESTDIR)$(COQDEVDIR)/README
 endif
 
@@ -260,29 +389,38 @@ endif
 clean:
 	rm -f $(patsubst %, %/*.vo*, $(DIRS))
 	rm -f $(patsubst %, %/.*.aux, $(DIRS))
-	rm -rf doc/html doc/*.glob
+	rm -rf $(patsubst %, %/.coq-native, $(DIRS))
+	rm -f $(patsubst %, %/*.glob, $(DIRS))
+	rm -rf doc/html
 	rm -f driver/Version.ml
-	rm -f compcert.ini
+	rm -f compcert.ini compcert.config
 	rm -f extraction/STAMP extraction/*.ml extraction/*.mli .depend.extr
 	rm -f tools/ndfun tools/modorder tools/*.cm? tools/*.o
 	rm -f $(GENERATED) .depend
 	rm -f .lia.cache
 	$(MAKE) -f Makefile.extr clean
 	$(MAKE) -C runtime clean
-	$(MAKE) -C test clean
 
 distclean:
 	$(MAKE) clean
 	rm -f Makefile.config
 
 check-admitted: $(FILES)
-	@grep -w 'admit\|Admitted\|ADMITTED' $^ || echo "Nothing admitted."
+	@if grep -w 'admit\|Admitted\|ADMITTED' $^; \
+         then exit 2; else echo "Nothing admitted."; fi
+
+check-leftovers: $(FILES)
+	@if grep -w '^Check\|^Print\|^Search' $^; \
+         then exit 2; else echo "No leftover interactive commands."; fi
 
 check-proof: $(FILES)
 	$(COQCHK) compcert.driver.Complements
 
 print-includes:
 	@echo $(COQINCLUDES)
+
+CoqProject:
+	@echo $(COQINCLUDES) > _CoqProject
 
 -include .depend
 

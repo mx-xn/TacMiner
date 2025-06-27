@@ -6,10 +6,11 @@
 (*                                                                     *)
 (*  Copyright Institut National de Recherche en Informatique et en     *)
 (*  Automatique.  All rights reserved.  This file is distributed       *)
-(*  under the terms of the GNU General Public License as published by  *)
-(*  the Free Software Foundation, either version 2 of the License, or  *)
-(*  (at your option) any later version.  This file is also distributed *)
-(*  under the terms of the INRIA Non-Commercial License Agreement.     *)
+(*  under the terms of the GNU Lesser General Public License as        *)
+(*  published by the Free Software Foundation, either version 2.1 of   *)
+(*  the License, or  (at your option) any later version.               *)
+(*  This file is also distributed under the terms of the               *)
+(*  INRIA Non-Commercial License Agreement.                            *)
 (*                                                                     *)
 (* *********************************************************************)
 
@@ -103,25 +104,28 @@ Definition classify_cast (tfrom tto: type) : classify_cast_cases :=
   match tto, tfrom with
   (* To [void] *)
   | Tvoid, _ => cast_case_void
-  (* To [_Bool] *)
-  | Tint IBool _ _, Tint _ _ _ => cast_case_i2bool
-  | Tint IBool _ _, Tlong _ _ => cast_case_l2bool
-  | Tint IBool _ _, Tfloat F64 _ => cast_case_f2bool
-  | Tint IBool _ _, Tfloat F32 _ => cast_case_s2bool
-  | Tint IBool _ _, (Tpointer _ _ | Tarray _ _ _ | Tfunction _ _ _) => 
-      if Archi.ptr64 then cast_case_l2bool else cast_case_i2bool
-  (* To [int] other than [_Bool] *)
+  (* To [int] *)
   | Tint sz2 si2 _, Tint _ _ _ =>
-      if Archi.ptr64 then cast_case_i2i sz2 si2
-      else if intsize_eq sz2 I32 then cast_case_pointer
-      else cast_case_i2i sz2 si2
-  | Tint sz2 si2 _, Tlong _ _ => cast_case_l2i sz2 si2
-  | Tint sz2 si2 _, Tfloat F64 _ => cast_case_f2i sz2 si2
-  | Tint sz2 si2 _, Tfloat F32 _ => cast_case_s2i sz2 si2
+      match sz2 with
+      | IBool => cast_case_i2bool
+      | I32 => if Archi.ptr64 then cast_case_i2i sz2 si2 else cast_case_pointer
+      | _ => cast_case_i2i sz2 si2
+      end
+  | Tint sz2 si2 _, Tlong _ _ =>
+      if intsize_eq sz2 IBool then cast_case_l2bool else cast_case_l2i sz2 si2
+  | Tint sz2 si2 _, Tfloat F64 _ =>
+      if intsize_eq sz2 IBool then cast_case_f2bool else cast_case_f2i sz2 si2
+  | Tint sz2 si2 _, Tfloat F32 _ =>
+      if intsize_eq sz2 IBool then cast_case_s2bool else  cast_case_s2i sz2 si2
   | Tint sz2 si2 _, (Tpointer _ _ | Tarray _ _ _ | Tfunction _ _ _) =>
-      if Archi.ptr64 then cast_case_l2i sz2 si2
-      else if intsize_eq sz2 I32 then cast_case_pointer
-      else cast_case_i2i sz2 si2
+      if Archi.ptr64 then  (**r like long to int *)
+        if intsize_eq sz2 IBool then cast_case_l2bool else cast_case_l2i sz2 si2
+      else
+        match sz2 with     (**r like int to int *)
+        | IBool => cast_case_i2bool
+        | I32 => cast_case_pointer
+        | _ => cast_case_i2i sz2 si2
+        end
   (* To [long] *)
   | Tlong _ _, Tlong _ _ =>
       if Archi.ptr64 then cast_case_pointer else cast_case_l2l
@@ -999,7 +1003,7 @@ Definition sem_cmp (c:comparison)
 (** ** Function applications *)
 
 Inductive classify_fun_cases : Type :=
-  | fun_case_f (targs: typelist) (tres: type) (cc: calling_convention) (**r (pointer to) function *)
+  | fun_case_f (targs: list type) (tres: type) (cc: calling_convention) (**r (pointer to) function *)
   | fun_default.
 
 Definition classify_fun (ty: type) :=
@@ -1082,6 +1086,60 @@ Definition incrdecr_type (ty: type) :=
   | Tfloat sz a => Tfloat sz noattr
   | _ => Tvoid
   end.
+
+(** ** Accessing bit fields *)
+
+Definition chunk_for_carrier (sz: intsize) : memory_chunk :=
+  match sz with
+  | I8 | IBool => Mint8unsigned
+  | I16 => Mint16unsigned
+  | I32 => Mint32
+  end.
+
+(** For bitfield accesses, bits are numbered differently on
+    little-endian and on big-endian machines: bit 0 is the least
+    significant bit in little-endian, and the most significant bit in
+    big-endian. *)
+
+Definition bitsize_carrier (sz: intsize) : Z :=
+  match sz with
+  | I8 | IBool => 8
+  | I16 => 16
+  | I32 => 32
+  end.
+
+Definition first_bit (sz: intsize) (pos width: Z) : Z :=
+  if Archi.big_endian
+  then bitsize_carrier sz - pos - width
+  else pos.
+
+Definition bitfield_extract (sz: intsize) (sg: signedness) (pos width: Z) (c: int) : int :=
+  if intsize_eq sz IBool || signedness_eq sg Unsigned
+  then Int.unsigned_bitfield_extract (first_bit sz pos width) width c
+  else Int.signed_bitfield_extract (first_bit sz pos width) width c.
+
+Definition bitfield_normalize (sz: intsize) (sg: signedness) (width: Z) (n: int) : int :=
+  if intsize_eq sz IBool || signedness_eq sg Unsigned
+  then Int.zero_ext width n
+  else Int.sign_ext width n.
+
+Inductive load_bitfield: type -> intsize -> signedness -> Z -> Z -> mem -> val -> val -> Prop :=
+  | load_bitfield_intro: forall sz sg1 attr sg pos width m addr c,
+      0 <= pos -> 0 < width <= bitsize_intsize sz -> pos + width <= bitsize_carrier sz ->
+      sg1 = (if zlt width (bitsize_intsize sz) then Signed else sg) ->
+      Mem.loadv (chunk_for_carrier sz) m addr = Some (Vint c) ->
+      load_bitfield (Tint sz sg1 attr) sz sg pos width m addr
+                    (Vint (bitfield_extract sz sg pos width c)).
+
+Inductive store_bitfield: type -> intsize -> signedness -> Z -> Z -> mem -> val -> val -> mem -> val -> Prop :=
+  | store_bitfield_intro: forall sz sg1 attr sg pos width m addr c n m',
+      0 <= pos -> 0 < width <= bitsize_intsize sz -> pos + width <= bitsize_carrier sz ->
+      sg1 = (if zlt width (bitsize_intsize sz) then Signed else sg) ->
+      Mem.loadv (chunk_for_carrier sz) m addr = Some (Vint c) ->
+      Mem.storev (chunk_for_carrier sz) m addr
+                 (Vint (Int.bitfield_insert (first_bit sz pos width) width c n)) = Some m' ->
+      store_bitfield (Tint sz sg1 attr) sz sg pos width m addr (Vint n)
+                     m' (Vint (bitfield_normalize sz sg width n)).
 
 (** * Compatibility with extensions and injections *)
 
@@ -1534,7 +1592,6 @@ Ltac DestructCases :=
   | [H: match ?x with _ => _ end = Some _ |- _ ] => destruct x eqn:?; DestructCases
   | [H: Some _ = Some _ |- _ ] => inv H; DestructCases
   | [H: None = Some _ |- _ ] => discriminate H
-  | [H: @eq intsize _ _ |- _ ] => discriminate H || (clear H; DestructCases)
   | [ |- val_casted (Vint (if ?x then Int.zero else Int.one)) _ ] =>
        try (constructor; destruct x; reflexivity)
   | [ |- val_casted (Vint _) (Tint ?sz ?sg _) ] =>
@@ -1546,7 +1603,8 @@ Lemma cast_val_is_casted:
   forall v ty ty' v' m, sem_cast v ty ty' m = Some v' -> val_casted v' ty'.
 Proof.
   unfold sem_cast; intros.
-  destruct ty, ty'; simpl in H; DestructCases; constructor; auto.
+  destruct ty, ty'; simpl in H; DestructCases; InvBooleans; subst;
+  try discriminate; constructor; auto.
 Qed.
 
 End VAL_CASTED.
@@ -1557,10 +1615,11 @@ Lemma cast_val_casted:
   forall v ty m, val_casted v ty -> sem_cast v ty ty m = Some v.
 Proof.
   intros. unfold sem_cast; inversion H; clear H; subst v ty; simpl.
-- destruct Archi.ptr64; [ | destruct (intsize_eq sz I32)].
-+ destruct sz; f_equal; f_equal; assumption.
-+ subst sz; auto.
-+ destruct sz; f_equal; f_equal; assumption.
+- destruct sz.
+  + congruence.
+  + congruence.
+  + destruct Archi.ptr64; congruence.
+  + simpl in H0. congruence.
 - auto.
 - auto.
 - destruct Archi.ptr64; auto.
@@ -1580,7 +1639,18 @@ Proof.
   intros. apply cast_val_casted. eapply cast_val_is_casted; eauto.
 Qed.
 
-(** Moreover, casted values belong to the machine type corresponding to the
+(** Moreover, casted values belong to the machine argument type corresponding
+    to the C type. *)
+
+Lemma val_casted_has_argtype:
+  forall v ty, val_casted v ty -> Val.has_argtype v (argtype_of_type ty).
+Proof.
+  destruct 1; simpl; rewrite ? H; auto.
+- destruct sz; [destruct si | destruct si | | ]; simpl in *; auto.
+  destruct (Int.eq n Int.zero); auto.
+Qed.
+
+(** Likewise, casted values belong to the machine type corresponding to the
     C type. *)
 
 Lemma val_casted_has_type:

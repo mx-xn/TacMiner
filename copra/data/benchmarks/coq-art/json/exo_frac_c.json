@@ -1,0 +1,321 @@
+[
+    {
+        "lemma_name": "b_one",
+        "proof": [
+            {
+                "tactic_sig": "split with 1 0 .",
+                "tactic_sig_no_out_arg": "split with 1 0 .",
+                "tactic_args": [
+                    "_goal : bezout 1 1"
+                ],
+                "tactic_res": [
+                    "_goal : lt 0 1",
+                    "_goal : lt 0 1",
+                    "_goal : eq (Z.add (Z.mul (Z.of_nat 1%nat) 1) (Z.mul (Z.of_nat 1%nat) 0)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : lt 0 1"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : eq (Z.add (Z.mul (Z.of_nat 1%nat) 1) (Z.mul (Z.of_nat 1%nat) 0)) 1"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "b_n",
+        "proof": [
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros a b H .",
+                "tactic_args": [
+                    "_goal : forall (a b : nat) (_ : bezout a b), bezout (Init.Nat.add a b) b"
+                ],
+                "tactic_res": [
+                    "_goal : bezout (Init.Nat.add a b) b",
+                    "b : nat",
+                    "a : nat",
+                    "H : bezout a b"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "_goal : bezout (Init.Nat.add a b) b",
+                    "H : bezout a b"
+                ],
+                "tactic_res": [
+                    "_goal : forall (u v : Z) (_ : lt 0 a) (_ : lt 0 b)\n  (_ : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1),\nbezout (Init.Nat.add a b) b"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros u v H0 HA e .",
+                "tactic_args": [
+                    "_goal : forall (u v : Z) (_ : lt 0 a) (_ : lt 0 b)\n  (_ : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1),\nbezout (Init.Nat.add a b) b"
+                ],
+                "tactic_res": [
+                    "_goal : bezout (Init.Nat.add a b) b",
+                    "v : Z",
+                    "u : Z",
+                    "H0 : lt 0 a",
+                    "HA : lt 0 b",
+                    "e : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "split with _i ( _i - _i ) .",
+                "tactic_sig_no_out_arg": "split with _i ( _i - _i ) .",
+                "tactic_args": [
+                    "_goal : bezout (Init.Nat.add a b) b",
+                    "u : Z",
+                    "v : Z",
+                    "u : Z"
+                ],
+                "tactic_res": [
+                    "_goal : lt 0 (Init.Nat.add a b)",
+                    "_goal : lt 0 b",
+                    "_goal : eq\n  (Z.add (Z.mul (Z.of_nat (Init.Nat.add a b)) u)\n     (Z.mul (Z.of_nat b) (Z.sub v u))) 1"
+                ]
+            },
+            {
+                "tactic_sig": "auto with arith .",
+                "tactic_sig_no_out_arg": "auto with arith .",
+                "tactic_args": [
+                    "_goal : lt 0 (Init.Nat.add a b)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : lt 0 b"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "rewrite inj_plus .",
+                "tactic_sig_no_out_arg": "rewrite inj_plus .",
+                "tactic_args": [
+                    "_goal : eq\n  (Z.add (Z.mul (Z.of_nat (Init.Nat.add a b)) u)\n     (Z.mul (Z.of_nat b) (Z.sub v u))) 1"
+                ],
+                "tactic_res": [
+                    "_goal : eq\n  (Z.add (Z.mul (Z.add (Z.of_nat a) (Z.of_nat b)) u)\n     (Z.mul (Z.of_nat b) (Z.sub v u))) 1"
+                ]
+            },
+            {
+                "tactic_sig": "ring_simplify .",
+                "tactic_sig_no_out_arg": "ring_simplify .",
+                "tactic_args": [
+                    "_goal : eq\n  (Z.add (Z.mul (Z.add (Z.of_nat a) (Z.of_nat b)) u)\n     (Z.mul (Z.of_nat b) (Z.sub v u))) 1"
+                ],
+                "tactic_res": [
+                    "_goal : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "b_d",
+        "proof": [
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros a b H .",
+                "tactic_args": [
+                    "_goal : forall (a b : nat) (_ : bezout a b), bezout a (Init.Nat.add a b)"
+                ],
+                "tactic_res": [
+                    "_goal : bezout a (Init.Nat.add a b)",
+                    "b : nat",
+                    "a : nat",
+                    "H : bezout a b"
+                ]
+            },
+            {
+                "tactic_sig": "case _i .",
+                "tactic_sig_no_out_arg": "case _i .",
+                "tactic_args": [
+                    "_goal : bezout a (Init.Nat.add a b)",
+                    "H : bezout a b"
+                ],
+                "tactic_res": [
+                    "_goal : forall (u v : Z) (_ : lt 0 a) (_ : lt 0 b)\n  (_ : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1),\nbezout a (Init.Nat.add a b)"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros u v H0 HA e .",
+                "tactic_args": [
+                    "_goal : forall (u v : Z) (_ : lt 0 a) (_ : lt 0 b)\n  (_ : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1),\nbezout a (Init.Nat.add a b)"
+                ],
+                "tactic_res": [
+                    "_goal : bezout a (Init.Nat.add a b)",
+                    "v : Z",
+                    "u : Z",
+                    "H0 : lt 0 a",
+                    "HA : lt 0 b",
+                    "e : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul (Z.of_nat b) v)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "split with ( _i - _i ) _i .",
+                "tactic_sig_no_out_arg": "split with ( _i - _i ) _i .",
+                "tactic_args": [
+                    "_goal : bezout a (Init.Nat.add a b)",
+                    "u : Z",
+                    "v : Z",
+                    "v : Z"
+                ],
+                "tactic_res": [
+                    "_goal : lt 0 a",
+                    "_goal : lt 0 (Init.Nat.add a b)",
+                    "_goal : eq\n  (Z.add (Z.mul (Z.of_nat a) (Z.sub u v))\n     (Z.mul (Z.of_nat (Init.Nat.add a b)) v)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : lt 0 a"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "auto with zarith .",
+                "tactic_sig_no_out_arg": "auto with zarith .",
+                "tactic_args": [
+                    "_goal : lt 0 (Init.Nat.add a b)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "rewrite inj_plus .",
+                "tactic_sig_no_out_arg": "rewrite inj_plus .",
+                "tactic_args": [
+                    "_goal : eq\n  (Z.add (Z.mul (Z.of_nat a) (Z.sub u v))\n     (Z.mul (Z.of_nat (Init.Nat.add a b)) v)) 1"
+                ],
+                "tactic_res": [
+                    "_goal : eq\n  (Z.add (Z.mul (Z.of_nat a) (Z.sub u v))\n     (Z.mul (Z.add (Z.of_nat a) (Z.of_nat b)) v)) 1"
+                ]
+            },
+            {
+                "tactic_sig": "ring_simplify .",
+                "tactic_sig_no_out_arg": "ring_simplify .",
+                "tactic_args": [
+                    "_goal : eq\n  (Z.add (Z.mul (Z.of_nat a) (Z.sub u v))\n     (Z.mul (Z.add (Z.of_nat a) (Z.of_nat b)) v)) 1"
+                ],
+                "tactic_res": [
+                    "_goal : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul v (Z.of_nat b))) 1"
+                ]
+            },
+            {
+                "tactic_sig": "now rewrite ( Zmult_comm _i ( Z_of_nat _i ) ) .",
+                "tactic_sig_no_out_arg": "now rewrite ( Zmult_comm _i ( Z_of_nat _i ) ) .",
+                "tactic_args": [
+                    "_goal : eq (Z.add (Z.mul (Z.of_nat a) u) (Z.mul v (Z.of_nat b))) 1",
+                    "v : Z",
+                    "b : nat"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "fractionsimplified",
+        "proof": [
+            {
+                "tactic_sig": "simple induction f .",
+                "tactic_sig_no_out_arg": "simple induction f .",
+                "tactic_args": [
+                    "_goal : forall f : F, simplified (fraction f)"
+                ],
+                "tactic_res": [
+                    "_goal : simplified (fraction one)",
+                    "_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (fraction (n f))",
+                    "_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (fraction (d f))",
+                    "f : F"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : simplified (fraction one)"
+                ],
+                "tactic_res": [
+                    "_goal : simplified (pair 1%nat 1%nat)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (fraction (n f))"
+                ],
+                "tactic_res": [
+                    "_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (let (a, b) := fraction f in pair (Init.Nat.add a b) b)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (fraction (d f))"
+                ],
+                "tactic_res": [
+                    "_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (let (a, b) := fraction f in pair a (Init.Nat.add a b))"
+                ]
+            },
+            {
+                "tactic_sig": "custom0 .",
+                "tactic_sig_no_out_arg": "custom0 .",
+                "tactic_args": [
+                    "_goal : simplified (pair 1%nat 1%nat)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "custom1 f0 .",
+                "tactic_sig_no_out_arg": "custom1 f0 .",
+                "tactic_args": [
+                    "_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (let (a, b) := fraction f in pair (Init.Nat.add a b) b)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "custom1 f0 .",
+                "tactic_sig_no_out_arg": "custom1 f0 .",
+                "tactic_args": [
+                    "_goal : forall (f : F) (_ : simplified (fraction f)),\nsimplified (let (a, b) := fraction f in pair a (Init.Nat.add a b))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

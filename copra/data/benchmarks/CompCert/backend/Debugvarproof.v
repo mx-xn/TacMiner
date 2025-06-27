@@ -72,34 +72,36 @@ Inductive match_function: function -> function -> Prop :=
       match_code f.(fn_code) c ->
       match_function f (mkfunction f.(fn_sig) f.(fn_stacksize) c).
 
-Lemma transf_function_match:
-  forall f tf, transf_function f = OK tf -> match_function f tf.
+Ltac custom50 H0 :=  constructor; [apply H0 | .. ].
+Lemma transf_function_match : forall f tf, transf_function f = OK tf -> match_function f tf .
 Proof.
-  unfold transf_function; intros.
-  destruct (ana_function f) as [lm|]; inv H.
-  constructor. apply transf_code_match.
+   unfold transf_function. intros f tf H. destruct ( ana_function f ) as [ lm| ].
+    - inv H. custom50 transf_code_match.
+    - inv H.
 Qed.
 
-Remark find_label_add_delta_ranges:
-  forall lbl c before after, find_label lbl (add_delta_ranges before after c) = find_label lbl c.
+Ltac custom21  :=  simpl; [auto | .. ].
+Ltac custom28 H0 H1 H2 H6 :=  unfold H0; [destruct ( delta_state H1 H2 ) as [ killed born ]; [induction H6 as [ | [ v i ] l ]; [simpl | .. ] | .. ] | .. ].
+Remark find_label_add_delta_ranges : forall lbl c before after, find_label lbl ( add_delta_ranges before after c ) = find_label lbl c .
 Proof.
-  intros. unfold add_delta_ranges.
-  destruct (delta_state before after) as [killed born].
-  induction killed as [ | [v i] l]; simpl; auto.
-  induction born as [ | [v i] l]; simpl; auto.
+   intros lbl c before after. custom28 add_delta_ranges before after killed.
+    - induction born as [ | [ v i ] l ].
+      -- custom21.
+      -- custom21.
+    - custom21.
 Qed.
 
-Lemma find_label_match_rec:
-  forall lbl c' c tc,
-  match_code c tc ->
-  find_label lbl c = Some c' ->
-  exists before after tc', find_label lbl tc = Some (add_delta_ranges before after tc') /\ match_code c' tc'.
+Ltac custom15 H0 :=  simpl; [intros H0 | .. ].
+Ltac custom38 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom46  :=  econstructor; [eauto | .. ].
+Ltac custom52 H11 :=  induction 1; [custom15 H11 | .. ].
+Lemma find_label_match_rec : forall lbl c' c tc, match_code c tc -> find_label lbl c = Some c' -> exists before after tc', find_label lbl tc = Some ( add_delta_ranges before after tc' ) /\ match_code c' tc' .
 Proof.
-  induction 1; simpl; intros.
-- discriminate.
-- destruct (is_label lbl i).
-  inv H0. econstructor; econstructor; econstructor; eauto.
-  rewrite find_label_add_delta_ranges. auto.
+   custom52 H.
+    - discriminate.
+    - custom15 H0. destruct ( is_label lbl i ) as [  H0 | H0 ].
+      -- inv H0. econstructor. econstructor. custom46.
+      -- custom38 find_label_add_delta_ranges.
 Qed.
 
 Lemma find_label_match:
@@ -127,24 +129,25 @@ Inductive wf_avail: avail -> Prop :=
      wf_avail s ->
      wf_avail ((v, i) :: s).
 
-Lemma set_state_1:
-  forall v i s, In (v, i) (set_state v i s).
+Lemma set_state_1 : forall v i s, In ( v, i ) ( set_state v i s ) .
 Proof.
-  induction s as [ | [v' i'] s]; simpl.
-- auto.
-- destruct (Pos.compare v v'); simpl; auto.
+   intros v i s. induction s as [ | [ v' i' ] s ].
+    - custom21.
+    - simpl. destruct ( Pos.compare v v' ) as [  | | ].
+      -- custom21.
+      -- custom21.
+      -- custom21.
 Qed.
 
-Lemma set_state_2:
-  forall v i v' i' s,
-  v' <> v -> In (v', i') s -> In (v', i') (set_state v i s).
+Ltac custom10 H0 H18 H4 H5 H6 H7 H8 H3 :=
+    induction H0 as [ | [ v1 i1 ] H18 ]; [simpl; [intros H4 H5 | .. ] | simpl; [intros H6 H7;
+    [destruct ( Pos.compare_spec H8 H3 ); [subst H3 | simpl; [auto | .. ] | simpl; [destruct H7; [auto | auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom48 H0 :=  destruct H0; [congruence | auto | .. ].
+Lemma set_state_2 : forall v i v' i' s, v' <> v -> In ( v', i' ) s -> In ( v', i' ) ( set_state v i s ) .
 Proof.
-  induction s as [ | [v1 i1] s]; simpl; intros.
-- contradiction.
-- destruct (Pos.compare_spec v v1); simpl.
-+ subst v1. destruct H0. congruence. auto.
-+ auto.
-+ destruct H0; auto.
+   intros v i v' i' s. custom10 s s IHs i1 H H0 v v1.
+    - contradiction.
+    - simpl. custom48 H0.
 Qed.
 
 Lemma set_state_3:
@@ -182,16 +185,21 @@ Proof.
   auto.
 Qed.
 
-Lemma remove_state_1:
-  forall v i s, wf_avail s -> ~ In (v, i) (remove_state v s).
+Ltac custom56 H0 :=  elim ( Plt_strict H0 ); [eauto | .. ].
+Ltac custom55  :=  simpl; [red | .. ].
+Ltac custom32 H0 H7 H5 :=  destruct H0; [elim ( Plt_strict H7 ); [inv H5; [eauto] | .. ] | .. ].
+Ltac custom63 H0 H7 :=  destruct H0; [inv H7 | .. ].
+Ltac custom41 H0 H1 :=  apply H0 with H1; [eauto | eauto | .. ].
+Lemma remove_state_1 : forall v i s, wf_avail s -> ~ In ( v, i ) ( remove_state v s ) .
 Proof.
-  induction 1; simpl; red; intros.
-- auto.
-- destruct (Pos.compare_spec v v0); simpl in *.
-+ subst v0. elim (Plt_strict v); eauto.
-+ destruct H1. inv H1.  elim (Plt_strict v); eauto.
-  elim (Plt_strict v). apply Plt_trans with v0; eauto.
-+ destruct H1. inv H1. elim (Plt_strict v); eauto.  tauto.
+   induction 1.
+    - custom55. intros H. auto.
+    - custom55. intros H1. destruct ( Pos.compare_spec v v0 ) as [  H2 H1 | H2 H1 | H2 H1 ].
+      -- subst v0. custom56 v.
+      -- custom32 H1 v H1. elim ( Plt_strict v ). custom41 Plt_trans v0.
+      -- custom63 H1 H1.
+        --- custom56 v.
+        --- tauto.
 Qed.
 
 Lemma remove_state_2:

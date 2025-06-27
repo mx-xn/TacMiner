@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import re
 import sys
 
 
@@ -14,6 +15,7 @@ import random
 import time
 import math
 import typing
+import config
 import multiprocessing
 from src.baselines.gpt4.hammer_policy_prompter import HammerPolicyPrompter
 from src.tools.log_utils import setup_logger
@@ -125,14 +127,14 @@ def eval_dataset(env_settings: EnvSettings, eval_benchmark: EvalBenchmark, promp
     else:
         track_time = False
     time_budget_tracker = {}
+    server_use_count = 0
+    max_server_use_count = 5
+    # eval_settings.proof_retries = 2 if eval_benchmark.name == "coq_art" else 4
     for attempt_idx in range(eval_settings.proof_retries):
-        print("index:", attempt_idx, "proof_attemps_done:", proof_attempts_done)
         if proof_attempts_done:
             break
         any_proof_attempted = False
-        print("files:", dataset.files)
         for file in dataset.files:
-            print("file:", file)
             path = os.path.join(dataset.project, file.path)
             if track_time and path not in time_budget_tracker:
                 if len(file.max_time_limits_in_secs) > 0:
@@ -141,7 +143,6 @@ def eval_dataset(env_settings: EnvSettings, eval_benchmark: EvalBenchmark, promp
                     time_budget_tracker[path] = {}
             proof_dump_file_name = os.path.join(eval_settings.proof_dump_dir, f"{path.replace('/', '_')}.txt")
             if skip_files_in_checkpoint and path in eval_checkpoint_info.theorem_maps:
-                print(f"Skipping the file: {path} as it was already attempted before.")
                 logger.info(f"Skipping the file: {path} as it was already attempted before.")
                 # The proof result for this file is already in the checkpoint
                 if path in eval_proof_results.theorem_map:
@@ -185,6 +186,18 @@ def eval_dataset(env_settings: EnvSettings, eval_benchmark: EvalBenchmark, promp
                     logger.exception(f"Exception occurred while getting all lemmas in file: {path}")
             manager = multiprocessing.Manager()
             return_dict = manager.dict()
+            if server_use_count >= max_server_use_count:
+                # Restart the server
+                server_use_count = 0
+                if eval_benchmark.language == ProofAction.Language.ISABELLE:
+                    logger.warning(f"Server use count exceeded {max_server_use_count}. Restarting the PISA service.")
+                    IsabelleExecutor.stop_server()
+                    logger.warning("Stopped the PISA service.")
+                    logger.warning("Waiting for 10 seconds before starting the PISA service.")
+                    time.sleep(15)
+                    logger.warning("Starting the PISA service again.")
+                    IsabelleExecutor.start_server(logger)
+                    logger.warning("Started the PISA service.")
             # Check if PISA service is down otherwise restart it
             if eval_benchmark.language == ProofAction.Language.ISABELLE and not IsabelleExecutor.check_server_running(logger):
                 # Kill the logging thread
@@ -195,10 +208,9 @@ def eval_dataset(env_settings: EnvSettings, eval_benchmark: EvalBenchmark, promp
                 logger.warning("PISA service is down. Restarting it.")
                 IsabelleExecutor.start_server(logger) # Restart the server
                 logger.warning("Restarted the PISA service.")
+            server_use_count += 1
             file_time_out = min(720, eval_settings.timeout_in_secs * eval_settings.max_proof_depth * 50)
             logger.info(f"Getting all lemmas in file: {path} with timeout: {file_time_out} seconds")
-            return_dict = {}
-            _get_all_lemmas(return_dict, logger)
             # p = multiprocessing.Process(target=_get_all_lemmas, args=(return_dict, logger))
             # p.start()
             # p.join(file_time_out)
@@ -206,13 +218,13 @@ def eval_dataset(env_settings: EnvSettings, eval_benchmark: EvalBenchmark, promp
             #     p.kill()
             #     p.join()
             # p.close()
+            _get_all_lemmas(return_dict, logger)
             if "lemmas" not in return_dict:
-                print(f"Failed to get all lemmas in file: {path}, moving on to the next file.")
                 logger.info(f"Failed to get all lemmas in file: {path}, moving on to the next file.")
                 continue
             lemmas_to_prove = return_dict["lemmas"]
-            print("lemmas to prove:", lemmas_to_prove)
             if isinstance(file.theorems, str) and file.theorems == "*":
+                # TODO: if future need this, we need to adjust this to call help_lemma() too
                 file.theorems = list(lemmas_to_prove)
                 file.theorems.sort() # sort to ensure one order when no theorems are specified
             elif isinstance(file.theorems, list):
@@ -220,6 +232,8 @@ def eval_dataset(env_settings: EnvSettings, eval_benchmark: EvalBenchmark, promp
                 intersection = set(file.theorems).intersection(lemmas_to_prove)
                 # Arrange them in the order of the file.theorems
                 file.theorems = [x for x in file.theorems if x in intersection]
+                # put all lemmas into a directory, where the directory contains file named lemma name, which has the lemmas the lemma needs to use
+                # for x in file.theorems:
             else:
                 raise ValueError(f"Invalid theorems: {file.theorems}")
             logger.info(f"Discovered {len(file.theorems)} lemmas to prove in {path}")
@@ -230,9 +244,13 @@ def eval_dataset(env_settings: EnvSettings, eval_benchmark: EvalBenchmark, promp
                 random.seed(eval_settings.sample_seed)
                 file.theorems = list(random.sample(file.theorems, sample_size))
                 logger.info(f"Sampled lemmas to prove in file {path}: \n{file.theorems}")
-            print("files.theorems:", file.theorems)
             for lemma_name in file.theorems:
-                print("lemma_name:", lemma_name)
+                # update current useful lemmas file name, so that it searches from here in response_grammar.py
+                # with open("{}/hints/{}".format(config.ASSIST_LEMMAS_DIR, config.CURR_LEMMA), "w") as f:
+                #     f.write(lemma_name)
+
+                # with open("{}/hints/{}".format(config.ASSIST_LEMMAS_DIR, config.CURR_LEMMA), "r") as f:
+                #     print("curr assist lemmas fn is: %s.txt" % f.read().strip)
                 no_proof_res = ProofSearchResult(
                     None, 
                     False, 
@@ -408,9 +426,9 @@ def eval_dataset(env_settings: EnvSettings, eval_benchmark: EvalBenchmark, promp
                             if track_time and time_budget_tracker[path][lemma_name] < timeout:
                                 timeout = time_budget_tracker[path][lemma_name]
                             logger.info(f"Running the prover agent for lemma: {lemma_name} with timeout: {timeout} seconds")
+                            # p = multiprocessing.Process(target=_run_prover, args=(return_dict,))
                             tic_start = time.time()
                             _run_prover(return_dict)
-                            # p = multiprocessing.Process(target=_run_prover, args=(return_dict,)) # todo
                             # p.start()
                             # p.join(timeout)
                             # if p.is_alive():
@@ -594,6 +612,10 @@ def main(cfg):
     log_dir = ".log/evals/benchmark/{}/{}".format(experiment.benchmark.name, time.strftime("%Y%m%d-%H%M%S"))
     os.makedirs(log_dir, exist_ok=True)
     log_path = os.path.join(log_dir, "eval.log")
+
+    # lemmas_dir = ".log/evals/benchmark/{}".format(experiment.benchmark.name)
+    # os.makedirs(config.ASSIST_LEMMAS_DIR, exist_ok=True)
+
     logger = setup_logger(__name__, log_path, logging.INFO, '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     logger.info(f"Pid: {os.getpid()}")
     logger.info(f"Running Experiment: {experiment.to_json(indent=4)}")

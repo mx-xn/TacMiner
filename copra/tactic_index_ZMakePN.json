@@ -1,0 +1,4741 @@
+{
+    "theorem_file": {
+      "spec_of_Z": "ZMake.v",
+      "spec_0": "ZMake.v",
+      "spec_1": "ZMake.v",
+      "spec_2": "ZMake.v",
+      "spec_m1": "ZMake.v",
+      "spec_compare": "ZMake.v",
+      "spec_eqb": "ZMake.v",
+      "spec_ltb": "ZMake.v",
+      "spec_leb": "ZMake.v",
+      "spec_min": "ZMake.v",
+      "spec_max": "ZMake.v",
+      "spec_abs": "ZMake.v",
+      "spec_opp": "ZMake.v",
+      "spec_succ": "ZMake.v",
+      "spec_add": "ZMake.v",
+      "spec_pred": "ZMake.v",
+      "spec_sub": "ZMake.v",
+      "spec_mul": "ZMake.v",
+      "spec_square": "ZMake.v",
+      "spec_pow_pos": "ZMake.v",
+      "spec_pow_N": "ZMake.v",
+      "spec_pow": "ZMake.v",
+      "spec_log2": "ZMake.v",
+      "spec_sqrt": "ZMake.v",
+      "spec_div_eucl": "ZMake.v",
+      "spec_modulo": "ZMake.v",
+      "spec_quot": "ZMake.v",
+      "spec_rem": "ZMake.v",
+      "spec_gcd": "ZMake.v",
+      "spec_sgn": "ZMake.v",
+      "spec_even": "ZMake.v",
+      "spec_odd": "ZMake.v",
+      "Zlnot_alt1": "ZMake.v",
+      "Zlnot_alt2": "ZMake.v",
+      "Zlnot_alt3": "ZMake.v",
+      "spec_norm_pos": "ZMake.v",
+      "spec_norm_pos_pos": "ZMake.v",
+      "spec_testbit": "ZMake.v",
+      "spec_shiftl": "ZMake.v",
+      "spec_shiftr": "ZMake.v",
+      "spec_land": "ZMake.v",
+      "spec_lor": "ZMake.v",
+      "spec_ldiff": "ZMake.v",
+      "spec_lxor": "ZMake.v",
+      "spec_div2": "ZMake.v"
+    },
+    "custom_tactics": {
+      "ZMake.v": {
+        "spec_of_Z": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ]
+          },
+          "used_tactics": [
+            "custom2",
+            "custom0"
+          ]
+        },
+        "spec_0": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_1": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_2": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_m1": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_compare": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_eqb": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_ltb": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_leb": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ]
+          },
+          "used_tactics": [
+            "custom6"
+          ]
+        },
+        "spec_min": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_max": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_abs": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_opp": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_succ": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_add": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_pred": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_sub": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_mul": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_square": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_pow_pos": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_pow_N": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_pow": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_log2": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_sqrt": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_div_eucl": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_modulo": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_quot": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_rem": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_gcd": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_sgn": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_even": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_odd": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "Zlnot_alt1": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "Zlnot_alt2": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "Zlnot_alt3": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_norm_pos": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": [
+            "custom10"
+          ]
+        },
+        "spec_norm_pos_pos": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_testbit": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_shiftl": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_shiftr": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_land": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_lor": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_ldiff": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_lxor": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        },
+        "spec_div2": {
+          "available_tactics": [
+            {
+              "name": "custom0",
+              "definition": "Ltac custom0 H0 := rewrite H0; auto.\n"
+            },
+            {
+              "name": "custom2",
+              "definition": "Ltac custom2 H0 := intros H0; case H0.\n"
+            },
+            {
+              "name": "custom6",
+              "definition": "Ltac custom6 H0 H1 H2 H3 H4 := apply H0; rewrite H1; unfold H2, H3; rewrite H4. \n"
+            },
+            {
+              "name": "custom10",
+              "definition": "Ltac custom10 := simpl; auto with zarith. \n"
+            }
+          ],
+          "examples": {
+            "custom0": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c8_goal : eq (NN.to_Z (NN.of_N (Npos p))) (Zpos p)"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom0 NN.spec_of_N .",
+                "tactic_args": [
+                  "c9_goal : eq (Z.opp (NN.to_Z (NN.of_N (Npos p)))) (Zneg p)"
+                ],
+                "tactic_res": []
+              }
+            ],
+            "custom2": [
+              {
+                "lemma_name": "spec_of_Z",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : Z, eq (to_Z (of_Z x)) x"
+                ],
+                "tactic_res": [
+                  "c2_goal : eq (to_Z (of_Z 0)) 0",
+                  "c2_x : Z",
+                  "c3_goal : forall p : positive, eq (to_Z (of_Z (Zpos p))) (Zpos p)",
+                  "c3_x : Z",
+                  "c4_goal : forall p : positive, eq (to_Z (of_Z (Zneg p))) (Zneg p)",
+                  "c4_x : Z"
+                ]
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom2 x .",
+                "tactic_args": [
+                  "c1_goal : forall x : t_, Logic.eq (to_Z (opp x)) (Z.opp (to_Z x))"
+                ],
+                "tactic_res": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))",
+                  "c2_x : t_",
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))",
+                  "c3_x : t_"
+                ]
+              }
+            ],
+            "custom6": [
+              {
+                "lemma_name": "spec_leb",
+                "tactic_sig": "custom6 Bool.eq_iff_eq_true Z.leb_le Z.le leb spec_compare .",
+                "tactic_args": [
+                  "c1_goal : Logic.eq (leb x y) (Z.leb (to_Z x) (to_Z y))"
+                ],
+                "tactic_res": [
+                  "c2_goal : iff\n  (Logic.eq\n     match Z.compare (to_Z x) (to_Z y) with\n     | Gt => false\n     | _ => true\n     end true) (not (Logic.eq (Z.compare (to_Z x) (to_Z y)) Gt))"
+                ]
+              }
+            ],
+            "custom10": [
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c2_goal : forall t : NN.t, Logic.eq (to_Z (opp (Pos t))) (Z.opp (to_Z (Pos t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_opp",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c3_goal : forall t : NN.t, Logic.eq (to_Z (opp (Neg t))) (Z.opp (to_Z (Neg t)))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c7_goal : forall _ : Logic.eq (NN.to_Z x) 0,\nLogic.eq (to_Z (Pos x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              },
+              {
+                "lemma_name": "spec_norm_pos",
+                "tactic_sig": "custom10 .",
+                "tactic_args": [
+                  "c8_goal : forall _ : not (Logic.eq (NN.to_Z x) 0),\nLogic.eq (to_Z (Neg x)) (Z.opp (NN.to_Z x))"
+                ],
+                "tactic_res": []
+              }
+            ]
+          },
+          "used_tactics": []
+        }
+      }
+    }
+  }

@@ -1,5 +1,7 @@
+-generate-meta-for-package coq-bignums
 -I plugin
 -R . Bignums
+-arg -w -arg +undeclared-scope
 
 BigN/Nbasic.v
 BigN/NMake.v
@@ -10,7 +12,6 @@ SpecViaZ/ZSig.v
 SpecViaZ/NSigNAxioms.v
 SpecViaZ/ZSigZAxioms.v
 SpecViaQ/QSig.v
-BigQ/Depend.v
 BigQ/QMake.v
 BigQ/BigQ.v
 CyclicDouble/DoubleBase.v

@@ -69,7 +69,6 @@ class CoqBM25TrainingDataRetriever(object):
         assert data_folder is not None
         assert metadata_filename is not None
         assert os.path.exists(data_folder)
-        print(os.path.join(data_folder, metadata_filename))
         assert os.path.exists(os.path.join(data_folder, metadata_filename))
         self.k1 = k1
         self.b = b

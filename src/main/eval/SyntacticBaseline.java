@@ -315,7 +315,7 @@ public class SyntacticBaseline {
                 if (tactic != null) {
                     boolean stop = false;
                     for (String t: tactic.cleanCompleteTokens) {
-                        if (t.contains("destr_t x")) {
+                        if (t.contains("destr_t x") || t.contains("caseEq ( map_vars map)!i")) {
                             stop = true;
                             break;
                         }

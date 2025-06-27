@@ -1,0 +1,75 @@
+Settings: 
+{
+    "name": "n_60_dfs_gpt4_o_always_retrieve",
+    "use_hammer": "ALLOW",
+    "setting_type": "Agent",
+    "max_proof_depth": 100,
+    "timeout_in_secs": 200,
+    "proof_retries": 4,
+    "max_tokens_per_action": 100,
+    "max_theorems_in_prompt": 3,
+    "gpt_model_name": "gpt-4o",
+    "max_number_of_episodes": 1,
+    "max_steps_per_episode": 60,
+    "render": false,
+    "checkpoint_dir": ".log/checkpoints/bignums_tacminer/n_60_dfs_gpt4_o_always_retrieve/coq_dfs_always_retrieve",
+    "should_checkpoint": false,
+    "temperature": 0.7,
+    "max_history_messages": 0,
+    "policy_name": "Dfs",
+    "proof_dump_dir": ".log/proofs/eval_driver/dfs/bignums_tacminer/20250626-155516",
+    "use_human_readable_proof_context": true,
+    "sample": 1.0,
+    "sample_seed": 3840,
+    "use_example_retrieval": false,
+    "always_use_useful_theorem_retrieval": true,
+    "num_goal_per_prompt": null
+}
+Benchmark: 
+{
+    "name": "bignums_tacminer",
+    "num_files": 1,
+    "language": "COQ",
+    "datasets": [
+        {
+            "project": "../raw-data/bignums",
+            "files": [
+                {
+                    "path": "BigQ/QMake_comp_TM.v",
+                    "theorems": [
+                        "strong_spec_red"
+                    ],
+                    "max_retry_attempts_limits": {},
+                    "max_time_limits_in_secs": {}
+                }
+            ]
+        }
+    ],
+    "few_shot_data_path_for_retrieval": null,
+    "few_shot_metadata_filename_for_retrieval": null,
+    "dfs_data_path_for_retrieval": null,
+    "dfs_metadata_filename_for_retrieval": null,
+    "timeout_per_theorem_in_secs": 720
+}
+Lemma: strong_spec_red
+File: ../raw-data/bignums/BigQ/QMake_comp_TM.v
+Proof/Incomplete proof: 
+strong_spec_red  : forall x, [red x] = Qred [x].
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: strong_spec_red  : forall x, [red x] = Qred [x].
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 15
+SearchTimeInSecs: 24.43939995765686
+NumberOfBacktracks: 3
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 12, 'attempt_idx': 3, 'total_queries': 34}
+
+
+Success rate: 0/1 = 0.0 for benchmark: bignums_tacminer

@@ -1,0 +1,428 @@
+File: ../raw-data/bignums/BigN/NMake_comp_TM.v
+Dataset:
+ {
+    "project": "../raw-data/bignums",
+    "files": [
+        {
+            "path": "BigN/NMake_comp_TM.v",
+            "theorems": [
+                "spec_testbit",
+                "spec_div2",
+                "spec_ltb",
+                "spec_max",
+                "spec_pred0",
+                "spec_sub0"
+            ],
+            "max_retry_attempts_limits": {},
+            "max_time_limits_in_secs": {}
+        }
+    ]
+}
+Evaluation Settings:
+ {
+    "name": "n_60_dfs_gpt4_o_always_retrieve",
+    "use_hammer": "ALLOW",
+    "setting_type": "Agent",
+    "max_proof_depth": 100,
+    "timeout_in_secs": 200,
+    "proof_retries": 4,
+    "max_tokens_per_action": 100,
+    "max_theorems_in_prompt": 3,
+    "gpt_model_name": "gpt-4o",
+    "max_number_of_episodes": 1,
+    "max_steps_per_episode": 60,
+    "render": false,
+    "checkpoint_dir": ".log/checkpoints/bignums_tacminer/n_60_dfs_gpt4_o_always_retrieve/coq_dfs_always_retrieve",
+    "should_checkpoint": false,
+    "temperature": 0.7,
+    "max_history_messages": 0,
+    "policy_name": "Dfs",
+    "proof_dump_dir": ".log/proofs/eval_driver/dfs/bignums_tacminer/20250626-024300",
+    "use_human_readable_proof_context": true,
+    "sample": 1.0,
+    "sample_seed": 3840,
+    "use_example_retrieval": false,
+    "always_use_useful_theorem_retrieval": true,
+    "num_goal_per_prompt": null
+}
+
+
+spec_testbit  : forall x p, testbit x p = Z.testbit [ x ] [ p ] .
+Proof.
+    custom25 testbit spec_odd spec_shiftr Z.testbit_odd.
+Qed.
+
+ProofFile: None
+LemmaName: spec_testbit  : forall x p, testbit x p = Z.testbit [ x ] [ p ] .
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 13.480699300765991
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+
+spec_div2  : forall x, [ div2 x ] = Z.div2 [ x ] .
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_div2  : forall x, [ div2 x ] = Z.div2 [ x ] .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 40
+SearchTimeInSecs: 65.46754908561707
+NumberOfBacktracks: 13
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 27}
+
+
+
+spec_ltb  : forall  x y ,  ltb x y = Z.ltb [ x ] [ y ] .
+Proof.
+    custom27 eq_iff_eq_true Z.ltb_lt Z.lt ltb spec_compare.
+    custom45.
+Qed.
+
+ProofFile: None
+LemmaName: spec_ltb  : forall  x y ,  ltb x y = Z.ltb [ x ] [ y ] .
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 14.466753005981445
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+
+spec_max  : forall n m, [ max n m ] = Z.max [ n ] [ m ] .
+Proof.
+    custom9 n m max Z.max spec_compare .
+Qed.
+
+ProofFile: None
+LemmaName: spec_max  : forall n m, [ max n m ] = Z.max [ n ] [ m ] .
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 14.73375391960144
+NumberOfBacktracks: 0
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+
+spec_pred0  : forall x, [ x ] = 0 -> [ pred x ] = 0 .
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_pred0  : forall x, [ x ] = 0 -> [ pred x ] = 0 .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 15
+SearchTimeInSecs: 25.47795271873474
+NumberOfBacktracks: 3
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 12}
+
+
+
+spec_sub0  : forall x y, [ x ] < [ y ] -> [ sub x y ] = 0 .
+Proof.
+    custom65 x y sub_fold spec_same_level n x y z H LE spec_reduce z H LE.
+    custom36 z.
+    intros.
+    custom36 z.
+    custom36 z.
+    intros.
+    custom36 z.
+    intros.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    intros.
+    custom36 z.
+    intros.
+    custom36 z.
+    custom36 z.
+    intros.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    intros.
+    custom36 z.
+    intros.
+    custom36 z.
+    intros.
+    custom36 z.
+    custom36 z.
+
+
+ProofFile: None
+LemmaName: spec_sub0  : forall x y, [ x ] < [ y ] -> [ sub x y ] = 0 .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 67
+SearchTimeInSecs: 319.17280101776123
+NumberOfBacktracks: 7
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 60}
+
+
+
+spec_div2  : forall x, [ div2 x ] = Z.div2 [ x ] .
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_div2  : forall x, [ div2 x ] = Z.div2 [ x ] .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 14
+SearchTimeInSecs: 23.487757921218872
+NumberOfBacktracks: 3
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 11}
+
+
+
+spec_pred0  : forall x, [ x ] = 0 -> [ pred x ] = 0 .
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_pred0  : forall x, [ x ] = 0 -> [ pred x ] = 0 .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 64
+SearchTimeInSecs: 98.96321415901184
+NumberOfBacktracks: 14
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 50}
+
+
+
+spec_sub0  : forall x y, [ x ] < [ y ] -> [ sub x y ] = 0 .
+Proof.
+    custom65 x y sub_fold spec_same_level n x y z H LE spec_reduce z H LE.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+
+
+ProofFile: None
+LemmaName: spec_sub0  : forall x y, [ x ] < [ y ] -> [ sub x y ] = 0 .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 61
+SearchTimeInSecs: 297.60817193984985
+NumberOfBacktracks: 1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 60}
+
+
+
+spec_div2  : forall x, [ div2 x ] = Z.div2 [ x ] .
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: spec_div2  : forall x, [ div2 x ] = Z.div2 [ x ] .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 16.20055103302002
+NumberOfBacktracks: 2
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+
+spec_pred0  : forall x, [ x ] = 0 -> [ pred x ] = 0 .
+Proof.
+    custom63 x pred_fold x H x y H' y H' spec_reduce.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+    custom36 y.
+
+
+ProofFile: None
+LemmaName: spec_pred0  : forall x, [ x ] = 0 -> [ pred x ] = 0 .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 80
+SearchTimeInSecs: 269.1057472229004
+NumberOfBacktracks: 20
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 60}
+
+
+
+spec_div2  : forall x, [ div2 x ] = Z.div2 [ x ] .
+Proof.
+    intros x.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+    intros.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+    custom38 x.
+
+
+ProofFile: None
+LemmaName: spec_div2  : forall x, [ div2 x ] = Z.div2 [ x ] .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 64
+SearchTimeInSecs: 178.41683197021484
+NumberOfBacktracks: 4
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 60}
+
+
+
+spec_sub0  : forall x y, [ x ] < [ y ] -> [ sub x y ] = 0 .
+Proof.
+    custom65 x y sub_fold spec_same_level n x y z H LE spec_reduce z H LE.
+    custom36 z.
+    intros.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+    custom36 z.
+
+
+ProofFile: None
+LemmaName: spec_sub0  : forall x y, [ x ] < [ y ] -> [ sub x y ] = 0 .
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 62
+SearchTimeInSecs: 384.0076959133148
+NumberOfBacktracks: 2
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 60}
+

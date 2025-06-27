@@ -29,7 +29,7 @@ Import Cyclic63.
 Delimit Scope bigN_scope with bigN.
 
 Module BigN <: NType <: OrderedTypeFull <: TotalOrder :=
-  NMake.Make Int63Cyclic
+  NMake.Make Uint63Cyclic
   <+ NTypeIsNAxioms
   <+ NBasicProp [no inline] <+ NExtraProp [no inline]
   <+ HasEqBool2Dec [no inline]
@@ -126,7 +126,7 @@ Ltac isStaticWordCst t :=
    | false => constr:(false)
    | true => isStaticWordCst t2
    end
- | _ => isInt63cst t
+ | _ => isUint63cst t
  end.
 
 Ltac isBigNcst t :=
@@ -177,7 +177,7 @@ Add Ring BigNr : BigNring
 Section TestRing.
 Let test : forall x y, 1 + x*y^1 + x^2 + 1 == 1*1 + 1 + y*x + 1*x*x.
 intros. ring_simplify. reflexivity.
-Qed.
+Defined.
 End TestRing.
 
 (** We benefit also from an "order" tactic *)
@@ -186,12 +186,12 @@ Ltac bigN_order := BigN.order.
 
 Section TestOrder.
 Let test : forall x y : bigN, x<=y -> y<=x -> x==y.
-Proof. bigN_order. Qed.
+Proof. bigN_order. Defined.
 End TestOrder.
 
 (** We can use at least a bit of lia by translating to [Z]. *)
 
 Section TestLia.
 Let test : forall x y : bigN, x<=y -> y<=x -> x==y.
-Proof. intros x y. BigN.zify. lia. Qed.
+Proof. intros x y. BigN.zify. lia. Defined.
 End TestLia.

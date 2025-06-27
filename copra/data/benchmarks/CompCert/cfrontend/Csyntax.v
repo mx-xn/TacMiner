@@ -6,10 +6,11 @@
 (*                                                                     *)
 (*  Copyright Institut National de Recherche en Informatique et en     *)
 (*  Automatique.  All rights reserved.  This file is distributed       *)
-(*  under the terms of the GNU General Public License as published by  *)
-(*  the Free Software Foundation, either version 2 of the License, or  *)
-(*  (at your option) any later version.  This file is also distributed *)
-(*  under the terms of the INRIA Non-Commercial License Agreement.     *)
+(*  under the terms of the GNU Lesser General Public License as        *)
+(*  published by the Free Software Foundation, either version 2.1 of   *)
+(*  the License, or  (at your option) any later version.               *)
+(*  This file is also distributed under the terms of the               *)
+(*  INRIA Non-Commercial License Agreement.                            *)
 (*                                                                     *)
 (* *********************************************************************)
 
@@ -53,9 +54,9 @@ Inductive expr : Type :=
   | Ecomma (r1 r2: expr) (ty: type)       (**r sequence expression [r1, r2] *)
   | Ecall (r1: expr) (rargs: exprlist) (ty: type)
                                              (**r function call [r1(rargs)] *)
-  | Ebuiltin (ef: external_function) (tyargs: typelist) (rargs: exprlist) (ty: type)
+  | Ebuiltin (ef: external_function) (tyargs: list type) (rargs: exprlist) (ty: type)
                                                  (**r builtin function call *)
-  | Eloc (b: block) (ofs: ptrofs) (ty: type)
+  | Eloc (b: block) (ofs: ptrofs) (bf: bitfield) (ty: type)
                        (**r memory location, result of evaluating a l-value *)
   | Eparen (r: expr) (tycast: type) (ty: type)   (**r marked subexpression *)
 
@@ -105,10 +106,10 @@ Definition Epreincr (id: incr_or_decr) (l: expr) (ty: type) :=
   It is expressed as an invocation of a builtin function. *)
 
 Definition Eselection (r1 r2 r3: expr) (ty: type) :=
-  let t := typ_of_type ty in
-  let sg := mksignature (AST.Tint :: t :: t :: nil) t cc_default in
+  let t := inj_type (typ_of_type ty) in
+  let sg := [Xint; t; t ---> t]%asttyp in
   Ebuiltin (EF_builtin "__builtin_sel"%string sg)
-           (Tcons type_bool (Tcons ty (Tcons ty Tnil)))
+           (type_bool :: ty :: ty :: nil)
            (Econs r1 (Econs r2 (Econs r3 Enil)))
            ty.
 
@@ -116,7 +117,7 @@ Definition Eselection (r1 r2 r3: expr) (ty: type) :=
 
 Definition typeof (a: expr) : type :=
   match a with
-  | Eloc _ _ ty => ty
+  | Eloc _ _ _ ty => ty
   | Evar _ ty => ty
   | Ederef _ ty => ty
   | Efield _ _ ty => ty

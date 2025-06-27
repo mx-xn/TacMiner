@@ -1,0 +1,7 @@
+Ltac custom0 H0 :=  apply H0; [assumption | .. ].
+Ltac custom1 H0 H1 H2 :=  intro H0; [apply H1; [custom0 H2 | .. ] | .. ].
+Ltac custom2 H0 H1 H2 :=  intros H0 H1 H2; [apply H1; [custom0 H0 | .. ] | .. ].
+Ltac custom3 H0 H1 H2 :=  intros H0 H1 H2; [custom0 H0; [custom0 H1 | .. ] | .. ].
+Ltac custom4 H0 H1 H5 H3 H4 :=  assert ( H3 : H0 -> H1 ); [custom1 H5 H3 H4 | .. ].
+Ltac custom5 H0 H3 H1 H2 :=  apply H0; [custom1 H3 H1 H2 | .. ].
+Ltac custom6 H0 :=  custom0 H0; [assumption | .. ].

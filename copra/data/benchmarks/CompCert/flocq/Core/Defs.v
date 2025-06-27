@@ -1,6 +1,6 @@
 (**
 This file is part of the Flocq formalization of floating-point
-arithmetic in Coq: http://flocq.gforge.inria.fr/
+arithmetic in Coq: https://flocq.gitlabpages.inria.fr/
 
 Copyright (C) 2009-2018 Sylvie Boldo
 #<br />#
@@ -18,7 +18,10 @@ COPYING file for more details.
 *)
 
 (** * Basic definitions: float and rounding property *)
-Require Import Raux.
+
+From Coq Require Import ZArith Reals.
+
+Require Import Raux Zaux.
 
 Section Def.
 
@@ -79,5 +82,9 @@ Definition Rnd_NG_pt (F : R -> Prop) (P : R -> R -> Prop) (x f : R) :=
 Definition Rnd_NA_pt (F : R -> Prop) (x f : R) :=
   Rnd_N_pt F x f /\
   forall f2 : R, Rnd_N_pt F x f2 -> (Rabs f2 <= Rabs f)%R.
+
+Definition Rnd_N0_pt (F : R -> Prop) (x f : R) :=
+  Rnd_N_pt F x f /\
+  forall f2 : R, Rnd_N_pt F x f2 -> (Rabs f <= Rabs f2)%R.
 
 End RND.

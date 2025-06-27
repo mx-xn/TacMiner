@@ -175,20 +175,18 @@ nlive_dead_stack
 Proof. intros; constructor; simpl; intros. - rewrite ISet.In_interval. intuition. - rewrite PTree.gempty in H1; discriminate. Qed.
 nlive_lub_l
 Proof. intros. inversion H; subst b0 ofs nm1. destruct nm2; simpl. auto. constructor; simpl; intros. - rewrite ISet.In_inter. intros [P Q]. eelim STK; eauto. - rewrite PTree.gcombine in H1 by auto. destruct gl!id as [iv1|] eqn:NG1; try discriminate; destruct gl0!id as [iv2|] eqn:NG2; inv H1. rewrite ISet.In_inter. intros [P Q]. eelim GL; eauto. Qed.
-Ltac custom_tac73 H0 H1 H2 H3 := intros; inversion H0; subst H1 H2 H3.
-
-Ltac custom_tac1  := simpl; auto.
-
-Ltac custom_tac72 H0 H1 H2 H3 := simpl; intros; rewrite H0; intros [ H1 H2]; eelim H3; eauto.
-
-Ltac custom_tac58 H0 H1 := inv H0; rewrite H1.
-
-Ltac custom_tac70 H0 := eelim H0; eauto.
-
 nlive_lub_r
-Proof. custom_tac73 H b0 ofs nm2; destruct nm1; custom_tac1 . constructor; custom_tac72 ISet.In_inter P Q STK. - rewrite PTree.gcombine in H1 by auto. destruct gl0!id as [ iv1|] eqn:NG1. - try discriminate; destruct gl!id as [ iv2|] eqn:NG2; custom_tac58 H1 ISet.In_inter. intros [ P Q]. custom_tac70 GL. Qed.
+Proof. intros. inversion H; subst b0 ofs nm2. destruct nm1; simpl. auto. constructor; simpl; intros. - rewrite ISet.In_inter. intros [P Q]. eelim STK; eauto. - rewrite PTree.gcombine in H1 by auto. destruct gl0!id as [iv1|] eqn:NG1; try discriminate; destruct gl!id as [iv2|] eqn:NG2; inv H1. rewrite ISet.In_inter. intros [P Q]. eelim GL; eauto. Qed.
+Ltac custom_tac63 H0 := unfold H0; intros.
+
+Ltac custom_tac9 H0 := inv H0; constructor.
+
+Ltac custom_tac129 H0 H1 H2 := specialize ( H0 H1); rewrite H2 in H0.
+
+Ltac custom_tac139 H0 := eauto; rewrite H0.
+
 nmem_beq_sound
-Proof. unfold nmem_beq; intros. destruct nm1 as [ | stk1 gl1]; destruct nm2 as [ | stk2 gl2]; try discriminate. - split; intros L; inv L. - InvBooleans. rewrite ISet.beq_spec in H0. rewrite PTree.beq_correct in H1. split; intros L; inv L; constructor; intros. + rewrite <- H0. eauto. + specialize (H1 id). rewrite H2 in H1. destruct gl1!id as [iv1|] eqn: NG; try contradiction. rewrite ISet.beq_spec in H1. rewrite <- H1. eauto. + rewrite H0. eauto. + specialize (H1 id). rewrite H2 in H1. destruct gl2!id as [iv2|] eqn: NG; try contradiction. rewrite ISet.beq_spec in H1. rewrite H1. eauto. Qed.
+Proof. custom_tac63 nmem_beq. destruct nm1 as [ | stk1 gl1]; destruct nm2 as [ | stk2 gl2]; try discriminate. - split; intros L; inv L. - InvBooleans. rewrite ISet.beq_spec in H0. rewrite PTree.beq_correct in H1. split; intros L; custom_tac9 L; intros. + rewrite <- H0. eauto. + custom_tac129 H1 id H2. destruct gl1!id as [ iv1|] eqn: NG; try contradiction. rewrite ISet.beq_spec in H1. rewrite <- H1. custom_tac139 H0. eauto. + custom_tac129 H1 id H2. destruct gl2!id as [ iv2|] eqn: NG; try contradiction. rewrite ISet.beq_spec in H1. rewrite H1. eauto. Qed.
 eq_refl
 Proof. intro x. unfold eq; destruct x; simpl; split. apply NE.eq_refl. tauto. Qed.
 eq_sym

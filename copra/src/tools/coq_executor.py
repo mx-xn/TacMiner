@@ -116,20 +116,27 @@ class CoqExecutor:
         return self.coq.proof_context is not None and len(self.coq.proof_context.fg_goals) == 0 and len(self.coq.proof_context.all_goals) > 0
 
     def run_next(self) -> bool:
+        # debugging_mx
+        # print("in run_next of coq_executor")
         try:
             stmt = next(self.main_file_iter)
+            print("next stmt is %s " % stmt)
         except StopIteration:
             self.execution_complete = True
             return False
         self.current_stmt = stmt
         self.line_num += 1
         try:
+            # print("trying to run_stmt in run_next")
             self.coq.run_stmt(stmt, timeout=self.timeout_in_sec)
-        except:
+        except Exception as e:
+            print("got an exeption in run_next of coq_executor")
+            print("exception: %s" % e)
             if not self.suppress_error_log:
                 logger.error(f"Got an exception while running '{stmt}' on coq. File name: {self.main_file}")
                 logger.exception(f"Exception Log")
             raise
+        print("complete run next in coq_executor w/o exception")
         return True
     
     def get_tokens_in_given_stmt(self, stmt: str, ignore_first_token: bool = False) -> typing.Generator[str, None, None]:
@@ -412,6 +419,7 @@ class CoqStdInOutExecutor:
         print("In> ", end="")
         while True:
             try:
+                print("in function run_in_loop") # mx_debugging
                 cmd_ran = self.coq_exec.run_next()
                 if not cmd_ran:
                     break
