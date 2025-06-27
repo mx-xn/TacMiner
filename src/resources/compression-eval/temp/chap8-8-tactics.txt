@@ -1,2 +1,0 @@
-Ltac custom0  := simpl; [auto | .. ].
-

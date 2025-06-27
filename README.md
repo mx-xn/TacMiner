@@ -36,24 +36,22 @@ Once in the docker container, we have a few more setup steps to do:
 source /opt/conda/etc/profile.d/conda.sh
 conda activate tacminer
 
-# run the setup script
+# run the tacminer + copra setup script (~ 7min)
 ./src/scripts/setup.sh
 
-# install dependencies
-conda install conda-forge::matplotlib
-conda install pandas
-conda install -c conda-forge grpcio
+cd copra
+./src/scripts/setup.sh
 ```
 
 ## Step-by-Step Instructions
 
 ### Reproducing Claim #1 (Section 8.2): 
 
-- **Run TacMiner (fast):**
+- **Run TacMiner (~ 20min):**
    ```bash
    ./run.sh rq1 0
 
-- **Run Peano baseline (slower)**:
+- **Run Peano baseline (~3hrs)**: 
 
    ```bash
     ./run.sh rq1 1
@@ -62,7 +60,7 @@ conda install -c conda-forge grpcio
    ```bash
     ./run.sh rq1-format
 
-See results/RQ1-tactics-stats/summary.txt for the statistics and data needed to reproduce the findings from Section 8.2.
+See `evaluation/results/RQ1-tactics-stats/summary.txt` for the statistics and data needed to reproduce the findings from Section 8.2.
 
 # TODO
 Note that <numbers are different>
@@ -70,10 +68,10 @@ Note that <numbers are different>
 
 ### Reproducing Claim #2 (Section 8.3): 
 
-- **Run TacMiner (fast):**
+- **Run TacMiner (~ 3min):**
    ```bash
    ./run.sh rq2 0
-- Run Peano baseline (slower):
+- **Run Peano baseline (~ 70min)**:
 
    ```bash
     ./run.sh rq2 1
@@ -82,7 +80,7 @@ Note that <numbers are different>
    ```bash
     ./run.sh rq2-format
 
-See results/RQ2-compression-rate/summary.txt for the compression rate data for Section 8.2.
+See `evaluation/results/RQ2-compression-rate/summary.txt` for the compression rate data for Section 8.2.
 
 # TODO
 Note that <numbers are different>
@@ -126,7 +124,7 @@ Section 8.5 examines how well TacMiner performs when less training data is avail
 
 #### How to Run
 
-1. **Start the experiment:**
+1. **Start the experiment: (~ 3hrs)**
    ```bash
    ./run.sh rq4
 

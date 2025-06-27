@@ -129,13 +129,7 @@ if __name__ == "__main__":
     bench_repo = args.domain
     os.chdir(root_dir)
 
-    # bench_repo = "coq-art"
-    # filename = "exo_frac1"
-    # bench_repo = "atpl"
-    # bench_repo = "CompCert"
-    # filename = "CSL1"
     with open("evaluation/setup/intermediate/"+bench_repo+"/"+filename+"_tacs.txt", 'r') as fd:
-    # with open("src/resources/compression-eval/baseline-input/"+bench_repo+"/"+filename+"_tacs.txt", 'r') as fd:
         file_content = fd.read().split("-----")
 
     # Parsing
@@ -181,10 +175,6 @@ if __name__ == "__main__":
 
     with CoqCustomFileExec(in_file, project_root = project_root) as coq_exec:
         with open(out_file, 'w') as fd:
-            # coq_exec.run_in_loop(fd, tactics, proof_dict)
             coq_exec.run_in_loop(fd, tactics, new_pdict, tac_dict)
-        # with open("src/resources/compression-eval/baseline-input/"+bench_repo+"/"+filename+"_tacs_verified.txt", 'w') as fd:
         with open("evaluation/setup/intermediate/"+bench_repo+"/"+filename+"_tacs_verified.txt", 'w') as fd:
             fd.write("F" if coq_exec.failed_proofs else "T")
-        # with open("src/resources/maxsat/tacticList_verified.txt", 'w') as fd:
-        #     fd.write("F" if coq_exec.failed_proofs else "T")

@@ -1,2 +1,0 @@
-Ltac custom0  := apply ( Pfact1 1 1 ); [discriminate |apply Pfact0 | .. ].
-

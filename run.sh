@@ -68,22 +68,28 @@ case "$cmd" in
   rq3)
     [ $# -eq 1 ] || usage
     mode="$1"
-    echo ">>> Running RQ3 (mode=$mode)..."
-    bash src/scripts/run_rq3.sh "$mode"
+    if [ "$mode" = "0" ]; then
+    bash ./evaluation/scripts/RQ3/copra-vanilla-rq3.sh
+    elif [ "$mode" = "1" ]; then
+    bash ./evaluation/scripts/RQ3/copra-peano-rq3.sh
+    else
+    bash ./evaluation/scripts/RQ3/copra-tacminer-rq3.sh
+    fi
+
     ;;
 
   rq3-format)
     echo ">>> Formatting RQ3 results..."
-    bash src/scripts/format_rq3.sh
+    bash ./evaluation/scripts/RQ3/format-rq3.sh
     ;;
 
   rq4)
-    bash src/scripts/run_rq4.sh
+    bash ./evaluation/scripts/RQ4/tacminer-rq4.sh
     ;;
 
   format-rq4)
     echo ">>> Formatting RQ4 results..."
-    bash src/scripts/format_rq4.sh
+    bash ./evaluation/scripts/RQ4/format-rq4.sh
     ;;
 
   rq5)
@@ -99,7 +105,7 @@ case "$cmd" in
 
   format-rq5)
     echo ">>> Formatting RQ5 results..."
-    bash src/scripts/format_rq5.sh
+    bash ./evaluation/scripts/RQ5/format-rq5.sh
     ;;
 
   *)

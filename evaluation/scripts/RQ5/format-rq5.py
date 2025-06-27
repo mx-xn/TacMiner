@@ -51,6 +51,7 @@ for dom in DOMAINS:
     tm = data['tacminer'][dom]
     np_ = data['no_pruning'][dom]
     ng = data['no_grammar'][dom]
+    # upperbound of tactics length. For ablation bug
     N = len(tm)
     if N == 0:
         print(f"→ skipping domain '{dom}' (no tacminer data)")
@@ -83,21 +84,6 @@ for dom in DOMAINS:
         for i in range(N):
             fo.write(f"| {i+1} | {tm_c[i]} | {np_c[i]} | {ng_c[i]} |\n")
     print("Wrote accumulated‐time table:", table_path)
-
-    # # pad with empty strings when missing
-    # def pad(lst):
-    #     return [f"{v:.6g}" for v in lst] + ['']*(N - len(lst))
-    # tm_p = pad(tm)
-    # np_p = pad(np_)
-    # ng_p = pad(ng)
-
-    # # 3a. write table
-    # with open(table_path, 'w') as fo:
-    #     fo.write("| num_tacs_learned | unit_time(s)_tacminer | unit_time(s)_no_pruning | unit_time(s)_no_grammar |\n")
-    #     fo.write("|------------------|------------------------|--------------------------|--------------------------|\n")
-    #     for i in range(N):
-    #         fo.write(f"| {i+1} | {tm_p[i]} | {np_p[i]} | {ng_p[i]} |\n")
-    # print("Wrote table:", table_path)
 
     # 3b. plot log–log
     plt.figure(figsize=(6,4))

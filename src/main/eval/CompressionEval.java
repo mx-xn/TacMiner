@@ -73,10 +73,6 @@ public class CompressionEval {
             e.printStackTrace();
         }
 
-        // System.out.println(firstTac.signature);
-        // System.out.println(sortedTactics);
-        // System.out.println(tacticsScript);
-
         String formatted = formatProof(tacticsScript.substring(0, tacticsScript.length() - 1), 1);
 
         // Hypotheses from the "first" context are in fact from the external section context
@@ -84,25 +80,6 @@ public class CompressionEval {
 
         return firstTac.signature + "\nProof.\n" + formatted + "Qed.";
     }
-
-//     public void updateCustomTacticsData(Map<String, String> data) {
-//         // update fields: tactic num, tactic #i len, tactic #i num args, tactic #i valid
-//         data.put("num-tactics-extracted", Integer.toString(this.enc.customTacticScripts.size()));
-// //        data.put("tactics-len", this.enc.customTacticScripts.stream()
-// //                .map(t -> Long.toString(t.chars().filter(ch -> ch == '.').count()))
-// //                .collect(Collectors.toList())
-// //                .toString());
-//         data.put("tactics-len", this.enc.connCompMcsIDs.stream()
-//                 .map(l -> l.size()).collect(Collectors.toList()).toString());
-//         data.put("tactics-args-len", this.enc.customTacticScripts.stream()
-//                 .map(t -> countTacticNumArgs(t.toString()))
-//                 .collect(Collectors.toList())
-//                 .toString());
-//         data.put("tactics-valid?", this.enc.customTacticScripts.stream()
-//                 .map(t -> Boolean.toString(true)) //todo: change to call the actual function
-//                 .collect(Collectors.toList())
-//                 .toString());
-//     }
 
     public static int countTacticNumArgs(String customTactic) {
         String[] tokens = customTactic.substring(0, customTactic.indexOf(":=")).trim().split(" ");
@@ -221,8 +198,8 @@ public class CompressionEval {
         }
 
         String[] outputFile = config.getInputFilename().split("/");
-        writeTo(String.join("\n", syntacticTacs),
-                compressionEvalPath + "coq-art-baseline/" + outputFile[outputFile.length - 1].replace(".v", ".txt"));
+        // writeTo(String.join("\n", syntacticTacs),
+        //         compressionEvalPath + "coq-art-baseline/" + outputFile[outputFile.length - 1].replace(".v", ".txt"));
     }
 
     public static int countProofsLength(String script) {
@@ -543,18 +520,18 @@ public class CompressionEval {
         return res;
     }
 
-    public static String findBaselineSyntacticTactics(List<Integer> proofIDs, String filename) {
+    // public static String findBaselineSyntacticTactics(List<Integer> proofIDs, String filename) {
 
-        String file = baselinePath + filename + "_baseline.json";
-        // get baseline input coq scripts
-        List<CoqProof> allProofs = Encoder.inputCoqScripts(file);
+    //     String file = baselinePath + filename + "_baseline.json";
+    //     // get baseline input coq scripts
+    //     List<CoqProof> allProofs = Encoder.inputCoqScripts(file);
 
-        // get the corresponding list of vertices
-        List<CoqProof> inputProofs = proofIDs.stream().map(id -> allProofs.get(id)).collect(Collectors.toList());
+    //     // get the corresponding list of vertices
+    //     List<CoqProof> inputProofs = proofIDs.stream().map(id -> allProofs.get(id)).collect(Collectors.toList());
 
-        // find maximum common sub-tactics based on their signature, leave traces behind
-        return findLongestCommonTactics(inputProofs.get(0).tactics, inputProofs.get(1).tactics);
-    }
+    //     // find maximum common sub-tactics based on their signature, leave traces behind
+    //     return findLongestCommonTactics(inputProofs.get(0).tactics, inputProofs.get(1).tactics);
+    // }
 
     public static String findLongestCommonTactics(List<CoqTactic> p1, List<CoqTactic> p2) {
         int maxLen = 1;

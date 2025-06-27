@@ -1,2 +1,0 @@
-Ltac custom0 H0 H1 := intro H0; [apply H1 | .. ].
-
