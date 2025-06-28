@@ -1,0 +1,1297 @@
+DIGEST 48e33648219b6915cf03025ddf85b861
+FBignums.SpecViaZ.ZSigZAxioms
+R541:544 Coq.Bool.Bool <> <> lib
+R546:551 Coq.ZArith.ZArith <> <> lib
+R553:563 Coq.Structures.OrdersFacts <> <> lib
+R565:568 Coq.NArith.Nnat <> <> lib
+R570:576 Coq.Numbers.Integer.Abstract.ZAxioms <> <> lib
+R578:581 Bignums.SpecViaZ.ZSig <> <> lib
+R583:585 Coq.micromega.Lia <> <> lib
+R696:701 Bignums.SpecViaZ.ZSig ZType' <> mod
+mod 668:681 <> ZTypeIsZAxioms
+R720:725 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_0 defax
+R727:732 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_1 defax
+R734:739 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_2 defax
+R741:748 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_add defax
+R750:757 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_sub defax
+R759:767 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pred defax
+R769:777 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_succ defax
+R780:787 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_mul defax
+R789:796 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_opp defax
+R798:806 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_of_Z defax
+R808:815 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_div defax
+R817:827 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_modulo defax
+R829:839 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_square defax
+R841:849 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_sqrt defax
+R852:863 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_compare defax
+R865:872 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_eqb defax
+R874:881 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_ltb defax
+R883:890 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_leb defax
+R892:899 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_max defax
+R901:908 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_min defax
+R911:918 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_abs defax
+R920:927 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_sgn defax
+R929:936 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pow defax
+R938:946 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_log2 defax
+R948:956 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_even defax
+R958:965 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_odd defax
+R967:974 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_gcd defax
+R977:985 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_quot defax
+R987:994 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_rem defax
+R996:1007 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_testbit defax
+R1009:1019 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_shiftl defax
+R1021:1031 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_shiftr defax
+R1034:1042 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_land defax
+R1044:1051 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_lor defax
+R1053:1062 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_ldiff defax
+R1064:1072 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_lxor defax
+R1074:1082 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_div2 defax
+R1216:1217 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R1220:1221 Bignums.SpecViaZ.ZSigZAxioms ZZ lt def
+R1224:1225 Bignums.SpecViaZ.ZSigZAxioms ZZ le def
+inst 1251:1258 ZTypeIsZAxioms eq_equiv
+R1262:1272 Coq.Classes.RelationClasses <> Equivalence class
+R1274:1275 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+inst 1369:1375 ZTypeIsZAxioms succ_wd
+R1379:1384 Coq.Classes.Morphisms <> Proper class
+R1398:1401 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R1389:1393 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R1387:1388 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R1394:1395 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+inst 1421:1427 ZTypeIsZAxioms pred_wd
+R1431:1436 Coq.Classes.Morphisms <> Proper class
+R1450:1453 Bignums.SpecViaZ.ZSigZAxioms ZZ pred defax
+R1441:1445 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R1439:1440 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R1446:1447 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+inst 1473:1478 ZTypeIsZAxioms add_wd
+R1482:1487 Coq.Classes.Morphisms <> Proper class
+R1508:1510 Bignums.SpecViaZ.ZSigZAxioms ZZ add defax
+R1492:1496 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R1490:1491 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R1499:1503 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R1497:1498 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R1504:1505 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+inst 1530:1535 ZTypeIsZAxioms sub_wd
+R1539:1544 Coq.Classes.Morphisms <> Proper class
+R1565:1567 Bignums.SpecViaZ.ZSigZAxioms ZZ sub defax
+R1549:1553 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R1547:1548 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R1556:1560 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R1554:1555 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R1561:1562 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+inst 1587:1592 ZTypeIsZAxioms mul_wd
+R1596:1601 Coq.Classes.Morphisms <> Proper class
+R1622:1624 Bignums.SpecViaZ.ZSigZAxioms ZZ mul defax
+R1606:1610 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R1604:1605 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R1613:1617 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R1611:1612 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R1618:1619 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+prf 1636:1644 ZTypeIsZAxioms pred_succ
+binder 1655:1655 <> n:1
+R1671:1674 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R1658:1661 Bignums.SpecViaZ.ZSigZAxioms ZZ pred defax
+R1664:1667 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R1669:1669 Bignums.SpecViaZ.ZSigZAxioms <> n:1 var
+R1675:1675 Bignums.SpecViaZ.ZSigZAxioms <> n:1 var
+prf 1731:1738 ZTypeIsZAxioms one_succ
+R1743:1746 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R1747:1750 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+prf 1786:1793 ZTypeIsZAxioms two_succ
+R1798:1801 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R1802:1805 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+sec 1841:1849 ZTypeIsZAxioms Induction
+var 1862:1862 ZTypeIsZAxioms.Induction A
+R1870:1873 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1866:1869 Bignums.SpecViaZ.ZSigZAxioms ZZ t defax
+var 1891:1894 ZTypeIsZAxioms.Induction A_wd
+R1898:1903 Coq.Classes.Morphisms <> Proper class
+R1916:1916 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.A var
+R1908:1910 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R1906:1907 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R1911:1913 Coq.Init.Logic <> iff def
+var 1930:1931 ZTypeIsZAxioms.Induction A0
+R1935:1935 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.A var
+var 1951:1952 ZTypeIsZAxioms.Induction AS
+binder 1963:1963 <> n:5
+R1969:1973 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R1966:1966 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.A var
+R1968:1968 Bignums.SpecViaZ.ZSigZAxioms <> n:5 var
+R1974:1974 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.A var
+R1977:1980 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R1982:1982 Bignums.SpecViaZ.ZSigZAxioms <> n:5 var
+var 1991:1991 ZTypeIsZAxioms.Induction B
+R1998:1998 Coq.Numbers.BinNums <> Z ind
+binder 1994:1994 <> z:7
+R2004:2004 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.A var
+R2007:2010 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R2012:2012 Bignums.SpecViaZ.ZSigZAxioms <> z:7 var
+prf 2023:2024 ZTypeIsZAxioms B0
+R2028:2028 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.B var
+R2047:2047 Bignums.SpecViaZ.ZSigZAxioms <> B vardef
+R2069:2072 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.A_wd var
+R2069:2072 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.A_wd var
+R2069:2072 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.A_wd var
+R2069:2072 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.A_wd var
+prf 2108:2109 ZTypeIsZAxioms BS
+R2124:2124 Coq.Numbers.BinNums <> Z ind
+binder 2120:2120 <> z:8
+R2130:2133 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2127:2127 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.B var
+R2129:2129 Bignums.SpecViaZ.ZSigZAxioms <> z:8 var
+R2134:2134 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.B var
+R2138:2140 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R2137:2137 Bignums.SpecViaZ.ZSigZAxioms <> z:8 var
+R2171:2171 Bignums.SpecViaZ.ZSigZAxioms <> B vardef
+R2188:2189 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.AS var
+R2188:2189 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.AS var
+R2213:2216 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R2220:2222 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R2233:2236 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R2239:2242 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R2213:2216 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R2220:2222 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R2233:2236 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R2239:2242 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+prf 2279:2280 ZTypeIsZAxioms BP
+R2295:2295 Coq.Numbers.BinNums <> Z ind
+binder 2291:2291 <> z:9
+R2301:2304 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2298:2298 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.B var
+R2300:2300 Bignums.SpecViaZ.ZSigZAxioms <> z:9 var
+R2305:2305 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.B var
+R2309:2311 Coq.ZArith.BinInt <> ::Z_scope:x_'-'_x not
+R2308:2308 Bignums.SpecViaZ.ZSigZAxioms <> z:9 var
+R2342:2342 Bignums.SpecViaZ.ZSigZAxioms <> B vardef
+R2358:2359 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.AS var
+R2358:2359 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.AS var
+R2358:2359 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.AS var
+R2378:2381 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R2384:2387 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R2391:2393 Coq.ZArith.BinInt <> ::Z_scope:x_'-'_x not
+R2405:2408 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R2378:2381 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R2384:2387 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R2391:2393 Coq.ZArith.BinInt <> ::Z_scope:x_'-'_x not
+R2405:2408 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+prf 2456:2462 ZTypeIsZAxioms B_holds
+R2477:2477 Coq.Numbers.BinNums <> Z ind
+binder 2473:2473 <> z:10
+R2480:2480 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.B var
+R2482:2482 Bignums.SpecViaZ.ZSigZAxioms <> z:10 var
+R2510:2520 Coq.ZArith.ZArith_dec <> Z_lt_le_dec thm
+R2510:2520 Coq.ZArith.ZArith_dec <> Z_lt_le_dec thm
+R2534:2544 Coq.ZArith.Wf_Z <> natlike_ind thm
+R2534:2544 Coq.ZArith.Wf_Z <> natlike_ind thm
+R2571:2572 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms B0 thm
+R2571:2572 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms B0 thm
+R2589:2590 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms BS thm
+R2589:2590 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms BS thm
+R2615:2616 Coq.ZArith.BinInt <> ::Z_scope:'-'_x not
+R2619:2619 Coq.ZArith.BinInt <> ::Z_scope:'-'_x not
+R2617:2617 Coq.ZArith.BinInt <> ::Z_scope:'-'_x not
+R2615:2616 Coq.ZArith.BinInt <> ::Z_scope:'-'_x not
+R2619:2619 Coq.ZArith.BinInt <> ::Z_scope:'-'_x not
+R2617:2617 Coq.ZArith.BinInt <> ::Z_scope:'-'_x not
+R2662:2662 Coq.ZArith.BinInt <> ::Z_scope:'-'_x not
+R2662:2662 Coq.ZArith.BinInt <> ::Z_scope:'-'_x not
+R2693:2703 Coq.ZArith.Wf_Z <> natlike_ind thm
+R2693:2703 Coq.ZArith.Wf_Z <> natlike_ind thm
+R2712:2713 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms B0 thm
+R2712:2713 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms B0 thm
+R2732:2741 Coq.ZArith.BinInt Z opp_succ thm
+R2751:2756 Coq.ZArith.BinInt Z pred def
+R2765:2766 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms BP thm
+R2732:2741 Coq.ZArith.BinInt Z opp_succ thm
+R2732:2741 Coq.ZArith.BinInt Z opp_succ thm
+R2765:2766 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms BP thm
+prf 2817:2828 ZTypeIsZAxioms bi_induction
+binder 2839:2839 <> n:11
+R2842:2842 Bignums.SpecViaZ.ZSigZAxioms <> ZTypeIsZAxioms.Induction.A var
+R2844:2844 Bignums.SpecViaZ.ZSigZAxioms <> n:11 var
+R2886:2889 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R2892:2895 Bignums.SpecViaZ.ZSigZAxioms ZZ to_Z defax
+R2886:2889 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R2892:2895 Bignums.SpecViaZ.ZSigZAxioms ZZ to_Z defax
+R2908:2914 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms B_holds thm
+R2908:2914 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms B_holds thm
+R2939:2947 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms.Induction <> sec
+prf 2959:2965 ZTypeIsZAxioms add_0_l
+binder 2976:2976 <> n:12
+R2984:2987 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R2980:2982 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R2983:2983 Bignums.SpecViaZ.ZSigZAxioms <> n:12 var
+R2988:2988 Bignums.SpecViaZ.ZSigZAxioms <> n:12 var
+prf 3044:3053 ZTypeIsZAxioms add_succ_l
+binder 3064:3064 <> n:13
+binder 3066:3066 <> m:14
+R3081:3084 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R3069:3069 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R3076:3079 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R3070:3073 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R3075:3075 Bignums.SpecViaZ.ZSigZAxioms <> n:13 var
+R3080:3080 Bignums.SpecViaZ.ZSigZAxioms <> m:14 var
+R3085:3088 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R3092:3094 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R3091:3091 Bignums.SpecViaZ.ZSigZAxioms <> n:13 var
+R3095:3095 Bignums.SpecViaZ.ZSigZAxioms <> m:14 var
+prf 3152:3158 ZTypeIsZAxioms sub_0_r
+binder 3169:3169 <> n:15
+R3177:3180 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R3173:3175 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'-'_x not
+R3172:3172 Bignums.SpecViaZ.ZSigZAxioms <> n:15 var
+R3181:3181 Bignums.SpecViaZ.ZSigZAxioms <> n:15 var
+prf 3237:3246 ZTypeIsZAxioms sub_succ_r
+binder 3257:3257 <> n:16
+binder 3259:3259 <> m:17
+R3274:3277 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R3263:3266 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'-'_x not
+R3273:3273 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'-'_x not
+R3262:3262 Bignums.SpecViaZ.ZSigZAxioms <> n:16 var
+R3267:3270 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R3272:3272 Bignums.SpecViaZ.ZSigZAxioms <> m:17 var
+R3278:3281 Bignums.SpecViaZ.ZSigZAxioms ZZ pred defax
+R3285:3287 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'-'_x not
+R3284:3284 Bignums.SpecViaZ.ZSigZAxioms <> n:16 var
+R3288:3288 Bignums.SpecViaZ.ZSigZAxioms <> m:17 var
+prf 3345:3351 ZTypeIsZAxioms mul_0_l
+binder 3362:3362 <> n:18
+R3370:3373 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R3366:3368 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R3369:3369 Bignums.SpecViaZ.ZSigZAxioms <> n:18 var
+prf 3430:3439 ZTypeIsZAxioms mul_succ_l
+binder 3450:3450 <> n:19
+binder 3452:3452 <> m:20
+R3467:3470 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R3455:3455 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R3462:3465 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R3456:3459 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R3461:3461 Bignums.SpecViaZ.ZSigZAxioms <> n:19 var
+R3466:3466 Bignums.SpecViaZ.ZSigZAxioms <> m:20 var
+R3476:3478 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R3472:3474 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R3471:3471 Bignums.SpecViaZ.ZSigZAxioms <> n:19 var
+R3475:3475 Bignums.SpecViaZ.ZSigZAxioms <> m:20 var
+R3479:3479 Bignums.SpecViaZ.ZSigZAxioms <> m:20 var
+prf 3535:3540 ZTypeIsZAxioms eqb_eq
+binder 3542:3542 <> x:21
+binder 3544:3544 <> y:22
+R3562:3566 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3555:3557 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3548:3550 Bignums.SpecViaZ.ZSigZAxioms ZZ eqb defax
+R3552:3552 Bignums.SpecViaZ.ZSigZAxioms <> x:21 var
+R3554:3554 Bignums.SpecViaZ.ZSigZAxioms <> y:22 var
+R3558:3561 Coq.Init.Datatypes <> true constr
+R3568:3571 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R3567:3567 Bignums.SpecViaZ.ZSigZAxioms <> x:21 var
+R3572:3572 Bignums.SpecViaZ.ZSigZAxioms <> y:22 var
+R3595:3602 Coq.ZArith.BinInt Z eqb_eq thm
+R3595:3602 Coq.ZArith.BinInt Z eqb_eq thm
+prf 3617:3622 ZTypeIsZAxioms leb_le
+binder 3624:3624 <> x:23
+binder 3626:3626 <> y:24
+R3644:3648 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3637:3639 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3630:3632 Bignums.SpecViaZ.ZSigZAxioms ZZ leb defax
+R3634:3634 Bignums.SpecViaZ.ZSigZAxioms <> x:23 var
+R3636:3636 Bignums.SpecViaZ.ZSigZAxioms <> y:24 var
+R3640:3643 Coq.Init.Datatypes <> true constr
+R3650:3653 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R3649:3649 Bignums.SpecViaZ.ZSigZAxioms <> x:23 var
+R3654:3654 Bignums.SpecViaZ.ZSigZAxioms <> y:24 var
+R3677:3684 Coq.ZArith.BinInt Z leb_le thm
+R3677:3684 Coq.ZArith.BinInt Z leb_le thm
+prf 3699:3704 ZTypeIsZAxioms ltb_lt
+binder 3706:3706 <> x:25
+binder 3708:3708 <> y:26
+R3726:3730 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3719:3721 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3712:3714 Bignums.SpecViaZ.ZSigZAxioms ZZ ltb defax
+R3716:3716 Bignums.SpecViaZ.ZSigZAxioms <> x:25 var
+R3718:3718 Bignums.SpecViaZ.ZSigZAxioms <> y:26 var
+R3722:3725 Coq.Init.Datatypes <> true constr
+R3732:3734 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R3731:3731 Bignums.SpecViaZ.ZSigZAxioms <> x:25 var
+R3735:3735 Bignums.SpecViaZ.ZSigZAxioms <> y:26 var
+R3758:3765 Coq.ZArith.BinInt Z ltb_lt thm
+R3758:3765 Coq.ZArith.BinInt Z ltb_lt thm
+prf 3780:3793 ZTypeIsZAxioms compare_eq_iff
+binder 3795:3795 <> n:27
+binder 3797:3797 <> m:28
+R3817:3821 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3812:3814 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3801:3807 Bignums.SpecViaZ.ZSigZAxioms ZZ compare defax
+R3809:3809 Bignums.SpecViaZ.ZSigZAxioms <> n:27 var
+R3811:3811 Bignums.SpecViaZ.ZSigZAxioms <> m:28 var
+R3815:3816 Coq.Init.Datatypes <> Eq constr
+R3823:3826 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R3822:3822 Bignums.SpecViaZ.ZSigZAxioms <> n:27 var
+R3827:3827 Bignums.SpecViaZ.ZSigZAxioms <> m:28 var
+R3858:3873 Coq.ZArith.BinInt Z compare_eq_iff thm
+R3858:3873 Coq.ZArith.BinInt Z compare_eq_iff thm
+prf 3888:3901 ZTypeIsZAxioms compare_lt_iff
+binder 3903:3903 <> n:29
+binder 3905:3905 <> m:30
+R3925:3929 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3920:3922 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3909:3915 Bignums.SpecViaZ.ZSigZAxioms ZZ compare defax
+R3917:3917 Bignums.SpecViaZ.ZSigZAxioms <> n:29 var
+R3919:3919 Bignums.SpecViaZ.ZSigZAxioms <> m:30 var
+R3923:3924 Coq.Init.Datatypes <> Lt constr
+R3931:3933 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R3930:3930 Bignums.SpecViaZ.ZSigZAxioms <> n:29 var
+R3934:3934 Bignums.SpecViaZ.ZSigZAxioms <> m:30 var
+prf 3984:3997 ZTypeIsZAxioms compare_le_iff
+binder 3999:3999 <> n:31
+binder 4001:4001 <> m:32
+R4022:4026 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R4016:4019 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4005:4011 Bignums.SpecViaZ.ZSigZAxioms ZZ compare defax
+R4013:4013 Bignums.SpecViaZ.ZSigZAxioms <> n:31 var
+R4015:4015 Bignums.SpecViaZ.ZSigZAxioms <> m:32 var
+R4020:4021 Coq.Init.Datatypes <> Gt constr
+R4028:4031 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R4027:4027 Bignums.SpecViaZ.ZSigZAxioms <> n:31 var
+R4032:4032 Bignums.SpecViaZ.ZSigZAxioms <> m:32 var
+prf 4082:4096 ZTypeIsZAxioms compare_antisym
+binder 4098:4098 <> n:33
+binder 4100:4100 <> m:34
+R4115:4117 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4104:4110 Bignums.SpecViaZ.ZSigZAxioms ZZ compare defax
+R4112:4112 Bignums.SpecViaZ.ZSigZAxioms <> m:34 var
+R4114:4114 Bignums.SpecViaZ.ZSigZAxioms <> n:33 var
+R4118:4124 Coq.Init.Datatypes <> CompOpp def
+R4127:4133 Bignums.SpecViaZ.ZSigZAxioms ZZ compare defax
+R4135:4135 Bignums.SpecViaZ.ZSigZAxioms <> n:33 var
+R4137:4137 Bignums.SpecViaZ.ZSigZAxioms <> m:34 var
+R4169:4185 Coq.ZArith.BinInt Z compare_antisym thm
+R4169:4185 Coq.ZArith.BinInt Z compare_antisym thm
+R4202:4215 Coq.Structures.OrdersFacts BoolOrderFacts <> mod
+R4217:4218 Bignums.SpecViaZ.ZSigZAxioms ZZ <> modtype
+R4220:4221 Bignums.SpecViaZ.ZSigZAxioms ZZ <> modtype
+R4223:4224 Bignums.SpecViaZ.ZSigZAxioms ZZ <> modtype
+inst 4249:4258 ZTypeIsZAxioms compare_wd
+R4262:4267 Coq.Classes.Morphisms <> Proper class
+R4294:4300 Bignums.SpecViaZ.ZSigZAxioms ZZ compare defax
+R4272:4276 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R4270:4271 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R4279:4283 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R4277:4278 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R4284:4291 Coq.Init.Logic <> eq ind
+inst 4375:4380 ZTypeIsZAxioms eqb_wd
+R4384:4389 Coq.Classes.Morphisms <> Proper class
+R4416:4418 Bignums.SpecViaZ.ZSigZAxioms ZZ eqb defax
+R4394:4398 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R4392:4393 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R4401:4405 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R4399:4400 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R4406:4413 Coq.Init.Logic <> eq ind
+inst 4493:4498 ZTypeIsZAxioms ltb_wd
+R4502:4507 Coq.Classes.Morphisms <> Proper class
+R4534:4536 Bignums.SpecViaZ.ZSigZAxioms ZZ ltb defax
+R4512:4516 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R4510:4511 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R4519:4523 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R4517:4518 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R4524:4531 Coq.Init.Logic <> eq ind
+inst 4611:4616 ZTypeIsZAxioms leb_wd
+R4620:4625 Coq.Classes.Morphisms <> Proper class
+R4652:4654 Bignums.SpecViaZ.ZSigZAxioms ZZ leb defax
+R4630:4634 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R4628:4629 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R4637:4641 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R4635:4636 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R4642:4649 Coq.Init.Logic <> eq ind
+inst 4729:4733 ZTypeIsZAxioms lt_wd
+R4737:4742 Coq.Classes.Morphisms <> Proper class
+R4764:4765 Bignums.SpecViaZ.ZSigZAxioms ZZ lt def
+R4747:4751 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R4745:4746 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R4754:4758 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R4752:4753 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R4759:4761 Coq.Init.Logic <> iff def
+R4806:4807 Bignums.SpecViaZ.ZSigZAxioms ZZ lt def
+prf 4851:4859 ZTypeIsZAxioms lt_succ_r
+binder 4870:4870 <> n:35
+binder 4872:4872 <> m:36
+R4887:4891 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R4876:4879 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R4886:4886 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R4875:4875 Bignums.SpecViaZ.ZSigZAxioms <> n:35 var
+R4880:4883 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R4885:4885 Bignums.SpecViaZ.ZSigZAxioms <> m:36 var
+R4893:4896 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R4892:4892 Bignums.SpecViaZ.ZSigZAxioms <> n:35 var
+R4897:4897 Bignums.SpecViaZ.ZSigZAxioms <> m:36 var
+prf 4940:4944 ZTypeIsZAxioms min_l
+binder 4955:4955 <> n:37
+binder 4957:4957 <> m:38
+R4966:4969 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4961:4964 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R4960:4960 Bignums.SpecViaZ.ZSigZAxioms <> n:37 var
+R4965:4965 Bignums.SpecViaZ.ZSigZAxioms <> m:38 var
+R4977:4980 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R4970:4972 Bignums.SpecViaZ.ZSigZAxioms ZZ min defax
+R4974:4974 Bignums.SpecViaZ.ZSigZAxioms <> n:37 var
+R4976:4976 Bignums.SpecViaZ.ZSigZAxioms <> m:38 var
+R4981:4981 Bignums.SpecViaZ.ZSigZAxioms <> n:37 var
+prf 5032:5036 ZTypeIsZAxioms min_r
+binder 5047:5047 <> n:39
+binder 5049:5049 <> m:40
+R5058:5061 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5053:5056 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R5052:5052 Bignums.SpecViaZ.ZSigZAxioms <> m:40 var
+R5057:5057 Bignums.SpecViaZ.ZSigZAxioms <> n:39 var
+R5069:5072 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R5062:5064 Bignums.SpecViaZ.ZSigZAxioms ZZ min defax
+R5066:5066 Bignums.SpecViaZ.ZSigZAxioms <> n:39 var
+R5068:5068 Bignums.SpecViaZ.ZSigZAxioms <> m:40 var
+R5073:5073 Bignums.SpecViaZ.ZSigZAxioms <> m:40 var
+prf 5124:5128 ZTypeIsZAxioms max_l
+binder 5139:5139 <> n:41
+binder 5141:5141 <> m:42
+R5150:5153 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5145:5148 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R5144:5144 Bignums.SpecViaZ.ZSigZAxioms <> m:42 var
+R5149:5149 Bignums.SpecViaZ.ZSigZAxioms <> n:41 var
+R5161:5164 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R5154:5156 Bignums.SpecViaZ.ZSigZAxioms ZZ max defax
+R5158:5158 Bignums.SpecViaZ.ZSigZAxioms <> n:41 var
+R5160:5160 Bignums.SpecViaZ.ZSigZAxioms <> m:42 var
+R5165:5165 Bignums.SpecViaZ.ZSigZAxioms <> n:41 var
+prf 5216:5220 ZTypeIsZAxioms max_r
+binder 5231:5231 <> n:43
+binder 5233:5233 <> m:44
+R5242:5245 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5237:5240 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R5236:5236 Bignums.SpecViaZ.ZSigZAxioms <> n:43 var
+R5241:5241 Bignums.SpecViaZ.ZSigZAxioms <> m:44 var
+R5253:5256 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R5246:5248 Bignums.SpecViaZ.ZSigZAxioms ZZ max defax
+R5250:5250 Bignums.SpecViaZ.ZSigZAxioms <> n:43 var
+R5252:5252 Bignums.SpecViaZ.ZSigZAxioms <> m:44 var
+R5257:5257 Bignums.SpecViaZ.ZSigZAxioms <> m:44 var
+prf 5363:5371 ZTypeIsZAxioms succ_pred
+binder 5382:5382 <> n:45
+R5398:5401 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R5385:5388 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R5391:5394 Bignums.SpecViaZ.ZSigZAxioms ZZ pred defax
+R5396:5396 Bignums.SpecViaZ.ZSigZAxioms <> n:45 var
+R5402:5402 Bignums.SpecViaZ.ZSigZAxioms <> n:45 var
+inst 5479:5484 ZTypeIsZAxioms opp_wd
+R5488:5493 Coq.Classes.Morphisms <> Proper class
+R5507:5509 Bignums.SpecViaZ.ZSigZAxioms ZZ opp defax
+R5498:5502 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R5496:5497 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R5503:5504 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+prf 5521:5525 ZTypeIsZAxioms opp_0
+R5532:5535 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R5529:5530 Bignums.SpecViaZ.ZSig ZType_Notation :::'-'_x not
+prf 5592:5599 ZTypeIsZAxioms opp_succ
+binder 5610:5610 <> n:46
+R5623:5626 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R5613:5615 Bignums.SpecViaZ.ZSig ZType_Notation :::'-'_x not
+R5622:5622 Bignums.SpecViaZ.ZSig ZType_Notation :::'-'_x not
+R5616:5619 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R5621:5621 Bignums.SpecViaZ.ZSigZAxioms <> n:46 var
+R5627:5630 Bignums.SpecViaZ.ZSigZAxioms ZZ pred defax
+R5633:5634 Bignums.SpecViaZ.ZSig ZType_Notation :::'-'_x not
+R5635:5635 Bignums.SpecViaZ.ZSigZAxioms <> n:46 var
+prf 5710:5715 ZTypeIsZAxioms abs_eq
+binder 5726:5726 <> n:47
+R5735:5738 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5730:5733 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R5734:5734 Bignums.SpecViaZ.ZSigZAxioms <> n:47 var
+R5744:5747 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R5739:5741 Bignums.SpecViaZ.ZSigZAxioms ZZ abs defax
+R5743:5743 Bignums.SpecViaZ.ZSigZAxioms <> n:47 var
+R5748:5748 Bignums.SpecViaZ.ZSigZAxioms <> n:47 var
+prf 5797:5803 ZTypeIsZAxioms abs_neq
+binder 5814:5814 <> n:48
+R5823:5826 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5818:5821 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R5817:5817 Bignums.SpecViaZ.ZSigZAxioms <> n:48 var
+R5832:5835 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R5827:5829 Bignums.SpecViaZ.ZSigZAxioms ZZ abs defax
+R5831:5831 Bignums.SpecViaZ.ZSigZAxioms <> n:48 var
+R5836:5836 Bignums.SpecViaZ.ZSig ZType_Notation :::'-'_x not
+R5837:5837 Bignums.SpecViaZ.ZSigZAxioms <> n:48 var
+prf 5886:5893 ZTypeIsZAxioms sgn_null
+binder 5904:5904 <> n:49
+R5911:5914 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5908:5909 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R5907:5907 Bignums.SpecViaZ.ZSigZAxioms <> n:49 var
+R5920:5923 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R5915:5917 Bignums.SpecViaZ.ZSigZAxioms ZZ sgn defax
+R5919:5919 Bignums.SpecViaZ.ZSigZAxioms <> n:49 var
+prf 5973:5979 ZTypeIsZAxioms sgn_pos
+binder 5990:5990 <> n:50
+R5996:5999 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5994:5994 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R5995:5995 Bignums.SpecViaZ.ZSigZAxioms <> n:50 var
+R6005:6008 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R6000:6002 Bignums.SpecViaZ.ZSigZAxioms ZZ sgn defax
+R6004:6004 Bignums.SpecViaZ.ZSigZAxioms <> n:50 var
+prf 6058:6064 ZTypeIsZAxioms sgn_neg
+binder 6075:6075 <> n:51
+R6081:6084 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6079:6079 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R6078:6078 Bignums.SpecViaZ.ZSigZAxioms <> n:51 var
+R6090:6093 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R6085:6087 Bignums.SpecViaZ.ZSigZAxioms ZZ sgn defax
+R6089:6089 Bignums.SpecViaZ.ZSigZAxioms <> n:51 var
+R6094:6096 Bignums.SpecViaZ.ZSigZAxioms ZZ opp defax
+inst 6170:6175 ZTypeIsZAxioms pow_wd
+R6179:6184 Coq.Classes.Morphisms <> Proper class
+R6201:6203 Bignums.SpecViaZ.ZSigZAxioms ZZ pow defax
+R6189:6191 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R6187:6188 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R6194:6196 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R6192:6193 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R6197:6198 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+prf 6213:6219 ZTypeIsZAxioms pow_0_r
+binder 6230:6230 <> a:52
+R6236:6239 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R6234:6234 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'^'_x not
+R6233:6233 Bignums.SpecViaZ.ZSigZAxioms <> a:52 var
+prf 6281:6290 ZTypeIsZAxioms pow_succ_r
+binder 6301:6301 <> a:53
+binder 6303:6303 <> b:54
+R6310:6313 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6307:6308 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R6309:6309 Bignums.SpecViaZ.ZSigZAxioms <> b:54 var
+R6324:6327 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R6315:6316 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'^'_x not
+R6323:6323 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'^'_x not
+R6314:6314 Bignums.SpecViaZ.ZSigZAxioms <> a:53 var
+R6317:6320 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R6322:6322 Bignums.SpecViaZ.ZSigZAxioms <> b:54 var
+R6329:6331 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R6328:6328 Bignums.SpecViaZ.ZSigZAxioms <> a:53 var
+R6333:6333 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'^'_x not
+R6332:6332 Bignums.SpecViaZ.ZSigZAxioms <> a:53 var
+R6334:6334 Bignums.SpecViaZ.ZSigZAxioms <> b:54 var
+R6383:6391 Coq.ZArith.BinInt Z add_1_r thm
+R6394:6405 Coq.ZArith.BinInt Z pow_succ_r thm
+R6383:6391 Coq.ZArith.BinInt Z add_1_r thm
+R6383:6391 Coq.ZArith.BinInt Z add_1_r thm
+R6394:6405 Coq.ZArith.BinInt Z pow_succ_r thm
+R6394:6405 Coq.ZArith.BinInt Z pow_succ_r thm
+R6394:6405 Coq.ZArith.BinInt Z pow_succ_r thm
+prf 6420:6428 ZTypeIsZAxioms pow_neg_r
+binder 6439:6439 <> a:55
+binder 6441:6441 <> b:56
+R6447:6450 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6445:6445 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R6444:6444 Bignums.SpecViaZ.ZSigZAxioms <> b:56 var
+R6454:6457 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R6452:6452 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'^'_x not
+R6451:6451 Bignums.SpecViaZ.ZSigZAxioms <> a:55 var
+R6453:6453 Bignums.SpecViaZ.ZSigZAxioms <> b:56 var
+R6508:6508 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R6510:6510 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R6508:6508 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R6510:6510 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+prf 6554:6562 ZTypeIsZAxioms pow_pow_N
+binder 6573:6573 <> a:57
+binder 6575:6575 <> b:58
+R6582:6585 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6579:6580 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R6581:6581 Bignums.SpecViaZ.ZSigZAxioms <> b:58 var
+R6589:6592 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R6587:6587 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'^'_x not
+R6586:6586 Bignums.SpecViaZ.ZSigZAxioms <> a:57 var
+R6588:6588 Bignums.SpecViaZ.ZSigZAxioms <> b:58 var
+R6593:6597 Bignums.SpecViaZ.ZSigZAxioms ZZ pow_N defax
+R6599:6599 Bignums.SpecViaZ.ZSigZAxioms <> a:57 var
+R6602:6607 Coq.ZArith.BinInt Z to_N def
+R6610:6613 Bignums.SpecViaZ.ZSigZAxioms ZZ to_Z defax
+R6615:6615 Bignums.SpecViaZ.ZSigZAxioms <> b:58 var
+R6669:6678 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pow_N defax
+R6681:6686 Coq.ZArith.Znat Z2N id thm
+R6669:6678 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pow_N defax
+R6669:6678 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pow_N defax
+R6681:6686 Coq.ZArith.Znat Z2N id thm
+R6681:6686 Coq.ZArith.Znat Z2N id thm
+R6681:6686 Coq.ZArith.Znat Z2N id thm
+prf 6701:6709 ZTypeIsZAxioms pow_pos_N
+binder 6720:6720 <> a:59
+binder 6722:6722 <> p:60
+R6736:6739 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R6725:6731 Bignums.SpecViaZ.ZSigZAxioms ZZ pow_pos defax
+R6733:6733 Bignums.SpecViaZ.ZSigZAxioms <> a:59 var
+R6735:6735 Bignums.SpecViaZ.ZSigZAxioms <> p:60 var
+R6740:6744 Bignums.SpecViaZ.ZSigZAxioms ZZ pow_N defax
+R6746:6746 Bignums.SpecViaZ.ZSigZAxioms <> a:59 var
+R6749:6752 Coq.Numbers.BinNums <> Npos constr
+R6754:6754 Bignums.SpecViaZ.ZSigZAxioms <> p:60 var
+R6795:6804 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pow_N defax
+R6807:6818 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pow_pos defax
+R6795:6804 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pow_N defax
+R6795:6804 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pow_N defax
+R6807:6818 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pow_pos defax
+R6807:6818 Bignums.SpecViaZ.ZSigZAxioms ZZ spec_pow_pos defax
+prf 6848:6858 ZTypeIsZAxioms square_spec
+binder 6860:6860 <> n:61
+R6872:6875 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R6864:6869 Bignums.SpecViaZ.ZSigZAxioms ZZ square defax
+R6871:6871 Bignums.SpecViaZ.ZSigZAxioms <> n:61 var
+R6877:6879 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R6876:6876 Bignums.SpecViaZ.ZSigZAxioms <> n:61 var
+R6880:6880 Bignums.SpecViaZ.ZSigZAxioms <> n:61 var
+prf 6926:6934 ZTypeIsZAxioms sqrt_spec
+binder 6945:6945 <> n:62
+R6952:6956 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6949:6950 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R6951:6951 Bignums.SpecViaZ.ZSigZAxioms <> n:62 var
+R6979:6982 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R6974:6977 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R6957:6957 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R6964:6966 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R6973:6973 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R6958:6961 Bignums.SpecViaZ.ZSigZAxioms ZZ sqrt defax
+R6963:6963 Bignums.SpecViaZ.ZSigZAxioms <> n:62 var
+R6967:6970 Bignums.SpecViaZ.ZSigZAxioms ZZ sqrt defax
+R6972:6972 Bignums.SpecViaZ.ZSigZAxioms <> n:62 var
+R6978:6978 Bignums.SpecViaZ.ZSigZAxioms <> n:62 var
+R6984:6986 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R6983:6983 Bignums.SpecViaZ.ZSigZAxioms <> n:62 var
+R6987:6987 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R7001:7003 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R7017:7017 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R6988:6991 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R6994:6997 Bignums.SpecViaZ.ZSigZAxioms ZZ sqrt defax
+R6999:6999 Bignums.SpecViaZ.ZSigZAxioms <> n:62 var
+R7004:7007 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R7010:7013 Bignums.SpecViaZ.ZSigZAxioms ZZ sqrt defax
+R7015:7015 Bignums.SpecViaZ.ZSigZAxioms <> n:62 var
+R7050:7060 Coq.ZArith.BinInt Z sqrt_spec thm
+R7050:7060 Coq.ZArith.BinInt Z sqrt_spec thm
+prf 7075:7082 ZTypeIsZAxioms sqrt_neg
+binder 7093:7093 <> n:63
+R7099:7102 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7097:7097 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R7096:7096 Bignums.SpecViaZ.ZSigZAxioms <> n:63 var
+R7109:7112 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R7103:7106 Bignums.SpecViaZ.ZSigZAxioms ZZ sqrt defax
+R7108:7108 Bignums.SpecViaZ.ZSigZAxioms <> n:63 var
+R7146:7155 Coq.ZArith.BinInt Z sqrt_neg thm
+R7146:7155 Coq.ZArith.BinInt Z sqrt_neg thm
+prf 7183:7191 ZTypeIsZAxioms log2_spec
+binder 7202:7202 <> n:64
+R7208:7212 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7206:7206 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R7207:7207 Bignums.SpecViaZ.ZSigZAxioms <> n:64 var
+R7228:7231 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R7223:7226 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R7214:7215 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'^'_x not
+R7222:7222 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'^'_x not
+R7216:7219 Bignums.SpecViaZ.ZSigZAxioms ZZ log2 defax
+R7221:7221 Bignums.SpecViaZ.ZSigZAxioms <> n:64 var
+R7227:7227 Bignums.SpecViaZ.ZSigZAxioms <> n:64 var
+R7233:7235 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R7232:7232 Bignums.SpecViaZ.ZSigZAxioms <> n:64 var
+R7237:7238 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'^'_x not
+R7252:7252 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'^'_x not
+R7239:7242 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R7245:7248 Bignums.SpecViaZ.ZSigZAxioms ZZ log2 defax
+R7250:7250 Bignums.SpecViaZ.ZSigZAxioms <> n:64 var
+R7285:7295 Coq.ZArith.BinInt Z log2_spec thm
+R7285:7295 Coq.ZArith.BinInt Z log2_spec thm
+prf 7310:7320 ZTypeIsZAxioms log2_nonpos
+binder 7331:7331 <> n:65
+R7338:7341 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7335:7336 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R7334:7334 Bignums.SpecViaZ.ZSigZAxioms <> n:65 var
+R7348:7351 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R7342:7345 Bignums.SpecViaZ.ZSigZAxioms ZZ log2 defax
+R7347:7347 Bignums.SpecViaZ.ZSigZAxioms <> n:65 var
+R7385:7397 Coq.ZArith.BinInt Z log2_nonpos thm
+R7385:7397 Coq.ZArith.BinInt Z log2_nonpos thm
+def 7436:7439 ZTypeIsZAxioms Even
+binder 7441:7441 <> n:66
+R7446:7452 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R7454:7455 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 7453:7453 <> m:67
+R7457:7460 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R7456:7456 Bignums.SpecViaZ.ZSigZAxioms <> n:66 var
+R7462:7462 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R7463:7463 Bignums.SpecViaZ.ZSigZAxioms <> m:67 var
+def 7477:7479 ZTypeIsZAxioms Odd
+binder 7481:7481 <> n:68
+R7486:7492 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R7494:7495 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 7493:7493 <> m:69
+R7497:7500 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R7496:7496 Bignums.SpecViaZ.ZSigZAxioms <> n:68 var
+R7504:7504 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R7502:7502 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R7503:7503 Bignums.SpecViaZ.ZSigZAxioms <> m:69 var
+prf 7515:7523 ZTypeIsZAxioms even_spec
+binder 7525:7525 <> n:70
+R7542:7546 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R7535:7537 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7529:7532 Bignums.SpecViaZ.ZSigZAxioms ZZ even defax
+R7534:7534 Bignums.SpecViaZ.ZSigZAxioms <> n:70 var
+R7538:7541 Coq.Init.Datatypes <> true constr
+R7547:7550 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms Even def
+R7552:7552 Bignums.SpecViaZ.ZSigZAxioms <> n:70 var
+R7570:7573 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms Even def
+R7590:7600 Coq.ZArith.BinInt Z even_spec thm
+R7590:7600 Coq.ZArith.BinInt Z even_spec thm
+R7590:7600 Coq.ZArith.BinInt Z even_spec thm
+R7637:7640 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R7637:7640 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R7666:7666 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R7668:7668 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R7666:7666 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R7668:7668 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+prf 7704:7711 ZTypeIsZAxioms odd_spec
+binder 7713:7713 <> n:71
+R7729:7733 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R7722:7724 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7717:7719 Bignums.SpecViaZ.ZSigZAxioms ZZ odd defax
+R7721:7721 Bignums.SpecViaZ.ZSigZAxioms <> n:71 var
+R7725:7728 Coq.Init.Datatypes <> true constr
+R7734:7736 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms Odd def
+R7738:7738 Bignums.SpecViaZ.ZSigZAxioms <> n:71 var
+R7756:7758 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms Odd def
+R7775:7784 Coq.ZArith.BinInt Z odd_spec thm
+R7775:7784 Coq.ZArith.BinInt Z odd_spec thm
+R7775:7784 Coq.ZArith.BinInt Z odd_spec thm
+R7821:7824 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R7821:7824 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R7850:7850 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R7852:7852 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R7850:7850 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R7852:7852 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+inst 7917:7922 ZTypeIsZAxioms div_wd
+R7926:7931 Coq.Classes.Morphisms <> Proper class
+R7948:7950 Bignums.SpecViaZ.ZSigZAxioms ZZ div defax
+R7936:7938 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R7934:7935 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R7941:7943 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R7939:7940 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R7944:7945 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+inst 7970:7975 ZTypeIsZAxioms mod_wd
+R7979:7984 Coq.Classes.Morphisms <> Proper class
+R8001:8006 Bignums.SpecViaZ.ZSigZAxioms ZZ modulo defax
+R7989:7991 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R7987:7988 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R7994:7996 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R7992:7993 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R7997:7998 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+prf 8018:8024 ZTypeIsZAxioms div_mod
+binder 8035:8035 <> a:72
+binder 8037:8037 <> b:73
+R8045:8048 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8040:8040 Coq.Init.Logic <> ::type_scope:'~'_x not
+R8042:8043 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R8041:8041 Bignums.SpecViaZ.ZSigZAxioms <> b:73 var
+R8050:8053 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R8049:8049 Bignums.SpecViaZ.ZSigZAxioms <> a:72 var
+R8065:8068 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R8079:8079 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R8055:8056 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R8064:8064 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R8054:8054 Bignums.SpecViaZ.ZSigZAxioms <> b:73 var
+R8057:8059 Bignums.SpecViaZ.ZSigZAxioms ZZ div defax
+R8061:8061 Bignums.SpecViaZ.ZSigZAxioms <> a:72 var
+R8063:8063 Bignums.SpecViaZ.ZSigZAxioms <> b:73 var
+R8069:8074 Bignums.SpecViaZ.ZSigZAxioms ZZ modulo defax
+R8076:8076 Bignums.SpecViaZ.ZSigZAxioms <> a:72 var
+R8078:8078 Bignums.SpecViaZ.ZSigZAxioms <> b:73 var
+R8121:8129 Coq.ZArith.BinInt Z div_mod thm
+R8121:8129 Coq.ZArith.BinInt Z div_mod thm
+prf 8152:8164 ZTypeIsZAxioms mod_pos_bound
+binder 8176:8176 <> a:74
+binder 8178:8178 <> b:75
+R8186:8189 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8182:8184 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R8185:8185 Bignums.SpecViaZ.ZSigZAxioms <> b:75 var
+R8205:8208 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R8191:8194 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R8195:8200 Bignums.SpecViaZ.ZSigZAxioms ZZ modulo defax
+R8202:8202 Bignums.SpecViaZ.ZSigZAxioms <> a:74 var
+R8204:8204 Bignums.SpecViaZ.ZSigZAxioms <> b:75 var
+R8219:8221 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R8209:8214 Bignums.SpecViaZ.ZSigZAxioms ZZ modulo defax
+R8216:8216 Bignums.SpecViaZ.ZSigZAxioms <> a:74 var
+R8218:8218 Bignums.SpecViaZ.ZSigZAxioms <> b:75 var
+R8222:8222 Bignums.SpecViaZ.ZSigZAxioms <> b:75 var
+R8264:8271 Coq.ZArith.Zdiv <> Z_mod_lt thm
+R8264:8271 Coq.ZArith.Zdiv <> Z_mod_lt thm
+prf 8306:8318 ZTypeIsZAxioms mod_neg_bound
+binder 8330:8330 <> a:76
+binder 8332:8332 <> b:77
+R8340:8343 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8336:8338 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R8335:8335 Bignums.SpecViaZ.ZSigZAxioms <> b:77 var
+R8358:8361 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R8345:8347 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R8344:8344 Bignums.SpecViaZ.ZSigZAxioms <> b:77 var
+R8348:8353 Bignums.SpecViaZ.ZSigZAxioms ZZ modulo defax
+R8355:8355 Bignums.SpecViaZ.ZSigZAxioms <> a:76 var
+R8357:8357 Bignums.SpecViaZ.ZSigZAxioms <> b:77 var
+R8372:8375 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R8362:8367 Bignums.SpecViaZ.ZSigZAxioms ZZ modulo defax
+R8369:8369 Bignums.SpecViaZ.ZSigZAxioms <> a:76 var
+R8371:8371 Bignums.SpecViaZ.ZSigZAxioms <> b:77 var
+R8418:8426 Coq.ZArith.Zdiv <> Z_mod_neg thm
+R8418:8426 Coq.ZArith.Zdiv <> Z_mod_neg thm
+def 8464:8476 ZTypeIsZAxioms mod_bound_pos
+binder 8488:8488 <> a:78
+binder 8490:8490 <> b:79
+R8497:8500 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8494:8495 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R8496:8496 Bignums.SpecViaZ.ZSigZAxioms <> a:78 var
+R8504:8507 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8502:8502 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R8503:8503 Bignums.SpecViaZ.ZSigZAxioms <> b:79 var
+R8523:8526 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R8509:8512 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R8513:8518 Bignums.SpecViaZ.ZSigZAxioms ZZ modulo defax
+R8520:8520 Bignums.SpecViaZ.ZSigZAxioms <> a:78 var
+R8522:8522 Bignums.SpecViaZ.ZSigZAxioms <> b:79 var
+R8537:8539 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R8527:8532 Bignums.SpecViaZ.ZSigZAxioms ZZ modulo defax
+R8534:8534 Bignums.SpecViaZ.ZSigZAxioms <> a:78 var
+R8536:8536 Bignums.SpecViaZ.ZSigZAxioms <> b:79 var
+R8540:8540 Bignums.SpecViaZ.ZSigZAxioms <> b:79 var
+binder 8550:8550 <> a:80
+binder 8552:8552 <> b:81
+binder 8556:8556 <> H:82
+R8561:8573 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms mod_pos_bound thm
+R8575:8575 Bignums.SpecViaZ.ZSigZAxioms <> a:80 var
+R8577:8577 Bignums.SpecViaZ.ZSigZAxioms <> b:81 var
+R8579:8579 Bignums.SpecViaZ.ZSigZAxioms <> H:82 var
+inst 8619:8625 ZTypeIsZAxioms quot_wd
+R8629:8634 Coq.Classes.Morphisms <> Proper class
+R8651:8654 Bignums.SpecViaZ.ZSigZAxioms ZZ quot defax
+R8639:8641 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R8637:8638 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R8644:8646 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R8642:8643 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R8647:8648 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+inst 8674:8679 ZTypeIsZAxioms rem_wd
+R8683:8688 Coq.Classes.Morphisms <> Proper class
+R8705:8707 Bignums.SpecViaZ.ZSigZAxioms ZZ rem defax
+R8693:8695 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R8691:8692 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R8698:8700 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R8696:8697 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R8701:8702 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+prf 8719:8726 ZTypeIsZAxioms quot_rem
+binder 8737:8737 <> a:83
+binder 8739:8739 <> b:84
+R8747:8750 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8742:8742 Coq.Init.Logic <> ::type_scope:'~'_x not
+R8744:8745 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R8743:8743 Bignums.SpecViaZ.ZSigZAxioms <> b:84 var
+R8752:8755 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R8751:8751 Bignums.SpecViaZ.ZSigZAxioms <> a:83 var
+R8768:8770 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R8757:8758 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R8767:8767 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R8756:8756 Bignums.SpecViaZ.ZSigZAxioms <> b:84 var
+R8759:8762 Bignums.SpecViaZ.ZSigZAxioms ZZ quot defax
+R8764:8764 Bignums.SpecViaZ.ZSigZAxioms <> a:83 var
+R8766:8766 Bignums.SpecViaZ.ZSigZAxioms <> b:84 var
+R8771:8773 Bignums.SpecViaZ.ZSigZAxioms ZZ rem defax
+R8775:8775 Bignums.SpecViaZ.ZSigZAxioms <> a:83 var
+R8777:8777 Bignums.SpecViaZ.ZSigZAxioms <> b:84 var
+R8811:8820 Coq.ZArith.BinInt Z quot_rem thm
+R8811:8820 Coq.ZArith.BinInt Z quot_rem thm
+prf 8837:8849 ZTypeIsZAxioms rem_bound_pos
+binder 8861:8861 <> a:85
+binder 8863:8863 <> b:86
+R8870:8873 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8867:8868 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R8869:8869 Bignums.SpecViaZ.ZSigZAxioms <> a:85 var
+R8877:8880 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8875:8875 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R8876:8876 Bignums.SpecViaZ.ZSigZAxioms <> b:86 var
+R8893:8896 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R8882:8885 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R8886:8888 Bignums.SpecViaZ.ZSigZAxioms ZZ rem defax
+R8890:8890 Bignums.SpecViaZ.ZSigZAxioms <> a:85 var
+R8892:8892 Bignums.SpecViaZ.ZSigZAxioms <> b:86 var
+R8904:8906 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R8897:8899 Bignums.SpecViaZ.ZSigZAxioms ZZ rem defax
+R8901:8901 Bignums.SpecViaZ.ZSigZAxioms <> a:85 var
+R8903:8903 Bignums.SpecViaZ.ZSigZAxioms <> b:86 var
+R8907:8907 Bignums.SpecViaZ.ZSigZAxioms <> b:86 var
+R8941:8955 Coq.ZArith.BinInt Z rem_bound_pos thm
+R8941:8955 Coq.ZArith.BinInt Z rem_bound_pos thm
+prf 8972:8980 ZTypeIsZAxioms rem_opp_l
+binder 8991:8991 <> a:87
+binder 8993:8993 <> b:88
+R9001:9004 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8996:8996 Coq.Init.Logic <> ::type_scope:'~'_x not
+R8998:8999 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R8997:8997 Bignums.SpecViaZ.ZSigZAxioms <> b:88 var
+R9015:9018 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R9005:9007 Bignums.SpecViaZ.ZSigZAxioms ZZ rem defax
+R9010:9010 Bignums.SpecViaZ.ZSig ZType_Notation :::'-'_x not
+R9011:9011 Bignums.SpecViaZ.ZSigZAxioms <> a:87 var
+R9014:9014 Bignums.SpecViaZ.ZSigZAxioms <> b:88 var
+R9019:9020 Bignums.SpecViaZ.ZSig ZType_Notation :::'-'_x not
+R9028:9028 Bignums.SpecViaZ.ZSig ZType_Notation :::'-'_x not
+R9021:9023 Bignums.SpecViaZ.ZSigZAxioms ZZ rem defax
+R9025:9025 Bignums.SpecViaZ.ZSigZAxioms <> a:87 var
+R9027:9027 Bignums.SpecViaZ.ZSigZAxioms <> b:88 var
+R9062:9072 Coq.ZArith.BinInt Z rem_opp_l thm
+R9062:9072 Coq.ZArith.BinInt Z rem_opp_l thm
+prf 9089:9097 ZTypeIsZAxioms rem_opp_r
+binder 9108:9108 <> a:89
+binder 9110:9110 <> b:90
+R9118:9121 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9113:9113 Coq.Init.Logic <> ::type_scope:'~'_x not
+R9115:9116 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R9114:9114 Bignums.SpecViaZ.ZSigZAxioms <> b:90 var
+R9132:9135 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R9122:9124 Bignums.SpecViaZ.ZSigZAxioms ZZ rem defax
+R9126:9126 Bignums.SpecViaZ.ZSigZAxioms <> a:89 var
+R9129:9129 Bignums.SpecViaZ.ZSig ZType_Notation :::'-'_x not
+R9130:9130 Bignums.SpecViaZ.ZSigZAxioms <> b:90 var
+R9136:9138 Bignums.SpecViaZ.ZSigZAxioms ZZ rem defax
+R9140:9140 Bignums.SpecViaZ.ZSigZAxioms <> a:89 var
+R9142:9142 Bignums.SpecViaZ.ZSigZAxioms <> b:90 var
+R9176:9186 Coq.ZArith.BinInt Z rem_opp_r thm
+R9176:9186 Coq.ZArith.BinInt Z rem_opp_r thm
+def 9218:9223 ZTypeIsZAxioms divide
+binder 9225:9225 <> n:91
+binder 9227:9227 <> m:92
+R9232:9238 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R9240:9241 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 9239:9239 <> p:93
+R9243:9246 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R9242:9242 Bignums.SpecViaZ.ZSigZAxioms <> m:92 var
+R9248:9248 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R9247:9247 Bignums.SpecViaZ.ZSigZAxioms <> p:93 var
+R9249:9249 Bignums.SpecViaZ.ZSigZAxioms <> n:91 var
+R9283:9288 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms divide def
+not 9267:9267 ZTypeIsZAxioms :::'('_x_'|'_x_')'
+prf 9316:9326 ZTypeIsZAxioms spec_divide
+binder 9337:9337 <> n:94
+binder 9339:9339 <> m:95
+R9347:9351 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R9342:9342 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9344:9344 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9346:9346 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9343:9343 Bignums.SpecViaZ.ZSigZAxioms <> n:94 var
+R9345:9345 Bignums.SpecViaZ.ZSigZAxioms <> m:95 var
+R9352:9359 Coq.ZArith.BinInt Z divide def
+R9361:9361 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R9363:9363 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R9362:9362 Bignums.SpecViaZ.ZSigZAxioms <> n:94 var
+R9365:9365 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R9367:9367 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R9366:9366 Bignums.SpecViaZ.ZSigZAxioms <> m:95 var
+R9421:9421 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R9423:9423 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R9421:9421 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R9423:9423 Bignums.SpecViaZ.ZSig ZType_Notation :::'['_x_']' not
+R9471:9474 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+R9471:9474 Bignums.SpecViaZ.ZSigZAxioms ZZ of_Z defax
+prf 9502:9513 ZTypeIsZAxioms gcd_divide_l
+binder 9524:9524 <> n:96
+binder 9526:9526 <> m:97
+R9529:9529 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9537:9539 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9541:9541 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9530:9532 Bignums.SpecViaZ.ZSigZAxioms ZZ gcd defax
+R9534:9534 Bignums.SpecViaZ.ZSigZAxioms <> n:96 var
+R9536:9536 Bignums.SpecViaZ.ZSigZAxioms <> m:97 var
+R9540:9540 Bignums.SpecViaZ.ZSigZAxioms <> n:96 var
+R9570:9580 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms spec_divide thm
+R9570:9580 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms spec_divide thm
+R9595:9608 Coq.ZArith.BinInt Z gcd_divide_l thm
+R9595:9608 Coq.ZArith.BinInt Z gcd_divide_l thm
+prf 9623:9634 ZTypeIsZAxioms gcd_divide_r
+binder 9645:9645 <> n:98
+binder 9647:9647 <> m:99
+R9650:9650 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9658:9660 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9662:9662 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9651:9653 Bignums.SpecViaZ.ZSigZAxioms ZZ gcd defax
+R9655:9655 Bignums.SpecViaZ.ZSigZAxioms <> n:98 var
+R9657:9657 Bignums.SpecViaZ.ZSigZAxioms <> m:99 var
+R9661:9661 Bignums.SpecViaZ.ZSigZAxioms <> m:99 var
+R9691:9701 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms spec_divide thm
+R9691:9701 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms spec_divide thm
+R9716:9729 Coq.ZArith.BinInt Z gcd_divide_r thm
+R9716:9729 Coq.ZArith.BinInt Z gcd_divide_r thm
+prf 9744:9755 ZTypeIsZAxioms gcd_greatest
+binder 9766:9766 <> n:100
+binder 9768:9768 <> m:101
+binder 9770:9770 <> p:102
+R9778:9781 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9773:9773 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9775:9775 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9777:9777 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9774:9774 Bignums.SpecViaZ.ZSigZAxioms <> p:102 var
+R9776:9776 Bignums.SpecViaZ.ZSigZAxioms <> n:100 var
+R9787:9790 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9782:9782 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9784:9784 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9786:9786 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9783:9783 Bignums.SpecViaZ.ZSigZAxioms <> p:102 var
+R9785:9785 Bignums.SpecViaZ.ZSigZAxioms <> m:101 var
+R9791:9791 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9793:9793 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9801:9801 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms :::'('_x_'|'_x_')' not
+R9792:9792 Bignums.SpecViaZ.ZSigZAxioms <> p:102 var
+R9794:9796 Bignums.SpecViaZ.ZSigZAxioms ZZ gcd defax
+R9798:9798 Bignums.SpecViaZ.ZSigZAxioms <> n:100 var
+R9800:9800 Bignums.SpecViaZ.ZSigZAxioms <> m:101 var
+R9835:9845 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms spec_divide thm
+R9835:9845 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms spec_divide thm
+R9835:9845 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms spec_divide thm
+R9835:9845 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms spec_divide thm
+R9835:9845 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms spec_divide thm
+R9835:9845 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms spec_divide thm
+R9860:9873 Coq.ZArith.BinInt Z gcd_greatest thm
+R9860:9873 Coq.ZArith.BinInt Z gcd_greatest thm
+prf 9888:9897 ZTypeIsZAxioms gcd_nonneg
+binder 9908:9908 <> n:103
+binder 9910:9910 <> m:104
+R9914:9917 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R9918:9920 Bignums.SpecViaZ.ZSigZAxioms ZZ gcd defax
+R9922:9922 Bignums.SpecViaZ.ZSigZAxioms <> n:103 var
+R9924:9924 Bignums.SpecViaZ.ZSigZAxioms <> m:104 var
+R9955:9966 Coq.ZArith.BinInt Z gcd_nonneg thm
+R9955:9966 Coq.ZArith.BinInt Z gcd_nonneg thm
+inst 10019:10028 ZTypeIsZAxioms testbit_wd
+R10032:10037 Coq.Classes.Morphisms <> Proper class
+R10060:10066 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10042:10044 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R10040:10041 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R10047:10049 Coq.Classes.Morphisms ProperNotations ::signature_scope:x_'==>'_x not
+R10045:10046 Bignums.SpecViaZ.ZSigZAxioms ZZ eq def
+R10050:10057 Coq.Init.Logic <> eq ind
+prf 10076:10088 ZTypeIsZAxioms testbit_odd_0
+binder 10099:10099 <> a:105
+R10119:10121 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10102:10108 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10114:10114 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R10112:10112 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R10113:10113 Bignums.SpecViaZ.ZSigZAxioms <> a:105 var
+R10122:10125 Coq.Init.Datatypes <> true constr
+R10156:10170 Coq.ZArith.BinInt Z testbit_odd_0 thm
+R10156:10170 Coq.ZArith.BinInt Z testbit_odd_0 thm
+prf 10185:10198 ZTypeIsZAxioms testbit_even_0
+binder 10209:10209 <> a:106
+R10227:10229 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10212:10218 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10222:10222 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R10223:10223 Bignums.SpecViaZ.ZSigZAxioms <> a:106 var
+R10230:10234 Coq.Init.Datatypes <> false constr
+R10265:10280 Coq.ZArith.BinInt Z testbit_even_0 thm
+R10265:10280 Coq.ZArith.BinInt Z testbit_even_0 thm
+prf 10295:10310 ZTypeIsZAxioms testbit_odd_succ
+binder 10321:10321 <> a:107
+binder 10323:10323 <> n:108
+R10330:10334 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10327:10328 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R10329:10329 Bignums.SpecViaZ.ZSigZAxioms <> n:108 var
+R10359:10361 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10335:10341 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10347:10347 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R10345:10345 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R10346:10346 Bignums.SpecViaZ.ZSigZAxioms <> a:107 var
+R10352:10355 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R10357:10357 Bignums.SpecViaZ.ZSigZAxioms <> n:108 var
+R10362:10368 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10370:10370 Bignums.SpecViaZ.ZSigZAxioms <> a:107 var
+R10372:10372 Bignums.SpecViaZ.ZSigZAxioms <> n:108 var
+R10407:10424 Coq.ZArith.BinInt Z testbit_odd_succ thm
+R10407:10424 Coq.ZArith.BinInt Z testbit_odd_succ thm
+prf 10439:10455 ZTypeIsZAxioms testbit_even_succ
+binder 10466:10466 <> a:109
+binder 10468:10468 <> n:110
+R10475:10479 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10472:10473 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R10474:10474 Bignums.SpecViaZ.ZSigZAxioms <> n:110 var
+R10502:10504 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10480:10486 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10490:10490 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'*'_x not
+R10491:10491 Bignums.SpecViaZ.ZSigZAxioms <> a:109 var
+R10495:10498 Bignums.SpecViaZ.ZSigZAxioms ZZ succ defax
+R10500:10500 Bignums.SpecViaZ.ZSigZAxioms <> n:110 var
+R10505:10511 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10513:10513 Bignums.SpecViaZ.ZSigZAxioms <> a:109 var
+R10515:10515 Bignums.SpecViaZ.ZSigZAxioms <> n:110 var
+R10550:10568 Coq.ZArith.BinInt Z testbit_even_succ thm
+R10550:10568 Coq.ZArith.BinInt Z testbit_even_succ thm
+prf 10583:10595 ZTypeIsZAxioms testbit_neg_r
+binder 10606:10606 <> a:111
+binder 10608:10608 <> n:112
+R10614:10617 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10612:10612 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R10611:10611 Bignums.SpecViaZ.ZSigZAxioms <> n:112 var
+R10629:10631 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10618:10624 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10626:10626 Bignums.SpecViaZ.ZSigZAxioms <> a:111 var
+R10628:10628 Bignums.SpecViaZ.ZSigZAxioms <> n:112 var
+R10632:10636 Coq.Init.Datatypes <> false constr
+R10671:10685 Coq.ZArith.BinInt Z testbit_neg_r thm
+R10671:10685 Coq.ZArith.BinInt Z testbit_neg_r thm
+prf 10700:10710 ZTypeIsZAxioms shiftr_spec
+binder 10721:10721 <> a:113
+binder 10723:10723 <> n:114
+binder 10725:10725 <> m:115
+R10732:10736 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10729:10730 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R10731:10731 Bignums.SpecViaZ.ZSigZAxioms <> m:115 var
+R10759:10761 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10737:10743 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10746:10751 Bignums.SpecViaZ.ZSigZAxioms ZZ shiftr defax
+R10753:10753 Bignums.SpecViaZ.ZSigZAxioms <> a:113 var
+R10755:10755 Bignums.SpecViaZ.ZSigZAxioms <> n:114 var
+R10758:10758 Bignums.SpecViaZ.ZSigZAxioms <> m:115 var
+R10762:10768 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10770:10770 Bignums.SpecViaZ.ZSigZAxioms <> a:113 var
+R10774:10774 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'+'_x not
+R10773:10773 Bignums.SpecViaZ.ZSigZAxioms <> m:115 var
+R10775:10775 Bignums.SpecViaZ.ZSigZAxioms <> n:114 var
+R10813:10825 Coq.ZArith.BinInt Z shiftr_spec thm
+R10813:10825 Coq.ZArith.BinInt Z shiftr_spec thm
+prf 10840:10855 ZTypeIsZAxioms shiftl_spec_high
+binder 10866:10866 <> a:116
+binder 10868:10868 <> n:117
+binder 10870:10870 <> m:118
+R10877:10880 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10874:10875 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R10876:10876 Bignums.SpecViaZ.ZSigZAxioms <> m:118 var
+R10885:10889 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10882:10883 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<='_x not
+R10881:10881 Bignums.SpecViaZ.ZSigZAxioms <> n:117 var
+R10884:10884 Bignums.SpecViaZ.ZSigZAxioms <> m:118 var
+R10912:10914 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10890:10896 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10899:10904 Bignums.SpecViaZ.ZSigZAxioms ZZ shiftl defax
+R10906:10906 Bignums.SpecViaZ.ZSigZAxioms <> a:116 var
+R10908:10908 Bignums.SpecViaZ.ZSigZAxioms <> n:117 var
+R10911:10911 Bignums.SpecViaZ.ZSigZAxioms <> m:118 var
+R10915:10921 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R10923:10923 Bignums.SpecViaZ.ZSigZAxioms <> a:116 var
+R10927:10927 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'-'_x not
+R10926:10926 Bignums.SpecViaZ.ZSigZAxioms <> m:118 var
+R10928:10928 Bignums.SpecViaZ.ZSigZAxioms <> n:117 var
+R10984:11001 Coq.ZArith.BinInt Z shiftl_spec_high thm
+R10984:11001 Coq.ZArith.BinInt Z shiftl_spec_high thm
+prf 11016:11030 ZTypeIsZAxioms shiftl_spec_low
+binder 11041:11041 <> a:119
+binder 11043:11043 <> n:120
+binder 11045:11045 <> m:121
+R11051:11055 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11049:11049 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'<'_x not
+R11048:11048 Bignums.SpecViaZ.ZSigZAxioms <> m:121 var
+R11050:11050 Bignums.SpecViaZ.ZSigZAxioms <> n:120 var
+R11078:11080 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11056:11062 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11065:11070 Bignums.SpecViaZ.ZSigZAxioms ZZ shiftl defax
+R11072:11072 Bignums.SpecViaZ.ZSigZAxioms <> a:119 var
+R11074:11074 Bignums.SpecViaZ.ZSigZAxioms <> n:120 var
+R11077:11077 Bignums.SpecViaZ.ZSigZAxioms <> m:121 var
+R11081:11085 Coq.Init.Datatypes <> false constr
+R11136:11152 Coq.ZArith.BinInt Z shiftl_spec_low thm
+R11136:11152 Coq.ZArith.BinInt Z shiftl_spec_low thm
+prf 11167:11175 ZTypeIsZAxioms land_spec
+binder 11186:11186 <> a:122
+binder 11188:11188 <> b:123
+binder 11190:11190 <> n:124
+R11214:11216 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11194:11200 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11203:11206 Bignums.SpecViaZ.ZSigZAxioms ZZ land defax
+R11208:11208 Bignums.SpecViaZ.ZSigZAxioms <> a:122 var
+R11210:11210 Bignums.SpecViaZ.ZSigZAxioms <> b:123 var
+R11213:11213 Bignums.SpecViaZ.ZSigZAxioms <> n:124 var
+R11228:11231 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R11217:11223 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11225:11225 Bignums.SpecViaZ.ZSigZAxioms <> a:122 var
+R11227:11227 Bignums.SpecViaZ.ZSigZAxioms <> n:124 var
+R11232:11238 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11240:11240 Bignums.SpecViaZ.ZSigZAxioms <> b:123 var
+R11242:11242 Bignums.SpecViaZ.ZSigZAxioms <> n:124 var
+R11283:11293 Coq.ZArith.BinInt Z land_spec thm
+R11283:11293 Coq.ZArith.BinInt Z land_spec thm
+prf 11308:11315 ZTypeIsZAxioms lor_spec
+binder 11326:11326 <> a:125
+binder 11328:11328 <> b:126
+binder 11330:11330 <> n:127
+R11353:11355 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11334:11340 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11343:11345 Bignums.SpecViaZ.ZSigZAxioms ZZ lor defax
+R11347:11347 Bignums.SpecViaZ.ZSigZAxioms <> a:125 var
+R11349:11349 Bignums.SpecViaZ.ZSigZAxioms <> b:126 var
+R11352:11352 Bignums.SpecViaZ.ZSigZAxioms <> n:127 var
+R11367:11370 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11356:11362 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11364:11364 Bignums.SpecViaZ.ZSigZAxioms <> a:125 var
+R11366:11366 Bignums.SpecViaZ.ZSigZAxioms <> n:127 var
+R11371:11377 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11379:11379 Bignums.SpecViaZ.ZSigZAxioms <> b:126 var
+R11381:11381 Bignums.SpecViaZ.ZSigZAxioms <> n:127 var
+R11422:11431 Coq.ZArith.BinInt Z lor_spec thm
+R11422:11431 Coq.ZArith.BinInt Z lor_spec thm
+prf 11446:11455 ZTypeIsZAxioms ldiff_spec
+binder 11466:11466 <> a:128
+binder 11468:11468 <> b:129
+binder 11470:11470 <> n:130
+R11495:11497 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11474:11480 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11483:11487 Bignums.SpecViaZ.ZSigZAxioms ZZ ldiff defax
+R11489:11489 Bignums.SpecViaZ.ZSigZAxioms <> a:128 var
+R11491:11491 Bignums.SpecViaZ.ZSigZAxioms <> b:129 var
+R11494:11494 Bignums.SpecViaZ.ZSigZAxioms <> n:130 var
+R11509:11512 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R11498:11504 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11506:11506 Bignums.SpecViaZ.ZSigZAxioms <> a:128 var
+R11508:11508 Bignums.SpecViaZ.ZSigZAxioms <> n:130 var
+R11513:11516 Coq.Init.Datatypes <> negb def
+R11519:11525 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11527:11527 Bignums.SpecViaZ.ZSigZAxioms <> b:129 var
+R11529:11529 Bignums.SpecViaZ.ZSigZAxioms <> n:130 var
+R11571:11582 Coq.ZArith.BinInt Z ldiff_spec thm
+R11571:11582 Coq.ZArith.BinInt Z ldiff_spec thm
+prf 11597:11605 ZTypeIsZAxioms lxor_spec
+binder 11616:11616 <> a:131
+binder 11618:11618 <> b:132
+binder 11620:11620 <> n:133
+R11644:11646 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11624:11630 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11633:11636 Bignums.SpecViaZ.ZSigZAxioms ZZ lxor defax
+R11638:11638 Bignums.SpecViaZ.ZSigZAxioms <> a:131 var
+R11640:11640 Bignums.SpecViaZ.ZSigZAxioms <> b:132 var
+R11643:11643 Bignums.SpecViaZ.ZSigZAxioms <> n:133 var
+R11647:11650 Coq.Init.Datatypes <> xorb def
+R11667:11673 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11675:11675 Bignums.SpecViaZ.ZSigZAxioms <> b:132 var
+R11677:11677 Bignums.SpecViaZ.ZSigZAxioms <> n:133 var
+R11653:11659 Bignums.SpecViaZ.ZSigZAxioms ZZ testbit defax
+R11661:11661 Bignums.SpecViaZ.ZSigZAxioms <> a:131 var
+R11663:11663 Bignums.SpecViaZ.ZSigZAxioms <> n:133 var
+R11719:11729 Coq.ZArith.BinInt Z lxor_spec thm
+R11719:11729 Coq.ZArith.BinInt Z lxor_spec thm
+prf 11744:11752 ZTypeIsZAxioms div2_spec
+binder 11763:11763 <> a:134
+R11772:11775 Bignums.SpecViaZ.ZSig ZType_Notation :::x_'=='_x not
+R11766:11769 Bignums.SpecViaZ.ZSigZAxioms ZZ div2 defax
+R11771:11771 Bignums.SpecViaZ.ZSigZAxioms <> a:134 var
+R11776:11781 Bignums.SpecViaZ.ZSigZAxioms ZZ shiftr defax
+R11783:11783 Bignums.SpecViaZ.ZSigZAxioms <> a:134 var
+R11822:11832 Coq.ZArith.BinInt Z div2_spec thm
+R11822:11832 Coq.ZArith.BinInt Z div2_spec thm
+R11845:11858 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms <> mod
+R11889:11893 Bignums.SpecViaZ.ZSig ZType <> mod
+R11900:11909 Coq.Numbers.Integer.Abstract.ZAxioms ZAxiomsSig <> mod
+R11914:11927 Coq.Structures.Orders OrderFunctions <> mod
+R11929:11930 Bignums.SpecViaZ.ZSigZAxioms ZZ <> modtype
+R11935:11943 Coq.Structures.GenericMinMax HasMinMax <> mod
+R11945:11946 Bignums.SpecViaZ.ZSigZAxioms ZZ <> modtype
+R11952:11953 Bignums.SpecViaZ.ZSigZAxioms ZZ <> modtype
+R11958:11971 Bignums.SpecViaZ.ZSigZAxioms ZTypeIsZAxioms <> modtype
+mod 11869:11881 <> ZType_ZAxioms

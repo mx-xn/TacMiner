@@ -1,0 +1,3234 @@
+DIGEST b445fbc303e3e9741a58b1d79dac7193
+FBignums.BigQ.QMake
+R686:698 Bignums.BigNumPrelude <> <> lib
+R700:702 Coq.micromega.Lia <> <> lib
+R720:725 Coq.QArith.QArith <> <> lib
+R727:732 Coq.QArith.Qcanon <> <> lib
+R734:739 Coq.QArith.Qpower <> <> lib
+R741:747 Coq.QArith.Qminmax <> <> lib
+R765:768 Bignums.SpecViaZ.NSig <> <> lib
+R770:773 Bignums.SpecViaZ.ZSig <> <> lib
+R775:778 Bignums.SpecViaQ.QSig <> <> lib
+R796:801 Bignums.BigQ.Depend <> <> lib
+R1067:1071 Bignums.SpecViaZ.NSig NType <> mod
+R1077:1081 Bignums.SpecViaZ.ZSig ZType <> mod
+modtype 1051:1061 <> NType_ZType
+ax 1096:1101 NType_ZType Z_of_N
+R1109:1112 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1105:1108 Bignums.BigQ.QMake NN t defax
+R1113:1116 Bignums.BigQ.QMake ZZ t defax
+ax 1130:1140 NType_ZType spec_Z_of_N
+binder 1151:1151 <> n:2
+R1172:1174 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1154:1160 Bignums.BigQ.QMake ZZ to_Z defax
+R1163:1168 Bignums.BigQ.QMake NType_ZType Z_of_N defax
+R1170:1170 Bignums.BigQ.QMake <> n:2 var
+R1175:1181 Bignums.BigQ.QMake NN to_Z defax
+R1183:1183 Bignums.BigQ.QMake <> n:2 var
+ax 1197:1202 NType_ZType Zabs_N
+R1210:1213 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1206:1209 Bignums.BigQ.QMake ZZ t defax
+R1214:1217 Bignums.BigQ.QMake NN t defax
+ax 1231:1241 NType_ZType spec_Zabs_N
+binder 1252:1252 <> z:5
+R1273:1275 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1255:1261 Bignums.BigQ.QMake NN to_Z defax
+R1264:1269 Bignums.BigQ.QMake NType_ZType Zabs_N defax
+R1271:1271 Bignums.BigQ.QMake <> z:5 var
+R1276:1280 Coq.ZArith.BinInt Z abs def
+R1283:1289 Bignums.BigQ.QMake ZZ to_Z defax
+R1291:1291 Bignums.BigQ.QMake <> z:5 var
+R1299:1309 Bignums.BigQ.QMake NType_ZType <> modtype
+R1329:1333 Bignums.SpecViaZ.NSig NType <> mod
+R1339:1343 Bignums.SpecViaZ.ZSig ZType <> mod
+R1356:1366 Bignums.BigQ.QMake NType_ZType <> mod
+R1368:1369 Bignums.BigQ.QMake NN <> modtype
+R1371:1372 Bignums.BigQ.QMake ZZ <> modtype
+R1378:1382 Bignums.SpecViaQ.QSig QType <> mod
+mod 1320:1323 <> Make
+ind 1628:1629 Make t_
+constr 1638:1639 Make Qz
+constr 1658:1659 Make Qq
+R1647:1650 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1643:1646 Bignums.BigQ.QMake ZZ t defax
+R1651:1652 Bignums.BigQ.QMake <> t_:7 ind
+R1667:1670 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1663:1666 Bignums.BigQ.QMake ZZ t defax
+R1675:1678 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1671:1674 Bignums.BigQ.QMake NN t defax
+R1679:1680 Bignums.BigQ.QMake <> t_:7 ind
+def 1696:1696 Make t
+R1701:1702 Bignums.BigQ.QMake Make t_ ind
+def 1794:1797 Make of_Z
+binder 1799:1799 <> x:9
+R1802:1802 Bignums.BigQ.QMake Make t def
+R1807:1808 Bignums.BigQ.QMake Make Qz constr
+R1811:1817 Bignums.BigQ.QMake ZZ of_Z defax
+R1819:1819 Bignums.BigQ.QMake <> x:9 var
+def 1836:1839 Make of_Q
+R1844:1844 Coq.QArith.QArith_base <> Q rec
+binder 1842:1842 <> q:10
+R1849:1849 Bignums.BigQ.QMake Make t def
+R1869:1869 Bignums.BigQ.QMake <> q:10 var
+binder 1861:1861 <> x:11
+binder 1863:1863 <> y:12
+R1882:1882 Bignums.BigQ.QMake <> y:12 var
+R1909:1910 Bignums.BigQ.QMake Make Qz constr
+R1913:1919 Bignums.BigQ.QMake ZZ of_Z defax
+R1921:1921 Bignums.BigQ.QMake <> x:11 var
+R1935:1936 Bignums.BigQ.QMake Make Qq constr
+R1939:1945 Bignums.BigQ.QMake ZZ of_Z defax
+R1947:1947 Bignums.BigQ.QMake <> x:11 var
+R1951:1957 Bignums.BigQ.QMake NN of_N defax
+R1960:1963 Coq.Numbers.BinNums <> Npos constr
+R1965:1965 Bignums.BigQ.QMake <> y:12 var
+def 1989:1992 Make to_Q
+R1998:1998 Bignums.BigQ.QMake Make t def
+binder 1995:1995 <> q:14
+R2011:2011 Bignums.BigQ.QMake <> q:14 var
+R2023:2024 Bignums.BigQ.QMake Make Qz constr
+R2040:2042 Coq.QArith.QArith_base <> ::Q_scope:x_'#'_x not
+R2031:2037 Bignums.BigQ.QMake ZZ to_Z defax
+R2050:2051 Bignums.BigQ.QMake Make Qq constr
+R2063:2068 Bignums.BigQ.QMake NN eqb defax
+R2072:2078 Bignums.BigQ.QMake NN zero defax
+R2116:2118 Coq.QArith.QArith_base <> ::Q_scope:x_'#'_x not
+R2107:2113 Bignums.BigQ.QMake ZZ to_Z defax
+R2119:2126 Coq.ZArith.BinInt Z to_pos def
+R2129:2135 Bignums.BigQ.QMake NN to_Z defax
+R2169:2172 Bignums.BigQ.QMake Make to_Q def
+not 2157:2157 Make :::'['_x_']'
+prf 2186:2195 Make N_to_Z_pos
+binder 2208:2208 <> x:16
+R2243:2246 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2221:2224 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R2212:2218 Bignums.BigQ.QMake NN to_Z defax
+R2220:2220 Bignums.BigQ.QMake <> x:16 var
+R2225:2231 Bignums.BigQ.QMake NN to_Z defax
+R2233:2239 Bignums.BigQ.QMake NN zero defax
+R2249:2251 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R2252:2258 Bignums.BigQ.QMake NN to_Z defax
+R2260:2260 Bignums.BigQ.QMake <> x:16 var
+R2293:2301 Bignums.BigQ.QMake NN spec_0 defax
+R2316:2326 Bignums.BigQ.QMake NN spec_pos defax
+R2293:2301 Bignums.BigQ.QMake NN spec_0 defax
+R2293:2301 Bignums.BigQ.QMake NN spec_0 defax
+R2316:2326 Bignums.BigQ.QMake NN spec_pos defax
+R2373:2386 Coq.ZArith.BinInt Z compare_spec thm
+R2455:2460 Bignums.BigQ.QMake ZZ eqb defax
+R2455:2460 Bignums.BigQ.QMake ZZ eqb defax
+R2584:2589 Bignums.BigQ.QMake NN eqb defax
+R2584:2589 Bignums.BigQ.QMake NN eqb defax
+R2615:2625 Bignums.BigQ.QMake NN spec_eqb defax
+R2644:2653 Coq.ZArith.BinInt Z eqb_spec thm
+R2668:2674 Bignums.BigQ.QMake NN to_Z defax
+R2656:2662 Bignums.BigQ.QMake NN to_Z defax
+R2744:2753 Bignums.BigQ.QMake Make N_to_Z_pos thm
+R2486:2496 Bignums.BigQ.QMake ZZ spec_eqb defax
+R2515:2524 Coq.ZArith.BinInt Z eqb_spec thm
+R2539:2545 Bignums.BigQ.QMake ZZ to_Z defax
+R2527:2533 Bignums.BigQ.QMake ZZ to_Z defax
+R2827:2835 Coq.ZArith.BinInt Z add_0_r thm
+R2837:2845 Coq.ZArith.BinInt Z add_0_l thm
+R2847:2855 Coq.ZArith.BinInt Z mul_0_r thm
+R2857:2865 Coq.ZArith.BinInt Z mul_0_l thm
+R2867:2875 Coq.ZArith.BinInt Z mul_1_r thm
+R2877:2885 Coq.ZArith.BinInt Z mul_1_l thm
+R2889:2897 Bignums.BigQ.QMake ZZ spec_0 defax
+R2899:2907 Bignums.BigQ.QMake NN spec_0 defax
+R2909:2917 Bignums.BigQ.QMake ZZ spec_1 defax
+R2919:2927 Bignums.BigQ.QMake NN spec_1 defax
+R2929:2938 Bignums.BigQ.QMake ZZ spec_m1 defax
+R2940:2950 Bignums.BigQ.QMake ZZ spec_opp defax
+R2954:2968 Bignums.BigQ.QMake ZZ spec_compare defax
+R2970:2984 Bignums.BigQ.QMake NN spec_compare defax
+R2988:2998 Bignums.BigQ.QMake ZZ spec_add defax
+R3000:3010 Bignums.BigQ.QMake NN spec_add defax
+R3012:3022 Bignums.BigQ.QMake ZZ spec_mul defax
+R3024:3034 Bignums.BigQ.QMake NN spec_mul defax
+R3036:3046 Bignums.BigQ.QMake ZZ spec_div defax
+R3048:3058 Bignums.BigQ.QMake NN spec_div defax
+R3062:3072 Bignums.BigQ.QMake ZZ spec_gcd defax
+R3074:3084 Bignums.BigQ.QMake NN spec_gcd defax
+R3086:3096 Coq.ZArith.BinInt Z gcd_abs_l thm
+R3098:3106 Coq.ZArith.BinInt Z gcd_1_r thm
+R3110:3120 Bignums.BigQ.QMake NZ spec_Z_of_N defax
+R3122:3132 Bignums.BigQ.QMake NZ spec_Zabs_N defax
+R3218:3221 Bignums.BigQ.QMake Make to_Q def
+R3287:3294 Coq.ZArith.BinInt Z2Pos id thm
+prf 3323:3338 Make strong_spec_of_Q
+R3351:3351 Coq.QArith.QArith_base <> Q rec
+binder 3348:3348 <> q:17
+R3362:3364 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3354:3354 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3361:3361 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3355:3358 Bignums.BigQ.QMake Make of_Q def
+R3360:3360 Bignums.BigQ.QMake <> q:17 var
+R3365:3365 Bignums.BigQ.QMake <> q:17 var
+R3418:3429 Bignums.BigQ.QMake ZZ spec_of_Z defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3418:3429 Bignums.BigQ.QMake ZZ spec_of_Z defax
+R3418:3429 Bignums.BigQ.QMake ZZ spec_of_Z defax
+R3418:3429 Bignums.BigQ.QMake ZZ spec_of_Z defax
+R3418:3429 Bignums.BigQ.QMake ZZ spec_of_Z defax
+R3418:3429 Bignums.BigQ.QMake ZZ spec_of_Z defax
+R3418:3429 Bignums.BigQ.QMake ZZ spec_of_Z defax
+R3418:3429 Bignums.BigQ.QMake ZZ spec_of_Z defax
+R3418:3429 Bignums.BigQ.QMake ZZ spec_of_Z defax
+R3418:3429 Bignums.BigQ.QMake ZZ spec_of_Z defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3464:3472 Bignums.BigQ.QMake NN spec_0 defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+R3476:3487 Bignums.BigQ.QMake NN spec_of_N defax
+prf 3506:3514 Make spec_of_Q
+R3527:3527 Coq.QArith.QArith_base <> Q rec
+binder 3524:3524 <> q:18
+R3538:3541 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R3530:3530 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3537:3537 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3531:3534 Bignums.BigQ.QMake Make of_Q def
+R3536:3536 Bignums.BigQ.QMake <> q:18 var
+R3542:3542 Bignums.BigQ.QMake <> q:18 var
+R3570:3585 Bignums.BigQ.QMake Make strong_spec_of_Q thm
+R3570:3585 Bignums.BigQ.QMake Make strong_spec_of_Q thm
+R3570:3585 Bignums.BigQ.QMake Make strong_spec_of_Q thm
+def 3618:3619 Make eq
+binder 3621:3621 <> x:19
+binder 3623:3623 <> y:20
+R3631:3634 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R3628:3628 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3630:3630 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3629:3629 Bignums.BigQ.QMake <> x:19 var
+R3635:3635 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3637:3637 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3636:3636 Bignums.BigQ.QMake <> y:20 var
+def 3653:3656 Make zero
+R3659:3659 Bignums.BigQ.QMake Make t def
+R3664:3665 Bignums.BigQ.QMake Make Qz constr
+R3667:3673 Bignums.BigQ.QMake ZZ zero defax
+def 3688:3690 Make one
+R3693:3693 Bignums.BigQ.QMake Make t def
+R3698:3699 Bignums.BigQ.QMake Make Qz constr
+R3701:3706 Bignums.BigQ.QMake ZZ one defax
+def 3721:3729 Make minus_one
+R3732:3732 Bignums.BigQ.QMake Make t def
+R3737:3738 Bignums.BigQ.QMake Make Qz constr
+R3740:3751 Bignums.BigQ.QMake ZZ minus_one defax
+prf 3762:3767 Make spec_0
+R3776:3779 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R3770:3770 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3775:3775 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3771:3774 Bignums.BigQ.QMake Make zero def
+prf 3835:3840 Make spec_1
+R3848:3851 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R3843:3843 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3847:3847 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3844:3846 Bignums.BigQ.QMake Make one def
+prf 3907:3913 Make spec_m1
+R3927:3930 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R3916:3916 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3926:3926 Bignums.BigQ.QMake Make :::'['_x_']' not
+R3917:3925 Bignums.BigQ.QMake Make minus_one def
+R3931:3931 Coq.QArith.QArith_base <> ::Q_scope:'-'_x not
+def 3994:4000 Make compare
+R4008:4008 Bignums.BigQ.QMake Make t def
+binder 4003:4003 <> x:21
+binder 4005:4005 <> y:22
+R4025:4025 Bignums.BigQ.QMake <> y:22 var
+R4022:4022 Bignums.BigQ.QMake <> x:21 var
+R4036:4037 Bignums.BigQ.QMake Make Qz constr
+R4043:4044 Bignums.BigQ.QMake Make Qz constr
+R4052:4061 Bignums.BigQ.QMake ZZ compare defax
+R4073:4074 Bignums.BigQ.QMake Make Qz constr
+R4080:4081 Bignums.BigQ.QMake Make Qq constr
+R4099:4104 Bignums.BigQ.QMake NN eqb defax
+R4109:4115 Bignums.BigQ.QMake NN zero defax
+R4153:4162 Bignums.BigQ.QMake ZZ compare defax
+R4165:4170 Bignums.BigQ.QMake ZZ mul defax
+R4176:4181 Bignums.BigQ.QMake NZ Z_of_N defax
+R4122:4131 Bignums.BigQ.QMake ZZ compare defax
+R4136:4142 Bignums.BigQ.QMake ZZ zero defax
+R4195:4196 Bignums.BigQ.QMake Make Qq constr
+R4205:4206 Bignums.BigQ.QMake Make Qz constr
+R4221:4226 Bignums.BigQ.QMake NN eqb defax
+R4231:4237 Bignums.BigQ.QMake NN zero defax
+R4275:4284 Bignums.BigQ.QMake ZZ compare defax
+R4290:4295 Bignums.BigQ.QMake ZZ mul defax
+R4301:4306 Bignums.BigQ.QMake NZ Z_of_N defax
+R4244:4253 Bignums.BigQ.QMake ZZ compare defax
+R4255:4261 Bignums.BigQ.QMake ZZ zero defax
+R4317:4318 Bignums.BigQ.QMake Make Qq constr
+R4327:4328 Bignums.BigQ.QMake Make Qq constr
+R4368:4373 Bignums.BigQ.QMake NN eqb defax
+R4378:4384 Bignums.BigQ.QMake NN zero defax
+R4349:4354 Bignums.BigQ.QMake NN eqb defax
+R4359:4365 Bignums.BigQ.QMake NN zero defax
+R4397:4400 Coq.Init.Datatypes <> true constr
+R4403:4406 Coq.Init.Datatypes <> true constr
+R4411:4412 Coq.Init.Datatypes <> Eq constr
+R4420:4423 Coq.Init.Datatypes <> true constr
+R4426:4430 Coq.Init.Datatypes <> false constr
+R4435:4444 Bignums.BigQ.QMake ZZ compare defax
+R4446:4452 Bignums.BigQ.QMake ZZ zero defax
+R4463:4467 Coq.Init.Datatypes <> false constr
+R4470:4473 Coq.Init.Datatypes <> true constr
+R4478:4487 Bignums.BigQ.QMake ZZ compare defax
+R4492:4498 Bignums.BigQ.QMake ZZ zero defax
+R4506:4510 Coq.Init.Datatypes <> false constr
+R4513:4517 Coq.Init.Datatypes <> false constr
+R4522:4531 Bignums.BigQ.QMake ZZ compare defax
+R4534:4539 Bignums.BigQ.QMake ZZ mul defax
+R4545:4550 Bignums.BigQ.QMake NZ Z_of_N defax
+R4590:4595 Bignums.BigQ.QMake ZZ mul defax
+R4601:4606 Bignums.BigQ.QMake NZ Z_of_N defax
+prf 4638:4649 Make spec_compare
+binder 4659:4660 <> q1:25
+binder 4662:4663 <> q2:26
+R4666:4666 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4680:4684 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4697:4697 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4667:4673 Bignums.BigQ.QMake Make compare def
+R4675:4676 Bignums.BigQ.QMake <> q1:25 var
+R4678:4679 Bignums.BigQ.QMake <> q2:26 var
+R4689:4692 Coq.QArith.QArith_base <> ::Q_scope:x_'?='_x not
+R4685:4685 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4688:4688 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4686:4687 Bignums.BigQ.QMake <> q1:25 var
+R4693:4693 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4696:4696 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4694:4695 Bignums.BigQ.QMake <> q2:26 var
+R4753:4760 Coq.QArith.QArith_base <> Qcompare def
+R4763:4769 Bignums.BigQ.QMake Make compare def
+def 4799:4800 Make lt
+binder 4802:4802 <> n:27
+binder 4804:4804 <> m:28
+R4812:4814 Coq.QArith.QArith_base <> ::Q_scope:x_'<'_x not
+R4809:4809 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4811:4811 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4810:4810 Bignums.BigQ.QMake <> n:27 var
+R4815:4815 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4817:4817 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4816:4816 Bignums.BigQ.QMake <> m:28 var
+def 4832:4833 Make le
+binder 4835:4835 <> n:29
+binder 4837:4837 <> m:30
+R4845:4848 Coq.QArith.QArith_base <> ::Q_scope:x_'<='_x not
+R4842:4842 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4844:4844 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4843:4843 Bignums.BigQ.QMake <> n:29 var
+R4849:4849 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4851:4851 Bignums.BigQ.QMake Make :::'['_x_']' not
+R4850:4850 Bignums.BigQ.QMake <> m:30 var
+def 4867:4869 Make min
+binder 4871:4871 <> n:31
+binder 4873:4873 <> m:32
+R4884:4890 Bignums.BigQ.QMake Make compare def
+R4892:4892 Bignums.BigQ.QMake <> n:31 var
+R4894:4894 Bignums.BigQ.QMake <> m:32 var
+R4901:4902 Coq.Init.Datatypes <> Gt constr
+R4907:4907 Bignums.BigQ.QMake <> m:32 var
+R4916:4916 Bignums.BigQ.QMake <> n:31 var
+def 4935:4937 Make max
+binder 4939:4939 <> n:33
+binder 4941:4941 <> m:34
+R4952:4958 Bignums.BigQ.QMake Make compare def
+R4960:4960 Bignums.BigQ.QMake <> n:33 var
+R4962:4962 Bignums.BigQ.QMake <> m:34 var
+R4969:4970 Coq.Init.Datatypes <> Lt constr
+R4975:4975 Bignums.BigQ.QMake <> m:34 var
+R4984:4984 Bignums.BigQ.QMake <> n:33 var
+prf 4999:5006 Make spec_min
+binder 5017:5017 <> n:35
+binder 5019:5019 <> m:36
+R5031:5034 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R5022:5022 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5030:5030 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5023:5025 Bignums.BigQ.QMake Make min def
+R5027:5027 Bignums.BigQ.QMake <> n:35 var
+R5029:5029 Bignums.BigQ.QMake <> m:36 var
+R5035:5038 Coq.QArith.Qminmax <> Qmin def
+R5040:5040 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5042:5042 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5041:5041 Bignums.BigQ.QMake <> n:35 var
+R5044:5044 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5046:5046 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5045:5045 Bignums.BigQ.QMake <> m:36 var
+R5065:5067 Bignums.BigQ.QMake Make min def
+R5070:5073 Coq.QArith.Qminmax <> Qmin def
+R5076:5093 Coq.Structures.GenericMinMax <> gmin def
+R5113:5124 Bignums.BigQ.QMake Make spec_compare thm
+R5113:5124 Bignums.BigQ.QMake Make spec_compare thm
+R5113:5124 Bignums.BigQ.QMake Make spec_compare thm
+R5136:5143 Coq.QArith.QArith_base <> Qcompare def
+prf 5178:5185 Make spec_max
+binder 5196:5196 <> n:37
+binder 5198:5198 <> m:38
+R5210:5213 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R5201:5201 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5209:5209 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5202:5204 Bignums.BigQ.QMake Make max def
+R5206:5206 Bignums.BigQ.QMake <> n:37 var
+R5208:5208 Bignums.BigQ.QMake <> m:38 var
+R5214:5217 Coq.QArith.Qminmax <> Qmax def
+R5219:5219 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5221:5221 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5220:5220 Bignums.BigQ.QMake <> n:37 var
+R5223:5223 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5225:5225 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5224:5224 Bignums.BigQ.QMake <> m:38 var
+R5244:5246 Bignums.BigQ.QMake Make max def
+R5249:5252 Coq.QArith.Qminmax <> Qmax def
+R5255:5272 Coq.Structures.GenericMinMax <> gmax def
+R5292:5303 Bignums.BigQ.QMake Make spec_compare thm
+R5292:5303 Bignums.BigQ.QMake Make spec_compare thm
+R5292:5303 Bignums.BigQ.QMake Make spec_compare thm
+R5315:5322 Coq.QArith.QArith_base <> Qcompare def
+def 5362:5368 Make eq_bool
+binder 5370:5370 <> n:39
+binder 5372:5372 <> m:40
+R5385:5391 Bignums.BigQ.QMake Make compare def
+R5393:5393 Bignums.BigQ.QMake <> n:39 var
+R5395:5395 Bignums.BigQ.QMake <> m:40 var
+R5402:5403 Coq.Init.Datatypes <> Eq constr
+R5408:5411 Coq.Init.Datatypes <> true constr
+R5420:5424 Coq.Init.Datatypes <> false constr
+prf 5441:5452 Make spec_eq_bool
+binder 5462:5462 <> x:41
+binder 5464:5464 <> y:42
+R5478:5480 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5467:5473 Bignums.BigQ.QMake Make eq_bool def
+R5475:5475 Bignums.BigQ.QMake <> x:41 var
+R5477:5477 Bignums.BigQ.QMake <> y:42 var
+R5481:5488 Coq.QArith.QArith_base <> Qeq_bool def
+R5490:5490 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5492:5492 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5491:5491 Bignums.BigQ.QMake <> x:41 var
+R5494:5494 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5496:5496 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5495:5495 Bignums.BigQ.QMake <> y:42 var
+R5523:5529 Bignums.BigQ.QMake Make eq_bool def
+R5540:5551 Bignums.BigQ.QMake Make spec_compare thm
+R5540:5551 Bignums.BigQ.QMake Make spec_compare thm
+R5540:5551 Bignums.BigQ.QMake Make spec_compare thm
+def 5657:5665 Make check_int
+binder 5667:5667 <> n:43
+binder 5669:5669 <> d:44
+R5682:5691 Bignums.BigQ.QMake NN compare defax
+R5693:5698 Bignums.BigQ.QMake NN one defax
+R5700:5700 Bignums.BigQ.QMake <> d:44 var
+R5711:5712 Coq.Init.Datatypes <> Lt constr
+R5717:5718 Bignums.BigQ.QMake Make Qq constr
+R5720:5720 Bignums.BigQ.QMake <> n:43 var
+R5722:5722 Bignums.BigQ.QMake <> d:44 var
+R5728:5729 Coq.Init.Datatypes <> Eq constr
+R5734:5735 Bignums.BigQ.QMake Make Qz constr
+R5737:5737 Bignums.BigQ.QMake <> n:43 var
+R5743:5744 Coq.Init.Datatypes <> Gt constr
+R5749:5752 Bignums.BigQ.QMake Make zero def
+prf 5792:5812 Make strong_spec_check_int
+binder 5823:5823 <> n:45
+binder 5825:5825 <> d:46
+R5843:5845 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5828:5828 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5842:5842 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5829:5837 Bignums.BigQ.QMake Make check_int def
+R5839:5839 Bignums.BigQ.QMake <> n:45 var
+R5841:5841 Bignums.BigQ.QMake <> d:46 var
+R5846:5846 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5853:5853 Bignums.BigQ.QMake Make :::'['_x_']' not
+R5847:5848 Bignums.BigQ.QMake Make Qq constr
+R5850:5850 Bignums.BigQ.QMake <> n:45 var
+R5852:5852 Bignums.BigQ.QMake <> d:46 var
+R5880:5888 Bignums.BigQ.QMake Make check_int def
+def 6039:6042 Make norm
+binder 6044:6044 <> n:47
+binder 6046:6046 <> d:48
+R6050:6050 Bignums.BigQ.QMake Make t def
+R6068:6073 Bignums.BigQ.QMake NN gcd defax
+R6076:6081 Bignums.BigQ.QMake NZ Zabs_N defax
+R6083:6083 Bignums.BigQ.QMake <> n:47 var
+R6086:6086 Bignums.BigQ.QMake <> d:48 var
+binder 6061:6063 <> gcd:49
+R6099:6108 Bignums.BigQ.QMake NN compare defax
+R6110:6115 Bignums.BigQ.QMake NN one defax
+R6117:6119 Bignums.BigQ.QMake <> gcd:49 var
+R6130:6131 Coq.Init.Datatypes <> Lt constr
+R6136:6144 Bignums.BigQ.QMake Make check_int def
+R6147:6152 Bignums.BigQ.QMake ZZ div defax
+R6154:6154 Bignums.BigQ.QMake <> n:47 var
+R6157:6162 Bignums.BigQ.QMake NZ Z_of_N defax
+R6164:6166 Bignums.BigQ.QMake <> gcd:49 var
+R6171:6176 Bignums.BigQ.QMake NN div defax
+R6178:6178 Bignums.BigQ.QMake <> d:48 var
+R6180:6182 Bignums.BigQ.QMake <> gcd:49 var
+R6189:6190 Coq.Init.Datatypes <> Eq constr
+R6195:6203 Bignums.BigQ.QMake Make check_int def
+R6205:6205 Bignums.BigQ.QMake <> n:47 var
+R6207:6207 Bignums.BigQ.QMake <> d:48 var
+R6213:6214 Coq.Init.Datatypes <> Gt constr
+R6219:6222 Bignums.BigQ.QMake Make zero def
+prf 6277:6285 Make spec_norm
+binder 6295:6295 <> n:50
+binder 6297:6297 <> q:51
+R6310:6313 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R6300:6300 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6309:6309 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6301:6304 Bignums.BigQ.QMake Make norm def
+R6306:6306 Bignums.BigQ.QMake <> n:50 var
+R6308:6308 Bignums.BigQ.QMake <> q:51 var
+R6314:6314 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6321:6321 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6315:6316 Bignums.BigQ.QMake Make Qq constr
+R6318:6318 Bignums.BigQ.QMake <> n:50 var
+R6320:6320 Bignums.BigQ.QMake <> q:51 var
+R6352:6355 Bignums.BigQ.QMake Make norm def
+R6373:6383 Bignums.BigQ.QMake NN spec_pos defax
+R6386:6391 Bignums.BigQ.QMake NZ Zabs_N defax
+R6373:6383 Bignums.BigQ.QMake NN spec_pos defax
+R6386:6391 Bignums.BigQ.QMake NZ Zabs_N defax
+R6413:6423 Bignums.BigQ.QMake NN spec_pos defax
+R6413:6423 Bignums.BigQ.QMake NN spec_pos defax
+R6465:6485 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R6465:6485 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R6465:6485 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R6510:6530 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R6510:6530 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R6510:6530 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R6555:6566 Bignums.BigNumPrelude <> Zgcd_div_pos thm
+R6569:6575 Bignums.BigQ.QMake ZZ to_Z defax
+R6581:6587 Bignums.BigQ.QMake NN to_Z defax
+R6555:6566 Bignums.BigNumPrelude <> Zgcd_div_pos thm
+R6569:6575 Bignums.BigQ.QMake ZZ to_Z defax
+R6581:6587 Bignums.BigQ.QMake NN to_Z defax
+R6609:6615 Bignums.BigQ.QMake NN to_Z defax
+R6609:6615 Bignums.BigQ.QMake NN to_Z defax
+R6658:6665 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R6658:6665 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R6658:6665 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R6698:6711 Coq.ZArith.Znumtheory <> Zgcd_div_swap0 thm
+R6698:6711 Coq.ZArith.Znumtheory <> Zgcd_div_swap0 thm
+R6771:6773 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6742:6746 Coq.ZArith.BinInt Z gcd def
+R6749:6755 Bignums.BigQ.QMake ZZ to_Z defax
+R6761:6767 Bignums.BigQ.QMake NN to_Z defax
+R6771:6773 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6742:6746 Coq.ZArith.BinInt Z gcd def
+R6749:6755 Bignums.BigQ.QMake ZZ to_Z defax
+R6761:6767 Bignums.BigQ.QMake NN to_Z defax
+R6794:6805 Coq.ZArith.BinInt Z gcd_nonneg thm
+R6808:6814 Bignums.BigQ.QMake ZZ to_Z defax
+R6820:6826 Bignums.BigQ.QMake NN to_Z defax
+R6794:6805 Coq.ZArith.BinInt Z gcd_nonneg thm
+R6808:6814 Bignums.BigQ.QMake ZZ to_Z defax
+R6820:6826 Bignums.BigQ.QMake NN to_Z defax
+R6856:6867 Coq.ZArith.BinInt Z gcd_eq_0_l thm
+R6856:6867 Coq.ZArith.BinInt Z gcd_eq_0_l thm
+prf 6900:6915 Make strong_spec_norm
+binder 6926:6926 <> p:52
+binder 6928:6928 <> q:53
+R6941:6943 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6931:6931 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6940:6940 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6932:6935 Bignums.BigQ.QMake Make norm def
+R6937:6937 Bignums.BigQ.QMake <> p:52 var
+R6939:6939 Bignums.BigQ.QMake <> q:53 var
+R6944:6947 Coq.QArith.Qreduction <> Qred def
+R6949:6949 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6956:6956 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6950:6951 Bignums.BigQ.QMake Make Qq constr
+R6953:6953 Bignums.BigQ.QMake <> p:52 var
+R6955:6955 Bignums.BigQ.QMake <> q:53 var
+R6986:6989 Coq.QArith.Qreduction <> Qred def
+R6991:6991 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6998:6998 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6992:6993 Bignums.BigQ.QMake Make Qq constr
+R7007:7010 Coq.QArith.Qreduction <> Qred def
+R7012:7012 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7021:7021 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7013:7016 Bignums.BigQ.QMake Make norm def
+R7034:7046 Coq.QArith.Qreduction <> Qred_complete thm
+R7055:7063 Bignums.BigQ.QMake Make spec_norm thm
+R6986:6989 Coq.QArith.Qreduction <> Qred def
+R6991:6991 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6998:6998 Bignums.BigQ.QMake Make :::'['_x_']' not
+R6992:6993 Bignums.BigQ.QMake Make Qq constr
+R7007:7010 Coq.QArith.Qreduction <> Qred def
+R7012:7012 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7021:7021 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7013:7016 Bignums.BigQ.QMake Make norm def
+R7034:7046 Coq.QArith.Qreduction <> Qred_complete thm
+R7055:7063 Bignums.BigQ.QMake Make spec_norm thm
+R7084:7096 Coq.QArith.Qcanon <> Qred_identity thm
+R7084:7096 Coq.QArith.Qcanon <> Qred_identity thm
+R7107:7110 Bignums.BigQ.QMake Make norm def
+R7128:7138 Bignums.BigQ.QMake NN spec_pos defax
+R7141:7146 Bignums.BigQ.QMake NZ Zabs_N defax
+R7128:7138 Bignums.BigQ.QMake NN spec_pos defax
+R7141:7146 Bignums.BigQ.QMake NZ Zabs_N defax
+R7168:7178 Bignums.BigQ.QMake NN spec_pos defax
+R7168:7178 Bignums.BigQ.QMake NN spec_pos defax
+R7220:7240 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R7220:7240 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R7220:7240 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R7220:7240 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R7220:7240 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R7220:7240 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R7220:7240 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R7220:7240 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R7220:7240 Bignums.BigQ.QMake Make strong_spec_check_int thm
+R7270:7285 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R7270:7285 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R7270:7285 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R7299:7309 Coq.ZArith.ZArith_dec <> Z_lt_le_dec thm
+R7314:7320 Bignums.BigQ.QMake NN to_Z defax
+R7299:7309 Coq.ZArith.ZArith_dec <> Z_lt_le_dec thm
+R7314:7320 Bignums.BigQ.QMake NN to_Z defax
+R7334:7350 Coq.ZArith.Znumtheory <> Zis_gcd_rel_prime thm
+R7334:7350 Coq.ZArith.Znumtheory <> Zis_gcd_rel_prime thm
+R7378:7388 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R7378:7388 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R7401:7407 Bignums.BigQ.QMake NN to_Z defax
+R7401:7407 Bignums.BigQ.QMake NN to_Z defax
+R7443:7450 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R7443:7450 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R7443:7450 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+def 7570:7572 Make red
+R7579:7579 Bignums.BigQ.QMake Make t def
+binder 7575:7575 <> x:54
+R7584:7584 Bignums.BigQ.QMake Make t def
+R7597:7597 Bignums.BigQ.QMake <> x:54 var
+R7609:7610 Bignums.BigQ.QMake Make Qz constr
+R7617:7617 Bignums.BigQ.QMake <> x:54 var
+R7624:7625 Bignums.BigQ.QMake Make Qq constr
+R7634:7637 Bignums.BigQ.QMake Make norm def
+ind 7658:7664 Make Reduced
+constr 7671:7680 Make is_reduced
+rec 7658:7664 Make Reduced
+proj 7671:7680 Make is_reduced
+binder 7666:7666 <> x:56
+R7691:7693 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7684:7684 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7690:7690 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7685:7687 Bignums.BigQ.QMake Make red def
+R7689:7689 Bignums.BigQ.QMake <> x:56 var
+R7694:7694 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7696:7696 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7695:7695 Bignums.BigQ.QMake <> x:56 var
+prf 7709:7716 Make spec_red
+binder 7727:7727 <> x:59
+R7737:7740 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R7730:7730 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7736:7736 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7731:7733 Bignums.BigQ.QMake Make red def
+R7735:7735 Bignums.BigQ.QMake <> x:59 var
+R7741:7741 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7743:7743 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7742:7742 Bignums.BigQ.QMake <> x:59 var
+R7802:7804 Bignums.BigQ.QMake Make red def
+R7814:7822 Bignums.BigQ.QMake Make spec_norm thm
+R7814:7822 Bignums.BigQ.QMake Make spec_norm thm
+prf 7841:7855 Make strong_spec_red
+binder 7866:7866 <> x:60
+R7876:7878 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7869:7869 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7875:7875 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7870:7872 Bignums.BigQ.QMake Make red def
+R7874:7874 Bignums.BigQ.QMake <> x:60 var
+R7879:7882 Coq.QArith.Qreduction <> Qred def
+R7884:7884 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7886:7886 Bignums.BigQ.QMake Make :::'['_x_']' not
+R7885:7885 Bignums.BigQ.QMake <> x:60 var
+R7926:7928 Bignums.BigQ.QMake Make red def
+R7948:7960 Coq.QArith.Qcanon <> Qred_identity thm
+R7948:7960 Coq.QArith.Qcanon <> Qred_identity thm
+R7996:7998 Bignums.BigQ.QMake Make red def
+R8007:8022 Bignums.BigQ.QMake Make strong_spec_norm thm
+R8007:8022 Bignums.BigQ.QMake Make strong_spec_norm thm
+def 8044:8046 Make add
+R8054:8054 Bignums.BigQ.QMake Make t def
+binder 8049:8049 <> x:61
+binder 8051:8051 <> y:62
+R8058:8058 Bignums.BigQ.QMake Make t def
+R8071:8071 Bignums.BigQ.QMake <> x:61 var
+R8082:8083 Bignums.BigQ.QMake Make Qz constr
+R8101:8101 Bignums.BigQ.QMake <> y:62 var
+R8114:8115 Bignums.BigQ.QMake Make Qz constr
+R8123:8124 Bignums.BigQ.QMake Make Qz constr
+R8127:8132 Bignums.BigQ.QMake ZZ add defax
+R8147:8148 Bignums.BigQ.QMake Make Qq constr
+R8168:8173 Bignums.BigQ.QMake NN eqb defax
+R8178:8184 Bignums.BigQ.QMake NN zero defax
+R8204:8205 Bignums.BigQ.QMake Make Qq constr
+R8208:8213 Bignums.BigQ.QMake ZZ add defax
+R8216:8221 Bignums.BigQ.QMake ZZ mul defax
+R8227:8232 Bignums.BigQ.QMake NZ Z_of_N defax
+R8191:8191 Bignums.BigQ.QMake <> x:61 var
+R8258:8259 Bignums.BigQ.QMake Make Qq constr
+R8277:8282 Bignums.BigQ.QMake NN eqb defax
+R8287:8293 Bignums.BigQ.QMake NN zero defax
+R8317:8317 Bignums.BigQ.QMake <> y:62 var
+R8330:8331 Bignums.BigQ.QMake Make Qz constr
+R8339:8340 Bignums.BigQ.QMake Make Qq constr
+R8343:8348 Bignums.BigQ.QMake ZZ add defax
+R8354:8359 Bignums.BigQ.QMake ZZ mul defax
+R8365:8370 Bignums.BigQ.QMake NZ Z_of_N defax
+R8387:8388 Bignums.BigQ.QMake Make Qq constr
+R8408:8413 Bignums.BigQ.QMake NN eqb defax
+R8418:8424 Bignums.BigQ.QMake NN zero defax
+R8460:8465 Bignums.BigQ.QMake ZZ add defax
+R8468:8473 Bignums.BigQ.QMake ZZ mul defax
+R8479:8484 Bignums.BigQ.QMake NZ Z_of_N defax
+R8492:8497 Bignums.BigQ.QMake ZZ mul defax
+R8503:8508 Bignums.BigQ.QMake NZ Z_of_N defax
+binder 8455:8455 <> n:66
+R8534:8539 Bignums.BigQ.QMake NN mul defax
+binder 8529:8529 <> d:67
+R8557:8558 Bignums.BigQ.QMake Make Qq constr
+R8560:8560 Bignums.BigQ.QMake <> n:66 var
+R8562:8562 Bignums.BigQ.QMake <> d:67 var
+R8431:8431 Bignums.BigQ.QMake <> x:61 var
+R8300:8300 Bignums.BigQ.QMake <> y:62 var
+prf 8589:8596 Make spec_add
+binder 8607:8607 <> x:68
+binder 8609:8609 <> y:69
+R8621:8624 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R8612:8612 Bignums.BigQ.QMake Make :::'['_x_']' not
+R8620:8620 Bignums.BigQ.QMake Make :::'['_x_']' not
+R8613:8615 Bignums.BigQ.QMake Make add def
+R8617:8617 Bignums.BigQ.QMake <> x:68 var
+R8619:8619 Bignums.BigQ.QMake <> y:69 var
+R8628:8630 Coq.QArith.QArith_base <> ::Q_scope:x_'+'_x not
+R8625:8625 Bignums.BigQ.QMake Make :::'['_x_']' not
+R8627:8627 Bignums.BigQ.QMake Make :::'['_x_']' not
+R8626:8626 Bignums.BigQ.QMake <> x:68 var
+R8631:8631 Bignums.BigQ.QMake Make :::'['_x_']' not
+R8633:8633 Bignums.BigQ.QMake Make :::'['_x_']' not
+R8632:8632 Bignums.BigQ.QMake <> y:69 var
+R8684:8688 Coq.QArith.QArith_base <> Qplus def
+R8718:8728 Coq.PArith.BinPos Pos mul_1_r thm
+R8731:8738 Coq.ZArith.BinInt Z2Pos id thm
+R8718:8728 Coq.PArith.BinPos Pos mul_1_r thm
+R8718:8728 Coq.PArith.BinPos Pos mul_1_r thm
+R8731:8738 Coq.ZArith.BinInt Z2Pos id thm
+R8731:8738 Coq.ZArith.BinInt Z2Pos id thm
+R8731:8738 Coq.ZArith.BinInt Z2Pos id thm
+R8756:8766 Coq.PArith.BinPos Pos mul_1_r thm
+R8769:8776 Coq.ZArith.BinInt Z2Pos id thm
+R8756:8766 Coq.PArith.BinPos Pos mul_1_r thm
+R8756:8766 Coq.PArith.BinPos Pos mul_1_r thm
+R8769:8776 Coq.ZArith.BinInt Z2Pos id thm
+R8769:8776 Coq.ZArith.BinInt Z2Pos id thm
+R8769:8776 Coq.ZArith.BinInt Z2Pos id thm
+R8794:8806 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R8811:8818 Coq.ZArith.BinInt Z2Pos id thm
+R8794:8806 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R8794:8806 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R8811:8818 Coq.ZArith.BinInt Z2Pos id thm
+R8811:8818 Coq.ZArith.BinInt Z2Pos id thm
+R8811:8818 Coq.ZArith.BinInt Z2Pos id thm
+R8811:8818 Coq.ZArith.BinInt Z2Pos id thm
+R8811:8818 Coq.ZArith.BinInt Z2Pos id thm
+def 8846:8853 Make add_norm
+R8861:8861 Bignums.BigQ.QMake Make t def
+binder 8856:8856 <> x:70
+binder 8858:8858 <> y:71
+R8865:8865 Bignums.BigQ.QMake Make t def
+R8878:8878 Bignums.BigQ.QMake <> x:70 var
+R8889:8890 Bignums.BigQ.QMake Make Qz constr
+R8908:8908 Bignums.BigQ.QMake <> y:71 var
+R8921:8922 Bignums.BigQ.QMake Make Qz constr
+R8930:8931 Bignums.BigQ.QMake Make Qz constr
+R8934:8939 Bignums.BigQ.QMake ZZ add defax
+R8954:8955 Bignums.BigQ.QMake Make Qq constr
+R8975:8980 Bignums.BigQ.QMake NN eqb defax
+R8985:8991 Bignums.BigQ.QMake NN zero defax
+R9011:9014 Bignums.BigQ.QMake Make norm def
+R9017:9022 Bignums.BigQ.QMake ZZ add defax
+R9025:9030 Bignums.BigQ.QMake ZZ mul defax
+R9036:9041 Bignums.BigQ.QMake NZ Z_of_N defax
+R8998:8998 Bignums.BigQ.QMake <> x:70 var
+R9067:9068 Bignums.BigQ.QMake Make Qq constr
+R9086:9091 Bignums.BigQ.QMake NN eqb defax
+R9096:9102 Bignums.BigQ.QMake NN zero defax
+R9126:9126 Bignums.BigQ.QMake <> y:71 var
+R9139:9140 Bignums.BigQ.QMake Make Qz constr
+R9148:9151 Bignums.BigQ.QMake Make norm def
+R9154:9159 Bignums.BigQ.QMake ZZ add defax
+R9165:9170 Bignums.BigQ.QMake ZZ mul defax
+R9176:9181 Bignums.BigQ.QMake NZ Z_of_N defax
+R9198:9199 Bignums.BigQ.QMake Make Qq constr
+R9219:9224 Bignums.BigQ.QMake NN eqb defax
+R9229:9235 Bignums.BigQ.QMake NN zero defax
+R9271:9276 Bignums.BigQ.QMake ZZ add defax
+R9279:9284 Bignums.BigQ.QMake ZZ mul defax
+R9290:9295 Bignums.BigQ.QMake NZ Z_of_N defax
+R9303:9308 Bignums.BigQ.QMake ZZ mul defax
+R9314:9319 Bignums.BigQ.QMake NZ Z_of_N defax
+binder 9266:9266 <> n:75
+R9345:9350 Bignums.BigQ.QMake NN mul defax
+binder 9340:9340 <> d:76
+R9368:9371 Bignums.BigQ.QMake Make norm def
+R9373:9373 Bignums.BigQ.QMake <> n:75 var
+R9375:9375 Bignums.BigQ.QMake <> d:76 var
+R9242:9242 Bignums.BigQ.QMake <> x:70 var
+R9109:9109 Bignums.BigQ.QMake <> y:71 var
+prf 9402:9414 Make spec_add_norm
+binder 9425:9425 <> x:77
+binder 9427:9427 <> y:78
+R9444:9447 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R9430:9430 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9443:9443 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9431:9438 Bignums.BigQ.QMake Make add_norm def
+R9440:9440 Bignums.BigQ.QMake <> x:77 var
+R9442:9442 Bignums.BigQ.QMake <> y:78 var
+R9451:9453 Coq.QArith.QArith_base <> ::Q_scope:x_'+'_x not
+R9448:9448 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9450:9450 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9449:9449 Bignums.BigQ.QMake <> x:77 var
+R9454:9454 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9456:9456 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9455:9455 Bignums.BigQ.QMake <> y:78 var
+R9491:9498 Bignums.BigQ.QMake Make spec_add thm
+R9491:9498 Bignums.BigQ.QMake Make spec_add thm
+R9491:9498 Bignums.BigQ.QMake Make spec_add thm
+R9533:9540 Bignums.BigQ.QMake Make add_norm def
+R9543:9545 Bignums.BigQ.QMake Make add def
+R9571:9578 Coq.QArith.QArith_base <> Qeq_refl thm
+R9581:9589 Bignums.BigQ.QMake Make spec_norm thm
+R9571:9578 Coq.QArith.QArith_base <> Qeq_refl thm
+R9571:9578 Coq.QArith.QArith_base <> Qeq_refl thm
+R9571:9578 Coq.QArith.QArith_base <> Qeq_refl thm
+R9571:9578 Coq.QArith.QArith_base <> Qeq_refl thm
+R9571:9578 Coq.QArith.QArith_base <> Qeq_refl thm
+R9571:9578 Coq.QArith.QArith_base <> Qeq_refl thm
+R9571:9578 Coq.QArith.QArith_base <> Qeq_refl thm
+R9571:9578 Coq.QArith.QArith_base <> Qeq_refl thm
+R9581:9589 Bignums.BigQ.QMake Make spec_norm thm
+R9581:9589 Bignums.BigQ.QMake Make spec_norm thm
+R9581:9589 Bignums.BigQ.QMake Make spec_norm thm
+R9581:9589 Bignums.BigQ.QMake Make spec_norm thm
+R9581:9589 Bignums.BigQ.QMake Make spec_norm thm
+R9581:9589 Bignums.BigQ.QMake Make spec_norm thm
+R9581:9589 Bignums.BigQ.QMake Make spec_norm thm
+R9581:9589 Bignums.BigQ.QMake Make spec_norm thm
+inst 9609:9628 Make strong_spec_add_norm
+binder 9630:9630 <> x:79
+binder 9632:9632 <> y:80
+R9639:9645 Bignums.BigQ.QMake Make Reduced class
+R9647:9647 Bignums.BigQ.QMake <> x:79 var
+binder 9639:9647 <> H:81
+R9650:9656 Bignums.BigQ.QMake Make Reduced class
+R9658:9658 Bignums.BigQ.QMake <> y:80 var
+binder 9650:9658 <> H0:82
+R9663:9669 Bignums.BigQ.QMake Make Reduced class
+R9672:9679 Bignums.BigQ.QMake Make add_norm def
+R9681:9681 Bignums.BigQ.QMake <> x:79 var
+R9683:9683 Bignums.BigQ.QMake <> y:80 var
+R9703:9709 Bignums.BigQ.QMake Make Reduced class
+R9729:9743 Bignums.BigQ.QMake Make strong_spec_red thm
+R9729:9743 Bignums.BigQ.QMake Make strong_spec_red thm
+R9729:9743 Bignums.BigQ.QMake Make strong_spec_red thm
+R9759:9771 Coq.QArith.Qreduction <> Qred_complete thm
+R9773:9773 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9781:9781 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9774:9776 Bignums.BigQ.QMake Make add def
+R9759:9771 Coq.QArith.Qreduction <> Qred_complete thm
+R9773:9773 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9781:9781 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9774:9776 Bignums.BigQ.QMake Make add def
+R9759:9771 Coq.QArith.Qreduction <> Qred_complete thm
+R9773:9773 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9781:9781 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9774:9776 Bignums.BigQ.QMake Make add def
+R9759:9771 Coq.QArith.Qreduction <> Qred_complete thm
+R9773:9773 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9781:9781 Bignums.BigQ.QMake Make :::'['_x_']' not
+R9774:9776 Bignums.BigQ.QMake Make add def
+R9797:9811 Bignums.BigQ.QMake Make strong_spec_red thm
+R9797:9811 Bignums.BigQ.QMake Make strong_spec_red thm
+R9797:9811 Bignums.BigQ.QMake Make strong_spec_red thm
+R9919:9926 Bignums.BigQ.QMake Make spec_add thm
+R9929:9941 Bignums.BigQ.QMake Make spec_add_norm thm
+R9950:9957 Coq.QArith.QArith_base <> Qeq_refl thm
+R9919:9926 Bignums.BigQ.QMake Make spec_add thm
+R9919:9926 Bignums.BigQ.QMake Make spec_add thm
+R9929:9941 Bignums.BigQ.QMake Make spec_add_norm thm
+R9929:9941 Bignums.BigQ.QMake Make spec_add_norm thm
+R9950:9957 Coq.QArith.QArith_base <> Qeq_refl thm
+def 9979:9981 Make opp
+R9987:9987 Bignums.BigQ.QMake Make t def
+binder 9984:9984 <> x:83
+R9991:9991 Bignums.BigQ.QMake Make t def
+R10004:10004 Bignums.BigQ.QMake <> x:83 var
+R10015:10016 Bignums.BigQ.QMake Make Qz constr
+R10024:10025 Bignums.BigQ.QMake Make Qz constr
+R10028:10033 Bignums.BigQ.QMake ZZ opp defax
+R10043:10044 Bignums.BigQ.QMake Make Qq constr
+R10055:10056 Bignums.BigQ.QMake Make Qq constr
+R10059:10064 Bignums.BigQ.QMake ZZ opp defax
+R10139:10144 Bignums.BigQ.QMake NN eqb defax
+R10139:10144 Bignums.BigQ.QMake NN eqb defax
+R10170:10180 Bignums.BigQ.QMake NN spec_eqb defax
+R10193:10198 Bignums.BigQ.QMake NN eqb defax
+prf 10217:10231 Make strong_spec_opp
+binder 10241:10241 <> q:85
+R10251:10253 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10244:10244 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10250:10250 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10245:10247 Bignums.BigQ.QMake Make opp def
+R10249:10249 Bignums.BigQ.QMake <> q:85 var
+R10254:10254 Coq.QArith.QArith_base <> ::Q_scope:'-'_x not
+R10255:10255 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10257:10257 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10256:10256 Bignums.BigQ.QMake <> q:85 var
+R10303:10313 Bignums.BigQ.QMake ZZ spec_opp defax
+R10303:10313 Bignums.BigQ.QMake ZZ spec_opp defax
+R10303:10313 Bignums.BigQ.QMake ZZ spec_opp defax
+R10362:10370 Bignums.BigQ.QMake NN spec_0 defax
+R10384:10394 Bignums.BigQ.QMake ZZ spec_opp defax
+R10384:10394 Bignums.BigQ.QMake ZZ spec_opp defax
+R10384:10394 Bignums.BigQ.QMake ZZ spec_opp defax
+prf 10419:10426 Make spec_opp
+binder 10437:10437 <> q:86
+R10447:10450 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R10440:10440 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10446:10446 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10441:10443 Bignums.BigQ.QMake Make opp def
+R10445:10445 Bignums.BigQ.QMake <> q:86 var
+R10451:10451 Coq.QArith.QArith_base <> ::Q_scope:'-'_x not
+R10452:10452 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10454:10454 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10453:10453 Bignums.BigQ.QMake <> q:86 var
+R10482:10496 Bignums.BigQ.QMake Make strong_spec_opp thm
+R10482:10496 Bignums.BigQ.QMake Make strong_spec_opp thm
+R10482:10496 Bignums.BigQ.QMake Make strong_spec_opp thm
+inst 10527:10546 Make strong_spec_opp_norm
+binder 10548:10548 <> q:87
+R10552:10558 Bignums.BigQ.QMake Make Reduced class
+R10560:10560 Bignums.BigQ.QMake <> q:87 var
+binder 10552:10560 <> H:88
+R10565:10571 Bignums.BigQ.QMake Make Reduced class
+R10574:10576 Bignums.BigQ.QMake Make opp def
+R10578:10578 Bignums.BigQ.QMake <> q:87 var
+R10598:10604 Bignums.BigQ.QMake Make Reduced class
+R10624:10638 Bignums.BigQ.QMake Make strong_spec_opp thm
+R10648:10662 Bignums.BigQ.QMake Make strong_spec_red thm
+R10668:10675 Coq.QArith.Qreduction <> Qred_opp thm
+R10624:10638 Bignums.BigQ.QMake Make strong_spec_opp thm
+R10624:10638 Bignums.BigQ.QMake Make strong_spec_opp thm
+R10648:10662 Bignums.BigQ.QMake Make strong_spec_red thm
+R10648:10662 Bignums.BigQ.QMake Make strong_spec_red thm
+R10648:10662 Bignums.BigQ.QMake Make strong_spec_red thm
+R10648:10662 Bignums.BigQ.QMake Make strong_spec_red thm
+R10668:10675 Coq.QArith.Qreduction <> Qred_opp thm
+R10668:10675 Coq.QArith.Qreduction <> Qred_opp thm
+R10685:10697 Coq.QArith.Qreduction <> Qred_complete thm
+R10706:10713 Bignums.BigQ.QMake Make spec_opp thm
+R10685:10697 Coq.QArith.Qreduction <> Qred_complete thm
+R10706:10713 Bignums.BigQ.QMake Make spec_opp thm
+def 10735:10737 Make sub
+binder 10739:10739 <> x:89
+binder 10741:10741 <> y:90
+R10746:10748 Bignums.BigQ.QMake Make add def
+R10750:10750 Bignums.BigQ.QMake <> x:89 var
+R10753:10755 Bignums.BigQ.QMake Make opp def
+R10757:10757 Bignums.BigQ.QMake <> y:90 var
+prf 10771:10778 Make spec_sub
+binder 10789:10789 <> x:91
+binder 10791:10791 <> y:92
+R10803:10806 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R10794:10794 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10802:10802 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10795:10797 Bignums.BigQ.QMake Make sub def
+R10799:10799 Bignums.BigQ.QMake <> x:91 var
+R10801:10801 Bignums.BigQ.QMake <> y:92 var
+R10810:10812 Coq.QArith.QArith_base <> ::Q_scope:x_'-'_x not
+R10807:10807 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10809:10809 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10808:10808 Bignums.BigQ.QMake <> x:91 var
+R10813:10813 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10815:10815 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10814:10814 Bignums.BigQ.QMake <> y:92 var
+R10846:10848 Bignums.BigQ.QMake Make sub def
+R10859:10866 Bignums.BigQ.QMake Make spec_add thm
+R10859:10866 Bignums.BigQ.QMake Make spec_add thm
+R10859:10866 Bignums.BigQ.QMake Make spec_add thm
+R10884:10891 Bignums.BigQ.QMake Make spec_opp thm
+R10884:10891 Bignums.BigQ.QMake Make spec_opp thm
+R10884:10891 Bignums.BigQ.QMake Make spec_opp thm
+def 10919:10926 Make sub_norm
+binder 10928:10928 <> x:93
+binder 10930:10930 <> y:94
+R10935:10942 Bignums.BigQ.QMake Make add_norm def
+R10944:10944 Bignums.BigQ.QMake <> x:93 var
+R10947:10949 Bignums.BigQ.QMake Make opp def
+R10951:10951 Bignums.BigQ.QMake <> y:94 var
+prf 10965:10977 Make spec_sub_norm
+binder 10988:10988 <> x:95
+binder 10990:10990 <> y:96
+R11007:11010 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R10993:10993 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11006:11006 Bignums.BigQ.QMake Make :::'['_x_']' not
+R10994:11001 Bignums.BigQ.QMake Make sub_norm def
+R11003:11003 Bignums.BigQ.QMake <> x:95 var
+R11005:11005 Bignums.BigQ.QMake <> y:96 var
+R11014:11016 Coq.QArith.QArith_base <> ::Q_scope:x_'-'_x not
+R11011:11011 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11013:11013 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11012:11012 Bignums.BigQ.QMake <> x:95 var
+R11017:11017 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11019:11019 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11018:11018 Bignums.BigQ.QMake <> y:96 var
+R11050:11057 Bignums.BigQ.QMake Make sub_norm def
+R11068:11080 Bignums.BigQ.QMake Make spec_add_norm thm
+R11068:11080 Bignums.BigQ.QMake Make spec_add_norm thm
+R11068:11080 Bignums.BigQ.QMake Make spec_add_norm thm
+R11098:11105 Bignums.BigQ.QMake Make spec_opp thm
+R11098:11105 Bignums.BigQ.QMake Make spec_opp thm
+R11098:11105 Bignums.BigQ.QMake Make spec_opp thm
+inst 11131:11150 Make strong_spec_sub_norm
+binder 11152:11152 <> x:97
+binder 11154:11154 <> y:98
+R11160:11166 Bignums.BigQ.QMake Make Reduced class
+R11168:11168 Bignums.BigQ.QMake <> x:97 var
+binder 11160:11168 <> H:99
+R11171:11177 Bignums.BigQ.QMake Make Reduced class
+R11179:11179 Bignums.BigQ.QMake <> y:98 var
+binder 11171:11179 <> H0:100
+R11184:11190 Bignums.BigQ.QMake Make Reduced class
+R11193:11200 Bignums.BigQ.QMake Make sub_norm def
+R11202:11202 Bignums.BigQ.QMake <> x:97 var
+R11204:11204 Bignums.BigQ.QMake <> y:98 var
+R11233:11240 Bignums.BigQ.QMake Make sub_norm def
+R11250:11269 Bignums.BigQ.QMake Make strong_spec_add_norm inst
+R11250:11269 Bignums.BigQ.QMake Make strong_spec_add_norm inst
+R11285:11304 Bignums.BigQ.QMake Make strong_spec_opp_norm inst
+R11285:11304 Bignums.BigQ.QMake Make strong_spec_opp_norm inst
+def 11332:11334 Make mul
+R11342:11342 Bignums.BigQ.QMake Make t def
+binder 11337:11337 <> x:101
+binder 11339:11339 <> y:102
+R11346:11346 Bignums.BigQ.QMake Make t def
+R11362:11362 Bignums.BigQ.QMake <> y:102 var
+R11359:11359 Bignums.BigQ.QMake <> x:101 var
+R11373:11374 Bignums.BigQ.QMake Make Qz constr
+R11380:11381 Bignums.BigQ.QMake Make Qz constr
+R11389:11390 Bignums.BigQ.QMake Make Qz constr
+R11393:11398 Bignums.BigQ.QMake ZZ mul defax
+R11411:11412 Bignums.BigQ.QMake Make Qz constr
+R11418:11419 Bignums.BigQ.QMake Make Qq constr
+R11430:11431 Bignums.BigQ.QMake Make Qq constr
+R11434:11439 Bignums.BigQ.QMake ZZ mul defax
+R11455:11456 Bignums.BigQ.QMake Make Qq constr
+R11465:11466 Bignums.BigQ.QMake Make Qz constr
+R11474:11475 Bignums.BigQ.QMake Make Qq constr
+R11478:11483 Bignums.BigQ.QMake ZZ mul defax
+R11499:11500 Bignums.BigQ.QMake Make Qq constr
+R11509:11510 Bignums.BigQ.QMake Make Qq constr
+R11521:11522 Bignums.BigQ.QMake Make Qq constr
+R11525:11530 Bignums.BigQ.QMake ZZ mul defax
+R11540:11545 Bignums.BigQ.QMake NN mul defax
+R11603:11605 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11603:11605 Coq.Init.Logic <> ::type_scope:x_'='_x not
+prf 11646:11653 Make spec_mul
+binder 11664:11664 <> x:105
+binder 11666:11666 <> y:106
+R11678:11681 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R11669:11669 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11677:11677 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11670:11672 Bignums.BigQ.QMake Make mul def
+R11674:11674 Bignums.BigQ.QMake <> x:105 var
+R11676:11676 Bignums.BigQ.QMake <> y:106 var
+R11685:11687 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R11682:11682 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11684:11684 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11683:11683 Bignums.BigQ.QMake <> x:105 var
+R11688:11688 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11690:11690 Bignums.BigQ.QMake Make :::'['_x_']' not
+R11689:11689 Bignums.BigQ.QMake <> y:106 var
+R11741:11745 Coq.QArith.QArith_base <> Qmult def
+R11772:11782 Coq.PArith.BinPos Pos mul_1_r thm
+R11785:11792 Coq.ZArith.BinInt Z2Pos id thm
+R11772:11782 Coq.PArith.BinPos Pos mul_1_r thm
+R11772:11782 Coq.PArith.BinPos Pos mul_1_r thm
+R11785:11792 Coq.ZArith.BinInt Z2Pos id thm
+R11785:11792 Coq.ZArith.BinInt Z2Pos id thm
+R11785:11792 Coq.ZArith.BinInt Z2Pos id thm
+R11810:11819 Coq.ZArith.BinInt Z mul_eq_0 def
+R11810:11819 Coq.ZArith.BinInt Z mul_eq_0 def
+R11810:11819 Coq.ZArith.BinInt Z mul_eq_0 def
+R11937:11949 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R11954:11961 Coq.ZArith.BinInt Z2Pos id thm
+R11937:11949 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R11937:11949 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R11954:11961 Coq.ZArith.BinInt Z2Pos id thm
+R11954:11961 Coq.ZArith.BinInt Z2Pos id thm
+R11954:11961 Coq.ZArith.BinInt Z2Pos id thm
+R11954:11961 Coq.ZArith.BinInt Z2Pos id thm
+R11954:11961 Coq.ZArith.BinInt Z2Pos id thm
+def 11989:11998 Make norm_denum
+binder 12000:12000 <> n:107
+binder 12002:12002 <> d:108
+R12012:12017 Bignums.BigQ.QMake NN eqb defax
+R12019:12019 Bignums.BigQ.QMake <> d:108 var
+R12021:12026 Bignums.BigQ.QMake NN one defax
+R12043:12044 Bignums.BigQ.QMake Make Qq constr
+R12046:12046 Bignums.BigQ.QMake <> n:107 var
+R12048:12048 Bignums.BigQ.QMake <> d:108 var
+R12033:12034 Bignums.BigQ.QMake Make Qz constr
+R12036:12036 Bignums.BigQ.QMake <> n:107 var
+prf 12059:12073 Make spec_norm_denum
+binder 12084:12084 <> n:109
+binder 12086:12086 <> d:110
+R12107:12110 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R12091:12091 Bignums.BigQ.QMake Make :::'['_x_']' not
+R12106:12106 Bignums.BigQ.QMake Make :::'['_x_']' not
+R12092:12101 Bignums.BigQ.QMake Make norm_denum def
+R12103:12103 Bignums.BigQ.QMake <> n:109 var
+R12105:12105 Bignums.BigQ.QMake <> d:110 var
+R12111:12111 Bignums.BigQ.QMake Make :::'['_x_']' not
+R12118:12118 Bignums.BigQ.QMake Make :::'['_x_']' not
+R12112:12113 Bignums.BigQ.QMake Make Qq constr
+R12115:12115 Bignums.BigQ.QMake <> n:109 var
+R12117:12117 Bignums.BigQ.QMake <> d:110 var
+R12137:12146 Bignums.BigQ.QMake Make norm_denum def
+def 12231:12235 Make irred
+binder 12237:12237 <> n:111
+binder 12239:12239 <> d:112
+R12258:12263 Bignums.BigQ.QMake NN gcd defax
+R12266:12271 Bignums.BigQ.QMake NZ Zabs_N defax
+R12273:12273 Bignums.BigQ.QMake <> n:111 var
+R12276:12276 Bignums.BigQ.QMake <> d:112 var
+binder 12251:12253 <> gcd:113
+R12290:12299 Bignums.BigQ.QMake NN compare defax
+R12301:12303 Bignums.BigQ.QMake <> gcd:113 var
+R12305:12310 Bignums.BigQ.QMake NN one defax
+R12324:12325 Coq.Init.Datatypes <> Gt constr
+R12330:12330 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12352:12353 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12366:12366 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12331:12336 Bignums.BigQ.QMake ZZ div defax
+R12338:12338 Bignums.BigQ.QMake <> n:111 var
+R12341:12346 Bignums.BigQ.QMake NZ Z_of_N defax
+R12348:12350 Bignums.BigQ.QMake <> gcd:113 var
+R12354:12359 Bignums.BigQ.QMake NN div defax
+R12361:12361 Bignums.BigQ.QMake <> d:112 var
+R12363:12365 Bignums.BigQ.QMake <> gcd:113 var
+R12380:12380 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12382:12383 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12385:12385 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12381:12381 Bignums.BigQ.QMake <> n:111 var
+R12384:12384 Bignums.BigQ.QMake <> d:112 var
+prf 12403:12412 Make spec_irred
+binder 12423:12423 <> n:114
+binder 12425:12425 <> d:115
+R12428:12434 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R12436:12439 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 12435:12435 <> g:116
+R12455:12459 Bignums.BigQ.QMake Make irred def
+R12461:12461 Bignums.BigQ.QMake <> n:114 var
+R12463:12463 Bignums.BigQ.QMake <> d:115 var
+binder 12445:12446 <> n':117
+binder 12448:12449 <> d':118
+R12500:12503 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R12485:12487 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12481:12483 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R12471:12477 Bignums.BigQ.QMake ZZ to_Z defax
+R12479:12480 Bignums.BigQ.QMake <> n':117 var
+R12484:12484 Bignums.BigQ.QMake <> g:116 var
+R12488:12494 Bignums.BigQ.QMake ZZ to_Z defax
+R12496:12496 Bignums.BigQ.QMake <> n:114 var
+R12519:12521 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12515:12517 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R12505:12511 Bignums.BigQ.QMake NN to_Z defax
+R12513:12514 Bignums.BigQ.QMake <> d':118 var
+R12518:12518 Bignums.BigQ.QMake <> g:116 var
+R12522:12528 Bignums.BigQ.QMake NN to_Z defax
+R12530:12530 Bignums.BigQ.QMake <> d:115 var
+R12561:12565 Bignums.BigQ.QMake Make irred def
+R12689:12691 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12660:12664 Coq.ZArith.BinInt Z gcd def
+R12667:12673 Bignums.BigQ.QMake ZZ to_Z defax
+R12679:12685 Bignums.BigQ.QMake NN to_Z defax
+R12689:12691 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12660:12664 Coq.ZArith.BinInt Z gcd def
+R12667:12673 Bignums.BigQ.QMake ZZ to_Z defax
+R12679:12685 Bignums.BigQ.QMake NN to_Z defax
+R12712:12723 Coq.ZArith.BinInt Z gcd_nonneg thm
+R12726:12732 Bignums.BigQ.QMake ZZ to_Z defax
+R12738:12744 Bignums.BigQ.QMake NN to_Z defax
+R12712:12723 Coq.ZArith.BinInt Z gcd_nonneg thm
+R12726:12732 Bignums.BigQ.QMake ZZ to_Z defax
+R12738:12744 Bignums.BigQ.QMake NN to_Z defax
+R12792:12803 Coq.ZArith.BinInt Z gcd_eq_0_l thm
+R12792:12803 Coq.ZArith.BinInt Z gcd_eq_0_l thm
+R12832:12843 Coq.ZArith.BinInt Z gcd_eq_0_r thm
+R12832:12843 Coq.ZArith.BinInt Z gcd_eq_0_r thm
+R12863:12867 Coq.ZArith.BinInt Z gcd def
+R12870:12876 Bignums.BigQ.QMake ZZ to_Z defax
+R12882:12888 Bignums.BigQ.QMake NN to_Z defax
+R12863:12867 Coq.ZArith.BinInt Z gcd def
+R12870:12876 Bignums.BigQ.QMake ZZ to_Z defax
+R12882:12888 Bignums.BigQ.QMake NN to_Z defax
+R12932:12942 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R12945:12951 Bignums.BigQ.QMake ZZ to_Z defax
+R12957:12963 Bignums.BigQ.QMake NN to_Z defax
+R12932:12942 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R12945:12951 Bignums.BigQ.QMake ZZ to_Z defax
+R12957:12963 Bignums.BigQ.QMake NN to_Z defax
+R12979:12988 Coq.ZArith.BinInt Z mul_comm thm
+R13007:13021 Coq.ZArith.Znumtheory <> Zdivide_Zdiv_eq thm
+R12979:12988 Coq.ZArith.BinInt Z mul_comm thm
+R12979:12988 Coq.ZArith.BinInt Z mul_comm thm
+R13007:13021 Coq.ZArith.Znumtheory <> Zdivide_Zdiv_eq thm
+R13063:13073 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R13076:13082 Bignums.BigQ.QMake ZZ to_Z defax
+R13088:13094 Bignums.BigQ.QMake NN to_Z defax
+R13063:13073 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R13076:13082 Bignums.BigQ.QMake ZZ to_Z defax
+R13088:13094 Bignums.BigQ.QMake NN to_Z defax
+R13110:13119 Coq.ZArith.BinInt Z mul_comm thm
+R13138:13152 Coq.ZArith.Znumtheory <> Zdivide_Zdiv_eq thm
+R13110:13119 Coq.ZArith.BinInt Z mul_comm thm
+R13110:13119 Coq.ZArith.BinInt Z mul_comm thm
+R13138:13152 Coq.ZArith.Znumtheory <> Zdivide_Zdiv_eq thm
+prf 13187:13201 Make spec_irred_zero
+binder 13212:13212 <> n:119
+binder 13214:13214 <> d:120
+R13237:13241 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R13230:13232 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13221:13227 Bignums.BigQ.QMake NN to_Z defax
+R13229:13229 Bignums.BigQ.QMake <> d:120 var
+R13268:13270 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13243:13249 Bignums.BigQ.QMake NN to_Z defax
+R13252:13254 Coq.Init.Datatypes <> snd def
+R13257:13261 Bignums.BigQ.QMake Make irred def
+R13263:13263 Bignums.BigQ.QMake <> n:119 var
+R13265:13265 Bignums.BigQ.QMake <> d:120 var
+R13302:13306 Bignums.BigQ.QMake Make irred def
+R13388:13395 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R13388:13395 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R13388:13395 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R13475:13485 Bignums.BigQ.QMake NN spec_pos defax
+R13475:13485 Bignums.BigQ.QMake NN spec_pos defax
+R13510:13516 Bignums.BigQ.QMake NN to_Z defax
+R13510:13516 Bignums.BigQ.QMake NN to_Z defax
+R13538:13540 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R13538:13540 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R13577:13588 Bignums.BigNumPrelude <> Zgcd_div_pos thm
+R13577:13588 Bignums.BigNumPrelude <> Zgcd_div_pos thm
+prf 13686:13702 Make strong_spec_irred
+binder 13713:13713 <> n:121
+binder 13715:13715 <> d:122
+R13720:13720 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13737:13743 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13730:13733 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R13721:13727 Bignums.BigQ.QMake NN to_Z defax
+R13729:13729 Bignums.BigQ.QMake <> d:122 var
+R13759:13763 Bignums.BigQ.QMake Make irred def
+R13765:13765 Bignums.BigQ.QMake <> n:121 var
+R13767:13767 Bignums.BigQ.QMake <> d:122 var
+binder 13749:13750 <> n':123
+binder 13752:13753 <> d':124
+R13803:13805 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13772:13776 Coq.ZArith.BinInt Z gcd def
+R13779:13785 Bignums.BigQ.QMake ZZ to_Z defax
+R13787:13788 Bignums.BigQ.QMake <> n':123 var
+R13792:13798 Bignums.BigQ.QMake NN to_Z defax
+R13800:13801 Bignums.BigQ.QMake <> d':124 var
+R13827:13831 Bignums.BigQ.QMake Make irred def
+R13899:13910 Coq.ZArith.BinInt Z gcd_eq_0_r thm
+R13913:13919 Bignums.BigQ.QMake ZZ to_Z defax
+R13899:13910 Coq.ZArith.BinInt Z gcd_eq_0_r thm
+R13913:13919 Bignums.BigQ.QMake ZZ to_Z defax
+R13939:13950 Coq.ZArith.BinInt Z gcd_nonneg thm
+R13953:13959 Bignums.BigQ.QMake ZZ to_Z defax
+R13965:13971 Bignums.BigQ.QMake NN to_Z defax
+R13939:13950 Coq.ZArith.BinInt Z gcd_nonneg thm
+R13953:13959 Bignums.BigQ.QMake ZZ to_Z defax
+R13965:13971 Bignums.BigQ.QMake NN to_Z defax
+R14003:14018 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R14003:14018 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R14003:14018 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R14028:14044 Coq.ZArith.Znumtheory <> Zis_gcd_rel_prime thm
+R14028:14044 Coq.ZArith.Znumtheory <> Zis_gcd_rel_prime thm
+R14060:14070 Bignums.BigQ.QMake NN spec_pos defax
+R14060:14070 Bignums.BigQ.QMake NN spec_pos defax
+R14094:14105 Coq.ZArith.BinInt Z gcd_nonneg thm
+R14108:14114 Bignums.BigQ.QMake ZZ to_Z defax
+R14120:14126 Bignums.BigQ.QMake NN to_Z defax
+R14094:14105 Coq.ZArith.BinInt Z gcd_nonneg thm
+R14108:14114 Bignums.BigQ.QMake ZZ to_Z defax
+R14120:14126 Bignums.BigQ.QMake NN to_Z defax
+R14145:14155 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R14145:14155 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+def 14183:14196 Make mul_norm_Qz_Qq
+binder 14198:14198 <> z:125
+binder 14200:14200 <> n:126
+binder 14202:14202 <> d:127
+R14213:14218 Bignums.BigQ.QMake ZZ eqb defax
+R14220:14220 Bignums.BigQ.QMake <> z:125 var
+R14222:14228 Bignums.BigQ.QMake ZZ zero defax
+R14263:14268 Bignums.BigQ.QMake NN gcd defax
+R14271:14276 Bignums.BigQ.QMake NZ Zabs_N defax
+R14278:14278 Bignums.BigQ.QMake <> z:125 var
+R14281:14281 Bignums.BigQ.QMake <> d:127 var
+binder 14256:14258 <> gcd:128
+R14296:14305 Bignums.BigQ.QMake NN compare defax
+R14307:14309 Bignums.BigQ.QMake <> gcd:128 var
+R14311:14316 Bignums.BigQ.QMake NN one defax
+R14331:14332 Coq.Init.Datatypes <> Gt constr
+R14354:14359 Bignums.BigQ.QMake ZZ div defax
+R14361:14361 Bignums.BigQ.QMake <> z:125 var
+R14364:14369 Bignums.BigQ.QMake NZ Z_of_N defax
+R14371:14373 Bignums.BigQ.QMake <> gcd:128 var
+binder 14349:14349 <> z:129
+R14396:14401 Bignums.BigQ.QMake NN div defax
+R14403:14403 Bignums.BigQ.QMake <> d:127 var
+R14405:14407 Bignums.BigQ.QMake <> gcd:128 var
+binder 14391:14391 <> d:130
+R14420:14429 Bignums.BigQ.QMake Make norm_denum def
+R14432:14437 Bignums.BigQ.QMake ZZ mul defax
+R14439:14439 Bignums.BigQ.QMake <> z:129 var
+R14441:14441 Bignums.BigQ.QMake <> n:126 var
+R14444:14444 Bignums.BigQ.QMake <> d:130 var
+R14460:14461 Bignums.BigQ.QMake Make Qq constr
+R14464:14469 Bignums.BigQ.QMake ZZ mul defax
+R14471:14471 Bignums.BigQ.QMake <> z:125 var
+R14473:14473 Bignums.BigQ.QMake <> n:126 var
+R14476:14476 Bignums.BigQ.QMake <> d:127 var
+R14235:14238 Bignums.BigQ.QMake Make zero def
+def 14500:14507 Make mul_norm
+R14515:14515 Bignums.BigQ.QMake Make t def
+binder 14510:14510 <> x:131
+binder 14512:14512 <> y:132
+R14519:14519 Bignums.BigQ.QMake Make t def
+R14534:14534 Bignums.BigQ.QMake <> y:132 var
+R14531:14531 Bignums.BigQ.QMake <> x:131 var
+R14544:14545 Bignums.BigQ.QMake Make Qz constr
+R14551:14552 Bignums.BigQ.QMake Make Qz constr
+R14560:14561 Bignums.BigQ.QMake Make Qz constr
+R14564:14569 Bignums.BigQ.QMake ZZ mul defax
+R14581:14582 Bignums.BigQ.QMake Make Qz constr
+R14588:14589 Bignums.BigQ.QMake Make Qq constr
+R14600:14613 Bignums.BigQ.QMake Make mul_norm_Qz_Qq def
+R14627:14628 Bignums.BigQ.QMake Make Qq constr
+R14637:14638 Bignums.BigQ.QMake Make Qz constr
+R14646:14659 Bignums.BigQ.QMake Make mul_norm_Qz_Qq def
+R14673:14674 Bignums.BigQ.QMake Make Qq constr
+R14683:14684 Bignums.BigQ.QMake Make Qq constr
+R14715:14719 Bignums.BigQ.QMake Make irred def
+binder 14704:14705 <> nx:135
+binder 14708:14709 <> dy:136
+R14750:14754 Bignums.BigQ.QMake Make irred def
+binder 14739:14740 <> ny:137
+binder 14743:14744 <> dx:138
+R14769:14778 Bignums.BigQ.QMake Make norm_denum def
+R14781:14786 Bignums.BigQ.QMake ZZ mul defax
+R14788:14789 Bignums.BigQ.QMake <> ny:137 var
+R14791:14792 Bignums.BigQ.QMake <> nx:135 var
+R14796:14801 Bignums.BigQ.QMake NN mul defax
+R14803:14804 Bignums.BigQ.QMake <> dx:138 var
+R14806:14807 Bignums.BigQ.QMake <> dy:136 var
+prf 14824:14842 Make spec_mul_norm_Qz_Qq
+binder 14853:14853 <> z:139
+binder 14855:14855 <> n:140
+binder 14857:14857 <> d:141
+R14885:14888 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R14863:14863 Bignums.BigQ.QMake Make :::'['_x_']' not
+R14884:14884 Bignums.BigQ.QMake Make :::'['_x_']' not
+R14864:14877 Bignums.BigQ.QMake Make mul_norm_Qz_Qq def
+R14879:14879 Bignums.BigQ.QMake <> z:139 var
+R14881:14881 Bignums.BigQ.QMake <> n:140 var
+R14883:14883 Bignums.BigQ.QMake <> d:141 var
+R14889:14889 Bignums.BigQ.QMake Make :::'['_x_']' not
+R14907:14907 Bignums.BigQ.QMake Make :::'['_x_']' not
+R14890:14891 Bignums.BigQ.QMake Make Qq constr
+R14894:14899 Bignums.BigQ.QMake ZZ mul defax
+R14901:14901 Bignums.BigQ.QMake <> z:139 var
+R14903:14903 Bignums.BigQ.QMake <> n:140 var
+R14906:14906 Bignums.BigQ.QMake <> d:141 var
+R14940:14953 Bignums.BigQ.QMake Make mul_norm_Qz_Qq def
+R14973:14983 Bignums.BigNumPrelude <> Zcompare_gt thm
+R14973:14983 Bignums.BigNumPrelude <> Zcompare_gt thm
+R14973:14983 Bignums.BigNumPrelude <> Zcompare_gt thm
+R15055:15065 Coq.ZArith.ZArith_dec <> Z_le_gt_dec def
+R15097:15111 Bignums.BigQ.QMake Make spec_norm_denum thm
+R15097:15111 Bignums.BigQ.QMake Make spec_norm_denum thm
+R15097:15111 Bignums.BigQ.QMake Make spec_norm_denum thm
+R15132:15144 Bignums.BigNumPrelude <> Zdiv_gcd_zero thm
+R15132:15144 Bignums.BigNumPrelude <> Zdiv_gcd_zero thm
+R15132:15144 Bignums.BigNumPrelude <> Zdiv_gcd_zero thm
+R15132:15144 Bignums.BigNumPrelude <> Zdiv_gcd_zero thm
+R15132:15144 Bignums.BigNumPrelude <> Zdiv_gcd_zero thm
+R15188:15195 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R15188:15195 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R15188:15195 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R15229:15239 Coq.ZArith.BinInt Z mul_assoc thm
+R15243:15252 Coq.ZArith.BinInt Z mul_comm thm
+R15255:15261 Bignums.BigQ.QMake ZZ to_Z defax
+R15268:15278 Coq.ZArith.BinInt Z mul_assoc thm
+R15229:15239 Coq.ZArith.BinInt Z mul_assoc thm
+R15229:15239 Coq.ZArith.BinInt Z mul_assoc thm
+R15243:15252 Coq.ZArith.BinInt Z mul_comm thm
+R15255:15261 Bignums.BigQ.QMake ZZ to_Z defax
+R15243:15252 Coq.ZArith.BinInt Z mul_comm thm
+R15255:15261 Bignums.BigQ.QMake ZZ to_Z defax
+R15268:15278 Coq.ZArith.BinInt Z mul_assoc thm
+R15268:15278 Coq.ZArith.BinInt Z mul_assoc thm
+R15290:15303 Coq.ZArith.Znumtheory <> Zgcd_div_swap0 thm
+R15290:15303 Coq.ZArith.Znumtheory <> Zgcd_div_swap0 thm
+R15290:15303 Coq.ZArith.Znumtheory <> Zgcd_div_swap0 thm
+R15290:15303 Coq.ZArith.Znumtheory <> Zgcd_div_swap0 thm
+R15290:15303 Coq.ZArith.Znumtheory <> Zgcd_div_swap0 thm
+inst 15328:15353 Make strong_spec_mul_norm_Qz_Qq
+binder 15355:15355 <> z:142
+binder 15357:15357 <> n:143
+binder 15359:15359 <> d:144
+R15375:15381 Bignums.BigQ.QMake Make Reduced class
+R15384:15385 Bignums.BigQ.QMake Make Qq constr
+R15387:15387 Bignums.BigQ.QMake <> n:143 var
+R15389:15389 Bignums.BigQ.QMake <> d:144 var
+binder 15375:15390 <> H:145
+R15394:15400 Bignums.BigQ.QMake Make Reduced class
+R15403:15416 Bignums.BigQ.QMake Make mul_norm_Qz_Qq def
+R15418:15418 Bignums.BigQ.QMake <> z:142 var
+R15420:15420 Bignums.BigQ.QMake <> n:143 var
+R15422:15422 Bignums.BigQ.QMake <> d:144 var
+R15442:15448 Bignums.BigQ.QMake Make Reduced class
+R15462:15476 Bignums.BigQ.QMake Make strong_spec_red thm
+R15481:15488 Coq.QArith.Qcanon <> Qred_iff thm
+R15462:15476 Bignums.BigQ.QMake Make strong_spec_red thm
+R15462:15476 Bignums.BigQ.QMake Make strong_spec_red thm
+R15462:15476 Bignums.BigQ.QMake Make strong_spec_red thm
+R15481:15488 Coq.QArith.Qcanon <> Qred_iff thm
+R15481:15488 Coq.QArith.Qcanon <> Qred_iff thm
+R15481:15488 Coq.QArith.Qcanon <> Qred_iff thm
+R15563:15576 Bignums.BigQ.QMake Make mul_norm_Qz_Qq def
+R15596:15606 Bignums.BigNumPrelude <> Zcompare_gt thm
+R15596:15606 Bignums.BigNumPrelude <> Zcompare_gt thm
+R15596:15606 Bignums.BigNumPrelude <> Zcompare_gt thm
+R15671:15681 Coq.ZArith.ZArith_dec <> Z_le_gt_dec def
+R15755:15764 Bignums.BigQ.QMake Make norm_denum def
+R15807:15814 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R15807:15814 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R15807:15814 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R15898:15905 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R15898:15905 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R15898:15905 Coq.ZArith.Zdiv <> Zdiv_0_l thm
+R15936:15943 Coq.ZArith.BinInt Z2Pos id thm
+R15936:15943 Coq.ZArith.BinInt Z2Pos id thm
+R15936:15943 Coq.ZArith.BinInt Z2Pos id thm
+R15936:15943 Coq.ZArith.BinInt Z2Pos id thm
+R15965:15978 Bignums.BigQ.QMake Make mul_norm_Qz_Qq def
+R15998:16008 Bignums.BigNumPrelude <> Zcompare_gt thm
+R15998:16008 Bignums.BigNumPrelude <> Zcompare_gt thm
+R15998:16008 Bignums.BigNumPrelude <> Zcompare_gt thm
+R16073:16083 Coq.ZArith.ZArith_dec <> Z_le_gt_dec def
+R16166:16173 Coq.ZArith.BinInt Z2Pos id thm
+R16166:16173 Coq.ZArith.BinInt Z2Pos id thm
+R16166:16173 Coq.ZArith.BinInt Z2Pos id thm
+R16166:16173 Coq.ZArith.BinInt Z2Pos id thm
+R16189:16207 Bignums.BigNumPrelude <> Zgcd_mult_rel_prime thm
+R16189:16207 Bignums.BigNumPrelude <> Zgcd_mult_rel_prime thm
+R16230:16241 Coq.ZArith.BinInt Z gcd_eq_0_l thm
+R16244:16250 Bignums.BigQ.QMake ZZ to_Z defax
+R16256:16262 Bignums.BigQ.QMake NN to_Z defax
+R16269:16280 Coq.ZArith.BinInt Z gcd_nonneg thm
+R16283:16289 Bignums.BigQ.QMake ZZ to_Z defax
+R16295:16301 Bignums.BigQ.QMake NN to_Z defax
+R16230:16241 Coq.ZArith.BinInt Z gcd_eq_0_l thm
+R16244:16250 Bignums.BigQ.QMake ZZ to_Z defax
+R16256:16262 Bignums.BigQ.QMake NN to_Z defax
+R16269:16280 Coq.ZArith.BinInt Z gcd_nonneg thm
+R16283:16289 Bignums.BigQ.QMake ZZ to_Z defax
+R16295:16301 Bignums.BigQ.QMake NN to_Z defax
+R16355:16364 Bignums.BigQ.QMake Make norm_denum def
+R16446:16453 Coq.ZArith.BinInt Z2Pos id thm
+R16446:16453 Coq.ZArith.BinInt Z2Pos id thm
+R16446:16453 Coq.ZArith.BinInt Z2Pos id thm
+R16446:16453 Coq.ZArith.BinInt Z2Pos id thm
+R16469:16487 Bignums.BigNumPrelude <> Zgcd_mult_rel_prime thm
+R16469:16487 Bignums.BigNumPrelude <> Zgcd_mult_rel_prime thm
+R16499:16514 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R16499:16514 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R16499:16514 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R16524:16540 Coq.ZArith.Znumtheory <> Zis_gcd_rel_prime thm
+R16524:16540 Coq.ZArith.Znumtheory <> Zis_gcd_rel_prime thm
+R16556:16566 Bignums.BigQ.QMake NN spec_pos defax
+R16556:16566 Bignums.BigQ.QMake NN spec_pos defax
+R16590:16601 Coq.ZArith.BinInt Z gcd_nonneg thm
+R16604:16610 Bignums.BigQ.QMake ZZ to_Z defax
+R16616:16622 Bignums.BigQ.QMake NN to_Z defax
+R16590:16601 Coq.ZArith.BinInt Z gcd_nonneg thm
+R16604:16610 Bignums.BigQ.QMake ZZ to_Z defax
+R16616:16622 Bignums.BigQ.QMake NN to_Z defax
+R16641:16651 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R16641:16651 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R16665:16675 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R16678:16684 Bignums.BigQ.QMake ZZ to_Z defax
+R16690:16696 Bignums.BigQ.QMake NN to_Z defax
+R16665:16675 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R16678:16684 Bignums.BigQ.QMake ZZ to_Z defax
+R16690:16696 Bignums.BigQ.QMake NN to_Z defax
+R16750:16752 Coq.ZArith.BinInt <> ::Z_scope:x_'/'_x not
+R16741:16747 Bignums.BigQ.QMake NN to_Z defax
+R16753:16757 Coq.ZArith.BinInt Z gcd def
+R16760:16766 Bignums.BigQ.QMake ZZ to_Z defax
+R16772:16778 Bignums.BigQ.QMake NN to_Z defax
+R16750:16752 Coq.ZArith.BinInt <> ::Z_scope:x_'/'_x not
+R16741:16747 Bignums.BigQ.QMake NN to_Z defax
+R16753:16757 Coq.ZArith.BinInt Z gcd def
+R16760:16766 Bignums.BigQ.QMake ZZ to_Z defax
+R16772:16778 Bignums.BigQ.QMake NN to_Z defax
+R16804:16819 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R16804:16819 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R16804:16819 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R16834:16849 Coq.ZArith.Znumtheory <> bezout_rel_prime thm
+R16834:16849 Coq.ZArith.Znumtheory <> bezout_rel_prime thm
+R16863:16878 Coq.ZArith.Znumtheory <> rel_prime_bezout thm
+R16863:16878 Coq.ZArith.Znumtheory <> rel_prime_bezout thm
+R16930:16931 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R16961:16961 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R16932:16936 Coq.ZArith.BinInt Z gcd def
+R16939:16945 Bignums.BigQ.QMake ZZ to_Z defax
+R16951:16957 Bignums.BigQ.QMake NN to_Z defax
+R16908:16919 Coq.ZArith.Znumtheory <> Bezout_intro constr
+R16930:16931 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R16961:16961 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R16932:16936 Coq.ZArith.BinInt Z gcd def
+R16939:16945 Bignums.BigQ.QMake ZZ to_Z defax
+R16951:16957 Bignums.BigQ.QMake NN to_Z defax
+R16908:16919 Coq.ZArith.Znumtheory <> Bezout_intro constr
+R17044:17058 Coq.ZArith.Zdiv <> Z_div_mult_full thm
+R17044:17058 Coq.ZArith.Zdiv <> Z_div_mult_full thm
+R17142:17144 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17138:17140 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R17142:17144 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17138:17140 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R17168:17177 Coq.ZArith.BinInt Z mul_eq_0 def
+prf 17222:17234 Make spec_mul_norm
+binder 17245:17245 <> x:146
+binder 17247:17247 <> y:147
+R17264:17267 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R17250:17250 Bignums.BigQ.QMake Make :::'['_x_']' not
+R17263:17263 Bignums.BigQ.QMake Make :::'['_x_']' not
+R17251:17258 Bignums.BigQ.QMake Make mul_norm def
+R17260:17260 Bignums.BigQ.QMake <> x:146 var
+R17262:17262 Bignums.BigQ.QMake <> y:147 var
+R17271:17273 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R17268:17268 Bignums.BigQ.QMake Make :::'['_x_']' not
+R17270:17270 Bignums.BigQ.QMake Make :::'['_x_']' not
+R17269:17269 Bignums.BigQ.QMake <> x:146 var
+R17274:17274 Bignums.BigQ.QMake Make :::'['_x_']' not
+R17276:17276 Bignums.BigQ.QMake Make :::'['_x_']' not
+R17275:17275 Bignums.BigQ.QMake <> y:147 var
+R17311:17318 Bignums.BigQ.QMake Make spec_mul thm
+R17311:17318 Bignums.BigQ.QMake Make spec_mul thm
+R17311:17318 Bignums.BigQ.QMake Make spec_mul thm
+R17335:17342 Bignums.BigQ.QMake Make mul_norm def
+R17345:17347 Bignums.BigQ.QMake Make mul def
+R17381:17388 Coq.QArith.QArith_base <> Qeq_refl thm
+R17381:17388 Coq.QArith.QArith_base <> Qeq_refl thm
+R17398:17416 Bignums.BigQ.QMake Make spec_mul_norm_Qz_Qq thm
+R17398:17416 Bignums.BigQ.QMake Make spec_mul_norm_Qz_Qq thm
+R17428:17446 Bignums.BigQ.QMake Make spec_mul_norm_Qz_Qq thm
+R17428:17446 Bignums.BigQ.QMake Make spec_mul_norm_Qz_Qq thm
+R17428:17446 Bignums.BigQ.QMake Make spec_mul_norm_Qz_Qq thm
+R17531:17540 Bignums.BigQ.QMake Make spec_irred thm
+R17531:17540 Bignums.BigQ.QMake Make spec_irred thm
+R17573:17582 Bignums.BigQ.QMake Make spec_irred thm
+R17573:17582 Bignums.BigQ.QMake Make spec_irred thm
+R17621:17635 Bignums.BigQ.QMake Make spec_irred_zero thm
+R17621:17635 Bignums.BigQ.QMake Make spec_irred_zero thm
+R17660:17674 Bignums.BigQ.QMake Make spec_irred_zero thm
+R17660:17674 Bignums.BigQ.QMake Make spec_irred_zero thm
+R17694:17698 Bignums.BigQ.QMake Make irred def
+R17721:17725 Bignums.BigQ.QMake Make irred def
+R17821:17835 Bignums.BigQ.QMake Make spec_norm_denum thm
+R17821:17835 Bignums.BigQ.QMake Make spec_norm_denum thm
+R17821:17835 Bignums.BigQ.QMake Make spec_norm_denum thm
+inst 18205:18224 Make strong_spec_mul_norm
+binder 18226:18226 <> x:148
+binder 18228:18228 <> y:149
+R18243:18249 Bignums.BigQ.QMake Make Reduced class
+R18251:18251 Bignums.BigQ.QMake <> x:148 var
+binder 18243:18251 <> H:150
+R18254:18260 Bignums.BigQ.QMake Make Reduced class
+R18262:18262 Bignums.BigQ.QMake <> y:149 var
+binder 18254:18262 <> H0:151
+R18266:18272 Bignums.BigQ.QMake Make Reduced class
+R18275:18282 Bignums.BigQ.QMake Make mul_norm def
+R18284:18284 Bignums.BigQ.QMake <> x:148 var
+R18286:18286 Bignums.BigQ.QMake <> y:149 var
+R18306:18312 Bignums.BigQ.QMake Make Reduced class
+R18332:18346 Bignums.BigQ.QMake Make strong_spec_red thm
+R18349:18356 Coq.QArith.Qcanon <> Qred_iff thm
+R18332:18346 Bignums.BigQ.QMake Make strong_spec_red thm
+R18332:18346 Bignums.BigQ.QMake Make strong_spec_red thm
+R18349:18356 Coq.QArith.Qcanon <> Qred_iff thm
+R18349:18356 Coq.QArith.Qcanon <> Qred_iff thm
+R18463:18470 Coq.QArith.Qcanon <> Qred_iff thm
+R18476:18490 Bignums.BigQ.QMake Make strong_spec_red thm
+R18493:18518 Bignums.BigQ.QMake Make strong_spec_mul_norm_Qz_Qq inst
+R18463:18470 Coq.QArith.Qcanon <> Qred_iff thm
+R18463:18470 Coq.QArith.Qcanon <> Qred_iff thm
+R18476:18490 Bignums.BigQ.QMake Make strong_spec_red thm
+R18476:18490 Bignums.BigQ.QMake Make strong_spec_red thm
+R18493:18518 Bignums.BigQ.QMake Make strong_spec_mul_norm_Qz_Qq inst
+R18493:18518 Bignums.BigQ.QMake Make strong_spec_mul_norm_Qz_Qq inst
+R18493:18518 Bignums.BigQ.QMake Make strong_spec_mul_norm_Qz_Qq inst
+R18547:18554 Coq.QArith.Qcanon <> Qred_iff thm
+R18560:18574 Bignums.BigQ.QMake Make strong_spec_red thm
+R18577:18602 Bignums.BigQ.QMake Make strong_spec_mul_norm_Qz_Qq inst
+R18547:18554 Coq.QArith.Qcanon <> Qred_iff thm
+R18547:18554 Coq.QArith.Qcanon <> Qred_iff thm
+R18560:18574 Bignums.BigQ.QMake Make strong_spec_red thm
+R18560:18574 Bignums.BigQ.QMake Make strong_spec_red thm
+R18577:18602 Bignums.BigQ.QMake Make strong_spec_mul_norm_Qz_Qq inst
+R18577:18602 Bignums.BigQ.QMake Make strong_spec_mul_norm_Qz_Qq inst
+R18577:18602 Bignums.BigQ.QMake Make strong_spec_mul_norm_Qz_Qq inst
+R18630:18639 Bignums.BigQ.QMake Make spec_irred thm
+R18630:18639 Bignums.BigQ.QMake Make spec_irred thm
+R18670:18679 Bignums.BigQ.QMake Make spec_irred thm
+R18670:18679 Bignums.BigQ.QMake Make spec_irred thm
+R18716:18730 Bignums.BigQ.QMake Make spec_irred_zero thm
+R18716:18730 Bignums.BigQ.QMake Make spec_irred_zero thm
+R18755:18769 Bignums.BigQ.QMake Make spec_irred_zero thm
+R18755:18769 Bignums.BigQ.QMake Make spec_irred_zero thm
+R18795:18811 Bignums.BigQ.QMake Make strong_spec_irred thm
+R18795:18811 Bignums.BigQ.QMake Make strong_spec_irred thm
+R18838:18854 Bignums.BigQ.QMake Make strong_spec_irred thm
+R18838:18854 Bignums.BigQ.QMake Make strong_spec_irred thm
+R18874:18878 Bignums.BigQ.QMake Make irred def
+R18901:18905 Bignums.BigQ.QMake Make irred def
+R19000:19009 Bignums.BigQ.QMake Make norm_denum def
+R19045:19048 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R19035:19041 Bignums.BigQ.QMake NN to_Z defax
+R19045:19048 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R19035:19041 Bignums.BigQ.QMake NN to_Z defax
+R19153:19156 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R19143:19149 Bignums.BigQ.QMake NN to_Z defax
+R19153:19156 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R19143:19149 Bignums.BigQ.QMake NN to_Z defax
+R19263:19277 Bignums.BigQ.QMake Make strong_spec_red thm
+R19282:19289 Coq.QArith.Qcanon <> Qred_iff thm
+R19263:19277 Bignums.BigQ.QMake Make strong_spec_red thm
+R19263:19277 Bignums.BigQ.QMake Make strong_spec_red thm
+R19263:19277 Bignums.BigQ.QMake Make strong_spec_red thm
+R19282:19289 Coq.QArith.Qcanon <> Qred_iff thm
+R19282:19289 Coq.QArith.Qcanon <> Qred_iff thm
+R19282:19289 Coq.QArith.Qcanon <> Qred_iff thm
+R19353:19360 Coq.ZArith.BinInt Z2Pos id thm
+R19353:19360 Coq.ZArith.BinInt Z2Pos id thm
+R19353:19360 Coq.ZArith.BinInt Z2Pos id thm
+R19353:19360 Coq.ZArith.BinInt Z2Pos id thm
+R19353:19360 Coq.ZArith.BinInt Z2Pos id thm
+R19382:19400 Bignums.BigNumPrelude <> Zgcd_mult_rel_prime thm
+R19411:19420 Coq.ZArith.BinInt Z gcd_comm thm
+R19431:19449 Bignums.BigNumPrelude <> Zgcd_mult_rel_prime thm
+R19460:19469 Coq.ZArith.BinInt Z gcd_comm thm
+R19382:19400 Bignums.BigNumPrelude <> Zgcd_mult_rel_prime thm
+R19411:19420 Coq.ZArith.BinInt Z gcd_comm thm
+R19411:19420 Coq.ZArith.BinInt Z gcd_comm thm
+R19411:19420 Coq.ZArith.BinInt Z gcd_comm thm
+R19411:19420 Coq.ZArith.BinInt Z gcd_comm thm
+R19431:19449 Bignums.BigNumPrelude <> Zgcd_mult_rel_prime thm
+R19431:19449 Bignums.BigNumPrelude <> Zgcd_mult_rel_prime thm
+R19460:19469 Coq.ZArith.BinInt Z gcd_comm thm
+R19460:19469 Coq.ZArith.BinInt Z gcd_comm thm
+R19460:19469 Coq.ZArith.BinInt Z gcd_comm thm
+R19460:19469 Coq.ZArith.BinInt Z gcd_comm thm
+R19460:19469 Coq.ZArith.BinInt Z gcd_comm thm
+R19460:19469 Coq.ZArith.BinInt Z gcd_comm thm
+R19460:19469 Coq.ZArith.BinInt Z gcd_comm thm
+R19460:19469 Coq.ZArith.BinInt Z gcd_comm thm
+R19488:19503 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R19488:19503 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R19488:19503 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R19518:19533 Coq.ZArith.Znumtheory <> bezout_rel_prime thm
+R19518:19533 Coq.ZArith.Znumtheory <> bezout_rel_prime thm
+R19547:19562 Coq.ZArith.Znumtheory <> rel_prime_bezout thm
+R19565:19571 Bignums.BigQ.QMake ZZ to_Z defax
+R19578:19584 Bignums.BigQ.QMake NN to_Z defax
+R19547:19562 Coq.ZArith.Znumtheory <> rel_prime_bezout thm
+R19565:19571 Bignums.BigQ.QMake ZZ to_Z defax
+R19578:19584 Bignums.BigQ.QMake NN to_Z defax
+R19641:19641 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R19650:19650 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R19621:19632 Coq.ZArith.Znumtheory <> Bezout_intro constr
+R19641:19641 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R19650:19650 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R19621:19632 Coq.ZArith.Znumtheory <> Bezout_intro constr
+R19707:19722 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R19707:19722 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R19707:19722 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R19737:19752 Coq.ZArith.Znumtheory <> bezout_rel_prime thm
+R19737:19752 Coq.ZArith.Znumtheory <> bezout_rel_prime thm
+R19766:19781 Coq.ZArith.Znumtheory <> rel_prime_bezout thm
+R19784:19790 Bignums.BigQ.QMake ZZ to_Z defax
+R19797:19803 Bignums.BigQ.QMake NN to_Z defax
+R19766:19781 Coq.ZArith.Znumtheory <> rel_prime_bezout thm
+R19784:19790 Bignums.BigQ.QMake ZZ to_Z defax
+R19797:19803 Bignums.BigQ.QMake NN to_Z defax
+R19860:19860 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R19868:19868 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R19840:19851 Coq.ZArith.Znumtheory <> Bezout_intro constr
+R19860:19860 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R19868:19868 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R19840:19851 Coq.ZArith.Znumtheory <> Bezout_intro constr
+def 19935:19937 Make inv
+R19943:19943 Bignums.BigQ.QMake Make t def
+binder 19940:19940 <> x:152
+R19947:19947 Bignums.BigQ.QMake Make t def
+R19959:19959 Bignums.BigQ.QMake <> x:152 var
+R19969:19970 Bignums.BigQ.QMake Make Qz constr
+R19986:19995 Bignums.BigQ.QMake ZZ compare defax
+R19997:20003 Bignums.BigQ.QMake ZZ zero defax
+R20019:20020 Coq.Init.Datatypes <> Eq constr
+R20025:20028 Bignums.BigQ.QMake Make zero def
+R20037:20038 Coq.Init.Datatypes <> Lt constr
+R20043:20044 Bignums.BigQ.QMake Make Qq constr
+R20046:20051 Bignums.BigQ.QMake ZZ one defax
+R20054:20059 Bignums.BigQ.QMake NZ Zabs_N defax
+R20071:20072 Coq.Init.Datatypes <> Gt constr
+R20077:20078 Bignums.BigQ.QMake Make Qq constr
+R20080:20091 Bignums.BigQ.QMake ZZ minus_one defax
+R20094:20099 Bignums.BigQ.QMake NZ Zabs_N defax
+R20114:20115 Bignums.BigQ.QMake Make Qq constr
+R20133:20142 Bignums.BigQ.QMake ZZ compare defax
+R20144:20150 Bignums.BigQ.QMake ZZ zero defax
+R20166:20167 Coq.Init.Datatypes <> Eq constr
+R20172:20175 Bignums.BigQ.QMake Make zero def
+R20184:20185 Coq.Init.Datatypes <> Lt constr
+R20190:20191 Bignums.BigQ.QMake Make Qq constr
+R20194:20199 Bignums.BigQ.QMake NZ Z_of_N defax
+R20205:20210 Bignums.BigQ.QMake NZ Zabs_N defax
+R20222:20223 Coq.Init.Datatypes <> Gt constr
+R20228:20229 Bignums.BigQ.QMake Make Qq constr
+R20232:20237 Bignums.BigQ.QMake ZZ opp defax
+R20240:20245 Bignums.BigQ.QMake NZ Z_of_N defax
+R20252:20257 Bignums.BigQ.QMake NZ Zabs_N defax
+prf 20285:20292 Make spec_inv
+binder 20303:20303 <> x:154
+R20313:20316 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R20306:20306 Bignums.BigQ.QMake Make :::'['_x_']' not
+R20312:20312 Bignums.BigQ.QMake Make :::'['_x_']' not
+R20307:20309 Bignums.BigQ.QMake Make inv def
+R20311:20311 Bignums.BigQ.QMake <> x:154 var
+R20317:20317 Coq.QArith.QArith_base <> ::Q_scope:'/'_x not
+R20318:20318 Bignums.BigQ.QMake Make :::'['_x_']' not
+R20320:20320 Bignums.BigQ.QMake Make :::'['_x_']' not
+R20319:20319 Bignums.BigQ.QMake <> x:154 var
+R20376:20390 Bignums.BigQ.QMake ZZ spec_compare defax
+R20376:20390 Bignums.BigQ.QMake ZZ spec_compare defax
+R20376:20390 Bignums.BigQ.QMake ZZ spec_compare defax
+R20504:20511 Coq.ZArith.BinInt Z abs_eq thm
+R20504:20511 Coq.ZArith.BinInt Z abs_eq thm
+R20504:20511 Coq.ZArith.BinInt Z abs_eq thm
+R20504:20511 Coq.ZArith.BinInt Z abs_eq thm
+R20548:20554 Bignums.BigQ.QMake ZZ to_Z defax
+R20548:20554 Bignums.BigQ.QMake ZZ to_Z defax
+R20601:20608 Coq.ZArith.BinInt Z abs_eq thm
+R20601:20608 Coq.ZArith.BinInt Z abs_eq thm
+R20601:20608 Coq.ZArith.BinInt Z abs_eq thm
+R20627:20634 Coq.ZArith.BinInt Z2Pos id thm
+R20627:20634 Coq.ZArith.BinInt Z2Pos id thm
+R20627:20634 Coq.ZArith.BinInt Z2Pos id thm
+R20653:20656 Coq.QArith.QArith_base <> Qinv def
+R20758:20766 Coq.ZArith.BinInt Z abs_neq thm
+R20758:20766 Coq.ZArith.BinInt Z abs_neq thm
+R20758:20766 Coq.ZArith.BinInt Z abs_neq thm
+R20758:20766 Coq.ZArith.BinInt Z abs_neq thm
+R20791:20797 Bignums.BigQ.QMake ZZ to_Z defax
+R20791:20797 Bignums.BigQ.QMake ZZ to_Z defax
+R20844:20852 Coq.ZArith.BinInt Z abs_neq thm
+R20844:20852 Coq.ZArith.BinInt Z abs_neq thm
+R20844:20852 Coq.ZArith.BinInt Z abs_neq thm
+R20871:20878 Coq.ZArith.BinInt Z2Pos id thm
+R20871:20878 Coq.ZArith.BinInt Z2Pos id thm
+R20871:20878 Coq.ZArith.BinInt Z2Pos id thm
+R20896:20899 Coq.QArith.QArith_base <> Qinv def
+R20968:20982 Bignums.BigQ.QMake ZZ spec_compare defax
+R20968:20982 Bignums.BigQ.QMake ZZ spec_compare defax
+R20968:20982 Bignums.BigQ.QMake ZZ spec_compare defax
+R21122:21129 Coq.ZArith.BinInt Z abs_eq thm
+R21122:21129 Coq.ZArith.BinInt Z abs_eq thm
+R21122:21129 Coq.ZArith.BinInt Z abs_eq thm
+R21122:21129 Coq.ZArith.BinInt Z abs_eq thm
+R21159:21166 Coq.ZArith.BinInt Z abs_eq thm
+R21159:21166 Coq.ZArith.BinInt Z abs_eq thm
+R21159:21166 Coq.ZArith.BinInt Z abs_eq thm
+R21159:21166 Coq.ZArith.BinInt Z abs_eq thm
+R21213:21219 Bignums.BigQ.QMake ZZ to_Z defax
+R21213:21219 Bignums.BigQ.QMake ZZ to_Z defax
+R21253:21260 Coq.ZArith.BinInt Z abs_eq thm
+R21253:21260 Coq.ZArith.BinInt Z abs_eq thm
+R21253:21260 Coq.ZArith.BinInt Z abs_eq thm
+R21292:21299 Coq.ZArith.BinInt Z2Pos id thm
+R21292:21299 Coq.ZArith.BinInt Z2Pos id thm
+R21292:21299 Coq.ZArith.BinInt Z2Pos id thm
+R21318:21321 Coq.QArith.QArith_base <> Qinv def
+R21384:21396 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R21399:21406 Coq.ZArith.BinInt Z2Pos id thm
+R21384:21396 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R21384:21396 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R21399:21406 Coq.ZArith.BinInt Z2Pos id thm
+R21399:21406 Coq.ZArith.BinInt Z2Pos id thm
+R21399:21406 Coq.ZArith.BinInt Z2Pos id thm
+R21469:21477 Coq.ZArith.BinInt Z abs_neq thm
+R21469:21477 Coq.ZArith.BinInt Z abs_neq thm
+R21469:21477 Coq.ZArith.BinInt Z abs_neq thm
+R21469:21477 Coq.ZArith.BinInt Z abs_neq thm
+R21507:21515 Coq.ZArith.BinInt Z abs_neq thm
+R21507:21515 Coq.ZArith.BinInt Z abs_neq thm
+R21507:21515 Coq.ZArith.BinInt Z abs_neq thm
+R21507:21515 Coq.ZArith.BinInt Z abs_neq thm
+R21562:21568 Bignums.BigQ.QMake ZZ to_Z defax
+R21562:21568 Bignums.BigQ.QMake ZZ to_Z defax
+R21624:21632 Coq.ZArith.BinInt Z abs_neq thm
+R21624:21632 Coq.ZArith.BinInt Z abs_neq thm
+R21624:21632 Coq.ZArith.BinInt Z abs_neq thm
+R21651:21658 Coq.ZArith.BinInt Z2Pos id thm
+R21651:21658 Coq.ZArith.BinInt Z2Pos id thm
+R21651:21658 Coq.ZArith.BinInt Z2Pos id thm
+R21676:21679 Coq.QArith.QArith_base <> Qinv def
+binder 21753:21753 <> x:155
+R21762:21764 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21756:21759 Coq.Numbers.BinNums <> Zneg constr
+R21761:21761 Bignums.BigQ.QMake <> x:155 var
+R21765:21769 Coq.ZArith.BinInt Z opp def
+R21772:21775 Coq.Numbers.BinNums <> Zpos constr
+R21777:21777 Bignums.BigQ.QMake <> x:155 var
+binder 21753:21753 <> x:156
+R21762:21764 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21756:21759 Coq.Numbers.BinNums <> Zneg constr
+R21761:21761 Bignums.BigQ.QMake <> x:156 var
+R21765:21769 Coq.ZArith.BinInt Z opp def
+R21772:21775 Coq.Numbers.BinNums <> Zpos constr
+R21777:21777 Bignums.BigQ.QMake <> x:156 var
+R21802:21814 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R21817:21824 Coq.ZArith.BinInt Z2Pos id thm
+R21802:21814 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R21802:21814 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R21817:21824 Coq.ZArith.BinInt Z2Pos id thm
+R21817:21824 Coq.ZArith.BinInt Z2Pos id thm
+R21817:21824 Coq.ZArith.BinInt Z2Pos id thm
+def 21858:21865 Make inv_norm
+R21871:21871 Bignums.BigQ.QMake Make t def
+binder 21868:21868 <> x:157
+R21875:21875 Bignums.BigQ.QMake Make t def
+R21889:21889 Bignums.BigQ.QMake <> x:157 var
+R21903:21904 Bignums.BigQ.QMake Make Qz constr
+R21924:21933 Bignums.BigQ.QMake ZZ compare defax
+R21935:21941 Bignums.BigQ.QMake ZZ zero defax
+R21961:21962 Coq.Init.Datatypes <> Eq constr
+R21967:21970 Bignums.BigQ.QMake Make zero def
+R21983:21984 Coq.Init.Datatypes <> Lt constr
+R21989:21990 Bignums.BigQ.QMake Make Qq constr
+R21992:21997 Bignums.BigQ.QMake ZZ one defax
+R22000:22005 Bignums.BigQ.QMake NZ Zabs_N defax
+R22021:22022 Coq.Init.Datatypes <> Gt constr
+R22027:22028 Bignums.BigQ.QMake Make Qq constr
+R22030:22041 Bignums.BigQ.QMake ZZ minus_one defax
+R22044:22049 Bignums.BigQ.QMake NZ Zabs_N defax
+R22072:22073 Bignums.BigQ.QMake Make Qq constr
+R22092:22097 Bignums.BigQ.QMake NN eqb defax
+R22101:22107 Bignums.BigQ.QMake NN zero defax
+R22137:22146 Bignums.BigQ.QMake ZZ compare defax
+R22148:22154 Bignums.BigQ.QMake ZZ zero defax
+R22174:22175 Coq.Init.Datatypes <> Eq constr
+R22180:22183 Bignums.BigQ.QMake Make zero def
+R22196:22197 Coq.Init.Datatypes <> Lt constr
+R22219:22228 Bignums.BigQ.QMake ZZ compare defax
+R22232:22237 Bignums.BigQ.QMake ZZ one defax
+R22259:22260 Coq.Init.Datatypes <> Gt constr
+R22265:22266 Bignums.BigQ.QMake Make Qq constr
+R22269:22274 Bignums.BigQ.QMake NZ Z_of_N defax
+R22280:22285 Bignums.BigQ.QMake NZ Zabs_N defax
+R22310:22311 Bignums.BigQ.QMake Make Qz constr
+R22314:22319 Bignums.BigQ.QMake NZ Z_of_N defax
+R22350:22351 Coq.Init.Datatypes <> Gt constr
+R22373:22382 Bignums.BigQ.QMake ZZ compare defax
+R22386:22397 Bignums.BigQ.QMake ZZ minus_one defax
+R22419:22420 Coq.Init.Datatypes <> Lt constr
+R22425:22426 Bignums.BigQ.QMake Make Qq constr
+R22429:22434 Bignums.BigQ.QMake ZZ opp defax
+R22437:22442 Bignums.BigQ.QMake NZ Z_of_N defax
+R22449:22454 Bignums.BigQ.QMake NZ Zabs_N defax
+R22479:22480 Bignums.BigQ.QMake Make Qz constr
+R22483:22488 Bignums.BigQ.QMake ZZ opp defax
+R22491:22496 Bignums.BigQ.QMake NZ Z_of_N defax
+R22114:22117 Bignums.BigQ.QMake Make zero def
+prf 22546:22558 Make spec_inv_norm
+binder 22569:22569 <> x:159
+R22584:22587 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R22572:22572 Bignums.BigQ.QMake Make :::'['_x_']' not
+R22583:22583 Bignums.BigQ.QMake Make :::'['_x_']' not
+R22573:22580 Bignums.BigQ.QMake Make inv_norm def
+R22582:22582 Bignums.BigQ.QMake <> x:159 var
+R22588:22588 Coq.QArith.QArith_base <> ::Q_scope:'/'_x not
+R22589:22589 Bignums.BigQ.QMake Make :::'['_x_']' not
+R22591:22591 Bignums.BigQ.QMake Make :::'['_x_']' not
+R22590:22590 Bignums.BigQ.QMake <> x:159 var
+R22623:22630 Bignums.BigQ.QMake Make spec_inv thm
+R22623:22630 Bignums.BigQ.QMake Make spec_inv thm
+R22623:22630 Bignums.BigQ.QMake Make spec_inv thm
+R22678:22692 Bignums.BigQ.QMake ZZ spec_compare defax
+R22678:22692 Bignums.BigQ.QMake ZZ spec_compare defax
+R22678:22692 Bignums.BigQ.QMake ZZ spec_compare defax
+R23099:23106 Coq.ZArith.BinInt Z abs_eq thm
+R23099:23106 Coq.ZArith.BinInt Z abs_eq thm
+R23099:23106 Coq.ZArith.BinInt Z abs_eq thm
+R23099:23106 Coq.ZArith.BinInt Z abs_eq thm
+R23264:23272 Coq.ZArith.BinInt Z abs_neq thm
+R23264:23272 Coq.ZArith.BinInt Z abs_neq thm
+R23264:23272 Coq.ZArith.BinInt Z abs_neq thm
+R23264:23272 Coq.ZArith.BinInt Z abs_neq thm
+inst 23343:23362 Make strong_spec_inv_norm
+binder 23364:23364 <> x:160
+R23377:23380 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R23368:23374 Bignums.BigQ.QMake Make Reduced class
+R23376:23376 Bignums.BigQ.QMake <> x:160 var
+R23381:23387 Bignums.BigQ.QMake Make Reduced class
+R23390:23397 Bignums.BigQ.QMake Make inv_norm def
+R23399:23399 Bignums.BigQ.QMake <> x:160 var
+R23419:23425 Bignums.BigQ.QMake Make Reduced class
+R23491:23505 Bignums.BigQ.QMake Make strong_spec_red thm
+R23508:23515 Coq.QArith.Qcanon <> Qred_iff thm
+R23491:23505 Bignums.BigQ.QMake Make strong_spec_red thm
+R23491:23505 Bignums.BigQ.QMake Make strong_spec_red thm
+R23508:23515 Coq.QArith.Qcanon <> Qred_iff thm
+R23508:23515 Coq.QArith.Qcanon <> Qred_iff thm
+R23634:23648 Bignums.BigQ.QMake Make strong_spec_red thm
+R23651:23658 Coq.QArith.Qcanon <> Qred_iff thm
+R23634:23648 Bignums.BigQ.QMake Make strong_spec_red thm
+R23634:23648 Bignums.BigQ.QMake Make strong_spec_red thm
+R23651:23658 Coq.QArith.Qcanon <> Qred_iff thm
+R23651:23658 Coq.QArith.Qcanon <> Qred_iff thm
+R23861:23868 Coq.ZArith.BinInt Z abs_eq thm
+R23861:23868 Coq.ZArith.BinInt Z abs_eq thm
+R23861:23868 Coq.ZArith.BinInt Z abs_eq thm
+R23861:23868 Coq.ZArith.BinInt Z abs_eq thm
+R23896:23911 Bignums.BigQ.QMake Make strong_spec_norm thm
+R23896:23911 Bignums.BigQ.QMake Make strong_spec_norm thm
+R23896:23911 Bignums.BigQ.QMake Make strong_spec_norm thm
+R23960:23967 Coq.ZArith.BinInt Z abs_eq thm
+R23960:23967 Coq.ZArith.BinInt Z abs_eq thm
+R23960:23967 Coq.ZArith.BinInt Z abs_eq thm
+R23960:23967 Coq.ZArith.BinInt Z abs_eq thm
+R23995:24002 Coq.QArith.Qcanon <> Qred_iff thm
+R23995:24002 Coq.QArith.Qcanon <> Qred_iff thm
+R23995:24002 Coq.QArith.Qcanon <> Qred_iff thm
+R24022:24029 Coq.ZArith.BinInt Z abs_eq thm
+R24022:24029 Coq.ZArith.BinInt Z abs_eq thm
+R24022:24029 Coq.ZArith.BinInt Z abs_eq thm
+R24022:24029 Coq.ZArith.BinInt Z abs_eq thm
+R24059:24066 Coq.ZArith.BinInt Z2Pos id thm
+R24059:24066 Coq.ZArith.BinInt Z2Pos id thm
+R24059:24066 Coq.ZArith.BinInt Z2Pos id thm
+R24059:24066 Coq.ZArith.BinInt Z2Pos id thm
+R24059:24066 Coq.ZArith.BinInt Z2Pos id thm
+R24089:24098 Coq.ZArith.BinInt Z gcd_comm thm
+R24089:24098 Coq.ZArith.BinInt Z gcd_comm thm
+R24089:24098 Coq.ZArith.BinInt Z gcd_comm thm
+R24218:24226 Coq.ZArith.BinInt Z abs_neq thm
+R24218:24226 Coq.ZArith.BinInt Z abs_neq thm
+R24218:24226 Coq.ZArith.BinInt Z abs_neq thm
+R24218:24226 Coq.ZArith.BinInt Z abs_neq thm
+R24254:24269 Bignums.BigQ.QMake Make strong_spec_norm thm
+R24254:24269 Bignums.BigQ.QMake Make strong_spec_norm thm
+R24254:24269 Bignums.BigQ.QMake Make strong_spec_norm thm
+R24318:24326 Coq.ZArith.BinInt Z abs_neq thm
+R24318:24326 Coq.ZArith.BinInt Z abs_neq thm
+R24318:24326 Coq.ZArith.BinInt Z abs_neq thm
+R24318:24326 Coq.ZArith.BinInt Z abs_neq thm
+R24354:24361 Coq.QArith.Qcanon <> Qred_iff thm
+R24354:24361 Coq.QArith.Qcanon <> Qred_iff thm
+R24354:24361 Coq.QArith.Qcanon <> Qred_iff thm
+R24381:24388 Coq.ZArith.BinInt Z2Pos id thm
+R24381:24388 Coq.ZArith.BinInt Z2Pos id thm
+R24381:24388 Coq.ZArith.BinInt Z2Pos id thm
+R24381:24388 Coq.ZArith.BinInt Z2Pos id thm
+R24381:24388 Coq.ZArith.BinInt Z2Pos id thm
+R24420:24429 Coq.ZArith.BinInt Z gcd_comm thm
+R24432:24442 Coq.ZArith.BinInt Z gcd_abs_l thm
+R24445:24454 Coq.ZArith.BinInt Z gcd_comm thm
+R24420:24429 Coq.ZArith.BinInt Z gcd_comm thm
+R24420:24429 Coq.ZArith.BinInt Z gcd_comm thm
+R24432:24442 Coq.ZArith.BinInt Z gcd_abs_l thm
+R24432:24442 Coq.ZArith.BinInt Z gcd_abs_l thm
+R24445:24454 Coq.ZArith.BinInt Z gcd_comm thm
+R24445:24454 Coq.ZArith.BinInt Z gcd_comm thm
+R24464:24474 Coq.ZArith.Znumtheory <> Zis_gcd_gcd thm
+R24464:24474 Coq.ZArith.Znumtheory <> Zis_gcd_gcd thm
+R24502:24514 Coq.ZArith.Znumtheory <> Zis_gcd_minus thm
+R24502:24514 Coq.ZArith.Znumtheory <> Zis_gcd_minus thm
+R24526:24541 Coq.ZArith.BinInt Z opp_involutive thm
+R24557:24567 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R24526:24541 Coq.ZArith.BinInt Z opp_involutive thm
+R24526:24541 Coq.ZArith.BinInt Z opp_involutive thm
+R24557:24567 Coq.ZArith.Znumtheory <> Zgcd_is_gcd thm
+R24579:24587 Coq.ZArith.BinInt Z abs_neq thm
+R24579:24587 Coq.ZArith.BinInt Z abs_neq thm
+R24579:24587 Coq.ZArith.BinInt Z abs_neq thm
+R24579:24587 Coq.ZArith.BinInt Z abs_neq thm
+def 24614:24616 Make div
+binder 24618:24618 <> x:161
+binder 24620:24620 <> y:162
+R24625:24627 Bignums.BigQ.QMake Make mul def
+R24629:24629 Bignums.BigQ.QMake <> x:161 var
+R24632:24634 Bignums.BigQ.QMake Make inv def
+R24636:24636 Bignums.BigQ.QMake <> y:162 var
+prf 24650:24657 Make spec_div
+binder 24659:24659 <> x:163
+binder 24661:24661 <> y:164
+R24673:24676 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R24664:24664 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24672:24672 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24665:24667 Bignums.BigQ.QMake Make div def
+R24669:24669 Bignums.BigQ.QMake <> x:163 var
+R24671:24671 Bignums.BigQ.QMake <> y:164 var
+R24680:24682 Coq.QArith.QArith_base <> ::Q_scope:x_'/'_x not
+R24677:24677 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24679:24679 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24678:24678 Bignums.BigQ.QMake <> x:163 var
+R24683:24683 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24685:24685 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24684:24684 Bignums.BigQ.QMake <> y:164 var
+R24704:24706 Bignums.BigQ.QMake Make div def
+R24717:24724 Bignums.BigQ.QMake Make spec_mul thm
+R24717:24724 Bignums.BigQ.QMake Make spec_mul thm
+R24717:24724 Bignums.BigQ.QMake Make spec_mul thm
+R24741:24744 Coq.QArith.QArith_base <> Qdiv def
+R24753:24762 Coq.QArith.QArith_base <> Qmult_comp inst
+R24753:24762 Coq.QArith.QArith_base <> Qmult_comp inst
+R24772:24779 Coq.QArith.QArith_base <> Qeq_refl thm
+R24772:24779 Coq.QArith.QArith_base <> Qeq_refl thm
+R24789:24796 Bignums.BigQ.QMake Make spec_inv thm
+R24789:24796 Bignums.BigQ.QMake Make spec_inv thm
+def 24824:24831 Make div_norm
+binder 24833:24833 <> x:165
+binder 24835:24835 <> y:166
+R24840:24847 Bignums.BigQ.QMake Make mul_norm def
+R24849:24849 Bignums.BigQ.QMake <> x:165 var
+R24852:24859 Bignums.BigQ.QMake Make inv_norm def
+R24861:24861 Bignums.BigQ.QMake <> y:166 var
+prf 24875:24887 Make spec_div_norm
+binder 24889:24889 <> x:167
+binder 24891:24891 <> y:168
+R24908:24911 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R24894:24894 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24907:24907 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24895:24902 Bignums.BigQ.QMake Make div_norm def
+R24904:24904 Bignums.BigQ.QMake <> x:167 var
+R24906:24906 Bignums.BigQ.QMake <> y:168 var
+R24915:24917 Coq.QArith.QArith_base <> ::Q_scope:x_'/'_x not
+R24912:24912 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24914:24914 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24913:24913 Bignums.BigQ.QMake <> x:167 var
+R24918:24918 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24920:24920 Bignums.BigQ.QMake Make :::'['_x_']' not
+R24919:24919 Bignums.BigQ.QMake <> y:168 var
+R24939:24946 Bignums.BigQ.QMake Make div_norm def
+R24957:24969 Bignums.BigQ.QMake Make spec_mul_norm thm
+R24957:24969 Bignums.BigQ.QMake Make spec_mul_norm thm
+R24957:24969 Bignums.BigQ.QMake Make spec_mul_norm thm
+R24986:24989 Coq.QArith.QArith_base <> Qdiv def
+R24998:25007 Coq.QArith.QArith_base <> Qmult_comp inst
+R24998:25007 Coq.QArith.QArith_base <> Qmult_comp inst
+R25017:25024 Coq.QArith.QArith_base <> Qeq_refl thm
+R25017:25024 Coq.QArith.QArith_base <> Qeq_refl thm
+R25034:25046 Bignums.BigQ.QMake Make spec_inv_norm thm
+R25034:25046 Bignums.BigQ.QMake Make spec_inv_norm thm
+inst 25072:25091 Make strong_spec_div_norm
+binder 25093:25093 <> x:169
+binder 25095:25095 <> y:170
+R25102:25108 Bignums.BigQ.QMake Make Reduced class
+R25110:25110 Bignums.BigQ.QMake <> x:169 var
+binder 25102:25110 <> H:171
+R25113:25119 Bignums.BigQ.QMake Make Reduced class
+R25121:25121 Bignums.BigQ.QMake <> y:170 var
+binder 25113:25121 <> H0:172
+R25126:25132 Bignums.BigQ.QMake Make Reduced class
+R25135:25142 Bignums.BigQ.QMake Make div_norm def
+R25144:25144 Bignums.BigQ.QMake <> x:169 var
+R25146:25146 Bignums.BigQ.QMake <> y:170 var
+R25174:25181 Bignums.BigQ.QMake Make div_norm def
+R25191:25210 Bignums.BigQ.QMake Make strong_spec_mul_norm inst
+R25191:25210 Bignums.BigQ.QMake Make strong_spec_mul_norm inst
+R25226:25245 Bignums.BigQ.QMake Make strong_spec_inv_norm inst
+R25226:25245 Bignums.BigQ.QMake Make strong_spec_inv_norm inst
+def 25273:25278 Make square
+R25284:25284 Bignums.BigQ.QMake Make t def
+binder 25281:25281 <> x:173
+R25288:25288 Bignums.BigQ.QMake Make t def
+R25301:25301 Bignums.BigQ.QMake <> x:173 var
+R25312:25313 Bignums.BigQ.QMake Make Qz constr
+R25321:25322 Bignums.BigQ.QMake Make Qz constr
+R25325:25333 Bignums.BigQ.QMake ZZ square defax
+R25343:25344 Bignums.BigQ.QMake Make Qq constr
+R25355:25356 Bignums.BigQ.QMake Make Qq constr
+R25359:25367 Bignums.BigQ.QMake ZZ square defax
+R25374:25382 Bignums.BigQ.QMake NN square defax
+prf 25405:25415 Make spec_square
+binder 25426:25426 <> x:175
+R25439:25442 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R25429:25429 Bignums.BigQ.QMake Make :::'['_x_']' not
+R25438:25438 Bignums.BigQ.QMake Make :::'['_x_']' not
+R25430:25435 Bignums.BigQ.QMake Make square def
+R25437:25437 Bignums.BigQ.QMake <> x:175 var
+R25446:25448 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R25443:25443 Bignums.BigQ.QMake Make :::'['_x_']' not
+R25445:25445 Bignums.BigQ.QMake Make :::'['_x_']' not
+R25444:25444 Bignums.BigQ.QMake <> x:175 var
+R25504:25517 Bignums.BigQ.QMake ZZ spec_square defax
+R25504:25517 Bignums.BigQ.QMake ZZ spec_square defax
+R25504:25517 Bignums.BigQ.QMake ZZ spec_square defax
+R25575:25582 Coq.QArith.QArith_base <> Qeq_refl thm
+R25575:25582 Coq.QArith.QArith_base <> Qeq_refl thm
+R25594:25607 Bignums.BigQ.QMake NN spec_square defax
+R25594:25607 Bignums.BigQ.QMake NN spec_square defax
+R25594:25607 Bignums.BigQ.QMake NN spec_square defax
+R25633:25642 Coq.ZArith.BinInt Z mul_eq_0 def
+R25633:25642 Coq.ZArith.BinInt Z mul_eq_0 def
+R25633:25642 Coq.ZArith.BinInt Z mul_eq_0 def
+R25664:25677 Bignums.BigQ.QMake NN spec_square defax
+R25664:25677 Bignums.BigQ.QMake NN spec_square defax
+R25664:25677 Bignums.BigQ.QMake NN spec_square defax
+R25716:25729 Bignums.BigQ.QMake ZZ spec_square defax
+R25732:25745 Bignums.BigQ.QMake NN spec_square defax
+R25716:25729 Bignums.BigQ.QMake ZZ spec_square defax
+R25716:25729 Bignums.BigQ.QMake ZZ spec_square defax
+R25732:25745 Bignums.BigQ.QMake NN spec_square defax
+R25732:25745 Bignums.BigQ.QMake NN spec_square defax
+R25770:25782 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R25794:25801 Coq.ZArith.BinInt Z2Pos id thm
+R25770:25782 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R25770:25782 Coq.ZArith.BinInt Pos2Z inj_mul thm
+R25794:25801 Coq.ZArith.BinInt Z2Pos id thm
+R25794:25801 Coq.ZArith.BinInt Z2Pos id thm
+R25794:25801 Coq.ZArith.BinInt Z2Pos id thm
+R25794:25801 Coq.ZArith.BinInt Z2Pos id thm
+R25794:25801 Coq.ZArith.BinInt Z2Pos id thm
+R25794:25801 Coq.ZArith.BinInt Z2Pos id thm
+R25817:25829 Coq.ZArith.BinInt Z mul_pos_pos thm
+R25817:25829 Coq.ZArith.BinInt Z mul_pos_pos thm
+def 25857:25865 Make power_pos
+R25872:25872 Bignums.BigQ.QMake Make t def
+binder 25868:25868 <> x:176
+binder 25875:25875 <> p:177
+R25879:25879 Bignums.BigQ.QMake Make t def
+R25892:25892 Bignums.BigQ.QMake <> x:176 var
+R25903:25904 Bignums.BigQ.QMake Make Qz constr
+R25912:25913 Bignums.BigQ.QMake Make Qz constr
+R25916:25925 Bignums.BigQ.QMake ZZ pow_pos defax
+R25930:25930 Bignums.BigQ.QMake <> p:177 var
+R25937:25938 Bignums.BigQ.QMake Make Qq constr
+R25949:25950 Bignums.BigQ.QMake Make Qq constr
+R25953:25962 Bignums.BigQ.QMake ZZ pow_pos defax
+R25967:25967 Bignums.BigQ.QMake <> p:177 var
+R25971:25980 Bignums.BigQ.QMake NN pow_pos defax
+R25985:25985 Bignums.BigQ.QMake <> p:177 var
+prf 26005:26018 Make spec_power_pos
+binder 26029:26029 <> x:179
+binder 26031:26031 <> p:180
+R26049:26052 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R26034:26034 Bignums.BigQ.QMake Make :::'['_x_']' not
+R26048:26048 Bignums.BigQ.QMake Make :::'['_x_']' not
+R26035:26043 Bignums.BigQ.QMake Make power_pos def
+R26045:26045 Bignums.BigQ.QMake <> x:179 var
+R26047:26047 Bignums.BigQ.QMake <> p:180 var
+R26056:26058 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R26053:26053 Bignums.BigQ.QMake Make :::'['_x_']' not
+R26055:26055 Bignums.BigQ.QMake Make :::'['_x_']' not
+R26054:26054 Bignums.BigQ.QMake <> x:179 var
+R26059:26062 Coq.Numbers.BinNums <> Zpos constr
+R26064:26064 Bignums.BigQ.QMake <> p:180 var
+R26105:26113 Bignums.BigQ.QMake Make power_pos def
+R26133:26147 Bignums.BigQ.QMake ZZ spec_pow_pos defax
+R26150:26162 Coq.QArith.Qpower <> Qpower_decomp syndef
+R26133:26147 Bignums.BigQ.QMake ZZ spec_pow_pos defax
+R26133:26147 Bignums.BigQ.QMake ZZ spec_pow_pos defax
+R26150:26162 Coq.QArith.Qpower <> Qpower_decomp syndef
+R26150:26162 Coq.QArith.Qpower <> Qpower_decomp syndef
+R26200:26212 Coq.ZArith.BinInt Pos2Z inj_pow thm
+R26215:26223 Coq.ZArith.BinInt Z pow_1_l thm
+R26200:26212 Coq.ZArith.BinInt Pos2Z inj_pow thm
+R26200:26212 Coq.ZArith.BinInt Pos2Z inj_pow thm
+R26215:26223 Coq.ZArith.BinInt Z pow_1_l thm
+R26215:26223 Coq.ZArith.BinInt Z pow_1_l thm
+R26215:26223 Coq.ZArith.BinInt Z pow_1_l thm
+R26243:26257 Bignums.BigQ.QMake ZZ spec_pow_pos defax
+R26243:26257 Bignums.BigQ.QMake ZZ spec_pow_pos defax
+R26243:26257 Bignums.BigQ.QMake ZZ spec_pow_pos defax
+R26298:26304 Coq.QArith.QArith_base <> Qeq_sym thm
+R26313:26329 Coq.QArith.Qpower <> Qpower_positive_0 thm
+R26298:26304 Coq.QArith.QArith_base <> Qeq_sym thm
+R26313:26329 Coq.QArith.Qpower <> Qpower_positive_0 thm
+R26343:26357 Bignums.BigQ.QMake NN spec_pow_pos defax
+R26343:26357 Bignums.BigQ.QMake NN spec_pow_pos defax
+R26343:26357 Bignums.BigQ.QMake NN spec_pow_pos defax
+R26377:26379 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R26389:26391 Coq.ZArith.BinInt <> ::Z_scope:x_'^'_x not
+R26380:26386 Bignums.BigQ.QMake NN to_Z defax
+R26392:26395 Coq.Numbers.BinNums <> Zpos constr
+R26412:26427 Coq.ZArith.BinInt Z pow_pos_nonneg thm
+R26377:26379 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R26389:26391 Coq.ZArith.BinInt <> ::Z_scope:x_'^'_x not
+R26380:26386 Bignums.BigQ.QMake NN to_Z defax
+R26392:26395 Coq.Numbers.BinNums <> Zpos constr
+R26412:26427 Coq.ZArith.BinInt Z pow_pos_nonneg thm
+R26480:26494 Bignums.BigQ.QMake NN spec_pow_pos defax
+R26480:26494 Bignums.BigQ.QMake NN spec_pow_pos defax
+R26480:26494 Bignums.BigQ.QMake NN spec_pow_pos defax
+R26521:26530 Coq.ZArith.BinInt Z pow_0_l' thm
+R26521:26530 Coq.ZArith.BinInt Z pow_0_l' thm
+R26521:26530 Coq.ZArith.BinInt Z pow_0_l' thm
+R26521:26530 Coq.ZArith.BinInt Z pow_0_l' thm
+R26578:26590 Coq.QArith.Qpower <> Qpower_decomp syndef
+R26578:26590 Coq.QArith.Qpower <> Qpower_decomp syndef
+R26578:26590 Coq.QArith.Qpower <> Qpower_decomp syndef
+R26631:26639 Coq.ZArith.BinInt Pos2Z inj thm
+R26631:26639 Coq.ZArith.BinInt Pos2Z inj thm
+R26650:26662 Coq.ZArith.BinInt Pos2Z inj_pow thm
+R26650:26662 Coq.ZArith.BinInt Pos2Z inj_pow thm
+R26650:26662 Coq.ZArith.BinInt Pos2Z inj_pow thm
+R26703:26713 Bignums.BigQ.QMake NN spec_pos defax
+R26678:26685 Coq.ZArith.BinInt Z2Pos id thm
+R26678:26685 Coq.ZArith.BinInt Z2Pos id thm
+R26703:26713 Bignums.BigQ.QMake NN spec_pos defax
+R26678:26685 Coq.ZArith.BinInt Z2Pos id thm
+R26703:26713 Bignums.BigQ.QMake NN spec_pos defax
+R26678:26685 Coq.ZArith.BinInt Z2Pos id thm
+R26740:26754 Bignums.BigQ.QMake NN spec_pow_pos defax
+R26740:26754 Bignums.BigQ.QMake NN spec_pow_pos defax
+R26740:26754 Bignums.BigQ.QMake NN spec_pow_pos defax
+inst 26774:26794 Make strong_spec_power_pos
+binder 26796:26796 <> x:181
+binder 26798:26798 <> p:182
+R26802:26808 Bignums.BigQ.QMake Make Reduced class
+R26810:26810 Bignums.BigQ.QMake <> x:181 var
+binder 26802:26810 <> H:183
+R26815:26821 Bignums.BigQ.QMake Make Reduced class
+R26824:26832 Bignums.BigQ.QMake Make power_pos def
+R26834:26834 Bignums.BigQ.QMake <> x:181 var
+R26836:26836 Bignums.BigQ.QMake <> p:182 var
+R26938:26953 Bignums.BigQ.QMake Make strong_spec_norm thm
+R26938:26953 Bignums.BigQ.QMake Make strong_spec_norm thm
+R26938:26953 Bignums.BigQ.QMake Make strong_spec_norm thm
+R27015:27022 Coq.QArith.Qcanon <> Qred_iff thm
+R27015:27022 Coq.QArith.Qcanon <> Qred_iff thm
+R27015:27022 Coq.QArith.Qcanon <> Qred_iff thm
+R27044:27050 Bignums.BigQ.QMake Make Reduced class
+R27061:27075 Bignums.BigQ.QMake Make strong_spec_red thm
+R27078:27085 Coq.QArith.Qcanon <> Qred_iff thm
+R27061:27075 Bignums.BigQ.QMake Make strong_spec_red thm
+R27061:27075 Bignums.BigQ.QMake Make strong_spec_red thm
+R27078:27085 Coq.QArith.Qcanon <> Qred_iff thm
+R27078:27085 Coq.QArith.Qcanon <> Qred_iff thm
+R27150:27164 Bignums.BigQ.QMake NN spec_pow_pos defax
+R27150:27164 Bignums.BigQ.QMake NN spec_pow_pos defax
+R27150:27164 Bignums.BigQ.QMake NN spec_pow_pos defax
+R27189:27198 Coq.ZArith.BinInt Z pow_0_l' thm
+R27189:27198 Coq.ZArith.BinInt Z pow_0_l' thm
+R27189:27198 Coq.ZArith.BinInt Z pow_0_l' thm
+R27189:27198 Coq.ZArith.BinInt Z pow_0_l' thm
+R27221:27228 Coq.ZArith.BinInt Z2Pos id thm
+R27221:27228 Coq.ZArith.BinInt Z2Pos id thm
+R27221:27228 Coq.ZArith.BinInt Z2Pos id thm
+R27221:27228 Coq.ZArith.BinInt Z2Pos id thm
+R27221:27228 Coq.ZArith.BinInt Z2Pos id thm
+R27251:27265 Bignums.BigQ.QMake NN spec_pow_pos defax
+R27268:27282 Bignums.BigQ.QMake ZZ spec_pow_pos defax
+R27251:27265 Bignums.BigQ.QMake NN spec_pow_pos defax
+R27251:27265 Bignums.BigQ.QMake NN spec_pow_pos defax
+R27268:27282 Bignums.BigQ.QMake ZZ spec_pow_pos defax
+R27268:27282 Bignums.BigQ.QMake ZZ spec_pow_pos defax
+R27300:27315 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R27300:27315 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R27300:27315 Coq.ZArith.Znumtheory <> Zgcd_1_rel_prime thm
+R27330:27345 Coq.ZArith.Zpow_facts <> rel_prime_Zpower thm
+R27330:27345 Coq.ZArith.Zpow_facts <> rel_prime_Zpower thm
+def 27385:27389 Make power
+R27396:27396 Bignums.BigQ.QMake Make t def
+binder 27392:27392 <> x:184
+R27404:27404 Coq.Numbers.BinNums <> Z ind
+binder 27400:27400 <> z:185
+R27409:27409 Bignums.BigQ.QMake Make t def
+R27423:27423 Bignums.BigQ.QMake <> z:185 var
+R27437:27438 Coq.Numbers.BinNums <> Z0 constr
+R27443:27445 Bignums.BigQ.QMake Make one def
+R27454:27457 Coq.Numbers.BinNums <> Zpos constr
+R27464:27472 Bignums.BigQ.QMake Make power_pos def
+R27474:27474 Bignums.BigQ.QMake <> x:184 var
+R27485:27488 Coq.Numbers.BinNums <> Zneg constr
+R27495:27497 Bignums.BigQ.QMake Make inv def
+R27500:27508 Bignums.BigQ.QMake Make power_pos def
+R27510:27510 Bignums.BigQ.QMake <> x:184 var
+prf 27533:27542 Make spec_power
+binder 27553:27553 <> x:187
+binder 27555:27555 <> z:188
+R27569:27572 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R27558:27558 Bignums.BigQ.QMake Make :::'['_x_']' not
+R27568:27568 Bignums.BigQ.QMake Make :::'['_x_']' not
+R27559:27563 Bignums.BigQ.QMake Make power def
+R27565:27565 Bignums.BigQ.QMake <> x:187 var
+R27567:27567 Bignums.BigQ.QMake <> z:188 var
+R27576:27576 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R27573:27573 Bignums.BigQ.QMake Make :::'['_x_']' not
+R27575:27575 Bignums.BigQ.QMake Make :::'['_x_']' not
+R27574:27574 Bignums.BigQ.QMake <> x:187 var
+R27577:27577 Bignums.BigQ.QMake <> z:188 var
+R27636:27649 Bignums.BigQ.QMake Make spec_power_pos thm
+R27636:27649 Bignums.BigQ.QMake Make spec_power_pos thm
+R27669:27676 Bignums.BigQ.QMake Make spec_inv thm
+R27679:27692 Bignums.BigQ.QMake Make spec_power_pos thm
+R27701:27708 Coq.QArith.QArith_base <> Qeq_refl thm
+R27669:27676 Bignums.BigQ.QMake Make spec_inv thm
+R27669:27676 Bignums.BigQ.QMake Make spec_inv thm
+R27679:27692 Bignums.BigQ.QMake Make spec_power_pos thm
+R27679:27692 Bignums.BigQ.QMake Make spec_power_pos thm
+R27701:27708 Coq.QArith.QArith_base <> Qeq_refl thm
+def 27730:27739 Make power_norm
+R27746:27746 Bignums.BigQ.QMake Make t def
+binder 27742:27742 <> x:189
+R27754:27754 Coq.Numbers.BinNums <> Z ind
+binder 27750:27750 <> z:190
+R27759:27759 Bignums.BigQ.QMake Make t def
+R27773:27773 Bignums.BigQ.QMake <> z:190 var
+R27787:27788 Coq.Numbers.BinNums <> Z0 constr
+R27793:27795 Bignums.BigQ.QMake Make one def
+R27804:27807 Coq.Numbers.BinNums <> Zpos constr
+R27814:27822 Bignums.BigQ.QMake Make power_pos def
+R27824:27824 Bignums.BigQ.QMake <> x:189 var
+R27835:27838 Coq.Numbers.BinNums <> Zneg constr
+R27845:27852 Bignums.BigQ.QMake Make inv_norm def
+R27855:27863 Bignums.BigQ.QMake Make power_pos def
+R27865:27865 Bignums.BigQ.QMake <> x:189 var
+prf 27888:27902 Make spec_power_norm
+binder 27913:27913 <> x:192
+binder 27915:27915 <> z:193
+R27934:27937 Coq.QArith.QArith_base <> ::Q_scope:x_'=='_x not
+R27918:27918 Bignums.BigQ.QMake Make :::'['_x_']' not
+R27933:27933 Bignums.BigQ.QMake Make :::'['_x_']' not
+R27919:27928 Bignums.BigQ.QMake Make power_norm def
+R27930:27930 Bignums.BigQ.QMake <> x:192 var
+R27932:27932 Bignums.BigQ.QMake <> z:193 var
+R27941:27941 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R27938:27938 Bignums.BigQ.QMake Make :::'['_x_']' not
+R27940:27940 Bignums.BigQ.QMake Make :::'['_x_']' not
+R27939:27939 Bignums.BigQ.QMake <> x:192 var
+R27942:27942 Bignums.BigQ.QMake <> z:193 var
+R28001:28014 Bignums.BigQ.QMake Make spec_power_pos thm
+R28001:28014 Bignums.BigQ.QMake Make spec_power_pos thm
+R28034:28046 Bignums.BigQ.QMake Make spec_inv_norm thm
+R28049:28062 Bignums.BigQ.QMake Make spec_power_pos thm
+R28071:28078 Coq.QArith.QArith_base <> Qeq_refl thm
+R28034:28046 Bignums.BigQ.QMake Make spec_inv_norm thm
+R28034:28046 Bignums.BigQ.QMake Make spec_inv_norm thm
+R28049:28062 Bignums.BigQ.QMake Make spec_power_pos thm
+R28049:28062 Bignums.BigQ.QMake Make spec_power_pos thm
+R28071:28078 Coq.QArith.QArith_base <> Qeq_refl thm
+inst 28098:28119 Make strong_spec_power_norm
+binder 28121:28121 <> x:194
+binder 28123:28123 <> z:195
+R28139:28142 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R28130:28136 Bignums.BigQ.QMake Make Reduced class
+R28138:28138 Bignums.BigQ.QMake <> x:194 var
+R28143:28149 Bignums.BigQ.QMake Make Reduced class
+R28152:28161 Bignums.BigQ.QMake Make power_norm def
+R28163:28163 Bignums.BigQ.QMake <> x:194 var
+R28165:28165 Bignums.BigQ.QMake <> z:195 var
+R28215:28221 Bignums.BigQ.QMake Make Reduced class
+R28232:28246 Bignums.BigQ.QMake Make strong_spec_red thm
+R28232:28246 Bignums.BigQ.QMake Make strong_spec_red thm
+R28232:28246 Bignums.BigQ.QMake Make strong_spec_red thm
+R28257:28259 Bignums.BigQ.QMake Make one def
+R28305:28325 Bignums.BigQ.QMake Make strong_spec_power_pos inst
+R28305:28325 Bignums.BigQ.QMake Make strong_spec_power_pos inst
+R28349:28368 Bignums.BigQ.QMake Make strong_spec_inv_norm inst
+R28377:28397 Bignums.BigQ.QMake Make strong_spec_power_pos inst
+R28349:28368 Bignums.BigQ.QMake Make strong_spec_inv_norm inst
+R28377:28397 Bignums.BigQ.QMake Make strong_spec_power_pos inst
+def 28487:28491 Make of_Qc
+binder 28493:28493 <> q:196
+R28498:28501 Bignums.BigQ.QMake Make of_Q def
+R28504:28507 Coq.QArith.Qcanon <> this proj
+R28509:28509 Bignums.BigQ.QMake <> q:196 var
+def 28526:28530 Make to_Qc
+binder 28532:28532 <> q:197
+R28537:28540 Coq.QArith.Qcanon <> Q2Qc def
+R28542:28542 Bignums.BigQ.QMake Make :::'['_x_']' not
+R28544:28544 Bignums.BigQ.QMake Make :::'['_x_']' not
+R28543:28543 Bignums.BigQ.QMake <> q:197 var
+R28572:28576 Bignums.BigQ.QMake Make to_Qc def
+not 28558:28558 Make :::'[['_x_']]'
+prf 28592:28608 Make strong_spec_of_Qc
+binder 28619:28619 <> q:198
+R28631:28633 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R28622:28622 Bignums.BigQ.QMake Make :::'['_x_']' not
+R28630:28630 Bignums.BigQ.QMake Make :::'['_x_']' not
+R28623:28627 Bignums.BigQ.QMake Make of_Qc def
+R28629:28629 Bignums.BigQ.QMake <> q:198 var
+R28634:28634 Bignums.BigQ.QMake <> q:198 var
+R28677:28681 Bignums.BigQ.QMake Make of_Qc def
+R28692:28707 Bignums.BigQ.QMake Make strong_spec_of_Q thm
+R28692:28707 Bignums.BigQ.QMake Make strong_spec_of_Q thm
+R28692:28707 Bignums.BigQ.QMake Make strong_spec_of_Q thm
+inst 28733:28753 Make strong_spec_of_Qc_bis
+binder 28755:28755 <> q:199
+R28759:28765 Bignums.BigQ.QMake Make Reduced class
+R28768:28772 Bignums.BigQ.QMake Make of_Qc def
+R28774:28774 Bignums.BigQ.QMake <> q:199 var
+R28808:28822 Bignums.BigQ.QMake Make strong_spec_red thm
+R28825:28841 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R28808:28822 Bignums.BigQ.QMake Make strong_spec_red thm
+R28808:28822 Bignums.BigQ.QMake Make strong_spec_red thm
+R28825:28841 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R28825:28841 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+prf 28886:28895 Make spec_of_Qc
+binder 28905:28905 <> q:200
+R28919:28921 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R28908:28909 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R28917:28918 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R28910:28914 Bignums.BigQ.QMake Make of_Qc def
+R28916:28916 Bignums.BigQ.QMake <> q:200 var
+R28922:28922 Bignums.BigQ.QMake <> q:200 var
+R28948:28956 Coq.QArith.Qcanon <> Qc_decomp thm
+R28948:28956 Coq.QArith.Qcanon <> Qc_decomp thm
+R28983:28999 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R28983:28999 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R28983:28999 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R29008:29012 Coq.QArith.Qcanon <> canon proj
+R29008:29012 Coq.QArith.Qcanon <> canon proj
+prf 29031:29039 Make spec_oppc
+binder 29049:29049 <> q:201
+R29061:29063 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R29052:29053 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29059:29060 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29054:29056 Bignums.BigQ.QMake Make opp def
+R29058:29058 Bignums.BigQ.QMake <> q:201 var
+R29064:29064 Coq.QArith.Qcanon <> ::Qc_scope:'-'_x not
+R29065:29066 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29068:29069 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29067:29067 Bignums.BigQ.QMake <> q:201 var
+R29098:29102 Coq.QArith.Qcanon <> Qcopp def
+R29105:29109 Bignums.BigQ.QMake Make to_Qc def
+R29112:29115 Coq.QArith.Qcanon <> Q2Qc def
+R29125:29133 Coq.QArith.Qcanon <> Qc_decomp thm
+R29143:29146 Coq.QArith.Qcanon <> this proj
+R29125:29133 Coq.QArith.Qcanon <> Qc_decomp thm
+R29156:29168 Coq.QArith.Qreduction <> Qred_complete thm
+R29156:29168 Coq.QArith.Qreduction <> Qred_complete thm
+R29180:29187 Bignums.BigQ.QMake Make spec_opp thm
+R29193:29200 Coq.QArith.Qreduction <> Qred_opp thm
+R29203:29214 Coq.QArith.Qreduction <> Qred_correct thm
+R29180:29187 Bignums.BigQ.QMake Make spec_opp thm
+R29180:29187 Bignums.BigQ.QMake Make spec_opp thm
+R29193:29200 Coq.QArith.Qreduction <> Qred_opp thm
+R29193:29200 Coq.QArith.Qreduction <> Qred_opp thm
+R29203:29214 Coq.QArith.Qreduction <> Qred_correct thm
+R29203:29214 Coq.QArith.Qreduction <> Qred_correct thm
+R29224:29231 Coq.QArith.QArith_base <> Qeq_refl thm
+R29224:29231 Coq.QArith.QArith_base <> Qeq_refl thm
+prf 29250:29262 Make spec_oppc_bis
+R29277:29278 Coq.QArith.Qcanon <> Qc rec
+binder 29273:29273 <> q:202
+R29296:29298 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R29281:29281 Bignums.BigQ.QMake Make :::'['_x_']' not
+R29295:29295 Bignums.BigQ.QMake Make :::'['_x_']' not
+R29282:29284 Bignums.BigQ.QMake Make opp def
+R29287:29291 Bignums.BigQ.QMake Make of_Qc def
+R29293:29293 Bignums.BigQ.QMake <> q:202 var
+R29299:29300 Coq.QArith.Qcanon <> ::Qc_scope:'-'_x not
+R29301:29301 Bignums.BigQ.QMake <> q:202 var
+R29363:29383 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R29333:29352 Bignums.BigQ.QMake Make strong_spec_opp_norm inst
+R29333:29352 Bignums.BigQ.QMake Make strong_spec_opp_norm inst
+R29363:29383 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R29333:29352 Bignums.BigQ.QMake Make strong_spec_opp_norm inst
+R29395:29409 Bignums.BigQ.QMake Make strong_spec_red thm
+R29395:29409 Bignums.BigQ.QMake Make strong_spec_red thm
+R29395:29409 Bignums.BigQ.QMake Make strong_spec_red thm
+R29430:29442 Coq.QArith.Qreduction <> Qred_complete thm
+R29445:29445 Coq.QArith.QArith_base <> ::Q_scope:'-'_x not
+R29430:29442 Coq.QArith.Qreduction <> Qred_complete thm
+R29445:29445 Coq.QArith.QArith_base <> ::Q_scope:'-'_x not
+R29462:29469 Bignums.BigQ.QMake Make spec_opp thm
+R29472:29488 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R29462:29469 Bignums.BigQ.QMake Make spec_opp thm
+R29462:29469 Bignums.BigQ.QMake Make spec_opp thm
+R29472:29488 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R29472:29488 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+prf 29525:29537 Make spec_comparec
+binder 29547:29548 <> q1:203
+binder 29550:29551 <> q2:204
+R29569:29572 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R29589:29589 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R29556:29562 Bignums.BigQ.QMake Make compare def
+R29564:29565 Bignums.BigQ.QMake <> q1:203 var
+R29567:29568 Bignums.BigQ.QMake <> q2:204 var
+R29579:29582 Coq.QArith.Qcanon <> ::Qc_scope:x_'?='_x not
+R29573:29574 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29577:29578 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29575:29576 Bignums.BigQ.QMake <> q1:203 var
+R29583:29584 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29587:29588 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29585:29586 Bignums.BigQ.QMake <> q2:204 var
+R29608:29616 Coq.QArith.Qcanon <> Qccompare def
+R29619:29623 Bignums.BigQ.QMake Make to_Qc def
+R29649:29660 Bignums.BigQ.QMake Make spec_compare thm
+R29649:29660 Bignums.BigQ.QMake Make spec_compare thm
+R29649:29660 Bignums.BigQ.QMake Make spec_compare thm
+R29683:29695 Coq.QArith.QArith_base <> Qcompare_comp inst
+R29704:29710 Coq.QArith.QArith_base <> Qeq_sym thm
+R29719:29730 Coq.QArith.Qreduction <> Qred_correct thm
+R29683:29695 Coq.QArith.QArith_base <> Qcompare_comp inst
+R29704:29710 Coq.QArith.QArith_base <> Qeq_sym thm
+R29704:29710 Coq.QArith.QArith_base <> Qeq_sym thm
+R29719:29730 Coq.QArith.Qreduction <> Qred_correct thm
+R29719:29730 Coq.QArith.Qreduction <> Qred_correct thm
+prf 29749:29757 Make spec_addc
+binder 29759:29759 <> x:205
+binder 29761:29761 <> y:206
+R29777:29779 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R29766:29767 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29775:29776 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29768:29770 Bignums.BigQ.QMake Make add def
+R29772:29772 Bignums.BigQ.QMake <> x:205 var
+R29774:29774 Bignums.BigQ.QMake <> y:206 var
+R29785:29787 Coq.QArith.Qcanon <> ::Qc_scope:x_'+'_x not
+R29780:29781 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29783:29784 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29782:29782 Bignums.BigQ.QMake <> x:205 var
+R29788:29789 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29791:29792 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R29790:29790 Bignums.BigQ.QMake <> y:206 var
+R29811:29815 Bignums.BigQ.QMake Make to_Qc def
+R29833:29836 Coq.QArith.Qcanon <> Q2Qc def
+R29842:29844 Coq.QArith.QArith_base <> ::Q_scope:x_'+'_x not
+R29839:29839 Bignums.BigQ.QMake Make :::'['_x_']' not
+R29841:29841 Bignums.BigQ.QMake Make :::'['_x_']' not
+R29845:29845 Bignums.BigQ.QMake Make :::'['_x_']' not
+R29847:29847 Bignums.BigQ.QMake Make :::'['_x_']' not
+R29833:29836 Coq.QArith.Qcanon <> Q2Qc def
+R29842:29844 Coq.QArith.QArith_base <> ::Q_scope:x_'+'_x not
+R29839:29839 Bignums.BigQ.QMake Make :::'['_x_']' not
+R29841:29841 Bignums.BigQ.QMake Make :::'['_x_']' not
+R29845:29845 Bignums.BigQ.QMake Make :::'['_x_']' not
+R29847:29847 Bignums.BigQ.QMake Make :::'['_x_']' not
+R29860:29863 Coq.QArith.Qcanon <> Q2Qc def
+R29873:29881 Coq.QArith.Qcanon <> Qc_decomp thm
+R29891:29894 Coq.QArith.Qcanon <> this proj
+R29873:29881 Coq.QArith.Qcanon <> Qc_decomp thm
+R29904:29916 Coq.QArith.Qreduction <> Qred_complete thm
+R29925:29932 Bignums.BigQ.QMake Make spec_add thm
+R29904:29916 Coq.QArith.Qreduction <> Qred_complete thm
+R29925:29932 Bignums.BigQ.QMake Make spec_add thm
+R29949:29954 Coq.QArith.Qcanon <> Qcplus def
+R29957:29960 Coq.QArith.Qcanon <> Q2Qc def
+R29970:29978 Coq.QArith.Qcanon <> Qc_decomp thm
+R29988:29991 Coq.QArith.Qcanon <> this proj
+R29970:29978 Coq.QArith.Qcanon <> Qc_decomp thm
+R30001:30013 Coq.QArith.Qreduction <> Qred_complete thm
+R30001:30013 Coq.QArith.Qreduction <> Qred_complete thm
+R30023:30032 Coq.QArith.QArith_base <> Qplus_comp inst
+R30041:30047 Coq.QArith.QArith_base <> Qeq_sym thm
+R30056:30067 Coq.QArith.Qreduction <> Qred_correct thm
+R30023:30032 Coq.QArith.QArith_base <> Qplus_comp inst
+R30041:30047 Coq.QArith.QArith_base <> Qeq_sym thm
+R30041:30047 Coq.QArith.QArith_base <> Qeq_sym thm
+R30056:30067 Coq.QArith.Qreduction <> Qred_correct thm
+R30056:30067 Coq.QArith.Qreduction <> Qred_correct thm
+prf 30086:30099 Make spec_add_normc
+binder 30101:30101 <> x:207
+binder 30103:30103 <> y:208
+R30124:30126 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30108:30109 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30122:30123 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30110:30117 Bignums.BigQ.QMake Make add_norm def
+R30119:30119 Bignums.BigQ.QMake <> x:207 var
+R30121:30121 Bignums.BigQ.QMake <> y:208 var
+R30132:30134 Coq.QArith.Qcanon <> ::Qc_scope:x_'+'_x not
+R30127:30128 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30130:30131 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30129:30129 Bignums.BigQ.QMake <> x:207 var
+R30135:30136 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30138:30139 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30137:30137 Bignums.BigQ.QMake <> y:208 var
+R30158:30162 Bignums.BigQ.QMake Make to_Qc def
+R30180:30183 Coq.QArith.Qcanon <> Q2Qc def
+R30189:30191 Coq.QArith.QArith_base <> ::Q_scope:x_'+'_x not
+R30186:30186 Bignums.BigQ.QMake Make :::'['_x_']' not
+R30188:30188 Bignums.BigQ.QMake Make :::'['_x_']' not
+R30192:30192 Bignums.BigQ.QMake Make :::'['_x_']' not
+R30194:30194 Bignums.BigQ.QMake Make :::'['_x_']' not
+R30180:30183 Coq.QArith.Qcanon <> Q2Qc def
+R30189:30191 Coq.QArith.QArith_base <> ::Q_scope:x_'+'_x not
+R30186:30186 Bignums.BigQ.QMake Make :::'['_x_']' not
+R30188:30188 Bignums.BigQ.QMake Make :::'['_x_']' not
+R30192:30192 Bignums.BigQ.QMake Make :::'['_x_']' not
+R30194:30194 Bignums.BigQ.QMake Make :::'['_x_']' not
+R30207:30210 Coq.QArith.Qcanon <> Q2Qc def
+R30220:30228 Coq.QArith.Qcanon <> Qc_decomp thm
+R30238:30241 Coq.QArith.Qcanon <> this proj
+R30220:30228 Coq.QArith.Qcanon <> Qc_decomp thm
+R30251:30263 Coq.QArith.Qreduction <> Qred_complete thm
+R30272:30284 Bignums.BigQ.QMake Make spec_add_norm thm
+R30251:30263 Coq.QArith.Qreduction <> Qred_complete thm
+R30272:30284 Bignums.BigQ.QMake Make spec_add_norm thm
+R30301:30306 Coq.QArith.Qcanon <> Qcplus def
+R30309:30312 Coq.QArith.Qcanon <> Q2Qc def
+R30322:30330 Coq.QArith.Qcanon <> Qc_decomp thm
+R30340:30343 Coq.QArith.Qcanon <> this proj
+R30322:30330 Coq.QArith.Qcanon <> Qc_decomp thm
+R30353:30365 Coq.QArith.Qreduction <> Qred_complete thm
+R30353:30365 Coq.QArith.Qreduction <> Qred_complete thm
+R30375:30384 Coq.QArith.QArith_base <> Qplus_comp inst
+R30393:30399 Coq.QArith.QArith_base <> Qeq_sym thm
+R30408:30419 Coq.QArith.Qreduction <> Qred_correct thm
+R30375:30384 Coq.QArith.QArith_base <> Qplus_comp inst
+R30393:30399 Coq.QArith.QArith_base <> Qeq_sym thm
+R30393:30399 Coq.QArith.QArith_base <> Qeq_sym thm
+R30408:30419 Coq.QArith.Qreduction <> Qred_correct thm
+R30408:30419 Coq.QArith.Qreduction <> Qred_correct thm
+prf 30438:30455 Make spec_add_normc_bis
+R30472:30473 Coq.QArith.Qcanon <> Qc rec
+binder 30466:30466 <> x:209
+binder 30468:30468 <> y:210
+R30509:30511 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30479:30479 Bignums.BigQ.QMake Make :::'['_x_']' not
+R30508:30508 Bignums.BigQ.QMake Make :::'['_x_']' not
+R30480:30487 Bignums.BigQ.QMake Make add_norm def
+R30490:30494 Bignums.BigQ.QMake Make of_Qc def
+R30496:30496 Bignums.BigQ.QMake <> x:209 var
+R30500:30504 Bignums.BigQ.QMake Make of_Qc def
+R30506:30506 Bignums.BigQ.QMake <> y:210 var
+R30513:30513 Coq.QArith.Qcanon <> ::Qc_scope:x_'+'_x not
+R30512:30512 Bignums.BigQ.QMake <> x:209 var
+R30514:30514 Bignums.BigQ.QMake <> y:210 var
+R30576:30596 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R30546:30565 Bignums.BigQ.QMake Make strong_spec_add_norm inst
+R30546:30565 Bignums.BigQ.QMake Make strong_spec_add_norm inst
+R30576:30596 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R30576:30596 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R30546:30565 Bignums.BigQ.QMake Make strong_spec_add_norm inst
+R30608:30622 Bignums.BigQ.QMake Make strong_spec_red thm
+R30608:30622 Bignums.BigQ.QMake Make strong_spec_red thm
+R30608:30622 Bignums.BigQ.QMake Make strong_spec_red thm
+R30643:30655 Coq.QArith.Qreduction <> Qred_complete thm
+R30659:30659 Coq.QArith.QArith_base <> ::Q_scope:x_'+'_x not
+R30643:30655 Coq.QArith.Qreduction <> Qred_complete thm
+R30659:30659 Coq.QArith.QArith_base <> ::Q_scope:x_'+'_x not
+R30676:30688 Bignums.BigQ.QMake Make spec_add_norm thm
+R30693:30709 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R30676:30688 Bignums.BigQ.QMake Make spec_add_norm thm
+R30676:30688 Bignums.BigQ.QMake Make spec_add_norm thm
+R30693:30709 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R30693:30709 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R30693:30709 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R30693:30709 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+prf 30746:30754 Make spec_subc
+binder 30756:30756 <> x:211
+binder 30758:30758 <> y:212
+R30773:30775 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30762:30763 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30771:30772 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30764:30766 Bignums.BigQ.QMake Make sub def
+R30768:30768 Bignums.BigQ.QMake <> x:211 var
+R30770:30770 Bignums.BigQ.QMake <> y:212 var
+R30781:30783 Coq.QArith.Qcanon <> ::Qc_scope:x_'-'_x not
+R30776:30777 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30779:30780 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30778:30778 Bignums.BigQ.QMake <> x:211 var
+R30784:30785 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30787:30788 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30786:30786 Bignums.BigQ.QMake <> y:212 var
+R30807:30809 Bignums.BigQ.QMake Make sub def
+R30820:30828 Bignums.BigQ.QMake Make spec_addc thm
+R30820:30828 Bignums.BigQ.QMake Make spec_addc thm
+R30820:30828 Bignums.BigQ.QMake Make spec_addc thm
+R30846:30854 Bignums.BigQ.QMake Make spec_oppc thm
+R30846:30854 Bignums.BigQ.QMake Make spec_oppc thm
+R30846:30854 Bignums.BigQ.QMake Make spec_oppc thm
+prf 30879:30892 Make spec_sub_normc
+binder 30894:30894 <> x:213
+binder 30896:30896 <> y:214
+R30918:30920 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30902:30903 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30916:30917 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30904:30911 Bignums.BigQ.QMake Make sub_norm def
+R30913:30913 Bignums.BigQ.QMake <> x:213 var
+R30915:30915 Bignums.BigQ.QMake <> y:214 var
+R30926:30928 Coq.QArith.Qcanon <> ::Qc_scope:x_'-'_x not
+R30921:30922 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30924:30925 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30923:30923 Bignums.BigQ.QMake <> x:213 var
+R30929:30930 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30932:30933 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R30931:30931 Bignums.BigQ.QMake <> y:214 var
+R30952:30959 Bignums.BigQ.QMake Make sub_norm def
+R30970:30983 Bignums.BigQ.QMake Make spec_add_normc thm
+R30970:30983 Bignums.BigQ.QMake Make spec_add_normc thm
+R30970:30983 Bignums.BigQ.QMake Make spec_add_normc thm
+R31001:31009 Bignums.BigQ.QMake Make spec_oppc thm
+R31001:31009 Bignums.BigQ.QMake Make spec_oppc thm
+R31001:31009 Bignums.BigQ.QMake Make spec_oppc thm
+prf 31034:31051 Make spec_sub_normc_bis
+R31068:31069 Coq.QArith.Qcanon <> Qc rec
+binder 31062:31062 <> x:215
+binder 31064:31064 <> y:216
+R31105:31107 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R31075:31075 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31104:31104 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31076:31083 Bignums.BigQ.QMake Make sub_norm def
+R31086:31090 Bignums.BigQ.QMake Make of_Qc def
+R31092:31092 Bignums.BigQ.QMake <> x:215 var
+R31096:31100 Bignums.BigQ.QMake Make of_Qc def
+R31102:31102 Bignums.BigQ.QMake <> y:216 var
+R31109:31109 Coq.QArith.Qcanon <> ::Qc_scope:x_'-'_x not
+R31108:31108 Bignums.BigQ.QMake <> x:215 var
+R31110:31110 Bignums.BigQ.QMake <> y:216 var
+R31172:31192 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R31142:31161 Bignums.BigQ.QMake Make strong_spec_sub_norm inst
+R31142:31161 Bignums.BigQ.QMake Make strong_spec_sub_norm inst
+R31172:31192 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R31172:31192 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R31142:31161 Bignums.BigQ.QMake Make strong_spec_sub_norm inst
+R31204:31218 Bignums.BigQ.QMake Make strong_spec_red thm
+R31204:31218 Bignums.BigQ.QMake Make strong_spec_red thm
+R31204:31218 Bignums.BigQ.QMake Make strong_spec_red thm
+R31239:31251 Coq.QArith.Qreduction <> Qred_complete thm
+R31255:31255 Coq.QArith.QArith_base <> ::Q_scope:x_'+'_x not
+R31257:31257 Coq.QArith.Qcanon <> ::Qc_scope:'-'_x not
+R31239:31251 Coq.QArith.Qreduction <> Qred_complete thm
+R31255:31255 Coq.QArith.QArith_base <> ::Q_scope:x_'+'_x not
+R31257:31257 Coq.QArith.Qcanon <> ::Qc_scope:'-'_x not
+R31278:31290 Bignums.BigQ.QMake Make spec_sub_norm thm
+R31295:31311 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R31278:31290 Bignums.BigQ.QMake Make spec_sub_norm thm
+R31278:31290 Bignums.BigQ.QMake Make spec_sub_norm thm
+R31295:31311 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R31295:31311 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R31295:31311 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R31295:31311 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R31322:31326 Coq.QArith.Qcanon <> Qcopp def
+R31329:31332 Coq.QArith.Qcanon <> Q2Qc def
+R31335:31338 Coq.QArith.Qcanon <> this proj
+R31349:31360 Coq.QArith.Qreduction <> Qred_correct thm
+R31349:31360 Coq.QArith.Qreduction <> Qred_correct thm
+R31349:31360 Coq.QArith.Qreduction <> Qred_correct thm
+prf 31398:31406 Make spec_mulc
+binder 31408:31408 <> x:217
+binder 31410:31410 <> y:218
+R31426:31428 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R31415:31416 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31424:31425 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31417:31419 Bignums.BigQ.QMake Make mul def
+R31421:31421 Bignums.BigQ.QMake <> x:217 var
+R31423:31423 Bignums.BigQ.QMake <> y:218 var
+R31434:31436 Coq.QArith.Qcanon <> ::Qc_scope:x_'*'_x not
+R31429:31430 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31432:31433 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31431:31431 Bignums.BigQ.QMake <> x:217 var
+R31437:31438 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31440:31441 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31439:31439 Bignums.BigQ.QMake <> y:218 var
+R31460:31464 Bignums.BigQ.QMake Make to_Qc def
+R31482:31485 Coq.QArith.Qcanon <> Q2Qc def
+R31491:31493 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R31488:31488 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31490:31490 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31494:31494 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31496:31496 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31482:31485 Coq.QArith.Qcanon <> Q2Qc def
+R31491:31493 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R31488:31488 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31490:31490 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31494:31494 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31496:31496 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31509:31512 Coq.QArith.Qcanon <> Q2Qc def
+R31522:31530 Coq.QArith.Qcanon <> Qc_decomp thm
+R31540:31543 Coq.QArith.Qcanon <> this proj
+R31522:31530 Coq.QArith.Qcanon <> Qc_decomp thm
+R31553:31565 Coq.QArith.Qreduction <> Qred_complete thm
+R31574:31581 Bignums.BigQ.QMake Make spec_mul thm
+R31553:31565 Coq.QArith.Qreduction <> Qred_complete thm
+R31574:31581 Bignums.BigQ.QMake Make spec_mul thm
+R31598:31603 Coq.QArith.Qcanon <> Qcmult def
+R31606:31609 Coq.QArith.Qcanon <> Q2Qc def
+R31619:31627 Coq.QArith.Qcanon <> Qc_decomp thm
+R31637:31640 Coq.QArith.Qcanon <> this proj
+R31619:31627 Coq.QArith.Qcanon <> Qc_decomp thm
+R31650:31662 Coq.QArith.Qreduction <> Qred_complete thm
+R31650:31662 Coq.QArith.Qreduction <> Qred_complete thm
+R31672:31681 Coq.QArith.QArith_base <> Qmult_comp inst
+R31690:31696 Coq.QArith.QArith_base <> Qeq_sym thm
+R31705:31716 Coq.QArith.Qreduction <> Qred_correct thm
+R31672:31681 Coq.QArith.QArith_base <> Qmult_comp inst
+R31690:31696 Coq.QArith.QArith_base <> Qeq_sym thm
+R31690:31696 Coq.QArith.QArith_base <> Qeq_sym thm
+R31705:31716 Coq.QArith.Qreduction <> Qred_correct thm
+R31705:31716 Coq.QArith.Qreduction <> Qred_correct thm
+prf 31735:31748 Make spec_mul_normc
+binder 31750:31750 <> x:219
+binder 31752:31752 <> y:220
+R31774:31776 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R31758:31759 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31772:31773 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31760:31767 Bignums.BigQ.QMake Make mul_norm def
+R31769:31769 Bignums.BigQ.QMake <> x:219 var
+R31771:31771 Bignums.BigQ.QMake <> y:220 var
+R31782:31784 Coq.QArith.Qcanon <> ::Qc_scope:x_'*'_x not
+R31777:31778 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31780:31781 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31779:31779 Bignums.BigQ.QMake <> x:219 var
+R31785:31786 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31788:31789 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R31787:31787 Bignums.BigQ.QMake <> y:220 var
+R31808:31812 Bignums.BigQ.QMake Make to_Qc def
+R31830:31833 Coq.QArith.Qcanon <> Q2Qc def
+R31839:31841 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R31836:31836 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31838:31838 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31842:31842 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31844:31844 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31830:31833 Coq.QArith.Qcanon <> Q2Qc def
+R31839:31841 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R31836:31836 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31838:31838 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31842:31842 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31844:31844 Bignums.BigQ.QMake Make :::'['_x_']' not
+R31857:31860 Coq.QArith.Qcanon <> Q2Qc def
+R31870:31878 Coq.QArith.Qcanon <> Qc_decomp thm
+R31888:31891 Coq.QArith.Qcanon <> this proj
+R31870:31878 Coq.QArith.Qcanon <> Qc_decomp thm
+R31901:31913 Coq.QArith.Qreduction <> Qred_complete thm
+R31922:31934 Bignums.BigQ.QMake Make spec_mul_norm thm
+R31901:31913 Coq.QArith.Qreduction <> Qred_complete thm
+R31922:31934 Bignums.BigQ.QMake Make spec_mul_norm thm
+R31951:31956 Coq.QArith.Qcanon <> Qcmult def
+R31959:31962 Coq.QArith.Qcanon <> Q2Qc def
+R31972:31980 Coq.QArith.Qcanon <> Qc_decomp thm
+R31990:31993 Coq.QArith.Qcanon <> this proj
+R31972:31980 Coq.QArith.Qcanon <> Qc_decomp thm
+R32003:32015 Coq.QArith.Qreduction <> Qred_complete thm
+R32003:32015 Coq.QArith.Qreduction <> Qred_complete thm
+R32025:32034 Coq.QArith.QArith_base <> Qmult_comp inst
+R32043:32049 Coq.QArith.QArith_base <> Qeq_sym thm
+R32058:32069 Coq.QArith.Qreduction <> Qred_correct thm
+R32025:32034 Coq.QArith.QArith_base <> Qmult_comp inst
+R32043:32049 Coq.QArith.QArith_base <> Qeq_sym thm
+R32043:32049 Coq.QArith.QArith_base <> Qeq_sym thm
+R32058:32069 Coq.QArith.Qreduction <> Qred_correct thm
+R32058:32069 Coq.QArith.Qreduction <> Qred_correct thm
+prf 32088:32105 Make spec_mul_normc_bis
+R32122:32123 Coq.QArith.Qcanon <> Qc rec
+binder 32116:32116 <> x:221
+binder 32118:32118 <> y:222
+R32159:32161 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R32129:32129 Bignums.BigQ.QMake Make :::'['_x_']' not
+R32158:32158 Bignums.BigQ.QMake Make :::'['_x_']' not
+R32130:32137 Bignums.BigQ.QMake Make mul_norm def
+R32140:32144 Bignums.BigQ.QMake Make of_Qc def
+R32146:32146 Bignums.BigQ.QMake <> x:221 var
+R32150:32154 Bignums.BigQ.QMake Make of_Qc def
+R32156:32156 Bignums.BigQ.QMake <> y:222 var
+R32163:32163 Coq.QArith.Qcanon <> ::Qc_scope:x_'*'_x not
+R32162:32162 Bignums.BigQ.QMake <> x:221 var
+R32164:32164 Bignums.BigQ.QMake <> y:222 var
+R32226:32246 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R32196:32215 Bignums.BigQ.QMake Make strong_spec_mul_norm inst
+R32196:32215 Bignums.BigQ.QMake Make strong_spec_mul_norm inst
+R32226:32246 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R32226:32246 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R32196:32215 Bignums.BigQ.QMake Make strong_spec_mul_norm inst
+R32258:32272 Bignums.BigQ.QMake Make strong_spec_red thm
+R32258:32272 Bignums.BigQ.QMake Make strong_spec_red thm
+R32258:32272 Bignums.BigQ.QMake Make strong_spec_red thm
+R32293:32305 Coq.QArith.Qreduction <> Qred_complete thm
+R32309:32309 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R32293:32305 Coq.QArith.Qreduction <> Qred_complete thm
+R32309:32309 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R32326:32338 Bignums.BigQ.QMake Make spec_mul_norm thm
+R32343:32359 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R32326:32338 Bignums.BigQ.QMake Make spec_mul_norm thm
+R32326:32338 Bignums.BigQ.QMake Make spec_mul_norm thm
+R32343:32359 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R32343:32359 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R32343:32359 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R32343:32359 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+prf 32396:32404 Make spec_invc
+binder 32406:32406 <> x:223
+R32421:32424 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R32412:32413 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R32419:32420 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R32414:32416 Bignums.BigQ.QMake Make inv def
+R32418:32418 Bignums.BigQ.QMake <> x:223 var
+R32425:32425 Coq.QArith.Qcanon <> ::Qc_scope:'/'_x not
+R32426:32427 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R32429:32430 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R32428:32428 Bignums.BigQ.QMake <> x:223 var
+R32449:32453 Bignums.BigQ.QMake Make to_Qc def
+R32471:32474 Coq.QArith.Qcanon <> Q2Qc def
+R32477:32477 Coq.QArith.QArith_base <> ::Q_scope:'/'_x not
+R32478:32478 Bignums.BigQ.QMake Make :::'['_x_']' not
+R32480:32480 Bignums.BigQ.QMake Make :::'['_x_']' not
+R32471:32474 Coq.QArith.Qcanon <> Q2Qc def
+R32477:32477 Coq.QArith.QArith_base <> ::Q_scope:'/'_x not
+R32478:32478 Bignums.BigQ.QMake Make :::'['_x_']' not
+R32480:32480 Bignums.BigQ.QMake Make :::'['_x_']' not
+R32493:32496 Coq.QArith.Qcanon <> Q2Qc def
+R32506:32514 Coq.QArith.Qcanon <> Qc_decomp thm
+R32524:32527 Coq.QArith.Qcanon <> this proj
+R32506:32514 Coq.QArith.Qcanon <> Qc_decomp thm
+R32537:32549 Coq.QArith.Qreduction <> Qred_complete thm
+R32558:32565 Bignums.BigQ.QMake Make spec_inv thm
+R32537:32549 Coq.QArith.Qreduction <> Qred_complete thm
+R32558:32565 Bignums.BigQ.QMake Make spec_inv thm
+R32582:32586 Coq.QArith.Qcanon <> Qcinv def
+R32589:32592 Coq.QArith.Qcanon <> Q2Qc def
+R32602:32610 Coq.QArith.Qcanon <> Qc_decomp thm
+R32620:32623 Coq.QArith.Qcanon <> this proj
+R32602:32610 Coq.QArith.Qcanon <> Qc_decomp thm
+R32633:32645 Coq.QArith.Qreduction <> Qred_complete thm
+R32633:32645 Coq.QArith.Qreduction <> Qred_complete thm
+R32655:32663 Coq.QArith.QArith_base <> Qinv_comp inst
+R32672:32678 Coq.QArith.QArith_base <> Qeq_sym thm
+R32687:32698 Coq.QArith.Qreduction <> Qred_correct thm
+R32655:32663 Coq.QArith.QArith_base <> Qinv_comp inst
+R32672:32678 Coq.QArith.QArith_base <> Qeq_sym thm
+R32687:32698 Coq.QArith.Qreduction <> Qred_correct thm
+prf 32717:32730 Make spec_inv_normc
+binder 32732:32732 <> x:224
+R32752:32755 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R32738:32739 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R32750:32751 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R32740:32747 Bignums.BigQ.QMake Make inv_norm def
+R32749:32749 Bignums.BigQ.QMake <> x:224 var
+R32756:32756 Coq.QArith.Qcanon <> ::Qc_scope:'/'_x not
+R32757:32758 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R32760:32761 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R32759:32759 Bignums.BigQ.QMake <> x:224 var
+R32780:32784 Bignums.BigQ.QMake Make to_Qc def
+R32802:32805 Coq.QArith.Qcanon <> Q2Qc def
+R32808:32808 Coq.QArith.QArith_base <> ::Q_scope:'/'_x not
+R32809:32809 Bignums.BigQ.QMake Make :::'['_x_']' not
+R32811:32811 Bignums.BigQ.QMake Make :::'['_x_']' not
+R32802:32805 Coq.QArith.Qcanon <> Q2Qc def
+R32808:32808 Coq.QArith.QArith_base <> ::Q_scope:'/'_x not
+R32809:32809 Bignums.BigQ.QMake Make :::'['_x_']' not
+R32811:32811 Bignums.BigQ.QMake Make :::'['_x_']' not
+R32824:32827 Coq.QArith.Qcanon <> Q2Qc def
+R32837:32845 Coq.QArith.Qcanon <> Qc_decomp thm
+R32855:32858 Coq.QArith.Qcanon <> this proj
+R32837:32845 Coq.QArith.Qcanon <> Qc_decomp thm
+R32868:32880 Coq.QArith.Qreduction <> Qred_complete thm
+R32889:32901 Bignums.BigQ.QMake Make spec_inv_norm thm
+R32868:32880 Coq.QArith.Qreduction <> Qred_complete thm
+R32889:32901 Bignums.BigQ.QMake Make spec_inv_norm thm
+R32918:32922 Coq.QArith.Qcanon <> Qcinv def
+R32925:32928 Coq.QArith.Qcanon <> Q2Qc def
+R32938:32946 Coq.QArith.Qcanon <> Qc_decomp thm
+R32956:32959 Coq.QArith.Qcanon <> this proj
+R32938:32946 Coq.QArith.Qcanon <> Qc_decomp thm
+R32969:32981 Coq.QArith.Qreduction <> Qred_complete thm
+R32969:32981 Coq.QArith.Qreduction <> Qred_complete thm
+R32991:32999 Coq.QArith.QArith_base <> Qinv_comp inst
+R33008:33014 Coq.QArith.QArith_base <> Qeq_sym thm
+R33023:33034 Coq.QArith.Qreduction <> Qred_correct thm
+R32991:32999 Coq.QArith.QArith_base <> Qinv_comp inst
+R33008:33014 Coq.QArith.QArith_base <> Qeq_sym thm
+R33023:33034 Coq.QArith.Qreduction <> Qred_correct thm
+prf 33053:33070 Make spec_inv_normc_bis
+R33085:33086 Coq.QArith.Qcanon <> Qc rec
+binder 33081:33081 <> x:225
+R33112:33114 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R33092:33092 Bignums.BigQ.QMake Make :::'['_x_']' not
+R33111:33111 Bignums.BigQ.QMake Make :::'['_x_']' not
+R33093:33100 Bignums.BigQ.QMake Make inv_norm def
+R33103:33107 Bignums.BigQ.QMake Make of_Qc def
+R33109:33109 Bignums.BigQ.QMake <> x:225 var
+R33115:33115 Coq.QArith.Qcanon <> ::Qc_scope:'/'_x not
+R33116:33116 Bignums.BigQ.QMake <> x:225 var
+R33178:33198 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R33148:33167 Bignums.BigQ.QMake Make strong_spec_inv_norm inst
+R33148:33167 Bignums.BigQ.QMake Make strong_spec_inv_norm inst
+R33178:33198 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R33148:33167 Bignums.BigQ.QMake Make strong_spec_inv_norm inst
+R33210:33224 Bignums.BigQ.QMake Make strong_spec_red thm
+R33210:33224 Bignums.BigQ.QMake Make strong_spec_red thm
+R33210:33224 Bignums.BigQ.QMake Make strong_spec_red thm
+R33245:33257 Coq.QArith.Qreduction <> Qred_complete thm
+R33260:33260 Coq.QArith.QArith_base <> ::Q_scope:'/'_x not
+R33245:33257 Coq.QArith.Qreduction <> Qred_complete thm
+R33260:33260 Coq.QArith.QArith_base <> ::Q_scope:'/'_x not
+R33277:33289 Bignums.BigQ.QMake Make spec_inv_norm thm
+R33294:33310 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R33277:33289 Bignums.BigQ.QMake Make spec_inv_norm thm
+R33277:33289 Bignums.BigQ.QMake Make spec_inv_norm thm
+R33294:33310 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R33294:33310 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R33294:33310 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+prf 33347:33355 Make spec_divc
+binder 33357:33357 <> x:226
+binder 33359:33359 <> y:227
+R33373:33375 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R33362:33363 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33371:33372 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33364:33366 Bignums.BigQ.QMake Make div def
+R33368:33368 Bignums.BigQ.QMake <> x:226 var
+R33370:33370 Bignums.BigQ.QMake <> y:227 var
+R33381:33383 Coq.QArith.Qcanon <> ::Qc_scope:x_'/'_x not
+R33376:33377 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33379:33380 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33378:33378 Bignums.BigQ.QMake <> x:226 var
+R33384:33385 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33387:33388 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33386:33386 Bignums.BigQ.QMake <> y:227 var
+R33407:33409 Bignums.BigQ.QMake Make div def
+R33420:33428 Bignums.BigQ.QMake Make spec_mulc thm
+R33420:33428 Bignums.BigQ.QMake Make spec_mulc thm
+R33420:33428 Bignums.BigQ.QMake Make spec_mulc thm
+R33445:33449 Coq.QArith.Qcanon <> Qcdiv def
+R33478:33483 Coq.QArith.Qcanon <> Qcmult def
+R33458:33465 Coq.Init.Logic <> f_equal2 thm
+R33478:33483 Coq.QArith.Qcanon <> Qcmult def
+R33458:33465 Coq.Init.Logic <> f_equal2 thm
+R33500:33508 Bignums.BigQ.QMake Make spec_invc thm
+R33500:33508 Bignums.BigQ.QMake Make spec_invc thm
+prf 33533:33546 Make spec_div_normc
+binder 33548:33548 <> x:228
+binder 33550:33550 <> y:229
+R33569:33571 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R33553:33554 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33567:33568 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33555:33562 Bignums.BigQ.QMake Make div_norm def
+R33564:33564 Bignums.BigQ.QMake <> x:228 var
+R33566:33566 Bignums.BigQ.QMake <> y:229 var
+R33577:33579 Coq.QArith.Qcanon <> ::Qc_scope:x_'/'_x not
+R33572:33573 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33575:33576 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33574:33574 Bignums.BigQ.QMake <> x:228 var
+R33580:33581 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33583:33584 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R33582:33582 Bignums.BigQ.QMake <> y:229 var
+R33603:33610 Bignums.BigQ.QMake Make div_norm def
+R33621:33634 Bignums.BigQ.QMake Make spec_mul_normc thm
+R33621:33634 Bignums.BigQ.QMake Make spec_mul_normc thm
+R33621:33634 Bignums.BigQ.QMake Make spec_mul_normc thm
+R33651:33655 Coq.QArith.Qcanon <> Qcdiv def
+R33684:33689 Coq.QArith.Qcanon <> Qcmult def
+R33664:33671 Coq.Init.Logic <> f_equal2 thm
+R33684:33689 Coq.QArith.Qcanon <> Qcmult def
+R33664:33671 Coq.Init.Logic <> f_equal2 thm
+R33706:33719 Bignums.BigQ.QMake Make spec_inv_normc thm
+R33706:33719 Bignums.BigQ.QMake Make spec_inv_normc thm
+prf 33744:33761 Make spec_div_normc_bis
+R33778:33779 Coq.QArith.Qcanon <> Qc rec
+binder 33772:33772 <> x:230
+binder 33774:33774 <> y:231
+R33815:33817 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R33785:33785 Bignums.BigQ.QMake Make :::'['_x_']' not
+R33814:33814 Bignums.BigQ.QMake Make :::'['_x_']' not
+R33786:33793 Bignums.BigQ.QMake Make div_norm def
+R33796:33800 Bignums.BigQ.QMake Make of_Qc def
+R33802:33802 Bignums.BigQ.QMake <> x:230 var
+R33806:33810 Bignums.BigQ.QMake Make of_Qc def
+R33812:33812 Bignums.BigQ.QMake <> y:231 var
+R33819:33819 Coq.QArith.Qcanon <> ::Qc_scope:x_'/'_x not
+R33818:33818 Bignums.BigQ.QMake <> x:230 var
+R33820:33820 Bignums.BigQ.QMake <> y:231 var
+R33882:33902 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R33852:33871 Bignums.BigQ.QMake Make strong_spec_div_norm inst
+R33852:33871 Bignums.BigQ.QMake Make strong_spec_div_norm inst
+R33882:33902 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R33882:33902 Bignums.BigQ.QMake Make strong_spec_of_Qc_bis inst
+R33852:33871 Bignums.BigQ.QMake Make strong_spec_div_norm inst
+R33914:33928 Bignums.BigQ.QMake Make strong_spec_red thm
+R33914:33928 Bignums.BigQ.QMake Make strong_spec_red thm
+R33914:33928 Bignums.BigQ.QMake Make strong_spec_red thm
+R33949:33961 Coq.QArith.Qreduction <> Qred_complete thm
+R33965:33965 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R33967:33967 Coq.QArith.Qcanon <> ::Qc_scope:'/'_x not
+R33949:33961 Coq.QArith.Qreduction <> Qred_complete thm
+R33965:33965 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R33967:33967 Coq.QArith.Qcanon <> ::Qc_scope:'/'_x not
+R33988:34000 Bignums.BigQ.QMake Make spec_div_norm thm
+R34005:34021 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R33988:34000 Bignums.BigQ.QMake Make spec_div_norm thm
+R33988:34000 Bignums.BigQ.QMake Make spec_div_norm thm
+R34005:34021 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R34005:34021 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R34005:34021 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R34005:34021 Bignums.BigQ.QMake Make strong_spec_of_Qc thm
+R34032:34036 Coq.QArith.Qcanon <> Qcinv def
+R34039:34042 Coq.QArith.Qcanon <> Q2Qc def
+R34045:34048 Coq.QArith.Qcanon <> this proj
+R34059:34070 Coq.QArith.Qreduction <> Qred_correct thm
+R34059:34070 Coq.QArith.Qreduction <> Qred_correct thm
+R34059:34070 Coq.QArith.Qreduction <> Qred_correct thm
+prf 34107:34118 Make spec_squarec
+binder 34120:34120 <> x:232
+R34135:34137 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R34123:34124 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R34133:34134 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R34125:34130 Bignums.BigQ.QMake Make square def
+R34132:34132 Bignums.BigQ.QMake <> x:232 var
+R34143:34143 Coq.QArith.Qcanon <> ::Qc_scope:x_'^'_x not
+R34138:34139 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R34141:34142 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R34140:34140 Bignums.BigQ.QMake <> x:232 var
+R34163:34167 Bignums.BigQ.QMake Make to_Qc def
+R34185:34188 Coq.QArith.Qcanon <> Q2Qc def
+R34194:34194 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R34191:34191 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34193:34193 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34185:34188 Coq.QArith.Qcanon <> Q2Qc def
+R34194:34194 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R34191:34191 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34193:34193 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34208:34211 Coq.QArith.Qcanon <> Q2Qc def
+R34221:34229 Coq.QArith.Qcanon <> Qc_decomp thm
+R34239:34242 Coq.QArith.Qcanon <> this proj
+R34221:34229 Coq.QArith.Qcanon <> Qc_decomp thm
+R34252:34264 Coq.QArith.Qreduction <> Qred_complete thm
+R34273:34283 Bignums.BigQ.QMake Make spec_square thm
+R34252:34264 Coq.QArith.Qreduction <> Qred_complete thm
+R34273:34283 Bignums.BigQ.QMake Make spec_square thm
+R34326:34328 Coq.QArith.Qcanon <> ::Qc_scope:x_'*'_x not
+R34318:34321 Coq.QArith.Qcanon <> Q2Qc def
+R34323:34323 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34325:34325 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34338:34341 Coq.QArith.Qcanon <> Q2Qc def
+R34343:34343 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34345:34345 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34326:34328 Coq.QArith.Qcanon <> ::Qc_scope:x_'*'_x not
+R34318:34321 Coq.QArith.Qcanon <> Q2Qc def
+R34323:34323 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34325:34325 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34338:34341 Coq.QArith.Qcanon <> Q2Qc def
+R34343:34343 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34345:34345 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34375:34380 Coq.QArith.Qcanon <> Qcmult def
+R34383:34386 Coq.QArith.Qcanon <> Q2Qc def
+R34396:34404 Coq.QArith.Qcanon <> Qc_decomp thm
+R34414:34417 Coq.QArith.Qcanon <> this proj
+R34396:34404 Coq.QArith.Qcanon <> Qc_decomp thm
+R34427:34439 Coq.QArith.Qreduction <> Qred_complete thm
+R34427:34439 Coq.QArith.Qreduction <> Qred_complete thm
+R34449:34458 Coq.QArith.QArith_base <> Qmult_comp inst
+R34467:34473 Coq.QArith.QArith_base <> Qeq_sym thm
+R34482:34493 Coq.QArith.Qreduction <> Qred_correct thm
+R34449:34458 Coq.QArith.QArith_base <> Qmult_comp inst
+R34467:34473 Coq.QArith.QArith_base <> Qeq_sym thm
+R34467:34473 Coq.QArith.QArith_base <> Qeq_sym thm
+R34482:34493 Coq.QArith.Qreduction <> Qred_correct thm
+R34482:34493 Coq.QArith.Qreduction <> Qred_correct thm
+prf 34512:34526 Make spec_power_posc
+binder 34528:34528 <> x:233
+binder 34530:34530 <> p:234
+R34553:34555 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R34536:34537 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R34551:34552 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R34538:34546 Bignums.BigQ.QMake Make power_pos def
+R34548:34548 Bignums.BigQ.QMake <> x:233 var
+R34550:34550 Bignums.BigQ.QMake <> p:234 var
+R34561:34563 Coq.QArith.Qcanon <> ::Qc_scope:x_'^'_x not
+R34556:34557 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R34559:34560 Bignums.BigQ.QMake Make :::'[['_x_']]' not
+R34558:34558 Bignums.BigQ.QMake <> x:233 var
+R34564:34573 Coq.PArith.BinPos Pos to_nat def
+R34575:34575 Bignums.BigQ.QMake <> p:234 var
+R34594:34598 Bignums.BigQ.QMake Make to_Qc def
+R34616:34619 Coq.QArith.Qcanon <> Q2Qc def
+R34625:34625 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R34622:34622 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34624:34624 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34626:34629 Coq.Numbers.BinNums <> Zpos constr
+R34616:34619 Coq.QArith.Qcanon <> Q2Qc def
+R34625:34625 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R34622:34622 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34624:34624 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34626:34629 Coq.Numbers.BinNums <> Zpos constr
+R34644:34647 Coq.QArith.Qcanon <> Q2Qc def
+R34657:34665 Coq.QArith.Qcanon <> Qc_decomp thm
+R34675:34678 Coq.QArith.Qcanon <> this proj
+R34657:34665 Coq.QArith.Qcanon <> Qc_decomp thm
+R34688:34700 Coq.QArith.Qreduction <> Qred_complete thm
+R34709:34722 Bignums.BigQ.QMake Make spec_power_pos thm
+R34688:34700 Coq.QArith.Qreduction <> Qred_complete thm
+R34709:34722 Bignums.BigQ.QMake Make spec_power_pos thm
+R34750:34762 Coq.PArith.BinPos Pos peano_ind def
+R34750:34762 Coq.PArith.BinPos Pos peano_ind def
+R34788:34803 Coq.PArith.Pnat Pos2Nat inj_succ thm
+R34788:34803 Coq.PArith.Pnat Pos2Nat inj_succ thm
+R34788:34803 Coq.PArith.Pnat Pos2Nat inj_succ thm
+R34857:34862 Coq.QArith.Qcanon <> Qcmult def
+R34865:34868 Coq.QArith.Qcanon <> Q2Qc def
+R34878:34886 Coq.QArith.Qcanon <> Qc_decomp thm
+R34896:34899 Coq.QArith.Qcanon <> this proj
+R34878:34886 Coq.QArith.Qcanon <> Qc_decomp thm
+R34909:34921 Coq.QArith.Qreduction <> Qred_complete thm
+R34909:34921 Coq.QArith.Qreduction <> Qred_complete thm
+R34944:34946 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R34941:34941 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34943:34943 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34947:34950 Coq.Numbers.BinNums <> Zpos constr
+R34953:34960 Coq.PArith.BinPos Pos succ def
+R34977:34979 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R34974:34974 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34976:34976 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34983:34985 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R34980:34980 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34982:34982 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34986:34989 Coq.Numbers.BinNums <> Zpos constr
+R34944:34946 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R34941:34941 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34943:34943 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34947:34950 Coq.Numbers.BinNums <> Zpos constr
+R34953:34960 Coq.PArith.BinPos Pos succ def
+R34977:34979 Coq.QArith.QArith_base <> ::Q_scope:x_'*'_x not
+R34974:34974 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34976:34976 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34983:34985 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R34980:34980 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34982:34982 Bignums.BigQ.QMake Make :::'['_x_']' not
+R34986:34989 Coq.Numbers.BinNums <> Zpos constr
+R35004:35013 Coq.QArith.QArith_base <> Qmult_comp inst
+R35022:35028 Coq.QArith.QArith_base <> Qeq_sym thm
+R35037:35048 Coq.QArith.Qreduction <> Qred_correct thm
+R35004:35013 Coq.QArith.QArith_base <> Qmult_comp inst
+R35022:35028 Coq.QArith.QArith_base <> Qeq_sym thm
+R35022:35028 Coq.QArith.QArith_base <> Qeq_sym thm
+R35037:35048 Coq.QArith.Qreduction <> Qred_correct thm
+R35037:35048 Coq.QArith.Qreduction <> Qred_correct thm
+R35071:35081 Coq.PArith.BinPos Pos add_1_l thm
+R35071:35081 Coq.PArith.BinPos Pos add_1_l thm
+R35071:35081 Coq.PArith.BinPos Pos add_1_l thm
+R35093:35112 Coq.QArith.Qpower <> Qpower_plus_positive thm
+R35128:35135 Coq.QArith.QArith_base <> Qeq_refl thm
+R35093:35112 Coq.QArith.Qpower <> Qpower_plus_positive thm
+R35093:35112 Coq.QArith.Qpower <> Qpower_plus_positive thm
+R35128:35135 Coq.QArith.QArith_base <> Qeq_refl thm
+R35149:35152 Bignums.BigQ.QMake Make <> mod

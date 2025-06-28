@@ -1,0 +1,9 @@
+DIGEST 54e0251317e3bad39768aebcfd5f1f81
+FBignums.BigQ.Depend
+R16:21 Coq.QArith.QArith <> <> lib
+R23:28 Coq.QArith.Qcanon <> <> lib
+R30:35 Coq.QArith.Qpower <> <> lib
+R37:43 Coq.QArith.Qminmax <> <> lib
+R75:88 Coq.ZArith.BinInt Z compare_spec thm
+R187:189 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R187:189 Coq.Init.Logic <> ::type_scope:x_'='_x not

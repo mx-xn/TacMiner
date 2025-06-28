@@ -1,0 +1,283 @@
+DIGEST 0e15d23ebfd1e9ca987ca9a1403702b0
+FBignums.BigQ.BigQ
+R676:679 Bignums.BigZ.BigZ <> <> lib
+R697:701 Coq.setoid_ring.Field <> <> lib
+R703:708 Coq.QArith.Qfield <> <> lib
+R710:713 Bignums.SpecViaQ.QSig <> <> lib
+R715:719 Bignums.BigQ.QMake <> <> lib
+R721:726 Coq.Structures.Orders <> <> lib
+R728:740 Coq.Structures.GenericMinMax <> <> lib
+R956:966 Bignums.BigQ.QMake NType_ZType <> mod
+R968:976 Bignums.BigN.BigN BigN <> modtype
+R978:981 Bignums.BigZ.BigZ BigZ <> modtype
+mod 943:951 <> BigN_BigZ
+def 996:1001 BigN_BigZ Z_of_N
+R1006:1013 Bignums.BigZ.BigZ BigZ Pos constr
+prf 1023:1033 BigN_BigZ spec_Z_of_N
+binder 1044:1044 <> n:1
+R1067:1069 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1047:1055 Bignums.BigZ.BigZ BigZ to_Z def
+R1058:1063 Bignums.BigQ.BigQ BigN_BigZ Z_of_N def
+R1065:1065 Bignums.BigQ.BigQ <> n:1 var
+R1070:1078 Bignums.BigN.BigN BigN to_Z def
+R1080:1080 Bignums.BigQ.BigQ <> n:1 var
+def 1123:1128 BigN_BigZ Zabs_N
+R1133:1141 Bignums.BigZ.BigZ BigZ to_N def
+prf 1151:1161 BigN_BigZ spec_Zabs_N
+binder 1172:1172 <> z:2
+R1195:1197 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1175:1183 Bignums.BigN.BigN BigN to_Z def
+R1186:1191 Bignums.BigQ.BigQ BigN_BigZ Zabs_N def
+R1193:1193 Bignums.BigQ.BigQ <> z:2 var
+R1198:1202 Coq.ZArith.BinInt Z abs def
+R1205:1213 Bignums.BigZ.BigZ BigZ to_Z def
+R1215:1215 Bignums.BigQ.BigQ <> z:2 var
+R1235:1240 Bignums.BigQ.BigQ BigN_BigZ Zabs_N def
+R1260:1273 Bignums.BigZ.BigZ <> spec_to_Z thm
+R1276:1285 Coq.ZArith.BinInt Z mul_comm thm
+R1294:1302 Coq.ZArith.BinInt Z sgn_abs thm
+R1260:1273 Bignums.BigZ.BigZ <> spec_to_Z thm
+R1260:1273 Bignums.BigZ.BigZ <> spec_to_Z thm
+R1276:1285 Coq.ZArith.BinInt Z mul_comm thm
+R1276:1285 Coq.ZArith.BinInt Z mul_comm thm
+R1294:1302 Coq.ZArith.BinInt Z sgn_abs thm
+R1315:1323 Bignums.BigQ.BigQ BigN_BigZ <> mod
+R1452:1456 Bignums.SpecViaQ.QSig QType <> mod
+R1461:1475 Coq.Structures.Orders OrderedTypeFull <> mod
+R1480:1489 Coq.Structures.Orders TotalOrder <> mod
+mod 1444:1447 <> BigQ
+R1501:1510 Bignums.BigQ.QMake Make <> modtype
+R1512:1515 Bignums.BigN.BigN BigN <> modtype
+R1517:1520 Bignums.BigZ.BigZ BigZ <> modtype
+R1522:1530 Bignums.BigQ.BigQ BigN_BigZ <> modtype
+R1538:1548 Bignums.SpecViaQ.QSig QProperties <> modtype
+R1553:1565 Coq.Structures.Equalities HasEqBool2Dec <> modtype
+R1573:1595 Coq.Structures.GenericMinMax MinMaxLogicalProperties <> modtype
+R1601:1619 Coq.Structures.GenericMinMax MinMaxDecProperties <> modtype
+R1660:1663 Bignums.BigQ.BigQ BigQ <> mod
+syndef 1737:1740 <> bigQ
+R1745:1750 Bignums.BigQ.BigQ <> t def
+R1930:1936 Bignums.BigQ.BigQ <> Qq constr
+not 1918:1918 <> ::bigQ_scope:x_'#'_x
+R2011:2019 Bignums.BigQ.BigQ <> zero def
+not 2004:2004 <> ::bigQ_scope:'0'
+R2057:2064 Bignums.BigQ.BigQ <> one def
+not 2050:2050 <> ::bigQ_scope:'1'
+R2093:2100 Bignums.BigQ.BigQ <> add def
+not 2086:2086 <> ::bigQ_scope:x_'+'_x
+R2129:2136 Bignums.BigQ.BigQ <> sub def
+not 2122:2122 <> ::bigQ_scope:x_'-'_x
+R2171:2178 Bignums.BigQ.BigQ <> opp def
+not 2161:2161 <> ::bigQ_scope:'-'_x
+R2210:2217 Bignums.BigQ.BigQ <> mul def
+not 2203:2203 <> ::bigQ_scope:x_'*'_x
+R2246:2253 Bignums.BigQ.BigQ <> div def
+not 2239:2239 <> ::bigQ_scope:x_'/'_x
+R2282:2291 Bignums.BigQ.BigQ <> power def
+not 2275:2275 <> ::bigQ_scope:x_'^'_x
+R2321:2332 Bignums.BigQ.BigQ <> compare def
+not 2313:2313 <> ::bigQ_scope:x_'?='_x
+R2362:2368 Bignums.BigQ.BigQ <> eq def
+not 2354:2354 <> ::bigQ_scope:x_'=='_x
+R2406:2406 Coq.Init.Logic <> ::type_scope:'~'_x not
+R2408:2409 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'=='_x not
+not 2393:2393 <> ::bigQ_scope:x_'!='_x
+R2472:2478 Bignums.BigQ.BigQ <> lt def
+not 2465:2465 <> ::bigQ_scope:x_'<'_x
+R2508:2514 Bignums.BigQ.BigQ <> le def
+not 2500:2500 <> ::bigQ_scope:x_'<='_x
+R2551:2557 Bignums.BigQ.BigQ <> lt def
+not 2539:2539 <> ::bigQ_scope:x_'>'_x
+R2615:2621 Bignums.BigQ.BigQ <> le def
+not 2602:2602 <> ::bigQ_scope:x_'>='_x
+R2685:2688 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2683:2683 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'<'_x not
+R2690:2690 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'<'_x not
+not 2666:2666 <> ::bigQ_scope:x_'<'_x_'<'_x
+R2737:2740 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2735:2735 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'<'_x not
+R2742:2743 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'<='_x not
+not 2717:2717 <> ::bigQ_scope:x_'<'_x_'<='_x
+R2791:2794 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2788:2789 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'<='_x not
+R2796:2796 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'<'_x not
+not 2770:2770 <> ::bigQ_scope:x_'<='_x_'<'_x
+R2845:2848 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2842:2843 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'<='_x not
+R2850:2851 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'<='_x not
+not 2823:2823 <> ::bigQ_scope:x_'<='_x_'<='_x
+prf 2901:2910 <> BigQringth
+R2915:2925 Coq.setoid_ring.Ring_theory <> ring_theory rec
+R2969:2975 Bignums.BigQ.BigQ <> eq def
+R2958:2965 Bignums.BigQ.BigQ <> opp def
+R2949:2956 Bignums.BigQ.BigQ <> sub def
+R2940:2947 Bignums.BigQ.BigQ <> mul def
+R2931:2938 Bignums.BigQ.BigQ <> add def
+R3004:3015 Bignums.BigQ.BigQ <> add_0_l thm
+R3004:3015 Bignums.BigQ.BigQ <> add_0_l thm
+R3024:3036 Bignums.BigQ.BigQ <> add_comm thm
+R3024:3036 Bignums.BigQ.BigQ <> add_comm thm
+R3045:3058 Bignums.BigQ.BigQ <> add_assoc thm
+R3045:3058 Bignums.BigQ.BigQ <> add_assoc thm
+R3067:3078 Bignums.BigQ.BigQ <> mul_1_l thm
+R3067:3078 Bignums.BigQ.BigQ <> mul_1_l thm
+R3087:3099 Bignums.BigQ.BigQ <> mul_comm thm
+R3087:3099 Bignums.BigQ.BigQ <> mul_comm thm
+R3108:3121 Bignums.BigQ.BigQ <> mul_assoc thm
+R3108:3121 Bignums.BigQ.BigQ <> mul_assoc thm
+R3130:3149 Bignums.BigQ.BigQ <> mul_add_distr_r thm
+R3130:3149 Bignums.BigQ.BigQ <> mul_add_distr_r thm
+R3158:3173 Bignums.BigQ.BigQ <> sub_add_opp thm
+R3158:3173 Bignums.BigQ.BigQ <> sub_add_opp thm
+R3182:3200 Bignums.BigQ.BigQ <> add_opp_diag_r thm
+R3182:3200 Bignums.BigQ.BigQ <> add_opp_diag_r thm
+prf 3241:3251 <> BigQfieldth
+R3256:3267 Coq.setoid_ring.Field_theory <> field_theory rec
+R3329:3335 Bignums.BigQ.BigQ <> eq def
+R3320:3327 Bignums.BigQ.BigQ <> inv def
+R3311:3318 Bignums.BigQ.BigQ <> div def
+R3300:3307 Bignums.BigQ.BigQ <> opp def
+R3291:3298 Bignums.BigQ.BigQ <> sub def
+R3282:3289 Bignums.BigQ.BigQ <> mul def
+R3273:3280 Bignums.BigQ.BigQ <> add def
+R3364:3373 Bignums.BigQ.BigQ <> BigQringth thm
+R3364:3373 Bignums.BigQ.BigQ <> BigQringth thm
+R3382:3393 Bignums.BigQ.BigQ <> neq_1_0 thm
+R3382:3393 Bignums.BigQ.BigQ <> neq_1_0 thm
+R3402:3417 Bignums.BigQ.BigQ <> div_mul_inv thm
+R3402:3417 Bignums.BigQ.BigQ <> div_mul_inv thm
+R3426:3444 Bignums.BigQ.BigQ <> mul_inv_diag_l thm
+R3426:3444 Bignums.BigQ.BigQ <> mul_inv_diag_l thm
+R3477:3481 Coq.setoid_ring.Ring_theory <> pow_N def
+R3483:3489 Coq.setoid_ring.Ring_theory <> pow_pos def
+prf 3499:3509 <> BigQpowerth
+R3514:3525 Coq.setoid_ring.Ring_theory <> power_theory rec
+R3553:3562 Bignums.BigQ.BigQ <> power def
+R3546:3551 Coq.ZArith.BinInt Z of_N def
+R3538:3544 Bignums.BigQ.BigQ <> eq def
+R3529:3536 Bignums.BigQ.BigQ <> mul def
+R3624:3626 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R3613:3621 Bignums.BigQ.BigQ <> to_Q def
+R3627:3632 Coq.ZArith.BinInt Z of_N def
+R3645:3649 Coq.setoid_ring.Ring_theory <> pow_N def
+R3660:3668 Bignums.BigQ.BigQ <> to_Q def
+R3653:3657 Coq.QArith.QArith_base <> Qmult def
+R3624:3626 Coq.QArith.QArith_base <> ::Q_scope:x_'^'_x not
+R3613:3621 Bignums.BigQ.BigQ <> to_Q def
+R3627:3632 Coq.ZArith.BinInt Z of_N def
+R3645:3649 Coq.setoid_ring.Ring_theory <> pow_N def
+R3660:3668 Bignums.BigQ.BigQ <> to_Q def
+R3653:3657 Coq.QArith.QArith_base <> Qmult def
+R3759:3771 Bignums.BigQ.BigQ <> spec_mul thm
+R3759:3771 Bignums.BigQ.BigQ <> spec_mul thm
+R3759:3771 Bignums.BigQ.BigQ <> spec_mul thm
+R3759:3771 Bignums.BigQ.BigQ <> spec_mul thm
+R3759:3771 Bignums.BigQ.BigQ <> spec_mul thm
+R3759:3771 Bignums.BigQ.BigQ <> spec_mul thm
+R3759:3771 Bignums.BigQ.BigQ <> spec_mul thm
+R3759:3771 Bignums.BigQ.BigQ <> spec_mul thm
+R3759:3771 Bignums.BigQ.BigQ <> spec_mul thm
+R3759:3771 Bignums.BigQ.BigQ <> spec_mul thm
+R3836:3842 Bignums.BigQ.BigQ <> Qz constr
+R3836:3842 Bignums.BigQ.BigQ <> Qz constr
+R3865:3871 Bignums.BigQ.BigQ <> Qq constr
+R3865:3871 Bignums.BigQ.BigQ <> Qq constr
+R3999:4007 Bignums.BigQ.BigQ <> zero def
+R3999:4007 Bignums.BigQ.BigQ <> zero def
+R4029:4036 Bignums.BigQ.BigQ <> one def
+R4029:4036 Bignums.BigQ.BigQ <> one def
+R4058:4071 Bignums.BigQ.BigQ <> minus_one def
+R4058:4071 Bignums.BigQ.BigQ <> minus_one def
+R4106:4110 Coq.Init.Datatypes <> false constr
+R4084:4087 Coq.Init.Datatypes <> true constr
+R4049:4052 Coq.Init.Datatypes <> true constr
+R4020:4023 Coq.Init.Datatypes <> true constr
+R3920:3923 Coq.Init.Datatypes <> true constr
+R3920:3923 Coq.Init.Datatypes <> true constr
+R3955:3959 Coq.Init.Datatypes <> false constr
+R3955:3959 Coq.Init.Datatypes <> false constr
+R3972:3976 Coq.Init.Datatypes <> false constr
+R4165:4168 Coq.Init.Datatypes <> true constr
+R4165:4168 Coq.Init.Datatypes <> true constr
+R4187:4191 Coq.Init.Datatypes <> false constr
+R4187:4191 Coq.Init.Datatypes <> false constr
+R4204:4214 Coq.setoid_ring.InitialRing <> NotConstant def
+R4244:4253 Bignums.BigQ.BigQ <> BigQringth thm
+R4267:4282 Bignums.BigQ.BigQ <> eqb_correct thm
+R4320:4330 Bignums.BigQ.BigQ <> BigQpowerth thm
+R4392:4407 Bignums.BigQ.BigQ <> eqb_correct thm
+R4425:4441 Bignums.BigQ.BigQ <> eqb_complete thm
+R4368:4378 Bignums.BigQ.BigQ <> BigQfieldth thm
+R4479:4489 Bignums.BigQ.BigQ <> BigQpowerth thm
+R4479:4489 Bignums.BigQ.BigQ <> BigQpowerth thm
+sec 4513:4521 <> TestField
+var 4529:4531 TestField ex1
+binder 4542:4542 <> x:3
+binder 4544:4544 <> y:4
+binder 4546:4546 <> z:5
+R4556:4560 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'=='_x not
+R4549:4549 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'*'_x not
+R4553:4554 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'*'_x not
+R4551:4551 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'+'_x not
+R4550:4550 Bignums.BigQ.BigQ <> x:3 var
+R4552:4552 Bignums.BigQ.BigQ <> y:4 var
+R4555:4555 Bignums.BigQ.BigQ <> z:5 var
+R4561:4561 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'+'_x not
+R4565:4567 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'+'_x not
+R4571:4571 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'+'_x not
+R4563:4563 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'*'_x not
+R4562:4562 Bignums.BigQ.BigQ <> x:3 var
+R4564:4564 Bignums.BigQ.BigQ <> z:5 var
+R4569:4569 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'*'_x not
+R4568:4568 Bignums.BigQ.BigQ <> y:4 var
+R4570:4570 Bignums.BigQ.BigQ <> z:5 var
+var 4602:4604 TestField ex8
+binder 4615:4615 <> x:6
+R4623:4626 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'=='_x not
+R4619:4621 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'^'_x not
+R4618:4618 Bignums.BigQ.BigQ <> x:6 var
+R4628:4628 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'*'_x not
+R4627:4627 Bignums.BigQ.BigQ <> x:6 var
+R4629:4629 Bignums.BigQ.BigQ <> x:6 var
+var 4659:4662 TestField ex10
+binder 4673:4673 <> x:7
+binder 4675:4675 <> y:8
+R4682:4685 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4679:4680 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'!='_x not
+R4678:4678 Bignums.BigQ.BigQ <> y:8 var
+R4693:4696 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'=='_x not
+R4686:4686 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'*'_x not
+R4690:4691 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'*'_x not
+R4688:4688 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'/'_x not
+R4687:4687 Bignums.BigQ.BigQ <> x:7 var
+R4689:4689 Bignums.BigQ.BigQ <> y:8 var
+R4692:4692 Bignums.BigQ.BigQ <> y:8 var
+R4697:4697 Bignums.BigQ.BigQ <> x:7 var
+R4731:4739 Bignums.BigQ.BigQ TestField <> sec
+sec 4838:4846 <> TestOrder
+var 4853:4856 TestOrder test
+R4873:4876 Bignums.BigQ.BigQ <> bigQ syndef
+binder 4867:4867 <> x:9
+binder 4869:4869 <> y:10
+R4883:4886 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4880:4881 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'<='_x not
+R4879:4879 Bignums.BigQ.BigQ <> x:9 var
+R4882:4882 Bignums.BigQ.BigQ <> y:10 var
+R4891:4894 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4888:4889 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'<='_x not
+R4887:4887 Bignums.BigQ.BigQ <> y:10 var
+R4890:4890 Bignums.BigQ.BigQ <> x:9 var
+R4896:4897 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'=='_x not
+R4895:4895 Bignums.BigQ.BigQ <> x:9 var
+R4898:4898 Bignums.BigQ.BigQ <> y:10 var
+R4929:4937 Bignums.BigQ.BigQ TestOrder <> sec
+sec 5031:5038 <> TestQify
+var 5045:5048 TestQify test
+R5063:5066 Bignums.BigQ.BigQ <> bigQ syndef
+binder 5059:5059 <> x:11
+R5072:5075 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'=='_x not
+R5070:5070 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'+'_x not
+R5071:5071 Bignums.BigQ.BigQ <> x:11 var
+R5077:5077 Bignums.BigQ.BigQ <> ::bigQ_scope:x_'*'_x not
+R5078:5078 Bignums.BigQ.BigQ <> x:11 var
+R5123:5130 Bignums.BigQ.BigQ TestQify <> sec
