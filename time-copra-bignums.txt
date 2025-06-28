@@ -1,9 +1,0 @@
-( cd copra && ./runExp.sh bignums_NMake; )  899.33s user 23.50s system 89% cpu 17:07.12 total
-appending output to nohup.out
-/Users/maxinexin/.local/lib/python3.10/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'experiments': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
-  warnings.warn(msg, UserWarning)
-( cd copra && ./runExp.sh bignums_ZMake; )  1829.99s user 74.01s system 77% cpu 41:02.75 total
-appending output to nohup.out
-/Users/maxinexin/.local/lib/python3.10/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'experiments': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
-  warnings.warn(msg, UserWarning)
-( cd copra && ./runExp.sh bignums_QMake; )  2137.39s user 82.68s system 78% cpu 47:25.27 total

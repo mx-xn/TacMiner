@@ -55,6 +55,8 @@ export PATH="/root/.opam/default/bin:$PATH"
 
 Note: The CompCert compilation might partially fail, but by that point all the CompCert benchmarks necessary to the experiments should have been compiled.
 
+To test successful setup, try running `./test.sh`. The run should finish in around 5-7 minutes. If everything stopped running without an error, then the setup is successful!
+
 ## Step-by-Step Instructions
 
 ### Reproducing Claim #1 (Section 8.2): 

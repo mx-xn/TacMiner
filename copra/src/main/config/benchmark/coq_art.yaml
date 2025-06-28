@@ -19,23 +19,19 @@ datasets:
           - go_right
       - path: chap5.v
         theorems:
-          - contrap # custom1
-          - conv_example # custom2 (0. 1. 1)
-          - ex_imp_ex # custom0
-          - imp_trans # custom0
-          - le_mult_mult # custom0
-      #     # - lt_8_9 # custom1
-      #     # - lt_S # custom0
-      #     # - mult_le_compat_r # custom0
-      #     # - my_I # custom2
+          - contrap 
+          - conv_example
+          - ex_imp_ex 
+          - imp_trans
+          - le_mult_mult
       - path: parsing.v
         theorems:
-          - bin_to_string_wp # custom13, custom23 (0. 0. 0)
-          - wp_o_head_c # custom7 (1. 1. 1)
-          - wp_o_tail_c # custom7 (0. 0. 0)
+          - bin_to_string_wp
+          - wp_o_head_c
+          - wp_o_tail_c
       - path: impredicative.v
         theorems:
-          - impredicative_le_n # custom2 (0. 1. 1)
-          - impredicative_sorted_to_sorted # custom3 (1. 1. 1)
-          - isorted1 # custom2 (0. 1. 1)
-          - isorted2 # custom3 (1. 0. 0)
+          - impredicative_le_n
+          - impredicative_sorted_to_sorted
+          - isorted1
+          - isorted2

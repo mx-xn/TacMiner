@@ -1,11 +1,49 @@
 {
-    "path": ".log/proofs/eval_driver/dfs/coq_art/20250624-181504/proof_results.json",
+    "path": ".log/proofs/eval_driver/dfs/coq_art/20250627-200902/proof_results.json",
     "theorem_map": {
-        "../raw-data/coq-art/chap5.v": {
-            "contrap": {
+        "../raw-data/coq-art/chap11.v": {
+            "RM_1": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "RM_1  : forall n:Z, RM n (Z_bnode n Z_leaf Z_leaf) Z_leaf.",
+                "proof_steps": [],
+                "proof_time_in_secs": 8.56161904335022,
+                "inferences_taken": 8,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 2,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 6,
+                    "attempt_idx": 3,
+                    "total_queries": 12
+                },
+                "language": "COQ"
+            },
+            "rmax_7": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "rmax_7  :\n      forall q':Z,\n        occ q' (Z_bnode n t1 t') -> occ q' (Z_bnode n t1 (Z_bnode p t2 t3)).",
+                "proof_steps": [],
+                "proof_time_in_secs": 11.194362878799438,
+                "inferences_taken": 16,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 4,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 12,
+                    "attempt_idx": 3,
+                    "total_queries": 33
+                },
+                "language": "COQ"
+            },
+            "min_not_occ": {
                 "proof_file": null,
                 "proof_found": true,
-                "lemma_name": "contrap  :forall A B:Prop, (A->B) -> ~B -> ~A.",
+                "lemma_name": "min_not_occ  : forall (z:Z) (t:Z_btree), min z t -> ~ occ z t.",
                 "proof_steps": [
                     {
                         "proof_id": null,
@@ -14,7 +52,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "intros A B H H0 H1."
+                            "intros z t Hmin."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -26,7 +64,68 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply H in H1."
+                            "unfold not."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "destruct (naive_occ_dec z t) as [Hocc | Hnot_occ]."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "+",
+                            "destruct Hmin."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply H in Hocc as Hlt."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "exfalso."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply (Z.lt_irrefl z) in Hlt."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -50,23 +149,310 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
+                            "+",
+                            "contradiction."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
                             "Qed."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
                     }
                 ],
-                "proof_time_in_secs": 3.758897304534912,
-                "inferences_taken": 4,
+                "proof_time_in_secs": 39.79480481147766,
+                "inferences_taken": 36,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 3,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 32,
+                    "attempt_idx": 1,
+                    "total_queries": 75
+                },
+                "language": "COQ"
+            },
+            "not_right": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "not_right  : forall p:Z, p <= n -> ~ occ p t2.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros p H."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "revert H."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "revert se."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros se Hst Hle."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "destruct se as [Hst1 Hst2 Hmin Hmaj | Hst1 Hst2 Hmin Hmaj]."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "destruct (Z_dec p n)."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "-",
+                            "destruct s."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 70.20000576972961,
+                "inferences_taken": 69,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 9,
+                "is_timeout": false,
+                "is_inference_exhausted": true,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 60,
+                    "attempt_idx": 3,
+                    "total_queries": 120
+                },
+                "language": "COQ"
+            },
+            "rmax_6": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "rmax_6  :\n      forall p0:Z, occ p0 (Z_bnode n t1 (Z_bnode p t2 t3)) -> p0 <= q.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros p0 Hocc."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "inversion Hocc."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "clear Hocc."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "inversion S1; subst."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "inversion R1; subst."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply H0 in H."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 109.0640139579773,
+                "inferences_taken": 74,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 14,
+                "is_timeout": false,
+                "is_inference_exhausted": true,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 60,
+                    "attempt_idx": 3,
+                    "total_queries": 120
+                },
+                "language": "COQ"
+            },
+            "go_right": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "go_right  : forall p:Z, occ p (Z_bnode n t1 t2) -> p > n -> occ p t2.",
+                "proof_steps": [],
+                "proof_time_in_secs": 10.745368957519531,
+                "inferences_taken": 10,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 2,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 8,
+                    "attempt_idx": 3,
+                    "total_queries": 63
+                },
+                "language": "COQ"
+            }
+        },
+        "../raw-data/coq-art/chap5.v": {
+            "contrap": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "contrap  :forall A B:Prop, (A->B) -> ~B -> ~A.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros A B H1 H2 H3."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply H2; apply H1; assumption."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 2.798750877380371,
+                "inferences_taken": 3,
                 "possible_failed_paths": -1,
                 "num_of_backtracks": 0,
                 "is_timeout": false,
                 "is_inference_exhausted": false,
                 "longest_success_path": -1,
                 "additional_info": {
-                    "queries": 3,
+                    "queries": 2,
                     "attempt_idx": 0,
-                    "total_queries": 3
+                    "total_queries": 2
                 },
                 "language": "COQ"
             },
@@ -94,7 +480,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply Nat.lt_le_incl in H."
+                            "apply Nat.lt_le_incl."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -106,23 +492,23 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply Nat.le_trans with (m := 35)."
+                            "apply Nat.lt_trans with (m := 35)."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
                     }
                 ],
-                "proof_time_in_secs": 67.31739401817322,
-                "inferences_taken": 74,
+                "proof_time_in_secs": 62.80688285827637,
+                "inferences_taken": 80,
                 "possible_failed_paths": -1,
-                "num_of_backtracks": 14,
+                "num_of_backtracks": 20,
                 "is_timeout": false,
                 "is_inference_exhausted": true,
                 "longest_success_path": -1,
                 "additional_info": {
                     "queries": 60,
                     "attempt_idx": 3,
-                    "total_queries": 60
+                    "total_queries": 120
                 },
                 "language": "COQ"
             },
@@ -150,19 +536,9 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "exists y."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply H; assumption."
+                            "exists y.",
+                            "apply H.",
+                            "assumption."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -180,17 +556,17 @@
                         "addition_state_info": {}
                     }
                 ],
-                "proof_time_in_secs": 4.910725116729736,
-                "inferences_taken": 4,
+                "proof_time_in_secs": 4.777296304702759,
+                "inferences_taken": 3,
                 "possible_failed_paths": -1,
                 "num_of_backtracks": 0,
                 "is_timeout": false,
                 "is_inference_exhausted": false,
                 "longest_success_path": -1,
                 "additional_info": {
-                    "queries": 3,
+                    "queries": 2,
                     "attempt_idx": 0,
-                    "total_queries": 3
+                    "total_queries": 2
                 },
                 "language": "COQ"
             },
@@ -260,7 +636,7 @@
                         "addition_state_info": {}
                     }
                 ],
-                "proof_time_in_secs": 4.358309030532837,
+                "proof_time_in_secs": 4.587940216064453,
                 "inferences_taken": 5,
                 "possible_failed_paths": -1,
                 "num_of_backtracks": 0,
@@ -286,7 +662,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "intros a b c d H1 H2."
+                            "intros a b c d Hac Hbd."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -298,7 +674,31 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply Nat.mul_le_mono; assumption."
+                            "apply Nat.mul_le_mono."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "exact Hac."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "exact Hbd."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -316,301 +716,17 @@
                         "addition_state_info": {}
                     }
                 ],
-                "proof_time_in_secs": 14.42351222038269,
-                "inferences_taken": 6,
+                "proof_time_in_secs": 13.143484115600586,
+                "inferences_taken": 5,
                 "possible_failed_paths": -1,
                 "num_of_backtracks": 0,
                 "is_timeout": false,
                 "is_inference_exhausted": false,
                 "longest_success_path": -1,
                 "additional_info": {
-                    "queries": 5,
+                    "queries": 4,
                     "attempt_idx": 0,
-                    "total_queries": 5
-                },
-                "language": "COQ"
-            },
-            "lt_8_9": {
-                "proof_file": null,
-                "proof_found": true,
-                "lemma_name": "lt_8_9  : 8 < 9.",
-                "proof_steps": [
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply Nat.lt_succ_diag_r."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "Qed."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    }
-                ],
-                "proof_time_in_secs": 1.2980740070343018,
-                "inferences_taken": 2,
-                "possible_failed_paths": -1,
-                "num_of_backtracks": 0,
-                "is_timeout": false,
-                "is_inference_exhausted": false,
-                "longest_success_path": -1,
-                "additional_info": {
-                    "queries": 1,
-                    "attempt_idx": 0,
-                    "total_queries": 1
-                },
-                "language": "COQ"
-            },
-            "lt_S": {
-                "proof_file": null,
-                "proof_found": true,
-                "lemma_name": "lt_S  : forall n p:nat, n < p -> n < S p.",
-                "proof_steps": [
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply Nat.lt_lt_succ_r."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "Qed."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    }
-                ],
-                "proof_time_in_secs": 14.29435396194458,
-                "inferences_taken": 9,
-                "possible_failed_paths": -1,
-                "num_of_backtracks": 1,
-                "is_timeout": false,
-                "is_inference_exhausted": false,
-                "longest_success_path": -1,
-                "additional_info": {
-                    "queries": 7,
-                    "attempt_idx": 0,
-                    "total_queries": 7
-                },
-                "language": "COQ"
-            },
-            "mult_le_compat_r": {
-                "proof_file": null,
-                "proof_found": true,
-                "lemma_name": "mult_le_compat_r  : forall m n p:nat, le n p -> le (n * m) (p * m).",
-                "proof_steps": [
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "intros m n p H."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply Nat.mul_le_mono_r."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "exact H."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "Qed."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    }
-                ],
-                "proof_time_in_secs": 18.12267518043518,
-                "inferences_taken": 10,
-                "possible_failed_paths": -1,
-                "num_of_backtracks": 1,
-                "is_timeout": false,
-                "is_inference_exhausted": false,
-                "longest_success_path": -1,
-                "additional_info": {
-                    "queries": 8,
-                    "attempt_idx": 0,
-                    "total_queries": 8
-                },
-                "language": "COQ"
-            },
-            "my_I": {
-                "proof_file": null,
-                "proof_found": true,
-                "lemma_name": "my_I  : my_True.",
-                "proof_steps": [
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "Admitted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    }
-                ],
-                "proof_time_in_secs": 0.6628990173339844,
-                "inferences_taken": 1,
-                "possible_failed_paths": -1,
-                "num_of_backtracks": 0,
-                "is_timeout": false,
-                "is_inference_exhausted": false,
-                "longest_success_path": -1,
-                "additional_info": {
-                    "queries": 1,
-                    "attempt_idx": 0,
-                    "total_queries": 1
-                },
-                "language": "COQ"
-            }
-        },
-        "../raw-data/coq-art/chap8.v": {
-            "keep_length": {
-                "proof_file": null,
-                "proof_found": true,
-                "lemma_name": "keep_length  :\n  forall (n:nat)(v:t A n), length (vector_to_list n v) = n.",
-                "proof_steps": [
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "intros n v."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "induction v."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "simpl."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "reflexivity."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "simpl.",
-                            "rewrite IHv.",
-                            "reflexivity."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "Qed."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    }
-                ],
-                "proof_time_in_secs": 25.37370491027832,
-                "inferences_taken": 10,
-                "possible_failed_paths": -1,
-                "num_of_backtracks": 1,
-                "is_timeout": false,
-                "is_inference_exhausted": false,
-                "longest_success_path": -1,
-                "additional_info": {
-                    "queries": 8,
-                    "attempt_idx": 0,
-                    "total_queries": 8
+                    "total_queries": 4
                 },
                 "language": "COQ"
             }
@@ -620,81 +736,18 @@
                 "proof_file": null,
                 "proof_found": false,
                 "lemma_name": "bin_to_string_wp  : forall t:bin, wp (bin_to_string t).",
-                "proof_steps": [
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "intros t."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "case t."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "-",
-                            "simpl."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply wp_nil."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "-",
-                            "simpl."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    }
-                ],
-                "proof_time_in_secs": 78.10557103157043,
-                "inferences_taken": 87,
+                "proof_steps": [],
+                "proof_time_in_secs": 21.29688596725464,
+                "inferences_taken": 35,
                 "possible_failed_paths": -1,
-                "num_of_backtracks": 27,
+                "num_of_backtracks": 12,
                 "is_timeout": false,
-                "is_inference_exhausted": true,
+                "is_inference_exhausted": false,
                 "longest_success_path": -1,
                 "additional_info": {
-                    "queries": 60,
+                    "queries": 23,
                     "attempt_idx": 3,
-                    "total_queries": 120
+                    "total_queries": 83
                 },
                 "language": "COQ"
             },
@@ -703,17 +756,17 @@
                 "proof_found": false,
                 "lemma_name": "wp_o_head_c  :\n forall l1 l2:list par, wp l1 -> wp l2 -> wp (open :: l1 ++ close :: l2).",
                 "proof_steps": [],
-                "proof_time_in_secs": 29.738346099853516,
-                "inferences_taken": 51,
+                "proof_time_in_secs": 12.149460792541504,
+                "inferences_taken": 21,
                 "possible_failed_paths": -1,
-                "num_of_backtracks": 14,
+                "num_of_backtracks": 6,
                 "is_timeout": false,
                 "is_inference_exhausted": false,
                 "longest_success_path": -1,
                 "additional_info": {
-                    "queries": 37,
+                    "queries": 15,
                     "attempt_idx": 3,
-                    "total_queries": 43
+                    "total_queries": 25
                 },
                 "language": "COQ"
             },
@@ -753,8 +806,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "-",
-                            "assumption."
+                            "exact H1."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -766,7 +818,6 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "-",
                             "apply wp_encapsulate; assumption."
                         ],
                         "simplified_goals": [],
@@ -785,7 +836,7 @@
                         "addition_state_info": {}
                     }
                 ],
-                "proof_time_in_secs": 7.382326126098633,
+                "proof_time_in_secs": 5.907569885253906,
                 "inferences_taken": 7,
                 "possible_failed_paths": -1,
                 "num_of_backtracks": 0,
@@ -813,7 +864,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "intros n."
+                            "intro n."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -837,7 +888,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "intros P Hbase Hstep."
+                            "intros P Hn Hm."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -849,7 +900,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply Hbase."
+                            "apply Hn."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -867,7 +918,7 @@
                         "addition_state_info": {}
                     }
                 ],
-                "proof_time_in_secs": 5.650416851043701,
+                "proof_time_in_secs": 4.568847894668579,
                 "inferences_taken": 5,
                 "possible_failed_paths": -1,
                 "num_of_backtracks": 0,
@@ -883,7 +934,7 @@
             },
             "impredicative_sorted_to_sorted": {
                 "proof_file": null,
-                "proof_found": false,
+                "proof_found": true,
                 "lemma_name": "impredicative_sorted_to_sorted  :\n    forall l, impredicative_sorted  l -> sorted  l.",
                 "proof_steps": [
                     {
@@ -905,18 +956,6 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply sorted_to_impredicative_sorted in H."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
                             "apply sorted_to_impredicative_sorted."
                         ],
                         "simplified_goals": [],
@@ -929,10 +968,6 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "-",
-                            "apply sorted_to_impredicative_sorted.",
-                            "intros.",
-                            "apply sorted_to_impredicative_sorted.",
                             "apply H."
                         ],
                         "simplified_goals": [],
@@ -945,138 +980,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted_to_impredicative_sorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
+                            "-",
                             "constructor."
                         ],
                         "simplified_goals": [],
@@ -1089,6 +993,8 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
+                            "-",
+                            "intros x.",
                             "constructor."
                         ],
                         "simplified_goals": [],
@@ -1101,7 +1007,9 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "intros x."
+                            "-",
+                            "intros x1 x2 l' H0 H1.",
+                            "constructor; assumption."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -1113,6 +1021,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
+                            "-",
                             "constructor."
                         ],
                         "simplified_goals": [],
@@ -1125,6 +1034,8 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
+                            "-",
+                            "intros x.",
                             "constructor."
                         ],
                         "simplified_goals": [],
@@ -1137,7 +1048,9 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply H0."
+                            "-",
+                            "intros x1 x2 l' H0 H1.",
+                            "constructor; assumption."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -1149,306 +1062,79 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply H1."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "constructor."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "intros x."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "constructor."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "constructor."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "assumption."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "assumption."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "constructor."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "intros x."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "constructor."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "constructor."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply H0."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply H1."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "constructor."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "intros x."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "constructor."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "intros x1 x2 l' H1 H2."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted2; assumption."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "constructor."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "intros x."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "constructor."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "intros x1 x2 l' H1 H2."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply sorted2; assumption."
+                            "Qed."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
                     }
                 ],
-                "proof_time_in_secs": 267.11578702926636,
-                "inferences_taken": 64,
+                "proof_time_in_secs": 10.439167976379395,
+                "inferences_taken": 12,
                 "possible_failed_paths": -1,
-                "num_of_backtracks": 4,
-                "is_timeout": false,
-                "is_inference_exhausted": true,
-                "longest_success_path": -1,
-                "additional_info": {
-                    "queries": 60,
-                    "attempt_idx": 3,
-                    "total_queries": 120
-                },
-                "language": "COQ"
-            },
-            "isorted1": {
-                "proof_file": null,
-                "proof_found": false,
-                "lemma_name": "isorted1  :  forall  x: A , impredicative_sorted (x::nil).",
-                "proof_steps": [],
-                "proof_time_in_secs": 9.557279825210571,
-                "inferences_taken": 14,
-                "possible_failed_paths": -1,
-                "num_of_backtracks": 3,
+                "num_of_backtracks": 0,
                 "is_timeout": false,
                 "is_inference_exhausted": false,
                 "longest_success_path": -1,
                 "additional_info": {
                     "queries": 11,
-                    "attempt_idx": 3,
-                    "total_queries": 28
+                    "attempt_idx": 0,
+                    "total_queries": 11
+                },
+                "language": "COQ"
+            },
+            "isorted1": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "isorted1  :  forall  x: A , impredicative_sorted (x::nil).",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros x P Hnil Hsingle Hcons."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply Hsingle."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 1.9634349346160889,
+                "inferences_taken": 3,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 0,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 2,
+                    "attempt_idx": 1,
+                    "total_queries": 12
                 },
                 "language": "COQ"
             },
@@ -1464,7 +1150,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "intros x1 x2 l' Hrel Hsorted."
+                            "intros x1 x2 l' H1 H2."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -1476,7 +1162,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "intros P Pnil Psngl Pcons."
+                            "unfold impredicative_sorted."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -1488,7 +1174,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply Pcons."
+                            "intros P Hnil Hcons Hstep."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -1500,8 +1186,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "-",
-                            "apply Hrel."
+                            "apply Hstep; [assumption | apply H2]."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -1513,20 +1198,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "-",
-                            "apply Hsorted."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply Pnil."
+                            "apply Hnil."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -1550,7 +1222,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply Psngl."
+                            "apply Hcons."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -1562,65 +1234,7 @@
                         "start_goals": [],
                         "end_goals": [],
                         "proof_steps": [
-                            "apply Pcons; assumption."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "Qed."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    }
-                ],
-                "proof_time_in_secs": 35.511425733566284,
-                "inferences_taken": 43,
-                "possible_failed_paths": -1,
-                "num_of_backtracks": 7,
-                "is_timeout": false,
-                "is_inference_exhausted": false,
-                "longest_success_path": -1,
-                "additional_info": {
-                    "queries": 35,
-                    "attempt_idx": 1,
-                    "total_queries": 94
-                },
-                "language": "COQ"
-            }
-        },
-        "../raw-data/coq-art/chap3.v": {
-            "imp_trans": {
-                "proof_file": null,
-                "proof_found": true,
-                "lemma_name": "imp_trans  : (P->Q)->(Q->R)->P->R.",
-                "proof_steps": [
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "intros H1 H2 H3."
-                        ],
-                        "simplified_goals": [],
-                        "addition_state_info": {}
-                    },
-                    {
-                        "proof_id": null,
-                        "all_useful_defns_theorems": [],
-                        "goal_description": null,
-                        "start_goals": [],
-                        "end_goals": [],
-                        "proof_steps": [
-                            "apply H2, H1, H3."
+                            "exact Hstep."
                         ],
                         "simplified_goals": [],
                         "addition_state_info": {}
@@ -1638,17 +1252,17 @@
                         "addition_state_info": {}
                     }
                 ],
-                "proof_time_in_secs": 2.8346920013427734,
-                "inferences_taken": 3,
+                "proof_time_in_secs": 16.540192127227783,
+                "inferences_taken": 20,
                 "possible_failed_paths": -1,
-                "num_of_backtracks": 0,
+                "num_of_backtracks": 1,
                 "is_timeout": false,
                 "is_inference_exhausted": false,
                 "longest_success_path": -1,
                 "additional_info": {
-                    "queries": 2,
-                    "attempt_idx": 0,
-                    "total_queries": 2
+                    "queries": 18,
+                    "attempt_idx": 2,
+                    "total_queries": 33
                 },
                 "language": "COQ"
             }
