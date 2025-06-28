@@ -1,0 +1,172 @@
+DIGEST 9d9d33ee1aa6508233402aa53717a3d2
+FCDF.Delay
+ind 203:207 <> delay
+constr 228:230 <> now
+constr 253:257 <> later
+binder 210:210 <> A:1
+R235:238 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R234:234 CDF.Delay <> A:1 var
+R239:243 CDF.Delay <> delay:2 ind
+R245:245 CDF.Delay <> A:1 var
+R268:271 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R261:265 CDF.Delay <> delay:2 ind
+R267:267 CDF.Delay <> A:1 var
+R272:276 CDF.Delay <> delay:2 ind
+R278:278 CDF.Delay <> A:1 var
+R294:296 CDF.Delay <> now constr
+R294:296 CDF.Delay <> now constr
+R315:319 CDF.Delay <> later constr
+R315:319 CDF.Delay <> later constr
+prf 335:341 <> u_delay
+binder 356:356 <> A:4
+R369:373 CDF.Delay <> delay coind
+R375:375 CDF.Delay <> A:4 var
+binder 366:366 <> x:5
+R384:386 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R383:383 CDF.Delay <> x:5 var
+R393:393 CDF.Delay <> x:5 var
+R400:402 CDF.Delay <> now constr
+R409:411 CDF.Delay <> now constr
+R417:421 CDF.Delay <> later constr
+R428:432 CDF.Delay <> later constr
+R508:514 CDF.Delay <> u_delay thm
+def 570:572 <> ret
+R577:579 CDF.Delay <> now constr
+def 596:599 <> bind
+binder 602:602 <> A:7
+binder 604:604 <> B:8
+R617:621 CDF.Delay <> delay coind
+R623:623 CDF.Delay <> A:7 var
+binder 614:614 <> d:9
+R631:634 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R630:630 CDF.Delay <> A:7 var
+R635:639 CDF.Delay <> delay coind
+R641:641 CDF.Delay <> B:8 var
+binder 627:627 <> f:10
+R657:657 CDF.Delay <> d:9 var
+R670:672 CDF.Delay <> now constr
+R679:683 CDF.Delay <> later constr
+R686:686 CDF.Delay <> f:10 var
+R697:701 CDF.Delay <> later constr
+R709:713 CDF.Delay <> later constr
+R716:719 CDF.Delay <> bind:11 def
+R724:724 CDF.Delay <> f:10 var
+ind 912:915 <> safe
+constr 969:976 <> safe_now
+constr 1017:1026 <> safe_later
+binder 918:918 <> A:13
+R932:935 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R931:931 CDF.Delay <> A:13 var
+binder 928:928 <> Q:14
+R951:954 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R944:948 CDF.Delay <> delay coind
+binder 986:986 <> a:17
+R992:995 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R989:989 CDF.Delay <> Q:14 var
+R991:991 CDF.Delay <> a:17 var
+R996:999 CDF.Delay <> safe:15 ind
+R1004:1006 CDF.Delay <> now constr
+R1008:1008 CDF.Delay <> a:17 var
+R1001:1001 CDF.Delay <> Q:14 var
+binder 1036:1036 <> d:18
+R1047:1050 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1039:1042 CDF.Delay <> safe:15 ind
+R1046:1046 CDF.Delay <> d:18 var
+R1044:1044 CDF.Delay <> Q:14 var
+R1051:1054 CDF.Delay <> safe:15 ind
+R1059:1063 CDF.Delay <> later constr
+R1065:1065 CDF.Delay <> d:18 var
+R1056:1056 CDF.Delay <> Q:14 var
+prf 1078:1089 <> safe_inv_now
+binder 1100:1100 <> A:19
+R1114:1117 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1113:1113 CDF.Delay <> A:19 var
+binder 1110:1110 <> Q:20
+binder 1124:1124 <> v:21
+R1145:1148 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1131:1134 CDF.Delay <> safe coind
+R1139:1141 CDF.Delay <> now constr
+R1143:1143 CDF.Delay <> v:21 var
+R1136:1136 CDF.Delay <> Q:20 var
+R1149:1149 CDF.Delay <> Q:20 var
+R1151:1151 CDF.Delay <> v:21 var
+prf 1210:1223 <> safe_inv_later
+binder 1234:1234 <> A:22
+R1248:1251 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1247:1247 CDF.Delay <> A:22 var
+binder 1244:1244 <> Q:23
+binder 1258:1258 <> d:24
+R1281:1284 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1265:1268 CDF.Delay <> safe coind
+R1273:1277 CDF.Delay <> later constr
+R1279:1279 CDF.Delay <> d:24 var
+R1270:1270 CDF.Delay <> Q:23 var
+R1285:1288 CDF.Delay <> safe coind
+R1292:1292 CDF.Delay <> d:24 var
+R1290:1290 CDF.Delay <> Q:23 var
+prf 1351:1366 <> safe_consequence
+binder 1381:1381 <> A:25
+R1399:1402 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1398:1398 CDF.Delay <> A:25 var
+binder 1391:1392 <> Q1:26
+binder 1394:1395 <> Q2:27
+R1414:1414 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1437:1445 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 1422:1422 <> a:28
+R1429:1432 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1425:1426 CDF.Delay <> Q1:26 var
+R1428:1428 CDF.Delay <> a:28 var
+R1433:1434 CDF.Delay <> Q2:27 var
+R1436:1436 CDF.Delay <> a:28 var
+R1457:1461 CDF.Delay <> delay coind
+R1463:1463 CDF.Delay <> A:25 var
+binder 1454:1454 <> d:29
+R1476:1479 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1467:1470 CDF.Delay <> safe coind
+R1475:1475 CDF.Delay <> d:29 var
+R1472:1473 CDF.Delay <> Q1:26 var
+R1480:1483 CDF.Delay <> safe coind
+R1488:1488 CDF.Delay <> d:29 var
+R1485:1486 CDF.Delay <> Q2:27 var
+prf 1623:1631 <> safe_bind
+binder 1646:1646 <> A:30
+binder 1648:1648 <> B:31
+R1663:1666 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1662:1662 CDF.Delay <> A:30 var
+binder 1658:1659 <> Q1:32
+R1679:1682 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1678:1678 CDF.Delay <> B:31 var
+binder 1674:1675 <> Q2:33
+R1704:1708 CDF.Delay <> delay coind
+R1710:1710 CDF.Delay <> A:30 var
+binder 1701:1701 <> d:34
+R1718:1721 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1717:1717 CDF.Delay <> A:30 var
+R1722:1726 CDF.Delay <> delay coind
+R1728:1728 CDF.Delay <> B:31 var
+binder 1714:1714 <> f:35
+R1745:1748 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1736:1739 CDF.Delay <> safe coind
+R1744:1744 CDF.Delay <> d:34 var
+R1741:1742 CDF.Delay <> Q1:32 var
+R1749:1749 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1781:1785 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 1757:1757 <> v:36
+R1764:1767 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1760:1761 CDF.Delay <> Q1:32 var
+R1763:1763 CDF.Delay <> v:36 var
+R1768:1771 CDF.Delay <> safe coind
+R1777:1777 CDF.Delay <> f:35 var
+R1779:1779 CDF.Delay <> v:36 var
+R1773:1774 CDF.Delay <> Q2:33 var
+R1786:1789 CDF.Delay <> safe coind
+R1795:1798 CDF.Delay <> bind def
+R1802:1802 CDF.Delay <> f:35 var
+R1800:1800 CDF.Delay <> d:34 var
+R1791:1792 CDF.Delay <> Q2:33 var
+R1878:1881 CDF.Delay <> bind def
+R1878:1881 CDF.Delay <> bind def
+R1911:1922 CDF.Delay <> safe_inv_now thm
+R1911:1922 CDF.Delay <> safe_inv_now thm
+R1969:1982 CDF.Delay <> safe_inv_later thm
+R1969:1982 CDF.Delay <> safe_inv_later thm

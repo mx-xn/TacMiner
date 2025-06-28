@@ -1,0 +1,1843 @@
+DIGEST 5ed2a4375937ad243579faaf52c41b7b
+FCDF.Monads
+R65:71 Coq.Program.Program <> <> lib
+R73:78 Coq.ZArith.ZArith <> <> lib
+R98:102 CDF.Hoare <> <> lib
+R104:113 CDF.Separation <> <> lib
+R115:119 CDF.Delay <> <> lib
+modtype 235:244 <> HOAREMONAD
+ax 259:261 HOAREMONAD PRE
+def 283:286 HOAREMONAD POST
+binder 289:289 <> A:2
+R302:305 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R301:301 CDF.Monads <> A:2 var
+R306:308 CDF.Monads HOAREMONAD PRE defax
+ax 323:323 HOAREMONAD M
+R337:339 CDF.Monads HOAREMONAD PRE defax
+binder 334:334 <> P:3
+binder 343:343 <> A:4
+R356:359 CDF.Monads HOAREMONAD POST def
+R361:361 CDF.Monads <> A:4 var
+binder 353:353 <> Q:5
+ax 383:385 HOAREMONAD ret
+binder 400:400 <> A:7
+R413:416 CDF.Monads HOAREMONAD POST def
+R418:418 CDF.Monads <> A:7 var
+binder 410:410 <> Q:8
+R425:425 CDF.Monads <> A:7 var
+binder 422:422 <> v:9
+R429:429 CDF.Monads HOAREMONAD M defax
+R432:432 CDF.Monads <> Q:8 var
+R434:434 CDF.Monads <> v:9 var
+R437:437 CDF.Monads <> A:7 var
+R439:439 CDF.Monads <> Q:8 var
+ax 454:457 HOAREMONAD bind
+binder 472:472 <> A:11
+binder 474:474 <> B:12
+R487:489 CDF.Monads HOAREMONAD PRE defax
+binder 484:484 <> P:13
+R496:499 CDF.Monads HOAREMONAD POST def
+R501:501 CDF.Monads <> A:11 var
+binder 493:493 <> Q:14
+R508:511 CDF.Monads HOAREMONAD POST def
+R513:513 CDF.Monads <> B:12 var
+binder 505:505 <> R:15
+R535:538 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R528:528 CDF.Monads HOAREMONAD M defax
+R530:530 CDF.Monads <> P:13 var
+R532:532 CDF.Monads <> A:11 var
+R534:534 CDF.Monads <> Q:14 var
+R539:539 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R566:570 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R551:551 CDF.Monads <> A:11 var
+binder 548:548 <> v:16
+R555:555 CDF.Monads HOAREMONAD M defax
+R558:558 CDF.Monads <> Q:14 var
+R560:560 CDF.Monads <> v:16 var
+R563:563 CDF.Monads <> B:12 var
+R565:565 CDF.Monads <> R:15 var
+R571:571 CDF.Monads HOAREMONAD M defax
+R573:573 CDF.Monads <> P:13 var
+R575:575 CDF.Monads <> B:12 var
+R577:577 CDF.Monads <> R:15 var
+ax 592:598 HOAREMONAD implies
+R604:607 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R601:603 CDF.Monads HOAREMONAD PRE defax
+R611:614 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R608:610 CDF.Monads HOAREMONAD PRE defax
+ax 633:647 HOAREMONAD consequence_pre
+binder 662:662 <> A:19
+R678:680 CDF.Monads HOAREMONAD PRE defax
+binder 672:672 <> P:20
+binder 674:675 <> P':21
+R687:690 CDF.Monads HOAREMONAD POST def
+R692:692 CDF.Monads <> A:19 var
+binder 684:684 <> Q:22
+R719:722 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R707:713 CDF.Monads HOAREMONAD implies defax
+R715:716 CDF.Monads <> P':21 var
+R718:718 CDF.Monads <> P:20 var
+R730:733 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R723:723 CDF.Monads HOAREMONAD M defax
+R725:725 CDF.Monads <> P:20 var
+R727:727 CDF.Monads <> A:19 var
+R729:729 CDF.Monads <> Q:22 var
+R734:734 CDF.Monads HOAREMONAD M defax
+R736:737 CDF.Monads <> P':21 var
+R739:739 CDF.Monads <> A:19 var
+R741:741 CDF.Monads <> Q:22 var
+ax 756:771 HOAREMONAD consequence_post
+binder 786:786 <> A:24
+R799:801 CDF.Monads HOAREMONAD PRE defax
+binder 796:796 <> P:25
+R811:814 CDF.Monads HOAREMONAD POST def
+R816:816 CDF.Monads <> A:24 var
+binder 805:805 <> Q:26
+binder 807:808 <> Q':27
+R831:831 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R862:865 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 839:839 <> v:28
+R842:848 CDF.Monads HOAREMONAD implies defax
+R851:851 CDF.Monads <> Q:26 var
+R853:853 CDF.Monads <> v:28 var
+R857:858 CDF.Monads <> Q':27 var
+R860:860 CDF.Monads <> v:28 var
+R873:876 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R866:866 CDF.Monads HOAREMONAD M defax
+R868:868 CDF.Monads <> P:25 var
+R870:870 CDF.Monads <> A:24 var
+R872:872 CDF.Monads <> Q:26 var
+R877:877 CDF.Monads HOAREMONAD M defax
+R879:879 CDF.Monads <> P:25 var
+R881:881 CDF.Monads <> A:24 var
+R883:884 CDF.Monads <> Q':27 var
+R891:900 CDF.Monads HOAREMONAD <> modtype
+R968:977 CDF.Monads HOAREMONAD <> mod
+mod 959:963 <> HPure
+def 992:994 HPure PRE
+def 1016:1019 HPure POST
+binder 1022:1022 <> A:30
+R1035:1038 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1034:1034 CDF.Monads <> A:30 var
+R1039:1041 CDF.Monads HPure PRE def
+def 1055:1055 HPure M
+R1061:1063 CDF.Monads HPure PRE def
+binder 1058:1058 <> P:31
+binder 1067:1067 <> A:32
+R1080:1083 CDF.Monads HPure POST def
+R1085:1085 CDF.Monads <> A:32 var
+binder 1077:1077 <> Q:33
+R1092:1095 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1091:1091 CDF.Monads <> P:31 var
+R1096:1097 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R1099:1101 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R1103:1105 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R1109:1110 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R1102:1102 CDF.Monads <> A:32 var
+binder 1098:1098 <> a:34
+R1106:1106 CDF.Monads <> Q:33 var
+R1108:1108 CDF.Monads <> a:34 var
+def 1125:1127 HPure ret
+binder 1130:1130 <> A:35
+R1143:1146 CDF.Monads HPure POST def
+R1148:1148 CDF.Monads <> A:35 var
+binder 1140:1140 <> Q:36
+R1155:1155 CDF.Monads <> A:35 var
+binder 1152:1152 <> v:37
+R1160:1160 CDF.Monads HPure M def
+R1163:1163 CDF.Monads <> Q:36 var
+R1165:1165 CDF.Monads <> v:37 var
+R1168:1168 CDF.Monads <> A:35 var
+R1170:1170 CDF.Monads <> Q:36 var
+binder 1181:1181 <> p:38
+R1186:1190 Coq.Init.Specif <> exist constr
+R1196:1196 CDF.Monads <> p:38 var
+R1194:1194 CDF.Monads <> v:37 var
+def 1211:1214 HPure bind
+binder 1217:1217 <> A:39
+binder 1219:1219 <> B:40
+R1248:1250 CDF.Monads HPure PRE def
+binder 1245:1245 <> P:41
+R1257:1260 CDF.Monads HPure POST def
+R1262:1262 CDF.Monads <> A:39 var
+binder 1254:1254 <> Q:42
+R1269:1272 CDF.Monads HPure POST def
+R1274:1274 CDF.Monads <> B:40 var
+binder 1266:1266 <> R:43
+R1297:1297 CDF.Monads HPure M def
+R1299:1299 CDF.Monads <> P:41 var
+R1301:1301 CDF.Monads <> A:39 var
+R1303:1303 CDF.Monads <> Q:42 var
+binder 1294:1294 <> a:44
+R1321:1321 CDF.Monads <> A:39 var
+binder 1318:1318 <> v:45
+R1325:1325 CDF.Monads HPure M def
+R1328:1328 CDF.Monads <> Q:42 var
+R1330:1330 CDF.Monads <> v:45 var
+R1333:1333 CDF.Monads <> B:40 var
+R1335:1335 CDF.Monads <> R:43 var
+binder 1307:1307 <> f:46
+R1340:1340 CDF.Monads HPure M def
+R1342:1342 CDF.Monads <> P:41 var
+R1344:1344 CDF.Monads <> B:40 var
+R1346:1346 CDF.Monads <> R:43 var
+binder 1357:1357 <> p:47
+R1384:1384 CDF.Monads <> a:44 var
+R1386:1386 CDF.Monads <> p:47 var
+R1368:1372 Coq.Init.Specif <> exist constr
+R1391:1391 CDF.Monads <> f:46 var
+def 1410:1416 HPure implies
+R1425:1427 CDF.Monads HPure PRE def
+binder 1419:1419 <> P:48
+binder 1421:1422 <> P':49
+R1434:1437 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1433:1433 CDF.Monads <> P:48 var
+R1438:1439 CDF.Monads <> P':49 var
+def 1454:1468 HPure consequence_pre
+binder 1476:1476 <> A:50
+R1492:1494 CDF.Monads HPure PRE def
+binder 1486:1486 <> P:51
+binder 1488:1489 <> P':52
+R1501:1504 CDF.Monads HPure POST def
+R1506:1506 CDF.Monads <> A:50 var
+binder 1498:1498 <> Q:53
+R1515:1521 CDF.Monads HPure implies def
+R1523:1524 CDF.Monads <> P':52 var
+R1526:1526 CDF.Monads <> P:51 var
+binder 1510:1512 <> IMP:54
+R1533:1533 CDF.Monads HPure M def
+R1535:1535 CDF.Monads <> P:51 var
+R1537:1537 CDF.Monads <> A:50 var
+R1539:1539 CDF.Monads <> Q:53 var
+binder 1530:1530 <> m:55
+R1544:1544 CDF.Monads HPure M def
+R1546:1547 CDF.Monads <> P':52 var
+R1549:1549 CDF.Monads <> A:50 var
+R1551:1551 CDF.Monads <> Q:53 var
+binder 1562:1563 <> p':56
+R1568:1568 CDF.Monads <> m:55 var
+R1571:1573 CDF.Monads <> IMP:54 var
+R1575:1576 CDF.Monads <> p':56 var
+def 1600:1615 HPure consequence_post
+binder 1623:1623 <> A:57
+R1636:1638 CDF.Monads HPure PRE def
+binder 1633:1633 <> P:58
+R1648:1651 CDF.Monads HPure POST def
+R1653:1653 CDF.Monads <> A:57 var
+binder 1642:1642 <> Q:59
+binder 1644:1645 <> Q':60
+binder 1669:1669 <> v:61
+R1672:1678 CDF.Monads HPure implies def
+R1681:1681 CDF.Monads <> Q:59 var
+R1683:1683 CDF.Monads <> v:61 var
+R1687:1688 CDF.Monads <> Q':60 var
+R1690:1690 CDF.Monads <> v:61 var
+binder 1657:1659 <> IMP:62
+R1698:1698 CDF.Monads HPure M def
+R1700:1700 CDF.Monads <> P:58 var
+R1702:1702 CDF.Monads <> A:57 var
+R1704:1704 CDF.Monads <> Q:59 var
+binder 1695:1695 <> m:63
+R1709:1709 CDF.Monads HPure M def
+R1711:1711 CDF.Monads <> P:58 var
+R1713:1713 CDF.Monads <> A:57 var
+R1715:1716 CDF.Monads <> Q':60 var
+binder 1727:1727 <> p:64
+R1732:1732 CDF.Monads <> m:63 var
+R1734:1734 CDF.Monads <> p:64 var
+R1804:1808 CDF.Monads HPure <> mod
+R1889:1898 CDF.Monads HOAREMONAD <> mod
+mod 1881:1884 <> HDiv
+R1909:1913 CDF.Delay <> <> mod
+def 1928:1930 HDiv PRE
+def 1952:1955 HDiv POST
+binder 1958:1958 <> A:65
+R1971:1974 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1970:1970 CDF.Monads <> A:65 var
+R1975:1977 CDF.Monads HDiv PRE def
+def 1991:1991 HDiv M
+R1997:1999 CDF.Monads HDiv PRE def
+binder 1994:1994 <> P:66
+binder 2003:2003 <> A:67
+R2016:2019 CDF.Monads HDiv POST def
+R2021:2021 CDF.Monads <> A:67 var
+binder 2013:2013 <> Q:68
+R2028:2031 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2027:2027 CDF.Monads <> P:66 var
+R2032:2033 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R2035:2037 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R2045:2047 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R2056:2057 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R2038:2042 CDF.Delay <> delay coind
+R2044:2044 CDF.Monads <> A:67 var
+binder 2034:2034 <> d:69
+R2048:2051 CDF.Delay <> safe coind
+R2055:2055 CDF.Monads <> d:69 var
+R2053:2053 CDF.Monads <> Q:68 var
+def 2080:2082 HDiv ret
+binder 2085:2085 <> A:70
+R2098:2101 CDF.Monads HDiv POST def
+R2103:2103 CDF.Monads <> A:70 var
+binder 2095:2095 <> Q:71
+R2110:2110 CDF.Monads <> A:70 var
+binder 2107:2107 <> v:72
+R2115:2115 CDF.Monads HDiv M def
+R2118:2118 CDF.Monads <> Q:71 var
+R2120:2120 CDF.Monads <> v:72 var
+R2123:2123 CDF.Monads <> A:70 var
+R2125:2125 CDF.Monads <> Q:71 var
+R2141:2143 CDF.Delay <> now constr
+R2145:2145 CDF.Monads <> v:72 var
+sec 2200:2203 HDiv BIND
+binder 2216:2216 <> A:73
+binder 2218:2218 <> B:74
+R2239:2241 CDF.Monads HDiv PRE def
+binder 2236:2236 <> P:75
+R2248:2251 CDF.Monads HDiv POST def
+R2253:2253 CDF.Monads <> A:73 var
+binder 2245:2245 <> Q:76
+R2260:2263 CDF.Monads HDiv POST def
+R2265:2265 CDF.Monads <> B:74 var
+binder 2257:2257 <> R:77
+R2280:2280 CDF.Monads HDiv M def
+R2282:2282 CDF.Monads <> P:75 var
+R2284:2284 CDF.Monads <> A:73 var
+R2286:2286 CDF.Monads <> Q:76 var
+binder 2277:2277 <> a:78
+R2304:2304 CDF.Monads <> A:73 var
+binder 2301:2301 <> v:79
+R2308:2308 CDF.Monads HDiv M def
+R2311:2311 CDF.Monads <> Q:76 var
+R2313:2313 CDF.Monads <> v:79 var
+R2316:2316 CDF.Monads <> B:74 var
+R2318:2318 CDF.Monads <> R:77 var
+binder 2290:2290 <> f:80
+def 2334:2341 HDiv bind_aux
+R2347:2351 CDF.Delay <> delay coind
+R2353:2353 CDF.Monads <> HDiv.BIND.A var
+binder 2344:2344 <> d:81
+R2366:2369 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2358:2361 CDF.Delay <> safe coind
+R2365:2365 CDF.Monads <> d:81 var
+R2363:2363 CDF.Monads <> HDiv.BIND.Q var
+R2370:2374 CDF.Delay <> delay coind
+R2376:2376 CDF.Monads <> HDiv.BIND.B var
+R2389:2389 CDF.Monads <> d:81 var
+R2400:2402 CDF.Delay <> now constr
+binder 2413:2416 <> SAFE:84
+R2421:2425 CDF.Delay <> later constr
+R2428:2436 Coq.Init.Specif <> proj1_sig def
+R2439:2439 CDF.Monads <> HDiv.BIND.f var
+R2444:2455 CDF.Delay <> safe_inv_now thm
+R2461:2464 CDF.Monads <> SAFE:84 var
+R2473:2477 CDF.Delay <> later constr
+binder 2488:2491 <> SAFE:85
+R2496:2500 CDF.Delay <> later constr
+R2503:2510 CDF.Monads <> bind_aux:82 def
+R2515:2528 CDF.Delay <> safe_inv_later thm
+R2534:2537 CDF.Monads <> SAFE:85 var
+R2512:2512 CDF.Monads <> d:81 var
+prf 2555:2567 HDiv safe_bind_aux
+R2583:2587 CDF.Delay <> delay coind
+R2589:2589 CDF.Monads <> HDiv.BIND.A var
+binder 2580:2580 <> d:86
+R2596:2599 CDF.Delay <> safe coind
+R2603:2603 CDF.Monads <> d:86 var
+R2601:2601 CDF.Monads <> HDiv.BIND.Q var
+binder 2593:2593 <> s:87
+R2607:2610 CDF.Delay <> safe coind
+R2615:2622 CDF.Monads HDiv bind_aux def
+R2624:2624 CDF.Monads <> d:86 var
+R2626:2626 CDF.Monads <> s:87 var
+R2612:2612 CDF.Monads <> HDiv.BIND.R var
+R2672:2679 CDF.Monads HDiv bind_aux def
+R2672:2679 CDF.Monads HDiv bind_aux def
+R2711:2711 CDF.Monads <> HDiv.BIND.f var
+R2717:2728 CDF.Delay <> safe_inv_now thm
+R2730:2730 CDF.Monads <> HDiv.BIND.Q var
+R2711:2711 CDF.Monads <> HDiv.BIND.f var
+R2717:2728 CDF.Delay <> safe_inv_now thm
+R2730:2730 CDF.Monads <> HDiv.BIND.Q var
+def 2820:2823 HDiv bind
+R2827:2827 CDF.Monads HDiv M def
+R2829:2829 CDF.Monads <> HDiv.BIND.P var
+R2831:2831 CDF.Monads <> HDiv.BIND.B var
+R2833:2833 CDF.Monads <> HDiv.BIND.R var
+binder 2844:2844 <> p:88
+R2871:2871 CDF.Monads <> HDiv.BIND.a var
+R2873:2873 CDF.Monads <> p:88 var
+R2855:2859 Coq.Init.Specif <> exist constr
+R2878:2882 Coq.Init.Specif <> exist constr
+R2902:2914 CDF.Monads HDiv safe_bind_aux thm
+R2887:2894 CDF.Monads HDiv bind_aux def
+R2927:2930 CDF.Monads HDiv.BIND <> sec
+def 2945:2951 HDiv implies
+R2960:2962 CDF.Monads HDiv PRE def
+binder 2954:2954 <> P:89
+binder 2956:2957 <> P':90
+R2969:2972 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2968:2968 CDF.Monads <> P:89 var
+R2973:2974 CDF.Monads <> P':90 var
+def 2989:3003 HDiv consequence_pre
+binder 3011:3011 <> A:91
+R3027:3029 CDF.Monads HDiv PRE def
+binder 3021:3021 <> P:92
+binder 3023:3024 <> P':93
+R3036:3039 CDF.Monads HDiv POST def
+R3041:3041 CDF.Monads <> A:91 var
+binder 3033:3033 <> Q:94
+R3050:3056 CDF.Monads HDiv implies def
+R3058:3059 CDF.Monads <> P':93 var
+R3061:3061 CDF.Monads <> P:92 var
+binder 3045:3047 <> IMP:95
+R3068:3068 CDF.Monads HDiv M def
+R3070:3070 CDF.Monads <> P:92 var
+R3072:3072 CDF.Monads <> A:91 var
+R3074:3074 CDF.Monads <> Q:94 var
+binder 3065:3065 <> m:96
+R3079:3079 CDF.Monads HDiv M def
+R3081:3082 CDF.Monads <> P':93 var
+R3084:3084 CDF.Monads <> A:91 var
+R3086:3086 CDF.Monads <> Q:94 var
+binder 3097:3098 <> p':97
+R3103:3103 CDF.Monads <> m:96 var
+R3106:3108 CDF.Monads <> IMP:95 var
+R3110:3111 CDF.Monads <> p':97 var
+def 3135:3150 HDiv consequence_post
+binder 3158:3158 <> A:98
+R3171:3173 CDF.Monads HDiv PRE def
+binder 3168:3168 <> P:99
+R3183:3186 CDF.Monads HDiv POST def
+R3188:3188 CDF.Monads <> A:98 var
+binder 3177:3177 <> Q:100
+binder 3179:3180 <> Q':101
+binder 3204:3204 <> v:102
+R3207:3213 CDF.Monads HDiv implies def
+R3216:3216 CDF.Monads <> Q:100 var
+R3218:3218 CDF.Monads <> v:102 var
+R3222:3223 CDF.Monads <> Q':101 var
+R3225:3225 CDF.Monads <> v:102 var
+binder 3192:3194 <> IMP:103
+R3233:3233 CDF.Monads HDiv M def
+R3235:3235 CDF.Monads <> P:99 var
+R3237:3237 CDF.Monads <> A:98 var
+R3239:3239 CDF.Monads <> Q:100 var
+binder 3230:3230 <> m:104
+R3244:3244 CDF.Monads HDiv M def
+R3246:3246 CDF.Monads <> P:99 var
+R3248:3248 CDF.Monads <> A:98 var
+R3250:3251 CDF.Monads <> Q':101 var
+binder 3262:3262 <> p:105
+R3267:3267 CDF.Monads <> m:104 var
+R3269:3269 CDF.Monads <> p:105 var
+R3318:3333 CDF.Delay <> safe_consequence thm
+R3318:3333 CDF.Delay <> safe_consequence thm
+sec 3583:3586 HDiv ITER
+binder 3599:3599 <> A:106
+binder 3601:3601 <> B:107
+R3615:3618 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3614:3614 CDF.Monads <> A:106 var
+R3619:3621 CDF.Monads HDiv PRE def
+binder 3611:3611 <> P:108
+R3628:3631 CDF.Monads HDiv POST def
+R3633:3633 CDF.Monads <> B:107 var
+binder 3625:3625 <> Q:109
+var 3642:3642 HDiv.ITER R
+R3646:3649 CDF.Monads HDiv POST def
+R3653:3655 Coq.Init.Datatypes <> ::type_scope:x_'+'_x not
+R3652:3652 CDF.Monads <> HDiv.ITER.A var
+R3656:3656 CDF.Monads <> HDiv.ITER.B var
+binder 3666:3667 <> ab:110
+R3678:3679 CDF.Monads <> ab:110 var
+R3686:3688 Coq.Init.Datatypes <> inl constr
+R3695:3695 CDF.Monads <> HDiv.ITER.P var
+R3701:3703 Coq.Init.Datatypes <> inr constr
+R3710:3710 CDF.Monads <> HDiv.ITER.Q var
+R3743:3743 CDF.Monads <> HDiv.ITER.A var
+binder 3740:3740 <> a:112
+R3747:3747 CDF.Monads HDiv M def
+R3750:3750 CDF.Monads <> HDiv.ITER.P var
+R3752:3752 CDF.Monads <> a:112 var
+R3757:3759 Coq.Init.Datatypes <> ::type_scope:x_'+'_x not
+R3756:3756 CDF.Monads <> HDiv.ITER.A var
+R3760:3760 CDF.Monads <> HDiv.ITER.B var
+R3763:3763 CDF.Monads <> HDiv.ITER.R var
+binder 3729:3729 <> f:113
+def 3779:3786 HDiv iter_aux
+R3792:3796 CDF.Delay <> delay coind
+R3800:3802 Coq.Init.Datatypes <> ::type_scope:x_'+'_x not
+R3799:3799 CDF.Monads <> HDiv.ITER.A var
+R3803:3803 CDF.Monads <> HDiv.ITER.B var
+binder 3789:3789 <> d:114
+R3817:3820 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3809:3812 CDF.Delay <> safe coind
+R3816:3816 CDF.Monads <> d:114 var
+R3814:3814 CDF.Monads <> HDiv.ITER.R var
+R3821:3825 CDF.Delay <> delay coind
+R3827:3827 CDF.Monads <> HDiv.ITER.B var
+R3840:3840 CDF.Monads <> d:114 var
+R3851:3853 CDF.Delay <> now constr
+R3856:3858 Coq.Init.Datatypes <> inl constr
+binder 3870:3873 <> SAFE:117
+R3902:3902 CDF.Monads <> HDiv.ITER.f var
+R3907:3918 CDF.Delay <> safe_inv_now thm
+R3924:3927 CDF.Monads <> SAFE:117 var
+R3884:3888 Coq.Init.Specif <> exist constr
+R3933:3937 CDF.Delay <> later constr
+R3940:3947 CDF.Monads <> iter_aux:115 def
+R3960:3962 CDF.Delay <> now constr
+R3965:3967 Coq.Init.Datatypes <> inr constr
+binder 3979:3982 <> SAFE:118
+R3987:3989 CDF.Delay <> now constr
+R3997:4001 CDF.Delay <> later constr
+binder 4012:4015 <> SAFE:119
+R4020:4024 CDF.Delay <> later constr
+R4027:4034 CDF.Monads <> iter_aux:115 def
+R4039:4052 CDF.Delay <> safe_inv_later thm
+R4058:4061 CDF.Monads <> SAFE:119 var
+R4036:4036 CDF.Monads <> d:114 var
+prf 4079:4091 HDiv safe_iter_aux
+R4107:4111 CDF.Delay <> delay coind
+R4115:4117 Coq.Init.Datatypes <> ::type_scope:x_'+'_x not
+R4114:4114 CDF.Monads <> HDiv.ITER.A var
+R4118:4118 CDF.Monads <> HDiv.ITER.B var
+binder 4104:4104 <> d:120
+R4126:4129 CDF.Delay <> safe coind
+R4133:4133 CDF.Monads <> d:120 var
+R4131:4131 CDF.Monads <> HDiv.ITER.R var
+binder 4123:4123 <> s:121
+R4137:4140 CDF.Delay <> safe coind
+R4145:4152 CDF.Monads HDiv iter_aux def
+R4154:4154 CDF.Monads <> d:120 var
+R4156:4156 CDF.Monads <> s:121 var
+R4142:4142 CDF.Monads <> HDiv.ITER.Q var
+R4207:4214 CDF.Monads HDiv iter_aux def
+R4207:4214 CDF.Monads HDiv iter_aux def
+R4262:4262 CDF.Monads <> HDiv.ITER.f var
+R4314:4325 CDF.Delay <> safe_inv_now thm
+R4314:4325 CDF.Delay <> safe_inv_now thm
+def 4408:4411 HDiv iter
+R4417:4417 CDF.Monads <> HDiv.ITER.A var
+binder 4414:4414 <> x:122
+R4422:4422 CDF.Monads HDiv M def
+R4425:4425 CDF.Monads <> HDiv.ITER.P var
+R4427:4427 CDF.Monads <> x:122 var
+R4430:4430 CDF.Monads <> HDiv.ITER.B var
+R4432:4432 CDF.Monads <> HDiv.ITER.Q var
+binder 4443:4443 <> p:123
+R4448:4455 CDF.Monads HDiv iter_aux def
+R4458:4460 CDF.Delay <> now constr
+R4463:4465 Coq.Init.Datatypes <> inl constr
+R4467:4467 CDF.Monads <> x:122 var
+R4542:4554 CDF.Monads HDiv safe_iter_aux thm
+R4542:4554 CDF.Monads HDiv safe_iter_aux thm
+R4567:4570 CDF.Monads HDiv.ITER <> sec
+R4578:4581 CDF.Monads HDiv <> mod
+R4644:4653 CDF.Monads HOAREMONAD <> mod
+mod 4637:4639 <> HST
+R4664:4673 CDF.Separation <> <> mod
+def 4688:4690 HST PRE
+R4699:4702 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4695:4698 CDF.Separation <> heap rec
+def 4720:4723 HST POST
+binder 4726:4726 <> A:124
+R4739:4742 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4738:4738 CDF.Monads <> A:124 var
+R4743:4745 CDF.Monads HST PRE def
+def 4760:4760 HST M
+R4766:4768 CDF.Monads HST PRE def
+binder 4763:4763 <> P:125
+binder 4772:4772 <> A:126
+R4785:4788 CDF.Monads HST POST def
+R4790:4790 CDF.Monads <> A:126 var
+binder 4782:4782 <> Q:127
+binder 4812:4812 <> h:128
+R4818:4821 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4815:4815 CDF.Monads <> P:125 var
+R4817:4817 CDF.Monads <> h:128 var
+R4822:4823 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R4827:4829 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R4838:4840 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R4862:4863 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R4831:4833 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R4830:4830 CDF.Monads <> A:126 var
+R4834:4837 CDF.Separation <> heap rec
+binder 4824:4826 <> a_h:129
+R4841:4841 CDF.Monads <> Q:127 var
+R4844:4846 Coq.Init.Datatypes <> fst def
+R4848:4850 CDF.Monads <> a_h:129 var
+R4854:4856 Coq.Init.Datatypes <> snd def
+R4858:4860 CDF.Monads <> a_h:129 var
+def 4886:4888 HST ret
+binder 4891:4891 <> A:130
+R4904:4907 CDF.Monads HST POST def
+R4909:4909 CDF.Monads <> A:130 var
+binder 4901:4901 <> Q:131
+R4916:4916 CDF.Monads <> A:130 var
+binder 4913:4913 <> v:132
+R4921:4921 CDF.Monads HST M def
+R4924:4924 CDF.Monads <> Q:131 var
+R4926:4926 CDF.Monads <> v:132 var
+R4929:4929 CDF.Monads <> A:130 var
+R4931:4931 CDF.Monads <> Q:131 var
+binder 4942:4942 <> h:133
+R4949:4949 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4951:4952 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4954:4954 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4950:4950 CDF.Monads <> v:132 var
+R4953:4953 CDF.Monads <> h:133 var
+def 4977:4980 HST bind
+binder 4983:4983 <> A:134
+binder 4985:4985 <> B:135
+R5000:5002 CDF.Monads HST PRE def
+binder 4997:4997 <> P:136
+R5009:5012 CDF.Monads HST POST def
+R5014:5014 CDF.Monads <> A:134 var
+binder 5006:5006 <> Q:137
+R5021:5024 CDF.Monads HST POST def
+R5026:5026 CDF.Monads <> B:135 var
+binder 5018:5018 <> R:138
+R5035:5035 CDF.Monads HST M def
+R5037:5037 CDF.Monads <> P:136 var
+R5039:5039 CDF.Monads <> A:134 var
+R5041:5041 CDF.Monads <> Q:137 var
+binder 5032:5032 <> a:139
+R5059:5059 CDF.Monads <> A:134 var
+binder 5056:5056 <> v:140
+R5063:5063 CDF.Monads HST M def
+R5066:5066 CDF.Monads <> Q:137 var
+R5068:5068 CDF.Monads <> v:140 var
+R5071:5071 CDF.Monads <> B:135 var
+R5073:5073 CDF.Monads <> R:138 var
+binder 5045:5045 <> f:141
+R5078:5078 CDF.Monads HST M def
+R5080:5080 CDF.Monads <> P:136 var
+R5082:5082 CDF.Monads <> B:135 var
+R5084:5084 CDF.Monads <> R:138 var
+binder 5095:5095 <> h:142
+binder 5097:5097 <> p:143
+R5118:5118 CDF.Monads <> a:139 var
+R5120:5120 CDF.Monads <> h:142 var
+R5122:5122 CDF.Monads <> p:143 var
+R5107:5107 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5109:5110 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5113:5113 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5127:5127 CDF.Monads <> f:141 var
+def 5244:5250 HST implies
+R5259:5261 CDF.Monads HST PRE def
+binder 5253:5253 <> P:144
+binder 5255:5256 <> P':145
+R5268:5273 CDF.Separation <> :::x_'-->>'_x not
+R5267:5267 CDF.Monads <> P:144 var
+R5274:5275 CDF.Monads <> P':145 var
+def 5290:5304 HST consequence_pre
+binder 5312:5312 <> A:146
+R5328:5330 CDF.Monads HST PRE def
+binder 5322:5322 <> P:147
+binder 5324:5325 <> P':148
+R5337:5340 CDF.Monads HST POST def
+R5342:5342 CDF.Monads <> A:146 var
+binder 5334:5334 <> Q:149
+R5351:5357 CDF.Monads HST implies def
+R5359:5360 CDF.Monads <> P':148 var
+R5362:5362 CDF.Monads <> P:147 var
+binder 5346:5348 <> IMP:150
+R5369:5369 CDF.Monads HST M def
+R5371:5371 CDF.Monads <> P:147 var
+R5373:5373 CDF.Monads <> A:146 var
+R5375:5375 CDF.Monads <> Q:149 var
+binder 5366:5366 <> m:151
+R5380:5380 CDF.Monads HST M def
+R5382:5383 CDF.Monads <> P':148 var
+R5385:5385 CDF.Monads <> A:146 var
+R5387:5387 CDF.Monads <> Q:149 var
+binder 5398:5398 <> h:152
+binder 5400:5401 <> p':153
+R5406:5406 CDF.Monads <> m:151 var
+R5408:5408 CDF.Monads <> h:152 var
+R5411:5413 CDF.Monads <> IMP:150 var
+R5415:5415 CDF.Monads <> h:152 var
+R5417:5418 CDF.Monads <> p':153 var
+def 5442:5457 HST consequence_post
+binder 5465:5465 <> A:154
+R5478:5480 CDF.Monads HST PRE def
+binder 5475:5475 <> P:155
+R5490:5493 CDF.Monads HST POST def
+R5495:5495 CDF.Monads <> A:154 var
+binder 5484:5484 <> Q:156
+binder 5486:5487 <> Q':157
+binder 5511:5511 <> v:158
+R5514:5520 CDF.Monads HST implies def
+R5523:5523 CDF.Monads <> Q:156 var
+R5525:5525 CDF.Monads <> v:158 var
+R5529:5530 CDF.Monads <> Q':157 var
+R5532:5532 CDF.Monads <> v:158 var
+binder 5499:5501 <> IMP:159
+R5540:5540 CDF.Monads HST M def
+R5542:5542 CDF.Monads <> P:155 var
+R5544:5544 CDF.Monads <> A:154 var
+R5546:5546 CDF.Monads <> Q:156 var
+binder 5537:5537 <> m:160
+R5551:5551 CDF.Monads HST M def
+R5553:5553 CDF.Monads <> P:155 var
+R5555:5555 CDF.Monads <> A:154 var
+R5557:5558 CDF.Monads <> Q':157 var
+binder 5569:5569 <> h:161
+binder 5571:5571 <> p:162
+R5576:5576 CDF.Monads <> m:160 var
+R5578:5578 CDF.Monads <> h:161 var
+R5580:5580 CDF.Monads <> p:162 var
+def 5673:5683 HST consequence
+binder 5691:5691 <> A:163
+R5707:5709 CDF.Monads HST PRE def
+binder 5701:5701 <> P:164
+binder 5703:5704 <> P':165
+R5719:5722 CDF.Monads HST POST def
+R5724:5724 CDF.Monads <> A:163 var
+binder 5713:5713 <> Q:166
+binder 5715:5716 <> Q':167
+R5749:5755 CDF.Monads HST implies def
+R5757:5758 CDF.Monads <> P':165 var
+R5760:5760 CDF.Monads <> P:164 var
+binder 5743:5746 <> IMP1:168
+binder 5777:5777 <> v:169
+R5780:5786 CDF.Monads HST implies def
+R5789:5789 CDF.Monads <> Q:166 var
+R5791:5791 CDF.Monads <> v:169 var
+R5795:5796 CDF.Monads <> Q':167 var
+R5798:5798 CDF.Monads <> v:169 var
+binder 5764:5767 <> IMP2:170
+R5806:5806 CDF.Monads HST M def
+R5808:5808 CDF.Monads <> P:164 var
+R5810:5810 CDF.Monads <> A:163 var
+R5812:5812 CDF.Monads <> Q:166 var
+binder 5803:5803 <> m:171
+R5817:5817 CDF.Monads HST M def
+R5819:5820 CDF.Monads <> P':165 var
+R5822:5822 CDF.Monads <> A:163 var
+R5824:5825 CDF.Monads <> Q':167 var
+R5832:5846 CDF.Monads HST consequence_pre def
+R5860:5875 CDF.Monads HST consequence_post def
+R5888:5888 CDF.Monads <> m:171 var
+R5883:5886 CDF.Monads <> IMP2:170 var
+R5854:5857 CDF.Monads <> IMP1:168 var
+def 5912:5914 HST get
+R5920:5923 CDF.Separation <> addr def
+binder 5917:5917 <> l:172
+binder 5937:5937 <> v:173
+binder 5939:5939 <> R:174
+R5942:5942 CDF.Monads HST M def
+R5957:5960 CDF.Separation <> :::x_'**'_x not
+R5945:5952 CDF.Separation <> contains def
+R5954:5954 CDF.Monads <> l:172 var
+R5956:5956 CDF.Monads <> v:173 var
+R5961:5961 CDF.Monads <> R:174 var
+R5964:5964 Coq.Numbers.BinNums <> Z ind
+binder 5971:5972 <> v':175
+R5977:5977 CDF.Separation <> :::x_'//\\'_x not
+R5984:5990 CDF.Separation <> :::x_'//\\'_x not
+R5980:5982 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5978:5979 CDF.Monads <> v':175 var
+R5983:5983 CDF.Monads <> v:173 var
+R6003:6006 CDF.Separation <> :::x_'**'_x not
+R5991:5998 CDF.Separation <> contains def
+R6000:6000 CDF.Monads <> l:172 var
+R6002:6002 CDF.Monads <> v:173 var
+R6007:6007 CDF.Monads <> R:174 var
+binder 6019:6019 <> v:176
+binder 6021:6021 <> R:177
+binder 6023:6023 <> h:178
+binder 6025:6025 <> p:179
+R6036:6036 CDF.Monads <> h:178 var
+R6038:6038 CDF.Monads <> l:172 var
+R6045:6048 Coq.Init.Datatypes <> Some constr
+R6056:6056 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6059:6060 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6062:6062 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6061:6061 CDF.Monads <> h:178 var
+R6066:6069 Coq.Init.Datatypes <> None constr
+R6226:6237 CDF.Separation <> hupdate_same thm
+R6226:6237 CDF.Separation <> hupdate_same thm
+R6226:6237 CDF.Separation <> hupdate_same thm
+R6417:6428 CDF.Separation <> hupdate_same thm
+R6417:6428 CDF.Separation <> hupdate_same thm
+R6417:6428 CDF.Separation <> hupdate_same thm
+def 6487:6489 HST set
+R6495:6498 CDF.Separation <> addr def
+binder 6492:6492 <> l:180
+R6505:6505 Coq.Numbers.BinNums <> Z ind
+binder 6502:6502 <> v:181
+binder 6519:6519 <> R:182
+R6522:6522 CDF.Monads HST M def
+R6532:6535 CDF.Separation <> :::x_'**'_x not
+R6525:6529 CDF.Separation <> valid def
+R6531:6531 CDF.Monads <> l:180 var
+R6536:6536 CDF.Monads <> R:182 var
+R6539:6542 Coq.Init.Datatypes <> unit ind
+R6566:6569 CDF.Separation <> :::x_'**'_x not
+R6554:6561 CDF.Separation <> contains def
+R6563:6563 CDF.Monads <> l:180 var
+R6565:6565 CDF.Monads <> v:181 var
+R6570:6570 CDF.Monads <> R:182 var
+binder 6582:6582 <> R:183
+binder 6584:6584 <> h:184
+binder 6586:6586 <> p:185
+R6591:6591 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6594:6595 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6609:6609 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6592:6593 Coq.Init.Datatypes <> tt constr
+R6596:6602 CDF.Separation <> hupdate def
+R6604:6604 CDF.Monads <> l:180 var
+R6606:6606 CDF.Monads <> v:181 var
+R6608:6608 CDF.Monads <> h:184 var
+R6727:6733 CDF.Separation <> hupdate def
+R6739:6744 CDF.Separation <> hempty def
+R6727:6733 CDF.Separation <> hupdate def
+R6739:6744 CDF.Separation <> hempty def
+R6858:6865 Coq.ZArith.BinInt Z eq_dec def
+R6858:6865 Coq.ZArith.BinInt Z eq_dec def
+R6914:6932 CDF.Separation <> heap_extensionality thm
+R6914:6932 CDF.Separation <> heap_extensionality thm
+R6960:6967 Coq.ZArith.BinInt Z eq_dec def
+R6960:6967 Coq.ZArith.BinInt Z eq_dec def
+R6991:6993 CDF.Monads HST <> mod
+mod 7075:7078 <> HSep
+R7089:7098 CDF.Separation <> <> mod
+def 7113:7115 HSep PRE
+R7124:7127 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7120:7123 CDF.Separation <> heap rec
+def 7145:7148 HSep POST
+binder 7151:7151 <> A:186
+R7164:7167 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7163:7163 CDF.Monads <> A:186 var
+R7168:7170 CDF.Monads HSep PRE def
+def 7185:7185 HSep M
+R7191:7193 CDF.Monads HSep PRE def
+binder 7188:7188 <> P:187
+binder 7197:7197 <> A:188
+R7210:7213 CDF.Monads HSep POST def
+R7215:7215 CDF.Monads <> A:188 var
+binder 7207:7207 <> Q:189
+R7241:7249 CDF.Separation <> assertion def
+binder 7238:7238 <> R:190
+R7253:7257 CDF.Monads HST M def
+R7261:7264 CDF.Separation <> :::x_'**'_x not
+R7260:7260 CDF.Monads <> P:187 var
+R7265:7265 CDF.Monads <> R:190 var
+R7268:7268 CDF.Monads <> A:188 var
+binder 7275:7275 <> v:191
+R7283:7286 CDF.Separation <> :::x_'**'_x not
+R7280:7280 CDF.Monads <> Q:189 var
+R7282:7282 CDF.Monads <> v:191 var
+R7287:7287 CDF.Monads <> R:190 var
+def 7303:7305 HSep ret
+binder 7308:7308 <> A:192
+R7321:7324 CDF.Monads HSep POST def
+R7326:7326 CDF.Monads <> A:192 var
+binder 7318:7318 <> Q:193
+R7333:7333 CDF.Monads <> A:192 var
+binder 7330:7330 <> v:194
+R7338:7338 CDF.Monads HSep M def
+R7341:7341 CDF.Monads <> Q:193 var
+R7343:7343 CDF.Monads <> v:194 var
+R7346:7346 CDF.Monads <> A:192 var
+R7348:7348 CDF.Monads <> Q:193 var
+binder 7359:7359 <> R:195
+R7364:7370 CDF.Monads HST ret def
+R7392:7392 CDF.Monads <> v:194 var
+binder 7377:7377 <> v:196
+R7385:7388 CDF.Separation <> :::x_'**'_x not
+R7382:7382 CDF.Monads <> Q:193 var
+R7384:7384 CDF.Monads <> v:196 var
+R7389:7389 CDF.Monads <> R:195 var
+def 7407:7410 HSep bind
+binder 7413:7413 <> A:197
+binder 7415:7415 <> B:198
+R7430:7438 CDF.Separation <> assertion def
+binder 7427:7427 <> P:199
+R7446:7449 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7445:7445 CDF.Monads <> A:197 var
+R7450:7458 CDF.Separation <> assertion def
+binder 7442:7442 <> Q:200
+R7466:7469 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7465:7465 CDF.Monads <> B:198 var
+R7470:7478 CDF.Separation <> assertion def
+binder 7462:7462 <> R:201
+R7487:7487 CDF.Monads HSep M def
+R7489:7489 CDF.Monads <> P:199 var
+R7491:7491 CDF.Monads <> A:197 var
+R7493:7493 CDF.Monads <> Q:200 var
+binder 7484:7484 <> a:202
+R7511:7511 CDF.Monads <> A:197 var
+binder 7508:7508 <> v:203
+R7515:7515 CDF.Monads HSep M def
+R7518:7518 CDF.Monads <> Q:200 var
+R7520:7520 CDF.Monads <> v:203 var
+R7523:7523 CDF.Monads <> B:198 var
+R7525:7525 CDF.Monads <> R:201 var
+binder 7497:7497 <> f:204
+R7530:7530 CDF.Monads HSep M def
+R7532:7532 CDF.Monads <> P:199 var
+R7534:7534 CDF.Monads <> B:198 var
+R7536:7536 CDF.Monads <> R:201 var
+binder 7547:7547 <> F:205
+R7552:7559 CDF.Monads HST bind def
+binder 7645:7645 <> v:206
+R7650:7650 CDF.Monads <> f:204 var
+R7654:7654 CDF.Monads <> F:205 var
+R7652:7652 CDF.Monads <> v:206 var
+R7635:7635 CDF.Monads <> a:202 var
+R7637:7637 CDF.Monads <> F:205 var
+binder 7595:7595 <> v:207
+R7603:7606 CDF.Separation <> :::x_'**'_x not
+R7600:7600 CDF.Monads <> R:201 var
+R7602:7602 CDF.Monads <> v:207 var
+R7607:7607 CDF.Monads <> F:205 var
+binder 7575:7575 <> v:208
+R7583:7586 CDF.Separation <> :::x_'**'_x not
+R7580:7580 CDF.Monads <> Q:200 var
+R7582:7582 CDF.Monads <> v:208 var
+R7587:7587 CDF.Monads <> F:205 var
+R7563:7566 CDF.Separation <> :::x_'**'_x not
+R7562:7562 CDF.Monads <> P:199 var
+R7567:7567 CDF.Monads <> F:205 var
+def 7670:7676 HSep implies
+R7685:7687 CDF.Monads HSep PRE def
+binder 7679:7679 <> P:209
+binder 7681:7682 <> P':210
+R7694:7699 CDF.Separation <> :::x_'-->>'_x not
+R7693:7693 CDF.Monads <> P:209 var
+R7700:7701 CDF.Monads <> P':210 var
+def 7724:7738 HSep consequence_pre
+binder 7746:7746 <> A:211
+R7762:7764 CDF.Monads HSep PRE def
+binder 7756:7756 <> P:212
+binder 7758:7759 <> P':213
+R7771:7774 CDF.Monads HSep POST def
+R7776:7776 CDF.Monads <> A:211 var
+binder 7768:7768 <> Q:214
+R7785:7791 CDF.Monads HSep implies def
+R7793:7794 CDF.Monads <> P':213 var
+R7796:7796 CDF.Monads <> P:212 var
+binder 7780:7782 <> IMP:215
+R7803:7803 CDF.Monads HSep M def
+R7805:7805 CDF.Monads <> P:212 var
+R7807:7807 CDF.Monads <> A:211 var
+R7809:7809 CDF.Monads <> Q:214 var
+binder 7800:7800 <> m:216
+R7814:7814 CDF.Monads HSep M def
+R7816:7817 CDF.Monads <> P':213 var
+R7819:7819 CDF.Monads <> A:211 var
+R7821:7821 CDF.Monads <> Q:214 var
+binder 7832:7832 <> R:217
+R7837:7855 CDF.Monads HST consequence_pre def
+R7899:7899 CDF.Monads <> m:216 var
+R7901:7901 CDF.Monads <> R:217 var
+binder 7881:7881 <> v:218
+R7889:7892 CDF.Separation <> :::x_'**'_x not
+R7886:7886 CDF.Monads <> Q:214 var
+R7888:7888 CDF.Monads <> v:218 var
+R7893:7893 CDF.Monads <> R:217 var
+R7869:7872 CDF.Separation <> :::x_'**'_x not
+R7867:7868 CDF.Monads <> P':213 var
+R7873:7873 CDF.Monads <> R:217 var
+R7859:7862 CDF.Separation <> :::x_'**'_x not
+R7858:7858 CDF.Monads <> P:212 var
+R7863:7863 CDF.Monads <> R:217 var
+R7930:7942 CDF.Separation <> sepconj_imp_l thm
+R7930:7942 CDF.Separation <> sepconj_imp_l thm
+def 7976:7991 HSep consequence_post
+binder 7999:7999 <> A:219
+R8012:8014 CDF.Monads HSep PRE def
+binder 8009:8009 <> P:220
+R8024:8027 CDF.Monads HSep POST def
+R8029:8029 CDF.Monads <> A:219 var
+binder 8018:8018 <> Q:221
+binder 8020:8021 <> Q':222
+binder 8045:8045 <> v:223
+R8048:8054 CDF.Monads HSep implies def
+R8057:8057 CDF.Monads <> Q:221 var
+R8059:8059 CDF.Monads <> v:223 var
+R8063:8064 CDF.Monads <> Q':222 var
+R8066:8066 CDF.Monads <> v:223 var
+binder 8033:8035 <> IMP:224
+R8074:8074 CDF.Monads HSep M def
+R8076:8076 CDF.Monads <> P:220 var
+R8078:8078 CDF.Monads <> A:219 var
+R8080:8080 CDF.Monads <> Q:221 var
+binder 8071:8071 <> m:225
+R8085:8085 CDF.Monads HSep M def
+R8087:8087 CDF.Monads <> P:220 var
+R8089:8089 CDF.Monads <> A:219 var
+R8091:8092 CDF.Monads <> Q':222 var
+binder 8103:8103 <> R:226
+R8108:8127 CDF.Monads HST consequence_post def
+R8182:8182 CDF.Monads <> m:225 var
+R8184:8184 CDF.Monads <> R:226 var
+binder 8163:8163 <> v:227
+R8172:8175 CDF.Separation <> :::x_'**'_x not
+R8168:8169 CDF.Monads <> Q':222 var
+R8171:8171 CDF.Monads <> v:227 var
+R8176:8176 CDF.Monads <> R:226 var
+binder 8143:8143 <> v:228
+R8151:8154 CDF.Separation <> :::x_'**'_x not
+R8148:8148 CDF.Monads <> Q:221 var
+R8150:8150 CDF.Monads <> v:228 var
+R8155:8155 CDF.Monads <> R:226 var
+R8131:8134 CDF.Separation <> :::x_'**'_x not
+R8130:8130 CDF.Monads <> P:220 var
+R8135:8135 CDF.Monads <> R:226 var
+R8213:8225 CDF.Separation <> sepconj_imp_l thm
+R8213:8225 CDF.Separation <> sepconj_imp_l thm
+def 8256:8266 HSep consequence
+binder 8274:8274 <> A:229
+R8290:8292 CDF.Monads HSep PRE def
+binder 8284:8284 <> P:230
+binder 8286:8287 <> P':231
+R8302:8305 CDF.Monads HSep POST def
+R8307:8307 CDF.Monads <> A:229 var
+binder 8296:8296 <> Q:232
+binder 8298:8299 <> Q':233
+R8332:8338 CDF.Monads HSep implies def
+R8340:8341 CDF.Monads <> P':231 var
+R8343:8343 CDF.Monads <> P:230 var
+binder 8326:8329 <> IMP1:234
+binder 8360:8360 <> v:235
+R8363:8369 CDF.Monads HSep implies def
+R8372:8372 CDF.Monads <> Q:232 var
+R8374:8374 CDF.Monads <> v:235 var
+R8378:8379 CDF.Monads <> Q':233 var
+R8381:8381 CDF.Monads <> v:235 var
+binder 8347:8350 <> IMP2:236
+R8389:8389 CDF.Monads HSep M def
+R8391:8391 CDF.Monads <> P:230 var
+R8393:8393 CDF.Monads <> A:229 var
+R8395:8395 CDF.Monads <> Q:232 var
+binder 8386:8386 <> m:237
+R8400:8400 CDF.Monads HSep M def
+R8402:8403 CDF.Monads <> P':231 var
+R8405:8405 CDF.Monads <> A:229 var
+R8407:8408 CDF.Monads <> Q':233 var
+R8415:8429 CDF.Monads HSep consequence_pre def
+R8443:8458 CDF.Monads HSep consequence_post def
+R8471:8471 CDF.Monads <> m:237 var
+R8466:8469 CDF.Monads <> IMP2:236 var
+R8437:8440 CDF.Monads <> IMP1:234 var
+def 8495:8499 HSep frame
+binder 8507:8507 <> A:238
+R8520:8522 CDF.Monads HSep PRE def
+binder 8517:8517 <> R:239
+R8529:8531 CDF.Monads HSep PRE def
+binder 8526:8526 <> P:240
+R8538:8541 CDF.Monads HSep POST def
+R8543:8543 CDF.Monads <> A:238 var
+binder 8535:8535 <> Q:241
+R8550:8550 CDF.Monads HSep M def
+R8552:8552 CDF.Monads <> P:240 var
+R8554:8554 CDF.Monads <> A:238 var
+R8556:8556 CDF.Monads <> Q:241 var
+binder 8547:8547 <> m:242
+R8561:8561 CDF.Monads HSep M def
+R8565:8568 CDF.Separation <> :::x_'**'_x not
+R8564:8564 CDF.Monads <> P:240 var
+R8569:8569 CDF.Monads <> R:239 var
+R8572:8572 CDF.Monads <> A:238 var
+binder 8579:8579 <> v:243
+R8587:8590 CDF.Separation <> :::x_'**'_x not
+R8584:8584 CDF.Monads <> Q:241 var
+R8586:8586 CDF.Monads <> v:243 var
+R8591:8591 CDF.Monads <> R:239 var
+binder 8603:8604 <> R':244
+R8609:8623 CDF.Monads HST consequence def
+R8638:8638 CDF.Monads <> m:242 var
+R8642:8645 CDF.Separation <> :::x_'**'_x not
+R8641:8641 CDF.Monads <> R:239 var
+R8646:8647 CDF.Monads <> R':244 var
+R8679:8691 CDF.Separation <> sepconj_assoc thm
+R8679:8691 CDF.Separation <> sepconj_assoc thm
+R8679:8691 CDF.Separation <> sepconj_assoc thm
+R8737:8749 CDF.Separation <> sepconj_assoc thm
+R8737:8749 CDF.Separation <> sepconj_assoc thm
+R8737:8749 CDF.Separation <> sepconj_assoc thm
+def 8788:8790 HSep get
+R8796:8799 CDF.Separation <> addr def
+binder 8793:8793 <> l:245
+binder 8813:8813 <> v:246
+R8816:8816 CDF.Monads HSep M def
+R8819:8826 CDF.Separation <> contains def
+R8828:8828 CDF.Monads <> l:245 var
+R8830:8830 CDF.Monads <> v:246 var
+R8833:8833 Coq.Numbers.BinNums <> Z ind
+binder 8840:8841 <> v':247
+R8846:8846 CDF.Separation <> :::x_'//\\'_x not
+R8853:8859 CDF.Separation <> :::x_'//\\'_x not
+R8849:8851 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8847:8848 CDF.Monads <> v':247 var
+R8852:8852 CDF.Monads <> v:246 var
+R8860:8867 CDF.Separation <> contains def
+R8869:8869 CDF.Monads <> l:245 var
+R8871:8871 CDF.Monads <> v:246 var
+binder 8883:8883 <> v:248
+binder 8885:8885 <> R:249
+R8890:8909 CDF.Monads HST consequence_post def
+R8920:8926 CDF.Monads HST get def
+R8928:8928 CDF.Monads <> l:245 var
+R8930:8930 CDF.Monads <> v:248 var
+R8932:8932 CDF.Monads <> R:249 var
+R8963:8975 CDF.Separation <> lift_pureconj thm
+R8963:8975 CDF.Separation <> lift_pureconj thm
+R8963:8975 CDF.Separation <> lift_pureconj thm
+def 9014:9016 HSep set
+R9022:9025 CDF.Separation <> addr def
+binder 9019:9019 <> l:250
+R9032:9032 Coq.Numbers.BinNums <> Z ind
+binder 9029:9029 <> v:251
+R9039:9039 CDF.Monads HSep M def
+R9042:9046 CDF.Separation <> valid def
+R9048:9048 CDF.Monads <> l:250 var
+R9051:9054 Coq.Init.Datatypes <> unit ind
+R9066:9073 CDF.Separation <> contains def
+R9075:9075 CDF.Monads <> l:250 var
+R9077:9077 CDF.Monads <> v:251 var
+binder 9089:9089 <> R:252
+R9094:9100 CDF.Monads HST set def
+R9102:9102 CDF.Monads <> l:250 var
+R9104:9104 CDF.Monads <> v:251 var
+R9106:9106 CDF.Monads <> R:252 var
+R9114:9117 CDF.Monads HSep <> mod
+modtype 9192:9204 <> DIJKSTRAMONAD
+ax 9219:9221 DIJKSTRAMONAD PRE
+ax 9242:9245 DIJKSTRAMONAD POST
+binder 9256:9256 <> A:254
+def 9285:9290 DIJKSTRAMONAD TRANSF
+binder 9293:9293 <> A:256
+R9311:9314 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9305:9308 CDF.Monads DIJKSTRAMONAD POST defax
+R9310:9310 CDF.Monads <> A:256 var
+R9315:9317 CDF.Monads DIJKSTRAMONAD PRE defax
+ax 9332:9332 DIJKSTRAMONAD M
+binder 9343:9343 <> A:257
+R9356:9361 CDF.Monads DIJKSTRAMONAD TRANSF def
+R9363:9363 CDF.Monads <> A:257 var
+binder 9353:9353 <> W:258
+ax 9385:9387 DIJKSTRAMONAD RET
+binder 9398:9398 <> A:260
+R9411:9411 CDF.Monads <> A:260 var
+binder 9408:9408 <> v:261
+R9415:9420 CDF.Monads DIJKSTRAMONAD TRANSF def
+R9422:9422 CDF.Monads <> A:260 var
+ax 9437:9439 DIJKSTRAMONAD ret
+binder 9450:9450 <> A:263
+R9463:9463 CDF.Monads <> A:263 var
+binder 9460:9460 <> v:264
+R9467:9467 CDF.Monads DIJKSTRAMONAD M defax
+R9469:9469 CDF.Monads <> A:263 var
+R9472:9474 CDF.Monads DIJKSTRAMONAD RET defax
+R9476:9476 CDF.Monads <> v:264 var
+ax 9492:9495 DIJKSTRAMONAD BIND
+binder 9510:9510 <> A:266
+binder 9512:9512 <> B:267
+R9526:9531 CDF.Monads DIJKSTRAMONAD TRANSF def
+R9533:9533 CDF.Monads <> A:266 var
+binder 9522:9523 <> W1:268
+R9542:9545 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9541:9541 CDF.Monads <> A:266 var
+R9546:9551 CDF.Monads DIJKSTRAMONAD TRANSF def
+R9553:9553 CDF.Monads <> B:267 var
+binder 9537:9538 <> W2:269
+R9557:9562 CDF.Monads DIJKSTRAMONAD TRANSF def
+R9564:9564 CDF.Monads <> B:267 var
+ax 9579:9582 DIJKSTRAMONAD bind
+binder 9597:9597 <> A:271
+binder 9599:9599 <> B:272
+R9613:9618 CDF.Monads DIJKSTRAMONAD TRANSF def
+R9620:9620 CDF.Monads <> A:271 var
+binder 9609:9610 <> W1:273
+R9629:9632 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9628:9628 CDF.Monads <> A:271 var
+R9633:9638 CDF.Monads DIJKSTRAMONAD TRANSF def
+R9640:9640 CDF.Monads <> B:272 var
+binder 9624:9625 <> W2:274
+R9654:9657 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9648:9648 CDF.Monads DIJKSTRAMONAD M defax
+R9650:9650 CDF.Monads <> A:271 var
+R9652:9653 CDF.Monads <> W1:273 var
+R9658:9658 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9684:9688 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9670:9670 CDF.Monads <> A:271 var
+binder 9667:9667 <> v:275
+R9674:9674 CDF.Monads DIJKSTRAMONAD M defax
+R9676:9676 CDF.Monads <> B:272 var
+R9679:9680 CDF.Monads <> W2:274 var
+R9682:9682 CDF.Monads <> v:275 var
+R9689:9689 CDF.Monads DIJKSTRAMONAD M defax
+R9691:9691 CDF.Monads <> B:272 var
+R9694:9697 CDF.Monads DIJKSTRAMONAD BIND defax
+R9702:9703 CDF.Monads <> W2:274 var
+R9699:9700 CDF.Monads <> W1:273 var
+R9711:9723 CDF.Monads DIJKSTRAMONAD <> modtype
+R9794:9806 CDF.Monads DIJKSTRAMONAD <> mod
+mod 9785:9789 <> DPure
+def 9821:9823 DPure PRE
+def 9845:9848 DPure POST
+binder 9851:9851 <> A:277
+R9864:9867 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9863:9863 CDF.Monads <> A:277 var
+R9868:9870 CDF.Monads DPure PRE def
+def 9884:9889 DPure TRANSF
+binder 9892:9892 <> A:278
+R9910:9913 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9904:9907 CDF.Monads DPure POST def
+R9909:9909 CDF.Monads <> A:278 var
+R9914:9916 CDF.Monads DPure PRE def
+def 9931:9931 DPure M
+binder 9934:9934 <> A:279
+R9947:9952 CDF.Monads DPure TRANSF def
+R9954:9954 CDF.Monads <> A:279 var
+binder 9944:9944 <> W:280
+binder 9976:9976 <> Q:281
+R9982:9985 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9979:9979 CDF.Monads <> W:280 var
+R9981:9981 CDF.Monads <> Q:281 var
+R9986:9987 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R9989:9990 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R9992:9994 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R9998:9998 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R9991:9991 CDF.Monads <> A:279 var
+binder 9988:9988 <> r:282
+R9995:9995 CDF.Monads <> Q:281 var
+R9997:9997 CDF.Monads <> r:282 var
+def 10013:10015 DPure RET
+binder 10018:10018 <> A:283
+R10031:10031 CDF.Monads <> A:283 var
+binder 10028:10028 <> v:284
+R10036:10041 CDF.Monads DPure TRANSF def
+R10043:10043 CDF.Monads <> A:283 var
+binder 10052:10052 <> Q:285
+R10057:10057 CDF.Monads <> Q:285 var
+R10059:10059 CDF.Monads <> v:284 var
+def 10074:10076 DPure ret
+binder 10079:10079 <> A:286
+R10092:10092 CDF.Monads <> A:286 var
+binder 10089:10089 <> v:287
+R10097:10097 CDF.Monads DPure M def
+R10099:10099 CDF.Monads <> A:286 var
+R10102:10104 CDF.Monads DPure RET def
+R10106:10106 CDF.Monads <> v:287 var
+binder 10118:10118 <> Q:288
+binder 10120:10120 <> p:289
+R10125:10129 Coq.Init.Specif <> exist constr
+R10135:10135 CDF.Monads <> p:289 var
+R10133:10133 CDF.Monads <> v:287 var
+def 10150:10153 DPure BIND
+binder 10156:10156 <> A:290
+binder 10158:10158 <> B:291
+R10172:10177 CDF.Monads DPure TRANSF def
+R10179:10179 CDF.Monads <> A:290 var
+binder 10168:10169 <> W1:292
+R10188:10191 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10187:10187 CDF.Monads <> A:290 var
+R10192:10197 CDF.Monads DPure TRANSF def
+R10199:10199 CDF.Monads <> B:291 var
+binder 10183:10184 <> W2:293
+R10204:10209 CDF.Monads DPure TRANSF def
+R10211:10211 CDF.Monads <> B:291 var
+binder 10222:10222 <> Q:294
+R10227:10228 CDF.Monads <> W1:292 var
+binder 10235:10235 <> x:295
+R10240:10241 CDF.Monads <> W2:293 var
+R10245:10245 CDF.Monads <> Q:294 var
+R10243:10243 CDF.Monads <> x:295 var
+def 10261:10264 DPure bind
+binder 10267:10267 <> A:296
+binder 10269:10269 <> B:297
+R10283:10288 CDF.Monads DPure TRANSF def
+R10290:10290 CDF.Monads <> A:296 var
+binder 10279:10280 <> W1:298
+R10299:10302 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10298:10298 CDF.Monads <> A:296 var
+R10303:10308 CDF.Monads DPure TRANSF def
+R10310:10310 CDF.Monads <> B:297 var
+binder 10294:10295 <> W2:299
+R10333:10333 CDF.Monads DPure M def
+R10335:10335 CDF.Monads <> A:296 var
+R10337:10338 CDF.Monads <> W1:298 var
+binder 10330:10330 <> m:300
+R10356:10356 CDF.Monads <> A:296 var
+binder 10353:10353 <> v:301
+R10360:10360 CDF.Monads DPure M def
+R10362:10362 CDF.Monads <> B:297 var
+R10365:10366 CDF.Monads <> W2:299 var
+R10368:10368 CDF.Monads <> v:301 var
+binder 10342:10342 <> f:302
+R10374:10374 CDF.Monads DPure M def
+R10376:10376 CDF.Monads <> B:297 var
+R10379:10382 CDF.Monads DPure BIND def
+R10387:10388 CDF.Monads <> W2:299 var
+R10384:10385 CDF.Monads <> W1:298 var
+binder 10400:10400 <> Q:303
+binder 10402:10402 <> p:304
+R10429:10429 CDF.Monads <> m:300 var
+R10433:10433 CDF.Monads <> p:304 var
+R10413:10417 Coq.Init.Specif <> exist constr
+R10438:10438 CDF.Monads <> f:302 var
+R10442:10442 CDF.Monads <> Q:303 var
+R10452:10456 CDF.Monads DPure <> mod
+R10531:10543 CDF.Monads DIJKSTRAMONAD <> mod
+mod 10523:10526 <> DDiv
+def 10558:10560 DDiv PRE
+def 10582:10585 DDiv POST
+binder 10588:10588 <> A:305
+R10601:10604 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10600:10600 CDF.Monads <> A:305 var
+R10605:10607 CDF.Monads DDiv PRE def
+def 10621:10626 DDiv TRANSF
+binder 10629:10629 <> A:306
+R10647:10650 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10641:10644 CDF.Monads DDiv POST def
+R10646:10646 CDF.Monads <> A:306 var
+R10651:10653 CDF.Monads DDiv PRE def
+def 10668:10668 DDiv M
+binder 10671:10671 <> A:307
+R10684:10689 CDF.Monads DDiv TRANSF def
+R10691:10691 CDF.Monads <> A:307 var
+binder 10681:10681 <> W:308
+binder 10711:10711 <> Q:309
+R10714:10719 CDF.Monads HDiv M def
+R10722:10722 CDF.Monads <> W:308 var
+R10724:10724 CDF.Monads <> Q:309 var
+R10727:10727 CDF.Monads <> A:307 var
+R10729:10729 CDF.Monads <> Q:309 var
+def 10744:10746 DDiv RET
+binder 10749:10749 <> A:310
+R10762:10762 CDF.Monads <> A:310 var
+binder 10759:10759 <> v:311
+R10767:10772 CDF.Monads DDiv TRANSF def
+R10774:10774 CDF.Monads <> A:310 var
+binder 10783:10783 <> Q:312
+R10788:10788 CDF.Monads <> Q:312 var
+R10790:10790 CDF.Monads <> v:311 var
+def 10805:10807 DDiv ret
+binder 10810:10810 <> A:313
+R10823:10823 CDF.Monads <> A:313 var
+binder 10820:10820 <> v:314
+R10828:10828 CDF.Monads DDiv M def
+R10830:10830 CDF.Monads <> A:313 var
+R10833:10835 CDF.Monads DDiv RET def
+R10837:10837 CDF.Monads <> v:314 var
+binder 10847:10847 <> Q:315
+R10852:10859 CDF.Monads HDiv ret def
+R10863:10863 CDF.Monads <> v:314 var
+R10861:10861 CDF.Monads <> Q:315 var
+def 10878:10881 DDiv BIND
+binder 10884:10884 <> A:316
+binder 10886:10886 <> B:317
+R10900:10905 CDF.Monads DDiv TRANSF def
+R10907:10907 CDF.Monads <> A:316 var
+binder 10896:10897 <> W1:318
+R10916:10919 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10915:10915 CDF.Monads <> A:316 var
+R10920:10925 CDF.Monads DDiv TRANSF def
+R10927:10927 CDF.Monads <> B:317 var
+binder 10911:10912 <> W2:319
+R10932:10937 CDF.Monads DDiv TRANSF def
+R10939:10939 CDF.Monads <> B:317 var
+binder 10950:10950 <> Q:320
+R10955:10956 CDF.Monads <> W1:318 var
+binder 10963:10963 <> x:321
+R10968:10969 CDF.Monads <> W2:319 var
+R10973:10973 CDF.Monads <> Q:320 var
+R10971:10971 CDF.Monads <> x:321 var
+def 10989:10992 DDiv bind
+binder 10995:10995 <> A:322
+binder 10997:10997 <> B:323
+R11011:11016 CDF.Monads DDiv TRANSF def
+R11018:11018 CDF.Monads <> A:322 var
+binder 11007:11008 <> W1:324
+R11027:11030 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11026:11026 CDF.Monads <> A:322 var
+R11031:11036 CDF.Monads DDiv TRANSF def
+R11038:11038 CDF.Monads <> B:323 var
+binder 11022:11023 <> W2:325
+R11061:11061 CDF.Monads DDiv M def
+R11063:11063 CDF.Monads <> A:322 var
+R11065:11066 CDF.Monads <> W1:324 var
+binder 11058:11058 <> m:326
+R11084:11084 CDF.Monads <> A:322 var
+binder 11081:11081 <> v:327
+R11088:11088 CDF.Monads DDiv M def
+R11090:11090 CDF.Monads <> B:323 var
+R11093:11094 CDF.Monads <> W2:325 var
+R11096:11096 CDF.Monads <> v:327 var
+binder 11070:11070 <> f:328
+R11102:11102 CDF.Monads DDiv M def
+R11104:11104 CDF.Monads <> B:323 var
+R11107:11110 CDF.Monads DDiv BIND def
+R11115:11116 CDF.Monads <> W2:325 var
+R11112:11113 CDF.Monads <> W1:324 var
+binder 11128:11128 <> Q:329
+R11133:11141 CDF.Monads HDiv bind def
+binder 11205:11205 <> x:330
+R11210:11210 CDF.Monads <> f:328 var
+R11214:11214 CDF.Monads <> Q:329 var
+R11212:11212 CDF.Monads <> x:330 var
+R11179:11179 CDF.Monads <> m:326 var
+binder 11186:11186 <> x:331
+R11191:11192 CDF.Monads <> W2:325 var
+R11196:11196 CDF.Monads <> Q:329 var
+R11194:11194 CDF.Monads <> x:331 var
+R11176:11176 CDF.Monads <> Q:329 var
+binder 11163:11163 <> x:332
+R11168:11169 CDF.Monads <> W2:325 var
+R11173:11173 CDF.Monads <> Q:329 var
+R11171:11171 CDF.Monads <> x:332 var
+R11144:11147 CDF.Monads DDiv BIND def
+R11155:11155 CDF.Monads <> Q:329 var
+R11152:11153 CDF.Monads <> W2:325 var
+R11149:11150 CDF.Monads <> W1:324 var
+R11223:11226 CDF.Monads DDiv <> mod
+def 11296:11306 <> DIV_of_PURE
+binder 11309:11309 <> A:333
+R11322:11333 CDF.Monads <> TRANSF def
+R11335:11335 CDF.Monads <> A:333 var
+binder 11319:11319 <> W:334
+R11340:11350 CDF.Monads <> TRANSF def
+R11352:11352 CDF.Monads <> A:333 var
+R11357:11357 CDF.Monads <> W:334 var
+def 11372:11382 <> div_of_pure
+binder 11385:11385 <> A:335
+R11398:11409 CDF.Monads <> TRANSF def
+R11411:11411 CDF.Monads <> A:335 var
+binder 11395:11395 <> W:336
+R11418:11424 CDF.Monads <> M def
+R11426:11426 CDF.Monads <> A:335 var
+R11428:11428 CDF.Monads <> W:336 var
+binder 11415:11415 <> m:337
+R11435:11440 CDF.Monads <> M def
+R11442:11442 CDF.Monads <> A:335 var
+R11445:11455 CDF.Monads <> DIV_of_PURE def
+R11457:11457 CDF.Monads <> W:336 var
+binder 11469:11469 <> Q:338
+binder 11471:11471 <> p:339
+R11498:11498 CDF.Monads <> m:337 var
+R11500:11500 CDF.Monads <> Q:338 var
+R11502:11502 CDF.Monads <> p:339 var
+R11482:11486 Coq.Init.Specif <> exist constr
+R11508:11515 CDF.Monads <> ret def
+R11519:11519 CDF.Monads <> Q:338 var
+R11587:11599 CDF.Monads DIJKSTRAMONAD <> mod
+mod 11580:11582 <> DST
+R11610:11619 CDF.Separation <> <> mod
+def 11634:11636 DST PRE
+R11645:11648 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11641:11644 CDF.Separation <> heap rec
+def 11666:11669 DST POST
+binder 11672:11672 <> A:340
+R11685:11688 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11684:11684 CDF.Monads <> A:340 var
+R11689:11691 CDF.Monads DST PRE def
+def 11705:11710 DST TRANSF
+binder 11713:11713 <> A:341
+R11731:11734 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11725:11728 CDF.Monads DST POST def
+R11730:11730 CDF.Monads <> A:341 var
+R11735:11737 CDF.Monads DST PRE def
+def 11752:11752 DST M
+binder 11755:11755 <> A:342
+R11768:11773 CDF.Monads DST TRANSF def
+R11775:11775 CDF.Monads <> A:342 var
+binder 11765:11765 <> W:343
+binder 11795:11795 <> Q:344
+R11798:11802 CDF.Monads HST M def
+R11805:11805 CDF.Monads <> W:343 var
+R11807:11807 CDF.Monads <> Q:344 var
+R11810:11810 CDF.Monads <> A:342 var
+R11812:11812 CDF.Monads <> Q:344 var
+def 11827:11829 DST RET
+binder 11832:11832 <> A:345
+R11845:11845 CDF.Monads <> A:345 var
+binder 11842:11842 <> v:346
+R11850:11855 CDF.Monads DST TRANSF def
+R11857:11857 CDF.Monads <> A:345 var
+binder 11866:11866 <> Q:347
+R11871:11871 CDF.Monads <> Q:347 var
+R11873:11873 CDF.Monads <> v:346 var
+def 11888:11890 DST ret
+binder 11893:11893 <> A:348
+R11906:11906 CDF.Monads <> A:348 var
+binder 11903:11903 <> v:349
+R11911:11911 CDF.Monads DST M def
+R11913:11913 CDF.Monads <> A:348 var
+R11916:11918 CDF.Monads DST RET def
+R11920:11920 CDF.Monads <> v:349 var
+binder 11930:11930 <> Q:350
+R11935:11941 CDF.Monads HST ret def
+R11945:11945 CDF.Monads <> v:349 var
+R11943:11943 CDF.Monads <> Q:350 var
+def 11960:11963 DST BIND
+binder 11966:11966 <> A:351
+binder 11968:11968 <> B:352
+R11982:11987 CDF.Monads DST TRANSF def
+R11989:11989 CDF.Monads <> A:351 var
+binder 11978:11979 <> W1:353
+R11998:12001 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11997:11997 CDF.Monads <> A:351 var
+R12002:12007 CDF.Monads DST TRANSF def
+R12009:12009 CDF.Monads <> B:352 var
+binder 11993:11994 <> W2:354
+R12014:12019 CDF.Monads DST TRANSF def
+R12021:12021 CDF.Monads <> B:352 var
+binder 12032:12032 <> Q:355
+R12037:12038 CDF.Monads <> W1:353 var
+binder 12045:12045 <> x:356
+R12050:12051 CDF.Monads <> W2:354 var
+R12055:12055 CDF.Monads <> Q:355 var
+R12053:12053 CDF.Monads <> x:356 var
+def 12071:12074 DST bind
+binder 12077:12077 <> A:357
+binder 12079:12079 <> B:358
+R12093:12098 CDF.Monads DST TRANSF def
+R12100:12100 CDF.Monads <> A:357 var
+binder 12089:12090 <> W1:359
+R12109:12112 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12108:12108 CDF.Monads <> A:357 var
+R12113:12118 CDF.Monads DST TRANSF def
+R12120:12120 CDF.Monads <> B:358 var
+binder 12104:12105 <> W2:360
+R12143:12143 CDF.Monads DST M def
+R12145:12145 CDF.Monads <> A:357 var
+R12147:12148 CDF.Monads <> W1:359 var
+binder 12140:12140 <> m:361
+R12166:12166 CDF.Monads <> A:357 var
+binder 12163:12163 <> v:362
+R12170:12170 CDF.Monads DST M def
+R12172:12172 CDF.Monads <> B:358 var
+R12175:12176 CDF.Monads <> W2:360 var
+R12178:12178 CDF.Monads <> v:362 var
+binder 12152:12152 <> f:363
+R12184:12184 CDF.Monads DST M def
+R12186:12186 CDF.Monads <> B:358 var
+R12189:12192 CDF.Monads DST BIND def
+R12197:12198 CDF.Monads <> W2:360 var
+R12194:12195 CDF.Monads <> W1:359 var
+binder 12210:12210 <> Q:364
+R12215:12222 CDF.Monads HST bind def
+binder 12286:12286 <> x:365
+R12291:12291 CDF.Monads <> f:363 var
+R12295:12295 CDF.Monads <> Q:364 var
+R12293:12293 CDF.Monads <> x:365 var
+R12260:12260 CDF.Monads <> m:361 var
+binder 12267:12267 <> x:366
+R12272:12273 CDF.Monads <> W2:360 var
+R12277:12277 CDF.Monads <> Q:364 var
+R12275:12275 CDF.Monads <> x:366 var
+R12257:12257 CDF.Monads <> Q:364 var
+binder 12244:12244 <> x:367
+R12249:12250 CDF.Monads <> W2:360 var
+R12254:12254 CDF.Monads <> Q:364 var
+R12252:12252 CDF.Monads <> x:367 var
+R12225:12228 CDF.Monads DST BIND def
+R12236:12236 CDF.Monads <> Q:364 var
+R12233:12234 CDF.Monads <> W2:360 var
+R12230:12231 CDF.Monads <> W1:359 var
+def 12311:12313 DST GET
+R12319:12322 CDF.Separation <> addr def
+binder 12316:12316 <> l:368
+R12327:12332 CDF.Monads DST TRANSF def
+R12334:12334 Coq.Numbers.BinNums <> Z ind
+binder 12345:12345 <> Q:369
+R12351:12354 CDF.Separation <> heap rec
+binder 12348:12348 <> h:370
+R12366:12366 CDF.Monads <> h:370 var
+R12368:12368 CDF.Monads <> l:368 var
+R12375:12378 Coq.Init.Datatypes <> Some constr
+R12385:12385 CDF.Monads <> Q:369 var
+R12389:12389 CDF.Monads <> h:370 var
+R12393:12396 Coq.Init.Datatypes <> None constr
+R12401:12405 Coq.Init.Logic <> False ind
+def 12432:12434 DST get
+R12440:12443 CDF.Separation <> addr def
+binder 12437:12437 <> l:371
+R12448:12448 CDF.Monads DST M def
+R12450:12450 Coq.Numbers.BinNums <> Z ind
+R12453:12455 CDF.Monads DST GET def
+R12457:12457 CDF.Monads <> l:371 var
+binder 12469:12469 <> Q:372
+binder 12471:12471 <> h:373
+binder 12473:12473 <> p:374
+R12484:12484 CDF.Monads <> h:373 var
+R12486:12486 CDF.Monads <> l:371 var
+R12493:12496 Coq.Init.Datatypes <> Some constr
+R12503:12503 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12505:12506 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12508:12508 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12507:12507 CDF.Monads <> h:373 var
+R12512:12515 Coq.Init.Datatypes <> None constr
+def 12690:12692 DST SET
+R12698:12701 CDF.Separation <> addr def
+binder 12695:12695 <> l:375
+R12708:12708 Coq.Numbers.BinNums <> Z ind
+binder 12705:12705 <> v:376
+R12713:12718 CDF.Monads DST TRANSF def
+R12720:12723 Coq.Init.Datatypes <> unit ind
+binder 12734:12734 <> Q:377
+R12740:12743 CDF.Separation <> heap rec
+binder 12737:12737 <> h:378
+R12760:12763 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R12752:12755 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R12749:12749 CDF.Monads <> h:378 var
+R12751:12751 CDF.Monads <> l:375 var
+R12756:12759 Coq.Init.Datatypes <> None constr
+R12764:12764 CDF.Monads <> Q:377 var
+R12766:12767 Coq.Init.Datatypes <> tt constr
+R12770:12776 CDF.Separation <> hupdate def
+R12778:12778 CDF.Monads <> l:375 var
+R12780:12780 CDF.Monads <> v:376 var
+R12782:12782 CDF.Monads <> h:378 var
+def 12806:12808 DST set
+R12814:12817 CDF.Separation <> addr def
+binder 12811:12811 <> l:379
+R12824:12824 Coq.Numbers.BinNums <> Z ind
+binder 12821:12821 <> v:380
+R12829:12829 CDF.Monads DST M def
+R12831:12834 Coq.Init.Datatypes <> unit ind
+R12837:12839 CDF.Monads DST SET def
+R12841:12841 CDF.Monads <> l:379 var
+R12843:12843 CDF.Monads <> v:380 var
+binder 12855:12855 <> Q:381
+binder 12857:12857 <> h:382
+binder 12859:12859 <> p:383
+R12864:12864 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12867:12868 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12882:12882 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12865:12866 Coq.Init.Datatypes <> tt constr
+R12869:12875 CDF.Separation <> hupdate def
+R12877:12877 CDF.Monads <> l:379 var
+R12879:12879 CDF.Monads <> v:380 var
+R12881:12881 CDF.Monads <> h:382 var
+R12923:12925 CDF.Monads DST <> mod
+def 12994:13003 <> ST_of_PURE
+binder 13006:13006 <> A:384
+R13019:13030 CDF.Monads <> TRANSF def
+R13032:13032 CDF.Monads <> A:384 var
+binder 13016:13016 <> W:385
+R13037:13046 CDF.Monads <> TRANSF def
+R13048:13048 CDF.Monads <> A:384 var
+R13063:13070 CDF.Monads <> POST def
+R13072:13072 CDF.Monads <> A:384 var
+binder 13060:13060 <> Q:386
+binder 13075:13075 <> h:387
+R13080:13080 CDF.Monads <> W:385 var
+binder 13087:13087 <> a:388
+R13092:13092 CDF.Monads <> Q:386 var
+R13094:13094 CDF.Monads <> a:388 var
+R13096:13096 CDF.Monads <> h:387 var
+def 13120:13129 <> st_of_pure
+binder 13132:13132 <> A:389
+R13145:13156 CDF.Monads <> TRANSF def
+R13158:13158 CDF.Monads <> A:389 var
+binder 13142:13142 <> W:390
+R13165:13171 CDF.Monads <> M def
+R13173:13173 CDF.Monads <> A:389 var
+R13175:13175 CDF.Monads <> W:390 var
+binder 13162:13162 <> m:391
+R13182:13186 CDF.Monads <> M def
+R13188:13188 CDF.Monads <> A:389 var
+R13191:13200 CDF.Monads <> ST_of_PURE def
+R13202:13202 CDF.Monads <> W:390 var
+binder 13214:13214 <> Q:392
+binder 13216:13216 <> h:393
+binder 13218:13218 <> p:394
+R13223:13223 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R13244:13245 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R13247:13247 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R13224:13224 CDF.Monads <> m:391 var
+binder 13231:13231 <> a:395
+R13236:13236 CDF.Monads <> Q:392 var
+R13238:13238 CDF.Monads <> a:395 var
+R13240:13240 CDF.Monads <> h:393 var
+R13243:13243 CDF.Monads <> p:394 var
+R13246:13246 CDF.Monads <> h:393 var
+ax 13352:13354 <> exn
+R13379:13391 CDF.Monads DIJKSTRAMONAD <> mod
+mod 13371:13374 <> DExn
+def 13406:13408 DExn PRE
+def 13430:13433 DExn POST
+binder 13436:13436 <> A:397
+R13455:13458 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13449:13451 Coq.Init.Datatypes <> ::type_scope:x_'+'_x not
+R13448:13448 CDF.Monads <> A:397 var
+R13452:13454 CDF.Monads <> exn defax
+R13459:13461 CDF.Monads DExn PRE def
+def 13475:13480 DExn TRANSF
+binder 13483:13483 <> A:398
+R13501:13504 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13495:13498 CDF.Monads DExn POST def
+R13500:13500 CDF.Monads <> A:398 var
+R13505:13507 CDF.Monads DExn PRE def
+def 13522:13522 DExn M
+binder 13525:13525 <> A:399
+R13538:13543 CDF.Monads DExn TRANSF def
+R13545:13545 CDF.Monads <> A:399 var
+binder 13535:13535 <> W:400
+binder 13567:13567 <> Q:401
+R13573:13576 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13570:13570 CDF.Monads <> W:400 var
+R13572:13572 CDF.Monads <> Q:401 var
+R13577:13578 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R13580:13581 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R13589:13591 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R13595:13595 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R13583:13585 Coq.Init.Datatypes <> ::type_scope:x_'+'_x not
+R13582:13582 CDF.Monads <> A:399 var
+R13586:13588 CDF.Monads <> exn defax
+binder 13579:13579 <> r:402
+R13592:13592 CDF.Monads <> Q:401 var
+R13594:13594 CDF.Monads <> r:402 var
+def 13610:13612 DExn RET
+binder 13615:13615 <> A:403
+R13628:13628 CDF.Monads <> A:403 var
+binder 13625:13625 <> v:404
+R13633:13638 CDF.Monads DExn TRANSF def
+R13640:13640 CDF.Monads <> A:403 var
+binder 13649:13649 <> Q:405
+R13654:13654 CDF.Monads <> Q:405 var
+R13657:13659 Coq.Init.Datatypes <> inl constr
+R13661:13661 CDF.Monads <> v:404 var
+def 13677:13679 DExn ret
+binder 13682:13682 <> A:406
+R13695:13695 CDF.Monads <> A:406 var
+binder 13692:13692 <> v:407
+R13700:13700 CDF.Monads DExn M def
+R13702:13702 CDF.Monads <> A:406 var
+R13705:13707 CDF.Monads DExn RET def
+R13709:13709 CDF.Monads <> v:407 var
+binder 13721:13721 <> Q:408
+binder 13723:13723 <> p:409
+R13728:13732 Coq.Init.Specif <> exist constr
+R13744:13744 CDF.Monads <> p:409 var
+R13737:13739 Coq.Init.Datatypes <> inl constr
+R13741:13741 CDF.Monads <> v:407 var
+def 13759:13762 DExn BIND
+binder 13765:13765 <> A:410
+binder 13767:13767 <> B:411
+R13781:13786 CDF.Monads DExn TRANSF def
+R13788:13788 CDF.Monads <> A:410 var
+binder 13777:13778 <> W1:412
+R13797:13800 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13796:13796 CDF.Monads <> A:410 var
+R13801:13806 CDF.Monads DExn TRANSF def
+R13808:13808 CDF.Monads <> B:411 var
+binder 13792:13793 <> W2:413
+R13813:13818 CDF.Monads DExn TRANSF def
+R13820:13820 CDF.Monads <> B:411 var
+binder 13831:13831 <> Q:414
+R13836:13837 CDF.Monads <> W1:412 var
+binder 13844:13844 <> x:415
+R13855:13855 CDF.Monads <> x:415 var
+R13862:13864 Coq.Init.Datatypes <> inl constr
+R13871:13872 CDF.Monads <> W2:413 var
+R13876:13876 CDF.Monads <> Q:414 var
+R13880:13882 Coq.Init.Datatypes <> inr constr
+R13889:13889 CDF.Monads <> Q:414 var
+R13892:13894 Coq.Init.Datatypes <> inr constr
+def 13925:13928 DExn bind
+binder 13931:13931 <> A:417
+binder 13933:13933 <> B:418
+R13947:13952 CDF.Monads DExn TRANSF def
+R13954:13954 CDF.Monads <> A:417 var
+binder 13943:13944 <> W1:419
+R13963:13966 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13962:13962 CDF.Monads <> A:417 var
+R13967:13972 CDF.Monads DExn TRANSF def
+R13974:13974 CDF.Monads <> B:418 var
+binder 13958:13959 <> W2:420
+R14000:14000 CDF.Monads DExn M def
+R14002:14002 CDF.Monads <> A:417 var
+R14004:14005 CDF.Monads <> W1:419 var
+binder 13997:13997 <> m:421
+R14023:14023 CDF.Monads <> A:417 var
+binder 14020:14020 <> v:422
+R14027:14027 CDF.Monads DExn M def
+R14029:14029 CDF.Monads <> B:418 var
+R14032:14033 CDF.Monads <> W2:420 var
+R14035:14035 CDF.Monads <> v:422 var
+binder 14009:14009 <> f:423
+R14041:14041 CDF.Monads DExn M def
+R14043:14043 CDF.Monads <> B:418 var
+R14046:14049 CDF.Monads DExn BIND def
+R14054:14055 CDF.Monads <> W2:420 var
+R14051:14052 CDF.Monads <> W1:419 var
+binder 14067:14067 <> Q:424
+binder 14069:14069 <> p:425
+R14080:14080 CDF.Monads <> m:421 var
+R14084:14084 CDF.Monads <> p:425 var
+R14091:14093 Coq.Init.Datatypes <> inl constr
+R14100:14100 CDF.Monads <> f:423 var
+R14104:14104 CDF.Monads <> Q:424 var
+R14110:14112 Coq.Init.Datatypes <> inr constr
+R14119:14121 Coq.Init.Datatypes <> inr constr
+def 14326:14330 DExn RAISE
+binder 14333:14333 <> A:426
+R14346:14348 CDF.Monads <> exn defax
+binder 14343:14343 <> e:427
+R14353:14358 CDF.Monads DExn TRANSF def
+R14360:14360 CDF.Monads <> A:426 var
+binder 14369:14369 <> Q:428
+R14374:14374 CDF.Monads <> Q:428 var
+R14377:14379 Coq.Init.Datatypes <> inr constr
+R14381:14381 CDF.Monads <> e:427 var
+def 14397:14401 DExn raise
+binder 14404:14404 <> A:429
+R14417:14419 CDF.Monads <> exn defax
+binder 14414:14414 <> e:430
+R14424:14424 CDF.Monads DExn M def
+R14426:14426 CDF.Monads <> A:429 var
+R14429:14433 CDF.Monads DExn RAISE def
+R14435:14435 CDF.Monads <> A:429 var
+R14437:14437 CDF.Monads <> e:430 var
+binder 14449:14449 <> Q:431
+binder 14451:14451 <> p:432
+R14456:14460 Coq.Init.Specif <> exist constr
+R14472:14472 CDF.Monads <> p:432 var
+R14465:14467 Coq.Init.Datatypes <> inr constr
+R14469:14469 CDF.Monads <> e:430 var
+R14480:14483 CDF.Monads DExn <> mod
+def 14553:14563 <> EXN_of_PURE
+binder 14566:14566 <> A:433
+R14579:14590 CDF.Monads <> TRANSF def
+R14592:14592 CDF.Monads <> A:433 var
+binder 14576:14576 <> W:434
+R14597:14607 CDF.Monads <> TRANSF def
+R14609:14609 CDF.Monads <> A:433 var
+R14624:14632 CDF.Monads <> POST def
+R14634:14634 CDF.Monads <> A:433 var
+binder 14621:14621 <> Q:435
+R14640:14640 CDF.Monads <> W:434 var
+binder 14647:14647 <> a:436
+R14652:14652 CDF.Monads <> Q:435 var
+R14655:14657 Coq.Init.Datatypes <> inl constr
+R14659:14659 CDF.Monads <> a:436 var
+def 14684:14694 <> exn_of_pure
+binder 14697:14697 <> A:437
+R14710:14721 CDF.Monads <> TRANSF def
+R14723:14723 CDF.Monads <> A:437 var
+binder 14707:14707 <> W:438
+R14730:14736 CDF.Monads <> M def
+R14738:14738 CDF.Monads <> A:437 var
+R14740:14740 CDF.Monads <> W:438 var
+binder 14727:14727 <> m:439
+R14747:14752 CDF.Monads <> M def
+R14754:14754 CDF.Monads <> A:437 var
+R14757:14767 CDF.Monads <> EXN_of_PURE def
+R14769:14769 CDF.Monads <> W:438 var
+binder 14781:14781 <> Q:440
+binder 14783:14783 <> p:441
+R14788:14790 Coq.Init.Datatypes <> inl constr
+R14793:14801 Coq.Init.Specif <> proj1_sig def
+R14804:14804 CDF.Monads <> m:439 var
+binder 14811:14811 <> a:442
+R14816:14816 CDF.Monads <> Q:440 var
+R14819:14821 Coq.Init.Datatypes <> inl constr
+R14823:14823 CDF.Monads <> a:442 var
+R14827:14827 CDF.Monads <> p:441 var

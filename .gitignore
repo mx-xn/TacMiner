@@ -6,12 +6,12 @@
 
 # Compiled build output
 out/
-**/*.aux
-**/*.glob
-**/*.vo
-cdf/*.aux
-cdf/*.glob
-cdf/*.vo
+# **/*.aux
+# **/*.glob
+# **/*.vo
+# cdf/*.aux
+# cdf/*.glob
+# cdf/*.vo
 
 # Generated files
 gen/

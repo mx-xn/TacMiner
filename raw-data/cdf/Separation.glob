@@ -1,0 +1,1623 @@
+DIGEST f23fb6547133953559fb37d978d0d165
+FCDF.Separation
+R81:86 Coq.ZArith.ZArith <> <> lib
+R88:90 Coq.micromega.Lia <> <> lib
+R92:95 Coq.Bool.Bool <> <> lib
+R97:102 Coq.Strings.String <> <> lib
+R104:107 Coq.Lists.List <> <> lib
+R134:141 CDF.Ori_tacs <> <> lib
+R168:191 Coq.Logic.FunctionalExtensionality <> <> lib
+R193:210 Coq.Logic.PropExtensionality <> <> lib
+def 393:396 <> addr
+R401:401 Coq.Numbers.BinNums <> Z ind
+rec 412:415 <> heap
+proj 431:438 <> contents
+proj 463:470 <> isfinite
+R447:450 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R443:446 CDF.Separation <> addr def
+R451:456 Coq.Init.Datatypes <> option ind
+R458:458 Coq.Numbers.BinNums <> Z ind
+R475:481 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R483:484 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 482:482 <> i:3
+binder 492:492 <> j:4
+R501:504 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R496:499 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x not
+R495:495 CDF.Separation <> i:3 var
+R500:500 CDF.Separation <> j:4 var
+R515:517 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R505:512 CDF.Separation <> contents:2 meth
+R514:514 CDF.Separation <> j:4 var
+R518:521 Coq.Init.Datatypes <> None constr
+prf 533:551 <> heap_extensionality
+R571:574 CDF.Separation <> heap rec
+binder 564:565 <> h1:6
+binder 567:568 <> h2:7
+R580:580 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R602:606 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 588:588 <> l:8
+R595:597 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R591:592 CDF.Separation <> h1:6 var
+R594:594 CDF.Separation <> l:8 var
+R598:599 CDF.Separation <> h2:7 var
+R601:601 CDF.Separation <> l:8 var
+R609:611 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R607:608 CDF.Separation <> h1:6 var
+R612:613 CDF.Separation <> h2:7 var
+R688:690 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R705:729 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+R688:690 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R705:729 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+R766:782 Coq.Logic.PropExtensionality <> proof_irrelevance thm
+R766:782 Coq.Logic.PropExtensionality <> proof_irrelevance thm
+def 834:839 <> hempty
+R843:846 CDF.Separation <> heap rec
+R856:863 CDF.Separation <> contents proj
+R856:863 CDF.Separation <> contents proj
+R856:863 CDF.Separation <> contents proj
+binder 872:872 <> l:9
+R877:880 Coq.Init.Datatypes <> None constr
+prf 933:942 <> hempty_dup
+binder 944:944 <> A:10
+R948:954 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R960:961 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R959:959 Coq.Numbers.BinNums <> Z ind
+binder 955:955 <> i:11
+R973:973 Coq.Numbers.BinNums <> Z ind
+binder 969:969 <> j:12
+R982:985 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R977:980 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x not
+R976:976 CDF.Separation <> i:11 var
+R981:981 CDF.Separation <> j:12 var
+R993:995 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R987:990 Coq.Init.Datatypes <> None constr
+R992:992 CDF.Separation <> A:10 var
+R996:999 Coq.Init.Datatypes <> None constr
+def 1148:1154 <> hupdate
+R1160:1163 CDF.Separation <> addr def
+binder 1157:1157 <> l:13
+R1170:1170 Coq.Numbers.BinNums <> Z ind
+binder 1167:1167 <> v:14
+R1177:1180 CDF.Separation <> heap rec
+binder 1174:1174 <> h:15
+R1185:1188 CDF.Separation <> heap rec
+R1198:1205 CDF.Separation <> contents proj
+R1198:1205 CDF.Separation <> contents proj
+R1198:1205 CDF.Separation <> contents proj
+binder 1214:1215 <> l':16
+R1223:1230 Coq.ZArith.BinInt Z eq_dec def
+R1232:1232 CDF.Separation <> l:13 var
+R1234:1235 CDF.Separation <> l':16 var
+R1254:1254 CDF.Separation <> h:15 var
+R1256:1257 CDF.Separation <> l':16 var
+R1242:1245 Coq.Init.Datatypes <> Some constr
+R1247:1247 CDF.Separation <> v:14 var
+R1292:1299 CDF.Separation <> isfinite proj
+R1292:1299 CDF.Separation <> isfinite proj
+R1328:1332 Coq.ZArith.BinInt Z max def
+R1338:1340 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R1328:1332 Coq.ZArith.BinInt Z max def
+R1338:1340 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R1366:1373 Coq.ZArith.BinInt Z eq_dec def
+R1366:1373 Coq.ZArith.BinInt Z eq_dec def
+prf 1414:1424 <> hupdate_dup
+R1430:1433 CDF.Separation <> addr def
+binder 1427:1427 <> l:17
+R1440:1440 Coq.Numbers.BinNums <> Z ind
+binder 1437:1437 <> v:18
+R1447:1450 CDF.Separation <> heap rec
+binder 1444:1444 <> h:19
+R1455:1461 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1467:1468 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1466:1466 Coq.Numbers.BinNums <> Z ind
+binder 1462:1462 <> i:20
+R1480:1480 Coq.Numbers.BinNums <> Z ind
+binder 1476:1476 <> j:21
+R1489:1492 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1484:1487 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x not
+R1483:1483 CDF.Separation <> i:20 var
+R1488:1488 CDF.Separation <> j:21 var
+R1493:1493 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1530:1533 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1497:1504 Coq.ZArith.BinInt Z eq_dec def
+R1506:1506 CDF.Separation <> l:17 var
+R1508:1508 CDF.Separation <> j:21 var
+R1527:1527 CDF.Separation <> h:19 var
+R1529:1529 CDF.Separation <> j:21 var
+R1515:1518 Coq.Init.Datatypes <> Some constr
+R1520:1520 CDF.Separation <> v:18 var
+R1534:1537 Coq.Init.Datatypes <> None constr
+R1557:1564 CDF.Separation <> isfinite proj
+R1557:1564 CDF.Separation <> isfinite proj
+R1591:1595 Coq.ZArith.BinInt Z max def
+R1601:1603 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R1591:1595 Coq.ZArith.BinInt Z max def
+R1601:1603 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R1627:1634 Coq.ZArith.BinInt Z eq_dec def
+R1627:1634 Coq.ZArith.BinInt Z eq_dec def
+prf 1675:1686 <> hupdate_same
+binder 1696:1696 <> l:22
+binder 1698:1698 <> v:23
+binder 1700:1700 <> h:24
+R1720:1722 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1704:1710 CDF.Separation <> hupdate def
+R1712:1712 CDF.Separation <> l:22 var
+R1714:1714 CDF.Separation <> v:23 var
+R1716:1716 CDF.Separation <> h:24 var
+R1719:1719 CDF.Separation <> l:22 var
+R1723:1726 Coq.Init.Datatypes <> Some constr
+R1728:1728 CDF.Separation <> v:23 var
+R1769:1776 Coq.ZArith.BinInt Z eq_dec def
+R1769:1776 Coq.ZArith.BinInt Z eq_dec def
+prf 1808:1820 <> hupdate_other
+binder 1830:1830 <> l:25
+binder 1832:1832 <> v:26
+binder 1834:1834 <> h:27
+binder 1836:1837 <> l':28
+R1847:1850 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1841:1844 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R1840:1840 CDF.Separation <> l:25 var
+R1845:1846 CDF.Separation <> l':28 var
+R1869:1871 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1852:1858 CDF.Separation <> hupdate def
+R1860:1860 CDF.Separation <> l:25 var
+R1862:1862 CDF.Separation <> v:26 var
+R1864:1864 CDF.Separation <> h:27 var
+R1867:1868 CDF.Separation <> l':28 var
+R1872:1872 CDF.Separation <> h:27 var
+R1874:1875 CDF.Separation <> l':28 var
+R1921:1928 Coq.ZArith.BinInt Z eq_dec def
+R1921:1928 Coq.ZArith.BinInt Z eq_dec def
+def 2027:2031 <> hfree
+R2037:2040 CDF.Separation <> addr def
+binder 2034:2034 <> l:29
+R2047:2050 CDF.Separation <> heap rec
+binder 2044:2044 <> h:30
+R2055:2058 CDF.Separation <> heap rec
+R2068:2075 CDF.Separation <> contents proj
+R2068:2075 CDF.Separation <> contents proj
+R2068:2075 CDF.Separation <> contents proj
+binder 2084:2085 <> l':31
+R2093:2100 Coq.ZArith.BinInt Z eq_dec def
+R2102:2102 CDF.Separation <> l:29 var
+R2104:2105 CDF.Separation <> l':31 var
+R2122:2122 CDF.Separation <> h:30 var
+R2124:2125 CDF.Separation <> l':31 var
+R2112:2115 Coq.Init.Datatypes <> None constr
+R2160:2167 CDF.Separation <> isfinite proj
+R2160:2167 CDF.Separation <> isfinite proj
+R2216:2223 Coq.ZArith.BinInt Z eq_dec def
+R2216:2223 Coq.ZArith.BinInt Z eq_dec def
+prf 2249:2257 <> hfree_dup
+R2263:2266 CDF.Separation <> addr def
+binder 2260:2260 <> l:32
+R2273:2276 CDF.Separation <> heap rec
+binder 2270:2270 <> h:33
+R2281:2287 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2293:2294 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2292:2292 Coq.Numbers.BinNums <> Z ind
+binder 2288:2288 <> i:34
+R2306:2306 Coq.Numbers.BinNums <> Z ind
+binder 2302:2302 <> j:35
+R2315:2318 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2310:2313 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x not
+R2309:2309 CDF.Separation <> i:34 var
+R2314:2314 CDF.Separation <> j:35 var
+R2319:2319 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2354:2357 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2323:2330 Coq.ZArith.BinInt Z eq_dec def
+R2332:2332 CDF.Separation <> l:32 var
+R2334:2334 CDF.Separation <> j:35 var
+R2351:2351 CDF.Separation <> h:33 var
+R2353:2353 CDF.Separation <> j:35 var
+R2341:2344 Coq.Init.Datatypes <> None constr
+R2358:2361 Coq.Init.Datatypes <> None constr
+R2381:2388 CDF.Separation <> isfinite proj
+R2381:2388 CDF.Separation <> isfinite proj
+R2435:2442 Coq.ZArith.BinInt Z eq_dec def
+R2435:2442 Coq.ZArith.BinInt Z eq_dec def
+def 2551:2555 <> hinit
+R2561:2564 CDF.Separation <> addr def
+binder 2558:2558 <> l:36
+R2572:2574 Coq.Init.Datatypes <> nat ind
+binder 2568:2569 <> sz:37
+R2581:2584 CDF.Separation <> heap rec
+binder 2578:2578 <> h:38
+R2589:2592 CDF.Separation <> heap rec
+R2605:2606 CDF.Separation <> sz:37 var
+R2613:2613 Coq.Init.Datatypes <> O constr
+R2618:2618 CDF.Separation <> h:38 var
+R2622:2622 Coq.Init.Datatypes <> S constr
+R2630:2636 CDF.Separation <> hupdate def
+R2638:2638 CDF.Separation <> l:36 var
+R2643:2647 CDF.Separation <> hinit:39 def
+R2660:2660 CDF.Separation <> h:38 var
+R2657:2658 CDF.Separation <> sz:37 var
+R2651:2653 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R2650:2650 CDF.Separation <> l:36 var
+prf 2675:2686 <> hinit_inside
+binder 2698:2698 <> h:41
+binder 2700:2701 <> sz:42
+binder 2703:2703 <> l:43
+binder 2705:2706 <> l':44
+R2734:2737 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2710:2713 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x_'<'_x not
+R2716:2718 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x_'<'_x not
+R2709:2709 CDF.Separation <> l:43 var
+R2714:2715 CDF.Separation <> l':44 var
+R2714:2715 CDF.Separation <> l':44 var
+R2720:2722 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R2719:2719 CDF.Separation <> l:43 var
+R2723:2730 Coq.ZArith.BinInt Z of_nat def
+R2732:2733 CDF.Separation <> sz:42 var
+R2753:2755 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2738:2742 CDF.Separation <> hinit def
+R2744:2744 CDF.Separation <> l:43 var
+R2746:2747 CDF.Separation <> sz:42 var
+R2749:2749 CDF.Separation <> h:41 var
+R2751:2752 CDF.Separation <> l':44 var
+R2756:2759 Coq.Init.Datatypes <> Some constr
+R2832:2839 Coq.ZArith.BinInt Z eq_dec def
+R2832:2839 Coq.ZArith.BinInt Z eq_dec def
+prf 2883:2895 <> hinit_outside
+binder 2907:2907 <> h:45
+binder 2909:2910 <> sz:46
+binder 2912:2912 <> l:47
+binder 2914:2915 <> l':48
+R2949:2952 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2924:2927 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R2920:2922 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R2918:2919 CDF.Separation <> l':48 var
+R2923:2923 CDF.Separation <> l:47 var
+R2943:2946 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x not
+R2929:2931 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R2928:2928 CDF.Separation <> l:47 var
+R2932:2939 Coq.ZArith.BinInt Z of_nat def
+R2941:2942 CDF.Separation <> sz:46 var
+R2947:2948 CDF.Separation <> l':48 var
+R2968:2970 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2953:2957 CDF.Separation <> hinit def
+R2959:2959 CDF.Separation <> l:47 var
+R2961:2962 CDF.Separation <> sz:46 var
+R2964:2964 CDF.Separation <> h:45 var
+R2966:2967 CDF.Separation <> l':48 var
+R2971:2971 CDF.Separation <> h:45 var
+R2973:2974 CDF.Separation <> l':48 var
+R3046:3053 Coq.ZArith.BinInt Z eq_dec def
+R3046:3053 Coq.ZArith.BinInt Z eq_dec def
+def 3142:3150 <> hdisjoint
+R3160:3163 CDF.Separation <> heap rec
+binder 3153:3154 <> h1:49
+binder 3156:3157 <> h2:50
+binder 3185:3185 <> l:51
+R3199:3202 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R3192:3194 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3188:3189 CDF.Separation <> h1:49 var
+R3191:3191 CDF.Separation <> l:51 var
+R3195:3198 Coq.Init.Datatypes <> None constr
+R3207:3209 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3203:3204 CDF.Separation <> h2:50 var
+R3206:3206 CDF.Separation <> l:51 var
+R3210:3213 Coq.Init.Datatypes <> None constr
+prf 3223:3235 <> hdisjoint_sym
+binder 3247:3248 <> h1:52
+binder 3250:3251 <> h2:53
+R3269:3273 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3254:3262 CDF.Separation <> hdisjoint def
+R3264:3265 CDF.Separation <> h1:52 var
+R3267:3268 CDF.Separation <> h2:53 var
+R3274:3282 CDF.Separation <> hdisjoint def
+R3284:3285 CDF.Separation <> h2:53 var
+R3287:3288 CDF.Separation <> h1:52 var
+R3307:3315 CDF.Separation <> hdisjoint def
+def 3401:3406 <> hunion
+R3416:3419 CDF.Separation <> heap rec
+binder 3409:3410 <> h1:54
+binder 3412:3413 <> h2:55
+R3424:3427 CDF.Separation <> heap rec
+R3437:3444 CDF.Separation <> contents proj
+R3437:3444 CDF.Separation <> contents proj
+R3437:3444 CDF.Separation <> contents proj
+binder 3453:3453 <> l:56
+R3461:3462 CDF.Separation <> h1:54 var
+R3464:3464 CDF.Separation <> l:56 var
+R3481:3482 CDF.Separation <> h2:55 var
+R3484:3484 CDF.Separation <> l:56 var
+R3471:3472 CDF.Separation <> h1:54 var
+R3474:3474 CDF.Separation <> l:56 var
+R3519:3526 CDF.Separation <> isfinite proj
+R3549:3556 CDF.Separation <> isfinite proj
+R3519:3526 CDF.Separation <> isfinite proj
+R3549:3556 CDF.Separation <> isfinite proj
+R3588:3592 Coq.ZArith.BinInt Z max def
+R3588:3592 Coq.ZArith.BinInt Z max def
+prf 3655:3664 <> hunion_dup
+R3675:3678 CDF.Separation <> heap rec
+binder 3667:3668 <> h1:57
+binder 3670:3671 <> h2:58
+R3683:3689 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R3695:3696 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R3694:3694 Coq.Numbers.BinNums <> Z ind
+binder 3690:3690 <> i:59
+R3708:3708 Coq.Numbers.BinNums <> Z ind
+binder 3704:3704 <> j:60
+R3717:3720 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3712:3715 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x not
+R3711:3711 CDF.Separation <> i:59 var
+R3716:3716 CDF.Separation <> j:60 var
+R3721:3721 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3749:3752 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3725:3726 CDF.Separation <> h1:57 var
+R3728:3728 CDF.Separation <> j:60 var
+R3745:3746 CDF.Separation <> h2:58 var
+R3748:3748 CDF.Separation <> j:60 var
+R3735:3736 CDF.Separation <> h1:57 var
+R3738:3738 CDF.Separation <> j:60 var
+R3753:3756 Coq.Init.Datatypes <> None constr
+R3776:3783 CDF.Separation <> isfinite proj
+R3806:3813 CDF.Separation <> isfinite proj
+R3776:3783 CDF.Separation <> isfinite proj
+R3806:3813 CDF.Separation <> isfinite proj
+R3843:3847 Coq.ZArith.BinInt Z max def
+R3843:3847 Coq.ZArith.BinInt Z max def
+prf 3910:3920 <> hunion_comm
+binder 3932:3933 <> h1:61
+binder 3935:3936 <> h2:62
+R3954:3957 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3939:3947 CDF.Separation <> hdisjoint def
+R3949:3950 CDF.Separation <> h1:61 var
+R3952:3953 CDF.Separation <> h2:62 var
+R3970:3972 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3958:3963 CDF.Separation <> hunion def
+R3965:3966 CDF.Separation <> h2:62 var
+R3968:3969 CDF.Separation <> h1:61 var
+R3973:3978 CDF.Separation <> hunion def
+R3980:3981 CDF.Separation <> h1:61 var
+R3983:3984 CDF.Separation <> h2:62 var
+R4018:4036 CDF.Separation <> heap_extensionality thm
+R4018:4036 CDF.Separation <> heap_extensionality thm
+prf 4150:4161 <> hunion_assoc
+binder 4173:4174 <> h1:63
+binder 4176:4177 <> h2:64
+binder 4179:4180 <> h3:65
+R4207:4209 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4183:4188 CDF.Separation <> hunion def
+R4191:4196 CDF.Separation <> hunion def
+R4198:4199 CDF.Separation <> h1:63 var
+R4201:4202 CDF.Separation <> h2:64 var
+R4205:4206 CDF.Separation <> h3:65 var
+R4210:4215 CDF.Separation <> hunion def
+R4217:4218 CDF.Separation <> h1:63 var
+R4221:4226 CDF.Separation <> hunion def
+R4228:4229 CDF.Separation <> h2:64 var
+R4231:4232 CDF.Separation <> h3:65 var
+R4268:4286 CDF.Separation <> heap_extensionality thm
+R4268:4286 CDF.Separation <> heap_extensionality thm
+prf 4347:4358 <> hunion_empty
+binder 4370:4370 <> h:66
+R4388:4390 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4373:4378 CDF.Separation <> hunion def
+R4380:4385 CDF.Separation <> hempty def
+R4387:4387 CDF.Separation <> h:66 var
+R4391:4391 CDF.Separation <> h:66 var
+R4419:4437 CDF.Separation <> heap_extensionality thm
+R4419:4437 CDF.Separation <> heap_extensionality thm
+prf 4473:4489 <> hdisjoint_union_l
+binder 4501:4502 <> h1:67
+binder 4504:4505 <> h2:68
+binder 4507:4508 <> h3:69
+R4540:4544 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R4513:4521 CDF.Separation <> hdisjoint def
+R4524:4529 CDF.Separation <> hunion def
+R4531:4532 CDF.Separation <> h1:67 var
+R4534:4535 CDF.Separation <> h2:68 var
+R4538:4539 CDF.Separation <> h3:69 var
+R4560:4563 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R4545:4553 CDF.Separation <> hdisjoint def
+R4555:4556 CDF.Separation <> h1:67 var
+R4558:4559 CDF.Separation <> h3:69 var
+R4564:4572 CDF.Separation <> hdisjoint def
+R4574:4575 CDF.Separation <> h2:68 var
+R4577:4578 CDF.Separation <> h3:69 var
+R4597:4605 CDF.Separation <> hdisjoint def
+R4608:4613 CDF.Separation <> hunion def
+prf 4899:4915 <> hdisjoint_union_r
+binder 4927:4928 <> h1:70
+binder 4930:4931 <> h2:71
+binder 4933:4934 <> h3:72
+R4966:4970 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R4939:4947 CDF.Separation <> hdisjoint def
+R4949:4950 CDF.Separation <> h1:70 var
+R4953:4958 CDF.Separation <> hunion def
+R4960:4961 CDF.Separation <> h2:71 var
+R4963:4964 CDF.Separation <> h3:72 var
+R4986:4989 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R4971:4979 CDF.Separation <> hdisjoint def
+R4981:4982 CDF.Separation <> h1:70 var
+R4984:4985 CDF.Separation <> h2:71 var
+R4990:4998 CDF.Separation <> hdisjoint def
+R5000:5001 CDF.Separation <> h1:70 var
+R5003:5004 CDF.Separation <> h3:72 var
+R5032:5044 CDF.Separation <> hdisjoint_sym thm
+R5032:5044 CDF.Separation <> hdisjoint_sym thm
+R5032:5044 CDF.Separation <> hdisjoint_sym thm
+R5055:5071 CDF.Separation <> hdisjoint_union_l thm
+R5055:5071 CDF.Separation <> hdisjoint_union_l thm
+R5055:5071 CDF.Separation <> hdisjoint_union_l thm
+R5085:5097 CDF.Separation <> hdisjoint_sym thm
+R5105:5117 CDF.Separation <> hdisjoint_sym thm
+R5085:5097 CDF.Separation <> hdisjoint_sym thm
+R5085:5097 CDF.Separation <> hdisjoint_sym thm
+R5105:5117 CDF.Separation <> hdisjoint_sym thm
+R5105:5117 CDF.Separation <> hdisjoint_sym thm
+def 5190:5195 <> hdisj3
+R5208:5211 CDF.Separation <> heap rec
+binder 5198:5199 <> h1:73
+binder 5201:5202 <> h2:74
+binder 5204:5205 <> h3:75
+R5234:5237 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R5219:5227 CDF.Separation <> hdisjoint def
+R5229:5230 CDF.Separation <> h1:73 var
+R5232:5233 CDF.Separation <> h2:74 var
+R5253:5256 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R5238:5246 CDF.Separation <> hdisjoint def
+R5248:5249 CDF.Separation <> h1:73 var
+R5251:5252 CDF.Separation <> h3:75 var
+R5257:5265 CDF.Separation <> hdisjoint def
+R5267:5268 CDF.Separation <> h2:74 var
+R5270:5271 CDF.Separation <> h3:75 var
+R5367:5372 CDF.Separation <> hdisj3 def
+R5367:5372 CDF.Separation <> hdisj3 def
+R5438:5446 CDF.Separation <> hdisjoint def
+R5449:5454 CDF.Separation <> hunion def
+R5438:5446 CDF.Separation <> hdisjoint def
+R5449:5454 CDF.Separation <> hunion def
+R5536:5544 CDF.Separation <> hdisjoint def
+R5549:5554 CDF.Separation <> hunion def
+R5536:5544 CDF.Separation <> hdisjoint def
+R5549:5554 CDF.Separation <> hunion def
+R5634:5639 CDF.Separation <> hdisj3 def
+R5634:5639 CDF.Separation <> hdisj3 def
+R5690:5698 CDF.Separation <> hdisjoint def
+R5701:5706 CDF.Separation <> hunion def
+R5690:5698 CDF.Separation <> hdisjoint def
+R5701:5706 CDF.Separation <> hunion def
+R5773:5781 CDF.Separation <> hdisjoint def
+R5786:5791 CDF.Separation <> hunion def
+R5773:5781 CDF.Separation <> hdisjoint def
+R5786:5791 CDF.Separation <> hunion def
+R5856:5864 CDF.Separation <> hdisjoint def
+R5866:5871 CDF.Separation <> hempty def
+R5856:5864 CDF.Separation <> hdisjoint def
+R5866:5871 CDF.Separation <> hempty def
+R5905:5913 CDF.Separation <> hdisjoint def
+R5917:5922 CDF.Separation <> hempty def
+R5905:5913 CDF.Separation <> hdisjoint def
+R5917:5922 CDF.Separation <> hempty def
+R5954:5962 CDF.Separation <> hdisjoint def
+R5954:5962 CDF.Separation <> hdisjoint def
+R6000:6012 CDF.Separation <> hdisjoint_sym thm
+R5815:5831 CDF.Separation <> hdisjoint_union_r thm
+R5732:5748 CDF.Separation <> hdisjoint_union_l thm
+R5583:5599 CDF.Separation <> hdisjoint_union_r thm
+R5485:5501 CDF.Separation <> hdisjoint_union_l thm
+prf 6065:6079 <> hunion_invert_r
+binder 6091:6092 <> h1:76
+binder 6094:6095 <> h2:77
+binder 6097:6097 <> h:78
+R6127:6130 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6113:6115 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6102:6107 CDF.Separation <> hunion def
+R6109:6109 CDF.Separation <> h:78 var
+R6111:6112 CDF.Separation <> h1:76 var
+R6116:6121 CDF.Separation <> hunion def
+R6123:6123 CDF.Separation <> h:78 var
+R6125:6126 CDF.Separation <> h2:77 var
+R6145:6148 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6131:6139 CDF.Separation <> hdisjoint def
+R6141:6141 CDF.Separation <> h:78 var
+R6143:6144 CDF.Separation <> h1:76 var
+R6163:6166 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6149:6157 CDF.Separation <> hdisjoint def
+R6159:6159 CDF.Separation <> h:78 var
+R6161:6162 CDF.Separation <> h2:77 var
+R6169:6171 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6167:6168 CDF.Separation <> h1:76 var
+R6172:6173 CDF.Separation <> h2:77 var
+R6199:6217 CDF.Separation <> heap_extensionality thm
+R6199:6217 CDF.Separation <> heap_extensionality thm
+R6253:6255 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6240:6245 CDF.Separation <> hunion def
+R6256:6261 CDF.Separation <> hunion def
+R6253:6255 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6240:6245 CDF.Separation <> hunion def
+R6256:6261 CDF.Separation <> hunion def
+prf 6395:6409 <> hunion_invert_l
+binder 6421:6422 <> h1:79
+binder 6424:6425 <> h2:80
+binder 6427:6427 <> h:81
+R6457:6460 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6443:6445 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6432:6437 CDF.Separation <> hunion def
+R6439:6440 CDF.Separation <> h1:79 var
+R6442:6442 CDF.Separation <> h:81 var
+R6446:6451 CDF.Separation <> hunion def
+R6453:6454 CDF.Separation <> h2:80 var
+R6456:6456 CDF.Separation <> h:81 var
+R6475:6478 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6461:6469 CDF.Separation <> hdisjoint def
+R6471:6472 CDF.Separation <> h1:79 var
+R6474:6474 CDF.Separation <> h:81 var
+R6493:6496 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6479:6487 CDF.Separation <> hdisjoint def
+R6489:6490 CDF.Separation <> h2:80 var
+R6492:6492 CDF.Separation <> h:81 var
+R6499:6501 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6497:6498 CDF.Separation <> h1:79 var
+R6502:6503 CDF.Separation <> h2:80 var
+R6529:6543 CDF.Separation <> hunion_invert_r thm
+R6529:6543 CDF.Separation <> hunion_invert_r thm
+R6569:6579 CDF.Separation <> hunion_comm thm
+R6569:6579 CDF.Separation <> hunion_comm thm
+R6569:6579 CDF.Separation <> hunion_comm thm
+R6569:6579 CDF.Separation <> hunion_comm thm
+R6569:6579 CDF.Separation <> hunion_comm thm
+def 6678:6686 <> assertion
+R6702:6705 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6698:6701 CDF.Separation <> heap rec
+def 6758:6761 <> aimp
+R6769:6777 CDF.Separation <> assertion def
+binder 6764:6764 <> P:82
+binder 6766:6766 <> Q:83
+binder 6799:6799 <> h:84
+R6805:6808 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6802:6802 CDF.Separation <> P:82 var
+R6804:6804 CDF.Separation <> h:84 var
+R6809:6809 CDF.Separation <> Q:83 var
+R6811:6811 CDF.Separation <> h:84 var
+R6839:6842 CDF.Separation <> aimp def
+not 6824:6824 <> :::x_'-->>'_x
+def 6918:6924 <> aexists
+binder 6927:6927 <> A:85
+R6941:6944 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6940:6940 CDF.Separation <> A:85 var
+R6945:6953 CDF.Separation <> assertion def
+binder 6937:6937 <> P:86
+R6958:6966 CDF.Separation <> assertion def
+binder 6977:6977 <> h:87
+R6982:6988 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R6993:6994 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R6992:6992 CDF.Separation <> A:85 var
+binder 6989:6989 <> a:88
+R6995:6995 CDF.Separation <> P:86 var
+R6999:6999 CDF.Separation <> h:87 var
+R6997:6997 CDF.Separation <> a:88 var
+def 7014:7020 <> aforall
+binder 7023:7023 <> A:89
+R7037:7040 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7036:7036 CDF.Separation <> A:89 var
+R7041:7049 CDF.Separation <> assertion def
+binder 7033:7033 <> P:90
+R7054:7062 CDF.Separation <> assertion def
+binder 7073:7073 <> h:91
+R7088:7088 CDF.Separation <> A:89 var
+binder 7085:7085 <> a:92
+R7091:7091 CDF.Separation <> P:90 var
+R7095:7095 CDF.Separation <> h:91 var
+R7093:7093 CDF.Separation <> a:92 var
+def 7153:7155 <> emp
+R7159:7167 CDF.Separation <> assertion def
+binder 7178:7178 <> h:93
+R7184:7186 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7183:7183 CDF.Separation <> h:93 var
+R7187:7192 CDF.Separation <> hempty def
+def 7268:7271 <> pure
+binder 7274:7274 <> P:94
+R7285:7293 CDF.Separation <> assertion def
+binder 7304:7304 <> h:95
+R7310:7313 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R7309:7309 CDF.Separation <> P:94 var
+R7315:7317 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7314:7314 CDF.Separation <> h:95 var
+R7318:7323 CDF.Separation <> hempty def
+def 7450:7457 <> contains
+R7463:7466 CDF.Separation <> addr def
+binder 7460:7460 <> l:96
+R7473:7473 Coq.Numbers.BinNums <> Z ind
+binder 7470:7470 <> v:97
+R7478:7486 CDF.Separation <> assertion def
+binder 7497:7497 <> h:98
+R7503:7505 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7502:7502 CDF.Separation <> h:98 var
+R7506:7512 CDF.Separation <> hupdate def
+R7514:7514 CDF.Separation <> l:96 var
+R7516:7516 CDF.Separation <> v:97 var
+R7518:7523 CDF.Separation <> hempty def
+def 7617:7621 <> valid
+R7627:7630 CDF.Separation <> addr def
+binder 7624:7624 <> l:99
+R7635:7643 CDF.Separation <> assertion def
+R7648:7654 CDF.Separation <> aexists def
+R7657:7664 CDF.Separation <> contains def
+R7666:7666 CDF.Separation <> l:99 var
+def 7718:7724 <> sepconj
+R7732:7740 CDF.Separation <> assertion def
+binder 7727:7727 <> P:100
+binder 7729:7729 <> Q:101
+R7745:7753 CDF.Separation <> assertion def
+binder 7764:7764 <> h:102
+R7769:7775 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R7781:7782 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 7776:7777 <> h1:103
+binder 7779:7780 <> h2:104
+R7787:7812 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R7783:7783 CDF.Separation <> P:100 var
+R7785:7786 CDF.Separation <> h1:103 var
+R7817:7842 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R7813:7813 CDF.Separation <> Q:101 var
+R7815:7816 CDF.Separation <> h2:104 var
+R7858:7862 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R7843:7851 CDF.Separation <> hdisjoint def
+R7853:7854 CDF.Separation <> h1:103 var
+R7856:7857 CDF.Separation <> h2:104 var
+R7864:7866 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7863:7863 CDF.Separation <> h:102 var
+R7867:7872 CDF.Separation <> hunion def
+R7874:7875 CDF.Separation <> h1:103 var
+R7877:7878 CDF.Separation <> h2:104 var
+R7904:7910 CDF.Separation <> sepconj def
+not 7891:7891 <> :::x_'**'_x
+def 8036:8043 <> pureconj
+binder 8046:8046 <> P:105
+R8059:8067 CDF.Separation <> assertion def
+binder 8056:8056 <> Q:106
+R8072:8080 CDF.Separation <> assertion def
+binder 8091:8091 <> h:107
+R8097:8100 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R8096:8096 CDF.Separation <> P:105 var
+R8101:8101 CDF.Separation <> Q:106 var
+R8103:8103 CDF.Separation <> h:107 var
+R8131:8138 CDF.Separation <> pureconj def
+not 8116:8116 <> :::x_'//\\'_x
+def 8236:8239 <> aand
+R8247:8255 CDF.Separation <> assertion def
+binder 8242:8242 <> P:108
+binder 8244:8244 <> Q:109
+R8260:8268 CDF.Separation <> assertion def
+binder 8279:8279 <> h:110
+R8287:8290 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R8284:8284 CDF.Separation <> P:108 var
+R8286:8286 CDF.Separation <> h:110 var
+R8291:8291 CDF.Separation <> Q:109 var
+R8293:8293 CDF.Separation <> h:110 var
+def 8307:8309 <> aor
+R8317:8325 CDF.Separation <> assertion def
+binder 8312:8312 <> P:111
+binder 8314:8314 <> Q:112
+R8330:8338 CDF.Separation <> assertion def
+binder 8349:8349 <> h:113
+R8357:8360 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R8354:8354 CDF.Separation <> P:111 var
+R8356:8356 CDF.Separation <> h:113 var
+R8361:8361 CDF.Separation <> Q:112 var
+R8363:8363 CDF.Separation <> h:113 var
+prf 8422:8445 <> assertion_extensionality
+R8463:8471 CDF.Separation <> assertion def
+binder 8458:8458 <> P:114
+binder 8460:8460 <> Q:115
+R8477:8477 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8499:8503 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 8485:8485 <> h:116
+R8491:8495 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R8488:8488 CDF.Separation <> P:114 var
+R8490:8490 CDF.Separation <> h:116 var
+R8496:8496 CDF.Separation <> Q:115 var
+R8498:8498 CDF.Separation <> h:116 var
+R8505:8507 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8504:8504 CDF.Separation <> P:114 var
+R8508:8508 CDF.Separation <> Q:115 var
+R8534:8558 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+R8534:8558 Coq.Logic.FunctionalExtensionality <> functional_extensionality thm
+R8579:8606 Coq.Logic.PropExtensionality <> propositional_extensionality prfax
+R8579:8606 Coq.Logic.PropExtensionality <> propositional_extensionality prfax
+prf 8675:8686 <> sepconj_comm
+binder 8696:8696 <> P:117
+binder 8698:8698 <> Q:118
+R8707:8709 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8702:8705 CDF.Separation <> :::x_'**'_x not
+R8701:8701 CDF.Separation <> P:117 var
+R8706:8706 CDF.Separation <> Q:118 var
+R8711:8714 CDF.Separation <> :::x_'**'_x not
+R8710:8710 CDF.Separation <> Q:118 var
+R8715:8715 CDF.Separation <> P:117 var
+binder 8742:8742 <> P:119
+binder 8744:8744 <> Q:120
+binder 8746:8746 <> h:121
+R8759:8762 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8749:8749 CDF.Separation <> :::x_'**'_x not
+R8751:8754 CDF.Separation <> :::x_'**'_x not
+R8756:8758 CDF.Separation <> :::x_'**'_x not
+R8750:8750 CDF.Separation <> P:119 var
+R8755:8755 CDF.Separation <> Q:120 var
+R8758:8758 CDF.Separation <> h:121 var
+R8763:8763 CDF.Separation <> :::x_'**'_x not
+R8765:8768 CDF.Separation <> :::x_'**'_x not
+R8770:8772 CDF.Separation <> :::x_'**'_x not
+R8764:8764 CDF.Separation <> Q:120 var
+R8769:8769 CDF.Separation <> P:119 var
+R8772:8772 CDF.Separation <> h:121 var
+binder 8742:8742 <> P:122
+binder 8744:8744 <> Q:123
+binder 8746:8746 <> h:124
+R8759:8762 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8749:8749 CDF.Separation <> :::x_'**'_x not
+R8751:8754 CDF.Separation <> :::x_'**'_x not
+R8756:8758 CDF.Separation <> :::x_'**'_x not
+R8750:8750 CDF.Separation <> P:122 var
+R8755:8755 CDF.Separation <> Q:123 var
+R8758:8758 CDF.Separation <> h:124 var
+R8763:8763 CDF.Separation <> :::x_'**'_x not
+R8765:8768 CDF.Separation <> :::x_'**'_x not
+R8770:8772 CDF.Separation <> :::x_'**'_x not
+R8764:8764 CDF.Separation <> Q:123 var
+R8769:8769 CDF.Separation <> P:122 var
+R8772:8772 CDF.Separation <> h:124 var
+R8879:8891 CDF.Separation <> hdisjoint_sym thm
+R8879:8891 CDF.Separation <> hdisjoint_sym thm
+R8920:8930 CDF.Separation <> hunion_comm thm
+R8920:8930 CDF.Separation <> hunion_comm thm
+R8959:8982 CDF.Separation <> assertion_extensionality thm
+R8959:8982 CDF.Separation <> assertion_extensionality thm
+prf 9020:9032 <> sepconj_assoc
+binder 9042:9042 <> P:125
+binder 9044:9044 <> Q:126
+binder 9046:9046 <> R:127
+R9062:9064 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9049:9049 CDF.Separation <> :::x_'**'_x not
+R9056:9060 CDF.Separation <> :::x_'**'_x not
+R9051:9054 CDF.Separation <> :::x_'**'_x not
+R9050:9050 CDF.Separation <> P:125 var
+R9055:9055 CDF.Separation <> Q:126 var
+R9061:9061 CDF.Separation <> R:127 var
+R9066:9070 CDF.Separation <> :::x_'**'_x not
+R9077:9077 CDF.Separation <> :::x_'**'_x not
+R9065:9065 CDF.Separation <> P:125 var
+R9072:9075 CDF.Separation <> :::x_'**'_x not
+R9071:9071 CDF.Separation <> Q:126 var
+R9076:9076 CDF.Separation <> R:127 var
+R9109:9132 CDF.Separation <> assertion_extensionality thm
+R9109:9132 CDF.Separation <> assertion_extensionality thm
+R9247:9263 CDF.Separation <> hdisjoint_union_l thm
+R9247:9263 CDF.Separation <> hdisjoint_union_l thm
+R9247:9263 CDF.Separation <> hdisjoint_union_l thm
+R9281:9292 CDF.Separation <> hunion_assoc thm
+R9281:9292 CDF.Separation <> hunion_assoc thm
+R9281:9292 CDF.Separation <> hunion_assoc thm
+R9309:9314 CDF.Separation <> hunion def
+R9309:9314 CDF.Separation <> hunion def
+R9383:9399 CDF.Separation <> hdisjoint_union_r thm
+R9383:9399 CDF.Separation <> hdisjoint_union_r thm
+R9383:9399 CDF.Separation <> hdisjoint_union_r thm
+R9504:9520 CDF.Separation <> hdisjoint_union_r thm
+R9504:9520 CDF.Separation <> hdisjoint_union_r thm
+R9504:9520 CDF.Separation <> hdisjoint_union_r thm
+R9541:9552 CDF.Separation <> hunion_assoc thm
+R9541:9552 CDF.Separation <> hunion_assoc thm
+R9541:9552 CDF.Separation <> hunion_assoc thm
+R9565:9570 CDF.Separation <> hunion def
+R9565:9570 CDF.Separation <> hunion def
+R9643:9659 CDF.Separation <> hdisjoint_union_l thm
+R9643:9659 CDF.Separation <> hdisjoint_union_l thm
+R9643:9659 CDF.Separation <> hdisjoint_union_l thm
+prf 9681:9691 <> sepconj_emp
+binder 9701:9701 <> P:128
+R9712:9714 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9707:9710 CDF.Separation <> :::x_'**'_x not
+R9704:9706 CDF.Separation <> emp def
+R9711:9711 CDF.Separation <> P:128 var
+R9715:9715 CDF.Separation <> P:128 var
+R9743:9766 CDF.Separation <> assertion_extensionality thm
+R9743:9766 CDF.Separation <> assertion_extensionality thm
+R9865:9876 CDF.Separation <> hunion_empty thm
+R9865:9876 CDF.Separation <> hunion_empty thm
+R9865:9876 CDF.Separation <> hunion_empty thm
+R9902:9907 CDF.Separation <> hempty def
+R9902:9907 CDF.Separation <> hempty def
+R9965:9976 CDF.Separation <> hunion_empty thm
+R9965:9976 CDF.Separation <> hunion_empty thm
+R9965:9976 CDF.Separation <> hunion_empty thm
+prf 9997:10009 <> sepconj_imp_l
+binder 10019:10019 <> P:129
+binder 10021:10021 <> Q:130
+binder 10023:10023 <> R:131
+R10028:10028 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10037:10042 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10061:10061 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10030:10035 CDF.Separation <> :::x_'-->>'_x not
+R10029:10029 CDF.Separation <> P:129 var
+R10036:10036 CDF.Separation <> Q:130 var
+R10049:10054 CDF.Separation <> :::x_'-->>'_x not
+R10044:10047 CDF.Separation <> :::x_'**'_x not
+R10043:10043 CDF.Separation <> P:129 var
+R10048:10048 CDF.Separation <> R:131 var
+R10056:10059 CDF.Separation <> :::x_'**'_x not
+R10055:10055 CDF.Separation <> Q:130 var
+R10060:10060 CDF.Separation <> R:131 var
+prf 10166:10178 <> sepconj_imp_r
+binder 10188:10188 <> P:132
+binder 10190:10190 <> Q:133
+binder 10192:10192 <> R:134
+R10197:10197 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10206:10211 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10230:10230 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10199:10204 CDF.Separation <> :::x_'-->>'_x not
+R10198:10198 CDF.Separation <> P:132 var
+R10205:10205 CDF.Separation <> Q:133 var
+R10218:10223 CDF.Separation <> :::x_'-->>'_x not
+R10213:10216 CDF.Separation <> :::x_'**'_x not
+R10212:10212 CDF.Separation <> R:134 var
+R10217:10217 CDF.Separation <> P:132 var
+R10225:10228 CDF.Separation <> :::x_'**'_x not
+R10224:10224 CDF.Separation <> R:134 var
+R10229:10229 CDF.Separation <> Q:133 var
+R10261:10272 CDF.Separation <> sepconj_comm thm
+R10261:10272 CDF.Separation <> sepconj_comm thm
+R10261:10272 CDF.Separation <> sepconj_comm thm
+R10261:10272 CDF.Separation <> sepconj_comm thm
+R10261:10272 CDF.Separation <> sepconj_comm thm
+R10284:10296 CDF.Separation <> sepconj_imp_l thm
+R10284:10296 CDF.Separation <> sepconj_imp_l thm
+prf 10360:10367 <> pure_sep
+binder 10377:10377 <> P:135
+binder 10379:10379 <> Q:136
+R10397:10399 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10384:10387 CDF.Separation <> pure def
+R10391:10394 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R10390:10390 CDF.Separation <> P:135 var
+R10395:10395 CDF.Separation <> Q:136 var
+R10406:10409 CDF.Separation <> :::x_'**'_x not
+R10400:10403 CDF.Separation <> pure def
+R10405:10405 CDF.Separation <> P:135 var
+R10410:10413 CDF.Separation <> pure def
+R10415:10415 CDF.Separation <> Q:136 var
+R10445:10468 CDF.Separation <> assertion_extensionality thm
+R10445:10468 CDF.Separation <> assertion_extensionality thm
+R10490:10493 CDF.Separation <> pure def
+R10496:10502 CDF.Separation <> sepconj def
+R10552:10557 CDF.Separation <> hempty def
+R10560:10565 CDF.Separation <> hempty def
+R10552:10557 CDF.Separation <> hempty def
+R10560:10565 CDF.Separation <> hempty def
+R10604:10615 CDF.Separation <> hunion_empty thm
+R10604:10615 CDF.Separation <> hunion_empty thm
+R10604:10615 CDF.Separation <> hunion_empty thm
+R10701:10712 CDF.Separation <> hunion_empty thm
+R10701:10712 CDF.Separation <> hunion_empty thm
+R10701:10712 CDF.Separation <> hunion_empty thm
+prf 10733:10748 <> pureconj_sepconj
+binder 10758:10758 <> P:137
+binder 10760:10760 <> Q:138
+R10776:10778 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10771:10774 CDF.Separation <> :::x_'**'_x not
+R10765:10768 CDF.Separation <> pure def
+R10770:10770 CDF.Separation <> P:137 var
+R10775:10775 CDF.Separation <> Q:138 var
+R10780:10785 CDF.Separation <> :::x_'//\\'_x not
+R10779:10779 CDF.Separation <> P:137 var
+R10786:10786 CDF.Separation <> Q:138 var
+R10816:10839 CDF.Separation <> assertion_extensionality thm
+R10816:10839 CDF.Separation <> assertion_extensionality thm
+R10861:10864 CDF.Separation <> pure def
+R10867:10873 CDF.Separation <> sepconj def
+R10876:10883 CDF.Separation <> pureconj def
+R10970:10981 CDF.Separation <> hunion_empty thm
+R10970:10981 CDF.Separation <> hunion_empty thm
+R10970:10981 CDF.Separation <> hunion_empty thm
+R11015:11020 CDF.Separation <> hempty def
+R11015:11020 CDF.Separation <> hempty def
+R11064:11075 CDF.Separation <> hunion_empty thm
+R11064:11075 CDF.Separation <> hunion_empty thm
+R11064:11075 CDF.Separation <> hunion_empty thm
+prf 11096:11108 <> lift_pureconj
+binder 11118:11118 <> P:139
+binder 11120:11120 <> Q:140
+binder 11122:11122 <> R:141
+R11140:11142 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11125:11125 CDF.Separation <> :::x_'**'_x not
+R11134:11138 CDF.Separation <> :::x_'**'_x not
+R11127:11132 CDF.Separation <> :::x_'//\\'_x not
+R11126:11126 CDF.Separation <> P:139 var
+R11133:11133 CDF.Separation <> Q:140 var
+R11139:11139 CDF.Separation <> R:141 var
+R11144:11150 CDF.Separation <> :::x_'//\\'_x not
+R11157:11157 CDF.Separation <> :::x_'//\\'_x not
+R11143:11143 CDF.Separation <> P:139 var
+R11152:11155 CDF.Separation <> :::x_'**'_x not
+R11151:11151 CDF.Separation <> Q:140 var
+R11156:11156 CDF.Separation <> R:141 var
+R11190:11205 CDF.Separation <> pureconj_sepconj thm
+R11190:11205 CDF.Separation <> pureconj_sepconj thm
+R11190:11205 CDF.Separation <> pureconj_sepconj thm
+R11190:11205 CDF.Separation <> pureconj_sepconj thm
+R11190:11205 CDF.Separation <> pureconj_sepconj thm
+R11216:11228 CDF.Separation <> sepconj_assoc thm
+R11216:11228 CDF.Separation <> sepconj_assoc thm
+R11216:11228 CDF.Separation <> sepconj_assoc thm
+prf 11249:11260 <> lift_aexists
+binder 11271:11271 <> A:142
+R11285:11288 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11284:11284 CDF.Separation <> A:142 var
+R11289:11297 CDF.Separation <> assertion def
+binder 11281:11281 <> P:143
+binder 11300:11300 <> Q:144
+R11319:11321 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11314:11317 CDF.Separation <> :::x_'**'_x not
+R11305:11311 CDF.Separation <> aexists def
+R11313:11313 CDF.Separation <> P:143 var
+R11318:11318 CDF.Separation <> Q:144 var
+R11322:11328 CDF.Separation <> aexists def
+binder 11335:11335 <> x:145
+R11343:11346 CDF.Separation <> :::x_'**'_x not
+R11340:11340 CDF.Separation <> P:143 var
+R11342:11342 CDF.Separation <> x:145 var
+R11347:11347 CDF.Separation <> Q:144 var
+R11380:11403 CDF.Separation <> assertion_extensionality thm
+R11380:11403 CDF.Separation <> assertion_extensionality thm
+prf 11604:11616 <> sepconj_swap3
+binder 11626:11626 <> R:146
+binder 11628:11628 <> P:147
+binder 11630:11630 <> Q:148
+R11644:11646 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11634:11637 CDF.Separation <> :::x_'**'_x not
+R11633:11633 CDF.Separation <> P:147 var
+R11639:11642 CDF.Separation <> :::x_'**'_x not
+R11638:11638 CDF.Separation <> Q:148 var
+R11643:11643 CDF.Separation <> R:146 var
+R11648:11651 CDF.Separation <> :::x_'**'_x not
+R11647:11647 CDF.Separation <> R:146 var
+R11653:11656 CDF.Separation <> :::x_'**'_x not
+R11652:11652 CDF.Separation <> P:147 var
+R11657:11657 CDF.Separation <> Q:148 var
+R11688:11700 CDF.Separation <> sepconj_assoc thm
+R11703:11714 CDF.Separation <> sepconj_comm thm
+R11688:11700 CDF.Separation <> sepconj_assoc thm
+R11688:11700 CDF.Separation <> sepconj_assoc thm
+R11703:11714 CDF.Separation <> sepconj_comm thm
+R11703:11714 CDF.Separation <> sepconj_comm thm
+prf 11735:11747 <> sepconj_swap4
+binder 11757:11757 <> S:149
+binder 11759:11759 <> P:150
+binder 11761:11761 <> Q:151
+binder 11763:11763 <> R:152
+R11782:11784 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11767:11770 CDF.Separation <> :::x_'**'_x not
+R11766:11766 CDF.Separation <> P:150 var
+R11772:11775 CDF.Separation <> :::x_'**'_x not
+R11771:11771 CDF.Separation <> Q:151 var
+R11777:11780 CDF.Separation <> :::x_'**'_x not
+R11776:11776 CDF.Separation <> R:152 var
+R11781:11781 CDF.Separation <> S:149 var
+R11786:11789 CDF.Separation <> :::x_'**'_x not
+R11785:11785 CDF.Separation <> S:149 var
+R11791:11794 CDF.Separation <> :::x_'**'_x not
+R11790:11790 CDF.Separation <> P:150 var
+R11796:11799 CDF.Separation <> :::x_'**'_x not
+R11795:11795 CDF.Separation <> Q:151 var
+R11800:11800 CDF.Separation <> R:152 var
+R11831:11843 CDF.Separation <> sepconj_assoc thm
+R11846:11858 CDF.Separation <> sepconj_swap3 thm
+R11861:11873 CDF.Separation <> sepconj_assoc thm
+R11831:11843 CDF.Separation <> sepconj_assoc thm
+R11831:11843 CDF.Separation <> sepconj_assoc thm
+R11846:11858 CDF.Separation <> sepconj_swap3 thm
+R11846:11858 CDF.Separation <> sepconj_swap3 thm
+R11861:11873 CDF.Separation <> sepconj_assoc thm
+R11861:11873 CDF.Separation <> sepconj_assoc thm
+prf 11894:11906 <> sepconj_pick2
+binder 11916:11916 <> Q:153
+binder 11918:11918 <> P:154
+binder 11920:11920 <> R:155
+R11934:11936 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11924:11927 CDF.Separation <> :::x_'**'_x not
+R11923:11923 CDF.Separation <> P:154 var
+R11929:11932 CDF.Separation <> :::x_'**'_x not
+R11928:11928 CDF.Separation <> Q:153 var
+R11933:11933 CDF.Separation <> R:155 var
+R11938:11941 CDF.Separation <> :::x_'**'_x not
+R11937:11937 CDF.Separation <> Q:153 var
+R11943:11946 CDF.Separation <> :::x_'**'_x not
+R11942:11942 CDF.Separation <> P:154 var
+R11947:11947 CDF.Separation <> R:155 var
+R11976:11987 CDF.Separation <> sepconj_comm thm
+R11996:12008 CDF.Separation <> sepconj_assoc thm
+R12011:12022 CDF.Separation <> sepconj_comm thm
+R11976:11987 CDF.Separation <> sepconj_comm thm
+R11976:11987 CDF.Separation <> sepconj_comm thm
+R11996:12008 CDF.Separation <> sepconj_assoc thm
+R11996:12008 CDF.Separation <> sepconj_assoc thm
+R12011:12022 CDF.Separation <> sepconj_comm thm
+R12011:12022 CDF.Separation <> sepconj_comm thm
+prf 12043:12055 <> sepconj_pick3
+binder 12065:12065 <> R:156
+binder 12067:12067 <> P:157
+binder 12069:12069 <> Q:158
+binder 12071:12071 <> S:159
+R12090:12092 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12075:12078 CDF.Separation <> :::x_'**'_x not
+R12074:12074 CDF.Separation <> P:157 var
+R12080:12083 CDF.Separation <> :::x_'**'_x not
+R12079:12079 CDF.Separation <> Q:158 var
+R12085:12088 CDF.Separation <> :::x_'**'_x not
+R12084:12084 CDF.Separation <> R:156 var
+R12089:12089 CDF.Separation <> S:159 var
+R12094:12097 CDF.Separation <> :::x_'**'_x not
+R12093:12093 CDF.Separation <> R:156 var
+R12099:12102 CDF.Separation <> :::x_'**'_x not
+R12098:12098 CDF.Separation <> P:157 var
+R12104:12107 CDF.Separation <> :::x_'**'_x not
+R12103:12103 CDF.Separation <> Q:158 var
+R12108:12108 CDF.Separation <> S:159 var
+R12137:12149 CDF.Separation <> sepconj_pick2 thm
+R12156:12168 CDF.Separation <> sepconj_pick2 thm
+R12137:12149 CDF.Separation <> sepconj_pick2 thm
+R12137:12149 CDF.Separation <> sepconj_pick2 thm
+R12156:12168 CDF.Separation <> sepconj_pick2 thm
+R12156:12168 CDF.Separation <> sepconj_pick2 thm
+def 12219:12222 <> wand
+R12230:12238 CDF.Separation <> assertion def
+binder 12225:12225 <> P:160
+binder 12227:12227 <> Q:161
+R12243:12251 CDF.Separation <> assertion def
+binder 12262:12262 <> h:162
+binder 12274:12275 <> h':163
+R12292:12295 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12278:12286 CDF.Separation <> hdisjoint def
+R12288:12288 CDF.Separation <> h:162 var
+R12290:12291 CDF.Separation <> h':163 var
+R12300:12303 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12296:12296 CDF.Separation <> P:160 var
+R12298:12299 CDF.Separation <> h':163 var
+R12304:12304 CDF.Separation <> Q:161 var
+R12307:12312 CDF.Separation <> hunion def
+R12314:12314 CDF.Separation <> h:162 var
+R12316:12317 CDF.Separation <> h':163 var
+R12345:12348 CDF.Separation <> wand def
+not 12331:12331 <> :::x_'--*'_x
+prf 12398:12407 <> wand_intro
+binder 12417:12417 <> P:164
+binder 12419:12419 <> Q:165
+binder 12421:12421 <> R:166
+R12439:12444 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12432:12437 CDF.Separation <> :::x_'-->>'_x not
+R12427:12430 CDF.Separation <> :::x_'**'_x not
+R12426:12426 CDF.Separation <> P:164 var
+R12431:12431 CDF.Separation <> Q:165 var
+R12438:12438 CDF.Separation <> R:166 var
+R12446:12451 CDF.Separation <> :::x_'-->>'_x not
+R12445:12445 CDF.Separation <> P:164 var
+R12453:12457 CDF.Separation <> :::x_'--*'_x not
+R12452:12452 CDF.Separation <> Q:165 var
+R12458:12458 CDF.Separation <> R:166 var
+prf 12550:12560 <> wand_cancel
+binder 12570:12570 <> P:167
+binder 12572:12572 <> Q:168
+R12591:12596 CDF.Separation <> :::x_'-->>'_x not
+R12578:12582 CDF.Separation <> :::x_'**'_x not
+R12590:12590 CDF.Separation <> :::x_'**'_x not
+R12577:12577 CDF.Separation <> P:167 var
+R12584:12588 CDF.Separation <> :::x_'--*'_x not
+R12583:12583 CDF.Separation <> P:167 var
+R12589:12589 CDF.Separation <> Q:168 var
+R12597:12597 CDF.Separation <> Q:168 var
+R12676:12684 CDF.Separation <> hdisjoint def
+R12703:12715 CDF.Separation <> hdisjoint_sym thm
+R12676:12684 CDF.Separation <> hdisjoint def
+R12703:12715 CDF.Separation <> hdisjoint_sym thm
+R12735:12745 CDF.Separation <> hunion_comm thm
+R12735:12745 CDF.Separation <> hunion_comm thm
+R12735:12745 CDF.Separation <> hunion_comm thm
+prf 12785:12796 <> wand_charact
+binder 12806:12806 <> P:169
+binder 12808:12808 <> Q:170
+R12813:12813 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12820:12824 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12866:12866 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12815:12818 CDF.Separation <> :::x_'--*'_x not
+R12814:12814 CDF.Separation <> P:169 var
+R12819:12819 CDF.Separation <> Q:170 var
+R12825:12831 CDF.Separation <> aexists def
+binder 12838:12838 <> R:171
+R12843:12843 CDF.Separation <> :::x_'//\\'_x not
+R12857:12863 CDF.Separation <> :::x_'//\\'_x not
+R12850:12855 CDF.Separation <> :::x_'-->>'_x not
+R12845:12848 CDF.Separation <> :::x_'**'_x not
+R12844:12844 CDF.Separation <> P:169 var
+R12849:12849 CDF.Separation <> R:171 var
+R12856:12856 CDF.Separation <> Q:170 var
+R12864:12864 CDF.Separation <> R:171 var
+R12896:12919 CDF.Separation <> assertion_extensionality thm
+R12896:12919 CDF.Separation <> assertion_extensionality thm
+R12960:12964 CDF.Separation <> :::x_'--*'_x not
+R12960:12964 CDF.Separation <> :::x_'--*'_x not
+R12988:12998 CDF.Separation <> wand_cancel thm
+R12988:12998 CDF.Separation <> wand_cancel thm
+R13046:13054 CDF.Separation <> hdisjoint def
+R13072:13084 CDF.Separation <> hdisjoint_sym thm
+R13046:13054 CDF.Separation <> hdisjoint def
+R13072:13084 CDF.Separation <> hdisjoint_sym thm
+R13104:13114 CDF.Separation <> hunion_comm thm
+R13104:13114 CDF.Separation <> hunion_comm thm
+R13104:13114 CDF.Separation <> hunion_comm thm
+prf 13166:13175 <> wand_equiv
+binder 13185:13185 <> P:172
+binder 13187:13187 <> Q:173
+binder 13189:13189 <> R:174
+R13194:13194 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R13211:13217 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R13231:13231 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R13196:13202 CDF.Separation <> :::x_'-->>'_x not
+R13210:13210 CDF.Separation <> :::x_'-->>'_x not
+R13195:13195 CDF.Separation <> P:172 var
+R13204:13208 CDF.Separation <> :::x_'--*'_x not
+R13203:13203 CDF.Separation <> Q:173 var
+R13209:13209 CDF.Separation <> R:174 var
+R13224:13229 CDF.Separation <> :::x_'-->>'_x not
+R13219:13222 CDF.Separation <> :::x_'**'_x not
+R13218:13218 CDF.Separation <> P:172 var
+R13223:13223 CDF.Separation <> Q:173 var
+R13230:13230 CDF.Separation <> R:174 var
+R13350:13359 CDF.Separation <> wand_intro thm
+R13350:13359 CDF.Separation <> wand_intro thm
+prf 13380:13389 <> wand_imp_l
+binder 13399:13399 <> P:175
+binder 13401:13402 <> P':176
+binder 13404:13404 <> Q:177
+R13409:13409 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13419:13424 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13446:13446 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13412:13417 CDF.Separation <> :::x_'-->>'_x not
+R13410:13411 CDF.Separation <> P':176 var
+R13418:13418 CDF.Separation <> P:175 var
+R13432:13437 CDF.Separation <> :::x_'-->>'_x not
+R13426:13430 CDF.Separation <> :::x_'--*'_x not
+R13425:13425 CDF.Separation <> P:175 var
+R13431:13431 CDF.Separation <> Q:177 var
+R13440:13444 CDF.Separation <> :::x_'--*'_x not
+R13438:13439 CDF.Separation <> P':176 var
+R13445:13445 CDF.Separation <> Q:177 var
+prf 13518:13527 <> wand_imp_r
+binder 13537:13537 <> P:178
+binder 13539:13539 <> Q:179
+binder 13541:13542 <> Q':180
+R13547:13547 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13557:13562 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13584:13584 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13549:13554 CDF.Separation <> :::x_'-->>'_x not
+R13548:13548 CDF.Separation <> Q:179 var
+R13555:13556 CDF.Separation <> Q':180 var
+R13570:13575 CDF.Separation <> :::x_'-->>'_x not
+R13564:13568 CDF.Separation <> :::x_'--*'_x not
+R13563:13563 CDF.Separation <> P:178 var
+R13569:13569 CDF.Separation <> Q:179 var
+R13577:13581 CDF.Separation <> :::x_'--*'_x not
+R13576:13576 CDF.Separation <> P:178 var
+R13582:13583 CDF.Separation <> Q':180 var
+prf 13664:13672 <> wand_idem
+binder 13682:13682 <> P:181
+R13690:13695 CDF.Separation <> :::x_'-->>'_x not
+R13687:13689 CDF.Separation <> emp def
+R13697:13701 CDF.Separation <> :::x_'--*'_x not
+R13696:13696 CDF.Separation <> P:181 var
+R13702:13702 CDF.Separation <> P:181 var
+R13760:13771 CDF.Separation <> hunion_empty thm
+R13760:13771 CDF.Separation <> hunion_empty thm
+R13760:13771 CDF.Separation <> hunion_empty thm
+prf 13792:13802 <> wand_pure_l
+binder 13813:13813 <> P:182
+binder 13822:13822 <> Q:183
+R13828:13831 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13827:13827 CDF.Separation <> P:182 var
+R13832:13832 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13845:13848 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13839:13843 CDF.Separation <> :::x_'--*'_x not
+R13833:13836 CDF.Separation <> pure def
+R13838:13838 CDF.Separation <> P:182 var
+R13844:13844 CDF.Separation <> Q:183 var
+R13849:13849 CDF.Separation <> Q:183 var
+R13882:13905 CDF.Separation <> assertion_extensionality thm
+R13882:13905 CDF.Separation <> assertion_extensionality thm
+R13948:13959 CDF.Separation <> hunion_empty thm
+R13962:13972 CDF.Separation <> hunion_comm thm
+R13948:13959 CDF.Separation <> hunion_empty thm
+R13948:13959 CDF.Separation <> hunion_empty thm
+R13962:13972 CDF.Separation <> hunion_comm thm
+R13962:13972 CDF.Separation <> hunion_comm thm
+R14062:14072 CDF.Separation <> hunion_comm thm
+R14075:14086 CDF.Separation <> hunion_empty thm
+R14062:14072 CDF.Separation <> hunion_comm thm
+R14062:14072 CDF.Separation <> hunion_comm thm
+R14075:14086 CDF.Separation <> hunion_empty thm
+R14075:14086 CDF.Separation <> hunion_empty thm
+prf 14116:14125 <> wand_curry
+binder 14135:14135 <> P:184
+binder 14137:14137 <> Q:185
+binder 14139:14139 <> R:186
+R14144:14144 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14157:14161 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14175:14175 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14151:14155 CDF.Separation <> :::x_'--*'_x not
+R14146:14149 CDF.Separation <> :::x_'**'_x not
+R14145:14145 CDF.Separation <> P:184 var
+R14150:14150 CDF.Separation <> Q:185 var
+R14156:14156 CDF.Separation <> R:186 var
+R14163:14167 CDF.Separation <> :::x_'--*'_x not
+R14162:14162 CDF.Separation <> P:184 var
+R14169:14173 CDF.Separation <> :::x_'--*'_x not
+R14168:14168 CDF.Separation <> Q:185 var
+R14174:14174 CDF.Separation <> R:186 var
+R14207:14230 CDF.Separation <> assertion_extensionality thm
+R14207:14230 CDF.Separation <> assertion_extensionality thm
+R14290:14301 CDF.Separation <> hunion_assoc thm
+R14290:14301 CDF.Separation <> hunion_assoc thm
+R14290:14301 CDF.Separation <> hunion_assoc thm
+R14432:14443 CDF.Separation <> hunion_assoc thm
+R14432:14443 CDF.Separation <> hunion_assoc thm
+R14432:14443 CDF.Separation <> hunion_assoc thm
+prf 14493:14501 <> wand_star
+binder 14511:14511 <> P:187
+binder 14513:14513 <> Q:188
+binder 14515:14515 <> R:189
+R14520:14520 CDF.Separation <> :::x_'-->>'_x not
+R14535:14543 CDF.Separation <> :::x_'-->>'_x not
+R14558:14558 CDF.Separation <> :::x_'-->>'_x not
+R14521:14521 CDF.Separation <> :::x_'**'_x not
+R14529:14533 CDF.Separation <> :::x_'**'_x not
+R14523:14527 CDF.Separation <> :::x_'--*'_x not
+R14522:14522 CDF.Separation <> P:187 var
+R14528:14528 CDF.Separation <> Q:188 var
+R14534:14534 CDF.Separation <> R:189 var
+R14545:14550 CDF.Separation <> :::x_'--*'_x not
+R14557:14557 CDF.Separation <> :::x_'--*'_x not
+R14544:14544 CDF.Separation <> P:187 var
+R14552:14555 CDF.Separation <> :::x_'**'_x not
+R14551:14551 CDF.Separation <> Q:188 var
+R14556:14556 CDF.Separation <> R:189 var
+R14653:14658 CDF.Separation <> hunion def
+R14653:14658 CDF.Separation <> hunion def
+R14734:14745 CDF.Separation <> hunion_assoc thm
+R14734:14745 CDF.Separation <> hunion_assoc thm
+R14734:14745 CDF.Separation <> hunion_assoc thm
+R14734:14745 CDF.Separation <> hunion_assoc thm
+R14734:14745 CDF.Separation <> hunion_assoc thm
+R14763:14773 CDF.Separation <> hunion_comm thm
+R14763:14773 CDF.Separation <> hunion_comm thm
+def 14966:14972 <> precise
+R14978:14986 CDF.Separation <> assertion def
+binder 14975:14975 <> P:190
+binder 15008:15009 <> h1:191
+binder 15011:15012 <> h2:192
+binder 15014:15016 <> h1':193
+binder 15018:15020 <> h2':194
+R15040:15043 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15025:15033 CDF.Separation <> hdisjoint def
+R15035:15036 CDF.Separation <> h1:191 var
+R15038:15039 CDF.Separation <> h2:192 var
+R15061:15064 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15044:15052 CDF.Separation <> hdisjoint def
+R15054:15056 CDF.Separation <> h1':193 var
+R15058:15060 CDF.Separation <> h2':194 var
+R15094:15099 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15077:15079 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15065:15070 CDF.Separation <> hunion def
+R15072:15073 CDF.Separation <> h1:191 var
+R15075:15076 CDF.Separation <> h2:192 var
+R15080:15085 CDF.Separation <> hunion def
+R15087:15089 CDF.Separation <> h1':193 var
+R15091:15093 CDF.Separation <> h2':194 var
+R15104:15107 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15100:15100 CDF.Separation <> P:190 var
+R15102:15103 CDF.Separation <> h1:191 var
+R15113:15116 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15108:15108 CDF.Separation <> P:190 var
+R15110:15112 CDF.Separation <> h1':193 var
+R15119:15121 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15117:15118 CDF.Separation <> h1:191 var
+R15122:15124 CDF.Separation <> h1':193 var
+def 15250:15262 <> param_precise
+binder 15265:15265 <> X:195
+R15279:15282 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15278:15278 CDF.Separation <> X:195 var
+R15283:15291 CDF.Separation <> assertion def
+binder 15275:15275 <> P:196
+binder 15313:15314 <> x1:197
+binder 15316:15317 <> x2:198
+binder 15319:15320 <> h1:199
+binder 15322:15323 <> h2:200
+binder 15325:15327 <> h1':201
+binder 15329:15331 <> h2':202
+R15351:15354 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15336:15344 CDF.Separation <> hdisjoint def
+R15346:15347 CDF.Separation <> h1:199 var
+R15349:15350 CDF.Separation <> h2:200 var
+R15372:15375 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15355:15363 CDF.Separation <> hdisjoint def
+R15365:15367 CDF.Separation <> h1':201 var
+R15369:15371 CDF.Separation <> h2':202 var
+R15405:15410 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15388:15390 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15376:15381 CDF.Separation <> hunion def
+R15383:15384 CDF.Separation <> h1:199 var
+R15386:15387 CDF.Separation <> h2:200 var
+R15391:15396 CDF.Separation <> hunion def
+R15398:15400 CDF.Separation <> h1':201 var
+R15402:15404 CDF.Separation <> h2':202 var
+R15418:15421 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15411:15411 CDF.Separation <> P:196 var
+R15416:15417 CDF.Separation <> h1:199 var
+R15413:15414 CDF.Separation <> x1:197 var
+R15430:15433 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15422:15422 CDF.Separation <> P:196 var
+R15427:15429 CDF.Separation <> h1':201 var
+R15424:15425 CDF.Separation <> x2:198 var
+R15441:15444 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R15436:15438 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15434:15435 CDF.Separation <> x1:197 var
+R15439:15440 CDF.Separation <> x2:198 var
+R15447:15449 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15445:15446 CDF.Separation <> h1:199 var
+R15450:15452 CDF.Separation <> h1':201 var
+prf 15463:15483 <> param_precise_precise
+binder 15496:15496 <> X:203
+R15510:15513 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15509:15509 CDF.Separation <> X:203 var
+R15514:15522 CDF.Separation <> assertion def
+binder 15506:15506 <> P:204
+R15543:15546 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15528:15540 CDF.Separation <> param_precise def
+R15542:15542 CDF.Separation <> P:204 var
+binder 15554:15554 <> x:205
+R15557:15563 CDF.Separation <> precise def
+R15566:15566 CDF.Separation <> P:204 var
+R15568:15568 CDF.Separation <> x:205 var
+prf 15692:15712 <> precise_param_precise
+binder 15724:15724 <> P:206
+R15736:15739 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15727:15733 CDF.Separation <> precise def
+R15735:15735 CDF.Separation <> P:206 var
+R15740:15752 CDF.Separation <> param_precise def
+R15763:15766 Coq.Init.Datatypes <> unit ind
+R15771:15771 CDF.Separation <> P:206 var
+prf 15893:15904 <> pure_precise
+binder 15914:15914 <> P:207
+R15919:15925 CDF.Separation <> precise def
+R15928:15931 CDF.Separation <> pure def
+R15933:15933 CDF.Separation <> P:207 var
+R15953:15956 CDF.Separation <> pure def
+prf 16051:16068 <> pure_param_precise
+binder 16079:16079 <> X:208
+R16093:16096 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16092:16092 CDF.Separation <> X:208 var
+binder 16089:16089 <> P:209
+R16106:16106 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16144:16150 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 16114:16115 <> x1:210
+binder 16117:16118 <> x2:211
+R16125:16128 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16121:16121 CDF.Separation <> P:209 var
+R16123:16124 CDF.Separation <> x1:210 var
+R16133:16136 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16129:16129 CDF.Separation <> P:209 var
+R16131:16132 CDF.Separation <> x2:211 var
+R16139:16141 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16137:16138 CDF.Separation <> x1:210 var
+R16142:16143 CDF.Separation <> x2:211 var
+R16151:16163 CDF.Separation <> param_precise def
+binder 16170:16170 <> x:212
+R16175:16178 CDF.Separation <> pure def
+R16181:16181 CDF.Separation <> P:209 var
+R16183:16183 CDF.Separation <> x:212 var
+R16204:16207 CDF.Separation <> pure def
+prf 16326:16347 <> contains_param_precise
+binder 16357:16357 <> l:213
+R16362:16374 CDF.Separation <> param_precise def
+binder 16381:16381 <> v:214
+R16386:16393 CDF.Separation <> contains def
+R16395:16395 CDF.Separation <> l:213 var
+R16397:16397 CDF.Separation <> v:214 var
+R16417:16424 CDF.Separation <> contains def
+R16511:16513 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16497:16502 CDF.Separation <> hunion def
+R16514:16519 CDF.Separation <> hunion def
+R16511:16513 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16497:16502 CDF.Separation <> hunion def
+R16514:16519 CDF.Separation <> hunion def
+R16583:16594 CDF.Separation <> hupdate_same thm
+R16583:16594 CDF.Separation <> hupdate_same thm
+R16583:16594 CDF.Separation <> hupdate_same thm
+R16583:16594 CDF.Separation <> hupdate_same thm
+R16583:16594 CDF.Separation <> hupdate_same thm
+prf 16656:16671 <> contains_precise
+binder 16681:16681 <> l:215
+binder 16683:16683 <> v:216
+R16688:16694 CDF.Separation <> precise def
+R16697:16704 CDF.Separation <> contains def
+R16706:16706 CDF.Separation <> l:215 var
+R16708:16708 CDF.Separation <> v:216 var
+R16735:16755 CDF.Separation <> param_precise_precise thm
+R16735:16755 CDF.Separation <> param_precise_precise thm
+R16764:16785 CDF.Separation <> contains_param_precise thm
+R16764:16785 CDF.Separation <> contains_param_precise thm
+prf 16800:16814 <> aexists_precise
+binder 16825:16825 <> X:217
+R16839:16842 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16838:16838 CDF.Separation <> X:217 var
+R16843:16851 CDF.Separation <> assertion def
+binder 16835:16835 <> P:218
+R16872:16875 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16857:16869 CDF.Separation <> param_precise def
+R16871:16871 CDF.Separation <> P:218 var
+R16876:16882 CDF.Separation <> precise def
+R16885:16891 CDF.Separation <> aexists def
+R16893:16893 CDF.Separation <> P:218 var
+prf 17036:17048 <> valid_precise
+binder 17058:17058 <> l:219
+R17063:17069 CDF.Separation <> precise def
+R17072:17076 CDF.Separation <> valid def
+R17078:17078 CDF.Separation <> l:219 var
+R17107:17121 CDF.Separation <> aexists_precise thm
+R17107:17121 CDF.Separation <> aexists_precise thm
+R17130:17151 CDF.Separation <> contains_param_precise thm
+R17130:17151 CDF.Separation <> contains_param_precise thm
+prf 17166:17186 <> sepconj_param_precise
+binder 17197:17197 <> X:220
+R17213:17216 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17212:17212 CDF.Separation <> X:220 var
+R17217:17225 CDF.Separation <> assertion def
+binder 17207:17207 <> P:221
+binder 17209:17209 <> Q:222
+R17246:17249 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17231:17243 CDF.Separation <> param_precise def
+R17245:17245 CDF.Separation <> P:221 var
+R17250:17250 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17274:17280 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 17258:17258 <> x:223
+R17261:17267 CDF.Separation <> precise def
+R17270:17270 CDF.Separation <> Q:222 var
+R17272:17272 CDF.Separation <> x:223 var
+R17281:17293 CDF.Separation <> param_precise def
+binder 17300:17300 <> x:224
+R17308:17311 CDF.Separation <> :::x_'**'_x not
+R17305:17305 CDF.Separation <> P:221 var
+R17307:17307 CDF.Separation <> x:224 var
+R17312:17312 CDF.Separation <> Q:222 var
+R17314:17314 CDF.Separation <> x:224 var
+R17525:17528 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R17520:17522 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17531:17533 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17525:17528 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R17520:17522 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17531:17533 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17556:17561 CDF.Separation <> hunion def
+R17571:17576 CDF.Separation <> hunion def
+R17556:17561 CDF.Separation <> hunion def
+R17571:17576 CDF.Separation <> hunion def
+R17625:17636 CDF.Separation <> hunion_assoc thm
+R17625:17636 CDF.Separation <> hunion_assoc thm
+R17625:17636 CDF.Separation <> hunion_assoc thm
+R17625:17636 CDF.Separation <> hunion_assoc thm
+R17625:17636 CDF.Separation <> hunion_assoc thm
+R17682:17684 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17682:17684 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17713:17718 CDF.Separation <> hunion def
+R17728:17733 CDF.Separation <> hunion def
+R17713:17718 CDF.Separation <> hunion def
+R17728:17733 CDF.Separation <> hunion def
+R17782:17793 CDF.Separation <> hunion_assoc thm
+R17782:17793 CDF.Separation <> hunion_assoc thm
+R17782:17793 CDF.Separation <> hunion_assoc thm
+R17782:17793 CDF.Separation <> hunion_assoc thm
+R17782:17793 CDF.Separation <> hunion_assoc thm
+R17809:17819 CDF.Separation <> hunion_comm thm
+R17809:17819 CDF.Separation <> hunion_comm thm
+R17809:17819 CDF.Separation <> hunion_comm thm
+R17848:17858 CDF.Separation <> hunion_comm thm
+R17848:17858 CDF.Separation <> hunion_comm thm
+R17848:17858 CDF.Separation <> hunion_comm thm
+prf 17918:17932 <> sepconj_precise
+binder 17942:17942 <> P:225
+binder 17944:17944 <> Q:226
+R17958:17961 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17949:17955 CDF.Separation <> precise def
+R17957:17957 CDF.Separation <> P:225 var
+R17971:17974 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17962:17968 CDF.Separation <> precise def
+R17970:17970 CDF.Separation <> Q:226 var
+R17975:17981 CDF.Separation <> precise def
+R17985:17988 CDF.Separation <> :::x_'**'_x not
+R17984:17984 CDF.Separation <> P:225 var
+R17989:17989 CDF.Separation <> Q:226 var
+R18020:18032 CDF.Separation <> param_precise def
+R18043:18046 Coq.Init.Datatypes <> unit ind
+R18052:18055 CDF.Separation <> :::x_'**'_x not
+R18020:18032 CDF.Separation <> param_precise def
+R18043:18046 Coq.Init.Datatypes <> unit ind
+R18052:18055 CDF.Separation <> :::x_'**'_x not
+R18071:18091 CDF.Separation <> sepconj_param_precise thm
+R18071:18091 CDF.Separation <> sepconj_param_precise thm
+R18100:18120 CDF.Separation <> precise_param_precise thm
+R18100:18120 CDF.Separation <> precise_param_precise thm
+R18143:18163 CDF.Separation <> param_precise_precise thm
+R18143:18163 CDF.Separation <> param_precise_precise thm
+R18184:18185 Coq.Init.Datatypes <> tt constr
+R18184:18185 Coq.Init.Datatypes <> tt constr
+prf 18252:18270 <> sepconj_and_distr_1
+binder 18280:18281 <> P1:227
+binder 18283:18284 <> P2:228
+binder 18286:18286 <> Q:229
+R18306:18311 CDF.Separation <> :::x_'-->>'_x not
+R18301:18304 CDF.Separation <> :::x_'**'_x not
+R18291:18294 CDF.Separation <> aand def
+R18296:18297 CDF.Separation <> P1:227 var
+R18299:18300 CDF.Separation <> P2:228 var
+R18305:18305 CDF.Separation <> Q:229 var
+R18312:18315 CDF.Separation <> aand def
+R18320:18323 CDF.Separation <> :::x_'**'_x not
+R18318:18319 CDF.Separation <> P1:227 var
+R18324:18324 CDF.Separation <> Q:229 var
+R18330:18333 CDF.Separation <> :::x_'**'_x not
+R18328:18329 CDF.Separation <> P2:228 var
+R18334:18334 CDF.Separation <> Q:229 var
+prf 18442:18460 <> sepconj_and_distr_2
+binder 18470:18471 <> P1:230
+binder 18473:18474 <> P2:231
+binder 18476:18476 <> Q:232
+R18490:18495 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18481:18487 CDF.Separation <> precise def
+R18489:18489 CDF.Separation <> Q:232 var
+R18520:18525 CDF.Separation <> :::x_'-->>'_x not
+R18496:18499 CDF.Separation <> aand def
+R18504:18507 CDF.Separation <> :::x_'**'_x not
+R18502:18503 CDF.Separation <> P1:230 var
+R18508:18508 CDF.Separation <> Q:232 var
+R18514:18517 CDF.Separation <> :::x_'**'_x not
+R18512:18513 CDF.Separation <> P2:231 var
+R18518:18518 CDF.Separation <> Q:232 var
+R18536:18539 CDF.Separation <> :::x_'**'_x not
+R18526:18529 CDF.Separation <> aand def
+R18531:18532 CDF.Separation <> P1:230 var
+R18534:18535 CDF.Separation <> P2:231 var
+R18540:18540 CDF.Separation <> Q:232 var
+R18582:18593 CDF.Separation <> sepconj_comm thm
+R18601:18612 CDF.Separation <> sepconj_comm thm
+R18582:18593 CDF.Separation <> sepconj_comm thm
+R18582:18593 CDF.Separation <> sepconj_comm thm
+R18601:18612 CDF.Separation <> sepconj_comm thm
+R18601:18612 CDF.Separation <> sepconj_comm thm
+R18710:18712 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18710:18712 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18800:18802 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18800:18802 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18817:18831 CDF.Separation <> hunion_invert_r thm
+R18817:18831 CDF.Separation <> hunion_invert_r thm
+R18882:18885 CDF.Separation <> aand def
+R18934:18944 CDF.Separation <> hunion_comm thm
+R18934:18944 CDF.Separation <> hunion_comm thm
+R18934:18944 CDF.Separation <> hunion_comm thm
+prf 19027:19038 <> sepconj_self
+binder 19048:19048 <> P:233
+R19062:19067 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19053:19059 CDF.Separation <> precise def
+R19061:19061 CDF.Separation <> P:233 var
+R19074:19079 CDF.Separation <> :::x_'-->>'_x not
+R19069:19072 CDF.Separation <> :::x_'**'_x not
+R19068:19068 CDF.Separation <> P:233 var
+R19073:19073 CDF.Separation <> P:233 var
+R19080:19080 CDF.Separation <> P:233 var
+R19150:19152 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R19150:19152 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R19197:19207 CDF.Separation <> hunion_comm thm
+R19197:19207 CDF.Separation <> hunion_comm thm
+R19240:19242 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R19240:19242 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R19254:19272 CDF.Separation <> heap_extensionality thm
+R19254:19272 CDF.Separation <> heap_extensionality thm

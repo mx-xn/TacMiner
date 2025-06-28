@@ -1,0 +1,1985 @@
+DIGEST 7d198339eed25bb7bfb3acdb935e27ae
+Fchap11
+R122:127 Coq.ZArith.ZArith <> <> lib
+R145:154 Coq.extraction.Extraction <> <> lib
+R172:177 depend <> <> lib
+ind 234:240 <> Z_btree
+constr 253:258 <> Z_leaf
+constr 272:278 <> Z_bnode
+R262:268 chap11 <> Z_btree:1 ind
+R283:286 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R282:282 Coq.Numbers.BinNums <> Z ind
+R294:297 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R287:293 chap11 <> Z_btree:1 ind
+R305:308 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R298:304 chap11 <> Z_btree:1 ind
+R309:315 chap11 <> Z_btree:1 ind
+def 331:338 <> is_bnode
+R344:350 chap11 <> Z_btree ind
+binder 341:341 <> t:3
+R371:371 chap11 <> t:3 var
+R382:387 chap11 <> Z_leaf constr
+R392:396 Coq.Init.Logic <> False ind
+R407:410 Coq.Init.Logic <> True ind
+ind 464:466 <> occ
+constr 497:504 <> occ_root
+constr 556:560 <> occ_l
+constr 632:636 <> occ_r
+R471:471 Coq.Numbers.BinNums <> Z ind
+binder 469:469 <> n:5
+R483:486 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R476:482 chap11 <> Z_btree ind
+R521:527 chap11 <> Z_btree ind
+binder 515:516 <> t1:8
+binder 518:519 <> t2:9
+R530:532 chap11 <> occ:6 ind
+R537:543 chap11 <> Z_bnode constr
+R550:551 chap11 <> t2:9 var
+R547:548 chap11 <> t1:8 var
+R545:545 chap11 <> n:5 var
+R534:534 chap11 <> n:5 var
+R574:574 Coq.Numbers.BinNums <> Z ind
+binder 572:572 <> p:10
+R584:590 chap11 <> Z_btree ind
+binder 578:579 <> t1:11
+binder 581:582 <> t2:12
+R602:605 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R594:596 chap11 <> occ:6 ind
+R600:601 chap11 <> t1:11 var
+R598:598 chap11 <> n:5 var
+R606:608 chap11 <> occ:6 ind
+R613:619 chap11 <> Z_bnode constr
+R626:627 chap11 <> t2:12 var
+R623:624 chap11 <> t1:11 var
+R621:621 chap11 <> p:10 var
+R610:610 chap11 <> n:5 var
+R650:650 Coq.Numbers.BinNums <> Z ind
+binder 648:648 <> p:13
+R660:666 chap11 <> Z_btree ind
+binder 654:655 <> t1:14
+binder 657:658 <> t2:15
+R678:681 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R670:672 chap11 <> occ:6 ind
+R676:677 chap11 <> t2:15 var
+R674:674 chap11 <> n:5 var
+R682:684 chap11 <> occ:6 ind
+R689:695 chap11 <> Z_bnode constr
+R702:703 chap11 <> t2:15 var
+R699:700 chap11 <> t1:14 var
+R697:697 chap11 <> p:13 var
+R686:686 chap11 <> n:5 var
+R742:744 chap11 <> occ ind
+R817:817 Coq.Numbers.BinNums <> Z ind
+binder 812:812 <> z:16
+binder 814:815 <> z':17
+R827:833 chap11 <> Z_btree ind
+binder 821:822 <> t1:18
+binder 824:825 <> t2:19
+R837:839 chap11 <> occ ind
+R845:851 chap11 <> Z_bnode constr
+R858:859 chap11 <> t2:19 var
+R855:856 chap11 <> t1:18 var
+R853:853 chap11 <> z:16 var
+R841:842 chap11 <> z':17 var
+prf 871:877 <> occ_inv
+R896:896 Coq.Numbers.BinNums <> Z ind
+binder 891:891 <> z:20
+binder 893:894 <> z':21
+R906:912 chap11 <> Z_btree ind
+binder 900:901 <> t1:22
+binder 903:904 <> t2:23
+R944:947 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R920:922 chap11 <> occ ind
+R928:934 chap11 <> Z_bnode constr
+R941:942 chap11 <> t2:23 var
+R938:939 chap11 <> t1:22 var
+R936:936 chap11 <> z:20 var
+R924:925 chap11 <> z':21 var
+R954:957 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R949:951 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R948:948 chap11 <> z:20 var
+R952:953 chap11 <> z':21 var
+R967:970 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R958:960 chap11 <> occ ind
+R965:966 chap11 <> t1:22 var
+R962:963 chap11 <> z':21 var
+R971:973 chap11 <> occ ind
+R978:979 chap11 <> t2:23 var
+R975:976 chap11 <> z':21 var
+R1009:1015 chap11 <> OCC_INV thm
+R1009:1015 chap11 <> OCC_INV thm
+prf 1101:1112 <> not_occ_Leaf
+R1125:1125 Coq.Numbers.BinNums <> Z ind
+binder 1123:1123 <> z:24
+R1128:1129 Coq.Init.Logic <> ::type_scope:'~'_x not
+R1130:1132 chap11 <> occ ind
+R1136:1141 chap11 <> Z_leaf constr
+R1134:1134 chap11 <> z:24 var
+R1160:1162 Coq.Init.Logic <> not def
+def 1274:1286 <> naive_occ_dec
+R1300:1300 Coq.Numbers.BinNums <> Z ind
+binder 1298:1298 <> n:25
+R1306:1312 chap11 <> Z_btree ind
+binder 1304:1304 <> t:26
+R1316:1316 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R1324:1328 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R1338:1338 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R1317:1319 chap11 <> occ ind
+R1323:1323 chap11 <> t:26 var
+R1321:1321 chap11 <> n:25 var
+R1329:1330 Coq.Init.Logic <> ::type_scope:'~'_x not
+R1331:1333 chap11 <> occ ind
+R1337:1337 chap11 <> t:26 var
+R1335:1335 chap11 <> n:25 var
+R1444:1451 Coq.ZArith.BinInt Z eq_dec def
+R1444:1451 Coq.ZArith.BinInt Z eq_dec def
+R1603:1609 chap11 <> occ_inv thm
+R1603:1609 chap11 <> occ_inv thm
+ind 1816:1818 <> min
+constr 1850:1858 <> min_intro
+R1823:1823 Coq.Numbers.BinNums <> Z ind
+binder 1821:1821 <> z:27
+R1829:1835 chap11 <> Z_btree ind
+binder 1827:1827 <> t:28
+R1862:1862 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1894:1898 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1873:1873 Coq.Numbers.BinNums <> Z ind
+binder 1870:1871 <> z':31
+R1884:1887 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1876:1878 chap11 <> occ ind
+R1883:1883 chap11 <> t:28 var
+R1880:1881 chap11 <> z':31 var
+R1889:1891 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R1888:1888 chap11 <> z:27 var
+R1892:1893 chap11 <> z':31 var
+R1899:1901 chap11 <> min:29 ind
+R1905:1905 chap11 <> t:28 var
+R1903:1903 chap11 <> z:27 var
+R1939:1941 chap11 <> min ind
+ind 2009:2011 <> maj
+constr 2043:2051 <> maj_intro
+R2016:2016 Coq.Numbers.BinNums <> Z ind
+binder 2014:2014 <> z:32
+R2022:2028 chap11 <> Z_btree ind
+binder 2020:2020 <> t:33
+R2055:2055 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2087:2091 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2066:2066 Coq.Numbers.BinNums <> Z ind
+binder 2063:2064 <> z':36
+R2077:2080 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2069:2071 chap11 <> occ ind
+R2076:2076 chap11 <> t:33 var
+R2073:2074 chap11 <> z':36 var
+R2083:2085 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R2081:2082 chap11 <> z':36 var
+R2086:2086 chap11 <> z:32 var
+R2092:2094 chap11 <> maj:34 ind
+R2098:2098 chap11 <> t:33 var
+R2096:2096 chap11 <> z:32 var
+R2133:2135 chap11 <> maj ind
+ind 2206:2216 <> search_tree
+constr 2241:2256 <> leaf_search_tree
+constr 2281:2297 <> bnode_search_tree
+R2227:2230 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2220:2226 chap11 <> Z_btree ind
+R2260:2270 chap11 <> search_tree:37 ind
+R2272:2277 chap11 <> Z_leaf constr
+R2315:2315 Coq.Numbers.BinNums <> Z ind
+binder 2313:2313 <> z:39
+R2325:2331 chap11 <> Z_btree ind
+binder 2319:2320 <> t1:40
+binder 2322:2323 <> t2:41
+R2355:2364 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2341:2351 chap11 <> search_tree:37 ind
+R2353:2354 chap11 <> t1:40 var
+R2379:2388 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2365:2375 chap11 <> search_tree:37 ind
+R2377:2378 chap11 <> t2:41 var
+R2397:2400 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2389:2391 chap11 <> maj ind
+R2395:2396 chap11 <> t1:40 var
+R2393:2393 chap11 <> z:39 var
+R2409:2412 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2401:2403 chap11 <> min ind
+R2407:2408 chap11 <> t2:41 var
+R2405:2405 chap11 <> z:39 var
+R2413:2423 chap11 <> search_tree:37 ind
+R2426:2432 chap11 <> Z_bnode constr
+R2439:2440 chap11 <> t2:41 var
+R2436:2437 chap11 <> t1:40 var
+R2434:2434 chap11 <> z:39 var
+R2476:2486 chap11 <> search_tree ind
+prf 2510:2517 <> min_leaf
+R2530:2530 Coq.Numbers.BinNums <> Z ind
+binder 2528:2528 <> z:42
+R2533:2535 chap11 <> min ind
+R2539:2544 chap11 <> Z_leaf constr
+R2537:2537 chap11 <> z:42 var
+R2571:2579 chap11 <> min_intro constr
+R2571:2579 chap11 <> min_intro constr
+prf 2675:2682 <> maj_leaf
+R2695:2695 Coq.Numbers.BinNums <> Z ind
+binder 2693:2693 <> z:43
+R2698:2700 chap11 <> maj ind
+R2704:2709 chap11 <> Z_leaf constr
+R2702:2702 chap11 <> z:43 var
+R2736:2744 chap11 <> maj_intro constr
+R2736:2744 chap11 <> maj_intro constr
+prf 2840:2850 <> maj_not_occ
+R2864:2864 Coq.Numbers.BinNums <> Z ind
+binder 2862:2862 <> z:44
+R2870:2876 chap11 <> Z_btree ind
+binder 2868:2868 <> t:45
+R2887:2890 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2880:2882 chap11 <> maj ind
+R2886:2886 chap11 <> t:45 var
+R2884:2884 chap11 <> z:44 var
+R2891:2892 Coq.Init.Logic <> ::type_scope:'~'_x not
+R2893:2895 chap11 <> occ ind
+R2899:2899 chap11 <> t:45 var
+R2897:2897 chap11 <> z:44 var
+R2953:2955 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R2953:2955 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R2974:2984 Coq.ZArith.BinInt Z lt_irrefl thm
+R2974:2984 Coq.ZArith.BinInt Z lt_irrefl thm
+prf 3051:3061 <> min_not_occ
+R3075:3075 Coq.Numbers.BinNums <> Z ind
+binder 3073:3073 <> z:46
+R3081:3087 chap11 <> Z_btree ind
+binder 3079:3079 <> t:47
+R3098:3101 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3091:3093 chap11 <> min ind
+R3097:3097 chap11 <> t:47 var
+R3095:3095 chap11 <> z:46 var
+R3102:3103 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3104:3106 chap11 <> occ ind
+R3110:3110 chap11 <> t:47 var
+R3108:3108 chap11 <> z:46 var
+R3164:3166 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R3164:3166 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R3185:3195 Coq.ZArith.BinInt Z lt_irrefl thm
+R3185:3195 Coq.ZArith.BinInt Z lt_irrefl thm
+sec 3264:3291 <> search_tree_basic_properties
+var 3306:3306 search_tree_basic_properties n
+R3310:3310 Coq.Numbers.BinNums <> Z ind
+var 3325:3326 search_tree_basic_properties t1
+var 3328:3329 search_tree_basic_properties t2
+R3333:3339 chap11 <> Z_btree ind
+var 3355:3356 search_tree_basic_properties se
+R3360:3370 chap11 <> search_tree ind
+R3373:3379 chap11 <> Z_bnode constr
+R3386:3387 chap11 <> search_tree_basic_properties.t2 var
+R3383:3384 chap11 <> search_tree_basic_properties.t1 var
+R3381:3381 chap11 <> search_tree_basic_properties.n var
+prf 3400:3412 <> search_tree_l
+R3416:3426 chap11 <> search_tree ind
+R3428:3429 chap11 <> search_tree_basic_properties.t1 var
+prf 3558:3570 <> search_tree_r
+R3574:3584 chap11 <> search_tree ind
+R3586:3587 chap11 <> search_tree_basic_properties.t2 var
+prf 3714:3718 <> maj_l
+R3722:3724 chap11 <> maj ind
+R3728:3729 chap11 <> search_tree_basic_properties.t1 var
+R3726:3726 chap11 <> search_tree_basic_properties.n var
+prf 3848:3852 <> min_r
+R3856:3858 chap11 <> min ind
+R3862:3863 chap11 <> search_tree_basic_properties.t2 var
+R3860:3860 chap11 <> search_tree_basic_properties.n var
+prf 3982:3990 <> not_right
+R4003:4003 Coq.Numbers.BinNums <> Z ind
+binder 4001:4001 <> p:52
+R4012:4015 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4007:4010 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x not
+R4006:4006 chap11 <> p:52 var
+R4011:4011 chap11 <> search_tree_basic_properties.n var
+R4016:4017 Coq.Init.Logic <> ::type_scope:'~'_x not
+R4018:4020 chap11 <> occ ind
+R4024:4025 chap11 <> search_tree_basic_properties.t2 var
+R4022:4022 chap11 <> p:52 var
+R4058:4062 chap11 <> min_r thm
+R4058:4062 chap11 <> min_r thm
+R4076:4078 Coq.Init.Logic <> not def
+R4098:4100 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R4097:4097 chap11 <> search_tree_basic_properties.n var
+R4098:4100 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R4097:4097 chap11 <> search_tree_basic_properties.n var
+R4138:4147 Coq.ZArith.Zorder <> Zle_not_lt thm
+R4138:4147 Coq.ZArith.Zorder <> Zle_not_lt thm
+prf 4227:4234 <> not_left
+R4247:4247 Coq.Numbers.BinNums <> Z ind
+binder 4245:4245 <> p:53
+R4256:4259 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4251:4254 Coq.ZArith.BinInt <> ::Z_scope:x_'>='_x not
+R4250:4250 chap11 <> p:53 var
+R4255:4255 chap11 <> search_tree_basic_properties.n var
+R4260:4261 Coq.Init.Logic <> ::type_scope:'~'_x not
+R4262:4264 chap11 <> occ ind
+R4268:4269 chap11 <> search_tree_basic_properties.t1 var
+R4266:4266 chap11 <> p:53 var
+R4302:4306 chap11 <> maj_l thm
+R4302:4306 chap11 <> maj_l thm
+R4320:4322 Coq.Init.Logic <> not def
+R4342:4344 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R4345:4345 chap11 <> search_tree_basic_properties.n var
+R4342:4344 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R4345:4345 chap11 <> search_tree_basic_properties.n var
+prf 4436:4442 <> go_left
+R4455:4455 Coq.Numbers.BinNums <> Z ind
+binder 4453:4453 <> p:54
+R4481:4484 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4458:4460 chap11 <> occ ind
+R4465:4471 chap11 <> Z_bnode constr
+R4478:4479 chap11 <> search_tree_basic_properties.t2 var
+R4475:4476 chap11 <> search_tree_basic_properties.t1 var
+R4473:4473 chap11 <> search_tree_basic_properties.n var
+R4462:4462 chap11 <> p:54 var
+R4490:4493 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4486:4488 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R4485:4485 chap11 <> p:54 var
+R4489:4489 chap11 <> search_tree_basic_properties.n var
+R4494:4496 chap11 <> occ ind
+R4500:4501 chap11 <> search_tree_basic_properties.t1 var
+R4498:4498 chap11 <> p:54 var
+R4539:4545 chap11 <> occ_inv thm
+R4539:4545 chap11 <> occ_inv thm
+R4585:4587 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R4588:4588 chap11 <> search_tree_basic_properties.n var
+R4585:4587 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R4588:4588 chap11 <> search_tree_basic_properties.n var
+R4621:4630 Coq.ZArith.Zorder <> Zle_not_lt thm
+R4621:4630 Coq.ZArith.Zorder <> Zle_not_lt thm
+R4713:4715 chap11 <> occ ind
+R4719:4720 chap11 <> search_tree_basic_properties.t2 var
+R4713:4715 chap11 <> occ ind
+R4719:4720 chap11 <> search_tree_basic_properties.t2 var
+R4741:4749 chap11 <> not_right thm
+R4759:4769 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R4741:4749 chap11 <> not_right thm
+R4759:4769 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+prf 4817:4824 <> go_right
+R4837:4837 Coq.Numbers.BinNums <> Z ind
+binder 4835:4835 <> p:55
+R4863:4866 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4840:4842 chap11 <> occ ind
+R4847:4853 chap11 <> Z_bnode constr
+R4860:4861 chap11 <> search_tree_basic_properties.t2 var
+R4857:4858 chap11 <> search_tree_basic_properties.t1 var
+R4855:4855 chap11 <> search_tree_basic_properties.n var
+R4844:4844 chap11 <> p:55 var
+R4872:4875 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4868:4870 Coq.ZArith.BinInt <> ::Z_scope:x_'>'_x not
+R4867:4867 chap11 <> p:55 var
+R4871:4871 chap11 <> search_tree_basic_properties.n var
+R4876:4878 chap11 <> occ ind
+R4882:4883 chap11 <> search_tree_basic_properties.t2 var
+R4880:4880 chap11 <> p:55 var
+R4922:4928 chap11 <> occ_inv thm
+R4922:4928 chap11 <> occ_inv thm
+R4968:4970 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R4967:4967 chap11 <> search_tree_basic_properties.n var
+R4968:4970 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R4967:4967 chap11 <> search_tree_basic_properties.n var
+R5002:5011 Coq.ZArith.Zorder <> Zle_not_lt thm
+R5002:5011 Coq.ZArith.Zorder <> Zle_not_lt thm
+R5048:5054 Coq.ZArith.BinInt Z gt_lt thm
+R5048:5054 Coq.ZArith.BinInt Z gt_lt thm
+R5111:5113 chap11 <> occ ind
+R5117:5118 chap11 <> search_tree_basic_properties.t1 var
+R5111:5113 chap11 <> occ ind
+R5117:5118 chap11 <> search_tree_basic_properties.t1 var
+R5141:5148 chap11 <> not_left thm
+R5158:5161 Coq.ZArith.BinInt Z ge def
+R5141:5148 chap11 <> not_left thm
+R5220:5247 chap11 search_tree_basic_properties <> sec
+def 5410:5421 <> occ_dec_spec
+R5426:5426 Coq.Numbers.BinNums <> Z ind
+binder 5424:5424 <> p:56
+R5432:5438 chap11 <> Z_btree ind
+binder 5430:5430 <> t:57
+R5459:5462 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5446:5456 chap11 <> search_tree ind
+R5458:5458 chap11 <> t:57 var
+R5463:5463 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R5471:5475 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R5485:5485 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R5464:5466 chap11 <> occ ind
+R5470:5470 chap11 <> t:57 var
+R5468:5468 chap11 <> p:56 var
+R5476:5477 Coq.Init.Logic <> ::type_scope:'~'_x not
+R5478:5480 chap11 <> occ ind
+R5484:5484 chap11 <> t:57 var
+R5482:5482 chap11 <> p:56 var
+def 5502:5508 <> occ_dec
+R5522:5522 Coq.Numbers.BinNums <> Z ind
+binder 5520:5520 <> p:58
+R5528:5534 chap11 <> Z_btree ind
+binder 5526:5526 <> t:59
+R5538:5549 chap11 <> occ_dec_spec def
+R5553:5553 chap11 <> t:59 var
+R5551:5551 chap11 <> p:58 var
+R5586:5586 Coq.Numbers.BinNums <> Z ind
+binder 5584:5584 <> p:60
+R5592:5598 chap11 <> Z_btree ind
+binder 5590:5590 <> t:61
+R5614:5625 chap11 <> occ_dec_spec def
+R5629:5629 chap11 <> t:61 var
+R5627:5627 chap11 <> p:60 var
+R5640:5640 chap11 <> t:61 var
+R5654:5665 chap11 <> occ_dec_spec def
+R5669:5669 chap11 <> x:63 var
+R5667:5667 chap11 <> p:60 var
+R5678:5683 chap11 <> Z_leaf constr
+binder 5692:5692 <> h:64
+R5697:5701 Coq.Init.Specif <> right constr
+R5709:5715 chap11 <> Z_bnode constr
+binder 5732:5732 <> h:65
+R5743:5753 Coq.ZArith.ZArith_dec <> Z_le_gt_dec def
+R5755:5755 chap11 <> p:60 var
+R5766:5769 Coq.Init.Specif <> left constr
+R5783:5796 Coq.ZArith.ZArith_dec <> Z_le_lt_eq_dec def
+R5798:5798 chap11 <> p:60 var
+R5812:5815 Coq.Init.Specif <> left constr
+R5830:5836 chap11 <> occ_dec:62 var
+R5838:5838 chap11 <> p:60 var
+R5852:5855 Coq.Init.Specif <> left constr
+R5865:5868 Coq.Init.Specif <> left constr
+R5876:5880 Coq.Init.Specif <> right constr
+R5890:5894 Coq.Init.Specif <> right constr
+R5906:5910 Coq.Init.Specif <> right constr
+R5919:5922 Coq.Init.Specif <> left constr
+R5934:5938 Coq.Init.Specif <> right constr
+R5952:5958 chap11 <> occ_dec:62 var
+R5960:5960 chap11 <> p:60 var
+R5974:5977 Coq.Init.Specif <> left constr
+R5987:5990 Coq.Init.Specif <> left constr
+R5998:6002 Coq.Init.Specif <> right constr
+R6012:6016 Coq.Init.Specif <> right constr
+R5586:5586 Coq.Numbers.BinNums <> Z ind
+binder 5584:5584 <> p:66
+R5592:5598 chap11 <> Z_btree ind
+binder 5590:5590 <> t:67
+R5614:5625 chap11 <> occ_dec_spec def
+R5629:5629 chap11 <> t:67 var
+R5627:5627 chap11 <> p:66 var
+R5640:5640 chap11 <> t:67 var
+R5654:5665 chap11 <> occ_dec_spec def
+R5669:5669 chap11 <> x:69 var
+R5667:5667 chap11 <> p:66 var
+R5678:5683 chap11 <> Z_leaf constr
+binder 5692:5692 <> h:70
+R5697:5701 Coq.Init.Specif <> right constr
+R5709:5715 chap11 <> Z_bnode constr
+binder 5732:5732 <> h:71
+R5743:5753 Coq.ZArith.ZArith_dec <> Z_le_gt_dec def
+R5755:5755 chap11 <> p:66 var
+R5766:5769 Coq.Init.Specif <> left constr
+R5783:5796 Coq.ZArith.ZArith_dec <> Z_le_lt_eq_dec def
+R5798:5798 chap11 <> p:66 var
+R5812:5815 Coq.Init.Specif <> left constr
+R5830:5836 chap11 <> occ_dec:68 var
+R5838:5838 chap11 <> p:66 var
+R5852:5855 Coq.Init.Specif <> left constr
+R5865:5868 Coq.Init.Specif <> left constr
+R5876:5880 Coq.Init.Specif <> right constr
+R5890:5894 Coq.Init.Specif <> right constr
+R5906:5910 Coq.Init.Specif <> right constr
+R5919:5922 Coq.Init.Specif <> left constr
+R5934:5938 Coq.Init.Specif <> right constr
+R5952:5958 chap11 <> occ_dec:68 var
+R5960:5960 chap11 <> p:66 var
+R5974:5977 Coq.Init.Specif <> left constr
+R5987:5990 Coq.Init.Specif <> left constr
+R5998:6002 Coq.Init.Specif <> right constr
+R6012:6016 Coq.Init.Specif <> right constr
+ind 6671:6676 <> INSERT
+constr 6711:6722 <> insert_intro
+R6681:6681 Coq.Numbers.BinNums <> Z ind
+binder 6679:6679 <> n:72
+R6690:6696 chap11 <> Z_btree ind
+binder 6685:6685 <> t:73
+binder 6687:6688 <> t':74
+R6730:6730 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6762:6770 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6740:6740 Coq.Numbers.BinNums <> Z ind
+binder 6738:6738 <> p:77
+R6750:6753 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6743:6745 chap11 <> occ ind
+R6749:6749 chap11 <> t:73 var
+R6747:6747 chap11 <> p:77 var
+R6754:6756 chap11 <> occ ind
+R6760:6761 chap11 <> t':74 var
+R6758:6758 chap11 <> p:77 var
+R6779:6786 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6771:6773 chap11 <> occ ind
+R6777:6778 chap11 <> t':74 var
+R6775:6775 chap11 <> n:72 var
+R6787:6787 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6828:6836 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6797:6797 Coq.Numbers.BinNums <> Z ind
+binder 6795:6795 <> p:78
+R6808:6811 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6800:6802 chap11 <> occ ind
+R6806:6807 chap11 <> t':74 var
+R6804:6804 chap11 <> p:78 var
+R6819:6822 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R6812:6814 chap11 <> occ ind
+R6818:6818 chap11 <> t:73 var
+R6816:6816 chap11 <> p:78 var
+R6824:6826 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6823:6823 chap11 <> n:72 var
+R6827:6827 chap11 <> p:78 var
+R6851:6854 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6837:6847 chap11 <> search_tree ind
+R6849:6850 chap11 <> t':74 var
+R6855:6860 chap11 <> INSERT:75 ind
+R6866:6867 chap11 <> t':74 var
+R6864:6864 chap11 <> t:73 var
+R6862:6862 chap11 <> n:72 var
+def 6937:6947 <> insert_spec
+R6952:6952 Coq.Numbers.BinNums <> Z ind
+binder 6950:6950 <> n:79
+R6958:6964 chap11 <> Z_btree ind
+binder 6956:6956 <> t:80
+R6991:6994 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6978:6988 chap11 <> search_tree ind
+R6990:6990 chap11 <> t:80 var
+R6995:6995 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R6998:7000 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R7008:7010 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R7024:7024 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R7001:7007 chap11 <> Z_btree ind
+binder 6996:6997 <> t':81
+R7011:7016 chap11 <> INSERT ind
+R7022:7023 chap11 <> t':81 var
+R7020:7020 chap11 <> t:80 var
+R7018:7018 chap11 <> n:79 var
+prf 7034:7044 <> insert_leaf
+R7057:7057 Coq.Numbers.BinNums <> Z ind
+binder 7055:7055 <> n:82
+R7060:7065 chap11 <> INSERT ind
+R7077:7083 chap11 <> Z_bnode constr
+R7094:7099 chap11 <> Z_leaf constr
+R7087:7092 chap11 <> Z_leaf constr
+R7085:7085 chap11 <> n:82 var
+R7069:7074 chap11 <> Z_leaf constr
+R7067:7067 chap11 <> n:82 var
+prf 7304:7311 <> insert_l
+R7329:7329 Coq.Numbers.BinNums <> Z ind
+binder 7325:7325 <> n:83
+binder 7327:7327 <> p:84
+R7343:7349 chap11 <> Z_btree ind
+binder 7333:7334 <> t1:85
+binder 7336:7338 <> t'1:86
+binder 7340:7341 <> t2:87
+R7362:7369 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7358:7360 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R7357:7357 chap11 <> n:83 var
+R7361:7361 chap11 <> p:84 var
+R7399:7406 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7370:7380 chap11 <> search_tree ind
+R7383:7389 chap11 <> Z_bnode constr
+R7396:7397 chap11 <> t2:87 var
+R7393:7394 chap11 <> t1:85 var
+R7391:7391 chap11 <> p:84 var
+R7422:7425 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7407:7412 chap11 <> INSERT ind
+R7419:7421 chap11 <> t'1:86 var
+R7416:7417 chap11 <> t1:85 var
+R7414:7414 chap11 <> n:83 var
+R7426:7431 chap11 <> INSERT ind
+R7454:7460 chap11 <> Z_bnode constr
+R7468:7469 chap11 <> t2:87 var
+R7464:7466 chap11 <> t'1:86 var
+R7462:7462 chap11 <> p:84 var
+R7436:7442 chap11 <> Z_bnode constr
+R7449:7450 chap11 <> t2:87 var
+R7446:7447 chap11 <> t1:85 var
+R7444:7444 chap11 <> p:84 var
+R7433:7433 chap11 <> n:83 var
+R7872:7884 chap11 <> search_tree_r thm
+R7872:7884 chap11 <> search_tree_r thm
+R7972:7974 chap11 <> maj ind
+R7972:7974 chap11 <> maj ind
+R8046:8050 chap11 <> maj_l thm
+R8046:8050 chap11 <> maj_l thm
+R8165:8169 chap11 <> min_r thm
+R8165:8169 chap11 <> min_r thm
+prf 8209:8216 <> insert_r
+R8234:8234 Coq.Numbers.BinNums <> Z ind
+binder 8230:8230 <> n:88
+binder 8232:8232 <> p:89
+R8249:8255 chap11 <> Z_btree ind
+binder 8238:8239 <> t1:90
+binder 8241:8242 <> t2:91
+binder 8244:8246 <> t'2:92
+R8268:8275 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8264:8266 Coq.ZArith.BinInt <> ::Z_scope:x_'>'_x not
+R8263:8263 chap11 <> n:88 var
+R8267:8267 chap11 <> p:89 var
+R8305:8312 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8276:8286 chap11 <> search_tree ind
+R8289:8295 chap11 <> Z_bnode constr
+R8302:8303 chap11 <> t2:91 var
+R8299:8300 chap11 <> t1:90 var
+R8297:8297 chap11 <> p:89 var
+R8328:8331 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8313:8318 chap11 <> INSERT ind
+R8325:8327 chap11 <> t'2:92 var
+R8322:8323 chap11 <> t2:91 var
+R8320:8320 chap11 <> n:88 var
+R8332:8337 chap11 <> INSERT ind
+R8360:8366 chap11 <> Z_bnode constr
+R8373:8375 chap11 <> t'2:92 var
+R8370:8371 chap11 <> t1:90 var
+R8368:8368 chap11 <> p:89 var
+R8342:8348 chap11 <> Z_bnode constr
+R8355:8356 chap11 <> t2:91 var
+R8352:8353 chap11 <> t1:90 var
+R8350:8350 chap11 <> p:89 var
+R8339:8339 chap11 <> n:88 var
+R8833:8845 chap11 <> search_tree_l thm
+R8833:8845 chap11 <> search_tree_l thm
+R8900:8904 chap11 <> maj_l thm
+R8900:8904 chap11 <> maj_l thm
+R8999:9003 chap11 <> min_r thm
+R8999:9003 chap11 <> min_r thm
+R9097:9103 Coq.ZArith.BinInt Z gt_lt thm
+R9097:9103 Coq.ZArith.BinInt Z gt_lt thm
+prf 9138:9146 <> insert_eq
+R9162:9162 Coq.Numbers.BinNums <> Z ind
+binder 9160:9160 <> n:93
+R9172:9178 chap11 <> Z_btree ind
+binder 9166:9167 <> t1:94
+binder 9169:9170 <> t2:95
+R9215:9222 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9186:9196 chap11 <> search_tree ind
+R9199:9205 chap11 <> Z_bnode constr
+R9212:9213 chap11 <> t2:95 var
+R9209:9210 chap11 <> t1:94 var
+R9207:9207 chap11 <> n:93 var
+R9223:9228 chap11 <> INSERT ind
+R9251:9257 chap11 <> Z_bnode constr
+R9264:9265 chap11 <> t2:95 var
+R9261:9262 chap11 <> t1:94 var
+R9259:9259 chap11 <> n:93 var
+R9233:9239 chap11 <> Z_bnode constr
+R9246:9247 chap11 <> t2:95 var
+R9243:9244 chap11 <> t1:94 var
+R9241:9241 chap11 <> n:93 var
+R9230:9230 chap11 <> n:93 var
+def 9400:9405 <> insert
+R9419:9419 Coq.Numbers.BinNums <> Z ind
+binder 9417:9417 <> n:96
+R9425:9431 chap11 <> Z_btree ind
+binder 9423:9423 <> t:97
+R9435:9445 chap11 <> insert_spec def
+R9449:9449 chap11 <> t:97 var
+R9447:9447 chap11 <> n:96 var
+R9481:9481 Coq.Numbers.BinNums <> Z ind
+binder 9479:9479 <> n:98
+R9487:9493 chap11 <> Z_btree ind
+binder 9485:9485 <> t:99
+R9509:9519 chap11 <> insert_spec def
+R9523:9523 chap11 <> t:99 var
+R9521:9521 chap11 <> n:98 var
+R9534:9534 chap11 <> t:99 var
+R9543:9553 chap11 <> insert_spec def
+R9557:9557 chap11 <> t:101 var
+R9555:9555 chap11 <> n:98 var
+R9566:9571 chap11 <> Z_leaf constr
+binder 9580:9580 <> s:102
+R9585:9589 Coq.Init.Specif <> exist constr
+R9594:9600 chap11 <> Z_bnode constr
+R9611:9616 chap11 <> Z_leaf constr
+R9604:9609 chap11 <> Z_leaf constr
+R9602:9602 chap11 <> n:98 var
+R9623:9629 chap11 <> Z_bnode constr
+binder 9646:9646 <> s:103
+R9657:9667 Coq.ZArith.ZArith_dec <> Z_le_gt_dec def
+R9669:9669 chap11 <> n:98 var
+R9680:9683 Coq.Init.Specif <> left constr
+R9696:9709 Coq.ZArith.ZArith_dec <> Z_le_lt_eq_dec def
+R9711:9711 chap11 <> n:98 var
+R9724:9727 Coq.Init.Specif <> left constr
+R9740:9745 chap11 <> insert:100 var
+R9747:9747 chap11 <> n:98 var
+R9761:9765 Coq.Init.Specif <> exist constr
+R9777:9781 Coq.Init.Specif <> exist constr
+R9786:9792 chap11 <> Z_bnode constr
+R9811:9815 Coq.Init.Specif <> right constr
+R9822:9826 Coq.Init.Specif <> exist constr
+R9831:9837 chap11 <> Z_bnode constr
+R9839:9839 chap11 <> n:98 var
+R9856:9860 Coq.Init.Specif <> right constr
+R9873:9878 chap11 <> insert:100 var
+R9880:9880 chap11 <> n:98 var
+R9894:9898 Coq.Init.Specif <> exist constr
+R9910:9914 Coq.Init.Specif <> exist constr
+R9919:9925 chap11 <> Z_bnode constr
+R9481:9481 Coq.Numbers.BinNums <> Z ind
+binder 9479:9479 <> n:104
+R9487:9493 chap11 <> Z_btree ind
+binder 9485:9485 <> t:105
+R9509:9519 chap11 <> insert_spec def
+R9523:9523 chap11 <> t:105 var
+R9521:9521 chap11 <> n:104 var
+R9534:9534 chap11 <> t:105 var
+R9543:9553 chap11 <> insert_spec def
+R9557:9557 chap11 <> t:107 var
+R9555:9555 chap11 <> n:104 var
+R9566:9571 chap11 <> Z_leaf constr
+binder 9580:9580 <> s:108
+R9585:9589 Coq.Init.Specif <> exist constr
+R9594:9600 chap11 <> Z_bnode constr
+R9611:9616 chap11 <> Z_leaf constr
+R9604:9609 chap11 <> Z_leaf constr
+R9602:9602 chap11 <> n:104 var
+R9623:9629 chap11 <> Z_bnode constr
+binder 9646:9646 <> s:109
+R9657:9667 Coq.ZArith.ZArith_dec <> Z_le_gt_dec def
+R9669:9669 chap11 <> n:104 var
+R9680:9683 Coq.Init.Specif <> left constr
+R9696:9709 Coq.ZArith.ZArith_dec <> Z_le_lt_eq_dec def
+R9711:9711 chap11 <> n:104 var
+R9724:9727 Coq.Init.Specif <> left constr
+R9740:9745 chap11 <> insert:106 var
+R9747:9747 chap11 <> n:104 var
+R9761:9765 Coq.Init.Specif <> exist constr
+R9777:9781 Coq.Init.Specif <> exist constr
+R9786:9792 chap11 <> Z_bnode constr
+R9811:9815 Coq.Init.Specif <> right constr
+R9822:9826 Coq.Init.Specif <> exist constr
+R9831:9837 chap11 <> Z_bnode constr
+R9839:9839 chap11 <> n:104 var
+R9856:9860 Coq.Init.Specif <> right constr
+R9873:9878 chap11 <> insert:106 var
+R9880:9880 chap11 <> n:104 var
+R9894:9898 Coq.Init.Specif <> exist constr
+R9910:9914 Coq.Init.Specif <> exist constr
+R9919:9925 chap11 <> Z_bnode constr
+R10434:10437 Coq.Lists.List <> <> lib
+def 10642:10655 <> list2tree_spec
+R10660:10663 Coq.Init.Datatypes <> list ind
+R10665:10665 Coq.Numbers.BinNums <> Z ind
+binder 10658:10658 <> l:110
+R10679:10679 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R10681:10683 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R10691:10693 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R10743:10743 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R10684:10690 chap11 <> Z_btree ind
+binder 10680:10680 <> t:111
+R10707:10711 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R10742:10742 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R10694:10704 chap11 <> search_tree ind
+R10706:10706 chap11 <> t:111 var
+R10721:10721 Coq.Numbers.BinNums <> Z ind
+binder 10719:10719 <> p:112
+R10730:10734 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R10724:10725 Coq.Lists.List <> In def
+R10729:10729 chap11 <> l:110 var
+R10727:10727 chap11 <> p:112 var
+R10735:10737 chap11 <> occ ind
+R10741:10741 chap11 <> t:111 var
+R10739:10739 chap11 <> p:112 var
+def 10759:10776 <> list2tree_aux_spec
+R10781:10784 Coq.Init.Datatypes <> list ind
+R10786:10786 Coq.Numbers.BinNums <> Z ind
+binder 10779:10779 <> l:113
+R10792:10798 chap11 <> Z_btree ind
+binder 10790:10790 <> t:114
+R10819:10824 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10806:10816 chap11 <> search_tree ind
+R10818:10818 chap11 <> t:114 var
+R10825:10825 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R10828:10830 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R10838:10844 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R10907:10907 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R10831:10837 chap11 <> Z_btree ind
+binder 10826:10827 <> t':115
+R10859:10863 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R10906:10906 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R10845:10855 chap11 <> search_tree ind
+R10857:10858 chap11 <> t':115 var
+R10873:10873 Coq.Numbers.BinNums <> Z ind
+binder 10871:10871 <> p:116
+R10893:10897 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R10882:10885 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R10876:10877 Coq.Lists.List <> In def
+R10881:10881 chap11 <> l:113 var
+R10879:10879 chap11 <> p:116 var
+R10886:10888 chap11 <> occ ind
+R10892:10892 chap11 <> t:114 var
+R10890:10890 chap11 <> p:116 var
+R10898:10900 chap11 <> occ ind
+R10904:10905 chap11 <> t':115 var
+R10902:10902 chap11 <> p:116 var
+def 10923:10935 <> list2tree_aux
+R10951:10954 Coq.Init.Datatypes <> list ind
+R10956:10956 Coq.Numbers.BinNums <> Z ind
+binder 10949:10949 <> l:117
+R10962:10968 chap11 <> Z_btree ind
+binder 10960:10960 <> t:118
+R10972:10989 chap11 <> list2tree_aux_spec def
+R10993:10993 chap11 <> t:118 var
+R10991:10991 chap11 <> l:117 var
+R11032:11035 Coq.Init.Datatypes <> list ind
+R11037:11037 Coq.Numbers.BinNums <> Z ind
+binder 11030:11030 <> l:119
+R11051:11057 chap11 <> Z_btree ind
+binder 11049:11049 <> t:120
+R11060:11077 chap11 <> list2tree_aux_spec def
+R11081:11081 chap11 <> t:120 var
+R11079:11079 chap11 <> l:119 var
+binder 11090:11090 <> t:122
+R11101:11101 chap11 <> l:119 var
+R11110:11127 chap11 <> list2tree_aux_spec def
+R11131:11131 chap11 <> t:122 var
+R11129:11129 chap11 <> l:123 var
+R11140:11142 Coq.Init.Datatypes <> nil constr
+binder 11151:11151 <> s:124
+R11156:11160 Coq.Init.Specif <> exist constr
+R11164:11164 chap11 <> t:122 var
+R11170:11173 Coq.Init.Datatypes <> cons constr
+binder 11187:11187 <> s:125
+R11198:11203 chap11 <> insert def
+R11214:11214 chap11 <> s:125 var
+R11211:11211 chap11 <> t:122 var
+R11223:11227 Coq.Init.Specif <> exist constr
+R11245:11257 chap11 <> list2tree_aux:121 var
+R11274:11278 Coq.Init.Specif <> exist constr
+R11291:11295 Coq.Init.Specif <> exist constr
+R11032:11035 Coq.Init.Datatypes <> list ind
+R11037:11037 Coq.Numbers.BinNums <> Z ind
+binder 11030:11030 <> l:126
+R11051:11057 chap11 <> Z_btree ind
+binder 11049:11049 <> t:127
+R11060:11077 chap11 <> list2tree_aux_spec def
+R11081:11081 chap11 <> t:127 var
+R11079:11079 chap11 <> l:126 var
+binder 11090:11090 <> t:129
+R11101:11101 chap11 <> l:126 var
+R11110:11127 chap11 <> list2tree_aux_spec def
+R11131:11131 chap11 <> t:129 var
+R11129:11129 chap11 <> l:130 var
+R11140:11142 Coq.Init.Datatypes <> nil constr
+binder 11151:11151 <> s:131
+R11156:11160 Coq.Init.Specif <> exist constr
+R11164:11164 chap11 <> t:129 var
+R11170:11173 Coq.Init.Datatypes <> cons constr
+binder 11187:11187 <> s:132
+R11198:11203 chap11 <> insert def
+R11214:11214 chap11 <> s:132 var
+R11211:11211 chap11 <> t:129 var
+R11223:11227 Coq.Init.Specif <> exist constr
+R11245:11257 chap11 <> list2tree_aux:128 var
+R11274:11278 Coq.Init.Specif <> exist constr
+R11291:11295 Coq.Init.Specif <> exist constr
+def 12033:12041 <> list2tree
+R12054:12057 Coq.Init.Datatypes <> list ind
+R12059:12059 Coq.Numbers.BinNums <> Z ind
+binder 12052:12052 <> l:133
+R12062:12075 chap11 <> list2tree_spec def
+R12077:12077 chap11 <> l:133 var
+binder 12103:12103 <> l:134
+R12114:12126 chap11 <> list2tree_aux def
+R12134:12139 chap11 <> Z_leaf constr
+R12128:12128 chap11 <> l:134 var
+R12151:12155 Coq.Init.Specif <> exist constr
+R12166:12170 Coq.Init.Specif <> exist constr
+binder 12103:12103 <> l:135
+R12114:12126 chap11 <> list2tree_aux def
+R12134:12139 chap11 <> Z_leaf constr
+R12128:12128 chap11 <> l:135 var
+R12151:12155 Coq.Init.Specif <> exist constr
+R12166:12170 Coq.Init.Specif <> exist constr
+ind 12656:12659 <> RMAX
+constr 12696:12705 <> rmax_intro
+R12667:12673 chap11 <> Z_btree ind
+binder 12662:12662 <> t:136
+binder 12664:12665 <> t':137
+R12679:12679 Coq.Numbers.BinNums <> Z ind
+binder 12677:12677 <> n:138
+R12722:12731 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12715:12717 chap11 <> occ ind
+R12721:12721 chap11 <> t:136 var
+R12719:12719 chap11 <> n:138 var
+R12732:12732 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12762:12772 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12742:12742 Coq.Numbers.BinNums <> Z ind
+binder 12740:12740 <> p:141
+R12752:12755 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12745:12747 chap11 <> occ ind
+R12751:12751 chap11 <> t:136 var
+R12749:12749 chap11 <> p:141 var
+R12757:12760 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x not
+R12756:12756 chap11 <> p:141 var
+R12761:12761 chap11 <> n:138 var
+R12773:12773 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12805:12815 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12783:12783 Coq.Numbers.BinNums <> Z ind
+binder 12781:12781 <> q:142
+R12794:12797 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12786:12788 chap11 <> occ ind
+R12792:12793 chap11 <> t':137 var
+R12790:12790 chap11 <> q:142 var
+R12798:12800 chap11 <> occ ind
+R12804:12804 chap11 <> t:136 var
+R12802:12802 chap11 <> q:142 var
+R12816:12816 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12857:12867 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12826:12826 Coq.Numbers.BinNums <> Z ind
+binder 12824:12824 <> q:143
+R12836:12839 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12829:12831 chap11 <> occ ind
+R12835:12835 chap11 <> t:136 var
+R12833:12833 chap11 <> q:143 var
+R12848:12851 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R12840:12842 chap11 <> occ ind
+R12846:12847 chap11 <> t':137 var
+R12844:12844 chap11 <> q:143 var
+R12853:12855 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R12852:12852 chap11 <> n:138 var
+R12856:12856 chap11 <> q:143 var
+R12878:12881 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12868:12869 Coq.Init.Logic <> ::type_scope:'~'_x not
+R12870:12872 chap11 <> occ ind
+R12876:12877 chap11 <> t':137 var
+R12874:12874 chap11 <> n:138 var
+R12896:12899 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12882:12892 chap11 <> search_tree ind
+R12894:12895 chap11 <> t':137 var
+R12900:12903 chap11 <> RMAX:139 ind
+R12910:12910 chap11 <> n:138 var
+R12907:12908 chap11 <> t':137 var
+R12905:12905 chap11 <> t:136 var
+R12949:12952 chap11 <> RMAX ind
+prf 12999:13012 <> rmax_leaf_leaf
+R13025:13025 Coq.Numbers.BinNums <> Z ind
+binder 13023:13023 <> n:144
+R13028:13031 chap11 <> RMAX ind
+R13066:13066 chap11 <> n:144 var
+R13059:13064 chap11 <> Z_leaf constr
+R13034:13040 chap11 <> Z_bnode constr
+R13051:13056 chap11 <> Z_leaf constr
+R13044:13049 chap11 <> Z_leaf constr
+R13042:13042 chap11 <> n:144 var
+R13228:13230 chap11 <> occ ind
+R13234:13239 chap11 <> Z_leaf constr
+R13228:13230 chap11 <> occ ind
+R13234:13239 chap11 <> Z_leaf constr
+R13284:13286 chap11 <> occ ind
+R13290:13295 chap11 <> Z_leaf constr
+R13284:13286 chap11 <> occ ind
+R13290:13295 chap11 <> Z_leaf constr
+prf 13390:13402 <> rmax_t_Z_leaf
+R13420:13426 chap11 <> Z_btree ind
+binder 13418:13418 <> t:145
+R13432:13432 Coq.Numbers.BinNums <> Z ind
+binder 13430:13430 <> n:146
+R13474:13477 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13442:13452 chap11 <> search_tree ind
+R13455:13461 chap11 <> Z_bnode constr
+R13467:13472 chap11 <> Z_leaf constr
+R13465:13465 chap11 <> t:145 var
+R13463:13463 chap11 <> n:146 var
+R13478:13481 chap11 <> RMAX ind
+R13506:13506 chap11 <> n:146 var
+R13504:13504 chap11 <> t:145 var
+R13484:13490 chap11 <> Z_bnode constr
+R13496:13501 chap11 <> Z_leaf constr
+R13494:13494 chap11 <> t:145 var
+R13492:13492 chap11 <> n:146 var
+R13592:13598 chap11 <> occ_inv thm
+R13592:13598 chap11 <> occ_inv thm
+R13699:13709 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R13719:13723 chap11 <> maj_l thm
+R13699:13709 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R13719:13723 chap11 <> maj_l thm
+R13756:13758 chap11 <> occ ind
+R13762:13767 chap11 <> Z_leaf constr
+R13756:13758 chap11 <> occ ind
+R13762:13767 chap11 <> Z_leaf constr
+R13819:13825 chap11 <> occ_inv thm
+R13819:13825 chap11 <> occ_inv thm
+R13936:13938 chap11 <> occ ind
+R13942:13947 chap11 <> Z_leaf constr
+R13936:13938 chap11 <> occ ind
+R13942:13947 chap11 <> Z_leaf constr
+R14012:14019 chap11 <> not_left thm
+R14012:14019 chap11 <> not_left thm
+sec 14299:14305 <> RMAX_np
+var 14322:14322 RMAX_np n
+var 14324:14324 RMAX_np p
+var 14326:14326 RMAX_np q
+R14330:14330 Coq.Numbers.BinNums <> Z ind
+var 14347:14348 RMAX_np t1
+var 14350:14351 RMAX_np t2
+var 14353:14354 RMAX_np t3
+var 14356:14357 RMAX_np t'
+R14361:14367 chap11 <> Z_btree ind
+var 14385:14386 RMAX_np S1
+R14390:14400 chap11 <> search_tree ind
+R14403:14409 chap11 <> Z_bnode constr
+R14417:14423 chap11 <> Z_bnode constr
+R14430:14431 chap11 <> RMAX_np.t3 var
+R14427:14428 chap11 <> RMAX_np.t2 var
+R14425:14425 chap11 <> RMAX_np.p var
+R14413:14414 chap11 <> RMAX_np.t1 var
+R14411:14411 chap11 <> RMAX_np.n var
+var 14451:14452 RMAX_np R1
+R14456:14459 chap11 <> RMAX ind
+R14482:14482 chap11 <> RMAX_np.q var
+R14479:14480 chap11 <> RMAX_np.t' var
+R14462:14468 chap11 <> Z_bnode constr
+R14475:14476 chap11 <> RMAX_np.t3 var
+R14472:14473 chap11 <> RMAX_np.t2 var
+R14470:14470 chap11 <> RMAX_np.p var
+prf 14543:14548 <> rmax_1
+R14552:14554 chap11 <> occ ind
+R14559:14565 chap11 <> Z_bnode constr
+R14573:14579 chap11 <> Z_bnode constr
+R14586:14587 chap11 <> RMAX_np.t3 var
+R14583:14584 chap11 <> RMAX_np.t2 var
+R14581:14581 chap11 <> RMAX_np.p var
+R14569:14570 chap11 <> RMAX_np.t1 var
+R14567:14567 chap11 <> RMAX_np.n var
+R14556:14556 chap11 <> RMAX_np.q var
+R14614:14615 chap11 <> RMAX_np.R1 var
+R14614:14615 chap11 <> RMAX_np.R1 var
+prf 14709:14714 <> rmax_2
+R14719:14721 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R14718:14718 chap11 <> RMAX_np.n var
+R14722:14722 chap11 <> RMAX_np.p var
+R14748:14752 chap11 <> min_r thm
+R14754:14755 chap11 <> RMAX_np.S1 var
+R14748:14752 chap11 <> min_r thm
+R14754:14755 chap11 <> RMAX_np.S1 var
+prf 14850:14855 <> rmax_3
+R14859:14861 chap11 <> min ind
+R14865:14866 chap11 <> RMAX_np.t' var
+R14863:14863 chap11 <> RMAX_np.n var
+R14892:14900 chap11 <> min_intro constr
+R14892:14900 chap11 <> min_intro constr
+R14927:14928 chap11 <> RMAX_np.R1 var
+R14927:14928 chap11 <> RMAX_np.R1 var
+R14951:14955 chap11 <> min_r thm
+R14957:14958 chap11 <> RMAX_np.S1 var
+R14951:14955 chap11 <> min_r thm
+R14957:14958 chap11 <> RMAX_np.S1 var
+prf 15053:15058 <> rmax_4
+R15062:15072 chap11 <> search_tree ind
+R15075:15081 chap11 <> Z_bnode constr
+R15088:15089 chap11 <> RMAX_np.t' var
+R15085:15086 chap11 <> RMAX_np.t1 var
+R15083:15083 chap11 <> RMAX_np.n var
+R15151:15151 chap11 <> RMAX_np.n var
+R15154:15160 chap11 <> Z_bnode constr
+R15167:15168 chap11 <> RMAX_np.t3 var
+R15164:15165 chap11 <> RMAX_np.t2 var
+R15162:15162 chap11 <> RMAX_np.p var
+R15132:15144 chap11 <> search_tree_l thm
+R15151:15151 chap11 <> RMAX_np.n var
+R15154:15160 chap11 <> Z_bnode constr
+R15167:15168 chap11 <> RMAX_np.t3 var
+R15164:15165 chap11 <> RMAX_np.t2 var
+R15162:15162 chap11 <> RMAX_np.p var
+R15132:15144 chap11 <> search_tree_l thm
+R15209:15210 chap11 <> RMAX_np.R1 var
+R15209:15210 chap11 <> RMAX_np.R1 var
+R15263:15269 chap11 <> Z_bnode constr
+R15276:15277 chap11 <> RMAX_np.t3 var
+R15273:15274 chap11 <> RMAX_np.t2 var
+R15271:15271 chap11 <> RMAX_np.p var
+R15251:15255 chap11 <> maj_l thm
+R15263:15269 chap11 <> Z_bnode constr
+R15276:15277 chap11 <> RMAX_np.t3 var
+R15273:15274 chap11 <> RMAX_np.t2 var
+R15271:15271 chap11 <> RMAX_np.p var
+R15251:15255 chap11 <> maj_l thm
+prf 15404:15409 <> rmax_5
+R15414:15416 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R15413:15413 chap11 <> RMAX_np.n var
+R15417:15417 chap11 <> RMAX_np.q var
+R15442:15443 chap11 <> RMAX_np.R1 var
+R15479:15479 chap11 <> RMAX_np.p var
+R15460:15472 Coq.ZArith.BinInt Z lt_le_trans thm
+R15442:15443 chap11 <> RMAX_np.R1 var
+R15479:15479 chap11 <> RMAX_np.p var
+R15460:15472 Coq.ZArith.BinInt Z lt_le_trans thm
+prf 15573:15578 <> rmax_6
+R15598:15598 Coq.Numbers.BinNums <> Z ind
+binder 15595:15596 <> p0:156
+R15640:15643 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15601:15603 chap11 <> occ ind
+R15609:15615 chap11 <> Z_bnode constr
+R15623:15629 chap11 <> Z_bnode constr
+R15636:15637 chap11 <> RMAX_np.t3 var
+R15633:15634 chap11 <> RMAX_np.t2 var
+R15631:15631 chap11 <> RMAX_np.p var
+R15619:15620 chap11 <> RMAX_np.t1 var
+R15617:15617 chap11 <> RMAX_np.n var
+R15605:15606 chap11 <> p0:156 var
+R15646:15649 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x not
+R15644:15645 chap11 <> p0:156 var
+R15650:15650 chap11 <> RMAX_np.q var
+R15689:15690 chap11 <> RMAX_np.R1 var
+R15689:15690 chap11 <> RMAX_np.R1 var
+R15732:15738 chap11 <> occ_inv thm
+R15732:15738 chap11 <> occ_inv thm
+R15777:15787 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R15777:15787 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R15854:15858 chap11 <> maj_l thm
+R15860:15861 chap11 <> RMAX_np.S1 var
+R15854:15858 chap11 <> maj_l thm
+R15860:15861 chap11 <> RMAX_np.S1 var
+R15854:15858 chap11 <> maj_l thm
+R15860:15861 chap11 <> RMAX_np.S1 var
+R15890:15892 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R15893:15893 chap11 <> RMAX_np.n var
+R15890:15892 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R15893:15893 chap11 <> RMAX_np.n var
+R15941:15951 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R15977:15977 chap11 <> RMAX_np.n var
+R15961:15970 Coq.ZArith.BinInt Z lt_trans thm
+R15941:15951 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R15977:15977 chap11 <> RMAX_np.n var
+R15961:15970 Coq.ZArith.BinInt Z lt_trans thm
+R16027:16031 chap11 <> min_r thm
+R16033:16034 chap11 <> RMAX_np.S1 var
+R16027:16031 chap11 <> min_r thm
+R16033:16034 chap11 <> RMAX_np.S1 var
+prf 16129:16134 <> rmax_7
+R16154:16154 Coq.Numbers.BinNums <> Z ind
+binder 16151:16152 <> q':157
+R16189:16192 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16165:16167 chap11 <> occ ind
+R16173:16179 chap11 <> Z_bnode constr
+R16186:16187 chap11 <> RMAX_np.t' var
+R16183:16184 chap11 <> RMAX_np.t1 var
+R16181:16181 chap11 <> RMAX_np.n var
+R16169:16170 chap11 <> q':157 var
+R16193:16195 chap11 <> occ ind
+R16201:16207 chap11 <> Z_bnode constr
+R16215:16221 chap11 <> Z_bnode constr
+R16228:16229 chap11 <> RMAX_np.t3 var
+R16225:16226 chap11 <> RMAX_np.t2 var
+R16223:16223 chap11 <> RMAX_np.p var
+R16211:16212 chap11 <> RMAX_np.t1 var
+R16209:16209 chap11 <> RMAX_np.n var
+R16197:16198 chap11 <> q':157 var
+R16270:16276 chap11 <> occ_inv thm
+R16270:16276 chap11 <> occ_inv thm
+R16398:16399 chap11 <> RMAX_np.R1 var
+R16398:16399 chap11 <> RMAX_np.R1 var
+prf 16493:16498 <> rmax_8
+R16502:16503 Coq.Init.Logic <> ::type_scope:'~'_x not
+R16504:16506 chap11 <> occ ind
+R16511:16517 chap11 <> Z_bnode constr
+R16524:16525 chap11 <> RMAX_np.t' var
+R16521:16522 chap11 <> RMAX_np.t1 var
+R16519:16519 chap11 <> RMAX_np.n var
+R16508:16508 chap11 <> RMAX_np.q var
+R16560:16566 chap11 <> occ_inv thm
+R16560:16566 chap11 <> occ_inv thm
+R16600:16602 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R16599:16599 chap11 <> RMAX_np.n var
+R16603:16603 chap11 <> RMAX_np.q var
+R16600:16602 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R16599:16599 chap11 <> RMAX_np.n var
+R16603:16603 chap11 <> RMAX_np.q var
+R16638:16648 Coq.ZArith.BinInt Z lt_irrefl thm
+R16638:16648 Coq.ZArith.BinInt Z lt_irrefl thm
+R16743:16745 chap11 <> occ ind
+R16749:16750 chap11 <> RMAX_np.t1 var
+R16747:16747 chap11 <> RMAX_np.q var
+R16743:16745 chap11 <> occ ind
+R16749:16750 chap11 <> RMAX_np.t1 var
+R16747:16747 chap11 <> RMAX_np.q var
+R16808:16808 chap11 <> RMAX_np.n var
+R16811:16817 chap11 <> Z_bnode constr
+R16824:16825 chap11 <> RMAX_np.t3 var
+R16821:16822 chap11 <> RMAX_np.t2 var
+R16819:16819 chap11 <> RMAX_np.p var
+R16794:16801 chap11 <> not_left thm
+R16808:16808 chap11 <> RMAX_np.n var
+R16811:16817 chap11 <> Z_bnode constr
+R16824:16825 chap11 <> RMAX_np.t3 var
+R16821:16822 chap11 <> RMAX_np.t2 var
+R16819:16819 chap11 <> RMAX_np.p var
+R16794:16801 chap11 <> not_left thm
+R16869:16875 Coq.ZArith.BinInt Z le_ge thm
+R16883:16884 chap11 <> RMAX_np.R1 var
+R16869:16875 Coq.ZArith.BinInt Z le_ge thm
+R16883:16884 chap11 <> RMAX_np.R1 var
+R16927:16928 chap11 <> RMAX_np.R1 var
+R16927:16928 chap11 <> RMAX_np.R1 var
+prf 17005:17010 <> rmax_9
+R17030:17030 Coq.Numbers.BinNums <> Z ind
+binder 17027:17028 <> q0:158
+R17080:17091 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17041:17043 chap11 <> occ ind
+R17049:17055 chap11 <> Z_bnode constr
+R17063:17069 chap11 <> Z_bnode constr
+R17076:17077 chap11 <> RMAX_np.t3 var
+R17073:17074 chap11 <> RMAX_np.t2 var
+R17071:17071 chap11 <> RMAX_np.p var
+R17059:17060 chap11 <> RMAX_np.t1 var
+R17057:17057 chap11 <> RMAX_np.n var
+R17045:17046 chap11 <> q0:158 var
+R17116:17119 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R17092:17094 chap11 <> occ ind
+R17100:17106 chap11 <> Z_bnode constr
+R17113:17114 chap11 <> RMAX_np.t' var
+R17110:17111 chap11 <> RMAX_np.t1 var
+R17108:17108 chap11 <> RMAX_np.n var
+R17096:17097 chap11 <> q0:158 var
+R17121:17123 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17120:17120 chap11 <> RMAX_np.q var
+R17124:17125 chap11 <> q0:158 var
+R17164:17170 chap11 <> occ_inv thm
+R17164:17170 chap11 <> occ_inv thm
+R17331:17332 chap11 <> RMAX_np.R1 var
+R17331:17332 chap11 <> RMAX_np.R1 var
+prf 17482:17493 <> rmax_t1_t2t3
+R17503:17506 chap11 <> RMAX ind
+R17559:17559 chap11 <> RMAX_np.q var
+R17542:17548 chap11 <> Z_bnode constr
+R17555:17556 chap11 <> RMAX_np.t' var
+R17552:17553 chap11 <> RMAX_np.t1 var
+R17550:17550 chap11 <> RMAX_np.n var
+R17509:17515 chap11 <> Z_bnode constr
+R17523:17529 chap11 <> Z_bnode constr
+R17536:17537 chap11 <> RMAX_np.t3 var
+R17533:17534 chap11 <> RMAX_np.t2 var
+R17531:17531 chap11 <> RMAX_np.p var
+R17519:17520 chap11 <> RMAX_np.t1 var
+R17517:17517 chap11 <> RMAX_np.n var
+R17585:17594 chap11 <> rmax_intro constr
+R17585:17594 chap11 <> rmax_intro constr
+R17636:17642 chap11 RMAX_np <> sec
+def 17714:17721 <> rmax_sig
+R17726:17732 chap11 <> Z_btree ind
+binder 17724:17724 <> t:159
+R17738:17738 Coq.Numbers.BinNums <> Z ind
+binder 17736:17736 <> q:160
+R17744:17744 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R17747:17749 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R17757:17759 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R17771:17771 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R17750:17756 chap11 <> Z_btree ind
+binder 17745:17746 <> t':161
+R17760:17763 chap11 <> RMAX ind
+R17770:17770 chap11 <> q:160 var
+R17767:17768 chap11 <> t':161 var
+R17765:17765 chap11 <> t:159 var
+def 17788:17796 <> rmax_spec
+R17801:17807 chap11 <> Z_btree ind
+binder 17799:17799 <> t:162
+R17830:17833 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17817:17827 chap11 <> search_tree ind
+R17829:17829 chap11 <> t:162 var
+R17844:17847 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17834:17841 chap11 <> is_bnode def
+R17843:17843 chap11 <> t:162 var
+R17848:17848 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'&'_x_'}' not
+R17850:17852 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'&'_x_'}' not
+R17854:17857 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'&'_x_'}' not
+R17870:17870 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'&'_x_'}' not
+R17853:17853 Coq.Numbers.BinNums <> Z ind
+binder 17849:17849 <> q:163
+R17858:17865 chap11 <> rmax_sig def
+R17869:17869 chap11 <> q:163 var
+R17867:17867 chap11 <> t:162 var
+def 17887:17890 <> rmax
+R17903:17909 chap11 <> Z_btree ind
+binder 17901:17901 <> t:164
+R17912:17920 chap11 <> rmax_spec def
+R17922:17922 chap11 <> t:164 var
+R17958:17964 chap11 <> Z_btree ind
+binder 17956:17956 <> t:165
+R17969:17977 chap11 <> rmax_spec def
+R17979:17979 chap11 <> t:165 var
+R17990:17990 chap11 <> t:165 var
+R18004:18012 chap11 <> rmax_spec def
+R18014:18014 chap11 <> x:167 var
+R18023:18028 chap11 <> Z_leaf constr
+binder 18037:18037 <> h:168
+binder 18039:18040 <> h':169
+R18045:18053 Coq.Init.Logic <> False_rec scheme
+R18061:18067 chap11 <> Z_bnode constr
+R18112:18115 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18101:18109 chap11 <> rmax_spec def
+R18111:18111 chap11 <> z:170 var
+R18122:18125 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18117:18119 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18116:18116 chap11 <> z:170 var
+R18126:18134 chap11 <> rmax_spec def
+R18137:18143 chap11 <> Z_bnode constr
+R18150:18150 chap11 <> z:170 var
+R18160:18165 chap11 <> Z_leaf constr
+binder 18174:18174 <> h:171
+binder 18176:18177 <> h':172
+binder 18179:18181 <> h'':173
+binder 18183:18186 <> h''':174
+R18191:18196 Coq.Init.Specif <> existT constr
+R18247:18251 Coq.Init.Specif <> exist constr
+R18205:18205 Coq.Numbers.BinNums <> Z ind
+binder 18203:18203 <> q:175
+R18210:18217 chap11 <> rmax_sig def
+R18241:18241 chap11 <> q:175 var
+R18220:18226 chap11 <> Z_bnode constr
+R18233:18238 chap11 <> Z_leaf constr
+R18263:18269 chap11 <> Z_bnode constr
+binder 18289:18289 <> h:176
+binder 18291:18292 <> h':177
+binder 18294:18296 <> h'':178
+binder 18298:18301 <> h''':179
+R18312:18315 chap11 <> rmax:166 var
+R18331:18336 Coq.Init.Specif <> existT constr
+R18345:18349 Coq.Init.Specif <> exist constr
+R18362:18367 Coq.Init.Specif <> existT constr
+R18434:18438 Coq.Init.Specif <> exist constr
+R18443:18449 chap11 <> Z_bnode constr
+R18376:18376 Coq.Numbers.BinNums <> Z ind
+binder 18374:18374 <> q:180
+R18381:18388 chap11 <> rmax_sig def
+R18426:18426 chap11 <> q:180 var
+R18391:18397 chap11 <> Z_bnode constr
+R18405:18411 chap11 <> Z_bnode constr
+R17958:17964 chap11 <> Z_btree ind
+binder 17956:17956 <> t:181
+R17969:17977 chap11 <> rmax_spec def
+R17979:17979 chap11 <> t:181 var
+R17990:17990 chap11 <> t:181 var
+R18004:18012 chap11 <> rmax_spec def
+R18014:18014 chap11 <> x:183 var
+R18023:18028 chap11 <> Z_leaf constr
+binder 18037:18037 <> h:184
+binder 18039:18040 <> h':185
+R18045:18053 Coq.Init.Logic <> False_rec scheme
+R18061:18067 chap11 <> Z_bnode constr
+R18112:18115 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18101:18109 chap11 <> rmax_spec def
+R18111:18111 chap11 <> z:186 var
+R18122:18125 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18117:18119 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18116:18116 chap11 <> z:186 var
+R18126:18134 chap11 <> rmax_spec def
+R18137:18143 chap11 <> Z_bnode constr
+R18150:18150 chap11 <> z:186 var
+R18160:18165 chap11 <> Z_leaf constr
+binder 18174:18174 <> h:187
+binder 18176:18177 <> h':188
+binder 18179:18181 <> h'':189
+binder 18183:18186 <> h''':190
+R18191:18196 Coq.Init.Specif <> existT constr
+R18247:18251 Coq.Init.Specif <> exist constr
+R18205:18205 Coq.Numbers.BinNums <> Z ind
+binder 18203:18203 <> q:191
+R18210:18217 chap11 <> rmax_sig def
+R18241:18241 chap11 <> q:191 var
+R18220:18226 chap11 <> Z_bnode constr
+R18233:18238 chap11 <> Z_leaf constr
+R18263:18269 chap11 <> Z_bnode constr
+binder 18289:18289 <> h:192
+binder 18291:18292 <> h':193
+binder 18294:18296 <> h'':194
+binder 18298:18301 <> h''':195
+R18312:18315 chap11 <> rmax:182 var
+R18331:18336 Coq.Init.Specif <> existT constr
+R18345:18349 Coq.Init.Specif <> exist constr
+R18362:18367 Coq.Init.Specif <> existT constr
+R18434:18438 Coq.Init.Specif <> exist constr
+R18443:18449 chap11 <> Z_bnode constr
+R18376:18376 Coq.Numbers.BinNums <> Z ind
+binder 18374:18374 <> q:196
+R18381:18388 chap11 <> rmax_sig def
+R18426:18426 chap11 <> q:196 var
+R18391:18397 chap11 <> Z_bnode constr
+R18405:18411 chap11 <> Z_bnode constr
+R18677:18688 chap11 <> rmax_t1_t2t3 thm
+R18677:18688 chap11 <> rmax_t1_t2t3 thm
+ind 19383:19384 <> RM
+constr 19421:19428 <> rm_intro
+R19389:19389 Coq.Numbers.BinNums <> Z ind
+binder 19387:19387 <> n:197
+R19398:19404 chap11 <> Z_btree ind
+binder 19393:19393 <> t:198
+binder 19395:19396 <> t':199
+R19448:19457 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19438:19439 Coq.Init.Logic <> ::type_scope:'~'_x not
+R19440:19442 chap11 <> occ ind
+R19446:19447 chap11 <> t':199 var
+R19444:19444 chap11 <> n:197 var
+R19458:19458 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19490:19500 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19468:19468 Coq.Numbers.BinNums <> Z ind
+binder 19466:19466 <> p:202
+R19479:19482 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19471:19473 chap11 <> occ ind
+R19477:19478 chap11 <> t':199 var
+R19475:19475 chap11 <> p:202 var
+R19483:19485 chap11 <> occ ind
+R19489:19489 chap11 <> t:198 var
+R19487:19487 chap11 <> p:202 var
+R19501:19501 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19542:19552 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19511:19511 Coq.Numbers.BinNums <> Z ind
+binder 19509:19509 <> p:203
+R19521:19524 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19514:19516 chap11 <> occ ind
+R19520:19520 chap11 <> t:198 var
+R19518:19518 chap11 <> p:203 var
+R19533:19536 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R19525:19527 chap11 <> occ ind
+R19531:19532 chap11 <> t':199 var
+R19529:19529 chap11 <> p:203 var
+R19538:19540 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R19537:19537 chap11 <> n:197 var
+R19541:19541 chap11 <> p:203 var
+R19567:19570 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19553:19563 chap11 <> search_tree ind
+R19565:19566 chap11 <> t':199 var
+R19571:19572 chap11 <> RM:200 ind
+R19578:19579 chap11 <> t':199 var
+R19576:19576 chap11 <> t:198 var
+R19574:19574 chap11 <> n:197 var
+def 19598:19604 <> rm_spec
+R19609:19609 Coq.Numbers.BinNums <> Z ind
+binder 19607:19607 <> n:204
+R19615:19621 chap11 <> Z_btree ind
+binder 19613:19613 <> t:205
+R19650:19653 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19637:19647 chap11 <> search_tree ind
+R19649:19649 chap11 <> t:205 var
+R19654:19654 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R19657:19659 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R19667:19669 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R19679:19679 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R19660:19666 chap11 <> Z_btree ind
+binder 19655:19656 <> t':206
+R19670:19671 chap11 <> RM ind
+R19677:19678 chap11 <> t':206 var
+R19675:19675 chap11 <> t:205 var
+R19673:19673 chap11 <> n:204 var
+prf 19763:19766 <> RM_0
+R19779:19779 Coq.Numbers.BinNums <> Z ind
+binder 19777:19777 <> n:207
+R19782:19783 chap11 <> RM ind
+R19794:19799 chap11 <> Z_leaf constr
+R19787:19792 chap11 <> Z_leaf constr
+R19785:19785 chap11 <> n:207 var
+R19830:19837 chap11 <> rm_intro constr
+R19830:19837 chap11 <> rm_intro constr
+prf 19925:19928 <> RM_1
+R19941:19941 Coq.Numbers.BinNums <> Z ind
+binder 19939:19939 <> n:208
+R19944:19945 chap11 <> RM ind
+R19975:19980 chap11 <> Z_leaf constr
+R19950:19956 chap11 <> Z_bnode constr
+R19967:19972 chap11 <> Z_leaf constr
+R19960:19965 chap11 <> Z_leaf constr
+R19958:19958 chap11 <> n:208 var
+R19947:19947 chap11 <> n:208 var
+R20010:20017 chap11 <> rm_intro constr
+R20010:20017 chap11 <> rm_intro constr
+R20065:20071 chap11 <> occ_inv thm
+R20065:20071 chap11 <> occ_inv thm
+prf 20209:20215 <> rm_left
+R20235:20235 Coq.Numbers.BinNums <> Z ind
+binder 20231:20231 <> n:209
+binder 20233:20233 <> p:210
+R20248:20254 chap11 <> Z_btree ind
+binder 20239:20240 <> t1:211
+binder 20242:20243 <> t2:212
+binder 20245:20246 <> t':213
+R20269:20278 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20265:20267 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R20264:20264 chap11 <> p:210 var
+R20268:20268 chap11 <> n:209 var
+R20308:20317 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20279:20289 chap11 <> search_tree ind
+R20292:20298 chap11 <> Z_bnode constr
+R20305:20306 chap11 <> t2:212 var
+R20302:20303 chap11 <> t1:211 var
+R20300:20300 chap11 <> n:209 var
+R20328:20331 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20318:20319 chap11 <> RM ind
+R20326:20327 chap11 <> t':213 var
+R20323:20324 chap11 <> t1:211 var
+R20321:20321 chap11 <> p:210 var
+R20332:20333 chap11 <> RM ind
+R20356:20362 chap11 <> Z_bnode constr
+R20369:20370 chap11 <> t2:212 var
+R20366:20367 chap11 <> t':213 var
+R20364:20364 chap11 <> n:209 var
+R20338:20344 chap11 <> Z_bnode constr
+R20351:20352 chap11 <> t2:212 var
+R20348:20349 chap11 <> t1:211 var
+R20346:20346 chap11 <> n:209 var
+R20335:20335 chap11 <> p:210 var
+R20426:20433 chap11 <> rm_intro constr
+R20426:20433 chap11 <> rm_intro constr
+R20458:20464 chap11 <> occ_inv thm
+R20458:20464 chap11 <> occ_inv thm
+R20495:20505 Coq.ZArith.BinInt Z lt_irrefl thm
+R20495:20505 Coq.ZArith.BinInt Z lt_irrefl thm
+R20651:20653 chap11 <> occ ind
+R20651:20653 chap11 <> occ ind
+R20700:20708 chap11 <> not_right thm
+R20700:20708 chap11 <> not_right thm
+R20759:20769 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R20759:20769 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R20822:20828 chap11 <> occ_inv thm
+R20822:20828 chap11 <> occ_inv thm
+R21013:21019 chap11 <> occ_inv thm
+R21013:21019 chap11 <> occ_inv thm
+R21318:21330 chap11 <> search_tree_r thm
+R21318:21330 chap11 <> search_tree_r thm
+R21382:21390 chap11 <> maj_intro constr
+R21382:21390 chap11 <> maj_intro constr
+R21421:21423 chap11 <> occ ind
+R21421:21423 chap11 <> occ ind
+R21458:21462 chap11 <> maj_l thm
+R21458:21462 chap11 <> maj_l thm
+R21597:21601 chap11 <> min_r thm
+R21597:21601 chap11 <> min_r thm
+prf 21737:21744 <> rm_right
+R21764:21764 Coq.Numbers.BinNums <> Z ind
+binder 21760:21760 <> n:214
+binder 21762:21762 <> p:215
+R21777:21783 chap11 <> Z_btree ind
+binder 21768:21769 <> t1:216
+binder 21771:21772 <> t2:217
+binder 21774:21775 <> t':218
+R21798:21807 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21794:21796 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R21793:21793 chap11 <> n:214 var
+R21797:21797 chap11 <> p:215 var
+R21837:21846 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21808:21818 chap11 <> search_tree ind
+R21821:21827 chap11 <> Z_bnode constr
+R21834:21835 chap11 <> t2:217 var
+R21831:21832 chap11 <> t1:216 var
+R21829:21829 chap11 <> n:214 var
+R21857:21860 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21847:21848 chap11 <> RM ind
+R21855:21856 chap11 <> t':218 var
+R21852:21853 chap11 <> t2:217 var
+R21850:21850 chap11 <> p:215 var
+R21861:21862 chap11 <> RM ind
+R21885:21891 chap11 <> Z_bnode constr
+R21898:21899 chap11 <> t':218 var
+R21895:21896 chap11 <> t1:216 var
+R21893:21893 chap11 <> n:214 var
+R21867:21873 chap11 <> Z_bnode constr
+R21880:21881 chap11 <> t2:217 var
+R21877:21878 chap11 <> t1:216 var
+R21875:21875 chap11 <> n:214 var
+R21864:21864 chap11 <> p:215 var
+R21951:21958 chap11 <> rm_intro constr
+R21951:21958 chap11 <> rm_intro constr
+R21983:21989 chap11 <> occ_inv thm
+R21983:21989 chap11 <> occ_inv thm
+R22021:22031 Coq.ZArith.BinInt Z lt_irrefl thm
+R22021:22031 Coq.ZArith.BinInt Z lt_irrefl thm
+R22212:22214 chap11 <> occ ind
+R22212:22214 chap11 <> occ ind
+R22261:22268 chap11 <> not_left thm
+R22261:22268 chap11 <> not_left thm
+R22319:22325 Coq.ZArith.BinInt Z le_ge thm
+R22334:22344 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R22319:22325 Coq.ZArith.BinInt Z le_ge thm
+R22334:22344 Coq.ZArith.Zorder <> Zlt_le_weak syndef
+R22379:22385 chap11 <> occ_inv thm
+R22379:22385 chap11 <> occ_inv thm
+R22564:22570 chap11 <> occ_inv thm
+R22564:22570 chap11 <> occ_inv thm
+R22951:22955 chap11 <> min_r thm
+R22951:22955 chap11 <> min_r thm
+prf 23266:23282 <> rm_root_base_case
+R23300:23300 Coq.Numbers.BinNums <> Z ind
+binder 23298:23298 <> n:219
+R23306:23312 chap11 <> Z_btree ind
+binder 23304:23304 <> t:220
+R23354:23357 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R23322:23332 chap11 <> search_tree ind
+R23335:23341 chap11 <> Z_bnode constr
+R23352:23352 chap11 <> t:220 var
+R23345:23350 chap11 <> Z_leaf constr
+R23343:23343 chap11 <> n:219 var
+R23358:23359 chap11 <> RM ind
+R23384:23384 chap11 <> t:220 var
+R23364:23370 chap11 <> Z_bnode constr
+R23381:23381 chap11 <> t:220 var
+R23374:23379 chap11 <> Z_leaf constr
+R23372:23372 chap11 <> n:219 var
+R23361:23361 chap11 <> n:219 var
+R23414:23421 chap11 <> rm_intro constr
+R23414:23421 chap11 <> rm_intro constr
+R23454:23459 chap11 <> Z_leaf constr
+R23437:23445 chap11 <> not_right thm
+R23454:23459 chap11 <> Z_leaf constr
+R23437:23445 chap11 <> not_right thm
+R23560:23566 chap11 <> occ_inv thm
+R23560:23566 chap11 <> occ_inv thm
+R23650:23652 chap11 <> occ ind
+R23656:23661 chap11 <> Z_leaf constr
+R23650:23652 chap11 <> occ ind
+R23656:23661 chap11 <> Z_leaf constr
+R23743:23748 chap11 <> Z_leaf constr
+R23722:23734 chap11 <> search_tree_r thm
+R23743:23748 chap11 <> Z_leaf constr
+R23722:23734 chap11 <> search_tree_r thm
+sec 23902:23908 <> rm_root
+var 23925:23925 rm_root n
+var 23927:23927 rm_root p
+R23931:23931 Coq.Numbers.BinNums <> Z ind
+var 23948:23949 rm_root t1
+var 23951:23952 rm_root t2
+var 23954:23955 rm_root t'
+R23959:23965 chap11 <> Z_btree ind
+var 23983:23983 rm_root S
+R23987:23997 chap11 <> search_tree ind
+R24000:24006 chap11 <> Z_bnode constr
+R24028:24029 chap11 <> rm_root.t' var
+R24011:24017 chap11 <> Z_bnode constr
+R24024:24025 chap11 <> rm_root.t2 var
+R24021:24022 chap11 <> rm_root.t1 var
+R24019:24019 chap11 <> rm_root.p var
+R24008:24008 chap11 <> rm_root.n var
+var 24046:24046 rm_root q
+R24050:24050 Coq.Numbers.BinNums <> Z ind
+var 24066:24067 rm_root t0
+R24071:24077 chap11 <> Z_btree ind
+var 24095:24095 rm_root R
+R24099:24102 chap11 <> RMAX ind
+R24125:24125 chap11 <> rm_root.q var
+R24122:24123 chap11 <> rm_root.t0 var
+R24105:24111 chap11 <> Z_bnode constr
+R24118:24119 chap11 <> rm_root.t2 var
+R24115:24116 chap11 <> rm_root.t1 var
+R24113:24113 chap11 <> rm_root.p var
+prf 24181:24184 <> rm_2
+R24189:24191 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R24188:24188 chap11 <> rm_root.q var
+R24192:24192 chap11 <> rm_root.n var
+R24244:24244 chap11 <> rm_root.R var
+R24244:24244 chap11 <> rm_root.R var
+R24285:24289 chap11 <> maj_l thm
+R24327:24328 chap11 <> rm_root.t' var
+R24304:24310 chap11 <> Z_bnode constr
+R24317:24318 chap11 <> rm_root.t2 var
+R24314:24315 chap11 <> rm_root.t1 var
+R24312:24312 chap11 <> rm_root.p var
+R24295:24295 chap11 <> rm_root.n var
+R24285:24289 chap11 <> maj_l thm
+R24327:24328 chap11 <> rm_root.t' var
+R24304:24310 chap11 <> Z_bnode constr
+R24317:24318 chap11 <> rm_root.t2 var
+R24314:24315 chap11 <> rm_root.t1 var
+R24312:24312 chap11 <> rm_root.p var
+R24295:24295 chap11 <> rm_root.n var
+prf 24406:24409 <> rm_3
+R24413:24414 Coq.Init.Logic <> ::type_scope:'~'_x not
+R24415:24417 chap11 <> occ ind
+R24422:24428 chap11 <> Z_bnode constr
+R24435:24436 chap11 <> rm_root.t' var
+R24432:24433 chap11 <> rm_root.t0 var
+R24430:24430 chap11 <> rm_root.q var
+R24419:24419 chap11 <> rm_root.n var
+R24472:24478 chap11 <> occ_inv thm
+R24472:24478 chap11 <> occ_inv thm
+R24512:24514 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R24511:24511 chap11 <> rm_root.q var
+R24515:24515 chap11 <> rm_root.q var
+R24512:24514 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R24511:24511 chap11 <> rm_root.q var
+R24515:24515 chap11 <> rm_root.q var
+R24557:24567 Coq.ZArith.BinInt Z lt_irrefl thm
+R24557:24567 Coq.ZArith.BinInt Z lt_irrefl thm
+R24587:24587 chap11 <> rm_root.q var
+R24587:24587 chap11 <> rm_root.q var
+R24681:24681 chap11 <> rm_root.R var
+R24681:24681 chap11 <> rm_root.R var
+R24729:24731 chap11 <> occ ind
+R24736:24742 chap11 <> Z_bnode constr
+R24749:24750 chap11 <> rm_root.t2 var
+R24746:24747 chap11 <> rm_root.t1 var
+R24744:24744 chap11 <> rm_root.p var
+R24733:24733 chap11 <> rm_root.n var
+R24729:24731 chap11 <> occ ind
+R24736:24742 chap11 <> Z_bnode constr
+R24749:24750 chap11 <> rm_root.t2 var
+R24746:24747 chap11 <> rm_root.t1 var
+R24744:24744 chap11 <> rm_root.p var
+R24733:24733 chap11 <> rm_root.n var
+R24809:24809 chap11 <> rm_root.n var
+R24811:24812 chap11 <> rm_root.t' var
+R24795:24802 chap11 <> not_left thm
+R24809:24809 chap11 <> rm_root.n var
+R24811:24812 chap11 <> rm_root.t' var
+R24795:24802 chap11 <> not_left thm
+R24855:24861 Coq.ZArith.BinInt Z le_ge thm
+R24855:24861 Coq.ZArith.BinInt Z le_ge thm
+R24902:24904 chap11 <> occ ind
+R24908:24909 chap11 <> rm_root.t' var
+R24906:24906 chap11 <> rm_root.n var
+R24902:24904 chap11 <> occ ind
+R24908:24909 chap11 <> rm_root.t' var
+R24906:24906 chap11 <> rm_root.n var
+R24969:24969 chap11 <> rm_root.n var
+R24972:24978 chap11 <> Z_bnode constr
+R24985:24986 chap11 <> rm_root.t2 var
+R24982:24983 chap11 <> rm_root.t1 var
+R24980:24980 chap11 <> rm_root.p var
+R24954:24962 chap11 <> not_right thm
+R24969:24969 chap11 <> rm_root.n var
+R24972:24978 chap11 <> Z_bnode constr
+R24985:24986 chap11 <> rm_root.t2 var
+R24982:24983 chap11 <> rm_root.t1 var
+R24980:24980 chap11 <> rm_root.p var
+R24954:24962 chap11 <> not_right thm
+prf 25109:25112 <> rm_4
+R25132:25132 Coq.Numbers.BinNums <> Z ind
+binder 25129:25130 <> p0:230
+R25167:25170 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25143:25145 chap11 <> occ ind
+R25151:25157 chap11 <> Z_bnode constr
+R25164:25165 chap11 <> rm_root.t' var
+R25161:25162 chap11 <> rm_root.t0 var
+R25159:25159 chap11 <> rm_root.q var
+R25147:25148 chap11 <> p0:230 var
+R25171:25173 chap11 <> occ ind
+R25179:25185 chap11 <> Z_bnode constr
+R25207:25208 chap11 <> rm_root.t' var
+R25190:25196 chap11 <> Z_bnode constr
+R25203:25204 chap11 <> rm_root.t2 var
+R25200:25201 chap11 <> rm_root.t1 var
+R25198:25198 chap11 <> rm_root.p var
+R25187:25187 chap11 <> rm_root.n var
+R25175:25176 chap11 <> p0:230 var
+R25248:25254 chap11 <> occ_inv thm
+R25248:25254 chap11 <> occ_inv thm
+R25283:25283 chap11 <> rm_root.R var
+R25283:25283 chap11 <> rm_root.R var
+R25392:25392 chap11 <> rm_root.R var
+R25392:25392 chap11 <> rm_root.R var
+prf 25484:25487 <> rm_5
+R25507:25507 Coq.Numbers.BinNums <> Z ind
+binder 25504:25505 <> p0:231
+R25557:25568 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25518:25520 chap11 <> occ ind
+R25526:25532 chap11 <> Z_bnode constr
+R25554:25555 chap11 <> rm_root.t' var
+R25537:25543 chap11 <> Z_bnode constr
+R25550:25551 chap11 <> rm_root.t2 var
+R25547:25548 chap11 <> rm_root.t1 var
+R25545:25545 chap11 <> rm_root.p var
+R25534:25534 chap11 <> rm_root.n var
+R25522:25523 chap11 <> p0:231 var
+R25593:25596 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R25569:25571 chap11 <> occ ind
+R25577:25583 chap11 <> Z_bnode constr
+R25590:25591 chap11 <> rm_root.t' var
+R25587:25588 chap11 <> rm_root.t0 var
+R25585:25585 chap11 <> rm_root.q var
+R25573:25574 chap11 <> p0:231 var
+R25598:25600 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R25597:25597 chap11 <> rm_root.n var
+R25601:25602 chap11 <> p0:231 var
+R25641:25647 chap11 <> occ_inv thm
+R25641:25647 chap11 <> occ_inv thm
+R25760:25760 chap11 <> rm_root.R var
+R25760:25760 chap11 <> rm_root.R var
+prf 26002:26005 <> rm_6
+R26009:26019 chap11 <> search_tree ind
+R26022:26028 chap11 <> Z_bnode constr
+R26035:26036 chap11 <> rm_root.t' var
+R26032:26033 chap11 <> rm_root.t0 var
+R26030:26030 chap11 <> rm_root.q var
+R26077:26077 chap11 <> rm_root.R var
+R26077:26077 chap11 <> rm_root.R var
+R26137:26137 chap11 <> rm_root.n var
+R26140:26146 chap11 <> Z_bnode constr
+R26153:26154 chap11 <> rm_root.t2 var
+R26150:26151 chap11 <> rm_root.t1 var
+R26148:26148 chap11 <> rm_root.p var
+R26118:26130 chap11 <> search_tree_r thm
+R26137:26137 chap11 <> rm_root.n var
+R26140:26146 chap11 <> Z_bnode constr
+R26153:26154 chap11 <> rm_root.t2 var
+R26150:26151 chap11 <> rm_root.t1 var
+R26148:26148 chap11 <> rm_root.p var
+R26118:26130 chap11 <> search_tree_r thm
+R26195:26195 chap11 <> rm_root.R var
+R26229:26237 chap11 <> maj_intro constr
+R26195:26195 chap11 <> rm_root.R var
+R26229:26237 chap11 <> maj_intro constr
+R26269:26280 Coq.ZArith.Zorder <> Zle_lt_or_eq thm
+R26269:26280 Coq.ZArith.Zorder <> Zle_lt_or_eq thm
+R26342:26344 chap11 <> occ ind
+R26349:26350 chap11 <> rm_root.t0 var
+R26342:26344 chap11 <> occ ind
+R26349:26350 chap11 <> rm_root.t0 var
+R26419:26427 chap11 <> min_intro constr
+R26466:26466 chap11 <> rm_root.n var
+R26450:26459 Coq.ZArith.BinInt Z lt_trans thm
+R26419:26427 chap11 <> min_intro constr
+R26466:26466 chap11 <> rm_root.n var
+R26450:26459 Coq.ZArith.BinInt Z lt_trans thm
+R26484:26484 chap11 <> rm_root.R var
+R26484:26484 chap11 <> rm_root.R var
+R26527:26531 chap11 <> min_r thm
+R26569:26570 chap11 <> rm_root.t' var
+R26546:26552 chap11 <> Z_bnode constr
+R26559:26560 chap11 <> rm_root.t2 var
+R26556:26557 chap11 <> rm_root.t1 var
+R26554:26554 chap11 <> rm_root.p var
+R26537:26537 chap11 <> rm_root.n var
+R26527:26531 chap11 <> min_r thm
+R26569:26570 chap11 <> rm_root.t' var
+R26546:26552 chap11 <> Z_bnode constr
+R26559:26560 chap11 <> rm_root.t2 var
+R26556:26557 chap11 <> rm_root.t1 var
+R26554:26554 chap11 <> rm_root.p var
+R26537:26537 chap11 <> rm_root.n var
+prf 26678:26690 <> rm_root_lemma
+R26700:26701 chap11 <> RM ind
+R26739:26745 chap11 <> Z_bnode constr
+R26752:26753 chap11 <> rm_root.t' var
+R26749:26750 chap11 <> rm_root.t0 var
+R26747:26747 chap11 <> rm_root.q var
+R26706:26712 chap11 <> Z_bnode constr
+R26734:26735 chap11 <> rm_root.t' var
+R26717:26723 chap11 <> Z_bnode constr
+R26730:26731 chap11 <> rm_root.t2 var
+R26727:26728 chap11 <> rm_root.t1 var
+R26725:26725 chap11 <> rm_root.p var
+R26714:26714 chap11 <> rm_root.n var
+R26703:26703 chap11 <> rm_root.n var
+R26780:26787 chap11 <> rm_intro constr
+R26780:26787 chap11 <> rm_intro constr
+R26829:26835 chap11 rm_root <> sec
+def 26937:26938 <> rm
+R26952:26952 Coq.Numbers.BinNums <> Z ind
+binder 26950:26950 <> n:232
+R26958:26964 chap11 <> Z_btree ind
+binder 26956:26956 <> t:233
+R26968:26974 chap11 <> rm_spec def
+R26978:26978 chap11 <> t:233 var
+R26976:26976 chap11 <> n:232 var
+R27185:27185 Coq.Numbers.BinNums <> Z ind
+binder 27183:27183 <> n:234
+R27191:27197 chap11 <> Z_btree ind
+binder 27189:27189 <> t:235
+R27213:27219 chap11 <> rm_spec def
+R27223:27223 chap11 <> t:235 var
+R27221:27221 chap11 <> n:234 var
+R27234:27234 chap11 <> t:235 var
+R27243:27249 chap11 <> rm_spec def
+R27253:27253 chap11 <> t:237 var
+R27251:27251 chap11 <> n:234 var
+R27262:27267 chap11 <> Z_leaf constr
+binder 27276:27276 <> h:238
+R27281:27285 Coq.Init.Specif <> exist constr
+R27289:27294 chap11 <> Z_leaf constr
+R27300:27306 chap11 <> Z_bnode constr
+R27325:27335 Coq.ZArith.ZArith_dec <> Z_le_gt_dec def
+R27337:27337 chap11 <> n:234 var
+R27348:27351 Coq.Init.Specif <> left constr
+R27365:27378 Coq.ZArith.ZArith_dec <> Z_le_lt_eq_dec def
+R27394:27397 Coq.Init.Specif <> left constr
+binder 27409:27409 <> h:239
+R27420:27421 chap11 <> rm:236 var
+R27423:27423 chap11 <> n:234 var
+R27437:27441 Coq.Init.Specif <> exist constr
+R27456:27460 Coq.Init.Specif <> exist constr
+R27465:27471 chap11 <> Z_bnode constr
+R27491:27495 Coq.Init.Specif <> right constr
+R27517:27519 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R27530:27536 chap11 <> rm_spec def
+R27541:27547 chap11 <> Z_bnode constr
+R27549:27549 chap11 <> x:241 var
+R27538:27538 chap11 <> n:234 var
+R27565:27574 Coq.Init.Logic <> refl_equal syndef
+R27600:27606 chap11 <> rm_spec def
+R27611:27617 chap11 <> Z_bnode constr
+R27621:27621 chap11 <> t:242 var
+R27619:27619 chap11 <> n:234 var
+R27608:27608 chap11 <> n:234 var
+R27634:27639 chap11 <> Z_leaf constr
+binder 27648:27648 <> h:243
+R27653:27657 Coq.Init.Specif <> exist constr
+R27668:27674 chap11 <> Z_bnode constr
+binder 27694:27694 <> h:244
+R27705:27708 chap11 <> rmax def
+R27715:27721 chap11 <> Z_bnode constr
+R27745:27750 Coq.Init.Specif <> existT constr
+R27757:27761 Coq.Init.Specif <> exist constr
+R27776:27780 Coq.Init.Specif <> exist constr
+R27785:27791 chap11 <> Z_bnode constr
+R27823:27827 Coq.Init.Specif <> right constr
+binder 27839:27839 <> h:245
+R27850:27851 chap11 <> rm:236 var
+R27853:27853 chap11 <> n:234 var
+R27867:27871 Coq.Init.Specif <> exist constr
+R27886:27890 Coq.Init.Specif <> exist constr
+R27895:27901 chap11 <> Z_bnode constr
+R27185:27185 Coq.Numbers.BinNums <> Z ind
+binder 27183:27183 <> n:246
+R27191:27197 chap11 <> Z_btree ind
+binder 27189:27189 <> t:247
+R27213:27219 chap11 <> rm_spec def
+R27223:27223 chap11 <> t:247 var
+R27221:27221 chap11 <> n:246 var
+R27234:27234 chap11 <> t:247 var
+R27243:27249 chap11 <> rm_spec def
+R27253:27253 chap11 <> t:249 var
+R27251:27251 chap11 <> n:246 var
+R27262:27267 chap11 <> Z_leaf constr
+binder 27276:27276 <> h:250
+R27281:27285 Coq.Init.Specif <> exist constr
+R27289:27294 chap11 <> Z_leaf constr
+R27300:27306 chap11 <> Z_bnode constr
+R27325:27335 Coq.ZArith.ZArith_dec <> Z_le_gt_dec def
+R27337:27337 chap11 <> n:246 var
+R27348:27351 Coq.Init.Specif <> left constr
+R27365:27378 Coq.ZArith.ZArith_dec <> Z_le_lt_eq_dec def
+R27394:27397 Coq.Init.Specif <> left constr
+binder 27409:27409 <> h:251
+R27420:27421 chap11 <> rm:248 var
+R27423:27423 chap11 <> n:246 var
+R27437:27441 Coq.Init.Specif <> exist constr
+R27456:27460 Coq.Init.Specif <> exist constr
+R27465:27471 chap11 <> Z_bnode constr
+R27491:27495 Coq.Init.Specif <> right constr
+R27517:27519 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R27530:27536 chap11 <> rm_spec def
+R27541:27547 chap11 <> Z_bnode constr
+R27549:27549 chap11 <> x:253 var
+R27538:27538 chap11 <> n:246 var
+R27565:27574 Coq.Init.Logic <> refl_equal syndef
+R27600:27606 chap11 <> rm_spec def
+R27611:27617 chap11 <> Z_bnode constr
+R27621:27621 chap11 <> t:254 var
+R27619:27619 chap11 <> n:246 var
+R27608:27608 chap11 <> n:246 var
+R27634:27639 chap11 <> Z_leaf constr
+binder 27648:27648 <> h:255
+R27653:27657 Coq.Init.Specif <> exist constr
+R27668:27674 chap11 <> Z_bnode constr
+binder 27694:27694 <> h:256
+R27705:27708 chap11 <> rmax def
+R27715:27721 chap11 <> Z_bnode constr
+R27745:27750 Coq.Init.Specif <> existT constr
+R27757:27761 Coq.Init.Specif <> exist constr
+R27776:27780 Coq.Init.Specif <> exist constr
+R27785:27791 chap11 <> Z_bnode constr
+R27823:27827 Coq.Init.Specif <> right constr
+binder 27839:27839 <> h:257
+R27850:27851 chap11 <> rm:248 var
+R27853:27853 chap11 <> n:246 var
+R27867:27871 Coq.Init.Specif <> exist constr
+R27886:27890 Coq.Init.Specif <> exist constr
+R27895:27901 chap11 <> Z_bnode constr

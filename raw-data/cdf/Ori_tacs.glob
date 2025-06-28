@@ -1,0 +1,225 @@
+DIGEST 2633ee29325d0bb624cf385740be4b7a
+FCDF.Ori_tacs
+R24:29 Coq.ZArith.ZArith <> <> lib
+R31:33 Coq.micromega.Lia <> <> lib
+R35:38 Coq.Bool.Bool <> <> lib
+R40:45 Coq.Strings.String <> <> lib
+R47:50 Coq.Lists.List <> <> lib
+def 90:93 <> addr
+R98:98 Coq.Numbers.BinNums <> Z ind
+rec 109:112 <> heap
+proj 128:135 <> contents
+proj 160:167 <> isfinite
+R144:147 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R140:143 CDF.Ori_tacs <> addr def
+R148:153 Coq.Init.Datatypes <> option ind
+R155:155 Coq.Numbers.BinNums <> Z ind
+R172:178 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R180:181 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 179:179 <> i:3
+binder 189:189 <> j:4
+R198:201 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R193:196 Coq.ZArith.BinInt <> ::Z_scope:x_'<='_x not
+R192:192 CDF.Ori_tacs <> i:3 var
+R197:197 CDF.Ori_tacs <> j:4 var
+R212:214 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R202:209 CDF.Ori_tacs <> contents:2 meth
+R211:211 CDF.Ori_tacs <> j:4 var
+R215:218 Coq.Init.Datatypes <> None constr
+def 243:248 <> hempty
+R252:255 CDF.Ori_tacs <> heap rec
+R265:272 CDF.Ori_tacs <> contents proj
+R265:272 CDF.Ori_tacs <> contents proj
+R265:272 CDF.Ori_tacs <> contents proj
+binder 281:281 <> l:6
+R286:289 Coq.Init.Datatypes <> None constr
+def 347:355 <> hdisjoint
+R365:368 CDF.Ori_tacs <> heap rec
+binder 358:359 <> h1:7
+binder 361:362 <> h2:8
+binder 390:390 <> l:9
+R404:407 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R397:399 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R393:394 CDF.Ori_tacs <> h1:7 var
+R396:396 CDF.Ori_tacs <> l:9 var
+R400:403 Coq.Init.Datatypes <> None constr
+R412:414 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R408:409 CDF.Ori_tacs <> h2:8 var
+R411:411 CDF.Ori_tacs <> l:9 var
+R415:418 Coq.Init.Datatypes <> None constr
+def 433:438 <> hdisj3
+R451:454 CDF.Ori_tacs <> heap rec
+binder 441:442 <> h1:10
+binder 444:445 <> h2:11
+binder 447:448 <> h3:12
+R477:480 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R462:470 CDF.Ori_tacs <> hdisjoint def
+R472:473 CDF.Ori_tacs <> h1:10 var
+R475:476 CDF.Ori_tacs <> h2:11 var
+R496:499 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R481:489 CDF.Ori_tacs <> hdisjoint def
+R491:492 CDF.Ori_tacs <> h1:10 var
+R494:495 CDF.Ori_tacs <> h3:12 var
+R500:508 CDF.Ori_tacs <> hdisjoint def
+R510:511 CDF.Ori_tacs <> h2:11 var
+R513:514 CDF.Ori_tacs <> h3:12 var
+def 537:542 <> hunion
+R552:555 CDF.Ori_tacs <> heap rec
+binder 545:546 <> h1:13
+binder 548:549 <> h2:14
+R560:563 CDF.Ori_tacs <> heap rec
+R573:580 CDF.Ori_tacs <> contents proj
+R573:580 CDF.Ori_tacs <> contents proj
+R573:580 CDF.Ori_tacs <> contents proj
+binder 589:589 <> l:15
+R597:598 CDF.Ori_tacs <> h1:13 var
+R600:600 CDF.Ori_tacs <> l:15 var
+R617:618 CDF.Ori_tacs <> h2:14 var
+R620:620 CDF.Ori_tacs <> l:15 var
+R607:608 CDF.Ori_tacs <> h1:13 var
+R610:610 CDF.Ori_tacs <> l:15 var
+R655:662 CDF.Ori_tacs <> isfinite proj
+R685:692 CDF.Ori_tacs <> isfinite proj
+R655:662 CDF.Ori_tacs <> isfinite proj
+R685:692 CDF.Ori_tacs <> isfinite proj
+R724:728 Coq.ZArith.BinInt Z max def
+R724:728 Coq.ZArith.BinInt Z max def
+prf 791:803 <> hdisjoint_sym
+binder 815:816 <> h1:16
+binder 818:819 <> h2:17
+R837:841 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R822:830 CDF.Ori_tacs <> hdisjoint def
+R832:833 CDF.Ori_tacs <> h1:16 var
+R835:836 CDF.Ori_tacs <> h2:17 var
+R842:850 CDF.Ori_tacs <> hdisjoint def
+R852:853 CDF.Ori_tacs <> h2:17 var
+R855:856 CDF.Ori_tacs <> h1:16 var
+R875:883 CDF.Ori_tacs <> hdisjoint def
+prf 950:966 <> hdisjoint_union_l
+binder 978:979 <> h1:18
+binder 981:982 <> h2:19
+binder 984:985 <> h3:20
+R1017:1021 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R990:998 CDF.Ori_tacs <> hdisjoint def
+R1001:1006 CDF.Ori_tacs <> hunion def
+R1008:1009 CDF.Ori_tacs <> h1:18 var
+R1011:1012 CDF.Ori_tacs <> h2:19 var
+R1015:1016 CDF.Ori_tacs <> h3:20 var
+R1037:1040 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1022:1030 CDF.Ori_tacs <> hdisjoint def
+R1032:1033 CDF.Ori_tacs <> h1:18 var
+R1035:1036 CDF.Ori_tacs <> h3:20 var
+R1041:1049 CDF.Ori_tacs <> hdisjoint def
+R1051:1052 CDF.Ori_tacs <> h2:19 var
+R1054:1055 CDF.Ori_tacs <> h3:20 var
+R1074:1082 CDF.Ori_tacs <> hdisjoint def
+R1085:1090 CDF.Ori_tacs <> hunion def
+prf 1489:1505 <> hdisjoint_union_r
+binder 1517:1518 <> h1:21
+binder 1520:1521 <> h2:22
+binder 1523:1524 <> h3:23
+R1556:1560 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R1529:1537 CDF.Ori_tacs <> hdisjoint def
+R1539:1540 CDF.Ori_tacs <> h1:21 var
+R1543:1548 CDF.Ori_tacs <> hunion def
+R1550:1551 CDF.Ori_tacs <> h2:22 var
+R1553:1554 CDF.Ori_tacs <> h3:23 var
+R1576:1579 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1561:1569 CDF.Ori_tacs <> hdisjoint def
+R1571:1572 CDF.Ori_tacs <> h1:21 var
+R1574:1575 CDF.Ori_tacs <> h2:22 var
+R1580:1588 CDF.Ori_tacs <> hdisjoint def
+R1590:1591 CDF.Ori_tacs <> h1:21 var
+R1593:1594 CDF.Ori_tacs <> h3:23 var
+R1622:1634 CDF.Ori_tacs <> hdisjoint_sym thm
+R1622:1634 CDF.Ori_tacs <> hdisjoint_sym thm
+R1622:1634 CDF.Ori_tacs <> hdisjoint_sym thm
+R1645:1661 CDF.Ori_tacs <> hdisjoint_union_l thm
+R1645:1661 CDF.Ori_tacs <> hdisjoint_union_l thm
+R1645:1661 CDF.Ori_tacs <> hdisjoint_union_l thm
+R1675:1687 CDF.Ori_tacs <> hdisjoint_sym thm
+R1695:1707 CDF.Ori_tacs <> hdisjoint_sym thm
+R1675:1687 CDF.Ori_tacs <> hdisjoint_sym thm
+R1675:1687 CDF.Ori_tacs <> hdisjoint_sym thm
+R1695:1707 CDF.Ori_tacs <> hdisjoint_sym thm
+R1695:1707 CDF.Ori_tacs <> hdisjoint_sym thm
+R1769:1774 CDF.Ori_tacs <> hdisj3 def
+R1769:1774 CDF.Ori_tacs <> hdisj3 def
+R1840:1848 CDF.Ori_tacs <> hdisjoint def
+R1851:1856 CDF.Ori_tacs <> hunion def
+R1840:1848 CDF.Ori_tacs <> hdisjoint def
+R1851:1856 CDF.Ori_tacs <> hunion def
+R1938:1946 CDF.Ori_tacs <> hdisjoint def
+R1951:1956 CDF.Ori_tacs <> hunion def
+R1938:1946 CDF.Ori_tacs <> hdisjoint def
+R1951:1956 CDF.Ori_tacs <> hunion def
+R2036:2041 CDF.Ori_tacs <> hdisj3 def
+R2036:2041 CDF.Ori_tacs <> hdisj3 def
+R2092:2100 CDF.Ori_tacs <> hdisjoint def
+R2103:2108 CDF.Ori_tacs <> hunion def
+R2092:2100 CDF.Ori_tacs <> hdisjoint def
+R2103:2108 CDF.Ori_tacs <> hunion def
+R2175:2183 CDF.Ori_tacs <> hdisjoint def
+R2188:2193 CDF.Ori_tacs <> hunion def
+R2175:2183 CDF.Ori_tacs <> hdisjoint def
+R2188:2193 CDF.Ori_tacs <> hunion def
+R2258:2266 CDF.Ori_tacs <> hdisjoint def
+R2268:2273 CDF.Ori_tacs <> hempty def
+R2258:2266 CDF.Ori_tacs <> hdisjoint def
+R2268:2273 CDF.Ori_tacs <> hempty def
+R2307:2315 CDF.Ori_tacs <> hdisjoint def
+R2319:2324 CDF.Ori_tacs <> hempty def
+R2307:2315 CDF.Ori_tacs <> hdisjoint def
+R2319:2324 CDF.Ori_tacs <> hempty def
+R2356:2364 CDF.Ori_tacs <> hdisjoint def
+R2356:2364 CDF.Ori_tacs <> hdisjoint def
+R2402:2414 CDF.Ori_tacs <> hdisjoint_sym thm
+R2217:2233 CDF.Ori_tacs <> hdisjoint_union_r thm
+R2134:2150 CDF.Ori_tacs <> hdisjoint_union_l thm
+R1985:2001 CDF.Ori_tacs <> hdisjoint_union_r thm
+R1887:1903 CDF.Ori_tacs <> hdisjoint_union_l thm
+ax 2470:2470 <> A
+ax 2531:2531 <> R
+R2535:2538 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2534:2534 CDF.Ori_tacs <> A defax
+R2540:2543 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2539:2539 CDF.Ori_tacs <> A defax
+def 2614:2619 <> infseq
+R2625:2625 CDF.Ori_tacs <> A defax
+binder 2622:2622 <> a:26
+R2640:2646 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2659:2662 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2651:2654 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2650:2650 CDF.Ori_tacs <> A defax
+binder 2647:2647 <> X:27
+R2666:2670 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2716:2716 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2663:2663 CDF.Ori_tacs <> X:27 var
+R2665:2665 CDF.Ori_tacs <> a:26 var
+binder 2678:2679 <> a1:28
+R2686:2689 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2682:2682 CDF.Ori_tacs <> X:27 var
+R2684:2685 CDF.Ori_tacs <> a1:28 var
+R2690:2696 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2699:2700 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 2697:2698 <> a2:29
+R2708:2711 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2701:2701 CDF.Ori_tacs <> R defax
+R2703:2704 CDF.Ori_tacs <> a1:28 var
+R2706:2707 CDF.Ori_tacs <> a2:29 var
+R2712:2712 CDF.Ori_tacs <> X:27 var
+R2714:2715 CDF.Ori_tacs <> a2:29 var
+prf 2726:2735 <> infseq_inv
+binder 2747:2747 <> a:30
+R2758:2761 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2750:2755 CDF.Ori_tacs <> infseq def
+R2757:2757 CDF.Ori_tacs <> a:30 var
+R2762:2768 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2770:2771 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 2769:2769 <> b:31
+R2777:2780 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2772:2772 CDF.Ori_tacs <> R defax
+R2774:2774 CDF.Ori_tacs <> a:30 var
+R2776:2776 CDF.Ori_tacs <> b:31 var
+R2781:2786 CDF.Ori_tacs <> infseq def
+R2788:2788 CDF.Ori_tacs <> b:31 var

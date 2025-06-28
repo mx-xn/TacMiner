@@ -8,7 +8,7 @@ proof_retries: 1
 # conv_prompt: data/prompts/conversation/coq-proof-agent-example-long-conv-dfs-always-retrieve.md
 max_tokens_per_action: 100
 max_theorems_in_prompt: 3
-gpt_model_name: gpt-4o-2024-05-13
+gpt_model_name: gpt-4o
 max_number_of_episodes: 1
 max_steps_per_episode: 60
 render: False

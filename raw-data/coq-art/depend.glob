@@ -1,0 +1,318 @@
+DIGEST 4c9cef240716551010c107ff4ebddb9a
+Fcoqart.depend
+R15:20 Coq.ZArith.ZArith <> <> lib
+prf 32:40 <> div2_rect
+R49:52 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R46:48 Coq.Init.Datatypes <> nat ind
+binder 43:43 <> P:1
+R65:68 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R62:62 coqart.depend <> P:1 var
+R72:76 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R69:69 coqart.depend <> P:1 var
+R77:77 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R116:120 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 85:85 <> n:2
+R91:94 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R88:88 coqart.depend <> P:1 var
+R90:90 coqart.depend <> n:2 var
+R102:105 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R95:95 coqart.depend <> P:1 var
+R98:98 Coq.Init.Datatypes <> S constr
+R100:100 coqart.depend <> n:2 var
+R106:106 coqart.depend <> P:1 var
+R108:108 Coq.Init.Datatypes <> S constr
+R111:111 Coq.Init.Datatypes <> S constr
+R113:113 coqart.depend <> n:2 var
+R130:132 Coq.Init.Datatypes <> nat ind
+binder 128:128 <> n:3
+R135:135 coqart.depend <> P:1 var
+R137:137 coqart.depend <> n:3 var
+R182:184 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R188:188 Coq.Init.Datatypes <> S constr
+R182:184 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R188:188 Coq.Init.Datatypes <> S constr
+def 286:292 <> div_bin
+R299:306 Coq.Numbers.BinNums <> positive ind
+binder 295:295 <> n:4
+binder 297:297 <> m:5
+R322:322 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R321:321 Coq.Numbers.BinNums <> Z ind
+R323:323 Coq.Numbers.BinNums <> Z ind
+R335:335 coqart.depend <> n:4 var
+R365:365 coqart.depend <> m:5 var
+R385:385 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R387:387 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R389:389 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R397:397 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R399:399 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R401:401 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R410:411 Coq.Numbers.BinNums <> xO constr
+R435:441 coqart.depend <> div_bin:6 def
+R446:446 coqart.depend <> m:5 var
+binder 427:428 <> q':9
+binder 430:431 <> r':10
+R460:470 Coq.ZArith.ZArith_dec <> Z_lt_ge_dec def
+R479:482 Coq.Numbers.BinNums <> Zpos constr
+R484:484 coqart.depend <> m:5 var
+R474:474 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R475:476 coqart.depend <> r':10 var
+R497:500 Coq.Init.Specif <> left constr
+R509:509 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R514:515 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R520:520 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R511:511 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R512:513 coqart.depend <> q':9 var
+R517:517 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R518:519 coqart.depend <> r':10 var
+R527:531 Coq.Init.Specif <> right constr
+R540:540 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R549:550 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R566:566 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R545:547 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R542:542 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R543:544 coqart.depend <> q':9 var
+R555:558 Coq.ZArith.BinInt <> ::Z_scope:x_'-'_x not
+R565:565 Coq.ZArith.BinInt <> ::Z_scope:x_'-'_x not
+R552:552 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R553:554 coqart.depend <> r':10 var
+R559:562 Coq.Numbers.BinNums <> Zpos constr
+R564:564 coqart.depend <> m:5 var
+R578:579 Coq.Numbers.BinNums <> xI constr
+R603:609 coqart.depend <> div_bin:6 def
+R614:614 coqart.depend <> m:5 var
+binder 595:596 <> q':11
+binder 598:599 <> r':12
+R628:638 Coq.ZArith.ZArith_dec <> Z_lt_ge_dec def
+R651:654 Coq.Numbers.BinNums <> Zpos constr
+R656:656 coqart.depend <> m:5 var
+R645:647 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R642:642 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R643:644 coqart.depend <> r':12 var
+R669:672 Coq.Init.Specif <> left constr
+R681:681 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R686:687 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R696:696 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R683:683 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R684:685 coqart.depend <> q':11 var
+R692:694 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R689:689 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R690:691 coqart.depend <> r':12 var
+R703:707 Coq.Init.Specif <> right constr
+R716:716 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R725:726 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R746:746 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R721:723 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R718:718 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R719:720 coqart.depend <> q':11 var
+R727:727 Coq.ZArith.BinInt <> ::Z_scope:x_'-'_x not
+R736:738 Coq.ZArith.BinInt <> ::Z_scope:x_'-'_x not
+R745:745 Coq.ZArith.BinInt <> ::Z_scope:x_'-'_x not
+R732:734 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R729:729 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R730:731 coqart.depend <> r':12 var
+R739:742 Coq.Numbers.BinNums <> Zpos constr
+R744:744 coqart.depend <> m:5 var
+R865:871 coqart.depend <> div_bin def
+R880:886 coqart.depend <> div_bin def
+R901:907 coqart.depend <> div_bin def
+R925:927 Coq.Init.Datatypes <> snd def
+R961:971 Coq.ZArith.ZArith_dec <> Z_lt_ge_dec def
+R984:987 Coq.Numbers.BinNums <> Zpos constr
+R978:980 Coq.ZArith.BinInt <> ::Z_scope:x_'+'_x not
+R975:975 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R1043:1049 coqart.depend <> div_bin def
+R1058:1064 coqart.depend <> div_bin def
+R1079:1085 coqart.depend <> div_bin def
+R1103:1105 Coq.Init.Datatypes <> snd def
+R1139:1149 Coq.ZArith.ZArith_dec <> Z_lt_ge_dec def
+R1158:1161 Coq.Numbers.BinNums <> Zpos constr
+R1153:1153 Coq.ZArith.BinInt <> ::Z_scope:x_'*'_x not
+R1218:1224 coqart.depend <> div_bin def
+ind 1248:1254 <> Z_btree
+constr 1267:1272 <> Z_leaf
+constr 1286:1292 <> Z_bnode
+R1276:1282 coqart.depend <> Z_btree:13 ind
+R1297:1300 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1296:1296 Coq.Numbers.BinNums <> Z ind
+R1308:1311 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1301:1307 coqart.depend <> Z_btree:13 ind
+R1319:1322 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1312:1318 coqart.depend <> Z_btree:13 ind
+R1323:1329 coqart.depend <> Z_btree:13 ind
+ind 1343:1345 <> occ
+constr 1376:1383 <> occ_root
+constr 1435:1439 <> occ_l
+constr 1511:1515 <> occ_r
+R1350:1350 Coq.Numbers.BinNums <> Z ind
+binder 1348:1348 <> n:15
+R1362:1365 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1355:1361 coqart.depend <> Z_btree ind
+R1400:1406 coqart.depend <> Z_btree ind
+binder 1394:1395 <> t1:18
+binder 1397:1398 <> t2:19
+R1409:1411 coqart.depend <> occ:16 ind
+R1416:1422 coqart.depend <> Z_bnode constr
+R1424:1424 coqart.depend <> n:15 var
+R1426:1427 coqart.depend <> t1:18 var
+R1429:1430 coqart.depend <> t2:19 var
+R1413:1413 coqart.depend <> n:15 var
+R1453:1453 Coq.Numbers.BinNums <> Z ind
+binder 1451:1451 <> p:20
+R1463:1469 coqart.depend <> Z_btree ind
+binder 1457:1458 <> t1:21
+binder 1460:1461 <> t2:22
+R1481:1484 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1473:1475 coqart.depend <> occ:16 ind
+R1479:1480 coqart.depend <> t1:21 var
+R1477:1477 coqart.depend <> n:15 var
+R1485:1487 coqart.depend <> occ:16 ind
+R1492:1498 coqart.depend <> Z_bnode constr
+R1500:1500 coqart.depend <> p:20 var
+R1502:1503 coqart.depend <> t1:21 var
+R1505:1506 coqart.depend <> t2:22 var
+R1489:1489 coqart.depend <> n:15 var
+R1529:1529 Coq.Numbers.BinNums <> Z ind
+binder 1527:1527 <> p:23
+R1539:1545 coqart.depend <> Z_btree ind
+binder 1533:1534 <> t1:24
+binder 1536:1537 <> t2:25
+R1557:1560 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1549:1551 coqart.depend <> occ:16 ind
+R1555:1556 coqart.depend <> t2:25 var
+R1553:1553 coqart.depend <> n:15 var
+R1561:1563 coqart.depend <> occ:16 ind
+R1568:1574 coqart.depend <> Z_bnode constr
+R1576:1576 coqart.depend <> p:23 var
+R1578:1579 coqart.depend <> t1:24 var
+R1581:1582 coqart.depend <> t2:25 var
+R1565:1565 coqart.depend <> n:15 var
+R1642:1642 Coq.Numbers.BinNums <> Z ind
+binder 1637:1637 <> z:26
+binder 1639:1640 <> z':27
+R1652:1658 coqart.depend <> Z_btree ind
+binder 1646:1647 <> t1:28
+binder 1649:1650 <> t2:29
+R1662:1664 coqart.depend <> occ ind
+R1666:1667 coqart.depend <> z':27 var
+R1670:1676 coqart.depend <> Z_bnode constr
+R1678:1678 coqart.depend <> z:26 var
+R1680:1681 coqart.depend <> t1:28 var
+R1683:1684 coqart.depend <> t2:29 var
+R1723:1725 coqart.depend <> occ ind
+prf 1750:1756 <> occ_inv
+R1775:1775 Coq.Numbers.BinNums <> Z ind
+binder 1770:1770 <> z:30
+binder 1772:1773 <> z':31
+R1785:1791 coqart.depend <> Z_btree ind
+binder 1779:1780 <> t1:32
+binder 1782:1783 <> t2:33
+R1823:1826 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1799:1801 coqart.depend <> occ ind
+R1803:1804 coqart.depend <> z':31 var
+R1807:1813 coqart.depend <> Z_bnode constr
+R1815:1815 coqart.depend <> z:30 var
+R1817:1818 coqart.depend <> t1:32 var
+R1820:1821 coqart.depend <> t2:33 var
+R1833:1836 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R1828:1830 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1827:1827 coqart.depend <> z:30 var
+R1831:1832 coqart.depend <> z':31 var
+R1846:1849 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R1837:1839 coqart.depend <> occ ind
+R1841:1842 coqart.depend <> z':31 var
+R1844:1845 coqart.depend <> t1:32 var
+R1850:1852 coqart.depend <> occ ind
+R1854:1855 coqart.depend <> z':31 var
+R1857:1858 coqart.depend <> t2:33 var
+R1888:1894 coqart.depend <> OCC_INV thm
+R1888:1894 coqart.depend <> OCC_INV thm
+ind 2005:2007 <> min
+constr 2039:2047 <> min_intro
+R2012:2012 Coq.Numbers.BinNums <> Z ind
+binder 2010:2010 <> z:34
+R2018:2024 coqart.depend <> Z_btree ind
+binder 2016:2016 <> t:35
+R2051:2051 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2083:2087 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2062:2062 Coq.Numbers.BinNums <> Z ind
+binder 2059:2060 <> z':38
+R2073:2076 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2065:2067 coqart.depend <> occ ind
+R2069:2070 coqart.depend <> z':38 var
+R2072:2072 coqart.depend <> t:35 var
+R2078:2080 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R2077:2077 coqart.depend <> z:34 var
+R2081:2082 coqart.depend <> z':38 var
+R2088:2090 coqart.depend <> min:36 ind
+R2094:2094 coqart.depend <> t:35 var
+R2092:2092 coqart.depend <> z:34 var
+R2128:2130 coqart.depend <> min ind
+ind 2198:2200 <> maj
+constr 2232:2240 <> maj_intro
+R2205:2205 Coq.Numbers.BinNums <> Z ind
+binder 2203:2203 <> z:39
+R2211:2217 coqart.depend <> Z_btree ind
+binder 2209:2209 <> t:40
+R2244:2244 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2276:2280 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2255:2255 Coq.Numbers.BinNums <> Z ind
+binder 2252:2253 <> z':43
+R2266:2269 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2258:2260 coqart.depend <> occ ind
+R2262:2263 coqart.depend <> z':43 var
+R2265:2265 coqart.depend <> t:40 var
+R2272:2274 Coq.ZArith.BinInt <> ::Z_scope:x_'<'_x not
+R2270:2271 coqart.depend <> z':43 var
+R2275:2275 coqart.depend <> z:39 var
+R2281:2283 coqart.depend <> maj:41 ind
+R2287:2287 coqart.depend <> t:40 var
+R2285:2285 coqart.depend <> z:39 var
+R2322:2324 coqart.depend <> maj ind
+ind 2350:2360 <> search_tree
+constr 2385:2400 <> leaf_search_tree
+constr 2425:2441 <> bnode_search_tree
+R2371:2374 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2364:2370 coqart.depend <> Z_btree ind
+R2404:2414 coqart.depend <> search_tree:44 ind
+R2416:2421 coqart.depend <> Z_leaf constr
+R2459:2459 Coq.Numbers.BinNums <> Z ind
+binder 2457:2457 <> z:46
+R2469:2475 coqart.depend <> Z_btree ind
+binder 2463:2464 <> t1:47
+binder 2466:2467 <> t2:48
+R2499:2508 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2485:2495 coqart.depend <> search_tree:44 ind
+R2497:2498 coqart.depend <> t1:47 var
+R2523:2532 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2509:2519 coqart.depend <> search_tree:44 ind
+R2521:2522 coqart.depend <> t2:48 var
+R2541:2544 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2533:2535 coqart.depend <> maj ind
+R2537:2537 coqart.depend <> z:46 var
+R2539:2540 coqart.depend <> t1:47 var
+R2553:2556 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2545:2547 coqart.depend <> min ind
+R2549:2549 coqart.depend <> z:46 var
+R2551:2552 coqart.depend <> t2:48 var
+R2557:2567 coqart.depend <> search_tree:44 ind
+R2570:2576 coqart.depend <> Z_bnode constr
+R2578:2578 coqart.depend <> z:46 var
+R2580:2581 coqart.depend <> t1:47 var
+R2583:2584 coqart.depend <> t2:48 var
+sec 2598:2599 <> st
+var 2614:2614 st n
+R2618:2618 Coq.Numbers.BinNums <> Z ind
+var 2633:2634 st t1
+var 2636:2637 st t2
+R2641:2647 coqart.depend <> Z_btree ind
+var 2663:2664 st se
+R2668:2678 coqart.depend <> search_tree ind
+R2681:2687 coqart.depend <> Z_bnode constr
+R2689:2689 coqart.depend <> st.n var
+R2691:2692 coqart.depend <> st.t1 var
+R2694:2695 coqart.depend <> st.t2 var
+prf 2708:2712 <> min_r
+R2716:2718 coqart.depend <> min ind
+R2720:2720 coqart.depend <> st.n var
+R2722:2723 coqart.depend <> st.t2 var
+R2837:2838 coqart.depend st <> sec
