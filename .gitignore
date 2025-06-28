@@ -13,8 +13,8 @@ out/
 # cdf/*.glob
 # cdf/*.vo
 
-# Generated files
-gen/
+# # Generated files
+# gen/
 
 # User-specific files
 *.iml
