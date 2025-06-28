@@ -2,7 +2,7 @@
 (* (C) Pierre Castéran *)
 
 Set Implicit Arguments.
-Unset Strict Implicit.
+Unset Strict Implicit. 
 
 Require Export ZArith.
 Require Import Extraction.
@@ -196,6 +196,18 @@ Section search_tree_basic_properties.
         +    apply not_left; unfold Z.ge; rewrite H0; discriminate.
         +   auto.
   Qed.
+
+  (* Lemma go_right : forall p:Z, occ p (Z_bnode n t1 t2) -> p > n -> occ p t2.
+  Proof.
+    intros p H H0;   elim (occ_inv H).
+    - intro e; elim e;   absurd (n < p).
+      +   rewrite e; apply Zle_not_lt; auto with zarith.
+      +   apply Z.gt_lt; assumption.
+    -   destruct 1; auto.
+        absurd (occ p t1).
+        +    apply not_left; unfold Z.ge; rewrite H0; discriminate.
+        +   auto.
+  Qed. *)
 
 End search_tree_basic_properties.
 
@@ -533,7 +545,6 @@ let list2tree l =
 
     Lemma rmax_6 :
       forall p0:Z, occ p0 (Z_bnode n t1 (Z_bnode p t2 t3)) -> p0 <= q.
-
     Proof.
       intros p0 H; elim R1;  intros H0 H1 H2 H3 H4 H5.
       elim (occ_inv H); intro H6.
@@ -546,12 +557,11 @@ let list2tree l =
     Qed.
 
     #[local] Hint Resolve rmax_6: searchtrees.
-
     Lemma rmax_7 :
       forall q':Z,
         occ q' (Z_bnode n t1 t') -> occ q' (Z_bnode n t1 (Z_bnode p t2 t3)).
     Proof.
-      intros q' H; elim (occ_inv H); intro H0.
+     intros q' H; elim (occ_inv H); intro H0.
       -  elim H0; auto with searchtrees.
       -  elim H0; auto with searchtrees.
          intro H1; elim R1; auto with searchtrees.
@@ -811,7 +821,7 @@ let list2tree l =
            apply not_left with n t'; auto with searchtrees.
            apply Z.le_ge; auto with zarith.
         +   absurd (occ n t'); auto with searchtrees.
-            apply not_right with n (Z_bnode p t1 t2); auto with searchtrees.
+            apply not_right with n (Z_bnode p t1 t2);  auto with searchtrees. 
             auto with zarith.
     Qed.
 

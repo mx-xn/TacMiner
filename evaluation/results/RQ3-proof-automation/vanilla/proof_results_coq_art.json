@@ -1594,6 +1594,64 @@
                 },
                 "language": "COQ"
             }
+        },
+        "../raw-data/coq-art/chap3.v": {
+            "imp_trans": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "imp_trans  : (P->Q)->(Q->R)->P->R.",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros H1 H2 H3."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply H2, H1, H3."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "Qed."
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 2.8346920013427734,
+                "inferences_taken": 3,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": 0,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 2,
+                    "attempt_idx": 0,
+                    "total_queries": 2
+                },
+                "language": "COQ"
+            }
         }
     }
 }

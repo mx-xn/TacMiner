@@ -60,7 +60,6 @@ public class Encoder {
                 String sig = jsonTactic.getString("tactic_sig")
                         .replace(" , ", ", ")
                         .replace("[_o", "[ _o"); // Tactic signature
-//                System.out.println("---- SIG FROM INPUT :" + sig);
                 String sig_no_out_arg = jsonTactic.getString("tactic_sig_no_out_arg").replace(" , ", ", ");
 
                 // Tactic arguments
@@ -79,28 +78,11 @@ public class Encoder {
                     res.add(outputs.getString(k));
                 }
 
-//                int firstHypInd = 0;
-//                for (int m = 0; m < outputs.length(); m++) {
-//                    if (!outputs.getString(m).split(" ")[0].equals("_goal")) {
-//                        firstHypInd = m;
-//                        break;
-//                    }
-//                }
-//
-//                if (firstHypInd > 0) {
-//                    for (int m = 0; m < firstHypInd / 2; m++) {
-//                        Collections.swap(res, m, firstHypInd - 1 - m);
-//                    }
-//                }
-
                 proof.add(new CoqTactic(j, sig, sig_no_out_arg, args, res));
             }
             proofs.add(new CoqProof(lemma_name, proof));
         }
 
-//        for (int i = 0; i < proofs.size(); i++) {
-//            System.out.println("proof size of " + i + " : " + proofs.get(i).size());
-//        }
         return proofs;
     }
 
@@ -152,9 +134,6 @@ public class Encoder {
         double stopThreshold = stopThresh;
         double exceedsThreshold = stopBeginningThresh;
 
-//        double stopThreshold = numTacticsCorpus >= 1000 ? 0.5 : 0.4;
-//        double exceedsThreshold = numTacticsCorpus >= 1000 ? 0.5 : 0.425;
-        boolean stop = false;
         for (CoqProof p: proofs) {
             if (p.lemma_name == "" || p.lemma_name == null) {
                 p.lemma_name = "cus_lemma_" + (numLemmas++);
@@ -192,14 +171,12 @@ public class Encoder {
     }
     //
     public static void sampleTrainingData(BmConfig config, List<CoqProof> corpus) throws IOException {
-//    public static void sampleTrainingData(Main.Config config, List<CoqProof> corpus, boolean random) throws IOException {
         List<CoqProof> sample = new ArrayList<>();
         List<CoqProof> proofs = new ArrayList<>(corpus);
         proofs = proofs.stream().sorted((p1, p2) -> (p2.tactics.size() - p1.tactics.size())).toList();
 
         double autoThreshold = 0.4;
         double tacticIncludeThreshold = 0.3;
-//            double tacticExcludeThreshold = 0.75;
         double tacticExcludeThreshold = 0.75;
         double tacticCountThreshold = 0.65;
         int numSimilarThreshold = 2;
@@ -220,8 +197,6 @@ public class Encoder {
         double stopThreshold = config.stopThresh;
         double exceedsThreshold = config.stopThresh * 1.1;
 
-//            double stopThreshold = numTacticsCorpus >= 1000 ? 0.5 : 0.4;
-//            double exceedsThreshold = numTacticsCorpus >= 1000 ? 0.5 : 0.425;
         boolean stop = false;
         for (int g = 0; g < proofs.size(); g++) {
             CoqProof p = proofs.get(g);
@@ -329,12 +304,6 @@ public class Encoder {
             sb.append(s.lemma_name).append("\n");
         }
 
-        // todo: delete
-        // List<String> filenameTokens = new ArrayList<>(Arrays.asList(config.getInputFilename().split("/")));
-        // filenameTokens.add(new String(filenameTokens.get(filenameTokens.size() - 1)));
-        // filenameTokens.set(filenameTokens.size() - 2, "training");
-        // String filename = String.join("/", filenameTokens).replace(".v", ".txt");
         writeTo(sb.toString(), trainingPath + config.topic + ".txt");
-        // writeTo(sb.toString(), filename);
     }
 }

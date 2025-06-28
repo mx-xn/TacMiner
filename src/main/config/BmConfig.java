@@ -81,11 +81,6 @@ public class BmConfig {
         new BmConfig("coq-art", "IndPred"),
         new BmConfig("coq-art", "Reflection"),
         new BmConfig("coq-art", "SearchTree"),
-
-        new BmConfig("coq-art", "chap3"),
-        new BmConfig("coq-art", "chap5"),
-        new BmConfig("coq-art", "impredicative"),
-        new BmConfig("coq-art", "parsing")
     };
 
     public static final Map<String, List<BmConfig>> BmConfigMap = new HashMap<String, List<BmConfig>>() {{

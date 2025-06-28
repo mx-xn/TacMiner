@@ -76,7 +76,6 @@ public class SyntacticBaseline {
         public void compressSection(int start, BaselineProof tactic, List<List<String>> args) {
             this.args.subList(start, start + tactic.size()).clear();
             List<String> newArgs = new ArrayList<>();
-//            for (List<String> as: tactic.args) {
             for (List<String> as: args) {
                 for (String a: as) {
                     if (!newArgs.contains(a))
@@ -93,8 +92,6 @@ public class SyntacticBaseline {
 
             this.cleanCompleteTokens.subList(start, start + tactic.size()).clear();
             this.cleanCompleteTokens.add(start, tactic.name);
-
-//            this.args.add(start, args.stream().distinct().collect(Collectors.toList()));
         }
 
         public void compress(BaselineProof tactic) {
@@ -183,90 +180,7 @@ public class SyntacticBaseline {
         }
     }
 
-    public static void baselineExtract(BmConfig config, List<CoqProof> coqProofs) throws IOException {
-//        writeToBaselineInputFormat(config);
-        // extract list of proof strings from the syntactic baseline input file
-        String[] tokens = config.getInputFilename().split("/");
-        String inputFile = baselineIntermediatePath + tokens[0] + "/" + tokens[tokens.length - 1];
-        List<String> proofs = retrieveProofStringsFromFile(inputFile);
-
-        // for each proof string, get the preprocessed proof string, also the arg maps and tokenized preprocessed proofs
-        coqProofs = coqProofs.stream().filter(p -> !p.tactics.isEmpty()).collect(Collectors.toList());
-        List<Integer> trainingProofIndices = Encoder.getTrainingProofIndices(config, coqProofs);
-        List<List<List<String>>> proofsArgs = new ArrayList<>();
-        List<BaselineProof> baselineProofs = new ArrayList<>();
-
-        int id = 0;
-        for (String p: proofs) {
-            List<String> genericProofTokens = new ArrayList<>();
-            List<String> genericCompleteTokens = new ArrayList<>();
-            List<List<String>> args = new ArrayList<>();
-
-            List<String> completeProofTokens = tokenizeRawProof(p);
-            getGenericSigProof(completeProofTokens, coqProofs.get(id++), genericProofTokens, genericCompleteTokens, args);
-
-            proofsArgs.add(args);
-            baselineProofs.add(new BaselineProof(genericProofTokens, genericCompleteTokens, args));
-        }
-
-        // for each pair of the proofs, extract best tactics
-        List<BaselineProof> customTacs = new ArrayList<>();
-        for (int k = 0; k < trainingProofIndices.size(); k++) {
-            for (int l = k + 1; l < trainingProofIndices.size(); l++) {
-                int i = trainingProofIndices.get(k);
-                int j = trainingProofIndices.get(l);
-                // extract between proof i and j
-                BaselineProof tactic = longestCommonTacticsRaw(baselineProofs.get(i), baselineProofs.get(j));
-//                System.out.println(baselineProofs.get(j).prettyPrint());
-//                System.out.println("------------");
-
-                if (tactic != null) {
-                    if (!customTacs.contains(tactic)) {
-                        // System.out.println("longest common tactics between " + i + " and " + j);
-                        // System.out.println(tactic.cleanCompleteTokens.toString());
-                        // System.out.println(tactic.args.toString());
-                        tactic.name = "custom_tac" + customTacs.size();
-                        customTacs.add(tactic);
-                    }
-                }
-            }
-        }
-
-        // try to assemble the library
-//        LibAssemblerBaseline.LibraryBaseline libExh = assembleLibraryBaseline(new ArrayList<>(baselineProofs), new ArrayList<>(customTacs),
-//                LibAssemblerBaseline.AssemblyType.EXHAUSTIVE, trainingProofIndices);
-        String[] outputFile = config.getInputFilename().split("/");
-//        writeTo(libExh.printDiagnostics(),
-//                compressionEvalPath + outputFile[0] + "-baseline/exh/" + outputFile[outputFile.length - 1].replace(".v", ".txt"));
-//
-//        LibAssemblerBaseline.LibraryBaseline libExhCompr = assembleLibraryBaseline(new ArrayList<>(baselineProofs), new ArrayList<>(customTacs), LibAssemblerBaseline.AssemblyType.EXH_COMPRESS);
-//        writeTo(libExhCompr.printDiagnostics(),
-//                compressionEvalPath + outputFile[0] + "-baseline/exh-compr/" + outputFile[outputFile.length - 1].replace(".v", ".txt"));
-//        System.out.println("baseline proofs");
-//        int i = 0;
-//        for (BaselineProof p: libExhCompr.corpus) {
-//            System.out.println("size of proof " + (i++) + ": " + p.size());
-//            if (i == 13 || i == 18) {
-//                System.out.println(String.join("", p.completeTokens));
-//                System.out.println("tokens one by one");
-//                for (String t: p.completeTokens) {
-//                    System.out.println(t);
-//                }
-//
-//            }
-//        }
-
-        LibAssemblerBaseline.LibraryBaseline libGreedy = assembleLibraryBaseline(new ArrayList<>(baselineProofs), new ArrayList<>(customTacs),
-                LibAssemblerBaseline.AssemblyType.GREEDY, trainingProofIndices);
-//        libGreedy.setTrainingIndices(trainingProofIndices);
-
-        writeTo(libGreedy.printDiagnostics(),
-                evalPath + RQ1 + "baseline/" + outputFile[outputFile.length - 1].replace(".v", ".txt"));
-                // compressionEvalPath + outputFile[0] + "-baseline/" + outputFile[outputFile.length - 1].replace(".v", ".txt"));
-    }
-
     public static void baselineExtractRaw(BmConfig config, List<CoqProof> coqProofs) throws IOException {
-    //    writeToBaselineInputFormat(config);
         // extract list of proof strings from the syntactic baseline input file
         System.out.println("Extracting tactics using baseline (Peano) for Topic: " + config.topic);
         List<String> rawProofs = retrieveProofStringsFromFile(config.getInputFilename());
@@ -277,7 +191,6 @@ public class SyntacticBaseline {
         List<Integer> trainingProofIndices = Encoder.getTrainingProofIndices(config, coqProofs);
         List<List<List<String>>> proofsArgs = new ArrayList<>();
         List<BaselineProof> baselineProofs = new ArrayList<>();
-//        List<String> genericVProofs = new ArrayList<>();
         int id = 0;
         for (String p: proofs) {
             List<String> genericProofTokens = new ArrayList<>();
@@ -289,28 +202,16 @@ public class SyntacticBaseline {
 
             proofsArgs.add(args);
             baselineProofs.add(new BaselineProof(genericProofTokens, completeProofTokens, genericCompleteTokens, args));
-//            baselineProofs.add(new BaselineProof(genericProofTokens, genericCompleteTokens, args));
         }
-
-        // for (BaselineProof p: baselineProofs) {
-        //     System.out.println("curr baseline proof:");
-        //     for (String t: p.completeTokens) {
-        //         System.out.println(t);
-        //     }
-        // }
 
         // for each pair of the proofs, extract best tactics
         List<BaselineProof> customTacs = new ArrayList<>();
         for (int k = 0; k < trainingProofIndices.size(); k++) {
             for (int l = k + 1; l < trainingProofIndices.size(); l++) {
+                // extract between proof i and j
                 int i = trainingProofIndices.get(k);
                 int j = trainingProofIndices.get(l);
-                // extract between proof i and j
-                // if (j >= baselineProofs.size() || i >= baselineProofs.size())
-                //     System.out.println();
                 BaselineProof tactic = longestCommonTactics(baselineProofs.get(i), baselineProofs.get(j));
-                // if (tactic != null && tactic.cleanCompleteTokens.size() > 2)
-                //     System.out.println();
 
                 if (tactic != null) {
                     boolean stop = false;
@@ -320,25 +221,9 @@ public class SyntacticBaseline {
                             break;
                         }
                     }
-//                    for (String t : tactic.completeTokens) {
-//                        if (t.contains("OrderedEqKind.compare") || t.contains("OrderedEquation.eq_dec") ||
-//                            t.contains("map_vars map)!i") || t.contains("generalize ( Hrec ") || t.contains("destr_eqb") ||
-//                            t.contains("assert ( P n /") || t.contains("destr_t x") || t.contains("spec_digits") ||
-//                            t.contains("spec_pos") || t.contains("spec_even_aux") || t.contains("spec_0") || t.contains("destr_norm_pos") ||
-//                            t.contains("spec_div_eucl") || t.contains("??NN") || t.contains("?Zl") ||
-//                            t.contains("irred") || t.contains("destruct x") || t.contains("qsimpl")) {
-//                            stop = true;
-//                            break;
-//                        }
-//                    }
                     if (stop)
                         continue;
-//                    if (tactic.completeTokens.contains("assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto)"))
-//                        continue;
                     if (!customTacs.contains(tactic)) {
-                        // System.out.println("longest common tactics between " + i + " and " + j);
-                        // System.out.println(tactic.cleanCompleteTokens.toString());
-                        // System.out.println(tactic.args.toString());
                         tactic.name = "custom_tac" + customTacs.size();
                         customTacs.add(tactic);
                     }
@@ -357,77 +242,12 @@ public class SyntacticBaseline {
             if (config.training) {
                 writeTo(libGreedy.printTactics(), evalPath + RQ2 + "baseline/tactics/" + config.topic + ".txt");
                 writeTo(libGreedy.printCompressionRate(), evalPath + RQ2 + "baseline/" + config.topic + ".csv");
-                // writeTo(libGreedy.printDiagnostics(),
-                //         evalPath + RQ2 + "baseline/" + config.topic + "-" + String.format("%.2f", config.stopThresh) + ".txt");
             } else {
                 writeTo(libGreedy.printTactics(), evalPath + RQ1 + "baseline/tactics/" + config.topic + ".txt");
                 writeTo(libGreedy.printTacticsStats(), evalPath + RQ1 + "baseline/" + config.topic + ".csv");
-                // writeTo(libGreedy.printDiagnostics(),
-                //         evalPath + RQ1 + "baseline/" + config.topic + "-" + String.format("%.2f", config.stopThresh) + ".txt");
             }
         }
-        // System.out.println(libGreedy.printDiagnostics());
         System.out.println("finished assembling tactic-library for: " + config.topic);
-        // writeTo(libGreedy.printDiagnostics(),
-        //         evalPath + RQ1 + "baseline/" + 
-        //                 config.topic + "-" + String.format("%.2f", config.stopThresh) + ".txt");
-    }
-
-    public static BaselineProof longestCommonTacticsRaw(BaselineProof p1, BaselineProof p2) {
-        int bestStart = -1;
-        int bestSize = 0;
-        // get the longest common tactics that starts with tokens1[i] and tokens2[j]
-        for (int i = 0; i < p1.size(); i++) {
-            for (int j = 0; j < p2.size(); j++) {
-                int curr1 = i;
-                int curr2 = j;
-                Map<String, String> uniMap1To2 = new HashMap<>();
-                while (curr1 < p1.size() && curr2 < p2.size()) {
-                    // stop if extracted tactic is already complete hence needs to be cut off
-//                    if (curr1 - i > 1 && ifCompleteTactic(p1.completeTokens.subList(i, curr1))) break;
-
-                    // stop if generic sig doesn't match
-                    if (!p1.cleanTokens.get(curr1).equals(p2.cleanTokens.get(curr2))) break;
-
-                    // stop if syntax doesn't match
-//                    if (!ifSyntaxMatch(p1.completeTokens.subList(i, curr1 + 1),
-//                            p2.completeTokens.subList(j, curr2 + 1))) break;
-                    List<String> t1Args = p1.args.get(curr1);
-                    List<String> t2Args = p2.args.get(curr2);
-                    // stop if arguments mapping doesn't work
-                    boolean badMatch = false;
-                    for (int k = 0; k < t1Args.size(); k++) {
-                        if (uniMap1To2.containsKey(t1Args.get(k))) {
-                            if (!uniMap1To2.get(t1Args.get(k)).equals(t2Args.get(k))) {
-                                badMatch = true;
-                                break;
-                            } // if unification is consistent, just keep going
-                        } else {
-                            // if new arg is found
-                            uniMap1To2.put(t1Args.get(k), t2Args.get(k));
-                        }
-                    }
-                    if (badMatch) break;
-                    curr1++;
-                    curr2++;
-                }
-
-                // if gets here, compare with longest tactics
-                if (curr1 - i > bestSize) {
-                    bestStart = i;
-                    bestSize = curr1 - i;
-                }
-            }
-        }
-
-        if (bestSize > 1) {
-            BaselineProof tac = p1.getSubproof(bestStart, bestSize);
-            tac.args = generateGenericArgs(p1.args, bestStart, bestStart + bestSize);
-            // System.out.println("extracted tactic with size: " + tac.size() + ", " + tac.prettyPrint());
-            return tac;
-        }
-        return null;
-//        return Arrays.asList(bestStart, bestSize);
     }
 
     // returns the [start(incl), size] of proofs1
@@ -442,14 +262,9 @@ public class SyntacticBaseline {
                 String start1 = p1.completeTokens.get(curr1).trim();
                 String start2 = p2.completeTokens.get(curr2).trim();
 
-                // if (start1.equals(";") || start2.equals(";"))
-                //     System.out.println();
                 if (!validCustomTacticStart(start1) || !validCustomTacticStart(start2)) continue;
                 Map<String, String> uniMap1To2 = new HashMap<>();
                 while (curr1 < p1.size() && curr2 < p2.size()) {
-                    // stop if extracted tactic is already complete hence needs to be cut off
-//                    if (curr1 - i > 1 && ifCompleteTactic(p1.completeTokens.subList(i, curr1))) break;
-
                     // stop if generic sig doesn't match
                     if (!p1.cleanTokens.get(curr1).equals(p2.cleanTokens.get(curr2))) break;
 
@@ -487,11 +302,9 @@ public class SyntacticBaseline {
         if (bestSize > 1) {
             BaselineProof tac = p1.getSubproof(bestStart, bestSize);
             tac.args = generateGenericArgs(p1.args, bestStart, bestStart + bestSize);
-            // System.out.println("extracted tactic with size: " + tac.size() + ", " + tac.prettyPrint());
             return tac;
         }
         return null;
-//        return Arrays.asList(bestStart, bestSize);
     }
 
     public static boolean canUnify(List<List<String>> args1, List<List<String>> args2) {
@@ -587,8 +400,6 @@ public class SyntacticBaseline {
             }
             return numBrancket > 0;
         } else {
-//            if (start.contains("auto") && !start.contains(")"))
-//                return true;
             return true;
         }
     }
@@ -619,10 +430,6 @@ public class SyntacticBaseline {
         // in the corresponding proofs list, if the p.tactic.toCoqScript == token, get the signature and the corresponding args
         getGenericSigTokensRaw(cleanTokens, coqProof.tactics, genericProofTokens, args);
         getGenericCompleteTokens(tokens, cleanTokens, genericProofTokens, genericCompleteTokens);
-//        System.out.println("generic complete tokens");
-//        for (String s: genericCompleteTokens) {
-//            System.out.println(s);
-//        }
 
         return "";
     }
@@ -630,49 +437,8 @@ public class SyntacticBaseline {
     public static void getGenericCompleteTokens(List<String> tokens, List<String> cleanTokens, List<String> genericProofTokens, List<String> genericCompleteTokens) {
         // get a copy of the generic signature, replace the original with the generic
         // make generic tokens complete by replacing the clean token within the complete tokens
-        // System.out.println("generic complete tokens");
         for (int i = 0; i < tokens.size(); i++) {
             genericCompleteTokens.add(tokens.get(i).replace(cleanTokens.get(i), genericProofTokens.get(i)));
-            // System.out.println(genericCompleteTokens.get(i));
-        }
-    }
-
-    public static void getGenericSigTokens(List<String> tokens, List<CoqTactic> tactics, List<String> genericProofTokens, List<List<String>> args) {
-        Map<String, CoqTactic> signatureMap = new HashMap<>();
-        // System.out.println("coq original script");
-        // for (CoqTactic t: tactics) {
-        //     signatureMap.put(t.toCoqScript(), t);
-        // }
-        for (int i = 0; i < tokens.size(); i++) {
-            // System.out.println("tokens[" + i + "]: " + tokens.get(i));
-            if (signatureMap.containsKey(tokens.get(i))) {
-                CoqTactic coqTac = signatureMap.get(tokens.get(i));
-                genericProofTokens.add(coqTac.signature.substring(0, coqTac.signature.length() - 2));
-
-                // get args
-                String sigCopy = new String(coqTac.signature);
-                List<String> inputArgs = coqTac.inputs.stream().filter(a -> !a.type.equals(CoqTactic.PROP_TYPE.GOAL)).map(a -> a.simpleName()).collect(Collectors.toList());
-                List<String> outputArgs = coqTac.outputs.stream().filter(a -> !a.type.equals(CoqTactic.PROP_TYPE.GOAL)).map(a -> a.simpleName()).collect(Collectors.toList());
-                int iInd = 0;
-                int oInd = 0;
-                List<String> argList = new ArrayList<>();
-                while (sigCopy.contains("_i ") || sigCopy.contains("_o ")) {
-                    int indexInput = sigCopy.contains("_i ") ? sigCopy.indexOf("_i ") : Integer.MAX_VALUE;
-                    int indexOutput = sigCopy.contains("_o ") ? sigCopy.indexOf("_o ") : Integer.MAX_VALUE;
-
-                    if (indexInput < indexOutput) {
-                        sigCopy = sigCopy.replaceFirst("_i ", " ");
-                        argList.add(iInd < inputArgs.size() ? inputArgs.get(iInd++) : argList.get(argList.size() - 1));
-                    } else {
-                        sigCopy = sigCopy.replaceFirst("_o ", " ");
-                        argList.add(oInd < outputArgs.size() ? outputArgs.get(oInd++) : argList.get(argList.size() - 1));
-                    }
-                }
-                args.add(argList);
-            } else {
-                genericProofTokens.add(tokens.get(i));
-                args.add(new ArrayList<>());
-            }
         }
     }
 
@@ -691,14 +457,12 @@ public class SyntacticBaseline {
 
     public static void getGenericSigTokensRaw(List<String> tokens, List<CoqTactic> tactics, List<String> genericProofTokens, List<List<String>> args) {
         Map<String, CoqTactic> signatureMap = new HashMap<>();
-        // System.out.println("coq original script");
         for (CoqTactic t: tactics) {
             String s = t.toCoqScriptNoArgs();
             s = processBrackets(s);
             signatureMap.put(s.replace("_global_", ""), t);
         }
         for (int i = 0; i < tokens.size(); i++) {
-            // System.out.println("tokens[" + i + "]: " + tokens.get(i));
             if (signatureMap.containsKey(tokens.get(i))) {
                 CoqTactic coqTac = signatureMap.get(tokens.get(i));
                 genericProofTokens.add(processBrackets(coqTac.signature.substring(0, coqTac.signature.length() - 2)));
@@ -747,7 +511,6 @@ public class SyntacticBaseline {
     public static List<String> retrieveProofStringsFromFile(String filename) throws IOException {
         String content = new String(Files.readAllBytes(Paths.get(filename)));
         Pattern pattern = Pattern.compile("(Proof\\..*?(Qed|Defined)\\.|Next Obligation\\..*?Qed\\.)", Pattern.DOTALL);
-//        Pattern pattern = Pattern.compile("(Proof\\..*?(Qed|Defined)\\.)", Pattern.DOTALL);
         Matcher matcher = pattern.matcher(content);
 
         List<String> proofs = new ArrayList<>();
@@ -756,16 +519,13 @@ public class SyntacticBaseline {
             proofs.add(matcher.group().replace("Proof.", "")
                     .replace("Next Obligation.", "").replace("Qed.", "")
                             .replace("Defined.", ""));
-//                    .replaceAll("[\\s]{2,}", " "));
         }
         return proofs.stream()
                 .filter(p -> !p.equals(" decide equality. ") && !p.equals(" apply (Genv.senv_match TRANSF). ")).toList(); // for Allocation
     }
 
     public static List<String> retrieveProofsForRefactoring(String content) throws IOException {
-//        Pattern pattern = Pattern.compile("(Proof\\..*?(Qed|Defined)\\.|Next Obligation\\..*?Qed\\.)", Pattern.DOTALL);
         Pattern pattern = Pattern.compile("((Proof|Next Obligation)\\..*?(Qed|Defined)\\.)", Pattern.DOTALL);
-//        Pattern pattern = Pattern.compile("((Proof)\\..*?(Qed|Defined)\\.)", Pattern.DOTALL);
         Matcher matcher = pattern.matcher(content);
 
         List<String> proofs = new ArrayList<>();
@@ -906,20 +666,10 @@ public class SyntacticBaseline {
                 matcher = compiledPattern.matcher(token);
             }
 
-//            if (token.contains("|")) {
-//                List<String> barSplits = Arrays.stream(token.split("\\|")).map(s -> s.trim()).collect(Collectors.toList());
-//                for (int i = 0; i < barSplits.size() - 1; i++) {
-//                    barSplits.set(i, barSplits.get(i) + " |");
-//                }
-//                finalTokens.addAll(barSplits);
-//            } else {
-//                finalTokens.add(token);
-//            }
             finalTokens.add(token);
         }
 
         // change "!" back to "|"
-        // todo: get rid of all these
         tokens = finalTokens.stream()
                 .map(s -> s.replace("*!*", "|").replace("!!", ";;"))
                 .map(s -> s.replace("*^*", ";"))

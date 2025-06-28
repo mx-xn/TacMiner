@@ -226,7 +226,7 @@
                 ]
             },
             {
-                "tactic_sig": "simple induction t .",
+                "tactic_sig": "simple induction _o .",
                 "tactic_sig_no_out_arg": "simple induction t .",
                 "tactic_args": [
                     "c1_goal : forall t : bin, wp (bin_to_string t)"
@@ -325,7 +325,7 @@
                 ]
             },
             {
-                "tactic_sig": "simple induction t .",
+                "tactic_sig": "simple induction _o .",
                 "tactic_sig_no_out_arg": "simple induction t .",
                 "tactic_args": [
                     "c1_goal : forall t : bin, wp (bin_to_string' t)"
@@ -1589,7 +1589,7 @@
                 ]
             },
             {
-                "tactic_sig": "simple induction l1 .",
+                "tactic_sig": "simple induction _o .",
                 "tactic_sig_no_out_arg": "simple induction l1 .",
                 "tactic_args": [
                     "c1_goal : forall (A : Type) (l1 l2 l3 l4 : list A)\n  (_ : eq (app l1 l2) (app l3 l4)),\nor\n  (ex\n     (fun l1' : list A => and (eq l1 (app l3 l1')) (eq l4 (app l1' l2))))\n  (ex\n     (fun a : A =>\n      ex\n        (fun l2' : list A =>\n         and (eq l3 (app l1 (cons a l2')))\n           (eq l2 (app (cons a l2') l4)))))"
@@ -2080,7 +2080,7 @@
                 ]
             },
             {
-                "tactic_sig": "simple induction l1 .",
+                "tactic_sig": "simple induction _o .",
                 "tactic_sig_no_out_arg": "simple induction l1 .",
                 "tactic_args": [
                     "c1_goal : forall (A : Type) (l1 l2 : list A),\neq (length (app l1 l2)) (Init.Nat.add (length l1) (length l2))"
@@ -2148,7 +2148,7 @@
                 ]
             },
             {
-                "tactic_sig": "simple induction l .",
+                "tactic_sig": "simple induction _o .",
                 "tactic_sig_no_out_arg": "simple induction l .",
                 "tactic_args": [
                     "c1_goal : forall (A : Type) (l : list A), eq (length l) (length (rev l))"
@@ -2306,7 +2306,9 @@
                 "tactic_args": [
                     "c3_goal : ex\n  (fun b : A =>\n   ex\n     (fun l' : list A =>\n      eq (rev (rev (cons a l))) (app l' (cons b nil))))",
                     "c2_a : A",
-                    "c2_l : list A"
+                    "c2_l : list A",
+                    "c3_H : lt 0 (length (rev (cons a l)))",
+                    "c2_A : Type"
                 ],
                 "tactic_res": [
                     "c4_goal : ex\n  (fun b : A =>\n   ex (fun l' : list A => eq (rev nil) (app l' (cons b nil))))",
@@ -3266,7 +3268,7 @@
                 ]
             },
             {
-                "tactic_sig": "simple induction n .",
+                "tactic_sig": "simple induction _o .",
                 "tactic_sig_no_out_arg": "simple induction n .",
                 "tactic_args": [
                     "c1_goal : forall (A : Type) (a : A) (n : nat) (l : list A),\neq (app (make_list A a (S n)) l) (app (make_list A a n) (cons a l))"
@@ -3358,7 +3360,7 @@
                 ]
             },
             {
-                "tactic_sig": "simple induction l .",
+                "tactic_sig": "simple induction _o .",
                 "tactic_sig_no_out_arg": "simple induction l .",
                 "tactic_args": [
                     "c1_goal : forall (l : list par) (n : nat) (_ : eq (recognize n l) true),\nwp (app (make_list par open n) l)"
@@ -3465,26 +3467,28 @@
                 "tactic_res": []
             },
             {
-                "tactic_sig": "intros _o .",
-                "tactic_sig_no_out_arg": "intros a .",
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros a l' H .",
                 "tactic_args": [
                     "c5_goal : forall (a : par) (l : list par)\n  (_ : forall (n : nat) (_ : eq (recognize n l) true),\n       wp (app (make_list par open n) l)) (n : nat)\n  (_ : eq\n         match a with\n         | open => recognize (S n) l\n         | close =>\n             match n with\n             | 0 => false\n             | S n' => recognize n' l\n             end\n         end true), wp (app (make_list par open n) (cons a l))"
                 ],
                 "tactic_res": [
-                    "c12_goal : forall (l : list par)\n  (_ : forall (n : nat) (_ : eq (recognize n l) true),\n       wp (app (make_list par open n) l)) (n : nat)\n  (_ : eq\n         match a with\n         | open => recognize (S n) l\n         | close =>\n             match n with\n             | 0 => false\n             | S n' => recognize n' l\n             end\n         end true), wp (app (make_list par open n) (cons a l))",
-                    "c12_a : par"
+                    "c12_goal : forall (n : nat)\n  (_ : eq\n         match a with\n         | open => recognize (S n) l'\n         | close =>\n             match n with\n             | 0 => false\n             | S n' => recognize n' l'\n             end\n         end true), wp (app (make_list par open n) (cons a l'))",
+                    "c12_a : par",
+                    "c12_l' : list par",
+                    "c12_H : forall (n : nat) (_ : eq (recognize n l') true),\nwp (app (make_list par open n) l')"
                 ]
             },
             {
                 "tactic_sig": "case _i .",
                 "tactic_sig_no_out_arg": "case _i .",
                 "tactic_args": [
-                    "c12_goal : forall (l : list par)\n  (_ : forall (n : nat) (_ : eq (recognize n l) true),\n       wp (app (make_list par open n) l)) (n : nat)\n  (_ : eq\n         match a with\n         | open => recognize (S n) l\n         | close =>\n             match n with\n             | 0 => false\n             | S n' => recognize n' l\n             end\n         end true), wp (app (make_list par open n) (cons a l))",
+                    "c12_goal : forall (n : nat)\n  (_ : eq\n         match a with\n         | open => recognize (S n) l'\n         | close =>\n             match n with\n             | 0 => false\n             | S n' => recognize n' l'\n             end\n         end true), wp (app (make_list par open n) (cons a l'))",
                     "c12_a : par"
                 ],
                 "tactic_res": [
-                    "c13_goal : forall (l : list par)\n  (_ : forall (n : nat) (_ : eq (recognize n l) true),\n       wp (app (make_list par open n) l)) (n : nat)\n  (_ : eq (recognize (S n) l) true),\nwp (app (make_list par open n) (cons open l))",
-                    "c14_goal : forall (l : list par)\n  (_ : forall (n : nat) (_ : eq (recognize n l) true),\n       wp (app (make_list par open n) l)) (n : nat)\n  (_ : eq match n with\n          | 0 => false\n          | S n' => recognize n' l\n          end true), wp (app (make_list par open n) (cons close l))"
+                    "c13_goal : forall (n : nat) (_ : eq (recognize (S n) l') true),\nwp (app (make_list par open n) (cons open l'))",
+                    "c14_goal : forall (n : nat)\n  (_ : eq match n with\n          | 0 => false\n          | S n' => recognize n' l'\n          end true), wp (app (make_list par open n) (cons close l'))"
                 ]
             },
             {
@@ -3504,15 +3508,13 @@
                 "tactic_res": []
             },
             {
-                "tactic_sig": "intros _o _o _o _o .",
-                "tactic_sig_no_out_arg": "intros l' H n H0 .",
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros n H0 .",
                 "tactic_args": [
-                    "c13_goal : forall (l : list par)\n  (_ : forall (n : nat) (_ : eq (recognize n l) true),\n       wp (app (make_list par open n) l)) (n : nat)\n  (_ : eq (recognize (S n) l) true),\nwp (app (make_list par open n) (cons open l))"
+                    "c13_goal : forall (n : nat) (_ : eq (recognize (S n) l') true),\nwp (app (make_list par open n) (cons open l'))"
                 ],
                 "tactic_res": [
                     "c15_goal : wp (app (make_list par open n) (cons open l'))",
-                    "c15_l' : list par",
-                    "c15_H : forall (n : nat) (_ : eq (recognize n l') true),\nwp (app (make_list par open n) l')",
                     "c15_n : nat",
                     "c15_H0 : eq (recognize (S n) l') true"
                 ]
@@ -3535,21 +3537,19 @@
                     "c16_goal : wp (app (make_list par open (S n)) l')",
                     "c15_H0 : eq (recognize (S n) l') true",
                     "c15_n : nat",
-                    "c15_H : forall (n : nat) (_ : eq (recognize n l') true),\nwp (app (make_list par open n) l')",
-                    "c15_l' : list par"
+                    "c12_H : forall (n : nat) (_ : eq (recognize n l') true),\nwp (app (make_list par open n) l')",
+                    "c12_l' : list par"
                 ],
                 "tactic_res": []
             },
             {
-                "tactic_sig": "intros _o _o _o .",
-                "tactic_sig_no_out_arg": "intros l' H n .",
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros n .",
                 "tactic_args": [
-                    "c14_goal : forall (l : list par)\n  (_ : forall (n : nat) (_ : eq (recognize n l) true),\n       wp (app (make_list par open n) l)) (n : nat)\n  (_ : eq match n with\n          | 0 => false\n          | S n' => recognize n' l\n          end true), wp (app (make_list par open n) (cons close l))"
+                    "c14_goal : forall (n : nat)\n  (_ : eq match n with\n          | 0 => false\n          | S n' => recognize n' l'\n          end true), wp (app (make_list par open n) (cons close l'))"
                 ],
                 "tactic_res": [
                     "c17_goal : forall\n  _ : eq match n with\n         | 0 => false\n         | S n' => recognize n' l'\n         end true, wp (app (make_list par open n) (cons close l'))",
-                    "c17_l' : list par",
-                    "c17_H : forall (n : nat) (_ : eq (recognize n l') true),\nwp (app (make_list par open n) l')",
                     "c17_n : nat"
                 ]
             },
@@ -3642,8 +3642,8 @@
                     "c23_goal : wp (app (make_list par open n) l')",
                     "c21_H0 : eq (recognize n l') true",
                     "c21_n : nat",
-                    "c17_H : forall (n : nat) (_ : eq (recognize n l') true),\nwp (app (make_list par open n) l')",
-                    "c17_l' : list par"
+                    "c12_H : forall (n : nat) (_ : eq (recognize n l') true),\nwp (app (make_list par open n) l')",
+                    "c12_l' : list par"
                 ],
                 "tactic_res": []
             }
@@ -3720,7 +3720,7 @@
                 ]
             },
             {
-                "tactic_sig": "simple induction l .",
+                "tactic_sig": "simple induction _o .",
                 "tactic_sig_no_out_arg": "simple induction l .",
                 "tactic_args": [
                     "c1_goal : forall (l : list par) (s : list bin) (t : bin)\n  (_ : eq (parse s t l) None) (s' : list bin) (t' : bin)\n  (_ : eq (length s') (length s)), eq (parse s' t' l) None"
@@ -4564,7 +4564,7 @@
                 ]
             },
             {
-                "tactic_sig": "simple induction l .",
+                "tactic_sig": "simple induction _o .",
                 "tactic_sig_no_out_arg": "simple induction l .",
                 "tactic_args": [
                     "c1_goal : forall (l : list par) (s : list bin) (t t' : bin)\n  (_ : eq (parse s t l) (Some t')),\neq (bin_to_string' t')\n  (app (unparse_stack s) (app (bin_to_string' t) l))"

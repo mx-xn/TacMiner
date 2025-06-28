@@ -1008,7 +1008,8 @@
                 "tactic_sig": "elim maj_l .",
                 "tactic_sig_no_out_arg": "elim maj_l .",
                 "tactic_args": [
-                    "c2_goal : not (occ p t1)"
+                    "c2_goal : not (occ p t1)",
+                    "_global_maj_l : forall (n : Z) (t1 t2 : Z_btree) (_ : search_tree (Z_bnode n t1 t2)),\n       maj n t1"
                 ],
                 "tactic_res": [
                     "c3_goal : forall _ : forall (z' : Z) (_ : occ z' t1), Z.lt z' n, not (occ p t1)"

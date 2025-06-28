@@ -65,10 +65,6 @@ public class ProofGraph {
         propMap = new HashMap<>();
 
         buildGraph();
-        // todo: put it back here
-//        for (int i = 0; i < vertices.size(); i++) {
-//            checkCycle(i, new HashSet<>());
-//        }
     }
 
     public Map<String, Integer> getSigCount() {

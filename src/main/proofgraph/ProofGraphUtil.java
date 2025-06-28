@@ -52,22 +52,6 @@ public class ProofGraphUtil {
     }
 
     public static boolean areSubgraphsSimilar(ProofGraph pg1, ProofGraph pg2) {
-//        if (pg1.vertices.size() >= 12 && pg2.vertices.size() >= 12) return false;
-//        double sizePercentage = 70;
-//        double sizeDivision = (double)pg1.vertices.size() / (double)pg2.vertices.size();
-//        if (sizeDivision < sizePercentage / 100.0 || sizeDivision > 100.0 / sizePercentage) return false;
-//
-//        // get types of tactics T1, T2, if intersection is within x percent, return false
-//        double typeOverlapBar = 0.7;
-//        List<String> sigsPG1 = getDistinctSigsOfGraph(pg1);
-//        List<String> sigsPG2 = getDistinctSigsOfGraph(pg2);
-//
-//        List<String> intersection = new ArrayList<>(sigsPG1);
-//        intersection.retainAll(sigsPG2);
-//
-//        if ((double)intersection.size() / (double)sigsPG1.size() < typeOverlapBar) return false;
-//        if ((double)intersection.size() / (double)sigsPG2.size() < typeOverlapBar) return false;
-//
         return true;
     }
 

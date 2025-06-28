@@ -52,6 +52,31 @@
         ]
     },
     {
+        "lemma_name": "isorted1",
+        "proof": [
+            {
+                "tactic_sig": "Theorem isorted1 : forall x : A , impredicative_sorted ( x :: nil ) .",
+                "tactic_sig_no_out_arg": "Theorem isorted1 : forall x : A , impredicative_sorted ( x :: nil ) .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall x : A, impredicative_sorted (cons x nil)",
+                    "c1_R : relation A",
+                    "c1_A : Type"
+                ]
+            },
+            {
+                "tactic_sig": "custom_tac0 impredicative_sorted .",
+                "tactic_sig_no_out_arg": "custom_tac0 impredicative_sorted .",
+                "tactic_args": [
+                    "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
         "lemma_name": "isorted2",
         "proof": [
             {
@@ -256,6 +281,29 @@
         ]
     },
     {
+        "lemma_name": "impredicative_le_n",
+        "proof": [
+            {
+                "tactic_sig": "Theorem impredicative_le_n : forall n : nat , impredicative_le n n .",
+                "tactic_sig_no_out_arg": "Theorem impredicative_le_n : forall n : nat , impredicative_le n n .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall n : nat, impredicative_le n n"
+                ]
+            },
+            {
+                "tactic_sig": "custom_tac0 impredicative_le .",
+                "tactic_sig_no_out_arg": "custom_tac0 impredicative_le .",
+                "tactic_args": [
+                    "c1_goal : forall n : nat, impredicative_le n n"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
         "lemma_name": "impredicative_le_S",
         "proof": [
             {
@@ -441,6 +489,52 @@
                 "tactic_args": [
                     "c4_goal : forall (m : nat) (_ : le n m), le n (S m)",
                     "c2_n : nat"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "impredicative_or_intro1",
+        "proof": [
+            {
+                "tactic_sig": "Theorem impredicative_or_intro1 : forall A B : Prop , A -> impredicative_or A B .",
+                "tactic_sig_no_out_arg": "Theorem impredicative_or_intro1 : forall A B : Prop , A -> impredicative_or A B .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (A B : Prop) (_ : A), impredicative_or A B"
+                ]
+            },
+            {
+                "tactic_sig": "custom_tac0 impredicative_or .",
+                "tactic_sig_no_out_arg": "custom_tac0 impredicative_or .",
+                "tactic_args": [
+                    "c1_goal : forall (A B : Prop) (_ : A), impredicative_or A B"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "impredicative_or_intro2",
+        "proof": [
+            {
+                "tactic_sig": "Theorem impredicative_or_intro2 : forall A B : Prop , B -> impredicative_or A B .",
+                "tactic_sig_no_out_arg": "Theorem impredicative_or_intro2 : forall A B : Prop , B -> impredicative_or A B .",
+                "tactic_args": [
+                    "c0_goal : "
+                ],
+                "tactic_res": [
+                    "c1_goal : forall (A B : Prop) (_ : B), impredicative_or A B"
+                ]
+            },
+            {
+                "tactic_sig": "custom_tac0 impredicative_or .",
+                "tactic_sig_no_out_arg": "custom_tac0 impredicative_or .",
+                "tactic_args": [
+                    "c1_goal : forall (A B : Prop) (_ : B), impredicative_or A B"
                 ],
                 "tactic_res": []
             }

@@ -283,8 +283,8 @@ Eval lazy beta iota delta [bin_nat] in
 Theorem flatten_aux_valid :
  forall t t':bin, bin_nat t + bin_nat t' = bin_nat (flatten_aux t t').
 Proof.
- intros t; elim t; simpl; auto.
- intros t1 IHt1 t2 IHt2 t'; rewrite <- IHt1; rewrite <- IHt2.
+ intros t; elim t; simpl; auto. 
+ intros t1 IHt1 t2 IHt2 t'; rewrite <- IHt1; rewrite <- IHt2. 
  rewrite Nat.add_assoc; trivial.
 Qed.
 

@@ -15,7 +15,6 @@ public class utils {
         Map<String, String> res = new LinkedHashMap<>();  // key: arg names, val: "in" or "out"
         for (CoqTactic tactic: compTactic) {
             if (tactic == null) continue;
-            // System.out.println("gather args for " + tactic.toCoqScript());
             // add the args for all the tactics
             for (Map.Entry<String, CoqTactic.Prop> argEnt: tactic.gatherArgs(tactic.signature).entrySet()) {
                 CoqTactic.Prop arg = argEnt.getValue();
@@ -113,7 +112,6 @@ public class utils {
      * @return the index where to insert the tactic
      */
     private static int findInsertIndex(String script, CoqTactic tactic, int currIndex, List<CoqTactic> tactics, Map<CoqTactic, Integer> insertIndexMap) {
-        // todo: more complex than this, basically it needs to know which goal branch it belongs to
         if (script.equals(".")) return 0;
 
         CoqTactic.Prop inputGoalProp = null;
@@ -148,7 +146,6 @@ public class utils {
                 if (relevantScript.indexOf("[ |") != -1) return relevantScript.indexOf("[ |") + index + 1;
                 if (relevantScript.indexOf("[]") != -1) return relevantScript.indexOf("[]") + index + 1;
                 if (relevantScript.indexOf("|  |") != -1) return relevantScript.indexOf("|  |") + index + 2;
-//                if (script.indexOf("[]") != -1) return script.indexOf("[]") + 1;
             } else {
                 // if branch ID >= 2, we need to find the ID'th bar of the level of the current tactic
                 String copy = new String(relevantScript);
@@ -163,7 +160,6 @@ public class utils {
                     if (open > 1) copy = copy.replaceFirst("\\|  \\|", "****");
                     else return ind + index + 2;
                 }
-//               if (relevantScript.indexOf("|  |") != -1) return relevantScript.indexOf("|  |") + index + 2;
             }
         }
 
@@ -210,32 +206,16 @@ public class utils {
         Map<CoqTactic, Integer> insertIndexMap = new HashMap<>();
         String res = "";
         for (int i = 0; i < tactics.size(); i++) {
-            // System.out.println("tactic is: " + tactics.get(i).toCoqScript());
             int insertInd = findInsertIndex(res, tactics.get(i), i, tactics, insertIndexMap);
             if (insertInd == -1) {
-                // System.out.println("not enough space to insert new tactic " + tactics.get(i).toCoqScript());
-                // System.out.println("re-routing");
                 res += " .";
                 insertInd = res.length() - 1;
             }
-//            res += tactics.get(i).toCoqScript();
-            int prevResLen = res.length();
             if (insertInd == -2)
                 System.out.println();
             res = insertTactic(res, insertInd, tactics.get(i), insertIndexMap);
-//            int insertLen = res.length() - prevResLen;
-
-            // for any index that comes = or after the insertIndex, bump them up by insertLen.
-//            for (Map.Entry<CoqTactic, Integer> entry: insertIndexMap.entrySet()) {
-//                if (insertInd <= entry.getValue()) {
-//                    insertIndexMap.put(entry.getKey(), entry.getValue() + insertLen);
-//                }
-//            }
-//            insertIndexMap.put(tactics.get(i), insertInd);
-            // System.out.println("res after inserting " + i + ": " + res);
         }
 
-        // System.out.println("result is " + res);
         while (res.indexOf("; [ | .. ]") != -1) {
             res = res.replace("; [ | .. ]", "");
         }
@@ -252,7 +232,6 @@ public class utils {
             res = res.replace("|  | .. ]", "| .. ]");
         }
 
-        // System.out.println("returning result of " + res);
         return res;
     }
     
@@ -278,7 +257,6 @@ public class utils {
             // add one of those nodes to the ordering
             int u = getMostBranchPrioritized(sources, branchPriorities);
             sources.remove((Integer)u);
-//            System.out.println(u + " is the next source");
             topologicalOrdering.add(u);
 
             // decrement the indegree of that node's neighbors
@@ -334,13 +312,10 @@ public class utils {
     }
 
     public static List<String> tacticsToLtacScript(List<CoqTactic> ltac, String ltacName) {
-        // TODO: this doesn't quite work yet b/c it doesn't take goal scopes into account.
-        // TODO: track fresh argument
         // It also doesn't track arguments / make fresh results
         Map<String, String> argPosMap = gatherCompositeArgs(ltac);
         String inputArgs = String.join(" ", argPosMap.keySet().stream().toList());
         String res = ltacName + " " + inputArgs + " := ";
-//        System.out.println("ltac is " + ltac.size());
         // create a temp arg map
         try {
             res += tacticsToScript(ltac);
@@ -349,7 +324,6 @@ public class utils {
         }
 
         String genericSig = ltacName + " " + String.join(" ", argPosMap.values().stream().toList());
-//        System.out.println("++++ " + res);
         return Arrays.asList(genericSig, res);
     }
 

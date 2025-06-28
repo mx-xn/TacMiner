@@ -168,6 +168,10 @@ class CoqCustomFileExec:
         #     outbranch_vars = self.build_outputs(cur_goal, raw_tactic, tactic, in_state, out_state, args, res)
         #     if outbranch_vars is not None:
         #         words = words[:-1] + ["as", outbranch_vars, "."]
+        if words[0] == "simple" and words[1] == "induction":
+            if len(words) > 2:
+                if not words[2].isdigit():
+                    words = [words[0], words[1], "_o", "."]
         else:
             pass
             # print("Tactic " + tactic + " not yet supported")
@@ -427,20 +431,24 @@ class CoqCustomFileExec:
 if __name__ == "__main__":
     files_to_process = {
         # topic-name: (original_dir, original_filename, bench_dir)
-        "chap3_TM": ("coq-art", "chap3_TM.v", "coq-art"),
-        "chap3_PN": ("coq-art", "chap3_PN.v", "coq-art"),
+        # "chap3_TM": ("coq-art", "chap3_TM.v", "coq-art"),
+        # "chap3_PN": ("coq-art", "chap3_PN.v", "coq-art"),
 
-        "chap5_TM": ("coq-art", "chap5_TM.v", "coq-art"),
-        "chap5_PN": ("coq-art", "chap5_PN.v", "coq-art"),
+        "chap5_comp_TM": ("coq-art", "chap5_comp_TM.v", "coq-art"),
+        # "chap5_comp_PN": ("coq-art", "chap5_comp_PN.v", "coq-art"),
 
-        "IndPred_TM": ("coq-art", "IndPred_TM.v", "coq-art"),
-        "IndPred_PN": ("coq-art", "IndPred_PN.v", "coq-art"),
+        # "chap11_comp_TM": ("coq-art", "chap11_comp_TM.v", "coq-art"),
+        # "chap11_comp_PN": ("coq-art", "chap11_comp_PN.v", "coq-art"),
 
-        "impredicative_TM": ("coq-art", "impredicative_TM.v", "coq-art"),
-        "impredicative_PN": ("coq-art", "impredicative_PN.v", "coq-art"),
+        # "IndPred_TM": ("coq-art", "IndPred_TM.v", "coq-art"),
+        # "IndPred_PN": ("coq-art", "IndPred_PN.v", "coq-art"),
 
-        "parsing_TM": ("coq-art", "parsing_TM.v", "coq-art"),
-        "parsing_PN": ("coq-art", "parsing_PN.v", "coq-art"),
+        # "impredicative_TM": ("coq-art", "impredicative_comp_TM.v", "coq-art"),
+        # "impredicative_PN": ("coq-art", "impredicative_comp_PN.v", "coq-art"),
+
+        # "parsing_TM": ("coq-art", "parsing_TM.v", "coq-art"),
+        # "parsing_PN": ("coq-art", "parsing_PN.v", "coq-art"),
+
         # "IndPred": ("coq-art", "chap8.v", "coq-art"),
         # "SearchTree": ("coq-art", "chap11.v", "coq-art"),
         # "Reflection": ("coq-art", "chap16.v", "coq-art")

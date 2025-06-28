@@ -10,27 +10,8 @@ datasets:
     files:
       - path: BigZ/ZMake_comp_TM.v
         theorems:
-          # BS-1, PN-2, TM-4, total 5
-          - spec_leb               # BS-failed,  PN success, TM success
-          - spec_norm_pos          # BS-failed,  PN failed,  TM success
-          - spec_norm_pos_pos      # BS-failed,  PN failed,  TM failed
-          - spec_ltb               # BS-failed,  PN failed,  TM success
-          - spec_opp               # BS-success, PN success, TM success, Pass@1 = true
-      # - path: BigQ/QMake_comp_TM.v
-      #   theorems:
-      #     # BS-1, PN-1, TM-4, total 6
-      #     - spec_power_norm        # BS-failed,  PN failed,  TM-failed
-      #     - spec_red               # BS-success, PN success, TM-sucesss, Pass@1 = false
-      #     - strong_spec_red        # BS-failed,  PN failed,  TM-success
-      #     - spec_norm_denum        # BS-failed,  PN failed,  TM-success
-      #     - strong_spec_check_int  # BS-failed,  PN failed,  TM-failed
-      #     - strong_spec_of_Q       # BS-failed,  PN failed,  TM-success
-      # - path: BigN/NMake_comp_TM.v
-      #   theorems:
-      #     # BS-0, PN-2, TM-2, total 6
-      #     - spec_testbit    # BS-failed, PN success, TM-success
-      #     - spec_div2       # BS-failed, PN failed,  TM-failed
-      #     - spec_ltb        # BS-failed, PN failed,  TM-success
-      #     - spec_max        # BS-failed, PN-success, TM-success
-      #     - spec_pred0      # BS-failed, PN-failed,  TM-failed
-      #     - spec_sub0       # BS-failed, PN-failed,  TM-failed
+          - spec_leb               
+          - spec_norm_pos          
+          - spec_norm_pos_pos     
+          - spec_ltb             
+          - spec_opp            

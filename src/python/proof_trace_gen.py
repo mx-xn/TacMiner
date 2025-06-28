@@ -167,6 +167,8 @@ class CoqCustomFileExec:
         #     outbranch_vars = self.build_outputs(cur_goal, raw_tactic, tactic, in_state, out_state, args, res)
         #     if outbranch_vars is not None:
         #         words = words[:-1] + ["as", outbranch_vars, "."]
+        elif words[0] == "simple" and words[1] == "induction":
+            print(words)
         else:
             pass
             # print("Tactic " + tactic + " not yet supported")

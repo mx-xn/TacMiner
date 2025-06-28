@@ -90,7 +90,6 @@ public class CoqTactic {
     public String sig_no_out_arg; // signature of the tactic, e.g. "apply _ in _", without output arguments
     public List<Prop> inputs; // tactic arguments, including goals and hypotheses
     public List<Prop> outputs; // tactic results, including goals and hypotheses
-//    public boolean isCustom = false;
     public List<String> args = new ArrayList<>();
                             // the "arguments" following the tactic signature, for ex,
                             // [H1] is the args for intro H1, [H1 H2 H3] is the args for destruct H1 as H2 H3
@@ -108,11 +107,6 @@ public class CoqTactic {
             this.outputs.add(new Prop(outputs.get(i)));
         }
         this.args = serializeArgs(this.gatherArgs(this.sig_no_out_arg)).stream().map(p -> p.simpleName()).toList();
-//        this.args = this.gatherArgs(this.sig_no_out_arg).keySet().stream().filter(p -> p != null).map(p -> p.simpleName()).toList();
-//=======
-//        this.args = new ArrayList<>();
-//        this.getArgList(this.sig_no_out_arg, this.args, new ArrayList<>());
-//>>>>>>> bc4a1285d06941f337efe7bc9309710cd628d35c
     }
 
 
@@ -151,28 +145,20 @@ public class CoqTactic {
     // return key=arg obj, val="in" or "out"
     // return key="in/out"+"<order>", val = prop
     public Map<String, Prop> gatherArgs(String signature) {
-//=======
-//    public Map<Prop, String> getArgList(String signature, List<String> argList, List<String> in_outList) {
-//>>>>>>> bc4a1285d06941f337efe7bc9309710cd628d35c
         Queue<Prop> inputHyps = new LinkedList<>(this.inputs.stream().filter(in -> in.type.equals(PROP_TYPE.HYP)).collect(Collectors.toList()));
         Queue<Prop> outputHyps = new LinkedList<>(this.outputs.stream().filter(in -> in.type.equals(PROP_TYPE.HYP)).collect(Collectors.toList()));
         Queue<Integer> outArgIndices = new LinkedList<>();
         Queue<Integer> inArgIndices = new LinkedList<>();
         String sig = signature.split(" \\.")[0] + " ";
-//        System.out.println("curr sig is " + this.signature);
         while (sig.indexOf(" _o") != -1) {
             outArgIndices.add(sig.indexOf(" _o"));
             sig = sig.replaceFirst(" _o", " ++");
         }
-//        System.out.println("outArgIndices: " + outArgIndices.toString());
 
         while (sig.indexOf(" _i") != -1) {
             inArgIndices.add(sig.indexOf(" _i"));
             sig = sig.replaceFirst(" _i", " ++");
         }
-//        System.out.println("inArgIndices: " + inArgIndices.toString());
-    //    System.out.println("in-hyps: " + inputHyps.stream().map(x -> x.name).collect(Collectors.toList()));
-    //    System.out.println("out-hyps: " + outputHyps.stream().map(x -> x.name).collect(Collectors.toList()));
 
         Map<String, Prop> res = new LinkedHashMap<>();
         int order = 0;
@@ -180,7 +166,6 @@ public class CoqTactic {
             boolean addInputArg = false;
             if (outArgIndices.isEmpty() ||
                     (!inArgIndices.isEmpty() && inArgIndices.peek() < outArgIndices.peek())) {
-//                System.out.println(inArgIndices.peek() + " < " + outArgIndices.peek());
                 addInputArg = true;
             }
 
@@ -188,39 +173,15 @@ public class CoqTactic {
             if (addInputArg) {
                 Prop currP = inputHyps.poll();
                 res.put("in" + (order++), currP);
-//                if (!res.containsKey(currP)) res.put(currP, new ArrayList<>());
-//                res.get(currP).add("in");
                 inArgIndices.poll();
             } else {
-//                System.out.println("polling from outHyps " + outputHyps.size());
                 Prop currP = outputHyps.poll();
                 res.put("out" + (order++), currP);
-//                if (!res.containsKey(currP)) res.put(currP, new ArrayList<>());
-//                res.get(currP).add("out");
-//=======
-//                if (!inputHyps.isEmpty()) {
-//                    argList.add(inputHyps.peek().simpleName());
-//                    in_outList.add("in");
-//                }
-//                res.put(inputHyps.poll(), "in");
-//                inArgIndices.poll();
-//            } else {
-//                if (!outputHyps.isEmpty()) {
-//                    argList.add(outputHyps.peek().simpleName());
-//                    in_outList.add("out");
-//                }
-//                res.put(outputHyps.poll(), "out");
-//>>>>>>> bc4a1285d06941f337efe7bc9309710cd628d35c
                 outArgIndices.poll();
             }
         }
         return res;
     }
-
-    // return key=arg obj, val="in" or "out"
-//    public Map<Prop, String> gatherArgs(String signature) {
-//        return getArgList(signature, new ArrayList<>(), new ArrayList<>());
-//    }
 
     public String sigReplaceArgs() {
         String tactic = this.signature.split(" \\.")[0] + " ";
@@ -247,31 +208,6 @@ public class CoqTactic {
                 tactic = tactic.replaceFirst(" _o", " " + arg.simpleName());
             }
         }
-//        for (Prop arg: argMap.keySet()) {
-//            for (String identifier: argMap.get(arg)) {
-//                if (identifier.equals("in")) {
-//                    if (arg == null) {
-//                        continue;
-//                    }
-//                    tactic = tactic.replaceFirst(" _i", " " + arg.simpleName());
-//                } else {
-//                    if (arg == null) {
-//                        continue;
-//                    }
-//                    tactic = tactic.replaceFirst(" _o", " " + arg.simpleName());
-//                }
-//    }
-//=======
-//        List<String> argMap = new ArrayList<>();
-//        List<String> in_outMap = new ArrayList<>();
-//        this.getArgList(this.signature, argMap, in_outMap);
-//        for (int t = 0; t < argMap.size(); t++) {
-//            if (in_outMap.get(t).equals("in")) {
-//                tactic = tactic.replaceFirst("_i ", argMap.get(t) + " ").replaceFirst("_global_", "");
-//            } else {
-//                tactic = tactic.replaceFirst("_o ", argMap.get(t) + " ");
-//    }
-//>>>>>>> bc4a1285d06941f337efe7bc9309710cd628d35c
 
         return tactic.substring(0, tactic.length() - 1).replace("_global_", "");
     }
@@ -312,13 +248,7 @@ public class CoqTactic {
     public String toCoqScriptNoArgs() {
         if (this.args.isEmpty()) return this.sigReplaceArgs();
 
-        // if signature contains ";" just print out the whole thing
-//        if (this.signature.contains(";"))
-//            sigName = "composite";
-
         // for custom tactics
-//        StringBuilder sb = new StringBuilder(this.sig_no_out_arg.split(" \\.")[0].replaceAll("_o", "")
-//                .replaceAll("_i", "").trim());
         List<String> args = this.args.stream()
                 .map(a -> a.replace("_global_", ""))
                         .collect(Collectors.toList());
@@ -335,64 +265,10 @@ public class CoqTactic {
             s = s.replaceFirst(pat, " " + a);
         }
         return s.replace(" , ", ", ");
-//        sb.append(" ").append(String.join(" ",
-//                this.args.stream()
-//                        .map(a -> a.replace("_global_", "global_")
-//                                .split("_", 2)[1]).collect(Collectors.toList())));
     }
 
     public String toCoqScript() {
-//        if (!this.signature.startsWith("custom")) {
-//            return this.sigReplaceArgs();
-//        }
         return this.sigReplaceArgs();
-
-        // if signature contains ";" just print out the whole thing
-//        if (this.signature.contains(";"))
-//            sigName = "composite";
-
-        // for custom tactics
-//        StringBuilder sb = new StringBuilder(signature.split(" \\.")[0]);
-//        sb.append(" ").append(String.join(" ", this.args.stream().map(a -> a.replace("_global_", "")).collect(Collectors.toList())));
-
-//        switch (sigName) {
-////            case "induction": break;
-//            case "simpl":
-//            case "intuition":
-//            case "congruence":
-//            case "tauto":
-//            case "exfalso":
-//            case "omege":
-//            case "split":
-//            case "lia":
-//            case "extlia":
-//            case "constructor":
-//            case "eauto":
-//                break;
-//
-//            case "destruct":
-//            case "intros":
-//            case "exploit":
-//            case "rewrite":
-//            case "assert":
-//            case "composite":
-//                // replace all the "_" with non-goal args
-//                int i = 0;
-//                while (sb.indexOf("_") != -1) {
-//                    int index = sb.indexOf("_");
-//                    sb.replace(index, index + 1, getNonGoalArg(i++));
-//                }
-//                break;
-//            default:
-//                //if (this.args.isEmpty())
-//                sb.append(this.sigReplaceArgs());
-//                if (!this.args.isEmpty()) {
-//                    sb = new StringBuilder(sigName);
-//                    sb.append(" ").append(String.join(" ", this.args));
-//                }
-//        }
-//        sb.append(".");
-//        return sb.toString();
     }
 
     public String toString() {

@@ -21,7 +21,7 @@ Inductive wp : list par -> Prop :=
 Theorem wp_oc : wp (open :: close :: nil).
 Proof.
  change (wp (open :: nil ++ close :: nil)) in |- *.
- apply wp_encapsulate.
+ apply wp_encapsulate. 
  apply wp_nil.
 Qed.
 
@@ -30,7 +30,7 @@ Theorem wp_o_head_c :
 Proof.
  intros l1 l2 H1 H2.
  replace (open :: l1 ++ close :: l2) with ((open :: l1 ++ close :: nil) ++ l2).
- - apply wp_concat.
+ - apply wp_concat. 
     apply wp_encapsulate; trivial.
     trivial.
  - repeat (simpl in |- *; rewrite <- app_assoc); simpl in |- *.
@@ -43,7 +43,7 @@ Theorem wp_o_tail_c :
 Proof.
  intros l1 l2 H1 H2; apply wp_concat.
  - trivial.
- - now apply wp_encapsulate.
+ - apply wp_encapsulate. auto. 
 Qed.
 
 (* exercice 8.6 *)
@@ -383,9 +383,9 @@ Theorem make_list_end :
  forall (A:Type) (a:A) (n:nat) (l:list A),
    make_list A a (S n) ++ l = make_list A a n ++ a :: l.
 Proof.
- simple induction n; simpl.
- -  trivial.
--  intros n' H l; rewrite H; trivial.
+ simple induction n.
+ -  trivial. 
+-  simpl. intros n' H l; rewrite H; trivial.
 Qed.
 
 (* Now we want to express that only well-parenthesized expressions are accepted.  Again,
@@ -396,14 +396,14 @@ Theorem recognize_sound_aux :
  forall (l:list par) (n:nat),
    recognize n l = true -> wp (make_list _ open n ++ l).
 Proof.
- simple induction l; simpl.
+ simple induction l; simpl. 
 -  intros n; case n.
    simpl ; intros; apply wp_nil.
    intros n' H; discriminate H.
--  intros a; case a; simpl ; clear a.
-   + intros l' H n H0.
+-  intros a l' H; case a; simpl ; clear a. 
+   + intros n H0.
      rewrite <- make_list_end; auto.
-   +  intros l' H n; case n; clear n.
+   +  intros n; case n; clear n.
       intros H'; discriminate H'.
       intros n H0; rewrite make_list_end; apply wp_remove_oc;auto.
 Qed.

@@ -12,7 +12,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static main.Main.getLibCandidatesEnumeration;
-import static main.config.Path.compressionEvalPath;
 import static main.config.Path.evalPath;
 import static main.config.Path.RQ5;
 import static main.decode.utils.writeTo;
@@ -45,8 +44,6 @@ public class Ablation {
                     this.ablationType, timePerTac, this.config.timeout, this.config.topic);
 
             // File name
-            // String fileName = compressionEvalPath + config.domain + "-compressed/ablation/" + ablType + "/" +
-            //         config.topic + "_" + config.timeout + ".csv";
             String fileName = evalPath + RQ5 + "no-" + ablType + "-abl/" + config.domain + "/" + config.topic + ".csv";
 
             // Write to CSV file
@@ -61,8 +58,6 @@ public class Ablation {
     }
 
     public static class GraphEnumeratorAblationGrammar extends GraphEnumerator {
-//        List<ProofGraph> corpus = new ArrayList<>();
-//        List<Integer> trainingIndices = new ArrayList<>();
         Map<String, List<Abstraction.Hole>> holeMap = new HashMap<>();
         Map<Abstraction.Hole, List<Abstraction.Instantiation>> instMap = new HashMap<>();
 
@@ -74,21 +69,6 @@ public class Ablation {
             super(corpus, trainingIndices);
             this.holeMap = generateHolesForAll();
             this.instMap = allPossibleInstantiations();
-
-            int totalHoles = 0;
-            int totalInsts = 0;
-            for (List<Abstraction.Hole> holes: this.holeMap.values()) {
-                totalHoles += holes.size();
-            }
-            for (List<Abstraction.Instantiation> insts: this.instMap.values()) {
-                totalInsts += insts.size();
-            }
-            double avrgHoles = (double) totalHoles / this.holeMap.size();
-            double avrgInsts = (double) totalInsts / this.instMap.size();
-            // System.out.println("#h: " + totalHoles + "\n" +
-            //         "#i: " + totalInsts + "\n" +
-            //         "avrg #h: " + avrgHoles + "\n" +
-            //         "avrg #i: " + avrgInsts);
         }
 
         @Override
@@ -178,7 +158,6 @@ public class Ablation {
             // instantiation rule for the starting dummy root A?? := ({∅}, {∅}, {})
             instMap.put(new Abstraction.Hole(null, new HashSet<>(Arrays.asList(-1))),
                     distinctTacSigs.stream().map(s -> new Abstraction.Instantiation(null, s, new HashSet<>(Arrays.asList(Arrays.asList(-1, -1))))).collect(Collectors.toList()));
-            // System.out.println(instMap.get(new Abstraction.Hole(null, new HashSet<>(Arrays.asList(-1)))).size());
             return instMap;
         }
 
@@ -241,8 +220,6 @@ public class Ablation {
     }
 
     public static class GraphEnumeratorAblationPruning extends GraphEnumerator {
-        //        List<ProofGraph> corpus = new ArrayList<>();
-//        List<Integer> trainingIndices = new ArrayList<>();
         public GraphEnumeratorAblationPruning(List<ProofGraph> corpus, List<Integer> trainingIndices) {
             // only learn from training data
             super(corpus, trainingIndices);
@@ -294,7 +271,6 @@ public class Ablation {
                                 bestAbst.inputVerticesMap = a.inputVerticesMap;
                                 bestAbst.utility = completeUtil;
                                 bestAbst.utilityTraining = completeUtilTraining;
-//                            bestAbst.customTactic = a.getCustomTactic(corpus);
                                 bestAbst.customTactic = a.customTactic;
                                 bestAbst.customTactic.matches = new HashMap<>();
                                 for (Abstraction.Match m: a.matches) {
@@ -310,18 +286,12 @@ public class Ablation {
                                 newA.inputVerticesMap = a.inputVerticesMap;
                                 newA.utility = completeUtil;
                                 newA.utilityTraining = completeUtilTraining;
-//                            newA.customTactic = a.getCustomTactic(corpus);
                                 newA.customTactic = a.customTactic;
                             }
                         }
-//                    if (completeUtil > bestUtil) {
-//                        bestUtil = completeUtil;
-//                        bestAbst = new Abstraction(a);
-//                    }
                     }
                 }
             }
-//        bestAbst.utility = bestUtil;
             if (greedyP && bestAbst != null) res.add(bestAbst);
             return res;
         }

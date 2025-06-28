@@ -28,12 +28,6 @@ datasets:
       #     - keep_length # custom0
       - path: parsing_comp_PN.v
         theorems:
-          - bin_to_string_wp # custom13, custom23
-          - wp_o_head_c # custom7
-          - wp_o_tail_c # custom7
-      # - path: impredicative.v
-      #   theorems:
-      #     - impredicative_le_n # custom2
-      #     - impredicative_sorted_to_sorted # custom3
-      #     - isorted1 # custom2
-      #     - isorted2 # custom3
+          - bin_to_string_wp 
+          - wp_o_head_c 
+          - wp_o_tail_c 

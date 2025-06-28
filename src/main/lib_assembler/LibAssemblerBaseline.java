@@ -54,7 +54,6 @@ public class LibAssemblerBaseline {
             this.corpusSize = this.compressedSize = this.librarySize = 0;
             // Populate sizes
             for (int i = 0; i < this.corpus.size(); i++) {
-//            for (BaselineProof each: this.corpus) {
                 BaselineProof each = this.corpus.get(i);
                 this.corpusSize += each.size();
                 this.compressedSize += each.size();
@@ -181,10 +180,6 @@ public class LibAssemblerBaseline {
             for (BaselineProof t: remove) {
                 this.tactics.remove(t);
             }
-            // todo: delete
-            // for (String p: newPs) {
-            //     System.out.println(p);
-            // }
         }
 
         public static boolean isValidCoqScript(String coqContent, BaselineProof cusTac, BmConfig config, List<BaselineProof> tactics) throws IOException {
@@ -193,28 +188,12 @@ public class LibAssemblerBaseline {
             List<CoqProof> proofs = Encoder.inputCoqScripts(config.getJsonFilename());
             List<String> lemmaNames = proofs.stream().map(p -> p.lemma_name).toList();
             List<String> contractedProofs = retrieveProofsForRefactoring(coqContent);
-            // if (config.topic.contains("Allocation")) contractedProofs = contractedProofs.stream().filter(p -> !p.contains("decide equality. Defined.")).toList();
-            // if (config.topic.contains("Debugvarproof")) contractedProofs = contractedProofs.stream().filter(p -> !p.contains("apply (Genv.senv_match TRANSF). Qed.")).toList();
 
-            StringBuilder temp = new StringBuilder();
             StringBuilder sb = new StringBuilder("");
 
             StringBuilder allTactics = new StringBuilder("");
-            List<String> ignoredTacs = new ArrayList<>();
-            for (BaselineProof t: tactics) {
-                String s = t.cusTacticScript();
-//                if (s.contains("OrderedEqKind.lt_not_eq") || s.contains("EqSet2.empty_1")) {
-//                    ignoredTacs.add(s);
-//                    continue;
-//                }
-//                allTactics.append(s);
-//                allTactics.append('\n');
-            }
 
             for (int i = 0; i < lemmaNames.size(); i++) {
-                // if (i >= lemmaNames.size())
-                //     System.out.println();
-
                 // if current lemma uses custom tactic, and custom tactic is not in allTacs, it was ignored, so add here
                 if (!lemmaNames.get(i).contains("_ignore") && contractedProofs.get(i).contains("custom")) {
                     List<String> commands = new ArrayList<>();
@@ -246,9 +225,6 @@ public class LibAssemblerBaseline {
                     sb.append(lemmaNames.get(i)); sb.append('\n');
                 }
                 sb.append(contractedProofs.get(i)); sb.append('\n');
-//                if (contractedProofs.get(i).contains("custom")) {
-//                    temp.append(lemmaNames.get(i)).append("\n").append(contractedProofs.get(i)).append("\n");
-//                }
             }
             String contractedScript = sb.toString();
 
@@ -283,7 +259,6 @@ public class LibAssemblerBaseline {
                 Files.write(tempScriptPath, script.getBytes());
 
                 // Create a ProcessBuilder with the specified command
-//                 ProcessBuilder processBuilder = new ProcessBuilder(command, scriptPath);
                 ProcessBuilder processBuilder = new ProcessBuilder(command, targetName);
                 processBuilder.directory(new File(System.getProperty("user.dir")
                         + "/src/python/"));
@@ -308,7 +283,6 @@ public class LibAssemblerBaseline {
                 if ((line = br.readLine()) != null) {
                     if (line.equals("T")) {
                         valid = true;
-                        // System.out.println(temp);
                     }
                 }
             } catch (IOException e) {
@@ -348,9 +322,6 @@ public class LibAssemblerBaseline {
                 String newToken = newCoqProof.completeTokens.get(newPtr);
 
                 if (oriToken.equals(newToken)) {
-                    // if (tokenToStringEnd.get(oriPtr) > proof.length()) {
-                    //    System.out.println();
-                    // }
                     newProofSB.append(proof.substring(tokenToStringEnd.getOrDefault(oriPtr - 1, 0), tokenToStringEnd.get(oriPtr)));
                     oriPtr++;
                     newPtr++;
@@ -378,13 +349,10 @@ public class LibAssemblerBaseline {
             int candidateSize = 0;
             int testingCandidateSize = 0;
             for (int i = 0; i < corpus.size(); i++) {
-//                System.out.println("compressing proof " + i + " of size " + corpus.get(i).tactics.size() + " with " + tactic.raw_string);
                 // compress current proof with the extracted tactic
                 BaselineProof compressed = new BaselineProof(corpus.get(i));
 
                 compressed.compress(tactic);
-//                System.out.println("compressed proof " + i +  " of size " + corpus.get(i).tactics.size() + " into size " + compressed.tactics.size());
-
                 // add the compressed proof to the compressedCorpus
                 compressedCorpus.add(compressed);
 
@@ -393,12 +361,8 @@ public class LibAssemblerBaseline {
                 if (!trainingIndices.contains(i) || trainingIndices.size() == corpus.size()) {
                     testingCandidateSize += compressed.size();
                 }
-//                System.out.println("compressed size is: " + compressed.tactics.size() + " + " + tactic.tactics.size());
             }
 
-            // System.out.println("adding " + tactic.prettyPrint() + " to the prev lib:");
-            // List<Integer> tacticSizes = this.tactics.stream().map(t -> t.size()).collect(Collectors.toList());
-            // todo: tactics search
             List<List<BaselineProof>> libCopies = new ArrayList<>();
             if (type.equals(AssemblyType.EXH_COMPRESS)) {
                 // actually try to compress tactics with tactic
@@ -411,10 +375,6 @@ public class LibAssemblerBaseline {
                 int libSizeDecrease = 0;
                 LibraryBaseline lib = new LibraryBaseline(this);
 
-                // todo: delete
-                // System.out.println("lib decrease is " + libSizeDecrease);
-                // System.out.println("candidates size is " + candidateSize);
-                // System.out.println();
                 if (candidateSize < this.compressedSize) {
                     // This tactic is beneficial, so let's keep it
                     lib.corpus = compressedCorpus; // Compress corpus
@@ -467,41 +427,6 @@ public class LibAssemblerBaseline {
                     String.format("%.2f", (double) libSize / this.tactics.size()) + "," +
                     maxTacSize + "," +
                     numTotalApplications + "\n";
-        }
-
-        public String printDiagnostics() {
-            StringBuilder sb = new StringBuilder("extracted tactics-----------\n");
-            int i = 0;
-            for (BaselineProof tac: this.tactics) {
-                sb.append(tac.cusTacticScript()).append("\n");
-                i++;
-            }
-            sb.append("---------------------------\n");
-            int libSize = 0;
-            int maxTacSize = 0;
-            for (BaselineProof t: this.tactics) {
-                if (t.completeTokens.size() > maxTacSize)
-                    maxTacSize = t.completeTokens.size();
-                libSize += t.completeTokens.size();
-            }
-            int numTotalApplications = this.tacOccurrences.values().stream().map(l -> l.size()).toList()
-                    .stream().reduce(0, Integer::sum);
-            int testingOriSize = this.corpusSize - this.trainingSize;
-            testingOriSize = testingOriSize == 0 ? this.trainingSize : testingOriSize;
-            return sb.toString() + "Num proofs: " + this.corpus.size() +
-                    "\nNum training proofs: " + this.trainingIndices.size() +
-                    "\nOriginal size: " + this.corpusSize +
-                    "\nTraining size: " + this.trainingSize +
-                    "\nTesting size: " + testingOriSize +
-                    "\nCompressed total size: " + this.getOverallSize() + " ( " + this.compressedSize
-                    + " corpus / " + this.librarySize + " library )" +
-                    "\nCompressed testing size: " + this.testingCompressedSize +
-                    "\n[1] numTactics: " + this.tactics.size() +
-                    "\n[1] avrgTacticSize: " + String.format("%.2f", (double) libSize / this.tactics.size()) +
-                    "\n[1] maxTacSize: " + maxTacSize +
-                    "\n[1] numAvgApplications: " +  String.format("%.2f", (double) numTotalApplications / this.tactics.size()) +
-                    "\n[1] numTotalApplications: " + numTotalApplications +
-                    "\nCompression rate: " + (double) testingOriSize / testingCompressedSize + "\nNum tactics in library: " + this.tactics.size();
         }
 
         @Override
@@ -566,8 +491,6 @@ public class LibAssemblerBaseline {
         switch (type) {
             case EXHAUSTIVE: case EXH_COMPRESS: {
                 PriorityQueue<LibraryBaseline> currPool = new PriorityQueue<>();
-//                W := {(P, {}, T)}
-//                Libs := {}
 
                 LibraryBaseline currLib = new LibraryBaseline(corpus);
                 currLib.setTrainingIndices(trainingIndices);
@@ -578,7 +501,6 @@ public class LibAssemblerBaseline {
                 int bestCompressedSize = currLib.getTestingCompressedSize();
 
                 while (!currPool.isEmpty()) {
-                    //                L_curr := W.pop()
                     currLib = currPool.peek();
                     if (currLib.unusedTacs.isEmpty()) {
                         currPool.poll();
@@ -596,11 +518,6 @@ public class LibAssemblerBaseline {
                         currPool.addAll(newLibs);
                     }
                 }
-//
-//                While W is not empty:
-//
-//                Return {L \in Libs | \forall L’ \in Libs. CompressionRate(L) >= CompressionRate(L’)}
-
                 return bestLib;
             } case GREEDY: {
                 List<LibraryBaseline> libs = new ArrayList<>();
@@ -610,8 +527,6 @@ public class LibAssemblerBaseline {
                 currLib.unusedTacs = new ArrayList<>(customTacs);
                 int bestCompressedSize = currLib.getTestingCompressedSize();
                 LibraryBaseline bestLib = currLib;
-//                currLib.tactics = new ArrayList<>();
-//                currLib.unusedTacs = new ArrayList<>(customTacs);
                 libs.add(currLib);
 
                 List<BaselineProof> availableTacs = new ArrayList<>(customTacs);

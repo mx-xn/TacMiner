@@ -68,10 +68,6 @@ public class LibRecoveryEval {
     }
 
     public String inlineTacticInString(String original, LibBenchmark benchmark) {
-        if (!benchmark.addBefore.isEmpty()) {
-            // todo: do something
-        }
-
         StringBuilder sb = new StringBuilder();
         // replace args if needed
         while (original.indexOf(benchmark.signature) != -1) {

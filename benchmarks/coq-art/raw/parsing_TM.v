@@ -78,7 +78,7 @@ Compute bin_to_string (N (N L L) (N L L)).
 Theorem bin_to_string_wp : forall t:bin, wp (bin_to_string t).
 Proof.
  simple induction t.
- - simpl; apply wp_nil.
+ - simpl; apply wp_nil. 
  - custom12 t1 H1 t2 H2. custom22 wp_o_head_c.
 Qed. 
 

@@ -32,7 +32,7 @@ public class Main {
         if (args.length == 0)
             // args = new String[] {"1200", "coq-art" , "IndPred", "100"};
             // mode, domain, topic, timeout-in-seconds
-            args = new String[] {"1", "coq-art" , "impredicative", "3600", "100"};
+            args = new String[] {"1", "coq-art" , "parsing", "3600", "100"};
         if (args.length < 5) {
             System.out.println("Not enough arguments were provided.");
             throw new IllegalArgumentException("need " + (4 - args.length) + " parameters!");
@@ -92,8 +92,8 @@ public class Main {
                         case PRUNING_ABL:
                         case GRAMMAR_ABL:
                             Ablation ablP = new Ablation(config, proofs);
-                            ablP.runExperiments();
                             runOnce(config, proofs);
+                            ablP.runExperiments();
                             break;
                     }
                 }
@@ -153,15 +153,11 @@ public class Main {
         List<Integer> trainingProofs = Encoder.getTrainingProofIndices(config, proofs);
 
         Set<CoqProof> candidateTactics = new LinkedHashSet<>();
-//        if (extractType.equals(MAXSAT))
-//            candidateTactics = extractAllTacticsFromCorpus(proofs, config);
         List<Long> timePerTac = new ArrayList<>();
         List<CoqProof> compressedProofs = getLibCandidatesEnumeration(proofs, trainingProofs, candidateTactics,
                 true, NONE, timePerTac, config.timeout, config.topic);
 
         if (config.mode == BmConfig.Mode.PRUNING_ABL || config.mode == BmConfig.Mode.GRAMMAR_ABL) {
-            // String fileName = compressionEvalPath + config.domain + "-compressed/ablation/" +
-            //         config.topic + "Ours.csv";
             String fileName = evalPath + RQ5 + "tacminer/" + config.domain + "/" + config.topic + ".csv";
             // Write to CSV file
             StringBuilder sb = new StringBuilder("numTacs,Time\n");
@@ -173,40 +169,19 @@ public class Main {
         }
 
         LibAssembler.AssemblyType assmType = LibAssembler.AssemblyType.GREEDY;
-        // filter out candidateTactics based on the compression power
-//        if (assmType.equals(LibAssembler.AssemblyType.NONE)) {
-//            System.out.println("num candidates before filtering: " + candidateTactics.size());
-//            candidateTactics = removeLowCompressionTactics(candidateTactics, 0);
-//            System.out.println("num candidates after filtering: " + candidateTactics.size());
-//            int i = 0;
-//            for (CoqProof c: candidateTactics) {
-//                System.out.println("Ltac " + c.getRawString().replace("custom ", "custom" + (i++) + " "));
-//            }
-//            //todo
-//        }
-
 
         // Part 2: Library Construction
         LibAssembler.Library library = null;
-        // todo: we find the tactics to ignore in here
-
         System.out.println("assembling library ... ");
         library = LibAssembler.assembleLibraryForEnumerateGreedy(proofs, compressedProofs, candidateTactics, assmType, trainingProofs);
 
-        int a = 0;
-//        while (a < 20) {
-            for (CoqProof proof : compressedProofs) {
-                // if (proof.lemma_name.equals("Hoare_safe"))
-                try {
-                    String script = CompressionEval.graphToScript(proof);
-                    // System.out.println(script);
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
+        for (CoqProof proof : compressedProofs) {
+            try {
+                String script = CompressionEval.graphToScript(proof);
+            } catch (Exception e) {
+                System.out.println(e);
             }
-//            a++;
-//        }
-
+        }
 
         System.out.println("finished assembling tactic-library for: " + config.topic); 
         return library;

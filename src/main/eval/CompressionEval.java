@@ -189,19 +189,6 @@ public class CompressionEval {
         return pretty.toString();
     }
 
-    public void syntacticExtract(List<CoqProof> proofs, BmConfig config) throws IOException {
-        Set<String> syntacticTacs = new HashSet<>();
-        for (int i = 0; i < proofs.size(); i++) {
-            for (int j = i + 1; j < proofs.size(); j++) {
-                syntacticTacs.add(findLongestCommonTactics(proofs.get(i).tactics, proofs.get(j).tactics));
-            }
-        }
-
-        String[] outputFile = config.getInputFilename().split("/");
-        // writeTo(String.join("\n", syntacticTacs),
-        //         compressionEvalPath + "coq-art-baseline/" + outputFile[outputFile.length - 1].replace(".v", ".txt"));
-    }
-
     public static int countProofsLength(String script) {
         int count = 0;
 
@@ -215,8 +202,6 @@ public class CompressionEval {
 
 
         for (String proof : proofs) {
-
-//            System.out.println(proof);
             Pattern atomicTacPattern = Pattern.compile("\\.\\s|\\.\\n");
             Matcher atomicTacMatcher = atomicTacPattern.matcher(proof.replace("Proof.", "")
                     .replace("Next Obligation.", "")
@@ -226,16 +211,6 @@ public class CompressionEval {
             }
         }
 
-//        for (String line : script.split("\n")) {
-//            if (line.trim().startsWith("Proof.")) {
-//                inProof = true;
-//            } else if (line.trim().startsWith("Qed.")) {
-//                inProof = false;
-//            } else if (inProof) {
-//                // count number of tactics within current line
-//                count += line.chars().filter(ch -> ch == '.').count();
-//            }
-//        }
         return count;
     }
 
@@ -310,8 +285,6 @@ public class CompressionEval {
 
         for (int i = 1; i <= tokens1.size(); i++) {
             for (int j = 1; j <= tokens2.size(); j++) {
-//                System.out.println("token " + (i - 1) + " of string 1 is " + tokens1.get(i - 1));
-//                System.out.println("token " + (j - 1) + " of string 2 is " + tokens2.get(j - 1));
                 if (tokens1.get(i - 1).equals(tokens2.get(j - 1))) {
                     dp[i][j] = dp[i - 1][j - 1] + 1 + (int)tokens1.get(i - 1).chars().filter(ch -> ch == ';').count();
                     if (dp[i][j] > maxLength) {
@@ -360,13 +333,11 @@ public class CompressionEval {
                 } else {
                     matcher.appendReplacement(newContent, "Proof.\n" + replace + "\nQed.");
                 }
-//                matcher.appendReplacement(newContent, "Proof.\n<placeholder_" + id + ">\nQed.");
             } else {
                 // replace matchContent with processed string
                 String oriStr = matchContent.replace("Next Obligation.", "").replace("Qed.", "");
                 String replace = formatBaselineProof(oriStr);
                 matcher.appendReplacement(newContent, "Next Obligation.\n" + replace + "\nQed.");
-//                matcher.appendReplacement(newContent, "Next Obligation.\n<placeholder_" + id + ">\nQed.");
             }
         }
         matcher.appendTail(newContent);
@@ -376,17 +347,6 @@ public class CompressionEval {
 
         // for each graph, get the syntactic version
         CompressionEval.numProofs = 0;
-//        int i = 0
-//        for (CoqProof p : proofs) {
-//            // replace
-//            if (p.pgraph == null) p.pgraph = new ProofGraph(p.tactics);
-//            String replace = graphToScript(p.pgraph);
-//            if (replace.isEmpty()) continue;
-//            placeholderContent = placeholderContent.replace("<placeholder_" + (i++) + ">", replace);
-////            sb.append(graphToScript(p.pgraph))
-////                    .append("\n");
-//        }
-
 
         // store the syntactic file
         String[] outputFile = config.getInputFilename().split("/");
@@ -520,19 +480,6 @@ public class CompressionEval {
         return res;
     }
 
-    // public static String findBaselineSyntacticTactics(List<Integer> proofIDs, String filename) {
-
-    //     String file = baselinePath + filename + "_baseline.json";
-    //     // get baseline input coq scripts
-    //     List<CoqProof> allProofs = Encoder.inputCoqScripts(file);
-
-    //     // get the corresponding list of vertices
-    //     List<CoqProof> inputProofs = proofIDs.stream().map(id -> allProofs.get(id)).collect(Collectors.toList());
-
-    //     // find maximum common sub-tactics based on their signature, leave traces behind
-    //     return findLongestCommonTactics(inputProofs.get(0).tactics, inputProofs.get(1).tactics);
-    // }
-
     public static String findLongestCommonTactics(List<CoqTactic> p1, List<CoqTactic> p2) {
         int maxLen = 1;
         int startIndex1 = -1;
@@ -546,8 +493,6 @@ public class CompressionEval {
                 // find the longest tactics starting from p1[i] and p2[j]
                 while (end1 < p1.size() && end2 < p2.size() && p1.get(end1).signature.equals(p2.get(end2).signature)) {
                     // if signature equals, update unification map
-//                    List<CoqTactic.Prop> t1Args = p1.get(end1).gatherArgs(p1.get(end1).signature).keySet().stream().toList();
-//                    List<CoqTactic.Prop> t2Args = p2.get(end2).gatherArgs(p2.get(end2).signature).keySet().stream().toList();
                     List<CoqTactic.Prop> t1Args = serializeArgs(p1.get(end1).gatherArgs(p1.get(end1).signature));
                     List<CoqTactic.Prop> t2Args = serializeArgs(p2.get(end2).gatherArgs(p2.get(end2).signature));
 
@@ -616,25 +561,8 @@ public class CompressionEval {
             }
         }
 
-        // Isomorphism between relevant subgraph and custom tactic
-        // (all required edges are present, and there are no extraneous edges)
-        // if (tacticEdges.equals(proofEdges)) {
-        //     System.out.println("edges are consistent");
-        // } else {
-        //     System.out.println("edges are not consistent");
-        // }
-        // System.out.println("tactic edges-----------");
-        // for (ProofGraph.Edge e: tacticEdges) {
-        //     System.out.println(e.toString());
-        // }
-
-        // System.out.println("proof edges-----------");
-        // for (ProofGraph.Edge e: proofEdges) {
-        //     System.out.println(e.toString());
-        // }
 
         boolean consistent = false;
-//        return tacticEdges.equals(proofEdges);
         if (tacticEdges.equals(proofEdges)) consistent = true;
 
         // if tacticEdges are subset of proofEdges
@@ -668,15 +596,8 @@ public class CompressionEval {
     // assn: map from proof vertex to tactic vertex
     // assned: added tactic vertex
     public static List<Integer> searchSubgraph(ProofGraph proof, ProofGraph tactic, List<Integer> assn, Set<Integer> assned) {
-//        System.out.println("proof size: " + proof.vertices.size());
-//        System.out.println("tactic size: " + tactic.vertices.size());
         if (assn.size() == proof.vertices.size()) {
             if (assned.size() < tactic.vertices.size()) return null;
-
-//            System.out.println("checking edge consistensy: ");
-//            for (int a: assn) {
-//                System.out.println(a);
-//            }
             // Verify edges
             if (checkEdgeConsistency(proof, tactic, assn)) {
                 return assn;
@@ -684,7 +605,6 @@ public class CompressionEval {
 
             return null;
         }
-//        System.out.println("assn size: " + assn.size());
 
         if (tactic == null) return null;
 
@@ -749,10 +669,6 @@ public class CompressionEval {
         int numPrintedOuts = 0;
         for (CoqTactic tactic : correspTacs) {
             for (CoqTactic.Prop in : tactic.inputs) {
-//                if (in.type == CoqTactic.PROP_TYPE.HYP) {
-//                    if (!outSet.contains(in))
-//                        inArgs.add(in.toString());
-//                } else
                 if (in.type == CoqTactic.PROP_TYPE.GOAL) {
                     if (!outSet.contains(in)) {
                         inArgs.add(in.toString());
@@ -811,8 +727,6 @@ public class CompressionEval {
                     }
                     before.addAll(after);
                     outArgs = before;
-//                    if (!inSet.contains(out)) {
-//                        outArgs.add(out.toString());
                 }
             }
         }
@@ -861,19 +775,16 @@ public class CompressionEval {
         // get a map from H to in / out
         // get another map from H to
         CoqTactic custom = new CoqTactic(customTac.lemma_name, customTac.lemma_name, inArgs, outArgs);
-//        custom.args = gatherCompositeArgs(correspTacs).keySet().stream().toList();
         return custom;
     }
 
     public static CoqProof compressProof(CoqProof orig, CoqProof customTac, int p) {
-//        System.out.println(customTac.raw_string + " has " + customTac.tactics.size() + " tactics");
         if (customTac.lemma_name.equals("custom53")) {
             System.out.println();
         }
         customTac.pgraph = new ProofGraph(new ArrayList<>(customTac.tactics));
         if (orig.pgraph == null) orig.pgraph = new ProofGraph(orig.tactics);
 
-//        System.out.println("before searchSubgraph");
         // if run on entire corpus, we can help the search
         List<Integer> match;
         if (customTac.matches.containsKey(p)) {
@@ -901,7 +812,6 @@ public class CompressionEval {
             // if match does not contain p
             // if p is in training index: just do not search at all
             // if p not in trianing index: search
-            // todo: hack
             boolean skip = false;
             if (orig.lemma_name.equals("transl_exitexpr_charact") && customTac.tactics.size() == 10) {
                 skip = true;
@@ -915,26 +825,13 @@ public class CompressionEval {
             if (skip) match = null;
             else match = searchSubgraph(orig.pgraph, customTac.pgraph, new ArrayList<>(), new HashSet<>());
         }
-//        System.out.println("after searchSubgraph");
-//        System.out.println("if there is no match: " + (match == null));
         if (match == null) {
-//            System.out.println("no match");
             return orig;
         }
 
         // get reachable of tactic and orig
         CoqTactic customCompressed = populateCustom(orig, customTac, match);
-        // todo: make sure the tactics matches are actually added in order
-        // if customMatches contains current proof, update the customTac match
-//        if (customTac.matches.containsKey(p)) {
-//            customTac = new CoqProof(customTac);
-//            // get rid of the first n element in the current match list
-//            for (int i = 0; i < customTac.tactics.size(); i++) {
-//                customTac.matches.get(p).remove(0);
-//            }
-//        }
 
-        // todo: fix order of this
         CoqProof compressed = new CoqProof(orig);
         compressed.tactics.clear();
 
@@ -1086,14 +983,8 @@ public class CompressionEval {
             if (!compressedTac.equals(largerTac)) {
                 compressible = true;
             }
-//            List<Integer> match = searchSubgraph(largerTac.pgraph, tactic.pgraph, new ArrayList<>(), new HashSet<>());
-//            if (match != null && !match.isEmpty()) {
-//                decrease += (tactic.tactics.size() - 1);
-//            }
         }
         if (compressible) {
-//            System.out.println("libTacs size: " + libTacs.size());
-//            System.out.println("compressed size: " + compressedTactics.size());
             return Arrays.asList(libTacs, compressedTactics);
         }
         return Arrays.asList(libTacs);

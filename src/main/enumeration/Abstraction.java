@@ -238,9 +238,7 @@ public class Abstraction {
         for (CoqTactic t: this.vertices) {
             CoqTactic oldT = new CoqTactic(t);
             if (t == null) continue;
-            // System.out.println(t.toCoqScript());
             List<CoqTactic.Prop> ins = t.inputs;
-//            System.out.println("input raw: " + t.inputs);
             Set<String> namesCurrTac = new HashSet<>();
             t.inputs = new ArrayList<>();
             for (int h = 0; h < ins.size(); h++) {
@@ -256,10 +254,8 @@ public class Abstraction {
                     t.inputs.add(new CoqTactic.Prop(inArg.name));
                 }
             }
-//            System.out.println("input: " + t.inputs);
 
             List<CoqTactic.Prop> outs = t.outputs;
-//            System.out.println("output raw: " + t.outputs);
             t.outputs = new ArrayList<>();
             for (int h = 0; h < outs.size(); h++) {
                 CoqTactic.Prop outArg = outs.get(h);
@@ -270,18 +266,10 @@ public class Abstraction {
                     }
                     t.outputs.add(new CoqTactic.Prop(replaceHyp));
                     namesCurrTac.add(replaceHyp);
-
-                    // we need to add the actual replace out hyp to here
-//                    String sig = new String(t.sig_no_out_arg);
-//                    while (sig.contains(" _o")) {
-//                        orderedActualOuts.add(p);
-//                        sig = sig.replaceFirst(" _o", "***");
-//                    }
                 } else {
                     t.outputs.add(new CoqTactic.Prop(outArg.name));
                 }
             }
-//            System.out.println("output: " + t.outputs);
             for (Match mat: this.matches) {
                 if (mat.vertexMap.containsKey(oldT) && !oldT.equals(t)) {
                     mat.vertexMap.put(t, mat.vertexMap.get(oldT));
@@ -327,11 +315,9 @@ public class Abstraction {
         }
 
         String ltacName = "custom";
-        // todo: add _i _o after ltacName
         List<String> genericScriptPair = tacticsToLtacScript(this.vertices, ltacName);
         String tacScript = genericScriptPair.get(1);
 
-//        CoqProof t = new CoqProof(ltacName, this.vertices, tacScript, CoqProof.SequenceType.LTAC);
         CoqProof t = new CoqProof(genericScriptPair.get(0), this.vertices, tacScript, CoqProof.SequenceType.LTAC);
 
         List<Match> newMatches = new ArrayList<>();

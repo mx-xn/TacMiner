@@ -1,0 +1,18 @@
+name: coq_art_peano
+num_files: 1
+language: COQ
+few_shot_data_path_for_retrieval: 
+few_shot_metadata_filename_for_retrieval: 
+dfs_data_path_for_retrieval: 
+dfs_metadata_filename_for_retrieval: 
+datasets:
+  - project: ../raw-data/coq-art
+    files:
+      - path: chap11_comp_PN.v
+        theorems:
+          - RM_1 
+          - rmax_7
+          - min_not_occ 
+          - not_right 
+          - rmax_6
+          - go_right

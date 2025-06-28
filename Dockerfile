@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     pkg-config \
+    vim \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y openjdk-17-jdk
@@ -66,6 +67,8 @@ RUN opam init --bare --disable-sandboxing --auto-setup -y && \
     opam install -y --assume-depexts coq.8.15.2 && \
     opam clean
 
+ENV PATH="/root/.opam/default/bin:$PATH"
+
 # Set working directory
 WORKDIR /tacminer
 
@@ -74,7 +77,6 @@ COPY . /tacminer
 
 # Make sure your run.sh is executable
 RUN chmod +x run.sh
-
 
 # 1) Compile all .java under src/, using every .jar in lib/ for deps
 RUN mkdir -p bin \

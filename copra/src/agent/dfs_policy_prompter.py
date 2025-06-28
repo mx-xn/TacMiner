@@ -417,7 +417,7 @@ class DfsCoqGptPolicyPrompter(PolicyPrompter):
                     (f'In your proof, you can use the following custom tactics that were defined for this particular domain:\n' +
                      f'{custom_tactics_header}' +
                      f'\nWhen used properly, these tactics can save you several steps in your proof, and increase your chances of success, so use them whenever appropriate.\n' +
-                     f'If the most promising custom tactic fails to apply, *EXHAUSTIVELY* use standard Coq tactics to incrementally TRANSFORM the goal into an APPLICABLE STATE for custom tactic to succeed. ' +
+                     f'If the most promising custom tactic fails to apply, *EXHAUSTIVELY* use STANDARD Coq tactics to incrementally TRANSFORM the goal into an APPLICABLE STATE for custom tactic to succeed. ' +
                       'If it still fails after EXHAUSTIVE attempt, try to prove without custom tactics.\n')
             prompt_message['content'] = custom_tactics_prefix + '\n\n' + prompt_message['content']
         return prompt_message, prompt_token_count, custom_system_messages, custom_system_message_count

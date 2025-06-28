@@ -5,12 +5,11 @@ import main.encode.CoqProof;
 import java.util.*;
 
 import static main.eval.CompressionEval.compressLibTacs;
-import static main.eval.CompressionEval.compressProof;
 
 
 public class AssemblerUtil {
-    static int numNodes = 0;  // todo: renew each time use
-    static Map<CoqProof, Integer> idAssigner = new HashMap<>(); // todo: renew each time use
+    static int numNodes = 0;  
+    static Map<CoqProof, Integer> idAssigner = new HashMap<>(); 
     private static class TacNode {
         int id;
         CoqProof tactic;
@@ -23,11 +22,6 @@ public class AssemblerUtil {
             numNodes++;
             this.tactic = tactic;
             idAssigner.put(tactic, this.id);
-        }
-
-        protected void addChildren(CoqProof c) {
-            TacNode n = new TacNode(c);
-            this.children.add(n);
         }
 
         protected void setCP(double cp) {
@@ -61,23 +55,6 @@ public class AssemblerUtil {
             TacNode n = (TacNode) o;
             return this.tactic.equals(n.tactic);
         }
-    }
-
-    // define a class of nodes and graphs
-    private static class TacGraph {
-        List<TacNode> vertices;
-        Map<Integer, List<Integer>> edges; // adjacency list
-        public TacGraph() {
-            this.vertices = new ArrayList<>();
-            this.edges = new HashMap<>();
-        }
-
-        public TacGraph(CoqProof tactic) {
-            super();
-            TacNode n = new TacNode(tactic);
-            this.edges.put(n.id, new ArrayList<>());
-        }
-
     }
 
     protected static List<TacNode> formForests(Set<CoqProof> candidates) {

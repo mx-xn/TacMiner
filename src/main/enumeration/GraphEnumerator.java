@@ -42,10 +42,7 @@ public class GraphEnumerator {
             for (int g1 = 0; g1 < this.corpus.size(); g1++) {
                 for (int g2 = g1 + 1; g2 < this.corpus.size(); g2++) {
                     // if #vertices exceeds threshold
-//                    int threshold = 60;
                     int threshold = topic.contains("RegAlloc") ? 15 : 60;
-                    // int threshold = topic.contains("Allocation") ? 15 :
-                    //         topic.contains("NeedDomain") ? 25 : 60;   // for Allocation
                     ProofGraph pg1 = this.corpus.get(g1);
                     ProofGraph pg2 = this.corpus.get(g2);
                     if (pg1.vertices.size() < threshold || pg2.vertices.size() < threshold) continue;
@@ -456,7 +453,6 @@ public class GraphEnumerator {
         // instantiation rule for the starting dummy root A?? := ({∅}, {∅}, {})
         instMap.put(new Hole(null, new HashSet<>(Arrays.asList(-1))),
                 distinctTacSigs.stream().map(s -> new Instantiation(null, s, new HashSet<>(Arrays.asList(Arrays.asList(-1, -1))))).collect(Collectors.toList()));
-        // System.out.println(instMap.get(new Hole(null, new HashSet<>(Arrays.asList(-1)))).size());
         return instMap;
     }
 
@@ -486,10 +482,6 @@ public class GraphEnumerator {
             else
                 return new ArrayList<>();
         }
-
-//        if (inst.sigU != null && inst.sigU.contains("apply") && inst.sigV.contains("intro")) {
-//            System.out.println();
-//        }
 
         String instVertexSig = inst.sigV;
 	    // if there exists a vertex u' == u in V(A??), where u' -!-> v,
@@ -526,11 +518,6 @@ public class GraphEnumerator {
             }
             // useful only if matches is not empty
             if (newA.matches.stream().filter(m -> this.trainingIndices.contains(m.g)).toList().size() > 1) {
-//                System.out.println("abstractions: ");
-//                System.out.println(newA.getInfo());
-//                System.out.println("matches: ");
-//                System.out.println(newA.matchesInfo());
-                // todo: before adding, check if current partial abstraction is non-collapsible
                 if (ifPartialAbsCollapsible(newA))
                     newAbstractions.add(newA);
             }
@@ -542,10 +529,6 @@ public class GraphEnumerator {
         CoqTactic addedTac = new CoqTactic(newA.vertices.size(), inst.sigV, inst.sigV, new ArrayList<>(), new ArrayList<>());
         newA.vertices.add(addedTac);
 
-        // whenever a new vertex is added, add the corresponding new holes,
-        // if (!this.holeMap.containsKey(inst.sigV)) {
-        //     System.out.println();
-        // }
         for (Hole newH: this.holeMap.get(inst.sigV)) {
             Hole hCopy = new Hole(newH);
             hCopy.u.id = addedTac.id;
@@ -638,16 +621,6 @@ public class GraphEnumerator {
                 }
             }
 
-//            if (!noMatch) {
-//                // can also remove match if exists a label l:(f, t) \in L(h.u, addedTac), such that
-//                // exists edge (u, v', f, _), where v' != addedTac
-//                // get all labels from f(h.u), f(addedTac)
-//                int v = gChildVertexID.get(0);
-//                for (ProofGraph.Edge e: this.corpus.get(m.g).adjList.get(gUID)) {
-//
-//                }
-//            }
-
             if (noMatch) {
                 removeMatches.add(newA.matches.get(i));
             } else {
@@ -687,7 +660,6 @@ public class GraphEnumerator {
         abst.vertices.add(null);
         abst.holes.add(new Hole(null, new HashSet<>(Arrays.asList(-1))));
 
-//        PriorityQueue<Abstraction> pq = new PriorityQueue<>((a1, a2) -> this.partialUtil(a1) - this.partialUtil(a2));
         PriorityQueue<Abstraction> pq = new PriorityQueue<>(
                 (a1, a2) -> {
                     int verticesComparison = Integer.compare(a2.vertices.size(), a1.vertices.size());
@@ -711,18 +683,11 @@ public class GraphEnumerator {
         while (!pq.isEmpty()) {
             abst = pq.poll();                 // Next partial abstraction to instantiate
 
-            // todo: delete
-//            if (!abst.matches.isEmpty() && abst.matches.get(0).g == 18 && abst.matches.get(1).g == 19 && this.corpus.get(18).vertices.size() == 103 && this.corpus.get(19).vertices.size() == 95 && bestUtil == 62)
-//                continue;
-
-//            if (partialUtil(abst) <= bestUtil)                  // Upper bound pruning
-//                continue;
             if (abst.holes.isEmpty() && !abst.predefined)
                 continue;
             Hole h = abst.holes.isEmpty() ? null: abst.holes.get(0);
             // for the chosen hole, instantiate and get new abstractions
             for (Abstraction a: instantiateAll(abst, h, instMap.get(h))) {
-//                if (partialUtil(a) <= bestUtil) continue; // utility prune
                 if (!a.holes.isEmpty()) {
                     int partialUtil = partialUtil(a);
                     if (this.corpus.size() == this.trainingIndices.size() && a.matches.size() == 2) {
@@ -753,14 +718,10 @@ public class GraphEnumerator {
                             bestAbst.inputVerticesMap = a.inputVerticesMap;
                             bestAbst.utility = completeUtil;
                             bestAbst.utilityTraining = completeUtilTraining;
-//                            bestAbst.customTactic = a.getCustomTactic(corpus);
                             bestAbst.customTactic = a.customTactic;
                             bestAbst.customTactic.matches = new HashMap<>();
                             for (Match m: a.matches) {
                                 List<Integer> mappedIDs = a.customTactic.tactics.stream().map(t -> m.vertexMap.get(t)).toList();
-                                // if (mappedIDs.size() % a.vertices.size() != 0) {
-                                //     System.out.println();
-                                // }
                                 if (!bestAbst.customTactic.matches.containsKey(m.g)) bestAbst.customTactic.matches.put(m.g, new ArrayList<>());
                                 bestAbst.customTactic.matches.get(m.g).addAll(mappedIDs);
                             }
@@ -772,18 +733,12 @@ public class GraphEnumerator {
                             newA.inputVerticesMap = a.inputVerticesMap;
                             newA.utility = completeUtil;
                             newA.utilityTraining = completeUtilTraining;
-//                            newA.customTactic = a.getCustomTactic(corpus);
                             newA.customTactic = a.customTactic;
                         }
                     }
-//                    if (completeUtil > bestUtil) {
-//                        bestUtil = completeUtil;
-//                        bestAbst = new Abstraction(a);
-//                    }
                 }
             }
         }
-//        bestAbst.utility = bestUtil;
         if (greedyP && bestAbst != null) res.add(bestAbst);
         return res;
     }
@@ -885,7 +840,6 @@ public class GraphEnumerator {
     }
 
     public List<Match> filterUnsupportedEvars(List<Match> matches, CoqProof tactic) {
-        Set<String> etactics = new HashSet<>(Arrays.asList("eauto", "eapply", "eassumption", "eexact", "eexists", "erewrite"));
         // pre-check: if tactics do not include any evars, just return matches TODO
         List<Match> res = new ArrayList<>();
         // if m(tac) has > 1 branches, and i-th branch has evar, but i-th branch is not included in m(tac) while j-th, j > i is included, we filter out the current match
@@ -906,12 +860,10 @@ public class GraphEnumerator {
                     Set<Integer> etacs = getEtacIndexInBranch(m.g, indV, i);
 
                     // for each goal, if current branch (until resolved) does not include e-tactics, just go to next goal
-//                    if (!branchHasEvars(m.g, indV, checkedGoals)) continue;
                     if (etacs.isEmpty()) continue;
 
                     // if current branch has evars
                     // if the e-tactic in current branch is included, move on to future goals
-                    // TODO
                     boolean evarsIncluded = true;
                     for (int v: etacs) {
                         if (m.vertexMap.values().contains(v)) continue;
@@ -1006,10 +958,6 @@ public class GraphEnumerator {
         return symVars;
     }
 
-    private boolean branchHasEvars(int g, int indV, Set<CoqTactic.Prop> checkedGoals) {
-        return false;
-    }
-
     public List<Match> filterNoncollapsibleMatches(List<Match> matches, CoqProof tactic) {
         List<Match> res = new ArrayList<>();
 
@@ -1080,11 +1028,6 @@ public class GraphEnumerator {
         // for matches that appear in the same proof, it is possible they overlap,
         // hence need to find the best set of matches in the proof
         Map<Integer, List<Map<CoqTactic, Integer>>> mMap = new HashMap<>();
-//        for (ProofGraph.Edge e: a.edges) {
-//            if (e.v == e.u) {
-//                System.out.println();
-//            }
-//        }
 
         a.matches = filterNoncollapsibleMatches(a.matches, a.customTactic);
         if (a.vertices.size() == 47)
@@ -1195,11 +1138,6 @@ public class GraphEnumerator {
 
     public int getMappedVertexID(Hole h, Match m) {
         CoqTactic abstV = h.u;
-//        if (abstV == null)
-//            System.out.println();
-//        if (!m.vertexMap.containsKey(abstV)) {
-//            System.out.println(abstV.toCoqScript());
-//        }
         if (m.vertexMap.get(abstV) == null)
             System.out.println();
         return m.vertexMap.get(abstV);

@@ -1,21 +1,21 @@
 {
   "theorem_file": {
-    "isorted0": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "isorted1": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "isorted2": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "sorted_to_impredicative_sorted": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "impredicative_sorted_to_sorted": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "impredicative_le_n": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "impredicative_le_S": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "le_to_impredicative": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "impredicative_to_le": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "impredicative_or_intro1": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "impredicative_or_intro2": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "or_to_impredicative": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v",
-    "impredicative_to_or": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v"
+    "isorted0": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "isorted1": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "isorted2": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "sorted_to_impredicative_sorted": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "impredicative_sorted_to_sorted": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "impredicative_le_n": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "impredicative_le_S": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "le_to_impredicative": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "impredicative_to_le": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "impredicative_or_intro1": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "impredicative_or_intro2": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "or_to_impredicative": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v",
+    "impredicative_to_or": "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v"
   },
   "custom_tactics": {
-    "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_TM.v": {
+    "/Users/maxinexin/Documents/Projects/tacminer/tacminer/benchmarks/coq-art/raw/impredicative_comp_TM.v": {
       "isorted0": {
         "available_tactics": [
           {
@@ -45,7 +45,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -98,7 +115,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -153,7 +187,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -176,8 +227,8 @@
           ]
         },
         "used_tactics": [
-          "custom0",
-          "custom3"
+          "custom3",
+          "custom0"
         ]
       },
       "sorted_to_impredicative_sorted": {
@@ -209,7 +260,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -262,7 +330,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -317,7 +402,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -372,7 +474,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -425,7 +544,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -478,7 +614,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -531,7 +684,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -584,7 +754,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -637,7 +824,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",
@@ -690,7 +894,24 @@
               ]
             }
           ],
-          "custom2": [],
+          "custom2": [
+            {
+              "lemma_name": "isorted1",
+              "tactic_sig": "custom2 impredicative_sorted .",
+              "tactic_args": [
+                "c1_goal : forall x : A, impredicative_sorted (cons x nil)"
+              ],
+              "tactic_res": []
+            },
+            {
+              "lemma_name": "impredicative_le_n",
+              "tactic_sig": "custom2 impredicative_le .",
+              "tactic_args": [
+                "c1_goal : forall n : nat, impredicative_le n n"
+              ],
+              "tactic_res": []
+            }
+          ],
           "custom3": [
             {
               "lemma_name": "isorted2",

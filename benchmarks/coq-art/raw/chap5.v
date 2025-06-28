@@ -211,7 +211,7 @@ Qed.
 Lemma Zmult_distr_1 : forall n x:Z, n * x + x = ( n + 1) * x.
 Proof.
  intros n x ; rewrite Zmult_plus_distr_l.
- now rewrite  Zmult_1_l.
+ now rewrite Zmult_1_l.
 Qed.
 
 Lemma regroup : forall x:Z, x + x + x + x + x = 5 * x.

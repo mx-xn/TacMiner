@@ -4,11 +4,9 @@ import main.config.BmConfig;
 import main.encode.*;
 import main.eval.*;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-//import static main.eval.CompressionEval.compressExtractedTactic;
 import static main.eval.CompressionEval.compressLibTacs;
 
 /*
@@ -107,8 +105,6 @@ public class LibAssembler {
             int tacSize = tactic.tactics.size(); //compressTacs ? tactic.tactics.size() : compressExtractedTactic(tactic, new ArrayList<>(this.tactics));
 
             // check if current tactic library can be compressed using current tactic, if yes, return the decrease in total size
-//            int libSizeDecrease = compressTacs ? 0 : compressLibTacs(tactic, new ArrayList<>(this.tactics));
-//            List<List<CoqProof>> libCopies = compressLibTacs(tactic, new ArrayList<>(this.tactics));
             List<CoqProof> libTacs = new ArrayList<>(this.tactics);
 
             int candidateSize = 0;
@@ -134,7 +130,6 @@ public class LibAssembler {
                         }
                         compressedVertices.add(compressedTac);
                     }
-//                    compressed = CompressionEval.compressProof(corpus.get(i), tactic);
                 }
                 // add the compressed proof to the compressedCorpus
                 compressedCorpus.add(compressed);
@@ -143,10 +138,8 @@ public class LibAssembler {
                 // add the size of the compressed proof
                 if (this.trainingIndices.contains(i)) {
                     // if current graph is not in the training data
-//                    candidateSizeTraining += compressed.tactics.size();
                     candidateSizeTraining += compressedVertices.size();
                 }
-//                candidateSize += compressed.tactics.size();
                 candidateSize += compressedVertices.size();
             }
 
@@ -161,11 +154,6 @@ public class LibAssembler {
 
             int libSizeDecrease = 0;
             Library lib = new Library(this);
-//                if (libCopies.indexOf(libCopy) == 1) {
-//                    for (int i = 0; i < libCopy.size(); i++) {
-//                        libSizeDecrease += (this.tactics.get(i).tactics.size() - libCopy.get(i).tactics.size());
-//                    }
-//                }
             if (candidateSize - candidateSizeTraining <= this.getTestingCompressedSize()) {
                 // This tactic is beneficial, so let's keep it
                 lib.corpus = compressedCorpus; // Compress corpus
@@ -207,21 +195,13 @@ public class LibAssembler {
             int tacSize = tactic.tactics.size(); //compressTacs ? tactic.tactics.size() : compressExtractedTactic(tactic, new ArrayList<>(this.tactics));
 
             // check if current tactic library can be compressed using current tactic, if yes, return the decrease in total size
-//            int libSizeDecrease = compressTacs ? 0 : compressLibTacs(tactic, new ArrayList<>(this.tactics));
             List<List<CoqProof>> libCopies = compressLibTacs(tactic, new ArrayList<>(this.tactics));
 
             int candidateSize = 0;
             int candidateSizeTesting = 0;
             for (int i = 0; i < corpus.size(); i++) {
-//                System.out.println("compressing proof " + i + " of size " + corpus.get(i).tactics.size() + " with " + tactic.raw_string);
                 // compress current proof with the extracted tactic
                 CoqProof compressed = CompressionEval.compressProof(corpus.get(i), tactic, i);
-//                System.out.println("compressed proof " + i +  " of size " + corpus.get(i).tactics.size() + " into size " + compressed.tactics.size());
-//                if (compressed.tactics.size() < corpus.get(i).tactics.size()) {
-//                    for (CoqTactic t : compressed.tactics) {
-//                        System.out.println(t.toCoqScript());
-//                    }
-//                }
 
                 // add the compressed proof to the compressedCorpus
                 compressedCorpus.add(compressed);
@@ -232,8 +212,6 @@ public class LibAssembler {
                     candidateSizeTesting += compressed.tactics.size();
                 }
                 candidateSize += compressed.tactics.size();
-
-//                System.out.println("compressed size is: " + compressed.tactics.size() + " + " + tactic.tactics.size());
             }
 
             System.out.println("tacsize is: " + tacSize);
@@ -260,16 +238,9 @@ public class LibAssembler {
 
                     lib.compressedSize = candidateSize; // update sizes
                     lib.librarySize += (tacSize - libSizeDecrease);
-//                    System.out.println("adding lib");
-//                    System.out.println("lib decrease is " + libSizeDecrease);
-//                    System.out.println("candidates size is " + candidateSize);
-//                    System.out.println("lib size is " + lib.librarySize);
-//                    System.out.println("overall size is " + lib.getOverallSize());
-//                    System.out.println();
                     res.add(lib);
                 }
             }
-//            System.out.println(tactic.raw_string + " is useless");
             return res;
         }
 
@@ -393,125 +364,6 @@ public class LibAssembler {
             return sb.toString();
         }
 
-        public String printDiagnostics(BmConfig config, boolean verbose) {
-            StringBuilder sb = new StringBuilder();
-            Set<String> tacticRawString = new HashSet<>();
-            int minusSize = 0;
-            if (verbose) {
-                sb.append("extracted tactics -----------\n");
-                int i = 0;
-                for (CoqProof tac: this.tactics) {
-                    if (tacticRawString.contains(tac.raw_string.split(" := ")[1])) {
-                        minusSize += tac.tactics.size();
-                        continue;
-                    }
-                    tacticRawString.add(tac.raw_string.split(" := ")[1]);
-                    sb.append("Ltac ").append(tac.raw_string)
-                            .append("\n");
-                    i++;
-                }
-                sb.append("---------------------------\n");
-            }
-            int maxTacSize = 0;
-            for (CoqProof t: this.tactics) {
-                if (t.tactics.size() > 50) {
-                    tacticRawString.remove(t.raw_string.split(" := ")[1]);
-                    minusSize += t.tactics.size();
-                    continue;
-                }
-//                if (Arrays.asList(0, 2, 3, 44, 45, 50).contains(ind)) { // Hoare
-//                if (Arrays.asList(9, 19, 24, 34).contains(ind)) { // Seplog
-//                if (Arrays.asList(0, 5, 26, 73, 74).contains(ind)) { // CSL
-//                if (Arrays.asList(3).contains(ind)) {  // Separation
-//                if (Arrays.asList(5, 11).contains(ind)) {  // Allocation
-//                    this.librarySize -= t.tactics.size();
-//                    continue;
-//                }
-                if (t.tactics.size() > maxTacSize) {
-                    maxTacSize = t.tactics.size();
-                }
-            }
-            int testingSize = this.getCorpusSize() - this.trainingSize;
-            testingSize = testingSize == 0 ? -1 : testingSize;
-            int numTestingProofs = this.corpus.size() - this.trainingIndices.size();
-            numTestingProofs = numTestingProofs == 0 ? this.corpus.size() : numTestingProofs;
-            int numTotalApplications = this.tacticOccurrences.values().stream().map(l -> l.size()).toList()
-                    .stream().reduce(0, Integer::sum);
-
-            if (config.mode == BmConfig.Mode.ENUMERATION && verbose) {
-                // train-percentage, stat, %
-                sb.append(" , , ").append(config.stopThresh).append("\n")
-//                        .append(config.topic).append(", Number of Tactics, ").append(this.tactics.size()).append("\n")
-//                        .append(" , Average Tactic Size, ").append(String.format("%.2f", (double) this.getLibrarySize() / this.tactics.size())).append("\n")
-                        .append(config.topic).append(", Number of Tactics, ").append(tacticRawString.size()).append("\n")
-                        .append(" , Average Tactic Size, ").append(String.format("%.2f", (double) (this.getLibrarySize() - minusSize) / tacticRawString.size())).append("\n")
-                        .append(" , Total Tactic Size, ").append(this.getLibrarySize() - minusSize).append("\n")
-                        .append(" , Max Tactic Size, ").append(maxTacSize).append("\n")
-                        .append(" , Overall CP, ").append(String.format("%.2f", (double) (this.getCorpusSize() - this.trainingSize) / this.testingCompressedSize));
-            }
-
-            if (config.mode == BmConfig.Mode.ENUMERATION_SPLIT && !verbose) {
-                sb.append(config.stopThresh).append("\n")
-                        .append(this.tactics.size()).append("\n")
-                        .append(String.format("%.2f", (double) (this.getCorpusSize() - this.trainingSize) / this.testingCompressedSize));
-
-            }
-            return sb.toString();
-        }
-
-        public String printDiagnostics() {
-            StringBuilder sb = new StringBuilder("extracted tactics -----------\n");
-            int i = 0;
-            int minusSize = 0;
-            Set<String> tacticRawString = new HashSet<>();
-            for (CoqProof tac: this.tactics) {
-                if (tacticRawString.contains(tac.raw_string.split(" := ")[1])) {
-                    minusSize += tac.tactics.size();
-                    continue;
-                }
-                tacticRawString.add(tac.raw_string.split(" := ")[1]);
-                sb.append("Ltac ").append(tac.raw_string)
-                        .append("\n");
-                i++;
-            }
-            sb.append("---------------------------\n");
-            int maxTacSize = 0;
-            for (CoqProof t: this.tactics) {
-                if (t.tactics.size() > 50) {
-                    tacticRawString.remove(t.raw_string.split(" := ")[1]);
-                    minusSize += t.tactics.size();
-                    continue;
-                }
-                if (t.tactics.size() > maxTacSize) {
-                    maxTacSize = t.tactics.size();
-                }
-            }
-            int testingSize = this.getCorpusSize() - this.trainingSize;
-            testingSize = testingSize == 0 ? -1 : testingSize;
-            int numTestingProofs = this.corpus.size() - this.trainingIndices.size();
-            numTestingProofs = numTestingProofs == 0 ? this.corpus.size() : numTestingProofs;
-            int numTotalApplications = this.tacticOccurrences.values().stream().map(l -> l.size()).toList()
-                    .stream().reduce(0, Integer::sum);
-            return sb.toString() + "Num proofs: " + this.corpus.size() +
-                    "\nNum training proofs: " + this.trainingIndices.size() +
-                    "\nOriginal size: " + this.getCorpusSize() +
-                    "\nCompressed total size: " + this.compressedSize +
-                    "\nTraining size: " + this.trainingSize +
-                    "\n(2) (3) Testing size: " + (this.getCorpusSize() - this.trainingSize) +
-                    "\n(2) (3) Compressed testing size: " + this.testingCompressedSize +
-                    "\n(2) (3) Compression rate: " + String.format("%.2f", (double) (this.getCorpusSize() - this.trainingSize) / this.testingCompressedSize * 100) +
-                    "\nCompressed size + lib: " + this.getOverallSize() + " ( " + this.getCompressedSize() + " corpus / " + this.getLibrarySize() + " library )" +
-//                    "\n[1] numTactics: " + this.tactics.size() +
-//                    "\n[1] avrgTacticSize: " + String.format("%.2f", (double) this.getLibrarySize() / this.tactics.size()) +
-                    "\n[1] numTactics: " + tacticRawString.size() +
-                    "\n[1] avrgTacticSize: " + String.format("%.2f", (double) (this.getLibrarySize() - minusSize) / tacticRawString.size()) +
-                    "\n[1] maxTacSize: " + maxTacSize +
-                    "\n[1] numProofsCompressed/total: " + this.numCompressedProofs + " / " + numTestingProofs +
-                    "\n[1] numAvgApplications: " +  String.format("%.2f", (double) numTotalApplications / tacticRawString.size()) +
-                    "\n[1] numTotalApplications: " + numTotalApplications +
-                    "\nCompression rate: " + this.getCompression() + "\nNum tactics in library: " + tacticRawString.size();
-        }
-
         @Override
         public String toString() {
             StringBuilder ret = new StringBuilder("Corpus: ");
@@ -569,8 +421,6 @@ public class LibAssembler {
                                                       AssemblyType type, List<Integer> trainingIndices) {
         switch (type) {
             case GREEDY: {
-//                customTacs = customTacs.stream().sorted((t1, t2) -> Integer.compare(t2.tactics.size(), t1.tactics.size())).collect(Collectors.toList());
-
                 Library lib = new Library(corpus);
                 lib.setTrainingIndices(trainingIndices);
                 Map<Integer, List<Integer>> mappedVertices = new HashMap<>(); // mapped vertices is
@@ -615,8 +465,6 @@ public class LibAssembler {
                 // exhaustive
                 customTacs = customTacs.stream().sorted((t1, t2) -> t1.tactics.size() - t2.tactics.size()).collect(Collectors.toList());
                 PriorityQueue<Library> currPool = new PriorityQueue<>();
-//                W := {(P, {}, T)}
-//                Libs := {}
 
                 Library currLib = new Library(corpus);
                 currLib.setTrainingIndices(trainingIndices);
@@ -627,28 +475,16 @@ public class LibAssembler {
                 int bestCompressedSize = currLib.getTestingCompressedSize();
 
                 while (!currPool.isEmpty()) {
-                    //                L_curr := W.pop()
                     currLib = currPool.peek();
-                    //                (P’, T_used, T_unused) := L_curr
-                    //
-                    //                If T_unused is empty:
-                    //                Libs.add(L_curr)
                     if (currLib.unusedTacs.isEmpty()) {
                         currPool.poll();
-                        // todo: make sure setTrainingIndices was called
                         if (currLib.getTestingCompressedSize() < bestCompressedSize) {
                             bestLib = currLib;
                             bestCompressedSize = bestLib.getTestingCompressedSize();
                         }
                         continue;
                     }
-                    //                t_curr := T_unused.pop()
-                    //                L_new := (applyTactic(P’, t_curr), T_used union {t_curr}, T_unused)
                     CoqProof currTactic = currLib.unusedTacs.remove(0);
-                    //                W.add(L_curr)
-
-                    //                If CompressionRate(L_new) >= CompressionRate(L_curr):
-                    //                W.add(L_new)
                     Library newLib = new Library(currLib);
                     newLib = newLib.addCompressLib(currTactic);
                     if (newLib != null) {
@@ -656,8 +492,6 @@ public class LibAssembler {
                         currPool.add(newLib);
                     }
                 }
-//                While W is not empty:
-//                Return {L \in Libs | \forall L’ \in Libs. CompressionRate(L) >= CompressionRate(L’)}
                 return bestLib;
             } default: {
                 System.err.println("Sampling Type not yet supported");
@@ -672,8 +506,6 @@ public class LibAssembler {
         switch(type) {
             case NONE: {
                 PriorityQueue<Library> currPool = new PriorityQueue<>();
-//                W := {(P, {}, T)}
-//                Libs := {}
 
                 Library currLib = new Library(corpus);
                 currLib.tactics = new ArrayList<>();
@@ -683,12 +515,7 @@ public class LibAssembler {
                 int bestCompressedSize = currLib.getOverallSize();
 
                 while (!currPool.isEmpty()) {
-    //                L_curr := W.pop()
                     currLib = currPool.peek();
-    //                (P’, T_used, T_unused) := L_curr
-    //
-    //                If T_unused is empty:
-    //                Libs.add(L_curr)
                     if (currLib.unusedTacs.isEmpty()) {
                         currPool.poll();
                         if (currLib.getOverallSize() < bestCompressedSize) {
@@ -697,14 +524,7 @@ public class LibAssembler {
                         }
                         continue;
                     }
-    //
-    //                t_curr := T_unused.pop()
-    //                L_new := (applyTactic(P’, t_curr), T_used union {t_curr}, T_unused)
                     CoqProof currTactic = currLib.unusedTacs.remove(0);
-                    //                W.add(L_curr)
-
-                    //                If CompressionRate(L_new) >= CompressionRate(L_curr):
-                    //                W.add(L_new)
                     Library newLib = new Library(currLib);
                     List<Library> newLibs = newLib.addAndCompress(currTactic);
                     if (!newLibs.isEmpty()) {
@@ -712,11 +532,6 @@ public class LibAssembler {
                         currPool.addAll(newLibs);
                     }
                 }
-//
-//                While W is not empty:
-//
-//                Return {L \in Libs | \forall L’ \in Libs. CompressionRate(L) >= CompressionRate(L’)}
-
                 return bestLib;
             }
             case GREEDY: {
@@ -729,7 +544,6 @@ public class LibAssembler {
                 Queue<Library> currPool = new PriorityQueue<>();
                 currPool.add(currLib);
                 while (!currPool.isEmpty()) {
-                    //                L_curr := W.pop()
                     currLib = currPool.peek();
                     if (currLib.unusedTacs.isEmpty()) {
                         currLib = currPool.poll();
@@ -768,7 +582,6 @@ public class LibAssembler {
                             Library copy = new Library(lib);
                             if (lib.tactics.contains(custom)) continue;
                             List<Library> newLibs = copy.addAndCompress(custom);
-//                            if (copy.addAndCompress(custom)) { // We'll only consider tactics that improve the library
                             if (!newLibs.isEmpty()) { // We'll only consider tactics that improve the library
                                 nextPool.addAll(newLibs);
 
@@ -792,13 +605,6 @@ public class LibAssembler {
                     }
                 }
 
-//                int i = 0;
-//                for (CoqProof p: bestLibrary.corpus) {
-//                    System.out.println((i++) + "------");
-//                    for (CoqTactic t: p.tactics) {
-//                        System.out.println(t.toCoqScript());
-//                    }
-//                }
                 return bestLibrary;
             }
             default: {

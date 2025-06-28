@@ -1,4 +1,4 @@
-MAX_TIME=10800
+MAX_TIME=9000
 echo "Starting coq-art experiment..."
 if timeout ${MAX_TIME}s java -jar tacminer.jar 2 coq-art all 1800 100; then
 echo "coq-art experiment finished successfully."

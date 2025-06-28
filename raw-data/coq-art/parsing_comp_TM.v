@@ -1,4 +1,5 @@
 (** BEGIN_DREAMPROVER_TACTICS **)
+Ltac custom2 H0 :=  apply H0; [auto | .. ].
 Ltac custom7 H0 :=  apply H0; [trivial | .. ].
 Ltac custom12 H0 H1 H2 H3 :=  simpl; [intros H0 H1 H2 H3 | .. ].
 Ltac custom18  :=  simpl in *; [auto | .. ]. 
@@ -48,7 +49,7 @@ Theorem wp_o_tail_c :
    wp l1 -> wp l2 -> wp (l1 ++ open :: l2 ++ close :: nil).
 Proof.
  intros l1 l2 H1 H2; custom7 wp_concat. 
- now apply wp_encapsulate. 
+ custom2 wp_encapsulate. 
 Qed.
 
 (* exercice 8.6 *)

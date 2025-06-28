@@ -8,32 +8,13 @@ dfs_metadata_filename_for_retrieval: #local.meta.json
 datasets:
   - project: ../raw-data/CompCert
     files:
-      # - path: backend/NeedDomain_comp_PN.v
-      #   theorems:
-          # 2 4 5
-          # - lessdef_vagree_list   # BS-success,            TM-failed
-          # - vagree_lessdef_list   # BS-failed,             TM-failed
-          # - iagree_not            # BS-failed, PN success, TM-success: Tactic definition: Ltac custom79  :=  f_equal; [auto | .. ].
-          # - iagree_or             # BS-failed, PN success, TM-failed
-          # - andimm_sound          # BS-failed,             TM-failed
-          # - orimm_sound           # BS-failed,             TM-success
-          # - sub_sound             # BS-failed,             TM-success: Ltac custom2 H0 :=  apply H0; [auto | .. ].  Ltac custom57 H6 H7 H8 :=  InvAgree; [apply H6; [custom37 H7 H8 | .. ] | .. ].
-          # - modarith_idem         # BS-success,            TM-success, Pass@1 = true
-      # - path: backend/Debugvarproof.v
-      #   theorems:
-      #     - transf_function_match
-      #     - find_label_add_delta_ranges
-      #     - find_label_match_rec
-      #     - set_state_1
-      #     - set_state_2
-      #     - remove_state_1
       - path: backend/Allocation_comp_PN.v
           # 1 2 5
         theorems:
-          - lt_not_eq      # BS-failed,  PN failed,  TM success 
-          - eq_trans       # BS-failed,  PN success, TM success
-          # - beq_correct     # BS-success, PN failed,  TM failed, Pass@1 = true
-          # - ge_refl         # BS-failed,  PN failed,  TM success 
-          # - ge_trans        # BS-failed,  PN failed,  TM failed
-          # - ge_lub_left     # BS-failed,  PN failed,  TM success
-          # - ge_lub_right    # BS-failed,  PN failed,  TM failed 
+          - lt_not_eq      
+          - eq_trans       
+          - beq_correct   
+          - ge_refl      
+          - ge_trans    
+          - ge_lub_left 
+          - ge_lub_right
