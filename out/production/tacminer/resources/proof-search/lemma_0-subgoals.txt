@@ -1,0 +1,15 @@
+iff (eq (mem x Nil) true) (In x Nil)
+
+iff (eq (mem x (Cons l h s)) true) (In x (Cons l h s))
+
+iff (eq (zle l x) true) (or (and (Z.le l x) (Z.lt x h)) (In x s))
+
+iff (eq (mem x s) true) (or (and (Z.le l x) (Z.lt x h)) (In x s))
+
+iff (eq (left l1) true) (or (and (Z.le l x) (Z.lt x h)) (In x s))
+
+iff (eq (right g) true) (or (and (Z.le l x) (Z.lt x h)) (In x s))
+
+forall _ : eq false true, or (and (Z.le l x) (Z.lt x h)) (In x s)
+
+forall _ : or (and (Z.le l x) (Z.lt x h)) (In x s), eq false true

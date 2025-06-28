@@ -1,0 +1,39 @@
+coq-art/./chap6.v
+-----
+coq-art/./chap6_compr.v
+-----
+-----
+month_equal
+Proof. destruct m; auto 12. Qed.
+month_equal'
+Proof. intro m; pattern m; apply month_ind; auto 12. Qed.
+at_least_28
+Proof. intros leap m; case m; simpl; auto with arith. case leap; simpl; auto with arith. Qed.
+next_august_then_july
+Proof. intros m; case m; simpl; intros Hnext_eq; (reflexivity || discriminate Hnext_eq). Qed.
+not_January_eq_February'
+Proof. unfold not; intros H. change ((fun m:month => match m with | January => True | _ => False end) February). rewrite <- H. trivial. Qed.
+bicycle_eq_seats
+Proof. intros x1 y1 H. injection H. trivial. Qed.
+bicycle_eq_seats'
+Proof. intros x1 y1 H. change (nb_seats (bicycle x1) = nb_seats (bicycle y1)). rewrite H; reflexivity. Qed.
+next_march_shorter
+Proof. intros leap m1 m2 H. case_eq m1; try (intro H0; rewrite H0 in H; simpl in H; discriminate H). case leap ; case m2 ; simpl; auto with arith. Qed.
+plus_assoc
+Proof. induction x as [ | x0 IHx0]. - simpl; reflexivity. - simpl; intros y z; rewrite IHx0; reflexivity. Qed.
+strange_empty
+Proof. intro x; induction x. assumption. Qed.
+b_one
+Proof. split with 1 0 ; auto. Qed.
+b_n
+Proof. intros a b H; case H. intros u v H0 HA e. split with u (v-u). - auto with arith. - auto. - rewrite inj_plus; now ring_simplify. Qed.
+b_d
+Proof. intros a b H; case H. intros u v H0 HA e. split with (u-v) v. - auto. - auto with zarith. - rewrite inj_plus; ring_simplify; now rewrite (Zmult_comm v (Z_of_nat b)). Qed.
+fractionsimplified
+Proof. simple induction f ; simpl. - split ; auto. - intro f0; case (fraction f0). inversion_clear 1;split; auto. - intro f0; case (fraction f0). inversion_clear 1; split; auto. Qed.
+Ltac custom_tac5  := simpl; split; auto.
+
+Ltac custom_tac2  := simpl; auto with arith.
+
+nth_length
+Proof. induction n0 as [ | p IHp]. - destruct l; custom_tac5 ; discriminate 1. + inversion 1. - intro l; destruct l as [ | a l']. + split;custom_tac2 . + simpl; rewrite ( IHp l'); split; auto with arith. Qed.

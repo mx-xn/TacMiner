@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CompCert" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CompCert-depre" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/copra" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/copra/data/benchmarks/CompCert" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/copra/data/benchmarks/miniF2F" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/copra/src/pisa" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/copra/src/tools/repl" vcs="Git" />
+  </component>
+</project>

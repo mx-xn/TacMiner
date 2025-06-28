@@ -1,0 +1,28 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom1  :=  simpl; [discriminate | .. ].
+Ltac custom2 H0 :=  unfold H0; [custom1  | .. ].
+Ltac custom3  :=  simpl; [reflexivity | .. ].
+Ltac custom4 H0 :=  intros H0; [clear H0 | .. ].
+Ltac custom5 H0 :=  unfold H0; [reflexivity | .. ].
+Ltac custom6 H0 H1 :=  unfold H0; [intros H1 | .. ].
+Ltac custom7 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom8 H0 H1 :=  apply H0; [apply H1 | .. ].
+---------------------------
+Num proofs: 27
+Num training proofs: 11
+Original size: 385
+Compressed total size: 349
+Training size: 260
+(2) (3) Testing size: 125
+(2) (3) Compressed testing size: 116
+(2) (3) Compression rate: 107.76
+Compressed size + lib: 367 ( 349 corpus / 18 library )
+[1] numTactics: 9
+[1] avrgTacticSize: 2.00
+[1] maxTacSize: 2
+[1] numProofsCompressed/total: 7 / 16
+[1] numAvgApplications: 3.78
+[1] numTotalApplications: 34
+Compression rate: 1.0490463215258856
+Num tactics in library: 9

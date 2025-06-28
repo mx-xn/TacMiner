@@ -1,0 +1,11 @@
+extracted tactics -----------
+Ltac custom0  :=  simpl; [auto with arith | .. ].
+Ltac custom1 H0 :=  case H0; [ |  |  |  |  |  |  |  |  |  |  | custom0  | .. ].
+Ltac custom2  :=  simpl; [split | .. ].
+---------------------------
+ , , 0.65
+chap6, Number of Tactics, 3
+ , Average Tactic Size, 2.00
+ , Total Tactic Size, 6
+ , Max Tactic Size, 2
+ , Overall CP, 1.01

@@ -1,0 +1,41 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  split; [apply H0 | .. ].
+Ltac custom1  :=  constructor; [ | auto | auto | .. ].
+Ltac custom2 H0 :=  simpl; [intros H0 | .. ].
+Ltac custom3 H0 :=  induction H0 as [ | [ v i ] l ]; [simpl | simpl | .. ].
+Ltac custom4  :=  induction 1; [simpl; [try tauto | .. ] | .. ].
+Ltac custom5  :=  simpl; [auto | .. ].
+Ltac custom6  :=  constructor; [ | auto | .. ].
+Ltac custom7 H0 :=  apply H0; [auto | .. ].
+Ltac custom8  :=  simpl; [tauto | .. ].
+Ltac custom9  :=  simpl; [induction 1 | .. ].
+Ltac custom10 H0 :=  eapply H0; [ |  | traceEq | .. ].
+Ltac custom11 H0 :=  apply H0; [custom6 ; [auto | .. ] | .. ].
+Ltac custom12  :=  custom6 ; [auto | .. ].
+Ltac custom13 H0 :=  apply H0; [exact symbols_preserved | .. ].
+Ltac custom14 H0 :=  inv H0; [eauto | .. ].
+Ltac custom15  :=  simpl; [constructor | .. ].
+Ltac custom16  :=  constructor; [auto | .. ].
+Ltac custom17 H0 :=  custom11 H0; [ | auto with coqlib | .. ].
+Ltac custom18 H0 :=  eapply H0; [ | eauto | .. ].
+Ltac custom19 H0 H1 :=  custom18 H0; [apply H1 | .. ].
+Ltac custom20  :=  econstructor; [eauto | .. ].
+Ltac custom21 H0 H1 :=  destruct ( Pos.compare_spec H0 H1 ); [subst H1 | .. ].
+---------------------------
+Num proofs: 17
+Num training proofs: 6
+Original size: 660
+Compressed total size: 527
+Training size: 466
+(2) (3) Testing size: 194
+(2) (3) Compressed testing size: 164
+(2) (3) Compression rate: 118.29
+Compressed size + lib: 575 ( 527 corpus / 48 library )
+[1] numTactics: 22
+[1] avrgTacticSize: 2.18
+[1] maxTacSize: 3
+[1] numProofsCompressed/total: 8 / 11
+[1] numAvgApplications: 4.50
+[1] numTotalApplications: 99
+Compression rate: 1.1478260869565218
+Num tactics in library: 22

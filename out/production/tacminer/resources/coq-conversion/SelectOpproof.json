@@ -1,0 +1,933 @@
+[
+    {
+        "lemma_name": "eval_addrsymbol",
+        "proof": [
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (le : letenv) (id : ident) (ofs : Ptrofs.int),\nex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (addrsymbol id ofs) v)\n     (Val.lessdef (Genv.symbol_address ge id ofs) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (addrsymbol id ofs) v)\n     (Val.lessdef (Genv.symbol_address ge id ofs) v))",
+                    "ofs : Ptrofs.int",
+                    "id : ident",
+                    "le : letenv"
+                ]
+            },
+            {
+                "tactic_sig": "unfold addrsymbol .",
+                "tactic_sig_no_out_arg": "unfold addrsymbol .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (addrsymbol id ofs) v)\n     (Val.lessdef (Genv.symbol_address ge id ofs) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (Eop (Oaddrsymbol id ofs) Enil) v)\n     (Val.lessdef (Genv.symbol_address ge id ofs) v))"
+                ]
+            },
+            {
+                "tactic_sig": "econstructor .",
+                "tactic_sig_no_out_arg": "econstructor .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (Eop (Oaddrsymbol id ofs) Enil) v)\n     (Val.lessdef (Genv.symbol_address ge id ofs) v))"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.and (eval_expr ge sp e m le (Eop (Oaddrsymbol id ofs) Enil) ?v)\n  (Val.lessdef (Genv.symbol_address ge id ofs) ?v)"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : Logic.and (eval_expr ge sp e m le (Eop (Oaddrsymbol id ofs) Enil) ?v)\n  (Val.lessdef (Genv.symbol_address ge id ofs) ?v)"
+                ],
+                "tactic_res": [
+                    "_goal : eval_expr ge sp e m le (Eop (Oaddrsymbol id ofs) Enil) ?v",
+                    "_goal : Val.lessdef (Genv.symbol_address ge id ofs) ?v"
+                ]
+            },
+            {
+                "tactic_sig": "eapply eval_Eop .",
+                "tactic_sig_no_out_arg": "eapply eval_Eop .",
+                "tactic_args": [
+                    "_goal : eval_expr ge sp e m le (Eop (Oaddrsymbol id ofs) Enil) ?v"
+                ],
+                "tactic_res": [
+                    "_goal : eval_exprlist ge sp e m le Enil ?vl",
+                    "_goal : eq (eval_operation ge sp (Oaddrsymbol id ofs) ?vl m) (Some ?v)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto with evalexpr .",
+                "tactic_sig_no_out_arg": "eauto with evalexpr .",
+                "tactic_args": [
+                    "_goal : eval_exprlist ge sp e m le Enil ?vl",
+                    "_goal : eq (eval_operation ge sp (Oaddrsymbol id ofs) ?vl m) (Some ?v)"
+                ],
+                "tactic_res": [
+                    "_goal : eq (eval_operation ge sp (Oaddrsymbol id ofs) nil m) (Some ?v)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : eq (eval_operation ge sp (Oaddrsymbol id ofs) nil m) (Some ?v)"
+                ],
+                "tactic_res": [
+                    "_goal : eq (Some (Genv.symbol_address ge id ofs)) (Some ?v)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : eq (Some (Genv.symbol_address ge id ofs)) (Some ?v)",
+                    "_goal : Val.lessdef (Genv.symbol_address ge id ofs) ?v"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef (Genv.symbol_address ge id ofs)\n  (Genv.symbol_address ge id ofs)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Genv.symbol_address ge id ofs)\n  (Genv.symbol_address ge id ofs)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "eval_addrstack",
+        "proof": [
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (le : letenv) (ofs : Ptrofs.int),\nex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (addrstack ofs) v)\n     (Val.lessdef (Val.offset_ptr sp ofs) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (addrstack ofs) v)\n     (Val.lessdef (Val.offset_ptr sp ofs) v))",
+                    "ofs : Ptrofs.int",
+                    "le : letenv"
+                ]
+            },
+            {
+                "tactic_sig": "unfold addrstack .",
+                "tactic_sig_no_out_arg": "unfold addrstack .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (addrstack ofs) v)\n     (Val.lessdef (Val.offset_ptr sp ofs) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (Eop (Oaddrstack ofs) Enil) v)\n     (Val.lessdef (Val.offset_ptr sp ofs) v))"
+                ]
+            },
+            {
+                "tactic_sig": "econstructor .",
+                "tactic_sig_no_out_arg": "econstructor .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (Eop (Oaddrstack ofs) Enil) v)\n     (Val.lessdef (Val.offset_ptr sp ofs) v))"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.and (eval_expr ge sp e m le (Eop (Oaddrstack ofs) Enil) ?v)\n  (Val.lessdef (Val.offset_ptr sp ofs) ?v)"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : Logic.and (eval_expr ge sp e m le (Eop (Oaddrstack ofs) Enil) ?v)\n  (Val.lessdef (Val.offset_ptr sp ofs) ?v)"
+                ],
+                "tactic_res": [
+                    "_goal : eval_expr ge sp e m le (Eop (Oaddrstack ofs) Enil) ?v",
+                    "_goal : Val.lessdef (Val.offset_ptr sp ofs) ?v"
+                ]
+            },
+            {
+                "tactic_sig": "eapply eval_Eop .",
+                "tactic_sig_no_out_arg": "eapply eval_Eop .",
+                "tactic_args": [
+                    "_goal : eval_expr ge sp e m le (Eop (Oaddrstack ofs) Enil) ?v"
+                ],
+                "tactic_res": [
+                    "_goal : eval_exprlist ge sp e m le Enil ?vl",
+                    "_goal : eq (eval_operation ge sp (Oaddrstack ofs) ?vl m) (Some ?v)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto with evalexpr .",
+                "tactic_sig_no_out_arg": "eauto with evalexpr .",
+                "tactic_args": [
+                    "_goal : eval_exprlist ge sp e m le Enil ?vl",
+                    "_goal : eq (eval_operation ge sp (Oaddrstack ofs) ?vl m) (Some ?v)"
+                ],
+                "tactic_res": [
+                    "_goal : eq (eval_operation ge sp (Oaddrstack ofs) nil m) (Some ?v)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : eq (eval_operation ge sp (Oaddrstack ofs) nil m) (Some ?v)"
+                ],
+                "tactic_res": [
+                    "_goal : eq (Some (Val.offset_ptr sp ofs)) (Some ?v)"
+                ]
+            },
+            {
+                "tactic_sig": "eauto .",
+                "tactic_sig_no_out_arg": "eauto .",
+                "tactic_args": [
+                    "_goal : eq (Some (Val.offset_ptr sp ofs)) (Some ?v)",
+                    "_goal : Val.lessdef (Val.offset_ptr sp ofs) ?v"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef (Val.offset_ptr sp ofs) (Val.offset_ptr sp ofs)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.offset_ptr sp ofs) (Val.offset_ptr sp ofs)"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": "eval_notint",
+        "proof": [
+            {
+                "tactic_sig": "unfold notint .",
+                "tactic_sig_no_out_arg": "unfold notint .",
+                "tactic_args": [
+                    "_goal : unary_constructor_sound notint Val.notint"
+                ],
+                "tactic_res": [
+                    "_goal : unary_constructor_sound\n  (fun e : expr =>\n   match notint_match e with\n   | notint_case1 n => Eop (Ointconst (Int.not n)) Enil\n   | notint_case2 s a t1 => Eop (Onotshift s a) (Econs t1 Enil)\n   | notint_case3 t1 => t1\n   | notint_case4 s a t1 => Eop (Oshift s a) (Econs t1 Enil)\n   | notint_case5 t1 t2 => Eop Oorn (Econs t2 (Econs t1 Enil))\n   | notint_case6 t1 t2 => Eop Obic (Econs t2 (Econs t1 Enil))\n   | notint_case7 t1 t2 => Eop Oeqv (Econs t1 (Econs t2 Enil))\n   | notint_case8 t1 t2 => Eop Oxor (Econs t1 (Econs t2 Enil))\n   | notint_default e0 => Eop Onot (Econs e0 Enil)\n   end) Val.notint"
+                ]
+            },
+            {
+                "tactic_sig": "red .",
+                "tactic_sig_no_out_arg": "red .",
+                "tactic_args": [
+                    "_goal : unary_constructor_sound\n  (fun e : expr =>\n   match notint_match e with\n   | notint_case1 n => Eop (Ointconst (Int.not n)) Enil\n   | notint_case2 s a t1 => Eop (Onotshift s a) (Econs t1 Enil)\n   | notint_case3 t1 => t1\n   | notint_case4 s a t1 => Eop (Oshift s a) (Econs t1 Enil)\n   | notint_case5 t1 t2 => Eop Oorn (Econs t2 (Econs t1 Enil))\n   | notint_case6 t1 t2 => Eop Obic (Econs t2 (Econs t1 Enil))\n   | notint_case7 t1 t2 => Eop Oeqv (Econs t1 (Econs t2 Enil))\n   | notint_case8 t1 t2 => Eop Oxor (Econs t1 (Econs t2 Enil))\n   | notint_default e0 => Eop Onot (Econs e0 Enil)\n   end) Val.notint"
+                ],
+                "tactic_res": [
+                    "_goal : forall (le : letenv) (a : expr) (x : val)\n  (_ : eval_expr ge sp e m le a x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le\n        match notint_match a with\n        | notint_case1 n => Eop (Ointconst (Int.not n)) Enil\n        | notint_case2 s a0 t1 => Eop (Onotshift s a0) (Econs t1 Enil)\n        | notint_case3 t1 => t1\n        | notint_case4 s a0 t1 => Eop (Oshift s a0) (Econs t1 Enil)\n        | notint_case5 t1 t2 => Eop Oorn (Econs t2 (Econs t1 Enil))\n        | notint_case6 t1 t2 => Eop Obic (Econs t2 (Econs t1 Enil))\n        | notint_case7 t1 t2 => Eop Oeqv (Econs t1 (Econs t2 Enil))\n        | notint_case8 t1 t2 => Eop Oxor (Econs t1 (Econs t2 Enil))\n        | notint_default e => Eop Onot (Econs e Enil)\n        end v) (Val.lessdef (Val.notint x) v))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o .",
+                "tactic_sig_no_out_arg": "intros until x .",
+                "tactic_args": [
+                    "_goal : forall (le : letenv) (a : expr) (x : val)\n  (_ : eval_expr ge sp e m le a x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le\n        match notint_match a with\n        | notint_case1 n => Eop (Ointconst (Int.not n)) Enil\n        | notint_case2 s a0 t1 => Eop (Onotshift s a0) (Econs t1 Enil)\n        | notint_case3 t1 => t1\n        | notint_case4 s a0 t1 => Eop (Oshift s a0) (Econs t1 Enil)\n        | notint_case5 t1 t2 => Eop Oorn (Econs t2 (Econs t1 Enil))\n        | notint_case6 t1 t2 => Eop Obic (Econs t2 (Econs t1 Enil))\n        | notint_case7 t1 t2 => Eop Oeqv (Econs t1 (Econs t2 Enil))\n        | notint_case8 t1 t2 => Eop Oxor (Econs t1 (Econs t2 Enil))\n        | notint_default e => Eop Onot (Econs e Enil)\n        end v) (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : forall _ : eval_expr ge sp e m le a x,\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le\n        match notint_match a with\n        | notint_case1 n => Eop (Ointconst (Int.not n)) Enil\n        | notint_case2 s a t1 => Eop (Onotshift s a) (Econs t1 Enil)\n        | notint_case3 t1 => t1\n        | notint_case4 s a t1 => Eop (Oshift s a) (Econs t1 Enil)\n        | notint_case5 t1 t2 => Eop Oorn (Econs t2 (Econs t1 Enil))\n        | notint_case6 t1 t2 => Eop Obic (Econs t2 (Econs t1 Enil))\n        | notint_case7 t1 t2 => Eop Oeqv (Econs t1 (Econs t2 Enil))\n        | notint_case8 t1 t2 => Eop Oxor (Econs t1 (Econs t2 Enil))\n        | notint_default e => Eop Onot (Econs e Enil)\n        end v) (Val.lessdef (Val.notint x) v))",
+                    "x : val",
+                    "a : expr",
+                    "le : letenv"
+                ]
+            },
+            {
+                "tactic_sig": "case ( notint_match _i ) .",
+                "tactic_sig_no_out_arg": "case ( notint_match _i ) .",
+                "tactic_args": [
+                    "_goal : forall _ : eval_expr ge sp e m le a x,\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le\n        match notint_match a with\n        | notint_case1 n => Eop (Ointconst (Int.not n)) Enil\n        | notint_case2 s a t1 => Eop (Onotshift s a) (Econs t1 Enil)\n        | notint_case3 t1 => t1\n        | notint_case4 s a t1 => Eop (Oshift s a) (Econs t1 Enil)\n        | notint_case5 t1 t2 => Eop Oorn (Econs t2 (Econs t1 Enil))\n        | notint_case6 t1 t2 => Eop Obic (Econs t2 (Econs t1 Enil))\n        | notint_case7 t1 t2 => Eop Oeqv (Econs t1 (Econs t2 Enil))\n        | notint_case8 t1 t2 => Eop Oxor (Econs t1 (Econs t2 Enil))\n        | notint_default e => Eop Onot (Econs e Enil)\n        end v) (Val.lessdef (Val.notint x) v))",
+                    "a : expr"
+                ],
+                "tactic_res": [
+                    "_goal : forall (n : Int.int)\n  (_ : eval_expr ge sp e m le (Eop (Ointconst n) Enil) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Ointconst (Int.not n)) Enil) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "_goal : forall (s : shift) (a : amount32) (t1 : expr)\n  (_ : eval_expr ge sp e m le (Eop (Oshift s a) (Econs t1 Enil)) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Onotshift s a) (Econs t1 Enil)) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "_goal : forall (t1 : expr)\n  (_ : eval_expr ge sp e m le (Eop Onot (Econs t1 Enil)) x),\nex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le t1 v)\n     (Val.lessdef (Val.notint x) v))",
+                    "_goal : forall (s : shift) (a : amount32) (t1 : expr)\n  (_ : eval_expr ge sp e m le (Eop (Onotshift s a) (Econs t1 Enil)) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Oshift s a) (Econs t1 Enil)) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "_goal : forall (t1 t2 : expr)\n  (_ : eval_expr ge sp e m le (Eop Obic (Econs t1 (Econs t2 Enil))) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oorn (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "_goal : forall (t1 t2 : expr)\n  (_ : eval_expr ge sp e m le (Eop Oorn (Econs t1 (Econs t2 Enil))) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Obic (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "_goal : forall (t1 t2 : expr)\n  (_ : eval_expr ge sp e m le (Eop Oxor (Econs t1 (Econs t2 Enil))) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oeqv (Econs t1 (Econs t2 Enil))) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "_goal : forall (t1 t2 : expr)\n  (_ : eval_expr ge sp e m le (Eop Oeqv (Econs t1 (Econs t2 Enil))) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oxor (Econs t1 (Econs t2 Enil))) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "_goal : forall (e0 : expr) (_ : eval_expr ge sp e m le e0 x),\nex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (Eop Onot (Econs e0 Enil)) v)\n     (Val.lessdef (Val.notint x) v))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (n : Int.int)\n  (_ : eval_expr ge sp e m le (Eop (Ointconst n) Enil) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Ointconst (Int.not n)) Enil) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Ointconst (Int.not n)) Enil) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "H : eval_expr ge sp e m le (Eop (Ointconst n) Enil) x",
+                    "n : Int.int"
+                ]
+            },
+            {
+                "tactic_sig": "InvEval .",
+                "tactic_sig_no_out_arg": "InvEval .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Ointconst (Int.not n)) Enil) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Ointconst (Int.not n)) Enil) v)\n     (Val.lessdef (Val.notint (Vint n)) v))"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (s : shift) (a : amount32) (t1 : expr)\n  (_ : eval_expr ge sp e m le (Eop (Oshift s a) (Econs t1 Enil)) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Onotshift s a) (Econs t1 Enil)) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Onotshift s a0) (Econs t1 Enil)) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "H : eval_expr ge sp e m le (Eop (Oshift s a0) (Econs t1 Enil)) x",
+                    "t1 : expr",
+                    "a0 : amount32",
+                    "s : shift"
+                ]
+            },
+            {
+                "tactic_sig": "InvEval .",
+                "tactic_sig_no_out_arg": "InvEval .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "H : eq (eval_shift s v1 a0) x",
+                    "H2 : eval_expr ge sp e m le t1 v1",
+                    "v1 : val"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (t1 : expr)\n  (_ : eval_expr ge sp e m le (Eop Onot (Econs t1 Enil)) x),\nex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le t1 v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le t1 v)\n     (Val.lessdef (Val.notint x) v))",
+                    "H : eval_expr ge sp e m le (Eop Onot (Econs t1 Enil)) x"
+                ]
+            },
+            {
+                "tactic_sig": "InvEval .",
+                "tactic_sig_no_out_arg": "InvEval .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "H : eq (Val.notint v1) x"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (s : shift) (a : amount32) (t1 : expr)\n  (_ : eval_expr ge sp e m le (Eop (Onotshift s a) (Econs t1 Enil)) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Oshift s a) (Econs t1 Enil)) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Oshift s a0) (Econs t1 Enil)) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "H : eval_expr ge sp e m le (Eop (Onotshift s a0) (Econs t1 Enil)) x"
+                ]
+            },
+            {
+                "tactic_sig": "InvEval .",
+                "tactic_sig_no_out_arg": "InvEval .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "H : eq (Val.notint (eval_shift s v1 a0)) x"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (t1 t2 : expr)\n  (_ : eval_expr ge sp e m le (Eop Obic (Econs t1 (Econs t2 Enil))) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oorn (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oorn (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "H : eval_expr ge sp e m le (Eop Obic (Econs t1 (Econs t2 Enil))) x",
+                    "t2 : expr"
+                ]
+            },
+            {
+                "tactic_sig": "InvEval .",
+                "tactic_sig_no_out_arg": "InvEval .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "H : eq (Val.and v1 (Val.notint v0)) x",
+                    "H3 : eval_expr ge sp e m le t2 v0",
+                    "v0 : val"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (t1 t2 : expr)\n  (_ : eval_expr ge sp e m le (Eop Oorn (Econs t1 (Econs t2 Enil))) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Obic (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Obic (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "H : eval_expr ge sp e m le (Eop Oorn (Econs t1 (Econs t2 Enil))) x"
+                ]
+            },
+            {
+                "tactic_sig": "InvEval .",
+                "tactic_sig_no_out_arg": "InvEval .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "H : eq (Val.or v1 (Val.notint v0)) x"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (t1 t2 : expr)\n  (_ : eval_expr ge sp e m le (Eop Oxor (Econs t1 (Econs t2 Enil))) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oeqv (Econs t1 (Econs t2 Enil))) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oeqv (Econs t1 (Econs t2 Enil))) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "H : eval_expr ge sp e m le (Eop Oxor (Econs t1 (Econs t2 Enil))) x"
+                ]
+            },
+            {
+                "tactic_sig": "InvEval .",
+                "tactic_sig_no_out_arg": "InvEval .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "H : eq (Val.xor v1 v0) x"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (t1 t2 : expr)\n  (_ : eval_expr ge sp e m le (Eop Oeqv (Econs t1 (Econs t2 Enil))) x),\nex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oxor (Econs t1 (Econs t2 Enil))) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oxor (Econs t1 (Econs t2 Enil))) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "H : eval_expr ge sp e m le (Eop Oeqv (Econs t1 (Econs t2 Enil))) x"
+                ]
+            },
+            {
+                "tactic_sig": "InvEval .",
+                "tactic_sig_no_out_arg": "InvEval .",
+                "tactic_args": [],
+                "tactic_res": [
+                    "H : eq (Val.xor v1 (Val.notint v0)) x"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall (e0 : expr) (_ : eval_expr ge sp e m le e0 x),\nex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (Eop Onot (Econs e0 Enil)) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (Eop Onot (Econs e0 Enil)) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "H : eval_expr ge sp e m le e0 x",
+                    "e0 : expr"
+                ]
+            },
+            {
+                "tactic_sig": "TrivialExists .",
+                "tactic_sig_no_out_arg": "TrivialExists .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Ointconst (Int.not n)) Enil) v)\n     (Val.lessdef (Val.notint (Vint n)) v))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst _i .",
+                "tactic_sig_no_out_arg": "subst _i .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Onotshift s a0) (Econs t1 Enil)) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "x : val"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Onotshift s a0) (Econs t1 Enil)) v)\n     (Val.lessdef (Val.notint (eval_shift s v1 a0)) v))"
+                ]
+            },
+            {
+                "tactic_sig": "TrivialExists .",
+                "tactic_sig_no_out_arg": "TrivialExists .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Onotshift s a0) (Econs t1 Enil)) v)\n     (Val.lessdef (Val.notint (eval_shift s v1 a0)) v))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "exists _i .",
+                "tactic_sig_no_out_arg": "exists _i .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le t1 v)\n     (Val.lessdef (Val.notint x) v))",
+                    "v1 : val"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.and (eval_expr ge sp e m le t1 v1)\n  (Val.lessdef (Val.notint x) v1)"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : Logic.and (eval_expr ge sp e m le t1 v1)\n  (Val.lessdef (Val.notint x) v1)"
+                ],
+                "tactic_res": [
+                    "_goal : eval_expr ge sp e m le t1 v1",
+                    "_goal : Val.lessdef (Val.notint x) v1"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : eval_expr ge sp e m le t1 v1"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint x) v1"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint v1)) v1"
+                ]
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o _o | _o _o | _o _o | _o _o | _o _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint v1)) v1",
+                    "v1 : val"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint Vundef)) Vundef",
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vint i))) (Vint i)",
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vlong i))) (Vlong i)",
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vfloat f))) (Vfloat f)",
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vsingle f))) (Vsingle f)",
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vptr b i))) (Vptr b i)",
+                    "H2 : eval_expr ge sp e m le t1 Vundef",
+                    "H2 : eval_expr ge sp e m le t1 (Vint i)",
+                    "i : Int.int",
+                    "H2 : eval_expr ge sp e m le t1 (Vlong i)",
+                    "i : Int64.int",
+                    "H2 : eval_expr ge sp e m le t1 (Vfloat f)",
+                    "f : float",
+                    "H2 : eval_expr ge sp e m le t1 (Vsingle f)",
+                    "f : float32",
+                    "H2 : eval_expr ge sp e m le t1 (Vptr b i)",
+                    "i : Ptrofs.int",
+                    "b : block"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint Vundef)) Vundef"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef Vundef Vundef"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef Vundef Vundef"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vint i))) (Vint i)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef (Vint (Int.not (Int.not i))) (Vint i)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vlong i))) (Vlong i)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef Vundef (Vlong i)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef Vundef (Vlong i)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vfloat f))) (Vfloat f)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef Vundef (Vfloat f)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef Vundef (Vfloat f)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vsingle f))) (Vsingle f)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef Vundef (Vsingle f)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef Vundef (Vsingle f)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vptr b i))) (Vptr b i)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef Vundef (Vptr b i)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef Vundef (Vptr b i)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "rewrite Int.not_involutive .",
+                "tactic_sig_no_out_arg": "rewrite Int.not_involutive .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Vint (Int.not (Int.not i))) (Vint i)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef (Vint i) (Vint i)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Vint i) (Vint i)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "exists ( eval_shift _i _i _i ) .",
+                "tactic_sig_no_out_arg": "exists ( eval_shift _i _i _i ) .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop (Oshift s a0) (Econs t1 Enil)) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "s : shift",
+                    "v1 : val",
+                    "a0 : amount32"
+                ],
+                "tactic_res": [
+                    "_goal : Logic.and\n  (eval_expr ge sp e m le (Eop (Oshift s a0) (Econs t1 Enil))\n     (eval_shift s v1 a0))\n  (Val.lessdef (Val.notint x) (eval_shift s v1 a0))"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : Logic.and\n  (eval_expr ge sp e m le (Eop (Oshift s a0) (Econs t1 Enil))\n     (eval_shift s v1 a0))\n  (Val.lessdef (Val.notint x) (eval_shift s v1 a0))"
+                ],
+                "tactic_res": [
+                    "_goal : eval_expr ge sp e m le (Eop (Oshift s a0) (Econs t1 Enil))\n  (eval_shift s v1 a0)",
+                    "_goal : Val.lessdef (Val.notint x) (eval_shift s v1 a0)"
+                ]
+            },
+            {
+                "tactic_sig": "eapply eval_Eop .",
+                "tactic_sig_no_out_arg": "eapply eval_Eop .",
+                "tactic_args": [
+                    "_goal : eval_expr ge sp e m le (Eop (Oshift s a0) (Econs t1 Enil))\n  (eval_shift s v1 a0)"
+                ],
+                "tactic_res": [
+                    "_goal : eval_exprlist ge sp e m le (Econs t1 Enil) ?vl",
+                    "_goal : eq (eval_operation ge sp (Oshift s a0) ?vl m)\n  (Some (eval_shift s v1 a0))"
+                ]
+            },
+            {
+                "tactic_sig": "eauto with evalexpr .",
+                "tactic_sig_no_out_arg": "eauto with evalexpr .",
+                "tactic_args": [
+                    "_goal : eval_exprlist ge sp e m le (Econs t1 Enil) ?vl",
+                    "_goal : eq (eval_operation ge sp (Oshift s a0) ?vl m)\n  (Some (eval_shift s v1 a0))"
+                ],
+                "tactic_res": [
+                    "_goal : eq (eval_operation ge sp (Oshift s a0) (cons v1 nil) m)\n  (Some (eval_shift s v1 a0))"
+                ]
+            },
+            {
+                "tactic_sig": "eauto with evalexpr .",
+                "tactic_sig_no_out_arg": "eauto with evalexpr .",
+                "tactic_args": [
+                    "_goal : eq (eval_operation ge sp (Oshift s a0) (cons v1 nil) m)\n  (Some (eval_shift s v1 a0))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst _i .",
+                "tactic_sig_no_out_arg": "subst _i .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint x) (eval_shift s v1 a0)",
+                    "x : val"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (eval_shift s v1 a0)))\n  (eval_shift s v1 a0)"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( eval_shift _i _i ) as [| _o | _o | _o | _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( eval_shift _i _i ) .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (eval_shift s v1 a0)))\n  (eval_shift s v1 a0)",
+                    "s : shift",
+                    "v1 : val"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint Vundef)) Vundef",
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vint i))) (Vint i)",
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vlong i))) (Vlong i)",
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vfloat f))) (Vfloat f)",
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vsingle f))) (Vsingle f)",
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vptr b i))) (Vptr b i)",
+                    "i : Int.int",
+                    "i : Int64.int",
+                    "f : float",
+                    "f : float32",
+                    "i : Ptrofs.int",
+                    "b : block"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint Vundef)) Vundef"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef Vundef Vundef"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef Vundef Vundef"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vint i))) (Vint i)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef (Vint (Int.not (Int.not i))) (Vint i)"
+                ]
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vlong i))) (Vlong i)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef Vundef (Vlong i)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef Vundef (Vlong i)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vfloat f))) (Vfloat f)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef Vundef (Vfloat f)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef Vundef (Vfloat f)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vsingle f))) (Vsingle f)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef Vundef (Vsingle f)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef Vundef (Vsingle f)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "simpl .",
+                "tactic_sig_no_out_arg": "simpl .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Val.notint (Val.notint (Vptr b i))) (Vptr b i)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef Vundef (Vptr b i)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef Vundef (Vptr b i)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "rewrite Int.not_involutive .",
+                "tactic_sig_no_out_arg": "rewrite Int.not_involutive .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Vint (Int.not (Int.not i))) (Vint i)"
+                ],
+                "tactic_res": [
+                    "_goal : Val.lessdef (Vint i) (Vint i)"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : Val.lessdef (Vint i) (Vint i)"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst _i .",
+                "tactic_sig_no_out_arg": "subst _i .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oorn (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef (Val.notint x) v))",
+                    "x : val"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oorn (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef (Val.notint (Val.and v1 (Val.notint v0))) v))"
+                ]
+            },
+            {
+                "tactic_sig": "rewrite Val.not_xor .",
+                "tactic_sig_no_out_arg": "rewrite Val.not_xor .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oorn (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef (Val.notint (Val.and v1 (Val.notint v0))) v))"
+                ],
+                "tactic_res": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oorn (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef\n        (Val.xor (Val.and v1 (Val.notint v0)) (Vint Int.mone)) v))"
+                ]
+            },
+            {
+                "tactic_sig": "admit .",
+                "tactic_sig_no_out_arg": "admit .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oorn (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef\n        (Val.xor (Val.and v1 (Val.notint v0)) (Vint Int.mone)) v))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "admit .",
+                "tactic_sig_no_out_arg": "admit .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Obic (Econs t2 (Econs t1 Enil))) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "TrivialExists .",
+                "tactic_sig_no_out_arg": "TrivialExists .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oeqv (Econs t1 (Econs t2 Enil))) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : eq (eval_operation ge sp Oeqv (cons v1 (cons v0 nil)) m)\n  (Some (Val.notint x))"
+                ]
+            },
+            {
+                "tactic_sig": "admit .",
+                "tactic_sig_no_out_arg": "admit .",
+                "tactic_args": [
+                    "_goal : eq (eval_operation ge sp Oeqv (cons v1 (cons v0 nil)) m)\n  (Some (Val.notint x))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "TrivialExists .",
+                "tactic_sig_no_out_arg": "TrivialExists .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and\n     (eval_expr ge sp e m le (Eop Oxor (Econs t1 (Econs t2 Enil))) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": [
+                    "_goal : eq (eval_operation ge sp Oxor (cons v1 (cons v0 nil)) m)\n  (Some (Val.notint x))"
+                ]
+            },
+            {
+                "tactic_sig": "admit .",
+                "tactic_sig_no_out_arg": "admit .",
+                "tactic_args": [
+                    "_goal : eq (eval_operation ge sp Oxor (cons v1 (cons v0 nil)) m)\n  (Some (Val.notint x))"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "admit .",
+                "tactic_sig_no_out_arg": "admit .",
+                "tactic_args": [
+                    "_goal : ex\n  (fun v : val =>\n   Logic.and (eval_expr ge sp e m le (Eop Onot (Econs e0 Enil)) v)\n     (Val.lessdef (Val.notint x) v))"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

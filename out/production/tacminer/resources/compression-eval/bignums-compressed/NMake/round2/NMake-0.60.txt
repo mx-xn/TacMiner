@@ -1,0 +1,44 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1; [rewrite H2; [clear H0 H1apply H3; [intros H4 H5 H6 | .. ] | .. ] | .. ].
+Ltac custom1 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom2 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom3 H0 :=  apply H0; [auto | auto | .. ].
+Ltac custom4 H0 H1 :=  rewrite H0; [apply H1; [ | .. ] | .. ].
+Ltac custom5 H0 :=  intros H0; [rewrite H0 | .. ].
+Ltac custom6 H0 H1 :=  intros H0; [rewrite H1 | .. ].
+Ltac custom7  :=  subst; [auto | .. ].
+Ltac custom8 H0 H1 H2 H3 H4 H8 H9 H5 H6 H7 :=  rewrite ( H0 H1 H2 H3 ), ( H4 H8 H9 H5 ); [unfold H6; [custom3 H7 | .. ] | .. ].
+Ltac custom9 H0 H1 H2 :=  rewrite H0; [case Z.compare_spec; [ | intros H1 | intros H2 | .. ] | .. ].
+Ltac custom10 H0 :=  rewrite <- H0; [ |  | auto with zarith | .. ].
+Ltac custom11 H0 H1 H2 :=  intros H0 H1; [rewrite H2 | .. ].
+Ltac custom12 H0 :=  symmetry; [apply H0 | .. ].
+Ltac custom13 H0 :=  case ( spec_digits H0 ); [auto with zarith | .. ].
+Ltac custom14 H0 H1 H2 :=  case ( spec_digits H0 ); [intros H1 H2 | .. ].
+Ltac custom15 H0 :=  custom1 H0; [auto with zarith | .. ].
+Ltac custom16 H0 :=  apply H0; [ | auto with zarith | .. ].
+Ltac custom17 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom18 H0 H1 H2 :=  custom2 H0 H1; [rewrite H2 | .. ].
+Ltac custom19 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom20 H0 H8 :=  rewrite H0 by auto with zarith; [rewrite H8 | .. ].
+Ltac custom21 H0 H1 :=  apply H0; [custom1 H1 | .. ].
+Ltac custom22 H0 H1 :=  rewrite H0; [custom15 H1 | .. ].
+Ltac custom23 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom24 H0 :=  rewrite H0; [auto | .. ].
+---------------------------
+Num proofs: 48
+Num training proofs: 17
+Original size: 1034
+Compressed total size: 871
+Training size: 672
+(2) (3) Testing size: 362
+(2) (3) Compressed testing size: 309
+(2) (3) Compression rate: 117.15
+Compressed size + lib: 928 ( 871 corpus / 57 library )
+[1] numTactics: 25
+[1] avrgTacticSize: 2.28
+[1] maxTacSize: 5
+[1] numProofsCompressed/total: 15 / 31
+[1] numAvgApplications: 4.60
+[1] numTotalApplications: 115
+Compression rate: 1.1142241379310345
+Num tactics in library: 25

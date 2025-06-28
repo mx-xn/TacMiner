@@ -1,0 +1,9 @@
+c
+c Open-WBO:	 a Modular MaxSAT Solver -- based on Glucose4.1 (core version)
+c Version:	 September 2018 -- Release: 2.1
+c Authors:	 Ruben Martins, Vasco Manquinho, Ines Lynce
+c Contributors:	 Miguel Neves, Saurabh Joshi, Norbert Manthey, Mikolas Janota
+c Contact:	 open-wbo@sat.inesc-id.pt -- http://sat.inesc-id.pt/open-wbo/
+c
+c ERROR! Could not open file: maxsatInput.txt
+s UNKNOWN

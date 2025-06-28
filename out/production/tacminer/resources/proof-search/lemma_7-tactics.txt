@@ -1,0 +1,7 @@
+Ltac custom0 H0 := rewrite In_inter in H0; [auto |auto | .. ].
+Ltac custom1 H0 H1 H2 := constructor; [ |intros H0 H1; [apply H2; [tauto | .. ] | .. ] |auto | .. ].
+Ltac custom0 H0 H1 H2 H3 H4 H5 H7 H6 := intros H0 H1; [assert ( In H1 ( inter ( Cons H2 H3 H4 ) H5 ) ) by exact H0; [apply H7; [rewrite In_inter in H6; [auto |auto | .. ] | .. ] | .. ] | .. ].
+Ltac custom0 H0 H1 H2 := intros H0 H1; [apply H2; [tauto | .. ] | .. ].
+Ltac custom1 H0 H1 H2 := constructor; [lia |intros H0 H1; [apply H2; [tauto | .. ] | .. ] |auto | .. ].
+Ltac custom0 H0 H1 H3 := intros H0 H1; [rewrite In_inter in H0; [auto | auto; [apply H3; [tauto | .. ] | .. ] | .. ] | .. ].
+Ltac custom0 H0 := rewrite In_inter in H0; [auto |auto | .. ].

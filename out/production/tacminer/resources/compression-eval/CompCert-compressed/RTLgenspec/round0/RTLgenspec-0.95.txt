@@ -1,0 +1,67 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom2  :=  econstructor; [eauto | eauto | eauto | .. ].
+Ltac custom4 H0 H1 :=  apply H0 with H1; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom5 H0 H1 H3 :=  apply H0 with H1; [auto | eapply H3; [eauto 2 with rtlg | eauto 2 with rtlg |  |  | eauto 2 with rtlg | .. ] | .. ].
+Ltac custom6 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom7  :=  econstructor; [eauto | .. ].
+Ltac custom8 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | .. ].
+Ltac custom9 H0 H1 H4 :=  apply H0 with H1; [auto | eapply H4; [ | .. ] | .. ].
+Ltac custom10 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg |  | eauto with rtlg | .. ].
+Ltac custom12 H0 H8 :=  intros until H0; [unfold H8 | .. ].
+Ltac custom13 H0 :=  eapply H0; [eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | .. ].
+Ltac custom14 H0 H1 H2 H3 H4 H5 H6 :=  simpl; [intros H0 H1 H2 H3 H4 H5 H6 | .. ].
+Ltac custom15 H0 H1 H2 H3 H4 H5 H6 H7 H8 :=  generalize H0; [unfold H1; [caseEq ( nth_error ( map_letvars H2 ) H3 ); [intros H4 H5 H6 | intros H7 H8 | .. ] | .. ] | .. ].
+Ltac custom16  :=  custom7 ; [eauto | .. ].
+Ltac custom17 H0 :=  apply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom19 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom20  :=  econstructor; [eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom21  :=  split; [ | auto | .. ].
+Ltac custom22  :=  split; [ | congruence | .. ].
+Ltac custom23 H0 H1 H2 :=  custom9 H0 H1 H2; [eauto with rtlg | .. ].
+Ltac custom24 H0 :=  apply H0; [ | eauto 3 with rtlg | .. ].
+Ltac custom25  :=  constructor; [ | auto | .. ].
+Ltac custom26 H0 H1 :=  red; [intros H0 H1 | .. ].
+Ltac custom27 H0 :=  custom18 H0; [eauto with rtlg | .. ].
+Ltac custom28 H0 :=  custom16 ; [custom19 H0; [eauto | .. ] | .. ].
+Ltac custom29 H0 :=  apply H0; [auto with coqlib | .. ].
+Ltac custom30 H0 :=  left; [exists H0; [auto | .. ] | .. ].
+Ltac custom31 H0 H1 H2 :=  elim H0; [intro H1 | intro H2 | .. ].
+Ltac custom32 H0 :=  intro H0; [induction H0 | .. ].
+Ltac custom33  :=  constructor; [eauto with rtlg | .. ].
+Ltac custom34 H0 H1 H2 :=  intros H0 H1 H2; [left; [eauto with rtlg | .. ] | .. ].
+Ltac custom35 H0 :=  monadInv H0; [eauto with rtlg]. eauto with rtlg.
+Ltac custom36  :=  right; [auto | .. ].
+Ltac custom37 H0 H1 :=  apply H0 with H1; [eauto 3 with rtlg | .. ].
+Ltac custom38  :=  right; [eauto with rtlg | .. ].
+Ltac custom39 H0 :=  inv H0; [ | custom38  | .. ].
+Ltac custom40 H0 :=  inv H0; [eauto with rtlg].
+Ltac custom41 H0 :=  custom19 H0; [eauto | .. ].
+Ltac custom42  :=  custom2 ; [eauto | .. ].
+Ltac custom43 H0 H1 :=  generalize H0; [unfold H1 | .. ].
+Ltac custom44 H0 :=  inv H0; [auto].
+Ltac custom45 H0 :=  constructor; [custom44 H0 | .. ].
+Ltac custom46  :=  econstructor; [eauto with rtlg | .. ].
+Ltac custom47 H0 H1 H2 H3 H4 H5 H6 H7 :=  intros H0 H1 H2 H3 H4 H5 H6 H7; [monadInv H7 | .. ].
+Ltac custom48 H0 H1 :=  intros H0 H1; [inv H1 | .. ].
+Ltac custom49 H0 H1 :=  intros H0 H1; [induction H1 | .. ].
+Ltac custom50 H0 H1 H2 :=  intros H0 H1 H2; [pose ( AT := fun pc i => instr_at_incr H0 H1 pc i H2 ) | .. ].
+Ltac custom51 H0 :=  monadInv H0; [eauto with rtlg].
+---------------------------
+Num proofs: 37
+Num training proofs: 21
+Original size: 1295
+Compressed total size: 873
+Training size: 937
+(2) (3) Testing size: 358
+(2) (3) Compressed testing size: 222
+(2) (3) Compression rate: 161.26
+Compressed size + lib: 1036 ( 873 corpus / 163 library )
+[1] numTactics: 48
+[1] avrgTacticSize: 2.83
+[1] maxTacSize: 10
+[1] numProofsCompressed/total: 15 / 16
+[1] numAvgApplications: 4.27
+[1] numTotalApplications: 205
+Compression rate: 1.25
+Num tactics in library: 48

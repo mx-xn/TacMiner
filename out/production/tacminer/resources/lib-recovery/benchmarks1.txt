@@ -1,0 +1,81 @@
+// please follow the following format:
+// <ID>
+// <path where target tactic is used>
+// <tactic-sig-and-body>
+//
+// benchmark-separator!!!
+//
+// <..other benchmarks>
+
+1
+category-theory/Theory/functor.v
+Ltac cat :=
+  simplify;
+  autorewrite with categories;
+  auto with category_laws;
+  try reflexivity.
+
+benchmark-separator!!!
+2
+category-theory/Theory/functor.v
+Ltac construct := unshelve econstructor; simpl; intros.
+
+benchmark-separator!!!
+3
+category-theory/Instance/Coq/ParE.v
+Ltac bust x := destruct (x _); subst; auto; try tauto.
+
+//benchmark-separator!!!
+//4
+//verdi/theories/Systems/LiveLockServ.v
+//Ltac coinductive_case CIH :=
+//      apply W_tl; simpl in *; auto;
+//      apply CIH; simpl in *; auto.
+//
+//benchmark-separator!!!
+//5
+//verdi/theories/Systems/LiveLockServ.v
+//Ltac invcs H := inversion H; subst_max; clear H; simpl in *.
+//add-before-use:
+//Ltac subst_max :=  repeat match goal with
+//  | [ H : ?X = _ |− _ ]  => subst X
+//  | [H : _ = ?X |− _] => subst X
+//end.
+//
+benchmark-separator!!!
+6
+CompCert/aarch64/ConstpropOpproof.v
+Ltac predSpec pred predspec x y :=
+    generalize (predspec x y); case (pred x y); intro.
+
+benchmark-separator!!!
+7
+CompCert/lib/Floats.v
+Ltac smart_omega :=
+    simpl radix_val in *; simpl Z.pow in *;
+    compute_this Int.modulus; compute_this Int.half_modulus;
+    compute_this Int.max_unsigned;
+    compute_this Int.min_signed; compute_this Int.max_signed;
+    compute_this Int64.modulus; compute_this Int64.half_modulus;
+    compute_this Int64.max_unsigned;
+    compute_this (Z.pow_pos 2 1024); compute_this (Z.pow_pos 2 53); compute_this (Z.pow_pos 2 52); compute_this (Z.pow_pos 2 32);
+    zify; lia.
+
+benchmark-separator!!!
+8
+CompCert/arm/SelectOpproof.v
+Ltac EvalOp := eapply eval_Eop; eauto with evalexpr.
+
+benchmark-separator!!!
+9
+CompCert/backend/SplitLongproof.v
+Ltac DeclHelper := red in HELPERS; decompose [Logic.and] HELPERS; eauto.
+
+
+
+
+
+
+
+
+

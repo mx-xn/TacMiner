@@ -1,0 +1,219 @@
+CompCert/backend/NeedDomain.v
+-----
+CompCert/backend/NeedDomain_compr.v
+-----
+-----
+eq_nval
+Proof. decide equality. apply Int.eq_dec. Defined.
+vagree_same
+Proof. intros. destruct x; simpl; auto; destruct v; auto. red; auto. Qed.
+vagree_lessdef
+Proof. intros. inv H. apply vagree_same. destruct x; simpl; auto. Qed.
+lessdef_vagree
+Proof. intros. simpl in H. auto. Qed.
+lessdef_vagree_list
+Proof. intro vl1. induction vl1; intros; inv H; constructor; auto with na. Qed.
+vagree_lessdef_list
+Proof. induction 1; intros. constructor. destruct nvl; constructor; auto with na. Qed.
+nge_refl
+Proof. intro x. destruct x; constructor; auto. Qed.
+nge_trans
+Proof. induction 1; intros w VG; inv VG; eauto with na. Qed.
+nge_agree
+Proof. induction 1; simpl; auto. - destruct v; auto with na. - destruct v, w; intuition. red; auto. Qed.
+nge_lub_l
+Proof. intros x y. unfold nlub; destruct x, y; auto with na. constructor. intros. autorewrite with ints; auto. rewrite H0; auto. Qed.
+Ltac custom_tac18 H0 H1 H2 := intros H0 H1; unfold H2.
+
+Ltac custom_tac17  := constructor; intros.
+
+Ltac custom_tac12  := autorewrite with ints; auto.
+
+Ltac custom_tac25 H0 := apply H0; auto.
+
+nge_lub_r
+Proof. custom_tac18 x y nlub; destruct x, y; auto with na. custom_tac17 . custom_tac12 . rewrite H0. custom_tac25 orb_true_r. Qed.
+iagree_refl
+Proof. intros; red; auto. Qed.
+eq_same_bits
+Proof. intros; congruence. Qed.
+iagree_and_eq
+Proof. intros; split; intros. - Int.bit_solve. specialize (H i H0). destruct (Int.testbit mask i). rewrite ! andb_true_r; auto. rewrite ! andb_false_r; auto. - red; intros. exploit (eq_same_bits i); eauto; autorewrite with ints; auto. rewrite H1. rewrite ! andb_true_r; auto. Qed.
+iagree_mone
+Proof. intros. rewrite iagree_and_eq in H. rewrite ! Int.and_mone in H. auto. Qed.
+iagree_zero
+Proof. intros. rewrite iagree_and_eq. rewrite ! Int.and_zero; auto. Qed.
+iagree_and
+Proof. intros. rewrite iagree_and_eq in *. rewrite ! Int.and_assoc. rewrite (Int.and_commut n). auto. Qed.
+iagree_not
+Proof. intros; red; intros; autorewrite with ints; auto. f_equal; auto. Qed.
+iagree_not'
+Proof. intros. rewrite <- (Int.not_involutive x). rewrite <- (Int.not_involutive y). apply iagree_not; auto. Qed.
+iagree_or
+Proof. intros. apply iagree_not'. rewrite ! Int.not_or_and_not. apply iagree_and. apply iagree_not; auto. Qed.
+iagree_bitwise_binop
+Proof. intros; red; intros. rewrite ! H by auto. f_equal; auto. Qed.
+iagree_shl
+Proof. intros; red; intros. autorewrite with ints; auto. destruct (zlt i (Int.unsigned n)). - auto. - generalize (Int.unsigned_range n); intros. apply H. lia. rewrite Int.bits_shru by lia. replace (i - Int.unsigned n + Int.unsigned n) with i by lia. rewrite zlt_true by lia. auto. Qed.
+iagree_shru
+Proof. intros; red; intros. autorewrite with ints; auto. destruct (zlt (i + Int.unsigned n) Int.zwordsize). - generalize (Int.unsigned_range n); intros. apply H. lia. rewrite Int.bits_shl by lia. replace (i + Int.unsigned n - Int.unsigned n) with i by lia. rewrite zlt_false by lia. auto. - auto. Qed.
+iagree_shr_1
+Proof. intros; red; intros. rewrite <- H in H2. rewrite Int.bits_shru in H2 by auto. rewrite ! Int.bits_shr by auto. destruct (zlt (i + Int.unsigned n) Int.zwordsize). - apply H0; auto. generalize (Int.unsigned_range n); lia. - discriminate. Qed.
+iagree_shr
+Proof. intros; red; intros. rewrite ! Int.bits_shr by auto. generalize (Int.unsigned_range n); intros. set (j := if zlt (i + Int.unsigned n) Int.zwordsize then i + Int.unsigned n else Int.zwordsize - 1). assert (0 <= j < Int.zwordsize). unfold j; destruct (zlt (i + Int.unsigned n) Int.zwordsize); lia. apply H; auto. autorewrite with ints; auto. apply orb_true_intro. unfold j; destruct (zlt (i + Int.unsigned n) Int.zwordsize). - left. rewrite zlt_false by lia. replace (i + Int.unsigned n - Int.unsigned n) with i by lia. auto. - right. reflexivity. Qed.
+iagree_rol
+Proof. intros. assert (Int.zwordsize > 0) by (compute; auto). red; intros. rewrite ! Int.bits_rol by auto. apply H. apply Z_mod_lt; auto. rewrite Int.bits_ror. replace (((i - Int.unsigned amount) mod Int.zwordsize + Int.unsigned amount) mod Int.zwordsize) with i. auto. apply eqmod_small_eq with Int.zwordsize; auto. apply eqmod_trans with ((i - Int.unsigned amount) + Int.unsigned amount). apply eqmod_refl2; lia. eapply eqmod_trans. 2: apply eqmod_mod; auto. apply eqmod_add. apply eqmod_mod; auto. apply eqmod_refl. apply Z_mod_lt; auto. apply Z_mod_lt; auto. Qed.
+iagree_ror
+Proof. intros. rewrite ! Int.ror_rol_neg by apply int_wordsize_divides_modulus. apply iagree_rol. rewrite Int.ror_rol_neg by apply int_wordsize_divides_modulus. rewrite Int.neg_involutive; auto. Qed.
+eqmod_iagree
+Proof. intros. set (p := Z.to_nat (Int.size m)). generalize (Int.size_range m); intros RANGE. assert (EQ: Int.size m = Z.of_nat p). symmetry; apply Z2Nat.id. lia. rewrite EQ in H; rewrite <- two_power_nat_two_p in H. red; intros. rewrite ! Int.testbit_repr by auto. destruct (zlt i (Int.size m)). eapply same_bits_eqmod; eauto. lia. assert (Int.testbit m i = false) by (eapply Int.bits_size_2; lia). congruence. Qed.
+iagree_eqmod
+Proof. intros. set (p := Z.to_nat (Int.size m)). generalize (Int.size_range m); intros RANGE. assert (EQ: Int.size m = Z.of_nat p). symmetry; apply Z2Nat.id. lia. rewrite EQ; rewrite <- two_power_nat_two_p. apply eqmod_same_bits. intros. apply H. lia. unfold complete_mask. rewrite Int.bits_zero_ext by lia. rewrite zlt_true by lia. rewrite Int.bits_mone by lia. auto. Qed.
+complete_mask_idem
+Proof. unfold complete_mask; intros. destruct (Int.eq_dec m Int.zero). + subst m; reflexivity. + assert (Int.unsigned m <> 0). red; intros; elim n. rewrite <- (Int.repr_unsigned m). rewrite H; auto. assert (0 < Int.size m). apply Zsize_pos'. generalize (Int.unsigned_range m); lia. generalize (Int.size_range m); intros. f_equal. apply Int.bits_size_4. tauto. rewrite Int.bits_zero_ext by lia. rewrite zlt_true by lia. apply Int.bits_mone; lia. intros. rewrite Int.bits_zero_ext by lia. apply zlt_false; lia. Qed.
+andimm_sound
+Proof. unfold andimm; intros; destruct x; simpl in *; unfold Val.and. - auto. - InvAgree. apply iagree_and; auto. - InvAgree. rewrite iagree_and_eq in H. rewrite H; auto. Qed.
+orimm_sound
+Proof. unfold orimm; intros; destruct x; simpl in *. - auto. - unfold Val.or; InvAgree. apply iagree_or; auto. - InvAgree. simpl. apply Val.lessdef_same. f_equal. apply iagree_mone. apply iagree_or. rewrite Int.and_commut. rewrite Int.and_mone. auto. Qed.
+bitwise_idem
+Proof. intros. auto. Qed.
+vagree_bitwise_binop
+Proof. unfold bitwise; intros. destruct x; simpl in *. - auto. - InvAgree. - inv H0; auto. inv H1; auto. destruct w1; auto. Qed.
+and_sound
+Proof. intros. apply (vagree_bitwise_binop Int.and (iagree_bitwise_binop andb Int.and Int.bits_and)); auto. Qed.
+or_sound
+Proof. intros. apply (vagree_bitwise_binop Int.or (iagree_bitwise_binop orb Int.or Int.bits_or)); auto. Qed.
+xor_sound
+Proof. intros. apply (vagree_bitwise_binop Int.xor (iagree_bitwise_binop xorb Int.xor Int.bits_xor)); auto. Qed.
+notint_sound
+Proof. intros. rewrite ! Val.not_xor. apply xor_sound; auto with na. Qed.
+shlimm_sound
+Proof. unfold shlimm; intros. unfold Val.shl. destruct (Int.ltu n Int.iwordsize). destruct x; simpl in *. - auto. - InvAgree. apply iagree_shl; auto. - InvAgree. apply Val.lessdef_same. f_equal. apply iagree_mone. apply iagree_shl; auto. - destruct v; auto with na. Qed.
+shruimm_sound
+Proof. unfold shruimm; intros. unfold Val.shru. destruct (Int.ltu n Int.iwordsize). destruct x; simpl in *. - auto. - InvAgree. apply iagree_shru; auto. - InvAgree. apply Val.lessdef_same. f_equal. apply iagree_mone. apply iagree_shru; auto. - destruct v; auto with na. Qed.
+rol_sound
+Proof. unfold rol, Val.rol; intros. destruct x; simpl in *. - auto. - InvAgree. apply iagree_rol; auto. - inv H; auto. Qed.
+ror_sound
+Proof. unfold ror, Val.ror; intros. destruct x; simpl in *. - auto. - InvAgree. apply iagree_ror; auto. - inv H; auto. Qed.
+rolm_sound
+Proof. unfold rolm; intros. assert (X: forall u, Val.rolm u amount mask = Val.and (Val.rol u (Vint amount)) (Vint mask)). - destruct u; auto. - rewrite ! X. apply andimm_sound. apply rol_sound. auto. Qed.
+add_sound
+Proof. unfold modarith; intros. destruct x; simpl in *. - auto. - unfold Val.add; InvAgree. apply eqmod_iagree. apply eqmod_add; apply iagree_eqmod; auto. - inv H; auto. inv H0; auto. destruct w1; auto. Qed.
+sub_sound
+Proof. unfold modarith; intros. destruct x; simpl in *. - auto. - unfold Val.sub; rewrite H1; InvAgree. apply eqmod_iagree. apply eqmod_sub; apply iagree_eqmod; auto. - inv H; auto. inv H0; auto. destruct w1; auto. Qed.
+modarith_idem
+Proof. intro nv. destruct nv; simpl; auto. f_equal; apply complete_mask_idem. Qed.
+mul_sound
+Proof. unfold mul, add; intros. destruct x; simpl in *. - auto. - unfold Val.mul; InvAgree. apply eqmod_iagree. apply eqmod_mult; apply iagree_eqmod; auto. - inv H; auto. inv H0; auto. destruct w1; auto. Qed.
+neg_sound
+Proof. intros; destruct x; simpl in *. - auto. - unfold Val.neg; InvAgree. apply eqmod_iagree. apply eqmod_neg. apply iagree_eqmod; auto. - inv H; simpl; auto. Qed.
+zero_ext_sound
+Proof. unfold zero_ext; intros. destruct x; simpl in *. - auto. - unfold Val.zero_ext; InvAgree. red; intros. autorewrite with ints; try lia. destruct (zlt i1 n); auto. apply H; auto. autorewrite with ints; try lia. rewrite zlt_true; auto. - unfold Val.zero_ext; InvAgree; auto. apply Val.lessdef_same. f_equal. Int.bit_solve; try lia. destruct (zlt i1 n); auto. apply H; auto. autorewrite with ints; try lia. apply zlt_true; auto. Qed.
+sign_ext_sound
+Proof. unfold sign_ext; intros. destruct x; simpl in *. - auto. - unfold Val.sign_ext; InvAgree. red; intros. autorewrite with ints; try lia. set (j := if zlt i1 n then i1 else n - 1). assert (0 <= j < Int.zwordsize). unfold j; destruct (zlt i1 n); lia. apply H; auto. autorewrite with ints; try lia. apply orb_true_intro. unfold j; destruct (zlt i1 n). left. rewrite zlt_true; auto. right. rewrite Int.unsigned_repr. rewrite zlt_false by lia. replace (n - 1 - (n - 1)) with 0 by lia. reflexivity. generalize Int.wordsize_max_unsigned; lia. - unfold Val.sign_ext; InvAgree; auto. apply Val.lessdef_same. f_equal. Int.bit_solve; try lia. set (j := if zlt i1 n then i1 else n - 1). assert (0 <= j < Int.zwordsize). unfold j; destruct (zlt i1 n); lia. apply H; auto. rewrite Int.bits_zero_ext; try lia. rewrite zlt_true. apply Int.bits_mone; auto. unfold j. destruct (zlt i1 n); lia. Qed.
+store_argument_sound
+Proof. intros. assert (UNDEF: list_forall2 memval_lessdef (List.repeat Undef (size_chunk_nat chunk)) (encode_val chunk w)). rewrite <- (encode_val_length chunk w). apply repeat_Undef_inject_any. assert (SAME: forall vl1 vl2, vl1 = vl2 -> list_forall2 memval_lessdef vl1 vl2). intros. subst vl2. revert vl1. induction vl1; constructor; auto. apply memval_lessdef_refl. intros. unfold store_argument in H; destruct chunk. - InvAgree. apply SAME. simpl; f_equal. apply encode_int_8_mod. change 8 with (Int.size (Int.repr 255)). apply iagree_eqmod; auto. - InvAgree. apply SAME. simpl; f_equal. apply encode_int_8_mod. change 8 with (Int.size (Int.repr 255)). apply iagree_eqmod; auto. - InvAgree. apply SAME. simpl; f_equal. apply encode_int_8_mod. change 8 with (Int.size (Int.repr 255)). apply iagree_eqmod; auto. - InvAgree. apply SAME. simpl; f_equal. apply encode_int_16_mod. change 16 with (Int.size (Int.repr 65535)). apply iagree_eqmod; auto. - InvAgree. apply SAME. simpl; f_equal. apply encode_int_16_mod. change 16 with (Int.size (Int.repr 65535)). apply iagree_eqmod; auto. - apply encode_val_inject. rewrite val_inject_id; auto. - apply encode_val_inject. rewrite val_inject_id; auto. - apply encode_val_inject. rewrite val_inject_id; auto. - apply encode_val_inject. rewrite val_inject_id; auto. - apply encode_val_inject. rewrite val_inject_id; auto. - apply encode_val_inject. rewrite val_inject_id; auto. Qed.
+store_argument_load_result
+Proof. unfold store_argument; intros; destruct chunk; auto using Val.load_result_lessdef; InvAgree; simpl. - apply Val.norm_bool_lessdef. apply zero_ext_sound with (v := Vint i) (w := Vint i0) (x := All) (n := 8). auto. lia. - apply sign_ext_sound with (v := Vint i) (w := Vint i0) (x := All) (n := 8). auto. compute; auto. - apply zero_ext_sound with (v := Vint i) (w := Vint i0) (x := All) (n := 8). auto. lia. - apply sign_ext_sound with (v := Vint i) (w := Vint i0) (x := All) (n := 16). auto. compute; auto. - apply zero_ext_sound with (v := Vint i) (w := Vint i0) (x := All) (n := 16). auto. lia. Qed.
+maskzero_sound
+Proof. unfold maskzero; intros. unfold Val.maskzero_bool; InvAgree; try discriminate. inv H0. rewrite iagree_and_eq in H. rewrite H. auto. Qed.
+normalize_sound
+Proof. intros. destruct x; simpl in *. - auto. - unfold Val.normalize. destruct v. auto. destruct w; try contradiction. destruct ty; auto. destruct ty; auto. destruct ty; auto. destruct ty; auto. destruct ty; destruct Archi.ptr64; auto. - apply Val.normalize_lessdef; auto. Qed.
+select_sound
+Proof. unfold Val.select; intros. destruct ob as [b|]; auto with na. apply normalize_sound. destruct b; auto. Qed.
+valid_pointer_inj
+Proof. unfold inject_id; intros. inv H. rewrite Ptrofs.add_zero. rewrite Mem.valid_pointer_nonempty_perm in *. eauto. Qed.
+weak_valid_pointer_inj
+Proof. unfold inject_id; intros. inv H. rewrite Ptrofs.add_zero. rewrite Mem.weak_valid_pointer_spec in *. rewrite ! Mem.valid_pointer_nonempty_perm in *. destruct H0. - left. eauto. - right. eauto. Defined.
+weak_valid_pointer_no_overflow
+Proof. unfold inject_id; intros. inv H. rewrite Z.add_0_r. apply Ptrofs.unsigned_range_2. Defined.
+valid_different_pointers_inj
+Proof. unfold inject_id; intros. left; congruence. Defined.
+default_needs_of_condition_sound
+Proof. intros. apply eval_condition_inj with (f := inject_id) (m1 := m1) (vl1 := args1); auto. apply val_inject_list_lessdef. apply lessdef_vagree_list. auto. Qed.
+default_needs_of_operation_sound
+Proof. intros. assert (default nv = All) by (destruct nv; simpl; congruence). rewrite H2 in H0. assert (Val.lessdef_list args1 args2). - destruct H0. auto with na. destruct H0. inv H0; constructor; auto with na. destruct H0. inv H0. constructor. inv H8; constructor; auto with na. inv H0; constructor; auto with na. inv H8; constructor; auto with na. inv H9; constructor; auto with na. - exploit (@eval_operation_inj _ _ _ _ ge ge inject_id). eassumption. auto. auto. auto. instantiate (1 := op). intros. apply val_inject_lessdef; auto. apply val_inject_lessdef. instantiate (1 := Vptr sp Ptrofs.zero). instantiate (1 := Vptr sp Ptrofs.zero). auto. apply val_inject_list_lessdef; eauto. eauto. intros (v2 & A & B). exists v2; split; auto. apply vagree_lessdef. apply val_inject_lessdef. auto. Qed.
+andimm_redundant_sound
+Proof. unfold andimm_redundant; intros. destruct x; try discriminate. - simpl; auto. - InvBooleans. simpl in *; unfold Val.and; InvAgree. red; intros. exploit (eq_same_bits i1); eauto. autorewrite with ints; auto. rewrite H2; simpl; intros. destruct (Int.testbit n i1) eqn:N; try discriminate. rewrite andb_true_r. apply H0; auto. autorewrite with ints; auto. rewrite H2, N; auto. Qed.
+orimm_redundant_sound
+Proof. unfold orimm_redundant; intros. destruct x; try discriminate. - auto. - InvBooleans. simpl in *; unfold Val.or; InvAgree. apply iagree_not'. rewrite Int.not_or_and_not. apply (andimm_redundant_sound (Vint (Int.not i)) (Vint (Int.not i0)) (I m) (Int.not n)). simpl. rewrite Int.not_involutive. apply proj_sumbool_is_true. auto. simpl. apply iagree_not; auto. Qed.
+rolm_redundant_sound
+Proof. unfold rolm_redundant; intros; InvBooleans. subst amount. rewrite Val.rolm_zero. apply andimm_redundant_sound; auto. assert (forall n, Int.ror n Int.zero = n). - intros. rewrite Int.ror_rol_neg by apply int_wordsize_divides_modulus. rewrite Int.neg_zero. apply Int.rol_zero. - unfold rolm, rol, andimm in *. destruct x; auto. rewrite H in H0. auto. rewrite H in H0. auto. Qed.
+zero_ext_redundant_sound
+Proof. unfold zero_ext_redundant; intros. destruct x; try discriminate. - auto. - simpl in *; InvAgree. simpl. InvBooleans. rewrite <- H. red; intros; autorewrite with ints; try lia. destruct (zlt i1 n). apply H0; auto. rewrite Int.bits_zero_ext in H3 by lia. rewrite zlt_false in H3 by auto. discriminate. Qed.
+sign_ext_redundant_sound
+Proof. unfold sign_ext_redundant; intros. destruct x; try discriminate. - auto. - simpl in *; InvAgree. simpl. InvBooleans. rewrite <- H. red; intros; autorewrite with ints; try lia. destruct (zlt i1 n). apply H0; auto. rewrite Int.bits_or; auto. rewrite H3; auto. rewrite Int.bits_zero_ext in H3 by lia. rewrite zlt_false in H3 by auto. discriminate. Qed.
+beq_correct
+Proof. unfold beq; intros. InvBooleans. auto. Qed.
+ge_refl
+Proof. unfold eq, ge; intros. subst y. apply nge_refl. Qed.
+ge_trans
+Proof. unfold ge; intros. eapply nge_trans; eauto. Qed.
+ge_bot
+Proof. intros. constructor. Qed.
+ge_lub_left
+Proof. intros. apply nge_lub_l. Qed.
+ge_lub_right
+Proof. intros. apply nge_lub_r. Qed.
+nreg_agree
+Proof. intros. apply H. Qed.
+eagree_ge
+Proof. intros; red; intros. apply nge_agree with (NE.get r ne); auto. apply H0. Qed.
+eagree_bot
+Proof. intros; red; intros. rewrite NE.get_bot. exact Logic.I. Qed.
+eagree_same
+Proof. intros; red; intros. apply vagree_same. Qed.
+eagree_update_1
+Proof. intros; red; intros. rewrite NE.gsspec. rewrite ! PMap.gsspec. destruct (peq r0 r); auto. Qed.
+eagree_update
+Proof. intros; red; intros. specialize (H0 r0). rewrite NE.gsspec in H0. rewrite ! PMap.gsspec. destruct (peq r0 r). subst r0. auto. auto. Qed.
+eagree_update_dead
+Proof. intros; red; intros. rewrite PMap.gsspec. destruct (peq r0 r); auto. subst r0. unfold nreg in H. rewrite H. red; auto. Qed.
+nlive_all
+Proof. intros; constructor; intros. apply ISet.In_empty. rewrite PTree.gempty in H0; discriminate. Qed.
+nlive_add
+Proof. intros. unfold nmem_add. destruct nm. apply nlive_all. inv H1; try (apply nlive_all). - assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto). destruct gl!id as [iv|] eqn:NG. + constructor; simpl; intros. congruence. assert (id0 = id) by (eapply Genv.genv_vars_inj; eauto). subst id0. rewrite PTree.gss in H5. inv H5. rewrite ISet.In_remove. intros [A B]. elim A; auto. + constructor; simpl; intros. congruence. assert (id0 = id) by (eapply Genv.genv_vars_inj; eauto). subst id0. congruence. - assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto). constructor; simpl; intros. congruence. assert (id0 = id) by (eapply Genv.genv_vars_inj; eauto). subst id0. rewrite PTree.grs in H5. congruence. - constructor; simpl; intros. rewrite ISet.In_remove. intros [A B]. elim A; auto. assert (bc b = BCglob id) by (eapply H; eauto). congruence. - constructor; simpl; intros. apply ISet.In_empty. assert (bc b = BCglob id) by (eapply H; eauto). congruence. Qed.
+incl_nmem_add
+Proof. intros. inversion H; subst b0 ofs nm. unfold nmem_add; destruct p; try (apply nlive_all). - destruct gl!id as [iv|] eqn:NG. + split; simpl; intros. auto. rewrite PTree.gsspec in H1. destruct (peq id0 id); eauto. inv H1. rewrite ISet.In_remove. intros [P Q]. eelim GL; eauto. + auto. - split; simpl; intros. auto. rewrite PTree.grspec in H1. destruct (PTree.elt_eq id0 id). congruence. eauto. - split; simpl; intros. rewrite ISet.In_remove. intros [P Q]. eelim STK; eauto. eauto. - split; simpl; intros. apply ISet.In_empty. eauto. Qed.
+nlive_remove
+Proof. intros. inversion H2; subst b0 ofs0 nm. unfold nmem_remove; inv H1; auto. - set (iv' := match gl!id with | Some iv => ISet.add (Ptrofs.unsigned ofs) (Ptrofs.unsigned ofs + sz) iv | None => ISet.interval (Ptrofs.unsigned ofs) (Ptrofs.unsigned ofs + sz) end). assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto). split; simpl; auto; intros. rewrite PTree.gsspec in H6. destruct (peq id0 id). + inv H6. destruct H3. congruence. destruct gl!id as [iv0|] eqn:NG. unfold iv'; rewrite ISet.In_add. intros [P|P]. lia. eelim GL; eauto. unfold iv'; rewrite ISet.In_interval. lia. + eauto. - split; simpl; auto; intros. destruct H3. elim H3. subst b'. eapply bc_stack; eauto. rewrite ISet.In_add. intros [P|P]. lia. eapply STK; eauto. Qed.
+nlive_contains
+Proof. unfold nmem_contains; intros. red; intros L; inv L. inv H1; try discriminate. - assert (Genv.find_symbol ge id = Some b) by (eapply H; eauto). destruct gl!id as [iv|] eqn:HG; inv H2. destruct (ISet.contains (Ptrofs.unsigned ofs) (Ptrofs.unsigned ofs + sz) iv) eqn:IC; try discriminate. rewrite ISet.contains_spec in IC. eelim GL; eauto. - destruct (ISet.contains (Ptrofs.unsigned ofs) (Ptrofs.unsigned ofs + sz) stk) eqn:IC; try discriminate. rewrite ISet.contains_spec in IC. eelim STK; eauto. eapply bc_stack; eauto. Qed.
+nlive_dead_stack
+Proof. intros; constructor; simpl; intros. - rewrite ISet.In_interval. intuition. - rewrite PTree.gempty in H1; discriminate. Qed.
+nlive_lub_l
+Proof. intros. inversion H; subst b0 ofs nm1. destruct nm2; simpl. auto. constructor; simpl; intros. - rewrite ISet.In_inter. intros [P Q]. eelim STK; eauto. - rewrite PTree.gcombine in H1 by auto. destruct gl!id as [iv1|] eqn:NG1; try discriminate; destruct gl0!id as [iv2|] eqn:NG2; inv H1. rewrite ISet.In_inter. intros [P Q]. eelim GL; eauto. Qed.
+nlive_lub_r
+Proof. intros. inversion H; subst b0 ofs nm2. destruct nm1; simpl. auto. constructor; simpl; intros. - rewrite ISet.In_inter. intros [P Q]. eelim STK; eauto. - rewrite PTree.gcombine in H1 by auto. destruct gl0!id as [iv1|] eqn:NG1; try discriminate; destruct gl!id as [iv2|] eqn:NG2; inv H1. rewrite ISet.In_inter. intros [P Q]. eelim GL; eauto. Qed.
+nmem_beq_sound
+Proof. unfold nmem_beq; intros. destruct nm1 as [ | stk1 gl1]; destruct nm2 as [ | stk2 gl2]; try discriminate. - split; intros L; inv L. - InvBooleans. rewrite ISet.beq_spec in H0. rewrite PTree.beq_correct in H1. split; intros L; inv L; constructor; intros. + rewrite <- H0. eauto. + specialize (H1 id). rewrite H2 in H1. destruct gl1!id as [iv1|] eqn: NG; try contradiction. rewrite ISet.beq_spec in H1. rewrite <- H1. eauto. + rewrite H0. eauto. + specialize (H1 id). rewrite H2 in H1. destruct gl2!id as [iv2|] eqn: NG; try contradiction. rewrite ISet.beq_spec in H1. rewrite H1. eauto. Qed.
+eq_refl
+Proof. intro x. unfold eq; destruct x; simpl; split. apply NE.eq_refl. tauto. Qed.
+eq_sym
+Proof. intros x y. unfold eq; destruct x, y; simpl. intros [A B]. split. apply NE.eq_sym; auto. intros. rewrite B. tauto. Qed.
+eq_trans
+Proof. intros x y z. unfold eq; destruct x, y, z; simpl. intros [A B] [C D]; split. eapply NE.eq_trans; eauto. intros. rewrite B; auto. Qed.
+beq_correct
+Proof. intros x y. unfold beq, eq; destruct x, y; simpl; intros. InvBooleans. split. apply NE.beq_correct; auto. intros. apply nmem_beq_sound; auto. Qed.
+beq_correct2
+Proof. intros x y. unfold beq, eq; destruct x, y; simpl; intros. InvBooleans. split. apply NE.beq_correct; auto. intros. apply nmem_beq_sound; auto. Qed.
+ge_refl
+Proof. intros x y. unfold eq, ge; destruct x, y; simpl. intros [A B]; split. apply NE.ge_refl; auto. intros. apply B; auto. Qed.
+ge_refl2
+Proof. intros x y. unfold eq, ge; destruct x, y; simpl. intros [A B]; split. apply NE.ge_refl; auto. intros. apply B; auto. Qed.
+ge_trans
+Proof. intros x y z. unfold ge; destruct x, y, z; simpl. intros [A B] [C D]; split. eapply NE.ge_trans; eauto. auto. Qed.
+ge_trans2
+Proof. intros x y z. unfold ge; destruct x, y, z; simpl. intros [A B] [C D]; split. eapply NE.ge_trans; eauto. auto. Qed.
+ge_bot
+Proof. intro x. unfold ge, bot; destruct x; simpl. split. apply NE.ge_bot. intros. inv H. Qed.
+ge_bot2
+Proof. intro x. unfold ge, bot; destruct x; simpl. split. apply NE.ge_bot. intros. inv H. Qed.
+ge_lub_left
+Proof. intros x y. unfold ge; destruct x, y; simpl; split. apply NE.ge_lub_left. intros; apply nlive_lub_l; auto. Qed.
+ge_lub_left2
+Proof. intros x y. unfold ge; destruct x, y; simpl; split. apply NE.ge_lub_left. intros; apply nlive_lub_l; auto. Qed.
+ge_lub_right
+Proof. intros x y. unfold ge; destruct x, y; simpl; split. apply NE.ge_lub_right. intros; apply nlive_lub_r; auto. Qed.
+ge_lub_right2
+Proof. intros x y. unfold ge; destruct x, y; simpl; split. apply NE.ge_lub_right. intros; apply nlive_lub_r; auto. Qed.

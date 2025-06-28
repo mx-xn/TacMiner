@@ -1,0 +1,42 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  simpl; [intros H0 | .. ].
+Ltac custom1  :=  constructor; [ | auto | auto | .. ].
+Ltac custom2 H6 H7 :=  split; [apply H6; [apply H7 | .. ] | auto | .. ].
+Ltac custom3  :=  simpl; [auto | .. ].
+Ltac custom4 H0 H4 :=  split; [apply H0; [apply H4 | .. ] | auto | .. ].
+Ltac custom5  :=  constructor; [ | auto | .. ].
+Ltac custom6 H0 H1 H11 :=  simpl in H0; [destruct H1; [inv H11 | .. ] | .. ].
+Ltac custom7 H0 :=  split; [apply H0 | auto | .. ].
+Ltac custom8 H0 H1 :=  apply H0 with H1; [eauto | eauto | .. ].
+Ltac custom9 H0 :=  eapply H0; [ |  | traceEq | .. ].
+Ltac custom10 H0 :=  exploit H0; [ | eauto | tauto | .. ].
+Ltac custom11 H0 :=  destruct H0; [auto | .. ].
+Ltac custom12  :=  induction 1; [simpl | .. ].
+Ltac custom13  :=  constructor; [ | auto | .. ].
+Ltac custom14 H0 :=  destruct H0; [auto | .. ].
+Ltac custom15 H0 :=  apply H0; [auto | .. ].
+Ltac custom16 H0 H1 :=  destruct ( Pos.compare_spec H0 H1 ); [subst H1 | .. ].
+Ltac custom17  :=  simpl; [tauto | .. ].
+Ltac custom18 H0 H1 :=  simpl; [intros H0 H1 | .. ].
+Ltac custom19  :=  custom5 ; [auto | .. ].
+Ltac custom20 H0 H1 H2 :=  custom0 H0; [destruct ( Pos.compare_spec H1 H2 ); [subst H2 | .. ] | .. ].
+Ltac custom21 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom22 H0 :=  eapply H0; [ | eauto | .. ].
+Ltac custom23 H0 :=  apply H0; [custom19  |  | auto with coqlib | .. ].
+Ltac custom24 H0 :=  apply H0; [exact symbols_preserved | .. ].
+Ltac custom25 H0 H1 :=  rewrite <- H0; [custom24 H1 | .. ].
+Ltac custom26  :=  econstructor; [eauto | .. ].
+Ltac custom27  :=  custom26 ; [ | eauto | .. ].
+Ltac custom28  :=  econstructor; [ |  | custom3  | .. ].
+Ltac custom29 H11 :=  induction 1; [custom0 H11 | .. ].
+Ltac custom30  :=  simpl; [constructor | .. ].
+Ltac custom31 H0 :=  induction H0 as [ | [ v i ] l ]; [simpl | .. ].
+Ltac custom32 H0 :=  exploit H0; [eauto | .. ].
+Ltac custom33  :=  custom12 ; [ | simpl | .. ].
+---------------------------
+ , , 0.6
+Debugvarproof, Number of Tactics, 34
+ , Average Tactic Size, 2.21
+ , Total Tactic Size, 75
+ , Max Tactic Size, 4
+ , Overall CP, 1.27

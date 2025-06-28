@@ -1,0 +1,11 @@
+extracted tactics -----------
+custom0 H0 H1 := unfold excluded_middle; [intros H0 H1; [apply H0 | .. ] | .. ].
+custom1 H0 H1 H2 := apply H0; [intro H1; [apply H2 | .. ] | .. ].
+custom2 H0 H1 := intro H0; [apply H1; [auto | .. ] | .. ].
+custom3 H0 H1 := intro H0; [apply H1 | .. ].
+---------------------------
+Num proofs: 7
+Original size: 51
+Compressed size: 47 ( 38 corpus / 9 library )
+Compression rate: 1.0851063829787233
+Num tactics in library: 4

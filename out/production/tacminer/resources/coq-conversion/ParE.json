@@ -1,0 +1,1137 @@
+[
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "equivalence .",
+                "tactic_sig_no_out_arg": "equivalence .",
+                "tactic_args": [
+                    "_goal : Equivalence\n  (fun f g : forall _ : H1, sum E H2 =>\n   forall x : H1,\n   match f x with\n   | Datatypes.inl _ =>\n       match g x with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x0 =>\n       match g x with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x0 y\n       end\n   end)"
+                ],
+                "tactic_res": [
+                    "_goal : match x x0 with\n| Datatypes.inl _ =>\n    match x x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match x x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "_goal : match y x0 with\n| Datatypes.inl _ =>\n    match x x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match x x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "_goal : match x x0 with\n| Datatypes.inl _ =>\n    match z x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match z x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "mempty : E",
+                    "x0 : H1",
+                    "x : forall _ : H1, sum E H2",
+                    "X : forall x0 : H1,\nmatch x x0 with\n| Datatypes.inl _ =>\n    match y x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "y : forall _ : H1, sum E H2",
+                    "X0 : forall x : H1,\nmatch y x with\n| Datatypes.inl _ =>\n    match z x with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match z x with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "z : forall _ : H1, sum E H2"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _ ) as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _ ) .",
+                "tactic_args": [
+                    "_goal : match x x0 with\n| Datatypes.inl _ =>\n    match x x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match x x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "x : forall _ : H1, sum E H2"
+                ],
+                "tactic_res": [
+                    "_goal : True",
+                    "_goal : eq h h",
+                    "e : E",
+                    "h : H2"
+                ]
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": [
+                    "_goal : True"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : eq h h"
+                ],
+                "tactic_res": [
+                    "_goal : eq h h"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : eq h h"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "specialize ( _i _i ) .",
+                "tactic_sig_no_out_arg": "specialize ( _i _i ) .",
+                "tactic_args": [
+                    "X : forall x0 : H1,\nmatch x x0 with\n| Datatypes.inl _ =>\n    match y x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "x0 : H1"
+                ],
+                "tactic_res": [
+                    "X : match x x0 with\n| Datatypes.inl _ =>\n    match y x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match y x0 with\n| Datatypes.inl _ =>\n    match x x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match x x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "y : forall _ : H1, sum E H2"
+                ],
+                "tactic_res": [
+                    "_goal : match x x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend",
+                    "X : match x x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr x => eq x h\nend",
+                    "h : H2"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match x x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend",
+                    "x : forall _ : H1, sum E H2"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "specialize ( _i _i ) .",
+                "tactic_sig_no_out_arg": "specialize ( _i _i ) .",
+                "tactic_args": [
+                    "X : forall x0 : H1,\nmatch x x0 with\n| Datatypes.inl _ =>\n    match y x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "x0 : H1"
+                ],
+                "tactic_res": [
+                    "X : match x x0 with\n| Datatypes.inl _ =>\n    match y x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "specialize ( _i _i ) .",
+                "tactic_sig_no_out_arg": "specialize ( _i _i ) .",
+                "tactic_args": [
+                    "X0 : forall x : H1,\nmatch y x with\n| Datatypes.inl _ =>\n    match z x with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match z x with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "x0 : H1"
+                ],
+                "tactic_res": [
+                    "X0 : match y x0 with\n| Datatypes.inl _ =>\n    match z x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match z x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _ ) as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _ ) .",
+                "tactic_args": [
+                    "_goal : match x x0 with\n| Datatypes.inl _ =>\n    match z x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match z x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "x : forall _ : H1, sum E H2"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend",
+                    "X : match y x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "e : E",
+                    "X : match y x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend",
+                    "h : H2"
+                ]
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "try tauto .",
+                "tactic_sig_no_out_arg": "try tauto .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _ ) as [_o _o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _ ) .",
+                "tactic_args": [
+                    "y : forall _ : H1, sum E H2"
+                ],
+                "tactic_res": [
+                    "X0 : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "X : True",
+                    "e0 : E",
+                    "X0 : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend",
+                    "X : False"
+                ]
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "try tauto .",
+                "tactic_sig_no_out_arg": "try tauto .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ]
+            },
+            {
+                "tactic_sig": "try tauto .",
+                "tactic_sig_no_out_arg": "try tauto .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _ ) as [_o _o _o | _o _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _ ) .",
+                "tactic_args": [
+                    "y : forall _ : H1, sum E H2"
+                ],
+                "tactic_res": [
+                    "X0 : match z x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "X : False",
+                    "e : E",
+                    "X0 : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h0 y\nend",
+                    "X : eq h h0",
+                    "h0 : H2"
+                ]
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ]
+            },
+            {
+                "tactic_sig": "try tauto .",
+                "tactic_sig_no_out_arg": "try tauto .",
+                "tactic_args": [],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h y\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h0 y\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match z x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq h0 y\nend"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "proper .",
+                "tactic_sig_no_out_arg": "proper .",
+                "tactic_args": [
+                    "_goal : Proper\n  (respectful\n     (fun f g : forall _ : y, sum E z =>\n      forall x : y,\n      match f x with\n      | Datatypes.inl _ =>\n          match g x with\n          | Datatypes.inl _ => True\n          | Datatypes.inr _ => False\n          end\n      | Datatypes.inr x0 =>\n          match g x with\n          | Datatypes.inl _ => False\n          | Datatypes.inr y => eq x0 y\n          end\n      end)\n     (respectful\n        (fun f g : forall _ : x, sum E y =>\n         forall x : x,\n         match f x with\n         | Datatypes.inl _ =>\n             match g x with\n             | Datatypes.inl _ => True\n             | Datatypes.inr _ => False\n             end\n         | Datatypes.inr x0 =>\n             match g x with\n             | Datatypes.inl _ => False\n             | Datatypes.inr y0 => eq x0 y0\n             end\n         end)\n        (fun f g : forall _ : x, sum E z =>\n         forall x : x,\n         match f x with\n         | Datatypes.inl _ =>\n             match g x with\n             | Datatypes.inl _ => True\n             | Datatypes.inr _ => False\n             end\n         | Datatypes.inr x0 =>\n             match g x with\n             | Datatypes.inl _ => False\n             | Datatypes.inr y => eq x0 y\n             end\n         end)))\n  (fun (f : forall _ : y, sum E z) (g : forall _ : x, sum E y) (x : x)\n   => sum_bind f (g x))"
+                ],
+                "tactic_res": [
+                    "_goal : match sum_bind x0 (x1 x2) with\n| Datatypes.inl _ =>\n    match sum_bind y0 (y1 x2) with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match sum_bind y0 (y1 x2) with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "mempty : E",
+                    "x2 : x",
+                    "X0 : forall x : x,\nmatch x1 x with\n| Datatypes.inl _ =>\n    match y1 x with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y1 x with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y0 => eq x0 y0\n    end\nend",
+                    "x1 : forall _ : x, sum E y",
+                    "y1 : forall _ : x, sum E y",
+                    "X : forall x : y,\nmatch x0 x with\n| Datatypes.inl _ =>\n    match y0 x with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y0 x with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "x0 : forall _ : y, sum E z",
+                    "y0 : forall _ : y, sum E z"
+                ]
+            },
+            {
+                "tactic_sig": "unfold sum_bind .",
+                "tactic_sig_no_out_arg": "unfold sum_bind .",
+                "tactic_args": [
+                    "_goal : match sum_bind x0 (x1 x2) with\n| Datatypes.inl _ =>\n    match sum_bind y0 (y1 x2) with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match sum_bind y0 (y1 x2) with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match x1 x2 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y => x0 y\n  end\nwith\n| Datatypes.inl _ =>\n    match\n      match y1 x2 with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y => y0 y\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match y1 x2 with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y => y0 y\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "specialize ( _i _i ) .",
+                "tactic_sig_no_out_arg": "specialize ( _i _i ) .",
+                "tactic_args": [
+                    "X0 : forall x : x,\nmatch x1 x with\n| Datatypes.inl _ =>\n    match y1 x with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y1 x with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y0 => eq x0 y0\n    end\nend",
+                    "x2 : x"
+                ],
+                "tactic_res": [
+                    "X0 : match x1 x2 with\n| Datatypes.inl _ =>\n    match y1 x2 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y1 x2 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y0 => eq x y0\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match\n  match x1 x2 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y => x0 y\n  end\nwith\n| Datatypes.inl _ =>\n    match\n      match y1 x2 with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y => y0 y\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match y1 x2 with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y => y0 y\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "x1 : forall _ : x, sum E y"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match y1 x2 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y => y0 y\n  end\nwith\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "_goal : match x0 y2 with\n| Datatypes.inl _ =>\n    match\n      match y1 x2 with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y => y0 y\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match y1 x2 with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y => y0 y\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "X0 : match y1 x2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "e : E",
+                    "X0 : match y1 x2 with\n| Datatypes.inl _ => False\n| Datatypes.inr y0 => eq y2 y0\nend",
+                    "y2 : y"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _ ) as [_o _o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _ ) .",
+                "tactic_args": [
+                    "_goal : match\n  match y1 x2 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y => y0 y\n  end\nwith\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "y1 : forall _ : x, sum E y"
+                ],
+                "tactic_res": [
+                    "_goal : True",
+                    "_goal : match y0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "X0 : True",
+                    "e0 : E",
+                    "X0 : False"
+                ]
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": [
+                    "_goal : True"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match y0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match y0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match y0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match y0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "try tauto .",
+                "tactic_sig_no_out_arg": "try tauto .",
+                "tactic_args": [
+                    "_goal : match y0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct ( _i _ ) as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _ ) .",
+                "tactic_args": [
+                    "_goal : match x0 y2 with\n| Datatypes.inl _ =>\n    match\n      match y1 x2 with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y => y0 y\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match y1 x2 with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y => y0 y\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "y1 : forall _ : x, sum E y"
+                ],
+                "tactic_res": [
+                    "_goal : match x0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "_goal : match x0 y2 with\n| Datatypes.inl _ =>\n    match y0 y3 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y0 y3 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "X0 : False",
+                    "e : E",
+                    "X0 : eq y2 y3",
+                    "y3 : y"
+                ]
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match x0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match x0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match x0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match x0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "try tauto .",
+                "tactic_sig_no_out_arg": "try tauto .",
+                "tactic_args": [
+                    "_goal : match x0 y2 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match x0 y2 with\n| Datatypes.inl _ =>\n    match y0 y3 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y0 y3 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match x0 y3 with\n| Datatypes.inl _ =>\n    match y0 y3 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y0 y3 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match x0 y3 with\n| Datatypes.inl _ =>\n    match y0 y3 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y0 y3 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match x0 y3 with\n| Datatypes.inl _ =>\n    match y0 y3 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y0 y3 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "try tauto .",
+                "tactic_sig_no_out_arg": "try tauto .",
+                "tactic_args": [
+                    "_goal : match x0 y3 with\n| Datatypes.inl _ =>\n    match y0 y3 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y0 y3 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match x0 y3 with\n| Datatypes.inl _ =>\n    match y0 y3 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y0 y3 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "specialize ( _i _i ) .",
+                "tactic_sig_no_out_arg": "specialize ( _i _i ) .",
+                "tactic_args": [
+                    "X : forall x : y,\nmatch x0 x with\n| Datatypes.inl _ =>\n    match y0 x with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y0 x with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "y3 : y"
+                ],
+                "tactic_res": [
+                    "X : match x0 y3 with\n| Datatypes.inl _ =>\n    match y0 y3 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y0 y3 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match x0 y3 with\n| Datatypes.inl _ =>\n    match y0 y3 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match y0 y3 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "x0 : forall _ : y, sum E z"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "unfold sum_bind .",
+                "tactic_sig_no_out_arg": "unfold sum_bind .",
+                "tactic_args": [
+                    "_goal : match sum_bind Datatypes.inr (f x0) with\n| Datatypes.inl _ =>\n    match f x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match f x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y0 => eq x y0\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match f x0 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y0 => Datatypes.inr y0\n  end\nwith\n| Datatypes.inl _ =>\n    match f x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match f x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y0 => eq x y0\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _ ) as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _ ) .",
+                "tactic_args": [
+                    "_goal : match\n  match f x0 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y0 => Datatypes.inr y0\n  end\nwith\n| Datatypes.inl _ =>\n    match f x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match f x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y0 => eq x y0\n    end\nend",
+                    "f : forall _ : x, sum E y"
+                ],
+                "tactic_res": [
+                    "_goal : True",
+                    "_goal : eq y0 y0",
+                    "e : E",
+                    "y0 : y"
+                ]
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": [
+                    "_goal : True"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : eq y0 y0"
+                ],
+                "tactic_res": [
+                    "_goal : eq y0 y0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : eq y0 y0"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "unfold sum_bind .",
+                "tactic_sig_no_out_arg": "unfold sum_bind .",
+                "tactic_args": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ =>\n    match f x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match f x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y0 => eq x y0\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ =>\n    match f x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match f x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y0 => eq x y0\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _ ) as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _ ) .",
+                "tactic_args": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ =>\n    match f x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match f x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y0 => eq x y0\n    end\nend",
+                    "f : forall _ : x, sum E y"
+                ],
+                "tactic_res": [
+                    "_goal : True",
+                    "_goal : eq y0 y0",
+                    "e : E",
+                    "y0 : y"
+                ]
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": [
+                    "_goal : True"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : eq y0 y0"
+                ],
+                "tactic_res": [
+                    "_goal : eq y0 y0"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : eq y0 y0"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "unfold sum_bind .",
+                "tactic_sig_no_out_arg": "unfold sum_bind .",
+                "tactic_args": [
+                    "_goal : match sum_bind f (sum_bind g (h x0)) with\n| Datatypes.inl _ =>\n    match sum_bind (fun x : y => sum_bind f (g x)) (h x0) with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match sum_bind (fun x0 : y => sum_bind f (g x0)) (h x0) with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match\n    match h x0 with\n    | Datatypes.inl x => Datatypes.inl x\n    | Datatypes.inr y => g y\n    end\n  with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y => f y\n  end\nwith\n| Datatypes.inl _ =>\n    match\n      match h x0 with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y =>\n          match g y with\n          | Datatypes.inl x => Datatypes.inl x\n          | Datatypes.inr y0 => f y0\n          end\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match h x0 with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y =>\n          match g y with\n          | Datatypes.inl x0 => Datatypes.inl x0\n          | Datatypes.inr y0 => f y0\n          end\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match\n  match\n    match h x0 with\n    | Datatypes.inl x => Datatypes.inl x\n    | Datatypes.inr y => g y\n    end\n  with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y => f y\n  end\nwith\n| Datatypes.inl _ =>\n    match\n      match h x0 with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y =>\n          match g y with\n          | Datatypes.inl x => Datatypes.inl x\n          | Datatypes.inr y0 => f y0\n          end\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match h x0 with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y =>\n          match g y with\n          | Datatypes.inl x0 => Datatypes.inl x0\n          | Datatypes.inr y0 => f y0\n          end\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "h : forall _ : x, sum E y"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match g y0 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y => f y\n  end\nwith\n| Datatypes.inl _ =>\n    match\n      match g y0 with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match g y0 with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "y0 : y"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match\n  match g y0 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y => f y\n  end\nwith\n| Datatypes.inl _ =>\n    match\n      match g y0 with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match g y0 with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "g : forall _ : y, sum E z"
+                ],
+                "tactic_res": [
+                    "_goal : match f z0 with\n| Datatypes.inl _ =>\n    match f z0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match f z0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "z0 : z"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match f z0 with\n| Datatypes.inl _ =>\n    match f z0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match f z0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "f : forall _ : z, sum E w"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "unfold sum_bind .",
+                "tactic_sig_no_out_arg": "unfold sum_bind .",
+                "tactic_args": [
+                    "_goal : match sum_bind (fun x : y => sum_bind f (g x)) (h x0) with\n| Datatypes.inl _ =>\n    match sum_bind f (sum_bind g (h x0)) with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match sum_bind f (sum_bind g (h x0)) with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match h x0 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y =>\n      match g y with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y0 => f y0\n      end\n  end\nwith\n| Datatypes.inl _ =>\n    match\n      match\n        match h x0 with\n        | Datatypes.inl x => Datatypes.inl x\n        | Datatypes.inr y => g y\n        end\n      with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match\n        match h x0 with\n        | Datatypes.inl x0 => Datatypes.inl x0\n        | Datatypes.inr y => g y\n        end\n      with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match\n  match h x0 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y =>\n      match g y with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y0 => f y0\n      end\n  end\nwith\n| Datatypes.inl _ =>\n    match\n      match\n        match h x0 with\n        | Datatypes.inl x => Datatypes.inl x\n        | Datatypes.inr y => g y\n        end\n      with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match\n        match h x0 with\n        | Datatypes.inl x0 => Datatypes.inl x0\n        | Datatypes.inr y => g y\n        end\n      with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "h : forall _ : x, sum E y"
+                ],
+                "tactic_res": [
+                    "_goal : match\n  match g y0 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y => f y\n  end\nwith\n| Datatypes.inl _ =>\n    match\n      match g y0 with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match g y0 with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "y0 : y"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match\n  match g y0 with\n  | Datatypes.inl x => Datatypes.inl x\n  | Datatypes.inr y => f y\n  end\nwith\n| Datatypes.inl _ =>\n    match\n      match g y0 with\n      | Datatypes.inl x => Datatypes.inl x\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match\n      match g y0 with\n      | Datatypes.inl x0 => Datatypes.inl x0\n      | Datatypes.inr y => f y\n      end\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "g : forall _ : y, sum E z"
+                ],
+                "tactic_res": [
+                    "_goal : match f z0 with\n| Datatypes.inl _ =>\n    match f z0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match f z0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "z0 : z"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match f z0 with\n| Datatypes.inl _ =>\n    match f z0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match f z0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "f : forall _ : z, sum E w"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "destruct ( _i _i ) , ( _i _i ) as [_o _o | _o _o | _o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _i ) , ( _i _i ) .",
+                "tactic_args": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ =>\n    match g x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x =>\n    match g x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x y\n    end\nend",
+                    "f : forall _ : x, sum E False",
+                    "x0 : x",
+                    "g : forall _ : x, sum E False",
+                    "x0 : x"
+                ],
+                "tactic_res": [
+                    "_goal : True",
+                    "_goal : False",
+                    "_goal : False",
+                    "_goal : eq f0 f1",
+                    "e : E",
+                    "e0 : E",
+                    "f0 : False",
+                    "f1 : False"
+                ]
+            },
+            {
+                "tactic_sig": "try contradiction .",
+                "tactic_sig_no_out_arg": "try contradiction .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": [
+                    "_goal : True"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : True"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try contradiction .",
+                "tactic_sig_no_out_arg": "try contradiction .",
+                "tactic_args": [],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try contradiction .",
+                "tactic_sig_no_out_arg": "try contradiction .",
+                "tactic_args": [
+                    "_goal : False"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "try contradiction .",
+                "tactic_sig_no_out_arg": "try contradiction .",
+                "tactic_args": [
+                    "_goal : eq f0 f1"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "contradiction .",
+                "tactic_sig_no_out_arg": "contradiction .",
+                "tactic_args": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ =>\n    match g x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match g x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "proper .",
+                "tactic_sig_no_out_arg": "proper .",
+                "tactic_args": [
+                    "_goal : Proper\n  (respectful\n     (fun f g : forall _ : y, sum E x =>\n      forall x0 : y,\n      match f x0 with\n      | Datatypes.inl _ =>\n          match g x0 with\n          | Datatypes.inl _ => True\n          | Datatypes.inr _ => False\n          end\n      | Datatypes.inr x1 =>\n          match g x0 with\n          | Datatypes.inl _ => False\n          | Datatypes.inr y => eq x1 y\n          end\n      end)\n     (respectful\n        (fun f g : forall _ : z, sum E x =>\n         forall x0 : z,\n         match f x0 with\n         | Datatypes.inl _ =>\n             match g x0 with\n             | Datatypes.inl _ => True\n             | Datatypes.inr _ => False\n             end\n         | Datatypes.inr x1 =>\n             match g x0 with\n             | Datatypes.inl _ => False\n             | Datatypes.inr y => eq x1 y\n             end\n         end)\n        (fun f g : forall _ : sum y z, sum E x =>\n         forall x0 : sum y z,\n         match f x0 with\n         | Datatypes.inl _ =>\n             match g x0 with\n             | Datatypes.inl _ => True\n             | Datatypes.inr _ => False\n             end\n         | Datatypes.inr x1 =>\n             match g x0 with\n             | Datatypes.inl _ => False\n             | Datatypes.inr y => eq x1 y\n             end\n         end)))\n  (fun (f : forall _ : y, sum E x) (g : forall _ : z, sum E x)\n     (x0 : sum y z) =>\n   match x0 as x' return (forall _ : eq x' x0, sum E x) with\n   | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n   | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n   end eq_refl)"
+                ],
+                "tactic_res": [
+                    "_goal : match x0 a with\n| Datatypes.inl _ =>\n    match y0 a with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y0 a with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "_goal : match x1 b with\n| Datatypes.inl _ =>\n    match y1 b with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y1 b with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "a : y",
+                    "mempty : E",
+                    "X0 : forall x0 : z,\nmatch x1 x0 with\n| Datatypes.inl _ =>\n    match y1 x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match y1 x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "x1 : forall _ : z, sum E x",
+                    "y1 : forall _ : z, sum E x",
+                    "X : forall x1 : y,\nmatch x0 x1 with\n| Datatypes.inl _ =>\n    match y0 x1 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y0 x1 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "x0 : forall _ : y, sum E x",
+                    "y0 : forall _ : y, sum E x",
+                    "b : z"
+                ]
+            },
+            {
+                "tactic_sig": "specialize ( _i _i ) .",
+                "tactic_sig_no_out_arg": "specialize ( _i _i ) .",
+                "tactic_args": [
+                    "X : forall x1 : y,\nmatch x0 x1 with\n| Datatypes.inl _ =>\n    match y0 x1 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y0 x1 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "a : y"
+                ],
+                "tactic_res": [
+                    "X : match x0 a with\n| Datatypes.inl _ =>\n    match y0 a with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y0 a with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match x0 a with\n| Datatypes.inl _ =>\n    match y0 a with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y0 a with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "x0 : forall _ : y, sum E x"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "specialize ( _i _i ) .",
+                "tactic_sig_no_out_arg": "specialize ( _i _i ) .",
+                "tactic_args": [
+                    "X0 : forall x0 : z,\nmatch x1 x0 with\n| Datatypes.inl _ =>\n    match y1 x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match y1 x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "b : z"
+                ],
+                "tactic_res": [
+                    "X0 : match x1 b with\n| Datatypes.inl _ =>\n    match y1 b with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y1 b with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "bust _i .",
+                "tactic_sig_no_out_arg": "bust _i .",
+                "tactic_args": [
+                    "_goal : match x1 b with\n| Datatypes.inl _ =>\n    match y1 b with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match y1 b with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "x1 : forall _ : z, sum E x"
+                ],
+                "tactic_res": []
+            }
+        ]
+    },
+    {
+        "lemma_name": null,
+        "proof": [
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : iffT\n  (forall x0 : sum y z,\n   match h x0 with\n   | Datatypes.inl _ =>\n       match\n         match x0 as x' return (forall _ : eq x' x0, sum E x) with\n         | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n         | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n         end eq_refl\n       with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match\n         match x0 as x' return (forall _ : eq x' x0, sum E x) with\n         | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n         | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n         end eq_refl\n       with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)\n  (prod\n     (forall x0 : y,\n      match h (Datatypes.inl x0) with\n      | Datatypes.inl _ =>\n          match f x0 with\n          | Datatypes.inl _ => True\n          | Datatypes.inr _ => False\n          end\n      | Datatypes.inr x1 =>\n          match f x0 with\n          | Datatypes.inl _ => False\n          | Datatypes.inr y => eq x1 y\n          end\n      end)\n     (forall x0 : z,\n      match h (Datatypes.inr x0) with\n      | Datatypes.inl _ =>\n          match g x0 with\n          | Datatypes.inl _ => True\n          | Datatypes.inr _ => False\n          end\n      | Datatypes.inr x1 =>\n          match g x0 with\n          | Datatypes.inl _ => False\n          | Datatypes.inr y => eq x1 y\n          end\n      end))"
+                ],
+                "tactic_res": [
+                    "_goal : forall\n  _ : forall x0 : sum y z,\n      match h x0 with\n      | Datatypes.inl _ =>\n          match\n            match x0 as x' return (forall _ : eq x' x0, sum E x) with\n            | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n            | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n            end eq_refl\n          with\n          | Datatypes.inl _ => True\n          | Datatypes.inr _ => False\n          end\n      | Datatypes.inr x1 =>\n          match\n            match x0 as x' return (forall _ : eq x' x0, sum E x) with\n            | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n            | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n            end eq_refl\n          with\n          | Datatypes.inl _ => False\n          | Datatypes.inr y => eq x1 y\n          end\n      end,\nprod\n  (forall x0 : y,\n   match h (Datatypes.inl x0) with\n   | Datatypes.inl _ =>\n       match f x0 with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match f x0 with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)\n  (forall x0 : z,\n   match h (Datatypes.inr x0) with\n   | Datatypes.inl _ =>\n       match g x0 with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match g x0 with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)",
+                    "_goal : forall\n  (_ : prod\n         (forall x0 : y,\n          match h (Datatypes.inl x0) with\n          | Datatypes.inl _ =>\n              match f x0 with\n              | Datatypes.inl _ => True\n              | Datatypes.inr _ => False\n              end\n          | Datatypes.inr x1 =>\n              match f x0 with\n              | Datatypes.inl _ => False\n              | Datatypes.inr y => eq x1 y\n              end\n          end)\n         (forall x0 : z,\n          match h (Datatypes.inr x0) with\n          | Datatypes.inl _ =>\n              match g x0 with\n              | Datatypes.inl _ => True\n              | Datatypes.inr _ => False\n              end\n          | Datatypes.inr x1 =>\n              match g x0 with\n              | Datatypes.inl _ => False\n              | Datatypes.inr y => eq x1 y\n              end\n          end)) (x0 : sum y z),\nmatch h x0 with\n| Datatypes.inl _ =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall\n  _ : forall x0 : sum y z,\n      match h x0 with\n      | Datatypes.inl _ =>\n          match\n            match x0 as x' return (forall _ : eq x' x0, sum E x) with\n            | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n            | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n            end eq_refl\n          with\n          | Datatypes.inl _ => True\n          | Datatypes.inr _ => False\n          end\n      | Datatypes.inr x1 =>\n          match\n            match x0 as x' return (forall _ : eq x' x0, sum E x) with\n            | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n            | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n            end eq_refl\n          with\n          | Datatypes.inl _ => False\n          | Datatypes.inr y => eq x1 y\n          end\n      end,\nprod\n  (forall x0 : y,\n   match h (Datatypes.inl x0) with\n   | Datatypes.inl _ =>\n       match f x0 with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match f x0 with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)\n  (forall x0 : z,\n   match h (Datatypes.inr x0) with\n   | Datatypes.inl _ =>\n       match g x0 with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match g x0 with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)"
+                ],
+                "tactic_res": [
+                    "_goal : prod\n  (forall x0 : y,\n   match h (Datatypes.inl x0) with\n   | Datatypes.inl _ =>\n       match f x0 with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match f x0 with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)\n  (forall x0 : z,\n   match h (Datatypes.inr x0) with\n   | Datatypes.inl _ =>\n       match g x0 with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match g x0 with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)",
+                    "X : forall x0 : sum y z,\nmatch h x0 with\n| Datatypes.inl _ =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall\n  (_ : prod\n         (forall x0 : y,\n          match h (Datatypes.inl x0) with\n          | Datatypes.inl _ =>\n              match f x0 with\n              | Datatypes.inl _ => True\n              | Datatypes.inr _ => False\n              end\n          | Datatypes.inr x1 =>\n              match f x0 with\n              | Datatypes.inl _ => False\n              | Datatypes.inr y => eq x1 y\n              end\n          end)\n         (forall x0 : z,\n          match h (Datatypes.inr x0) with\n          | Datatypes.inl _ =>\n              match g x0 with\n              | Datatypes.inl _ => True\n              | Datatypes.inr _ => False\n              end\n          | Datatypes.inr x1 =>\n              match g x0 with\n              | Datatypes.inl _ => False\n              | Datatypes.inr y => eq x1 y\n              end\n          end)) (x0 : sum y z),\nmatch h x0 with\n| Datatypes.inl _ =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match h x0 with\n| Datatypes.inl _ =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "x0 : sum y z",
+                    "X : prod\n  (forall x0 : y,\n   match h (Datatypes.inl x0) with\n   | Datatypes.inl _ =>\n       match f x0 with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match f x0 with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)\n  (forall x0 : z,\n   match h (Datatypes.inr x0) with\n   | Datatypes.inl _ =>\n       match g x0 with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match g x0 with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)"
+                ]
+            },
+            {
+                "tactic_sig": "split .",
+                "tactic_sig_no_out_arg": "split .",
+                "tactic_args": [
+                    "_goal : prod\n  (forall x0 : y,\n   match h (Datatypes.inl x0) with\n   | Datatypes.inl _ =>\n       match f x0 with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match f x0 with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)\n  (forall x0 : z,\n   match h (Datatypes.inr x0) with\n   | Datatypes.inl _ =>\n       match g x0 with\n       | Datatypes.inl _ => True\n       | Datatypes.inr _ => False\n       end\n   | Datatypes.inr x1 =>\n       match g x0 with\n       | Datatypes.inl _ => False\n       | Datatypes.inr y => eq x1 y\n       end\n   end)"
+                ],
+                "tactic_res": [
+                    "_goal : forall x0 : y,\nmatch h (Datatypes.inl x0) with\n| Datatypes.inl _ =>\n    match f x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match f x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "_goal : forall x0 : z,\nmatch h (Datatypes.inr x0) with\n| Datatypes.inl _ =>\n    match g x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match g x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall x0 : y,\nmatch h (Datatypes.inl x0) with\n| Datatypes.inl _ =>\n    match f x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match f x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match h (Datatypes.inl x0) with\n| Datatypes.inl _ =>\n    match f x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match f x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "x0 : y"
+                ]
+            },
+            {
+                "tactic_sig": "intros _o .",
+                "tactic_sig_no_out_arg": "intros .",
+                "tactic_args": [
+                    "_goal : forall x0 : z,\nmatch h (Datatypes.inr x0) with\n| Datatypes.inl _ =>\n    match g x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match g x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match h (Datatypes.inr x0) with\n| Datatypes.inl _ =>\n    match g x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match g x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "x0 : z"
+                ]
+            },
+            {
+                "tactic_sig": "specialize ( _i ( Datatypes.inl _i ) ) .",
+                "tactic_sig_no_out_arg": "specialize ( _i ( Datatypes.inl _i ) ) .",
+                "tactic_args": [
+                    "X : forall x0 : sum y z,\nmatch h x0 with\n| Datatypes.inl _ =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "x0 : y"
+                ],
+                "tactic_res": [
+                    "X : match h (Datatypes.inl x0) with\n| Datatypes.inl _ =>\n    match\n      match\n        Datatypes.inl x0 as x'\n        return (forall _ : eq x' (Datatypes.inl x0), sum E x)\n      with\n      | Datatypes.inl v =>\n          fun _ : eq (Datatypes.inl v) (Datatypes.inl x0) => f v\n      | Datatypes.inr v =>\n          fun _ : eq (Datatypes.inr v) (Datatypes.inl x0) => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match\n      match\n        Datatypes.inl x0 as x'\n        return (forall _ : eq x' (Datatypes.inl x0), sum E x)\n      with\n      | Datatypes.inl v =>\n          fun _ : eq (Datatypes.inl v) (Datatypes.inl x0) => f v\n      | Datatypes.inr v =>\n          fun _ : eq (Datatypes.inr v) (Datatypes.inl x0) => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _ ) as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _ ) .",
+                "tactic_args": [
+                    "_goal : match h (Datatypes.inl x0) with\n| Datatypes.inl _ =>\n    match f x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match f x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "h : forall _ : sum y z, sum E x"
+                ],
+                "tactic_res": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "_goal : match f x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq x1 y\nend",
+                    "X : match f x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "e : E",
+                    "X : match f x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq x1 y\nend",
+                    "x1 : x"
+                ]
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq x1 y\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq x1 y\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match f x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq x1 y\nend"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "specialize ( _i ( Datatypes.inr _i ) ) .",
+                "tactic_sig_no_out_arg": "specialize ( _i ( Datatypes.inr _i ) ) .",
+                "tactic_args": [
+                    "X : forall x0 : sum y z,\nmatch h x0 with\n| Datatypes.inl _ =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "x0 : z"
+                ],
+                "tactic_res": [
+                    "X : match h (Datatypes.inr x0) with\n| Datatypes.inl _ =>\n    match\n      match\n        Datatypes.inr x0 as x'\n        return (forall _ : eq x' (Datatypes.inr x0), sum E x)\n      with\n      | Datatypes.inl v =>\n          fun _ : eq (Datatypes.inl v) (Datatypes.inr x0) => f v\n      | Datatypes.inr v =>\n          fun _ : eq (Datatypes.inr v) (Datatypes.inr x0) => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match\n      match\n        Datatypes.inr x0 as x'\n        return (forall _ : eq x' (Datatypes.inr x0), sum E x)\n      with\n      | Datatypes.inl v =>\n          fun _ : eq (Datatypes.inl v) (Datatypes.inr x0) => f v\n      | Datatypes.inr v =>\n          fun _ : eq (Datatypes.inr v) (Datatypes.inr x0) => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend"
+                ]
+            },
+            {
+                "tactic_sig": "destruct ( _i _ ) as [_o _o | _o _o ] .",
+                "tactic_sig_no_out_arg": "destruct ( _i _ ) .",
+                "tactic_args": [
+                    "_goal : match h (Datatypes.inr x0) with\n| Datatypes.inl _ =>\n    match g x0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match g x0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "h : forall _ : sum y z, sum E x"
+                ],
+                "tactic_res": [
+                    "_goal : match g x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "_goal : match g x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq x1 y\nend",
+                    "X : match g x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend",
+                    "e : E",
+                    "X : match g x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq x1 y\nend",
+                    "x1 : x"
+                ]
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match g x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match g x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match g x0 with\n| Datatypes.inl _ => True\n| Datatypes.inr _ => False\nend"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "subst .",
+                "tactic_sig_no_out_arg": "subst .",
+                "tactic_args": [
+                    "_goal : match g x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq x1 y\nend"
+                ],
+                "tactic_res": [
+                    "_goal : match g x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq x1 y\nend"
+                ]
+            },
+            {
+                "tactic_sig": "auto .",
+                "tactic_sig_no_out_arg": "auto .",
+                "tactic_args": [
+                    "_goal : match g x0 with\n| Datatypes.inl _ => False\n| Datatypes.inr y => eq x1 y\nend"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "destruct _i as [_o | _o ] .",
+                "tactic_sig_no_out_arg": "destruct _i .",
+                "tactic_args": [
+                    "_goal : match h x0 with\n| Datatypes.inl _ =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x1 =>\n    match\n      match x0 as x' return (forall _ : eq x' x0, sum E x) with\n      | Datatypes.inl v => fun _ : eq (Datatypes.inl v) x0 => f v\n      | Datatypes.inr v => fun _ : eq (Datatypes.inr v) x0 => g v\n      end eq_refl\n    with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x1 y\n    end\nend",
+                    "x0 : sum y z"
+                ],
+                "tactic_res": [
+                    "_goal : match h (Datatypes.inl y0) with\n| Datatypes.inl _ =>\n    match f y0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match f y0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "_goal : match h (Datatypes.inr z0) with\n| Datatypes.inl _ =>\n    match g z0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match g z0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend",
+                    "y0 : y",
+                    "z0 : z"
+                ]
+            },
+            {
+                "tactic_sig": "firstorder .",
+                "tactic_sig_no_out_arg": "firstorder .",
+                "tactic_args": [
+                    "_goal : match h (Datatypes.inl y0) with\n| Datatypes.inl _ =>\n    match f y0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match f y0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend"
+                ],
+                "tactic_res": []
+            },
+            {
+                "tactic_sig": "firstorder .",
+                "tactic_sig_no_out_arg": "firstorder .",
+                "tactic_args": [
+                    "_goal : match h (Datatypes.inr z0) with\n| Datatypes.inl _ =>\n    match g z0 with\n    | Datatypes.inl _ => True\n    | Datatypes.inr _ => False\n    end\n| Datatypes.inr x0 =>\n    match g z0 with\n    | Datatypes.inl _ => False\n    | Datatypes.inr y => eq x0 y\n    end\nend"
+                ],
+                "tactic_res": []
+            }
+        ]
+    }
+]

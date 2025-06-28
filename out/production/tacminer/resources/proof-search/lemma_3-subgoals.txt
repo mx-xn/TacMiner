@@ -1,0 +1,22 @@
+forall (l0 h0 : Z) (_ : Z.lt l0 h0), ok (add l0 h0 Nil)
+
+forall (l0 h0 : Z) (_ : Z.lt l0 h0), ok (add l0 h0 (Cons l h s))
+
+forall (x : Z) (_ : In x Nil), Z.lt h0 x
+
+ok (Cons l h (add l0 h0 s))
+
+ok
+  (if zlt h0 l
+   then Cons l0 h0 (Cons l h s)
+   else add (Z.min l l0) (Z.max h h0) s)
+
+forall (x : Z) (_ : In x (add l0 h0 s)), Z.lt h x
+
+ok (Cons l0 h0 (Cons l h s))
+
+ok (add (Z.min l l0) (Z.max h h0) s)
+
+forall (x : Z) (_ : In x (Cons l h s)), Z.lt h0 x
+
+ok (Cons l h s)

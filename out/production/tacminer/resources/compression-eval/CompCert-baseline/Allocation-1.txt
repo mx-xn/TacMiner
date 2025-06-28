@@ -1,0 +1,14 @@
+extracted tactics-----------
+custom_tac0: red; [auto
+custom_tac2: red in _i; [red in _i; [red
+custom_tac1: red; [intros
+---------------------------
+Num proofs: 22
+Num training proofs: 6
+Original size: 348
+Training size: 139
+Testing size: 209
+Compressed total size: 330 ( 323 corpus / 7 library )
+Compressed testing size: 197
+Compression rate: 1.0545454545454545
+Num tactics in library: 3

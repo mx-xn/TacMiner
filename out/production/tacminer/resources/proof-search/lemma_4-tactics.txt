@@ -1,0 +1,3 @@
+Ltac custom0 H5 := simpl; [intuition; [exploit H5; [eauto; [lia | .. ] | .. ] | .. ] | .. ].
+Ltac custom0  := eauto; [lia | .. ].
+Ltac custom0  := left; [lia | .. ].

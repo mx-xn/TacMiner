@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="graphstream.gs.core" type="repository">
+    <properties maven-id="org.graphstream:gs-core:2.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/graphstream/gs-core/2.0/gs-core-2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/graphstream/pherd/1.0/pherd-1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/graphstream/mbox2/1.0/mbox2-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

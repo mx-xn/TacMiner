@@ -1,0 +1,17 @@
+extracted tactics-----------
+custom_tac1: intros; inv _i
+---------------------------
+Num proofs: 55
+Num training proofs: 6
+Original size: 875
+Training size: 388
+Testing size: 487
+Compressed total size: 826 ( 819 corpus / 7 library )
+Compressed testing size: 478
+[1] numTactics: 1
+[1] avrgTacticSize: 2.00
+[1] maxTacSize: 2
+[1] numAvgApplications: 3.00
+[1] numTotalApplications: 3
+Compression rate: 1.0188284518828452
+Num tactics in library: 1

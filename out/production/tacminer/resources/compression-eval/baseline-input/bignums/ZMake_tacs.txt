@@ -1,0 +1,97 @@
+bignums/BigZ/ZMake.v
+-----
+bignums/BigZ/ZMake_compr.v
+-----
+-----
+spec_of_Z
+Proof. intros x; case x; unfold to_Z, of_Z, zero. exact NN.spec_0. intros; rewrite NN.spec_of_N; auto. intros; rewrite NN.spec_of_N; auto. Qed.
+spec_m1
+Proof. simpl; rewrite NN.spec_1; auto. Qed.
+spec_compare
+Proof. unfold compare, to_Z. destruct x as [x|x], y as [y|y]; rewrite ?NN.spec_compare, ?NN.spec_0, ?Z.compare_opp; auto; assert (Hx:=NN.spec_pos x); assert (Hy:=NN.spec_pos y); set (X:=NN.to_Z x) in *; set (Y:=NN.to_Z y) in *; clearbody X Y. - destruct (Z.compare_spec X 0) as [EQ|LT|GT]. + rewrite <- Z.opp_0 in EQ. now rewrite EQ, Z.compare_opp. + exfalso. lia. + symmetry. change (X > -Y). lia. - destruct (Z.compare_spec 0 X) as [EQ|LT|GT]. + rewrite <- EQ, Z.opp_0; auto. + symmetry. change (-X < Y). lia. + exfalso. lia. Qed.
+spec_eqb
+Proof. apply Bool.eq_iff_eq_true. unfold eqb. rewrite Z.eqb_eq, <- Z.compare_eq_iff, spec_compare. split. - now destruct Z.compare. - now intros ->. Qed.
+spec_ltb
+Proof. apply Bool.eq_iff_eq_true. rewrite Z.ltb_lt. unfold Z.lt, ltb. rewrite spec_compare. split. - now destruct Z.compare. - now intros ->. Qed.
+spec_leb
+Proof. apply Bool.eq_iff_eq_true. rewrite Z.leb_le. unfold Z.le, leb. rewrite spec_compare. now destruct Z.compare; split. Qed.
+spec_min
+Proof. unfold min, Z.min. intros. rewrite spec_compare. destruct Z.compare; auto. Qed.
+spec_max
+Proof. unfold max, Z.max. intros. rewrite spec_compare. destruct Z.compare; auto. Qed.
+spec_abs
+Proof. intros x; case x; clear x; intros x; assert (F:=NN.spec_pos x). simpl; rewrite Z.abs_eq; auto. simpl; rewrite Z.abs_neq; simpl; auto with zarith. Qed.
+spec_opp
+Proof. intros x; case x; simpl; auto with zarith. Qed.
+spec_succ
+Proof. intros x; case x; clear x; intros x. exact (NN.spec_succ x). simpl. rewrite NN.spec_compare. case Z.compare_spec; rewrite ?NN.spec_0; simpl. intros HH; rewrite <- HH; rewrite NN.spec_1; ring. intros HH; rewrite NN.spec_pred, Z.max_r; auto with zarith. generalize (NN.spec_pos x); auto with zarith. Qed.
+spec_add
+Proof. unfold add, to_Z; intros [x | x] [y | y]; try (rewrite NN.spec_add; auto with zarith); rewrite NN.spec_compare; case Z.compare_spec; unfold zero; rewrite ?NN.spec_0, ?NN.spec_sub; lia. Qed.
+spec_pred
+Proof. unfold pred, to_Z, minus_one; intros [x | x]; try (rewrite NN.spec_succ; ring). rewrite NN.spec_compare; case Z.compare_spec; rewrite ?NN.spec_0, ?NN.spec_1, ?NN.spec_pred; generalize (NN.spec_pos x); lia. Qed.
+spec_sub
+Proof. unfold sub, to_Z; intros [x | x] [y | y]; try (rewrite NN.spec_add; auto with zarith); rewrite NN.spec_compare; case Z.compare_spec; unfold zero; rewrite ?NN.spec_0, ?NN.spec_sub; lia. Qed.
+spec_mul
+Proof. unfold mul, to_Z; intros [x | x] [y | y]; rewrite NN.spec_mul; ring. Qed.
+spec_square
+Proof. unfold square, to_Z; intros [x | x]; rewrite NN.spec_square; ring. Qed.
+spec_pow_pos
+Proof. assert (F0: forall x, (-x)^2 = x^2). intros x; rewrite Z.pow_2_r; ring. unfold pow_pos, to_Z; intros [x | x] [p | p |]; try rewrite NN.spec_pow_pos; try ring. assert (F: 0 <= 2 * Zpos p). assert (0 <= Zpos p); auto with zarith. rewrite Pos2Z.inj_xI; repeat rewrite Zpower_exp; auto with zarith. repeat rewrite Z.pow_mul_r; auto with zarith. rewrite F0; ring. assert (F: 0 <= 2 * Zpos p). assert (0 <= Zpos p); auto with zarith. rewrite Pos2Z.inj_xO; repeat rewrite Zpower_exp; auto with zarith. repeat rewrite Z.pow_mul_r; auto with zarith. rewrite F0; ring. Qed.
+spec_pow_N
+Proof. destruct n; simpl. apply NN.spec_1. apply spec_pow_pos. Qed.
+spec_pow
+Proof. intros. unfold pow. destruct (to_Z y); simpl. apply NN.spec_1. apply spec_pow_pos. apply NN.spec_0. Qed.
+spec_log2
+Proof. intros. destruct x as [p|p]; simpl. apply NN.spec_log2. rewrite NN.spec_0. destruct (Z_le_lt_eq_dec _ _ (NN.spec_pos p)) as [LT|EQ]. rewrite Z.log2_nonpos; auto with zarith. now rewrite <- EQ. Qed.
+spec_sqrt
+Proof. destruct x as [p|p]; simpl. apply NN.spec_sqrt. rewrite NN.spec_0. destruct (Z_le_lt_eq_dec _ _ (NN.spec_pos p)) as [LT|EQ]. rewrite Z.sqrt_neg; auto with zarith. now rewrite <- EQ. Qed.
+spec_div_eucl
+Proof. unfold div_eucl, to_Z. intros [x | x] [y | y]. generalize (NN.spec_div_eucl x y); destruct (NN.div_eucl x y); auto. generalize (NN.spec_div_eucl x y); destruct (NN.div_eucl x y) as (q,r). break_nonneg x px EQx; break_nonneg y py EQy; rewrite NN.spec_eqb; rewrite NN.spec_0; cbn. - intros [= EQq EQr]. rewrite EQr, EQq. cbn. now rewrite NN.spec_0. - intros [= EQq EQr]. rewrite EQr, EQq. cbn. now rewrite NN.spec_0. - intros [= EQq EQr]. rewrite EQr, ?NN.spec_eqb, ?EQy, ?NN.spec_0, <- ?EQx. cbn. now rewrite ?EQq, NN.spec_0. - pose proof (B := Z.pos_div_eucl_bound px (Zpos py)). destruct (Z.pos_div_eucl px (Zpos py)) as (q',r'). cbn in B. intros [= EQq EQr]. break_nonneg r pr' EQr'. + subst. cbn. now rewrite NN.spec_0. + subst. rewrite NN.spec_eqb, EQy, NN.spec_0. cbn. rewrite NN.spec_succ, NN.spec_sub, EQy, EQr', <- Z.pos_sub_opp. cbn. f_equal. rewrite Z.pos_sub_gt; lia. - generalize (NN.spec_div_eucl x y); destruct (NN.div_eucl x y) as (q,r). break_nonneg x px EQx; break_nonneg y py EQy; rewrite NN.spec_eqb, NN.spec_0; cbn. + intros [= EQq EQr]. rewrite EQr, EQq. cbn. now rewrite NN.spec_0. + intros [= EQq EQr]. rewrite EQr, EQq. cbn. now rewrite NN.spec_0. + intros [= EQq EQr]. rewrite EQr, ?NN.spec_eqb, ?EQy, ?NN.spec_0. cbn. now rewrite NN.spec_0, <- ?Pos2Z.opp_pos, ?EQx, ?EQq. + pose proof (B := Z.pos_div_eucl_bound px (Zpos py)). destruct (Z.pos_div_eucl px (Zpos py)) as (q',r'). cbn in B. intros [= EQq EQr]. break_nonneg r pr' EQr'. * subst. cbn. now rewrite NN.spec_0. * subst. rewrite NN.spec_eqb, EQy, NN.spec_0. cbn. rewrite NN.spec_succ, NN.spec_sub, EQy, EQr'. cbn. f_equal. rewrite Z.pos_sub_gt; lia. - generalize (NN.spec_div_eucl x y); destruct (NN.div_eucl x y) as (q,r). break_nonneg x px EQx; break_nonneg y py EQy; try (injection 1 as -> ->; auto). simpl. intros <-; auto. Qed.
+spec_div
+Proof. intros x y; generalize (spec_div_eucl x y); unfold div, Z.div. case div_eucl; case Z.div_eucl; simpl; auto. intros q r q11 r1 H; injection H; auto. Qed.
+spec_modulo
+Proof. intros x y; generalize (spec_div_eucl x y); unfold modulo, Z.modulo. case div_eucl; case Z.div_eucl; simpl; auto. intros q r q11 r1 H; injection H; auto. Qed.
+spec_quot
+Proof. intros [x|x] [y|y]; simpl; symmetry; rewrite NN.spec_div; destruct (Z.eq_dec (NN.to_Z y) 0) as [EQ|NEQ]; try (rewrite EQ; now destruct (NN.to_Z x)); rewrite ?Z.quot_opp_r, ?Z.quot_opp_l, ?Z.opp_involutive, ?Z.opp_inj_wd; trivial; apply Z.quot_div_nonneg; generalize (NN.spec_pos x) (NN.spec_pos y); Z.order. Qed.
+spec_rem
+Proof. intros x y. unfold rem. rewrite spec_eqb, spec_0. case Z.eqb_spec; intros Hy. rewrite Hy. now destruct (to_Z x). destruct x as [x|x], y as [y|y]; simpl in *; symmetry; rewrite ?Z.eq_opp_l, ?Z.opp_0 in Hy; rewrite NN.spec_modulo, ?Z.rem_opp_r, ?Z.rem_opp_l, ?Z.opp_involutive, ?Z.opp_inj_wd; trivial; apply Z.rem_mod_nonneg; generalize (NN.spec_pos x) (NN.spec_pos y); Z.order. Qed.
+spec_gcd
+Proof. unfold gcd, Z.gcd, to_Z; intros [x | x] [y | y]; rewrite NN.spec_gcd; unfold Z.gcd; auto; case NN.to_Z; simpl; auto with zarith; try rewrite Z.abs_opp; auto; case NN.to_Z; simpl; auto with zarith. Qed.
+spec_sgn
+Proof. intros. unfold sgn. rewrite spec_compare. case Z.compare_spec. rewrite spec_0. intros <-; auto. rewrite spec_0, spec_1. symmetry. rewrite Z.sgn_pos_iff; auto. rewrite spec_0, spec_m1. symmetry. rewrite Z.sgn_neg_iff; auto with zarith. Qed.
+spec_even
+Proof. intros [n|n]; simpl; rewrite NN.spec_even; trivial. destruct (NN.to_Z n) as [|p|p]; now try destruct p. Qed.
+spec_odd
+Proof. intros [n|n]; simpl; rewrite NN.spec_odd; trivial. destruct (NN.to_Z n) as [|p|p]; now try destruct p. Qed.
+Zlnot_alt1
+Proof. unfold Z.lnot, Z.pred; auto with zarith. Qed.
+Zlnot_alt2
+Proof. unfold Z.lnot, Z.pred; auto with zarith. Qed.
+Zlnot_alt3
+Proof. unfold Z.lnot, Z.pred; auto with zarith. Qed.
+spec_norm_pos
+Proof. intros [x|x]; simpl; trivial. rewrite NN.spec_eqb, NN.spec_0. case Z.eqb_spec; simpl; auto with zarith. Qed.
+spec_norm_pos_pos
+Proof. intros [x|x] y; simpl; try easy. rewrite NN.spec_eqb, NN.spec_0. case Z.eqb_spec; simpl; try easy. inversion 2. subst. generalize (NN.spec_pos y); auto with zarith. Qed.
+spec_testbit
+Proof. intros x p. unfold testbit. destr_norm_pos p; simpl. destr_norm_pos x; simpl. apply NN.spec_testbit. rewrite NN.spec_testbit, NN.spec_pred, Z.max_r by auto with zarith. symmetry. apply Z.bits_opp. apply NN.spec_pos. symmetry. apply Z.testbit_neg_r; auto with zarith. Qed.
+Ltac custom_tac29 H0 H1 H2 := intros H0 H1; unfold H2.
+
+Ltac custom_tac23 H0 := destruct H0 as [ p|p]; simpl.
+
+Ltac custom_tac7 H0 H1 := apply H0; rewrite H1.
+
+spec_shiftl
+Proof. custom_tac29 x p shiftl. destr_norm_pos x; custom_tac23 p; assert ( Hp := NN.spec_pos p). custom_tac7 NN.spec_shiftl Z.shiftl_opp_r. apply NN.spec_shiftr. rewrite !NN.spec_shiftl. rewrite !Z.shiftl_mul_pow2 by apply NN.spec_pos. symmetry. apply Z.mul_opp_l. rewrite Z.shiftl_opp_r, NN.spec_succ, NN.spec_shiftr, NN.spec_pred, Z.max_r by auto with zarith. now rewrite Zlnot_alt1, Z.lnot_shiftr, Zlnot_alt2. Qed.
+spec_shiftr
+Proof. intros. unfold shiftr. rewrite spec_shiftl, spec_opp. apply Z.shiftl_opp_r. Qed.
+spec_land
+Proof. intros x y. unfold land. destr_norm_pos x; destr_norm_pos y; simpl; rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor, ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; auto with zarith. now rewrite Z.ldiff_land, Zlnot_alt2. now rewrite Z.ldiff_land, Z.land_comm, Zlnot_alt2. now rewrite Z.lnot_lor, !Zlnot_alt2. Qed.
+spec_lor
+Proof. intros x y. unfold lor. destr_norm_pos x; destr_norm_pos y; simpl; rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor, ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; auto with zarith. now rewrite Z.lnot_ldiff, Z.lor_comm, Zlnot_alt2. now rewrite Z.lnot_ldiff, Zlnot_alt2. now rewrite Z.lnot_land, !Zlnot_alt2. Qed.
+spec_ldiff
+Proof. intros x y. unfold ldiff. destr_norm_pos x; destr_norm_pos y; simpl; rewrite ?NN.spec_succ, ?NN.spec_land, ?NN.spec_ldiff, ?NN.spec_lor, ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; auto with zarith. now rewrite Z.ldiff_land, Zlnot_alt3. now rewrite Z.lnot_lor, Z.ldiff_land, <- Zlnot_alt2. now rewrite 2 Z.ldiff_land, Zlnot_alt2, Z.land_comm, Zlnot_alt3. Qed.
+spec_lxor
+Proof. intros x y. unfold lxor. destr_norm_pos x; destr_norm_pos y; simpl; rewrite ?NN.spec_succ, ?NN.spec_lxor, ?NN.spec_pred, ?Z.max_r, ?Zlnot_alt1; auto with zarith. now rewrite !Z.lnot_lxor_r, Zlnot_alt2. now rewrite !Z.lnot_lxor_l, Zlnot_alt2. now rewrite <- Z.lxor_lnot_lnot, !Zlnot_alt2. Qed.
+spec_div2
+Proof. intros x. unfold div2. now rewrite spec_shiftr, Z.div2_spec, spec_1. Qed.

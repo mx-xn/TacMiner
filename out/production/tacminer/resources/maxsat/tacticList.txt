@@ -1,0 +1,2 @@
+src/resources/coq-conversion/SimpleAlgebra2.v
+Ltac custom0 H0 H1 := intros H0; [destruct ( H0 ) eqn : H1; [ |reflexivity | .. ] | .. ].

@@ -1,0 +1,16 @@
+extracted tactics -----------
+Ltac custom0 H0 H4 :=  exists H0; [split; [auto | exists H4; [auto | .. ] | .. ] | .. ].
+Ltac custom1 H0 H3 :=  destruct ( @infseq_inv H0 ) as ( c & Rbc & _ ); [eapply H3; [eauto | eauto | .. ] |  | .. ].
+Ltac custom2 H2 H3 :=  split; [auto | intros H2 H3 | .. ].
+Ltac custom3 H0 H1 H2 :=  assert ( H0 = H1 ) by ( eapply H2 ; eauto ); [subst H1; [auto] | .. ].
+Ltac custom4  :=  econstructor; [eauto | eauto | .. ].
+Ltac custom5 H0 H1 :=  apply H0 with H1; [auto | auto | .. ].
+Ltac custom6 H0 H13 H7 :=  inversion H0; [auto | elim ( H13 _ H7 ) | .. ].
+Ltac custom7 H0 :=  exists H0; [auto | .. ].
+---------------------------
+ , , 1.0
+Sequences, Number of Tactics, 8
+ , Average Tactic Size, 3.25
+ , Total Tactic Size, 26
+ , Max Tactic Size, 5
+ , Overall CP, 0.00

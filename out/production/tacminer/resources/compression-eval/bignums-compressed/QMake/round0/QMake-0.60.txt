@@ -1,0 +1,51 @@
+extracted tactics -----------
+Ltac custom0  :=  simpl; [nzsimpl | .. ].
+Ltac custom1  :=  destr_eqb; [nzsimpl | nzsimpl | .. ].
+Ltac custom2  :=  simpl; [auto | .. ].
+Ltac custom3  :=  custom0 ; [auto | .. ].
+Ltac custom4 H0 H1 H2 H3 H4 H5 H6 :=  unfold H0, H1; [unfold H2; [apply H3; [apply H4; [apply H5; [apply H6 | .. ] | apply H5; [apply H6 | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom5 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom6  :=  simpl; [try discriminate | .. ].
+Ltac custom7  :=  simpl; [destr_eqb | .. ].
+Ltac custom8 H0 H1 :=  unfold H0; [apply H1 | .. ].
+Ltac custom9  :=  custom0 ; [try lia | .. ].
+Ltac custom10 H0 :=  unfold H0; [nzsimpl | .. ].
+Ltac custom11 H0 H1 :=  rewrite H0, H1; [auto | .. ].
+Ltac custom12 H0 H1 H2 :=  intros H0 H1; [rewrite H2 in *; [ | lia | .. ] | .. ].
+Ltac custom14 H0 H1 :=  generalize ( Z.gcd_nonneg ( ZZ.to_Z H0 ) ( NN.to_Z H1 ) ); [lia | .. ].
+Ltac custom15 H0 H1 H2 H3 :=  unfold H0; [custom8 H1 H2; [apply H3 | .. ] | .. ].
+Ltac custom16  :=  simpl; [discriminate | .. ].
+Ltac custom17 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom18  :=  destr_eqb; [ | now rewrite ?NN.spec_0, ?NN.spec_of_N | .. ].
+Ltac custom19 H0 :=  rewrite H0; [ | auto | .. ].
+Ltac custom20 H0 :=  rewrite H0 in *; [lia | .. ].
+Ltac custom21  :=  destr_zcompare; [ | simpl | simpl | .. ].
+Ltac custom22  :=  destr_zcompare; [ |  | custom0  | .. ].
+Ltac custom23 H0 H1 :=  custom0 ; [rewrite H0, H1 | .. ].
+Ltac custom24  :=  custom0 ; [destr_eqb | .. ].
+Ltac custom25 H0 :=  custom20 H0; [lia | .. ].
+Ltac custom26 H0 :=  generalize ( NN.spec_pos H0 ); [lia | .. ].
+Ltac custom27 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom28 H0 :=  rewrite H0; [qsimpl; [ | .. ] | .. ].
+Ltac custom29 H0 :=  rewrite H0 in *; [auto with zarith].
+Ltac custom30 H1 H2 :=  nzsimpl; [intros H1 H2 | .. ].
+Ltac custom31 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom32 H0 :=  destruct H0 as [ zy|ny dy ]; [ | simpl | .. ].
+---------------------------
+Num proofs: 32
+Num training proofs: 15
+Original size: 990
+Compressed total size: 741
+Training size: 624
+(2) (3) Testing size: 366
+(2) (3) Compressed testing size: 272
+(2) (3) Compression rate: 134.56
+Compressed size + lib: 818 ( 741 corpus / 77 library )
+[1] numTactics: 32
+[1] avrgTacticSize: 2.31
+[1] maxTacSize: 8
+[1] numProofsCompressed/total: 14 / 17
+[1] numAvgApplications: 5.13
+[1] numTotalApplications: 164
+Compression rate: 1.2102689486552567
+Num tactics in library: 32

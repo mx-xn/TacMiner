@@ -1,0 +1,3667 @@
+[
+  {
+    "in_state": {
+      "hypotheses": [],
+      "goals": [
+        "forall (s1 : t) (_ : ok s1) (s2 : t) (_ : ok s2),\niff (eq (beq s1 s2) true) (forall x : Z, iff (In x s1) (In x s2))"
+      ]
+    },
+    "tactic": "induction 1; destruct 1; simpl.",
+    "tactic_sig": "induction 1 ; destruct 1 ; simpl .",
+    "tactic_args": [
+      "_goal : forall (s1 : t) (_ : ok s1) (s2 : t) (_ : ok s2),\niff (eq (beq s1 s2) true) (forall x : Z, iff (In x s1) (In x s2))"
+    ],
+    "tactic_res": [
+      "_goal : iff (eq true true) (forall _ : Z, iff False False)",
+      "_goal : iff (eq false true)\n  (forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s)))",
+      "_goal : iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+      "_goal : iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))",
+      "H : ok s",
+      "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+      "BOUNDS : Z.lt l h",
+      "s : True",
+      "l : Z",
+      "h : Z",
+      "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+      "H0 : ok s0",
+      "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+      "BOUNDS0 : Z.lt l0 h0",
+      "s0 : True",
+      "l0 : Z",
+      "h0 : Z"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "iff (eq true true) (forall _ : Z, iff False False)",
+        "iff (eq false true)\n  (forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s)))",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "iff (eq true true) (forall _ : Z, iff False False)",
+        "iff (eq false true)\n  (forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s)))",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "tauto.",
+    "tactic_sig": "tauto .",
+    "tactic_args": [
+      "_goal : iff (eq true true) (forall _ : Z, iff False False)"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "iff (eq false true)\n  (forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s)))",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "iff (eq false true)\n  (forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s)))",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "split; intros.",
+    "tactic_sig": "split ; intros .",
+    "tactic_args": [
+      "_goal : iff (eq false true)\n  (forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s)))"
+    ],
+    "tactic_res": [
+      "_goal : iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+      "_goal : eq false true",
+      "x : Z",
+      "H0 : eq false true",
+      "H0 : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "x : Z",
+        "H0 : eq false true",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+        "eq false true",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "x : Z",
+        "H0 : eq false true",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+        "eq false true",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "discriminate.",
+    "tactic_sig": "discriminate .",
+    "tactic_args": [
+      "_goal : iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "eq false true",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "eq false true",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "exfalso.",
+    "tactic_sig": "exfalso .",
+    "tactic_args": [
+      "_goal : eq false true"
+    ],
+    "tactic_res": [
+      "_goal : False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "False",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "False",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "apply (H0 l).",
+    "tactic_sig": "apply ( _ _ ) .",
+    "tactic_args": [
+      "_goal : False",
+      "H0 : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+      "l : Z"
+    ],
+    "tactic_res": [
+      "_goal : or (and (Z.le l l) (Z.lt l h)) (In l s)"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "or (and (Z.le l l) (Z.lt l h)) (In l s)",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "or (and (Z.le l l) (Z.lt l h)) (In l s)",
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "left; lia.",
+    "tactic_sig": "left ; lia .",
+    "tactic_args": [
+      "_goal : or (and (Z.le l l) (Z.lt l h)) (In l s)"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "split; intros.",
+    "tactic_sig": "split ; intros .",
+    "tactic_args": [
+      "_goal : iff (eq false true)\n  (forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False)"
+    ],
+    "tactic_res": [
+      "_goal : iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+      "_goal : eq false true",
+      "x : Z",
+      "H0 : eq false true",
+      "H0 : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "x : Z",
+        "H0 : eq false true",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+        "eq false true",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "x : Z",
+        "H0 : eq false true",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+        "eq false true",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "discriminate.",
+    "tactic_sig": "discriminate .",
+    "tactic_args": [
+      "_goal : iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "eq false true",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "eq false true",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "exfalso.",
+    "tactic_sig": "exfalso .",
+    "tactic_args": [
+      "_goal : eq false true"
+    ],
+    "tactic_res": [
+      "_goal : False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "False",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "False",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "apply (H0 l).",
+    "tactic_sig": "apply ( _ _ ) .",
+    "tactic_args": [
+      "_goal : False",
+      "H0 : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+      "l : Z"
+    ],
+    "tactic_res": [
+      "_goal : or (and (Z.le l l) (Z.lt l h)) (In l s)"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "or (and (Z.le l l) (Z.lt l h)) (In l s)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H0 : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z"
+      ],
+      "goals": [
+        "or (and (Z.le l l) (Z.lt l h)) (In l s)",
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "left; lia.",
+    "tactic_sig": "left ; lia .",
+    "tactic_args": [
+      "_goal : or (and (Z.le l l) (Z.lt l h)) (In l s)"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+      ]
+    },
+    "tactic": "split; intros.",
+    "tactic_sig": "split ; intros .",
+    "tactic_args": [
+      "_goal : iff (eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)\n  (forall x : Z,\n   iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))"
+    ],
+    "tactic_res": [
+      "_goal : iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+      "_goal : eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true",
+      "x : Z",
+      "H1 : eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true",
+      "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "x : Z",
+        "H1 : eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "x : Z",
+        "H1 : eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "InvBooleans.",
+    "tactic_sig": "InvBooleans .",
+    "tactic_args": [],
+    "tactic_res": [
+      "H1 : eq l l0",
+      "H2 : eq h h0",
+      "H3 : eq (beq s s0) true"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H1 : eq l l0",
+        "H2 : eq h h0",
+        "H3 : eq (beq s s0) true",
+        "x : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H1 : eq l l0",
+        "H2 : eq h h0",
+        "H3 : eq (beq s s0) true",
+        "x : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "subst.",
+    "tactic_sig": "subst .",
+    "tactic_args": [
+      "_goal : iff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))"
+    ],
+    "tactic_res": [
+      "_goal : iff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+      "BOUNDS : Z.lt l0 h0",
+      "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H3 : eq (beq s s0) true",
+        "x : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "l0 : Z",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "h0 : Z",
+        "s : True",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H3 : eq (beq s s0) true",
+        "x : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "l0 : Z",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "h0 : Z",
+        "s : True",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "rewrite IHok in H3 by auto.",
+    "tactic_sig": "rewrite _ in _ by auto .",
+    "tactic_args": [
+      "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+      "H3 : eq (beq s s0) true"
+    ],
+    "tactic_res": [
+      "H3 : forall x : Z, iff (In x s) (In x s0)"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H3 : forall x : Z, iff (In x s) (In x s0)",
+        "x : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "l0 : Z",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "h0 : Z",
+        "s : True",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H3 : forall x : Z, iff (In x s) (In x s0)",
+        "x : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "l0 : Z",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "h0 : Z",
+        "s : True",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "rewrite H3.",
+    "tactic_sig": "rewrite _ .",
+    "tactic_args": [
+      "_goal : iff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+      "H3 : forall x : Z, iff (In x s) (In x s0)"
+    ],
+    "tactic_res": [
+      "_goal : iff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H3 : forall x : Z, iff (In x s) (In x s0)",
+        "x : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "l0 : Z",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "h0 : Z",
+        "s : True",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H3 : forall x : Z, iff (In x s) (In x s0)",
+        "x : Z",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "l0 : Z",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "h0 : Z",
+        "s : True",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "iff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "tauto.",
+    "tactic_sig": "tauto .",
+    "tactic_args": [
+      "_goal : iff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "destruct (zeq l l0).",
+    "tactic_sig": "destruct ( zeq _ _ ) .",
+    "tactic_args": [
+      "_goal : eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true",
+      "l : Z",
+      "l0 : Z"
+    ],
+    "tactic_res": [
+      "_goal : eq (andb (andb (left e) (zeq h h0)) (beq s s0)) true",
+      "_goal : eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true",
+      "e : eq l l0",
+      "n : not (eq l l0)"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "eq (andb (andb (left e) (zeq h h0)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "eq (andb (andb (left e) (zeq h h0)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "destruct (zeq h h0).",
+    "tactic_sig": "destruct ( zeq _ _ ) .",
+    "tactic_args": [
+      "_goal : eq (andb (andb (left e) (zeq h h0)) (beq s s0)) true",
+      "h : Z",
+      "h0 : Z"
+    ],
+    "tactic_res": [
+      "_goal : eq (andb (andb (left e) (left e0)) (beq s s0)) true",
+      "_goal : eq (andb (andb (left e) (right n)) (beq s s0)) true",
+      "e0 : eq h h0",
+      "n : not (eq h h0)"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "e0 : eq h h0",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq h h0)",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "eq (andb (andb (left e) (left e0)) (beq s s0)) true",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "e0 : eq h h0",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq h h0)",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "eq (andb (andb (left e) (left e0)) (beq s s0)) true",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "simpl.",
+    "tactic_sig": "simpl .",
+    "tactic_args": [
+      "_goal : eq (andb (andb (left e) (left e0)) (beq s s0)) true"
+    ],
+    "tactic_res": [
+      "_goal : eq (beq s s0) true"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "e0 : eq h h0",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq h h0)",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "eq (beq s s0) true",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "e0 : eq h h0",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq h h0)",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "eq (beq s s0) true",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "subst.",
+    "tactic_sig": "subst .",
+    "tactic_args": [],
+    "tactic_res": [
+      "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+      "BOUNDS : Z.lt l0 h0",
+      "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "eq (beq s s0) true",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "eq (beq s s0) true",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "apply IHok.",
+    "tactic_sig": "apply _ .",
+    "tactic_args": [
+      "_goal : eq (beq s s0) true",
+      "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))"
+    ],
+    "tactic_res": [
+      "_goal : ok s0",
+      "_goal : forall x : Z, iff (In x s) (In x s0)"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "ok s0",
+        "forall x : Z, iff (In x s) (In x s0)",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "ok s0",
+        "forall x : Z, iff (In x s) (In x s0)",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "auto.",
+    "tactic_sig": "auto .",
+    "tactic_args": [
+      "_goal : ok s0"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "forall x : Z, iff (In x s) (In x s0)",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "forall x : Z, iff (In x s) (In x s0)",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "intros; split; intros.",
+    "tactic_sig": "intros ; split ; intros .",
+    "tactic_args": [
+      "_goal : forall x : Z, iff (In x s) (In x s0)"
+    ],
+    "tactic_res": [
+      "_goal : In x s0",
+      "_goal : In x s",
+      "H2 : In x s",
+      "x : Z",
+      "H2 : In x s0"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H2 : In x s",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "H2 : In x s0",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "In x s0",
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : In x s",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "H2 : In x s0",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "In x s0",
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "destruct (proj1 (H1 x)); auto.",
+    "tactic_sig": "destruct ( proj1 ( _ _ ) ) ; auto .",
+    "tactic_args": [
+      "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+      "x : Z"
+    ],
+    "tactic_res": [
+      "H3 : and (Z.le l0 x) (Z.lt x h0)"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "H2 : In x s0",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "In x s0",
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "H2 : In x s0",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "In x s0",
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "exfalso.",
+    "tactic_sig": "exfalso .",
+    "tactic_args": [
+      "_goal : In x s0"
+    ],
+    "tactic_res": [
+      "_goal : False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "H2 : In x s0",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "False",
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "H2 : In x s0",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "False",
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "exploit BELOW; eauto.",
+    "tactic_sig": "exploit _ ; eauto .",
+    "tactic_args": [
+      "_goal : False",
+      "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x"
+    ],
+    "tactic_res": [
+      "_goal : forall _ : Z.lt h0 x, False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "H2 : In x s0",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "forall _ : Z.lt h0 x, False",
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "H2 : In x s0",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "forall _ : Z.lt h0 x, False",
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "lia.",
+    "tactic_sig": "lia .",
+    "tactic_args": [
+      "_goal : forall _ : Z.lt h0 x, False"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H2 : In x s0",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : In x s0",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "destruct (proj2 (H1 x)); auto.",
+    "tactic_sig": "destruct ( proj2 ( _ _ ) ) ; auto .",
+    "tactic_args": [
+      "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+      "x : Z"
+    ],
+    "tactic_res": [
+      "H3 : and (Z.le l0 x) (Z.lt x h0)"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s0",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s0",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "In x s",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "exfalso.",
+    "tactic_sig": "exfalso .",
+    "tactic_args": [
+      "_goal : In x s"
+    ],
+    "tactic_res": [
+      "_goal : False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s0",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "False",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s0",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "False",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "exploit BELOW0; eauto.",
+    "tactic_sig": "exploit _ ; eauto .",
+    "tactic_args": [
+      "_goal : False",
+      "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x"
+    ],
+    "tactic_res": [
+      "_goal : forall _ : Z.lt h0 x, False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s0",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "forall _ : Z.lt h0 x, False",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H3 : and (Z.le l0 x) (Z.lt x h0)",
+        "H2 : In x s0",
+        "x : Z",
+        "H1 : forall x : Z,\niff (or (and (Z.le l0 x) (Z.lt x h0)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BOUNDS : Z.lt l0 h0",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h0 x",
+        "l0 : Z",
+        "h0 : Z",
+        "s : True",
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "forall _ : Z.lt h0 x, False",
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "lia.",
+    "tactic_sig": "lia .",
+    "tactic_args": [
+      "_goal : forall _ : Z.lt h0 x, False"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "eq (andb (andb (left e) (right n)) (beq s s0)) true",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "exfalso.",
+    "tactic_sig": "exfalso .",
+    "tactic_args": [
+      "_goal : eq (andb (andb (left e) (right n)) (beq s s0)) true"
+    ],
+    "tactic_res": [
+      "_goal : False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "n : not (eq h h0)",
+        "e : eq l l0",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)"
+      ],
+      "goals": [
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "subst l0.",
+    "tactic_sig": "subst _ .",
+    "tactic_args": [
+      "l0 : Z"
+    ],
+    "tactic_res": [
+      "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+      "BOUNDS0 : Z.lt l h0"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "destruct (zlt h h0).",
+    "tactic_sig": "destruct ( zlt _ _ ) .",
+    "tactic_args": [
+      "h : Z",
+      "h0 : Z"
+    ],
+    "tactic_res": [
+      "l0 : Z.lt h h0",
+      "g : Z.ge h h0"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "l0 : Z.lt h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge h h0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "l0 : Z.lt h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge h h0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "destruct (proj2 (H1 h)).",
+    "tactic_sig": "destruct ( proj2 ( _ _ ) ) .",
+    "tactic_args": [
+      "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+      "h : Z"
+    ],
+    "tactic_res": [
+      "_goal : or (and (Z.le l h) (Z.lt h h0)) (In h s0)",
+      "H2 : and (Z.le l h) (Z.lt h h)",
+      "H2 : In h s"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "l0 : Z.lt h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : and (Z.le l h) (Z.lt h h)",
+        "H2 : In h s",
+        "g : Z.ge h h0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "or (and (Z.le l h) (Z.lt h h0)) (In h s0)",
+        "False",
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "l0 : Z.lt h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : and (Z.le l h) (Z.lt h h)",
+        "H2 : In h s",
+        "g : Z.ge h h0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "or (and (Z.le l h) (Z.lt h h0)) (In h s0)",
+        "False",
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "left; lia.",
+    "tactic_sig": "left ; lia .",
+    "tactic_args": [
+      "_goal : or (and (Z.le l h) (Z.lt h h0)) (In h s0)"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H2 : and (Z.le l h) (Z.lt h h)",
+        "l0 : Z.lt h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : In h s",
+        "g : Z.ge h h0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : and (Z.le l h) (Z.lt h h)",
+        "l0 : Z.lt h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : In h s",
+        "g : Z.ge h h0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "lia.",
+    "tactic_sig": "lia .",
+    "tactic_args": [],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H2 : In h s",
+        "l0 : Z.lt h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge h h0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : In h s",
+        "l0 : Z.lt h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge h h0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "exploit BELOW; eauto.",
+    "tactic_sig": "exploit _ ; eauto .",
+    "tactic_args": [
+      "BELOW : forall (x : Z) (_ : In x s), Z.lt h x"
+    ],
+    "tactic_res": [
+      "_goal : forall _ : Z.lt h h, False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H2 : In h s",
+        "l0 : Z.lt h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge h h0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "forall _ : Z.lt h h, False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : In h s",
+        "l0 : Z.lt h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge h h0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "forall _ : Z.lt h h, False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "lia.",
+    "tactic_sig": "lia .",
+    "tactic_args": [
+      "_goal : forall _ : Z.lt h h, False"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "g : Z.ge h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "g : Z.ge h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "destruct (proj1 (H1 h0)).",
+    "tactic_sig": "destruct ( proj1 ( _ _ ) ) .",
+    "tactic_args": [
+      "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+      "h0 : Z"
+    ],
+    "tactic_res": [
+      "_goal : or (and (Z.le l h0) (Z.lt h0 h)) (In h0 s)",
+      "H2 : and (Z.le l h0) (Z.lt h0 h0)",
+      "H2 : In h0 s0"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "g : Z.ge h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : and (Z.le l h0) (Z.lt h0 h0)",
+        "H2 : In h0 s0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "or (and (Z.le l h0) (Z.lt h0 h)) (In h0 s)",
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "g : Z.ge h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : and (Z.le l h0) (Z.lt h0 h0)",
+        "H2 : In h0 s0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "or (and (Z.le l h0) (Z.lt h0 h)) (In h0 s)",
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "left; lia.",
+    "tactic_sig": "left ; lia .",
+    "tactic_args": [
+      "_goal : or (and (Z.le l h0) (Z.lt h0 h)) (In h0 s)"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H2 : and (Z.le l h0) (Z.lt h0 h0)",
+        "g : Z.ge h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : In h0 s0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : and (Z.le l h0) (Z.lt h0 h0)",
+        "g : Z.ge h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : In h0 s0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "lia.",
+    "tactic_sig": "lia .",
+    "tactic_args": [],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H2 : In h0 s0",
+        "g : Z.ge h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : In h0 s0",
+        "g : Z.ge h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "exploit BELOW0; eauto.",
+    "tactic_sig": "exploit _ ; eauto .",
+    "tactic_args": [
+      "_goal : False",
+      "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x"
+    ],
+    "tactic_res": [
+      "_goal : forall _ : Z.lt h0 h0, False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H2 : In h0 s0",
+        "g : Z.ge h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "forall _ : Z.lt h0 h0, False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : In h0 s0",
+        "g : Z.ge h h0",
+        "n : not (eq h h0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l h0",
+        "s0 : True",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "BOUNDS0 : Z.lt l0 h0",
+        "l0 : Z"
+      ],
+      "goals": [
+        "forall _ : Z.lt h0 h0, False",
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "lia.",
+    "tactic_sig": "lia .",
+    "tactic_args": [
+      "_goal : forall _ : Z.lt h0 h0, False"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+      ]
+    },
+    "tactic": "exfalso.",
+    "tactic_sig": "exfalso .",
+    "tactic_args": [
+      "_goal : eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true"
+    ],
+    "tactic_res": [
+      "_goal : False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "False"
+      ]
+    },
+    "tactic": "destruct (zlt l l0).",
+    "tactic_sig": "destruct ( zlt _ _ ) .",
+    "tactic_args": [
+      "l : Z",
+      "l0 : Z"
+    ],
+    "tactic_res": [
+      "l1 : Z.lt l l0",
+      "g : Z.ge l l0"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "l1 : Z.lt l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge l l0"
+      ],
+      "goals": [
+        "False",
+        "False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "l1 : Z.lt l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge l l0"
+      ],
+      "goals": [
+        "False",
+        "False"
+      ]
+    },
+    "tactic": "destruct (proj1 (H1 l)).",
+    "tactic_sig": "destruct ( proj1 ( _ _ ) ) .",
+    "tactic_args": [
+      "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+      "l : Z"
+    ],
+    "tactic_res": [
+      "_goal : or (and (Z.le l l) (Z.lt l h)) (In l s)",
+      "H2 : and (Z.le l0 l) (Z.lt l h0)",
+      "H2 : In l s0"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "l1 : Z.lt l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : and (Z.le l0 l) (Z.lt l h0)",
+        "H2 : In l s0",
+        "g : Z.ge l l0"
+      ],
+      "goals": [
+        "or (and (Z.le l l) (Z.lt l h)) (In l s)",
+        "False",
+        "False",
+        "False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "l1 : Z.lt l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : and (Z.le l0 l) (Z.lt l h0)",
+        "H2 : In l s0",
+        "g : Z.ge l l0"
+      ],
+      "goals": [
+        "or (and (Z.le l l) (Z.lt l h)) (In l s)",
+        "False",
+        "False",
+        "False"
+      ]
+    },
+    "tactic": "left; lia.",
+    "tactic_sig": "left ; lia .",
+    "tactic_args": [
+      "_goal : or (and (Z.le l l) (Z.lt l h)) (In l s)"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H2 : and (Z.le l0 l) (Z.lt l h0)",
+        "l1 : Z.lt l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : In l s0",
+        "g : Z.ge l l0"
+      ],
+      "goals": [
+        "False",
+        "False",
+        "False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : and (Z.le l0 l) (Z.lt l h0)",
+        "l1 : Z.lt l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : In l s0",
+        "g : Z.ge l l0"
+      ],
+      "goals": [
+        "False",
+        "False",
+        "False"
+      ]
+    },
+    "tactic": "lia.",
+    "tactic_sig": "lia .",
+    "tactic_args": [],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H2 : In l s0",
+        "l1 : Z.lt l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge l l0"
+      ],
+      "goals": [
+        "False",
+        "False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : In l s0",
+        "l1 : Z.lt l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge l l0"
+      ],
+      "goals": [
+        "False",
+        "False"
+      ]
+    },
+    "tactic": "exploit BELOW0; eauto.",
+    "tactic_sig": "exploit _ ; eauto .",
+    "tactic_args": [
+      "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x"
+    ],
+    "tactic_res": [
+      "_goal : forall _ : Z.lt h0 l, False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H2 : In l s0",
+        "l1 : Z.lt l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge l l0"
+      ],
+      "goals": [
+        "forall _ : Z.lt h0 l, False",
+        "False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : In l s0",
+        "l1 : Z.lt l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "g : Z.ge l l0"
+      ],
+      "goals": [
+        "forall _ : Z.lt h0 l, False",
+        "False"
+      ]
+    },
+    "tactic": "lia.",
+    "tactic_sig": "lia .",
+    "tactic_args": [
+      "_goal : forall _ : Z.lt h0 l, False"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "g : Z.ge l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "g : Z.ge l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "False"
+      ]
+    },
+    "tactic": "destruct (proj2 (H1 l0)).",
+    "tactic_sig": "destruct ( proj2 ( _ _ ) ) .",
+    "tactic_args": [
+      "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+      "l0 : Z"
+    ],
+    "tactic_res": [
+      "_goal : or (and (Z.le l0 l0) (Z.lt l0 h0)) (In l0 s0)",
+      "H2 : and (Z.le l l0) (Z.lt l0 h)",
+      "H2 : In l0 s"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "g : Z.ge l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : and (Z.le l l0) (Z.lt l0 h)",
+        "H2 : In l0 s"
+      ],
+      "goals": [
+        "or (and (Z.le l0 l0) (Z.lt l0 h0)) (In l0 s0)",
+        "False",
+        "False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "g : Z.ge l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : and (Z.le l l0) (Z.lt l0 h)",
+        "H2 : In l0 s"
+      ],
+      "goals": [
+        "or (and (Z.le l0 l0) (Z.lt l0 h0)) (In l0 s0)",
+        "False",
+        "False"
+      ]
+    },
+    "tactic": "left; lia.",
+    "tactic_sig": "left ; lia .",
+    "tactic_args": [
+      "_goal : or (and (Z.le l0 l0) (Z.lt l0 h0)) (In l0 s0)"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H2 : and (Z.le l l0) (Z.lt l0 h)",
+        "g : Z.ge l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : In l0 s"
+      ],
+      "goals": [
+        "False",
+        "False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : and (Z.le l l0) (Z.lt l0 h)",
+        "g : Z.ge l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z",
+        "H2 : In l0 s"
+      ],
+      "goals": [
+        "False",
+        "False"
+      ]
+    },
+    "tactic": "lia.",
+    "tactic_sig": "lia .",
+    "tactic_args": [],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [
+        "H2 : In l0 s",
+        "g : Z.ge l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : In l0 s",
+        "g : Z.ge l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "False"
+      ]
+    },
+    "tactic": "exploit BELOW; eauto.",
+    "tactic_sig": "exploit _ ; eauto .",
+    "tactic_args": [
+      "_goal : False",
+      "BELOW : forall (x : Z) (_ : In x s), Z.lt h x"
+    ],
+    "tactic_res": [
+      "_goal : forall _ : Z.lt h l0, False"
+    ],
+    "out_state": {
+      "hypotheses": [
+        "H2 : In l0 s",
+        "g : Z.ge l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "forall _ : Z.lt h l0, False"
+      ]
+    }
+  },
+  {
+    "in_state": {
+      "hypotheses": [
+        "H2 : In l0 s",
+        "g : Z.ge l l0",
+        "n : not (eq l l0)",
+        "H1 : forall x : Z,\niff (or (and (Z.le l x) (Z.lt x h)) (In x s))\n  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))",
+        "H0 : ok s0",
+        "BELOW0 : forall (x : Z) (_ : In x s0), Z.lt h0 x",
+        "BOUNDS0 : Z.lt l0 h0",
+        "s0 : True",
+        "l0 : Z",
+        "h0 : Z",
+        "IHok : forall (s2 : t) (_ : ok s2),\niff (eq (beq s s2) true) (forall x : Z, iff (In x s) (In x s2))",
+        "H : ok s",
+        "BELOW : forall (x : Z) (_ : In x s), Z.lt h x",
+        "BOUNDS : Z.lt l h",
+        "s : True",
+        "l : Z",
+        "h : Z"
+      ],
+      "goals": [
+        "forall _ : Z.lt h l0, False"
+      ]
+    },
+    "tactic": "lia.",
+    "tactic_sig": "lia .",
+    "tactic_args": [
+      "_goal : forall _ : Z.lt h l0, False"
+    ],
+    "tactic_res": [],
+    "out_state": {
+      "hypotheses": [],
+      "goals": []
+    }
+  }
+],

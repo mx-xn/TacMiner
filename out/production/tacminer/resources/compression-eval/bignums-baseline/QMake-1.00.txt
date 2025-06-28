@@ -1,0 +1,52 @@
+extracted tactics-----------
+custom_tac8: simpl; nzsimpl
+custom_tac43: destr_eqb; nzsimpl
+custom_tac112: intros; rewrite <- _i by apply _i; rewrite _i; symmetry
+custom_tac53: unfold _i; rewrite _i; auto
+custom_tac42: simpl; auto
+custom_tac56: apply _i; auto
+custom_tac28: rewrite _i in *; lia
+custom_tac32: unfold _i; apply _i
+custom_tac50: simpl; rewrite _i
+custom_tac30: apply _i; auto with zarith
+custom_tac3: intros; rewrite _i; red; auto
+custom_tac99: apply _i; apply _i; apply _i
+custom_tac10: intros; unfold _i
+custom_tac36: rewrite _i, _i; auto
+custom_tac40: unfold _i; intros
+custom_tac95: rewrite _i; auto with qarith
+custom_tac23: generalize ( Z.gcd_nonneg ( ZZ.to_Z _i) ( NN.to_Z _i)); lia
+custom_tac104: intros; apply _i
+custom_tac14: nzsimpl; destr_zcompare
+custom_tac33: apply _i; simpl
+custom_tac41: nzsimpl; simpl
+custom_tac48: rewrite _i, _i; apply _i
+custom_tac0: generalize ( NN.spec_pos _i); lia
+custom_tac11: rewrite _i; reflexivity
+custom_tac15: qsimpl; congruence
+custom_tac20: simpl; rewrite <- _i
+custom_tac37: unfold _i; qsimpl
+custom_tac39: intros _o _o; rewrite <- _i
+custom_tac51: apply _i; apply _i
+custom_tac69: rewrite _i; symmetry
+custom_tac73: nzsimpl; intros
+custom_tac74: nzsimpl; rewrite _i
+custom_tac108: intros; red
+custom_tac1: auto; destr_eqb
+custom_tac19: destr_zcompare; simpl
+custom_tac68: nzsimpl; auto
+---------------------------
+Num proofs: 68
+Num training proofs: 68
+Original size: 1158
+Training size: 1158
+Testing size: 1158
+Compressed total size: 920 ( 761 corpus / 159 library )
+Compressed testing size: 1036
+[1] numTactics: 36
+[1] avrgTacticSize: 2.17
+[1] maxTacSize: 4
+[1] numAvgApplications: 2.72
+[1] numTotalApplications: 98
+Compression rate: 1.1177606177606179
+Num tactics in library: 36

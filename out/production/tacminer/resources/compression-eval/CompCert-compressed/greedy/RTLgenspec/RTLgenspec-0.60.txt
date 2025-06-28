@@ -1,0 +1,20 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+---------------------------
+Num proofs: 55
+Num training proofs: 12
+Original size: 1413
+Compressed total size: 1413
+Training size: 850
+(2) (3) Testing size: 563
+(2) (3) Compressed testing size: 563
+(2) (3) Compression rate: 100.00
+Compressed size + lib: 1423 ( 1413 corpus / 10 library )
+[1] numTactics: 1
+[1] avrgTacticSize: 10.00
+[1] maxTacSize: 10
+[1] numProofsCompressed/total: 0 / 43
+[1] numAvgApplications: 0.00
+[1] numTotalApplications: 0
+Compression rate: 0.9929725931131412
+Num tactics in library: 1

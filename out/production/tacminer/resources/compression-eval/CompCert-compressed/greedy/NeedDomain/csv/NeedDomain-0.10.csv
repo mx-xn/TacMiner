@@ -1,0 +1,18 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto | .. ].
+Ltac custom1 H1 :=  simpl in *; [unfold H1; [InvAgree | .. ] | .. ].
+Ltac custom2 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom3 H0 H1 :=  apply H0; [custom2 H1 | .. ].
+Ltac custom4 H0 :=  f_equal; [apply H0; [ | .. ] | .. ].
+Ltac custom5  :=  autorewrite with ints; [ | try lia | .. ].
+Ltac custom6 H3 :=  InvAgree; [apply H3 | .. ].
+Ltac custom7  :=  custom5 ; [ | try lia | .. ].
+Ltac custom8 H0 H2 :=  assert ( 0 <= H0 < Int.zwordsize ); [unfold H0 | custom0 H2 | .. ].
+Ltac custom9 H0 :=  simpl; [custom4 H0 | .. ].
+---------------------------
+ , , 0.1
+NeedDomain, Number of Tactics, 10
+ , Average Tactic Size, 2.00
+ , Total Tactic Size, 20
+ , Max Tactic Size, 3
+ , Overall CP, 1.07

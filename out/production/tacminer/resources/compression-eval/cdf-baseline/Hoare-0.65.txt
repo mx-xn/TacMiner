@@ -1,0 +1,25 @@
+extracted tactics-----------
+custom_tac21: apply _i; auto
+custom_tac7: red; auto
+custom_tac19: eapply _i; eauto
+custom_tac4: exists _i; split
+custom_tac51: intros; inv _i
+custom_tac27: intros _o _o _o _o _o; dependent induction _i
+custom_tac38: intros _o _o _o; apply _i
+custom_tac47: intros; apply _i
+custom_tac53: unfold _i; congruence
+---------------------------
+Num proofs: 65
+Num training proofs: 28
+Original size: 1252
+Training size: 839
+Testing size: 413
+Compressed total size: 1002 ( 962 corpus / 40 library )
+Compressed testing size: 387
+[1] numTactics: 9
+[1] avrgTacticSize: 2.00
+[1] maxTacSize: 2
+[1] numAvgApplications: 2.89
+[1] numTotalApplications: 26
+Compression rate: 1.0671834625322998
+Num tactics in library: 9

@@ -1,0 +1,45 @@
+cdf/./Sequences.v
+-----
+cdf/./Sequences_compr.v
+-----
+Ltac custom_tac6 H0 H1 := exists H0; split; auto; exists H1; auto.
+Ltac custom_tac8 H0 H1 := intros; destruct ( @infseq_inv H0) as ( c & Rbc & _); eapply H1; eauto.
+Ltac custom_tac7  := induction 1; intros; auto.
+Ltac custom_tac2  := split; auto.
+Ltac custom_tac0 H0 := intros; inversion H0.
+Ltac custom_tac3 H0 := exists H0; auto.
+-----
+star_trans
+Proof. induction 1; eauto using star. Qed.
+plus_star
+Proof. intros. inversion H. eauto using star. Qed.
+plus_star_trans
+Proof. intros. inversion H. eauto using plus, star_trans. Qed.
+star_plus_trans
+Proof. intros. inversion H0. inversion H; eauto using plus, star, star_trans. Qed.
+starN_star
+Proof. induction 1; econstructor; eauto. Qed.
+star_starN
+Proof. induction 1. - exists O; constructor. - destruct IHstar as (n & Sn). exists (S n); econstructor; eauto. Qed.
+cycle_infseq
+Proof. intros. exists (fun b => b = a); split. auto. intros. subst a1. exists a; auto. Qed.
+infseq_if_all_seq_inf
+Proof. intros a0 ALL0. exists all_seq_inf; split; auto. intros a1 ALL1. destruct (ALL1 a1) as [a2 R12]. constructor. exists a2; split; auto. intros a3 S23. destruct (ALL1 a3) as [a4 R23]. apply star_step with a2; auto. exists a4; auto. Qed.
+infseq_from_function
+Proof. intros a0 (f & F0 & Fn). exists (fun a => exists i, f i = a); split. - exists 0; auto. - intros a1 (i1 & F1). subst a1. exists (f (1 + i1)); split; auto. exists (1 + i1); auto. Qed.
+infseq_inv
+Proof. intros a (X & Xa & XP). destruct (XP a Xa) as (b & Rab & Xb). exists b; split; auto. exists X; auto. Qed.
+infseq_coinduction_principle
+Proof. intros X H a0 Xa0. exists (fun a => exists b, star a b /\ X b); split. - exists a0; auto using star_refl. - intros a1 (a2 & S12 & X2). inversion S12. subst a. + destruct (H a2 X2) as (a3 & P23 & X3). inversion P23. subst a c. exists b; split; auto. exists a3; auto. + exists b; split; auto. exists a2; auto. Qed.
+star_star_inv
+Proof. induction 1; intros. - auto. - inversion H1. + subst a0 a. right. eauto using star. + subst a0 c1. assert (b = b0) by (eapply R_functional; eauto). subst b0. apply IHstar; auto. Qed.
+finseq_unique
+Proof. intros. destruct (star_star_inv H H1). - inversion H3. subst a0. auto. elim (H0 _ H4). - inversion H3. subst a0. auto. elim (H2 _ H4). Qed.
+infseq_inv'
+Proof. intros a b Rab Ia. destruct (infseq_inv Ia) as (b' & Rab' & Xb'). assert (b' = b) by (eapply R_functional; eauto). subst b'. auto. Qed.
+infseq_star_inv
+Proof. induction 1; intros. - auto. - apply IHstar. apply infseq_inv' with a; auto. Qed.
+infseq_finseq_excl
+Proof. intros. destruct (@infseq_inv b) as (c & Rbc & _). eapply infseq_star_inv; eauto. apply (H0 c); auto. Qed.
+infseq_all_seq_inf
+Proof. intros. unfold all_seq_inf. custom_tac8 b infseq_star_inv. custom_tac3 c. Qed.

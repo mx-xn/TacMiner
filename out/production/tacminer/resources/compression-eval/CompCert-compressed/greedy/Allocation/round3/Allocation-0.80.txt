@@ -1,0 +1,43 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 :=  apply ( H0 H1 ); [apply H2 with H3; [auto | auto | .. ] | .. ].
+Ltac custom1 H0 :=  apply H0; [red; [auto | .. ] | .. ].
+Ltac custom2 H0 H4 H5 H6 H3 :=  apply H0; [auto | apply ( H4 H5 ); [apply H6 with H3; [auto | .. ] | .. ] | .. ].
+Ltac custom3 H0 :=  apply H0; [auto | .. ].
+Ltac custom4 H0 :=  left; [eapply H0; [eauto | eauto | .. ] | .. ].
+Ltac custom5 H0 H8 H3 :=  destruct H0 as [ e|e ]; [destruct H8 as [ e0|e0 ]; [destruct H3 as [ e1|e1 ]; [ | auto | .. ] | try contradiction | .. ] | .. ].
+Ltac custom6 H0 :=  unfold H0; [auto | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 :=  apply H0; [custom0 H1 H2 H3 H4 | .. ].
+Ltac custom8 H0 H1 H2 H3 H9 H10 H4 H11 :=  split; [intros H0; [destruct ( OrderedEquation'.eq_dec H2 H3 ) | .. ] | intros H1; [destruct ( OrderedEquation.eq_dec H2 H3 ); [ | custom7 H9 H10 H4 H11 H2 | .. ] | .. ] | .. ].
+Ltac custom9 H0 H1 H7 H8 H9 :=  destruct ( OrderedEqKind.compare ( ekind H0 ) ( ekind H1 ) ); [custom1 H8 | apply H9; [red | .. ] | custom1 H7 | .. ].
+Ltac custom10 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5 | .. ].
+Ltac custom11 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom12 H0 H5 :=  destruct H0; [ | destruct H5 | .. ].
+Ltac custom13  :=  right; [split | .. ].
+Ltac custom14  :=  red; [auto | .. ].
+Ltac custom15 H0 H1 :=  red in H0; [custom11 H1].
+Ltac custom16  :=  left; [congruence | .. ].
+Ltac custom17 H0 :=  destruct H0 as [ e1|e1 ]; [ | auto | .. ].
+Ltac custom18 H0 H1 H6 H7 :=  destruct ( OrderedLoc.compare ( eloc H0 ) ( eloc H1 ) ); [custom1 H6 |  | custom1 H7 | .. ].
+Ltac custom19 H0 H1 :=  split; [intros H0 | intros H1 | .. ].
+Ltac custom20 H0 H1 H5 H6 :=  destruct ( OrderedPositive.compare ( ereg H0 ) ( ereg H1 ) ); [custom1 H5 |  | custom1 H6 | .. ].
+Ltac custom21 H0 H1 H2 H3 H4 :=  unfold H0, H1; [intros H2 H3 H4 | .. ].
+Ltac custom22 H0 :=  red; [intros H0 | .. ].
+Ltac custom23 H0 H1 H2 :=  custom22 H0; [custom15 H1 H2 | .. ].
+---------------------------
+Num proofs: 29
+Num training proofs: 21
+Original size: 474
+Compressed total size: 282
+Training size: 337
+(2) (3) Testing size: 137
+(2) (3) Compressed testing size: 84
+(2) (3) Compression rate: 163.10
+Compressed size + lib: 351 ( 282 corpus / 69 library )
+[1] numTactics: 24
+[1] avrgTacticSize: 2.88
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 7 / 8
+[1] numAvgApplications: 3.42
+[1] numTotalApplications: 82
+Compression rate: 1.3504273504273505
+Num tactics in library: 24

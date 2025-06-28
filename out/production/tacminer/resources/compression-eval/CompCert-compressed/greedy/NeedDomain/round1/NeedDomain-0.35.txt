@@ -1,0 +1,52 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 :=  constructor; [intros H4 | intros H0 H1 H2 H3 | .. ].
+Ltac custom2 H1 :=  simpl in *; [unfold H1; [InvAgree | .. ] | .. ].
+Ltac custom3  :=  constructor; [auto with na | auto with na | .. ].
+Ltac custom4 H0 H1 H2 :=  red; [intros H0 H1 H2 | .. ].
+Ltac custom5 H0 H1 H2 H3 :=  split; [ | intros H0 H1 H2 H3; [eauto | .. ] | .. ].
+Ltac custom6 H0 :=  eapply H0; [eauto | eauto | .. ].
+Ltac custom7  :=  autorewrite with ints; [ | try lia | try lia | .. ].
+Ltac custom8 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom9 H0 :=  eelim H0; [eauto | eauto | eauto | .. ].
+Ltac custom10 H0 H2 H3 H4 H5 :=  inv H0; [rewrite H2; [intros [ H3 H4 ]; [custom9 H5 | .. ] | .. ] | .. ].
+Ltac custom11 H0 :=  rewrite H0; [eauto | .. ].
+Ltac custom12 H0 H1 H2 :=  rewrite H0; [intros [ H1 H2 ] | .. ].
+Ltac custom13 H0 :=  rewrite <- H0; [eauto | .. ].
+Ltac custom14 H0 H1 H2 :=  rewrite H0 in H1; [custom13 H2].
+Ltac custom15  :=  constructor; [auto with na | auto with na | .. ].
+Ltac custom16  :=  constructor; [auto with na | .. ].
+Ltac custom17 H0 H1 :=  apply H0; [custom0 H1 | .. ].
+Ltac custom18 H0 H1 :=  apply H0; [custom8 H1 | .. ].
+Ltac custom19 H0 H1 H2 H3 :=  split; [ | intros H0 H1 H2 H3 | .. ].
+Ltac custom20 H0 :=  intros H0; [auto | .. ].
+Ltac custom21 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom22 H0 :=  apply H0; [lia | .. ].
+Ltac custom23 H0 H1 :=  rewrite H0 by lia; [custom22 H1 | .. ].
+Ltac custom24 H0 :=  custom0 H0; [autorewrite with ints; [ | .. ] | .. ].
+Ltac custom25 H0 :=  eelim H0; [ | eauto | .. ].
+Ltac custom26 H0 :=  custom25 H0; [eauto | .. ].
+Ltac custom27 H0 H1 H2 H3 :=  custom12 H0 H1 H2; [custom26 H3 | .. ].
+Ltac custom28 H4 :=  InvAgree; [apply H4 | .. ].
+Ltac custom29  :=  InvAgree; [simpl | .. ].
+Ltac custom30 H0 :=  intros H0; [inv H0 | .. ].
+Ltac custom31 H0 :=  inv H0; [constructor | .. ].
+Ltac custom32 H0 H1 H2 H3 H4 H5 H6 H7 :=  intros H0 H1 H2 H3 H4; [custom4 H5 H6 H7 | .. ].
+---------------------------
+Num proofs: 31
+Num training proofs: 11
+Original size: 898
+Compressed total size: 708
+Training size: 464
+(2) (3) Testing size: 434
+(2) (3) Compressed testing size: 370
+(2) (3) Compression rate: 117.30
+Compressed size + lib: 785 ( 708 corpus / 77 library )
+[1] numTactics: 33
+[1] avrgTacticSize: 2.33
+[1] maxTacSize: 4
+[1] numProofsCompressed/total: 15 / 20
+[1] numAvgApplications: 3.76
+[1] numTotalApplications: 124
+Compression rate: 1.1439490445859872
+Num tactics in library: 33

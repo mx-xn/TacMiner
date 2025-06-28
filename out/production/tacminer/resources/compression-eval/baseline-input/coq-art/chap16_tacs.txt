@@ -1,0 +1,97 @@
+coq-art/./chap16.v
+-----
+coq-art/./chap16_compr.v
+-----
+-----
+verif_divide
+Proof. intros m p Hltm Hltp (q, Heq); rewrite Heq. rewrite inj_mult. replace (Z_of_nat q * Z_of_nat p)%Z with (0 + Z_of_nat q * Z_of_nat p)%Z; try ring. rewrite Z_mod_plus; auto. lia. Qed.
+divisor_smaller
+Proof. intros m p Hlt; case p. - intros q Heq; rewrite Heq in Hlt; rewrite Nat.mul_comm in Hlt. elim (Nat.lt_irrefl 0);exact Hlt. - intros p' q; case q. + intros Heq; rewrite Heq in Hlt. elim (Nat.lt_irrefl 0);exact Hlt. + intros q' Heq; rewrite Heq. rewrite Nat.mul_comm; simpl; auto with arith. Qed.
+Zabs_nat_0
+Proof. intros x; case x. - simpl; auto. - intros p Heq; elim (Nat.lt_irrefl 0). pattern 0 at 2; rewrite <- Heq. simpl; apply lt_O_nat_of_P. - intros p Heq; elim (Nat.lt_irrefl 0). pattern 0 at 2; rewrite <- Heq. simpl; apply lt_O_nat_of_P. Qed.
+Z_to_nat_and_back
+Proof. intros x; case x. - auto. - intros p Hd; elim p. + unfold Z.abs_nat; intros p' Hrec; rewrite nat_of_P_xI. rewrite inj_S. rewrite inj_mult. rewrite Zpos_xI. unfold Z.succ. rewrite Hrec. simpl; auto. + unfold Z.abs_nat. intros p' Hrec; rewrite nat_of_P_xO. rewrite inj_mult. rewrite Zpos_xO. unfold Z.succ. rewrite Hrec. simpl; auto. + simpl; auto. - intros p' Hd; elim Hd;auto. Qed.
+check_range_correct
+Proof. intros v r; elim r. - intros rz Hlt H1 H2 Hex; case Hex; intros k; case k. + intros (Hle, (Hne1, (q, Heq))). rewrite Nat.mul_comm in Heq; simpl in Heq. rewrite (Zabs_nat_0 _ Heq) in Hlt. elim (Z.lt_irrefl 0); assumption. + intros k' (Hle, (Hne1, (q, Heq))). inversion Hle. assert (H':k'=0). * assumption. * rewrite H' in Hne1; elim Hne1;auto. * assert (H': S k' <= 0) by assumption. inversion H'. - intros r' Hrec rz Hlt H1 H2 Hex; case Hex; intros k; case k. + intros (Hle, (Hne1, (q, Heq))). rewrite Nat.mul_comm in Heq; simpl in Heq. rewrite (Zabs_nat_0 _ Heq) in Hlt. elim (Z.lt_irrefl 0); assumption. + intros k' (Hle, (Hne1, (q, Heq))). inversion Hle. rewrite <- H1 in H2. rewrite <- (Z_to_nat_and_back v) in H2. assert (Hmod:(Z_of_nat (Z.abs_nat v) mod Z.of_nat (S (S r')) = 0)%Z). * apply verif_divide. replace 0 with (Z.abs_nat 0%Z). apply Zabs_nat_lt. lia. simpl; auto. auto with arith. exists q. assert (H': k' = S r') by assumption. rewrite <- H';auto. * unfold check_range in H2. rewrite Hmod in H2; discriminate H2. * lia. * unfold check_range in H2; fold check_range in H2. case_eq ((v mod rz)%Z). intros Heqmod. rewrite Heqmod in H2. discriminate H2. intros pmod Heqmod; rewrite Heqmod in H2. elim (Hrec (Z.pred rz) Hlt). rewrite <- H1. rewrite inj_S. rewrite inj_S. rewrite inj_S. rewrite <- Zpred_succ. auto. assumption. exists (S k'). repeat split;auto. exists q; assumption. intros p Hmod. elim (Z_mod_lt v rz). rewrite Hmod. unfold Z.le; simpl; intros Hle'; elim Hle';auto. rewrite <- H1. rewrite inj_S. unfold Z.succ. generalize (Zle_0_nat (S r')). intros; lia. Qed.
+nat_of_P_Psucc
+Proof. intros p; elim p. - simpl; intros p'; rewrite nat_of_P_xO. intros Heq; rewrite Heq; rewrite nat_of_P_xI; ring. - intros p' Heq; simpl. rewrite nat_of_P_xI. rewrite nat_of_P_xO;auto. - auto. Qed.
+nat_to_Z_and_back
+Proof. intros n; elim n. - auto. - intros n'; simpl; case n'. + simpl; auto. + intros n''; simpl; rewrite nat_of_P_Psucc. intros Heq; rewrite Heq; auto. Qed.
+check_correct
+Proof. unfold lt; intros p Hle; elim Hle. - intros Hcp (k, (Hne1, (Hne1bis, (q, Heq)))); rewrite Nat.mul_comm in Heq. assert (Hle' : k < 1). + elim (proj1 (Nat.lt_eq_cases k 1)); try(intuition; fail). apply divisor_smaller with (2:= Heq); auto. + case_eq k. intros Heq'; rewrite Heq' in Heq; simpl in Heq; discriminate Heq. intros; lia. - intros p' Hlep' Hrec; unfold check_primality. assert (H':(exists p'':nat, p' = (S p''))). + inversion Hlep'. exists 0; auto. eapply ex_intro;eauto. + elim H'; intros p'' Hp''; rewrite Hp''. repeat rewrite <- pred_Sn. intros Hcr Hex. elim check_range_correct with (3:= Hcr). rewrite inj_S; generalize (Zle_0_nat (S p'')). intros; lia. auto. elim Hex; intros k (Hne1, (HneSSp'', (q, Heq))); exists k. split. assert (HkleSSp'': k <= S (S p'')). * apply (divisor_smaller (S (S p'')) q). auto with arith. rewrite Nat.mul_comm. assumption. * lia. * split. assumption. exists q; now rewrite nat_to_Z_and_back. Qed.
+prime_2333
+Proof. apply check_correct; auto with arith. (**Finished transaction in 132. secs (131.01u,0.62s)*) Qed.
+reflection_test
+Proof. intros; repeat rewrite Nat.add_assoc; auto. Qed.
+flatten_aux_valid
+Proof. intros t; elim t; simpl; auto. intros t1 IHt1 t2 IHt2 t'; rewrite <- IHt1; rewrite <- IHt2. rewrite Nat.add_assoc; trivial. Qed.
+flatten_valid
+Proof. intros t; elim t; simpl; auto. intros t1 IHt1 t2 IHt2; rewrite <- flatten_aux_valid; rewrite <- IHt2. trivial. Qed.
+flatten_valid_2
+Proof. intros; rewrite (flatten_valid t); rewrite (flatten_valid t'); auto. Qed.
+reflection_test'
+Proof. intros. change (bin_nat (node (leaf x) (node (node (leaf y) (leaf z)) (node (leaf t)(leaf u)))) = bin_nat (node (node (leaf x)(leaf y)) (node (leaf z) (node (leaf t)(leaf u))))). apply flatten_valid_2; auto. Qed.
+reflection_test''
+Proof. intros; assoc_eq_nat. Qed.
+flatten_aux_valid_A
+Proof. intros l def t; elim t; simpl; auto. intros t1 IHt1 t2 IHt2 t'; rewrite <- IHt1; rewrite <- IHt2. symmetry; apply assoc. Qed.
+flatten_valid_A
+Proof. intros l def t; elim t; simpl; trivial. intros t1 IHt1 t2 IHt2; rewrite <- flatten_aux_valid_A; rewrite <- IHt2. auto. Qed.
+flatten_valid_A_2
+Proof. intros t t' l def Heq. rewrite (flatten_valid_A l def t); now rewrite (flatten_valid_A l def t'). Qed.
+reflection_test3
+Proof. intros; assoc_eq Z Zmult Zmult_assoc. Qed.
+flatten_aux_valid_A'
+Proof. intros l def t; elim t; simpl; auto. intros t1 IHt1 t2 IHt2 t'; rewrite <- IHt1; rewrite <- IHt2. symmetry; apply assoc. Qed.
+flatten_valid_A'
+Proof. intros l def t; elim t; simpl; trivial. intros t1 IHt1 t2 IHt2; rewrite <- flatten_aux_valid_A'; rewrite <- IHt2. trivial. Qed.
+flatten_valid_A_2'
+Proof. intros t t' l def Heq. rewrite (flatten_valid_A' l def t); rewrite (flatten_valid_A' l def t'). trivial. Qed.
+insert_is_f
+Proof. intros l def n t; elim t. intros t1; case t1. intros t1' t1'' IHt1 t2 IHt2. simpl. auto. intros n0 IHt1 t2 IHt2. simpl. case (nat_le_bool n n0). simpl. auto. simpl. rewrite IHt2. repeat rewrite assoc; rewrite (comm (nth n l def)); auto. simpl. intros n0. case (nat_le_bool n n0); auto; try rewrite comm; auto. Qed.
+sort_eq
+Proof. intros l def t; elim t. intros t1 IHt1; case t1. auto. intros n t2 IHt2; simpl; rewrite insert_is_f. rewrite IHt2; auto. auto. Qed.
+sort_eq_2
+Proof. intros l def t1 t2. rewrite <- (sort_eq l def t1); rewrite <- (sort_eq l def t2). trivial. Qed.
+reflection_test4
+Proof. intros x y z. comm_eq' Z Zplus Zplus_assoc Zplus_comm. Qed.
+div_Zsqrt
+Proof. intros m n p Hint Heq. elim (Z_lt_le_dec (Z.sqrt n) m); elim (Z_lt_le_dec (Z.sqrt n) p). - intros Hltm Hltp. assert (Hlem : (Z.sqrt n)+1 <= m) by lia. assert (Hlep : (Z.sqrt n)+1 <= p) by lia. elim (Z.lt_irrefl n). apply Z.lt_le_trans with (((Z.sqrt n)+1)*((Z.sqrt n)+1)). assert (Hposn : 0 <= n) by lia. generalize (Z.sqrt_spec n Hposn);cbv zeta;intro H23. intuition. pattern n at 3; rewrite Heq. apply Zmult_le_compat; try lia. generalize (Z.sqrt_nonneg n). lia. generalize (Z.sqrt_nonneg n). lia. - intros Hple _; right; split; auto. apply Zmult_lt_0_reg_r with m; try tauto. rewrite Zmult_comm; lia. - intros _ Hmle; left; split; tauto. - intros _ Hmle; left; split; tauto. Qed.
+test_odds_correct2
+Proof. intros n; elim n. - unfold test_odds, divides_bool; intros x H1ltx _ Heq Hex. assert (Heq' : Z_of_nat x mod Z_of_nat 2 = 0). + apply verif_divide; auto with zarith. + simpl (Z_of_nat 2) in Heq'; rewrite Heq' in Heq; simpl in Heq; discriminate. - clear n; intros n IHn x H1ltx p; simpl. case_eq (test_odds n (p - 2) (Z_of_nat x)). + intros Htest' _; apply (IHn x H1ltx (p - 2)); auto. + intros; discriminate. Qed.
+Z_of_nat_le
+Proof. intros; lia. Qed.
+test_odds_correct
+Proof. induction n. - intros x p Hp1 H1ltx Hn q Hint. exfalso; lia. - intros x p Hp H1ltx; simpl (test_odds (S n) p (Z_of_nat x)); intros Htest q (H1ltq, Hqle). case_eq (test_odds n (p -2) (Z_of_nat x)). + intros Htest'true. rewrite Htest'true in Htest. unfold divides_bool in Htest. elim (proj1 (Nat.lt_eq_cases q (2*S n + 1)%nat) Hqle). * intros Hqlt. assert (Hqle': (q <= (2* S n))%nat) by lia. elim (proj1 (Nat.lt_eq_cases q (2 * S n)%nat) Hqle'). replace (2*S n)%nat with (2*n +2)%nat. intros Hqlt'. assert (Hqle'' : (q <= 2*n +1)%nat) by lia. apply (IHn x (p - 2)); auto with zarith arith; try (rewrite Hp; rewrite inj_S; unfold Z.succ); ring. ring. intros Hq (y, Hdiv); elim (test_odds_correct2 n x H1ltx (p - 2)); auto. exists (S n * y)%nat; rewrite Hdiv; rewrite Hq; ring. * intros Hq Hex; assert (Hp' : p = Z_of_nat q). rewrite Hp; rewrite Hq; rewrite inj_plus; rewrite inj_mult; auto. rewrite Hp' in Htest; rewrite (verif_divide x q) in Htest. simpl in Htest; discriminate. lia. lia. elim Hex; intros y Hdiv; exists y; rewrite Hdiv; ring. + intros Htest'; rewrite Htest' in Htest; simpl in Htest; discriminate. Qed.
+lt_Zpos
+Proof. intros p; elim p. - intros; rewrite Zpos_xI; lia. - intros; rewrite Zpos_xO; lia. - auto with zarith. Qed.
+Zneg_lt
+Proof. intros p; elim p. - intros; rewrite Zneg_xI; lia. - intros; rewrite Zneg_xO; lia. - auto with zarith. Qed.
+Ltac custom_tac48 H0 H1 H2 := exists H0; rewrite H1; ring; intros H2.
+
+Ltac custom_tac26 H0 := auto; intros H0.
+
+Ltac custom_tac17 H0 H1 := rewrite H0 in H1; simpl in H1.
+
+Ltac custom_tac3 H0 H1 := intros H0; rewrite H0 in H1.
+
+Ltac custom_tac50  := lia; intros.
+
+Ltac custom_tac7  := simpl; auto.
+
+Ltac custom_tac1 H0 := rewrite H0; auto.
+
+Ltac custom_tac2 H0 H1 H2 := intros H0 H1; rewrite H1 in H2.
+
+Ltac custom_tac0 H0 H1 := rewrite H0; rewrite H1.
+
+Ltac custom_tac42 H0 H1 := rewrite <- H0; rewrite <- H1.
+
+Ltac custom_tac16 H0 := rewrite <- H0; auto.
+
+Ltac custom_tac18  := intros; lia.
+
+Ltac custom_tac46 H0 H1 := rewrite H0; apply H1.
+
+prime_test_correct
+Proof. intros n; case_eq n. - simpl; intros Heq Hd; discriminate. - intros n0; case_eq n0. + simpl; intros Heq1 Heq2 Hd; discriminate. + unfold prime_test; intros n1 Heqn0 Heqn. assert ( H1ltn: ( 1 < n)%nat). * rewrite Heqn; auto with arith. * rewrite <- Heqn. lazy beta zeta delta [ prime_test]. case_eq ( Z.sqrt ( Z_of_nat n)). intros Hsqrt_eq. elim ( Zlt_asym 1 ( Z_of_nat n)). lia. lapply ( Z.sqrt_spec ( Z_of_nat n)). rewrite Hsqrt_eq; simpl. lia. lia. intros p Hsqrt_eq Htest_eq ( k, ( Hn1, ( Hnn, ( q,Heq)))). assert ( H0ltn:( 0 < n)%nat) by lia. assert ( Hkltn:( k < n)%nat). assert ( Heq': n=( k*q)%nat). rewrite Heq; ring. generalize ( divisor_smaller n q H0ltn k Heq'). lia. assert ( Hex: exists k':nat, ( 1 < ( Z_of_nat k') <= ( Z.sqrt ( Z_of_nat n))) /\ ( exists q':nat, n=( k'*q')%nat)). elim ( div_Zsqrt ( Z_of_nat k) ( Z_of_nat n) ( Z_of_nat q)). intros Hint1; exists k;split. lia. custom_tac48 q Heq Hint2; exists q; split. split. elim ( Zle_or_lt ( Z_of_nat q) 1); custom_tac26 hqle1; assert ( Hq1: q = 1%nat). lia. custom_tac17 Hq1 Heq; elim Hnn; rewrite Heq; ring. tauto. exists k; auto. split. case_eq k. custom_tac3 Hk0 Heq; rewrite Heq in H1ltn; rewrite Nat.mul_0_r in H1ltn; custom_tac50 ; unfold Z.lt; custom_tac7 . lia. rewrite Zmult_comm; rewrite <- inj_mult; custom_tac1 Heq. elim Hex; intros k' ( ( H1ltk', Hk'ltsqrt), Hex'); clear Hex. case_eq p. custom_tac2 p' Hp Htest_eq. elim ( test_odds_correct ( Z.abs_nat ( Zpos p')) n ( Zpos p)) with k'. custom_tac0 Z_to_nat_and_back Hp. auto with zarith. auto with zarith. auto. repeat rewrite Zminus_0_r in Htest_eq. custom_tac1 Hp. split. lia. apply Z_of_nat_le. custom_tac0 inj_plus inj_mult. rewrite Z_to_nat_and_back. simpl ( Z_of_nat 2). simpl ( Z_of_nat 1). custom_tac42 Zpos_xI Hp. custom_tac16 Hsqrt_eq. auto with zarith. auto. custom_tac2 p' Hp Htest_eq. elim ( test_odds_correct ( Z.abs_nat ( Zpos p')) n ( Zpos p + 1)) with k'. custom_tac0 Z_to_nat_and_back Hp; rewrite Zpos_xO; ring. generalize ( lt_Zpos p'); custom_tac18 . auto. rewrite <- Hp in Htest_eq; auto. split. lia. apply Z_of_nat_le. custom_tac0 inj_plus inj_mult. rewrite Z_to_nat_and_back. simpl ( Z_of_nat 2); simpl ( Z_of_nat 1). custom_tac42 Zpos_xO Hp; lia. auto with zarith. auto. custom_tac3 Hp Hsqrt_eq. rewrite Hsqrt_eq in Hk'ltsqrt. lia. intros p Hsqrt_eq. elim ( Zle_not_lt 0 ( Z.sqrt ( Z_of_nat n))). apply Z.sqrt_nonneg. custom_tac46 Hsqrt_eq Zneg_lt. Qed.

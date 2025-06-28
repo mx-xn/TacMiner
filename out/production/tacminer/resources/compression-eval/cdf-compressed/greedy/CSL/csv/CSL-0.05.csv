@@ -1,0 +1,18 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto | .. ].
+Ltac custom1  :=  red; [auto | .. ].
+Ltac custom2 H0 H1 :=  apply H0; [rewrite H1 | .. ].
+Ltac custom3 H0 H1 H2 H3 :=  apply H0 in H1; [rewrite H2 in H3; [auto] | .. ].
+Ltac custom4 H0 :=  unfold H0; [cbn | .. ].
+Ltac custom5 H0 :=  custom4 H0; [custom1  | .. ].
+Ltac custom6 H0 H1 H2 :=  custom2 H0 H1; [custom5 H2 | .. ].
+Ltac custom7 H0 H1 :=  rewrite <- H0 at 1; [apply H1 | .. ].
+Ltac custom8 H0 H1 H2 :=  custom7 H0 H1; [eexact H2 | .. ].
+Ltac custom9 H0 H1 :=  apply H0; [custom0 H1 | .. ].
+---------------------------
+ , , 0.05
+CSL, Number of Tactics, 10
+ , Average Tactic Size, 1.90
+ , Total Tactic Size, 19
+ , Max Tactic Size, 3
+ , Overall CP, 1.04

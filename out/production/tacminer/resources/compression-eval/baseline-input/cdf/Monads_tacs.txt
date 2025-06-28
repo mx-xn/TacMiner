@@ -1,0 +1,54 @@
+cdf/Monads.v
+-----
+cdf/Monads_compr.v
+-----
+Ltac custom_tac0  := constructor; auto.
+-----
+
+Next Obligation. destruct (m p); cbn. apply IMP; auto. Qed.
+
+Next Obligation. constructor; auto. Qed.
+safe_bind_aux
+Proof. cofix COH; intros. unroll_delay (bind_aux d s); destruct d. - destruct (f a0 (safe_inv_now Q a0 s)) as (d1 & s1); cbn. constructor; auto. - constructor. apply COH. Qed.
+
+Next Obligation. destruct (m p); cbn. apply safe_consequence with Q; auto. Qed.
+safe_iter_aux
+Proof. cofix COINDHYP; intros. unroll_delay (iter_aux d s); destruct d as [[a | b] | d]. - destruct f as [ab' s']. constructor. apply COINDHYP. - apply safe_inv_now in s. custom_tac0 . - constructor. apply COINDHYP. Qed.
+
+Next Obligation. custom_tac0 . Qed.
+
+Next Obligation. apply safe_iter_aux. Qed.
+
+Next Obligation. destruct (a h p) as [[v1 h1] p1]; simpl in *. inv Heq_anonymous. auto. Qed.
+
+Next Obligation. destruct (m h p) as [[v h'] q]; cbn. apply IMP; auto. Qed.
+
+Next Obligation. split; auto. destruct p as (h1 & h2 & p1 & p2 & D & U). rewrite U in Heq_anonymous. cbn in Heq_anonymous. rewrite ! p1, hupdate_same in Heq_anonymous. congruence. Qed.
+
+Next Obligation. exfalso. destruct p as (h1 & h2 & p1 & p2 & D & U). rewrite U in Heq_anonymous. cbn in Heq_anonymous. rewrite ! p1, hupdate_same in Heq_anonymous. congruence. Qed.
+
+Next Obligation. destruct p as (h1 & h2 & p1 & p2 & D & U). destruct p1 as (v0 & p1). rewrite p1 in *. exists (hupdate l v hempty), h2. split. red; auto. split. auto. split. red; intros x; cbn. specialize (D x); cbn in D. destruct (Z.eq_dec l x); intuition congruence. rewrite U. apply heap_extensionality; intros x. cbn. destruct (Z.eq_dec l x); auto. Qed.
+
+Next Obligation. apply sepconj_imp_l; auto. Qed.
+
+Next Obligation. apply sepconj_imp_l. apply IMP. Qed.
+
+Next Obligation. rewrite sepconj_assoc. hnf; auto. Qed.
+
+Next Obligation. rewrite sepconj_assoc. hnf; auto. Qed.
+
+Next Obligation. rewrite lift_pureconj. hnf; auto. Qed.
+
+Next Obligation. red in p. rewrite <- Heq_anonymous in p. auto. Qed.
+
+Next Obligation. exfalso. red in p. rewrite <- Heq_anonymous in p. auto. Qed.
+
+Next Obligation. apply p. Qed.
+
+Next Obligation. destruct m; cbn. auto. Qed.
+
+Next Obligation. red in p. destruct m as [r q]. cbn in Heq_anonymous. subst r. auto. Qed.
+
+Next Obligation. red in p. destruct m as [r q]. cbn in Heq_anonymous. subst r. auto. Qed.
+
+Next Obligation. destruct m; cbn. auto. Qed.

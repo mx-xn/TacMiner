@@ -1,0 +1,12 @@
+iff (eq (R.contains l h (proj1_sig s)) true)
+  (forall (x : Z) (_ : and (Z.le l x) (Z.lt x h)), R.In x (proj1_sig s))
+
+iff (eq true true)
+  (forall (x : Z) (_ : and (Z.le l x) (Z.lt x h)), R.In x (proj1_sig s))
+
+forall (_ : eq true true) (x : Z) (_ : and (Z.le l x) (Z.lt x h)),
+R.In x (proj1_sig s)
+
+forall
+  _ : forall (x : Z) (_ : and (Z.le l x) (Z.lt x h)),
+      R.In x (proj1_sig s), eq true true

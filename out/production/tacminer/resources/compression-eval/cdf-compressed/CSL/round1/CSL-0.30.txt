@@ -1,0 +1,37 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 :=  rewrite H0; [apply H1; [intros H2 | .. ] | .. ].
+Ltac custom1 H0 :=  apply H0; [auto | .. ].
+Ltac custom2 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 :=  constructor; [auto |  | intros H9 H10 H11 H12 H13 H14 | intros H0 H1 H2 H3 H4 H5 H6 H7 H8; [subst H2 | .. ] | .. ].
+Ltac custom3 H0 H1 H2 H6 :=  exists ( hunion H0 H1 ), H2; [split; [HDISJ | split; [rewrite H6 | split; [assumption | .. ] | .. ] | .. ] | .. ].
+Ltac custom4  :=  red; [auto | .. ].
+Ltac custom5 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom6 H0 H1 :=  cbn; [destruct ( Z.eq_dec H0 H1 ); [ | intuition congruence | .. ] | .. ].
+Ltac custom7 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom8 H0 H1 H2 :=  rewrite H0; [rewrite ( H1 H2 ) by HDISJ; [assumption | .. ] | .. ].
+Ltac custom9 H0 H1 H2 H3 :=  apply H0 in H1; [rewrite H2 in H3; [auto] | .. ].
+Ltac custom10 H0 H1 H2 :=  apply H0; [rewrite H1; [unfold H2 | .. ] | .. ].
+Ltac custom11 H0 H1 H2 :=  intros H0 H1; [exists H2; [auto | .. ] | .. ].
+Ltac custom12  :=  cbn; [custom4  | .. ].
+Ltac custom13 H0 H1 H2 :=  custom10 H0 H1 H2; [custom12  | .. ].
+Ltac custom14 H0 :=  red; [intros H0 | .. ].
+Ltac custom15 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom16 H0 H1 H2 H3 :=  custom0 H0 H1 H2; [subst H3 | .. ].
+Ltac custom17 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 H15 :=  custom2 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14; [ |  | inv H15; [ | .. ] | .. ].
+---------------------------
+Num proofs: 18
+Num training proofs: 4
+Original size: 630
+Compressed total size: 498
+Training size: 316
+(2) (3) Testing size: 314
+(2) (3) Compressed testing size: 261
+(2) (3) Compression rate: 120.31
+Compressed size + lib: 548 ( 498 corpus / 50 library )
+[1] numTactics: 18
+[1] avrgTacticSize: 2.78
+[1] maxTacSize: 7
+[1] numProofsCompressed/total: 11 / 14
+[1] numAvgApplications: 3.72
+[1] numTotalApplications: 67
+Compression rate: 1.1496350364963503
+Num tactics in library: 18

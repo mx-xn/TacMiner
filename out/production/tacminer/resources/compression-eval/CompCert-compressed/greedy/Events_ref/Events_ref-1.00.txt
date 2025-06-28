@@ -1,0 +1,67 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H7 H9 H16 H13 H26 H30 H19 H22 H25 H31 H32 H27 :=  subst H0 H1 H2; [clear H7]. destruct H9; [simpl in H13 | simpl in H16 | simpl in H26; [exploit H30; [eauto | intros [ H31 H32 ]; [exists ( Vptr H31 H27 ) | .. ] | .. ] | .. ]inv H19 | simpl in H19inv H22 | simpl in H22 | .. ]. simpl in H25.
+Ltac custom1 H0 H1 H2 H3 H4 H5 H6 H8 H10 H12 H17 :=  intros H0 H1 H2 H3 H4 H5; [inv H4; [inv H6 | inv H8 | inv H10 | inv H12 | inv H17 | .. ] | .. ].
+Ltac custom2 H0 H1 H2 H7 H9 H13 H16 H19 H22 H25 :=  subst H0 H1 H2; [clear H7]. destruct H9; [inv H13 | simpl in H16 | simpl in H19 | simpl in H22 | simpl in H25 | .. ]. simpl in H13.
+Ltac custom3 H0 :=  eapply H0; [eauto | eauto | .. ].
+Ltac custom4 H0 H1 H2 H7 H9 H13 H16 H19 H22 H25 :=  subst H0 H1 H2; [clear H7]. destruct H9; [inv H13 | simpl in H16inv H16 | simpl in H19 | simpl in H22 | simpl in H25 | .. ]. simpl in H13.
+Ltac custom5 H0 :=  exploit H0; [eauto | eauto |  | .. ].
+Ltac custom6 H9 H10 H11 H12 H18 :=  induction 1; [intros H9 H10; [inv H10; [constructor | .. ] | .. ] | intros H11 H12; [inv H12; [constructor; [custom3 H18 | eauto | .. ] | .. ] | .. ] | .. ].
+Ltac custom7  :=  constructor; [auto | auto | .. ].
+Ltac custom8 H0 :=  inv H0; [destruct Archi.ptr64; [discriminate | discriminate | .. ] | .. ].
+Ltac custom9  :=  simpl; [auto | .. ].
+Ltac custom10 H0 :=  split; [constructor; [erewrite H0; [eauto | eauto | .. ] | auto |  | .. ] |  | .. ].
+Ltac custom11 H0 :=  intros H0; [inv H0; [auto | .. ] | .. ].
+Ltac custom12 H0 H9 H6 H12 H15 H18 :=  destruct H0; [simpl in H6 | simpl in H9 | simpl in H12 | simpl in H15 | simpl in H18 | .. ].
+Ltac custom13 H0 :=  inv H0; [destruct Archi.ptr64; [discriminate | discriminate | .. ] | .. ].
+Ltac custom14 H0 H1 :=  exists H0; [exists H1; [intuition auto with mem; [constructor; [auto | .. ] | .. ] | .. ] | .. ].
+Ltac custom15 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom16 H5 H6 H7 H8 H9 H10 H0 H1 H2 H3 H4 :=  custom1 H5 H6 H7 H8 H9 H10 H0 H1 H2 H3 H4; [auto | auto | auto | auto |  | .. ].
+Ltac custom17 H0 H3 :=  inv H0; [inv H3 | .. ].
+Ltac custom18  :=  split; [econstructor; [eauto | eauto | .. ] |  | .. ].
+Ltac custom19 H0 :=  constructor; [custom3 H0 | custom3 H0 | auto | .. ].
+Ltac custom20 H0 :=  inv H0; [destruct Archi.ptr64; [discriminate | discriminate | .. ] | .. ].
+Ltac custom21 H0 H9 H12 :=  inv H0; [inv H9; [custom5 H12 | .. ] |  | .. ].
+Ltac custom22  :=  constructor; [ | auto | .. ].
+Ltac custom23  :=  simpl in *; [auto | .. ].
+Ltac custom24 H0 :=  exists H0; [split; [ | auto | .. ] | .. ].
+Ltac custom25 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom26 H0 H1 :=  unfold H0; [rewrite H1; [constructor | .. ] | .. ].
+Ltac custom27 H0 H1 H2 H3 H4 H5 H6 H7 :=  intros H0 H1 H2 H3 H4 H5 H6; [inv H6; [inv H7; [ |  | .. ] | .. ] | .. ].
+Ltac custom28 H0 H1 H2 H3 :=  exploit H0; [ | intros [ H1 H2 ]; [exists ( Vptr H1 H3 ) | .. ] | .. ].
+Ltac custom29 H0 H1 :=  constructor; [custom15 H0 | custom15 H1 | .. ].
+Ltac custom30 H0 :=  inv H0; [auto | .. ].
+Ltac custom31 H0 H1 :=  inv H0; [rewrite H1; [custom7  | .. ] | .. ].
+Ltac custom32  :=  simpl; [eauto | .. ].
+Ltac custom33 H0 H1 H2 H3 :=  custom5 H0; [intros [ H1 [ H2 H3 ] ] | .. ].
+Ltac custom34  :=  induction 1; [constructor |  |  |  |  | .. ].
+Ltac custom35 H0 :=  intros H0; [destruct H0 | .. ].
+Ltac custom36 H0 :=  constructor; [apply H0 | .. ].
+Ltac custom37 H0 H2 :=  inv H0; [inv H2 | .. ].
+Ltac custom38 H0 H1 H2 H7 :=  subst H0 H1 H2; [clear H7].
+Ltac custom39 H0 :=  elim H0; [auto | .. ].
+Ltac custom40  :=  autorewrite with trace_rewrite; [decomposeTraceEq | .. ].
+Ltac custom41 H0 H1 H2 :=  intros H0 H1 H2; [inv H2 | .. ].
+Ltac custom42  :=  simpl; [lia | .. ].
+Ltac custom43 H0 :=  simpl; [destruct H0; [ |  | .. ] | .. ].
+Ltac custom44 H0 :=  custom22 ; [custom15 H0 | .. ].
+Ltac custom45 H0 H1 :=  intros H0 H1; [simpl | .. ].
+Ltac custom46  :=  constructor; [auto | .. ].
+Ltac custom47 H0 H2 H1 :=  inv H0; [custom26 H2 H1].
+---------------------------
+Num proofs: 34
+Num training proofs: 34
+Original size: 644
+Compressed total size: 360
+Training size: 644
+(2) (3) Testing size: 0
+(2) (3) Compressed testing size: 360
+(2) (3) Compression rate: 0.00
+Compressed size + lib: 531 ( 360 corpus / 171 library )
+[1] numTactics: 48
+[1] avrgTacticSize: 3.56
+[1] maxTacSize: 15
+[1] numProofsCompressed/total: 33 / 34
+[1] numAvgApplications: 2.46
+[1] numTotalApplications: 118
+Compression rate: 1.2128060263653484
+Num tactics in library: 48

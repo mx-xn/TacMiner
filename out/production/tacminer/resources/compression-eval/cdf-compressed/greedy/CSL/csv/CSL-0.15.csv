@@ -1,0 +1,29 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto | .. ].
+Ltac custom1  :=  split; [HDISJ | split; [ | split | .. ] | .. ].
+Ltac custom2  :=  red; [auto | .. ].
+Ltac custom3 H0 :=  intros H0; [cbn | .. ].
+Ltac custom4 H0 H1 :=  apply H0; [rewrite H1 | .. ].
+Ltac custom5 H0 H1 H2 H3 :=  apply H0 in H1; [rewrite H2 in H3; [auto] | .. ].
+Ltac custom6 H0 H1 H2 H3 :=  exists ( hunion H0 H1 ), H2; [custom1 ; [rewrite H3 | assumption | .. ] | .. ].
+Ltac custom7 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom8 H0 :=  unfold H0; [cbn | .. ].
+Ltac custom9 H0 H1 H14 :=  rewrite <- ( H0 H1 ) by HDISJ; [custom7 H14 | .. ].
+Ltac custom10 H0 H1 H2 :=  rewrite H0; [rewrite ( H1 H2 ) by HDISJ; [assumption | .. ] | .. ].
+Ltac custom11 H0 H1 H13 :=  rewrite <- ( H0 H1 ) by HDISJ; [custom10 H13 H0 H1 | .. ].
+Ltac custom12 H0 H1 H2 :=  f_equal; [custom9 H0 H1 H2 | .. ].
+Ltac custom13 H0 H1 H2 :=  apply H0 with ( H1 H2 ); [ | auto | .. ].
+Ltac custom14 H0 H1 :=  destruct ( Z.eq_dec H0 H1 ); [ | auto | .. ].
+Ltac custom15 H0 H1 H2 :=  intros H0 H1 H2; [constructor | .. ].
+Ltac custom16 H0 H1 :=  rewrite <- H0 at 1; [apply H1 | .. ].
+Ltac custom17 H0 H1 H2 :=  custom16 H0 H1; [eexact H2 | .. ].
+Ltac custom18 H0 :=  custom8 H0; [custom2  | .. ].
+Ltac custom19 H0 H1 H2 :=  custom4 H0 H1; [custom18 H2 | .. ].
+Ltac custom20 H0 H1 :=  apply H0; [custom0 H1 | .. ].
+---------------------------
+ , , 0.15
+CSL, Number of Tactics, 21
+ , Average Tactic Size, 2.05
+ , Total Tactic Size, 43
+ , Max Tactic Size, 4
+ , Overall CP, 1.08

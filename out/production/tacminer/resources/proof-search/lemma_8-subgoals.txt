@@ -1,0 +1,54 @@
+forall (s2 : t) (_ : ok s2),
+and (ok (union Nil s2))
+  (forall x : Z, iff (or (In x Nil) (In x s2)) (In x (union Nil s2)))
+
+forall (s2 : t) (_ : ok s2),
+and (ok (union (Cons l h s) s2))
+  (forall x : Z,
+   iff (or (In x (Cons l h s)) (In x s2))
+     (In x (union (Cons l h s) s2)))
+
+and (ok (union Nil Nil))
+  (forall x : Z, iff (or (In x Nil) (In x Nil)) (In x (union Nil Nil)))
+
+and (ok (union Nil (Cons l h s)))
+  (forall x : Z,
+   iff (or (In x Nil) (In x (Cons l h s)))
+     (In x (union Nil (Cons l h s))))
+
+and (ok (union (Cons l h s) Nil))
+  (forall x : Z,
+   iff (or (In x (Cons l h s)) (In x Nil))
+     (In x (union (Cons l h s) Nil)))
+
+and (ok (union (Cons l h s) (Cons l0 h0 s0)))
+  (forall x : Z,
+   iff (or (In x (Cons l h s)) (In x (Cons l0 h0 s0)))
+     (In x (union (Cons l h s) (Cons l0 h0 s0))))
+
+ok (Cons l h s)
+
+ok (Cons l h s)
+
+ok (add l h (add l0 h0 (union s s0)))
+
+forall x : Z,
+iff
+  (or (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+  (In x (add l h (add l0 h0 (union s s0))))
+
+ok (add l0 h0 (union s s0))
+
+iff
+  (or (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+  (or (and (Z.le l x) (Z.lt x h)) (In x (add l0 h0 (union s s0))))
+
+ok (add l0 h0 (union s s0))
+
+iff
+  (or (or (and (Z.le l x) (Z.lt x h)) (In x s))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)))
+  (or (and (Z.le l x) (Z.lt x h))
+     (or (and (Z.le l0 x) (Z.lt x h0)) (In x (union s s0))))

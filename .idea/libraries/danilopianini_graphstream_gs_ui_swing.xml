@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="danilopianini.graphstream.gs.ui.swing" type="repository">
+    <properties maven-id="org.danilopianini:graphstream-gs-ui-swing:2.0.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/danilopianini/graphstream-gs-ui-swing/2.0.0/graphstream-gs-ui-swing-2.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/danilopianini/graphstream-gs-core/2.0.0/graphstream-gs-core-2.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/graphstream/pherd/1.0/pherd-1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/graphstream/mbox2/1.0/mbox2-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

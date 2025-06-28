@@ -1,0 +1,45 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 :=  constructor; [auto | constructor | intros H0 H1 H2; [inv H2 | .. ] | .. ].
+Ltac custom1 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom2 H0 :=  apply H0; [auto |  | .. ].
+Ltac custom3  :=  split; [auto |  | .. ].
+Ltac custom4 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom5  :=  red; [auto | .. ].
+Ltac custom6 H0 H1 :=  cbn; [destruct ( Z.eq_dec H0 H1 ); [ | auto | .. ] | .. ].
+Ltac custom7 H0 H1 H2 :=  red; [intros H0 H1; [eapply wp_ramification; [eapply sepconj_imp_l; [eexact H2 |  | .. ] | .. ] | .. ] | .. ]. eexact H1.
+Ltac custom8 H0 :=  intros H0; [constructor | .. ].
+Ltac custom9 H0 :=  simpl; [rewrite H0; [custom1  | .. ] | .. ].
+Ltac custom10  :=  custom1 ; [custom6 ; [auto | .. ] | .. ].
+Ltac custom11 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom12  :=  simpl; [intros _ | .. ].
+Ltac custom13 H0 :=  exists H0; [auto | .. ].
+Ltac custom14 H0 H1 :=  subst H0; [apply H1 | .. ].
+Ltac custom15 H0 H1 :=  red; [intros H0 H1 | .. ].
+Ltac custom16  :=  custom2 ; [auto | .. ].
+Ltac custom17  :=  custom3 ; [custom13  | .. ].
+Ltac custom18 H0 H1 :=  destruct ( H0 H1 ); [congruence |  | .. ].
+Ltac custom19 H0 :=  intros H0; [cbn | .. ].
+Ltac custom20 H0 H1 H2 :=  intros H0 H1; [apply H2 | .. ].
+Ltac custom21  :=  cbn; [custom11  | .. ].
+Ltac custom22 H0 :=  subst H0; [custom16  | .. ].
+Ltac custom23  :=  eapply sepconj_imp_r; [ |  | .. ]. custom7 .
+Ltac custom24  :=  constructor; [auto | .. ].
+Ltac custom25 H0 H1 :=  exists H0, H1; [auto | .. ].
+Ltac custom26  :=  custom20 ; [lia | .. ].
+Ltac custom27 H0 H1 H2 :=  intros H0 ( H1 & H2 ); [auto | .. ].
+---------------------------
+Num proofs: 70
+Num training proofs: 17
+Original size: 1034
+Compressed total size: 731
+Training size: 406
+(2) (3) Testing size: 628
+(2) (3) Compressed testing size: 442
+(2) (3) Compression rate: 142.08
+Compressed size + lib: 797 ( 731 corpus / 66 library )
+[1] numTactics: 28
+[1] avrgTacticSize: 2.36
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 45 / 53
+Compression rate: 1.2973651191969886
+Num tactics in library: 28

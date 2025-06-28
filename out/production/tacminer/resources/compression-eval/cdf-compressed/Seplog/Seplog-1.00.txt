@@ -1,0 +1,88 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 :=  constructor; [auto | constructor | intros H0 H1 H2; [inv H2 | .. ] | .. ].
+Ltac custom1 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom2 H0 :=  apply H0; [auto | .. ].
+Ltac custom3 H0 H14 H15 H16 H2 H7 :=  inv H0; [intuition auto; [constructor; [auto | .. ] | intros H14; [cbn; [generalize ( H2 H14 ); [destruct ( Z.eq_dec H7 H14 ); [ | intuition congruence | .. ] | .. ] | .. ] | .. ] | custom1 H15 H16; [cbn; [destruct ( Z.eq_dec H7 H16 ); [ | auto | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom4 H0 H5 H6 H7 H8 H9 H10 H11 H4 :=  intros until H0; [intros H5 H6 H7 H8; [custom0 H9 H10 H11; [destruct ( Z.eqb_spec H4 0 ); [apply H6; [split; [auto | auto | .. ] | .. ] | apply H5; [split; [auto | auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom5 H0 H1 H2 H3 H4 H5 :=  red; [intros H0 H1; [eapply H2; [eapply H3; [eexact H4 | eapply H5 | .. ] | .. ] | .. ] | .. ].
+Ltac custom6 H0 H1 :=  cbn; [destruct ( Z.eq_dec H0 H1 ); [ | auto | .. ] | .. ].
+Ltac custom7 H0 H20 H10 H7 H9 H4 H1 H13 H14 H15 H11 :=  destruct H0 as ( v0 & H20 ); [assert ( L1 : H10 H7 = Some H9 ); [ | assert ( L : H4 H7 = Some H9 ); [rewrite H1; [cbn; [rewrite H11; [auto | .. ] | .. ] | .. ] | custom0 H13 H14 H15; [congruence | constructor | .. ] | .. ] | .. ] | .. ].
+Ltac custom8 H0 H1 H2 H3 H4 H5 H6 H7 H8 :=  eapply H0; [apply H1; [eapply H2; [apply H3 | intros H4 H5; [exists H8; [auto | .. ] | .. ] | .. ] | .. ] | simpl; [intros _; [rewrite H6, H7 | .. ] | .. ] | .. ].
+Ltac custom9 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom10 H2 :=  split; [auto | exists H2; [auto | .. ] | .. ].
+Ltac custom11 H0 H1 H2 H5 H6 H7 H12 :=  assert ( L : H0 H1 = Some H2 ); [subst H0; [apply H12 | .. ] | custom0 H5 H6 H7; [congruence | constructor | .. ] | .. ].
+Ltac custom12 H0 H1 H2 :=  intros H0; [constructor; [cbn; [destruct ( H1 H2 ) as [ z| ]; [congruence | congruence | .. ] | .. ] | .. ] | .. ].
+Ltac custom13 H0 H1 H2 :=  simpl; [rewrite H0; [custom1 H1 H2 | .. ] | .. ].
+Ltac custom14  :=  red; [auto | .. ].
+Ltac custom15 H0 :=  exists H0; [intuition auto; [constructor | .. ] | .. ].
+Ltac custom16  :=  split; [auto | auto | .. ].
+Ltac custom17 H0 H1 H2 :=  split; [ | split; [ | split; [ | custom1 H0 H1; [custom6 H2 H1; [auto | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom19 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 :=  intros H0 H1 H2 H3 H4 H5 H6 H7; [red; [intros H8 H9; [apply H10 with H3; [auto | auto | .. ] | .. ] | .. ] | .. ].
+Ltac custom20 H0 H1 H2 H3 :=  apply H0; [custom1 H1 H2 | custom1 H1 H3 | .. ].
+Ltac custom21 H0 H1 H2 :=  constructor; [auto |  | intros H0 H1 H2; [inv H2; [constructor | .. ] | .. ] | .. ].
+Ltac custom22 H0 H5 H6 H7 H8 H9 H1 :=  intros until H0; [intros H5 H6 H7 H8; [apply H9 with H1; [apply H6 | custom2 H5 | .. ] | .. ] | .. ].
+Ltac custom23 H0 H1 H2 :=  intros H0 H1; [custom15 H2; [inv H0 | .. ] | .. ].
+Ltac custom24 H0 H1 H2 H3 H4 H5 :=  intros H0 H1; [rewrite ( H2 ( H3 H0 H1 ) ); [cbn; [apply H4; [intro H5 | .. ] | .. ] | .. ] | .. ].
+Ltac custom25 H0 :=  custom2 H0; [auto | .. ].
+Ltac custom26 H0 H1 H2 :=  red; [custom1 H0 H1; [custom6 H2 H1; [auto | .. ] | .. ] | .. ].
+Ltac custom27 H0 H1 H2 H3 :=  red; [intros H0 H1; [apply H2; [eapply H3 | .. ] | .. ] | .. ].
+Ltac custom28 H0 H1 H2 H3 :=  eapply H0; [rewrite H1; [custom9 H2 H3 | .. ] | simpl | .. ].
+Ltac custom29 H0 H1 H2 H3 :=  intros H0; [unfold H1, H2; [custom6 H3 H0; [right | .. ] | .. ] | .. ].
+Ltac custom30 H0 :=  intros H0; [constructor | .. ].
+Ltac custom31 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 :=  intros H0 H1 ( H2 & H3 & H4 & H5 & H6 & H7 ); [apply ( H8 ( H9 H0 ) ); [exists H2, H3; [auto | .. ] | .. ] | .. ].
+Ltac custom32 H0 H1 H2 :=  intros H0 H1; [custom15 H2 | .. ]. inv H0.
+Ltac custom33 H0 H1 H2 :=  intros H0 H1; [apply H2; [lia | .. ] | .. ].
+Ltac custom34 H0 H1 H2 H3 H4 H5 :=  intros H0 H1 H2 H3; [intros H4 H5; [constructor; [custom2 H3 | .. ] | .. ] | .. ].
+Ltac custom35 H0 H1 :=  intros H0 H1; [inv H0 | .. ].
+Ltac custom36 H0 H1 H2 H3 :=  apply H0; [intros H1 H2; [custom10 H3 | .. ] | .. ].
+Ltac custom37 H0 H1 H2 H3 H4 H5 H6 H7 :=  rewrite ( H0 ( H1 H2 H3 ) ); [custom13 H4 H5 H6; [rewrite H7 | .. ] | .. ].
+Ltac custom38 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom39 H0 H2 :=  red in H0; [subst H2].
+Ltac custom40 H0 H1 :=  red; [intros H0 H1 | .. ].
+Ltac custom41 H0 H1 H2 H3 H4 H5 H6 H7 :=  apply H0 with ( H1 H2 H3 ); [apply H4 | intros H5 ( H6 & H7 ) | .. ].
+Ltac custom42 H0 H1 :=  eapply H0; [apply H1 | simpl | .. ].
+Ltac custom43 H0 H1 H2 :=  custom0 H0 H1 H2; [constructor; [custom16  | .. ] | .. ].
+Ltac custom44 H0 H1 H2 H3 :=  intros H0; [custom13 H1 H2 H3; [subst H0 | .. ] | .. ].
+Ltac custom45  :=  simpl; [intros _ | .. ].
+Ltac custom46 H0 H5 :=  subst H0; [custom25 H5 | .. ].
+Ltac custom47 H4 H5 H0 H1 H2 H3 :=  custom5 H4 H5 H0 H1 H2 H3; [ | eexact H5 | .. ].
+Ltac custom48 H0 :=  intros H0; [cbn | .. ].
+Ltac custom50 H0 H1 :=  intros H0; [apply H1 | .. ].
+Ltac custom51 H0 H1 H2 :=  custom1 H0 H1; [custom2 H2 | .. ].
+Ltac custom52 H0 H1 H5 :=  custom39 H0 H1; [apply H5 | .. ].
+Ltac custom53  :=  exists 0; [custom14  | .. ].
+Ltac custom54 H0 H1 :=  destruct ( H0 H1 ) as [ z| ]; [congruence | .. ].
+Ltac custom55 H0 :=  rewrite ! H0 by auto; [auto | .. ].
+Ltac custom56 H0 H1 H2 :=  apply H0 in H1; [cbn in H2].
+Ltac custom57 H0 :=  apply H0; [custom14  | .. ].
+Ltac custom58 H0 H1 H2 :=  apply H0 with H1 H2; [auto | .. ].
+Ltac custom59 H0 H1 H2 :=  custom13 H0 H1 H2; [lia | .. ].
+Ltac custom60 H0 :=  rewrite <- H0; [auto | .. ].
+Ltac custom61 H0 H1 H2 :=  eapply H0; [custom9 H1 H2 | .. ].
+Ltac custom62 H0 H1 :=  intros H0; [rewrite H1 | .. ].
+Ltac custom63 H0 :=  intros H0; [simpl | .. ].
+Ltac custom65 H0 H1 :=  intros H0; [custom2 H1 | .. ].
+Ltac custom66 H0 H1 H2 :=  custom35 H0 H1; [custom15 H2 | .. ].
+Ltac custom67  :=  intuition auto; [constructor | .. ].
+Ltac custom68 H0 H1 H2 H3 :=  intros H0 H1 H2; [apply H3 | .. ].
+Ltac custom69 H0 H1 H2 :=  intros H0 H1 H2; [auto | .. ].
+Ltac custom70 H0 H1 H2 H3 :=  intros H0 H1 H2 H3; [inv H3 | .. ].
+Ltac custom71 H0 H1 H2 H3 :=  intros H0 H1 H2 H3; [cbn | .. ].
+---------------------------
+Num proofs: 70
+Num training proofs: 70
+Original size: 1111
+Compressed total size: 585
+Training size: 1111
+(2) (3) Testing size: 0
+(2) (3) Compressed testing size: 585
+(2) (3) Compression rate: 0.00
+Compressed size + lib: 830 ( 585 corpus / 245 library )
+[1] numTactics: 69
+[1] avrgTacticSize: 3.41
+[1] maxTacSize: 13
+[1] numProofsCompressed/total: 64 / 70
+[1] numAvgApplications: 2.72
+[1] numTotalApplications: 188
+Compression rate: 1.3385542168674698
+Num tactics in library: 69

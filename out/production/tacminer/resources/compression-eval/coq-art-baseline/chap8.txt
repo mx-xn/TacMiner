@@ -1,0 +1,11 @@
+extracted tactics-----------
+intros _o _o _o; [induction _i
+simpl; [auto
+intros _o _o _o _o _o; [injection _i; [intros _o _o
+generalize _i; [pattern _i at - 2; [induction _i; [discriminate
+---------------------------
+Num proofs: 25
+Original size: 137
+Compressed size: 131 ( 120 corpus / 11 library )
+Compression rate: 1.0458015267175573
+Num tactics in library: 4

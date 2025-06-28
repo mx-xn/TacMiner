@@ -1,0 +1,76 @@
+extracted tactics -----------
+Ltac custom0 H0 H21 H20 H4 :=  destruct H0; [simpl in *; [auto | .. ] | simpl in * | simpl in *; [inv H21; [inv H20; [auto | destruct H4; [auto | auto | auto | auto | auto | .. ] | .. ] | auto | .. ] | .. ] | .. ].
+Ltac custom1 H0 :=  destruct H0; [simpl in *; [auto | .. ] | simpl in * | simpl in * | .. ].
+Ltac custom2 H0 :=  apply H0; [auto | .. ].
+Ltac custom3 H0 H1 H2 :=  red; [intros H0 H1 H2; [autorewrite with ints; [ |  | auto | .. ] | .. ] | .. ].
+Ltac custom4 H0 H7 :=  unfold H0; [InvAgree; [apply H7 | .. ] | .. ].
+Ltac custom5 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom6 H0 :=  unfold H0; [InvAgree | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 H5 H6 :=  unfold H0; [intros H1 H2 H3 H4 H5 H6 | .. ].
+Ltac custom8 H0 H1 H2 :=  red; [intros H0 H1 H2 | .. ].
+Ltac custom9 H0 H1 :=  apply H0; [custom2 H1 | .. ].
+Ltac custom10 H0 :=  eapply H0; [eauto | eauto | .. ].
+Ltac custom11 H0 H11 :=  custom1 H0; [InvAgree; [custom2 H11 | .. ] | .. ].
+Ltac custom12 H0 :=  destruct H0; [ | simpl in * | try discriminate | .. ].
+Ltac custom13 H0 :=  destruct H0; [simpl; [auto | .. ] | .. ].
+Ltac custom14 H0 :=  rewrite ! H0; [auto | .. ].
+Ltac custom15 H0 :=  rewrite H0 by lia; [auto | .. ].
+Ltac custom16 H0 H1 H2 H3 :=  split; [ | intros H0 H1 H2 H3 | .. ].
+Ltac custom17 H0 :=  eelim H0; [eauto | eauto | eauto | .. ].
+Ltac custom18 H0 H1 :=  rewrite H0 in H1; [auto].
+Ltac custom19  :=  simpl; [auto | .. ].
+Ltac custom20 H0 :=  rewrite <- H0; [eauto | .. ].
+Ltac custom21 H0 H1 H2 :=  rewrite H0 in H1; [custom20 H2].
+Ltac custom22 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 :=  unfold H0; [intros H1 H2 H3 H4 H5 H6 H7 H8 H9 | .. ].
+Ltac custom23  :=  f_equal; [auto | .. ].
+Ltac custom24 H0 H1 :=  rewrite H0; [rewrite H1 in * | .. ].
+Ltac custom25 H0 :=  rewrite H0; [eauto | .. ].
+Ltac custom26 H0 H1 :=  rewrite H0; [custom2 H1 | .. ].
+Ltac custom27 H0 :=  elim H0; [auto | .. ].
+Ltac custom28 H0 :=  apply H0; [lia | .. ].
+Ltac custom29 H0 H1 :=  apply H0; [custom5 H1 | .. ].
+Ltac custom30  :=  split; [ | auto | .. ].
+Ltac custom31 H3 :=  InvAgree; [apply H3 | .. ].
+Ltac custom32  :=  autorewrite with ints; [ | auto | .. ].
+Ltac custom33 H0 H8 :=  custom1 H0; [custom6 H8 | .. ].
+Ltac custom34 H0 H1 H2 H3 :=  custom16 H0 H1 H2 H3; [ | eauto | .. ].
+Ltac custom35 H0 H1 H3 H4 :=  rewrite H0 in H1; [destruct ( peq H3 H4 )].
+Ltac custom36 H0 H1 H2 H3 :=  custom35 H0 H1 H2 H3; [ | eauto | .. ].
+Ltac custom37 H0 H1 :=  generalize ( Int.size_range H0 ); [intros H1 | .. ].
+Ltac custom38 H0 H1 H2 H3 H4 H5 H6 H7 :=  unfold H0; [intros H1 H2 H3 H4 H5 H6 H7 | .. ].
+Ltac custom39 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom40 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5 | .. ].
+Ltac custom41 H0 H1 :=  unfold H0; [destruct H1; [ | .. ] | .. ].
+Ltac custom42 H0 :=  eelim H0; [eauto | eauto | .. ].
+Ltac custom43 H0 H1 H2 :=  intros [ H0 H1 ]; [custom17 H2 | .. ].
+Ltac custom44 H0 H2 H3 H1 :=  rewrite H0; [custom43 H2 H3 H1 | .. ].
+Ltac custom45 H0 H1 H2 :=  intros [ H0 H1 ]; [custom42 H2 | .. ].
+Ltac custom46 H0 H1 H3 H4 H2 :=  intros H0; [rewrite H1; [custom45 H3 H4 H2 | .. ] | .. ].
+Ltac custom47 H0 H1 :=  intros [ H0 H1 ]; [custom27 H0 | .. ].
+Ltac custom48 H0 H1 H2 :=  rewrite H0; [custom47 H1 H2 | .. ].
+Ltac custom49 H0 :=  f_equal; [apply H0 | .. ].
+Ltac custom50  :=  custom32 ; [ | auto | .. ].
+Ltac custom51  :=  InvAgree; [simpl | .. ].
+Ltac custom52 H0 :=  custom12 H0; [auto | .. ].
+Ltac custom53 H0 H1 :=  intros H0; [rewrite H1 | .. ].
+Ltac custom54 H0 H1 :=  intros H0; [apply H1 | .. ].
+Ltac custom55 H0 :=  intros H0; [inv H0 | .. ].
+Ltac custom56 H0 :=  destruct H0; [auto with na | .. ].
+---------------------------
+Num proofs: 78
+Num training proofs: 55
+Original size: 1550
+Compressed total size: 1129
+Training size: 1107
+(2) (3) Testing size: 443
+(2) (3) Compressed testing size: 302
+(2) (3) Compression rate: 146.69
+Compressed size + lib: 1270 ( 1129 corpus / 141 library )
+[1] numTactics: 57
+[1] avrgTacticSize: 2.47
+[1] maxTacSize: 15
+[1] numProofsCompressed/total: 19 / 23
+[1] numAvgApplications: 4.07
+[1] numTotalApplications: 232
+Compression rate: 1.220472440944882
+Num tactics in library: 57

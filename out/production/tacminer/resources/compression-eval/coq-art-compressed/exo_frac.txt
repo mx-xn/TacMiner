@@ -1,0 +1,10 @@
+extracted tactics -----------
+custom0 H0 := simpl; [intro H0; [case ( fraction H0 ); [inversion_clear 1; [split; [auto | .. ] | .. ] | .. ] | .. ] | .. ].
+custom1 H0 H1 := split with H0 H1; [ |auto with arith |rewrite inj_plus; [ring_simplify | .. ] | .. ].
+custom2 H0 H1 H2 H3 H4 H5 H6 H7 := intros H0 H1 H2; [case H2; [intros H3 H4 H5 H6 H7 | .. ] | .. ].
+---------------------------
+Num proofs: 4
+Original size: 38
+Compressed size: 31 ( 18 corpus / 13 library )
+Compression rate: 1.2258064516129032
+Num tactics in library: 3

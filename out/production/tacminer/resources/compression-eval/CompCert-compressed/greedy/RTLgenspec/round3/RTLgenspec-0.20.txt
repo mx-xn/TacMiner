@@ -1,0 +1,34 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom1 H0 H1 H2 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | .. ] |  | apply H1 with H2; [auto | .. ] | .. ].
+Ltac custom2 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg |  | eauto with rtlg | .. ] | .. ].
+Ltac custom3 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | .. ].
+Ltac custom4 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom5 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom6 H0 :=  apply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom7  :=  constructor; [auto | .. ].
+Ltac custom8 H0 H1 :=  intros H0 H1; [induction H1 | .. ].
+Ltac custom9 H0 H1 :=  apply H0 with H1; [eauto with rtlg | .. ].
+Ltac custom10 H0 H1 :=  apply H0 with H1; [auto | .. ].
+Ltac custom11  :=  econstructor; [ | eauto with rtlg |  | eauto with rtlg | .. ].
+Ltac custom12 H0 :=  econstructor; [ |  | custom5 H0 | .. ].
+Ltac custom13 H0 H1 H2 :=  unfold H0; [caseEq ( nth_error ( map_letvars H1 ) H2 ) | .. ].
+Ltac custom14  :=  split; [ | auto | .. ].
+---------------------------
+Num proofs: 24
+Num training proofs: 5
+Original size: 581
+Compressed total size: 500
+Training size: 231
+(2) (3) Testing size: 350
+(2) (3) Compressed testing size: 317
+(2) (3) Compression rate: 110.41
+Compressed size + lib: 547 ( 500 corpus / 47 library )
+[1] numTactics: 15
+[1] avrgTacticSize: 3.13
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 9 / 19
+[1] numAvgApplications: 3.33
+[1] numTotalApplications: 50
+Compression rate: 1.0621572212065813
+Num tactics in library: 15

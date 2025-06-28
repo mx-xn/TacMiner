@@ -1,0 +1,34 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  simpl; [intros H0 | .. ].
+Ltac custom1  :=  constructor; [auto | auto | auto | .. ].
+Ltac custom2  :=  constructor; [ | auto | .. ].
+Ltac custom3  :=  simpl; [auto | .. ].
+Ltac custom4 H0 :=  exploit H0; [ | eauto | tauto | .. ].
+Ltac custom5  :=  induction 1; [simpl; [try tauto | .. ] | .. ].
+Ltac custom6  :=  constructor; [ | auto | .. ].
+Ltac custom7 H0 :=  eapply H0; [ |  | traceEq | .. ].
+Ltac custom8  :=  induction 1; [simpl | .. ].
+Ltac custom9  :=  custom2 ; [auto | .. ].
+Ltac custom10  :=  simpl; [tauto | .. ].
+Ltac custom11 H0 H1 :=  simpl; [intros H0 H1 | .. ].
+Ltac custom12 H0 :=  simpl; [destruct H0; [ | auto | .. ] | .. ].
+Ltac custom13 H0 :=  apply H0; [custom9  |  | auto with coqlib | .. ].
+Ltac custom14 H0 :=  apply H0; [auto | .. ].
+Ltac custom15 H0 :=  apply H0; [exact symbols_preserved | .. ].
+Ltac custom16 H0 :=  apply H0; [eauto | .. ].
+Ltac custom17 H0 H1 :=  apply H0; [custom16 H1 | .. ].
+Ltac custom18 H0 H1 :=  destruct ( Pos.compare_spec H0 H1 ); [subst H1 | .. ].
+Ltac custom19 H0 :=  constructor; [apply H0 | .. ].
+Ltac custom20 H0 :=  exploit H0; [ | eauto | .. ].
+Ltac custom21 H0 :=  induction H0 as [ | [ v i ] l ]; [simpl | .. ].
+Ltac custom22 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom23 H0 :=  custom22 H0; [eauto | .. ].
+Ltac custom24 H0 :=  eapply H0; [ | eauto | .. ].
+Ltac custom25  :=  econstructor; [eauto | .. ].
+---------------------------
+ , , 0.8
+Debugvarproof, Number of Tactics, 26
+ , Average Tactic Size, 2.04
+ , Total Tactic Size, 53
+ , Max Tactic Size, 4
+ , Overall CP, 1.27

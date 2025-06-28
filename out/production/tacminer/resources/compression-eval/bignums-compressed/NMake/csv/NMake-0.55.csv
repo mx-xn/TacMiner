@@ -1,0 +1,42 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 :=  rewrite H0; [apply H1 | .. ].
+Ltac custom1 H0 H1 :=  intros H0; [rewrite H1 | .. ].
+Ltac custom2 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom3 H0 H1 H2 H3 H4 :=  custom0 H0 H1; [intros H2 H3 H4; [simpl | .. ] | .. ].
+Ltac custom4 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom5 H0 :=  apply H0; [auto | auto | .. ].
+Ltac custom6 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom7 H0 H1 H2 :=  intros H0 H1; [rewrite H2 | .. ].
+Ltac custom8 H0 :=  symmetry; [apply H0 | .. ].
+Ltac custom9 H0 :=  custom2 H0; [auto with zarith | auto with zarith | .. ].
+Ltac custom10 H0 H1 :=  intros H0; [custom2 H1 | .. ].
+Ltac custom11 H0 H1 :=  custom0 H0 H1; [auto with zarith | auto with zarith | .. ].
+Ltac custom12 H0 :=  rewrite H0; [auto with zarith | .. ].
+Ltac custom13 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1; [custom0 H2 H3; [clear H0 H1intros H4 H5 H6 | .. ] | .. ].
+Ltac custom14 H0 :=  custom2 H0; [auto with zarith | .. ].
+Ltac custom15 H0 :=  case ( spec_digits H0 ); [auto with zarith | .. ].
+Ltac custom16 H0 H1 H2 :=  case ( spec_digits H0 ); [intros H1 H2 | .. ].
+Ltac custom17 H0 :=  generalize ( spec_pos H0 ); [auto with zarith | .. ].
+Ltac custom18 H0 :=  generalize ( ZnZ.spec_to_Z H0 ); [auto with zarith | .. ].
+Ltac custom19 H0 H1 :=  unfold H0; [custom5 H1 | .. ].
+Ltac custom20 H0 H1 H2 H3 H4 H8 H9 H5 H6 H7 :=  rewrite ( H0 H1 H2 H3 ), ( H4 H8 H9 H5 ); [custom19 H6 H7 | .. ].
+Ltac custom21 H0 :=  apply H0; [ | auto with zarith | .. ].
+Ltac custom22 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom23 H0 :=  case Z.compare_spec; [ | intros H0 | .. ].
+Ltac custom24 H0 :=  rewrite <- H0; [ | auto with zarith | auto with zarith | .. ].
+Ltac custom25 H0 :=  custom24 H0; [auto with zarith | .. ].
+Ltac custom26 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1; [custom3 H2 H3 H4 H5 H6; [clear H0 H1 | .. ] | .. ].
+Ltac custom27 H0 H1 H2 :=  custom0 H0 H1; [apply H2 | .. ].
+Ltac custom28 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom29  :=  split; [auto with zarith | .. ].
+Ltac custom30 H0 :=  apply H0; [auto | .. ].
+Ltac custom31 H0 H1 :=  apply H0; [custom2 H1 | .. ].
+Ltac custom32 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom33 H0 :=  apply H0 with 0; [auto with zarith | .. ].
+---------------------------
+ , , 0.55
+NMake, Number of Tactics, 34
+ , Average Tactic Size, 2.24
+ , Total Tactic Size, 76
+ , Max Tactic Size, 4
+ , Overall CP, 1.21

@@ -1,0 +1,31 @@
+extracted tactics-----------
+custom_tac25: apply _i; auto
+custom_tac41: unfold _i; intros
+custom_tac21: intros; red; intros
+custom_tac40: intros; apply _i
+custom_tac18: intros _o _o; unfold _i
+custom_tac48: InvAgree; apply _i
+custom_tac9: auto; destruct _i as [ | _o | _o | _o | _o | _o _o]
+custom_tac12: autorewrite with ints; auto
+custom_tac14: rewrite _i; auto
+custom_tac58: inv _i; rewrite _i
+custom_tac10: red; auto
+custom_tac52: auto; apply _i
+custom_tac6: intros; constructor
+custom_tac17: constructor; intros
+custom_tac64: intros; rewrite _i
+---------------------------
+Num proofs: 103
+Num training proofs: 46
+Original size: 1360
+Training size: 886
+Testing size: 474
+Compressed total size: 1119 ( 1054 corpus / 65 library )
+Compressed testing size: 420
+[1] numTactics: 15
+[1] avrgTacticSize: 2.07
+[1] maxTacSize: 3
+[1] numAvgApplications: 3.40
+[1] numTotalApplications: 51
+Compression rate: 1.1285714285714286
+Num tactics in library: 15

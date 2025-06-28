@@ -1,0 +1,45 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 :=  unfold H0; [apply H1; [apply H2 | .. ] | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 H5 H6 :=  unfold H0, H1; [custom0 H2 H3 H4; [apply H5; [apply H6 | .. ] | apply H5; [apply H6 | .. ] | .. ] | .. ].
+Ltac custom2 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom3  :=  nzsimpl; [simpl; [auto | .. ] | .. ].
+Ltac custom4 H0 :=  rewrite H0; [symmetry | .. ].
+Ltac custom5 H0 :=  rewrite H0; [ | lia | .. ].
+Ltac custom6  :=  simpl; [nzsimpl | .. ].
+Ltac custom7 H0 H1 :=  unfold H0; [apply H1 | .. ].
+Ltac custom8  :=  simpl; [try discriminate | .. ].
+Ltac custom9  :=  simpl; [destr_eqb; [ | simpl | .. ] | .. ].
+Ltac custom10 H0 H1 :=  rewrite H0, H1; [auto | auto | .. ].
+Ltac custom11 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom12 H0 H1 H2 H3 :=  unfold H0; [custom0 H1 H2 H3 | .. ].
+Ltac custom13  :=  simpl; [auto with qarith | .. ].
+Ltac custom14 H0 H1 H3 H2 :=  symmetry; [apply ( H0 H1 H3 H2 ) | .. ].
+Ltac custom15  :=  custom6 ; [try lia | .. ].
+Ltac custom16 H0 :=  unfold H0; [nzsimpl; [destr_zcompare; [ | .. ] | .. ] | .. ].
+Ltac custom17  :=  simpl; [discriminate | .. ].
+Ltac custom18 H0 H1 H2 :=  custom2 H0 H1; [rewrite H2; [ring | .. ] | .. ].
+Ltac custom19 H0 :=  rewrite H0; [auto with qarith | .. ].
+Ltac custom20 H0 :=  rewrite H0; [ | auto | .. ].
+Ltac custom21 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom22 H0 :=  apply H0; [auto with zarith | auto with zarith | .. ].
+Ltac custom23 H0 :=  apply H0; [auto | .. ].
+Ltac custom24 H0 H1 H2 :=  intros H0 H1; [rewrite H2 | .. ].
+Ltac custom25 H0 :=  rewrite H0 in *; [lia | lia | .. ].
+Ltac custom26 H0 :=  generalize ( NN.spec_pos H0 ); [lia | .. ].
+Ltac custom27  :=  simpl; [auto | .. ].
+Ltac custom28 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom29 H0 H1 :=  simpl; [rewrite H0, H1 | .. ].
+Ltac custom30  :=  custom6 ; [auto | .. ].
+Ltac custom31  :=  simpl; [destr_eqb; [ | .. ] | .. ].
+Ltac custom32  :=  destr_eqb; [ | now rewrite ?NN.spec_0, ?NN.spec_of_N | .. ].
+Ltac custom33  :=  destr_eqb; [ | custom3  | .. ].
+Ltac custom34  :=  red; [auto | .. ].
+Ltac custom35 H0 H1 :=  intros H0; [rewrite H1; [custom34  | .. ] | .. ].
+Ltac custom36 H0 :=  rewrite H0 in *; [ | auto | .. ].
+---------------------------
+ , , 0.75
+QMake, Number of Tactics, 37
+ , Average Tactic Size, 2.35
+ , Total Tactic Size, 87
+ , Max Tactic Size, 6
+ , Overall CP, 1.35

@@ -1,0 +1,22 @@
+extracted tactics -----------
+Ltac custom0  :=  simpl; [auto | .. ].
+Ltac custom1 H0 :=  simpl; [intros H0 | .. ].
+Ltac custom2 H0 :=  eapply H0; [ |  | traceEq | .. ].
+Ltac custom3 H0 :=  apply H0; [ |  | auto with coqlib | .. ].
+Ltac custom4 H0 :=  apply H0; [auto | .. ].
+Ltac custom5 H0 :=  apply H0; [exact symbols_preserved | .. ].
+Ltac custom6 H0 :=  apply H0; [eauto | .. ].
+Ltac custom7 H0 H1 :=  apply H0; [custom6 H1 | .. ].
+Ltac custom8 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom9 H0 :=  custom8 H0; [eauto | .. ].
+Ltac custom10 H0 :=  eapply H0; [ | eauto | .. ].
+Ltac custom11 H0 :=  constructor; [apply H0 | .. ].
+Ltac custom12  :=  econstructor; [eauto | .. ].
+Ltac custom13  :=  custom12 ; [ | eauto | .. ].
+---------------------------
+ , , 0.95
+Debugvarproof, Number of Tactics, 14
+ , Average Tactic Size, 1.71
+ , Total Tactic Size, 24
+ , Max Tactic Size, 2
+ , Overall CP, 1.23

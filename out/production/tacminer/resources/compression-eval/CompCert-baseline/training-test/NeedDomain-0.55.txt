@@ -1,0 +1,22 @@
+extracted tactics-----------
+custom_tac13: simpl in *; auto
+custom_tac9: red; intros
+custom_tac16: inv _i; auto
+custom_tac1: intros; inv _i
+custom_tac4: simpl; auto
+custom_tac6: autorewrite with ints; auto
+custom_tac5: red; auto
+custom_tac8: constructor; intros
+custom_tac20: simpl; intros
+custom_tac24: eelim _i; eauto
+custom_tac23: intros; inversion _i
+---------------------------
+Num proofs: 96
+Num training proofs: 35
+Original size: 1216
+Training size: 717
+Testing size: 499
+Compressed total size: 1125 ( 1099 corpus / 26 library )
+Compressed testing size: 462
+Compression rate: 1.0808888888888888
+Num tactics in library: 11

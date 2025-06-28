@@ -1,0 +1,347 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 :=  apply H0; [intros H1 H2; [autorewrite with ints; [ | auto with bool |  | .. ] | .. ] | .. ].
+Ltac custom1 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom2 H0 H1 :=  rewrite H0; [apply H1 | .. ].
+Ltac custom3 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom4 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom5 H0 H1 H2 H3 H27 H5 H6 H7 H8 H9 H10 H11 H13 H16 H19 H20 H21 H22 H4 H25 H26 :=  intros H0 H1 H2 H3; [assert ( Int.unsigned ( Int.sub Int.iwordsize H2 ) = Int.zwordsize - Int.unsigned H27 ); [unfold H5; [custom1 H7; [rewrite H10; [generalize Int.wordsize_max_unsigned; [lia | .. ] | .. ] | .. ] | .. ] | apply H6; [intros H8 H9; [rewrite H11 by auto; [symmetry; [rewrite H13 by auto; [destruct ( zlt H8 Int.zwordsize ); [rewrite H19 by lia; [rewrite H13 by lia; [rewrite H20 by lia; [rewrite H22 by lia; [rewrite H16 by lia; [rewrite H4; [destruct ( zlt ( H8 + Int.unsigned H2 ) ( Int.zwordsize ) ); [rewrite H19 by lia; [custom1 H25 | .. ] | rewrite H21 by lia; [rewrite H26; [f_equal; [lia | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | rewrite H16 by lia; [destruct ( zlt ( H8 + Int.unsigned H2 ) zwordsize ); [rewrite H13 by lia; [rewrite H19 by lia; [rewrite H21 by lia; [f_equal; [lia | .. ] | .. ] | .. ] | .. ] |  | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom6 H0 :=  apply H0; [lia | .. ].
+Ltac custom7 H0 H1 H2 :=  apply H0; [intros H1 H2 | .. ].
+Ltac custom8 H0 :=  rewrite H0 by lia; [auto | .. ].
+Ltac custom9 H0 H1 H2 H3 H21 H5 H6 H7 H8 H9 H11 H12 H13 H16 H17 H4 H20 :=  intros H0 H1 H2 H3; [assert ( Int.unsigned ( Int.sub H2 Int.iwordsize ) = Int.unsigned H21 - Int.zwordsize ); [unfold H5; [custom1 H11; [rewrite H12; [generalize ( Int.unsigned_range_2 H2 ); [lia | .. ] | .. ] | .. ] | .. ] | custom7 H6 H7 H8; [rewrite H9 by auto; [symmetry; [rewrite H13 by auto; [destruct ( zlt H7 Int.zwordsize ); [rewrite H17 by lia; [rewrite H4; [destruct ( zlt ( H7 + Int.unsigned H2 ) zwordsize ); [rewrite H20 by lia; [rewrite H13 by lia; [rewrite H16 by lia; [f_equal; [lia | .. ] | .. ] | .. ] | .. ] |  | .. ] | .. ] | .. ] | rewrite H16 by lia | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom10 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom11 H0 H1 H2 :=  intros H0 H1 H2; [destruct H0; [simpl | simpl | simpl; [auto | .. ] | simpl | simpl; [auto | .. ] | simpl | .. ] | .. ].
+Ltac custom12 H0 H1 H2 H3 H6 H7 H8 H4 H9 H10 H11 H12 H13 :=  intros H0 H1 H2 H3; [assert ( A : unsigned H3 = zwordsize - H0 ); [unfold H3; [apply H7; [generalize wordsize_max_unsigned; [lia | .. ] | .. ] | .. ] | assert ( B : ltu H3 iwordsize = true ); [unfold H8; [rewrite H4, H9; [custom6 H11 | .. ] | .. ] | rewrite H6 by auto; [unfold H8; [rewrite H10 by lia; [rewrite H12, H13; [f_equal; [rewrite H4; [lia | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom13 H0 H1 H2 H3 H13 H8 H14 H17 :=  symmetry; [rewrite H0, H1 by lia; [destruct ( zlt ( H2 + H3 ) zwordsize ); [rewrite H0 by lia; [fold H8; [destruct ( zlt H2 ( H8 - H3 ) ); [custom8 H17 | rewrite H14 by lia; [rewrite H13 by lia; [rewrite H17 by lia; [f_equal; [lia | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | rewrite H13 by lia; [rewrite ! H14 by lia; [auto | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom14 H0 H1 H2 H3 H4 H5 H8 H6 H9 H10 H11 H12 :=  intros H0 H1 H2 H3; [unfold H4; [exploit ( Z_div_mod_eq ( unsigned H1 ) zwordsize ); [apply H5 | set ( j := unsigned H1 mod zwordsize ); [set ( k := unsigned H1 / zwordsize ); [intros H8; [exploit ( Z_mod_lt ( unsigned H1 ) zwordsize ); [apply H5 | fold H6; [intros H9; [custom3 H10 H11; [auto | rewrite H12; [ | lia | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom15 H0 :=  apply H0; [auto | .. ].
+Ltac custom16 H0 H1 :=  rewrite H0; [custom1 H1 | .. ].
+Ltac custom17 H0 H1 H2 H3 H4 H12 H15 H16 H17 H18 :=  rewrite H0, H1 by lia; [destruct ( zlt H2 ( H3 - H4 ) ); [apply H12; [destruct ( zlt ( H2 + H4 ) zwordsize ); [lia | lia | .. ] | .. ] | rewrite H15 by ( destruct ( H16 ( H2 + H4 ) H17 ) ; lia ); [rewrite H18 by lia; [f_equal; [destruct ( zlt ( H2 + H4 ) zwordsize ); [rewrite H12 by lia; [lia | .. ] | rewrite H15 by lia; [lia | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom18 H0 H1 H2 H3 :=  custom7 H0 H1 H2; [rewrite H3; [ | auto | .. ] | .. ].
+Ltac custom19 H0 :=  generalize ( unsigned_range H0 ); [lia | .. ].
+Ltac custom20 H0 H1 H2 H3 H4 H5 :=  subst; [apply H0; [tauto | rewrite H1; [custom2 H4 H5 |  | .. ] | intros H2 H3; [rewrite H1; [rewrite !bits_size_2; [auto | lia | lia | .. ] | lia | .. ] | .. ] | .. ] | .. ].
+Ltac custom21 H0 H1 H2 :=  unfold H0; [custom3 H1 H2; [ |  | .. ] | .. ].
+Ltac custom22 H0 H1 H2 H3 H4 H5 H11 :=  intros H0 H1 H2 H3 H4 H5; [set ( y' := repr ( Int.unsigned H1 ) ) in *; [apply H11 in H5; [set ( z' := repr ( Int.unsigned H2 ) ) in *; [destruct ( int_ltu_2_inv H1 H2 ) as ( A & B & C & D & E & F ); [auto | auto | lia |  | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom23 H0 H1 H2 H3 H4 H5 H6 H7 H11 H12 H9 H10 :=  intros H0 H1 H2 H3 H4 H5; [generalize ( ltu_iwordsize_inv _ H3 ) ( ltu_iwordsize_inv _ H4 ); [intros H6 H7; [assert ( unsigned ( add H1 H2 ) = unsigned H11 + unsigned H12 ); [unfold H9; [apply H10; [generalize two_wordsize_max_unsigned; [lia | .. ] | .. ] | .. ] |  | .. ] | .. ] | .. ] | .. ].
+Ltac custom24 H0 H1 H2 H3 H4 H14 H15 H16 H9 :=  rewrite H0, H1, H2 by lia; [destruct ( zlt ( H3 + H4 ) zwordsize ); [rewrite H14 by lia; [rewrite H16 by lia; [fold H9; [destruct ( zlt ( H3 + H4 ) H9 ); [custom8 H15 | rewrite H14 by lia; [f_equal; [lia | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | custom8 H15 | .. ] | .. ].
+Ltac custom25 H0 H1 H2 H3 H4 H5 H6 H15 H18 :=  rewrite H0 by lia; [rewrite H1 by ( destruct ( H2 H3 ( H4 - H5 ) ) ; lia ); [rewrite H6; [rewrite H15 by ( destruct ( H2 ( H3 + H5 ) H4 ) ; lia ); [f_equal; [destruct ( zlt H3 ( zwordsize - H5 ) ); [rewrite ! H18 by lia; [lia | .. ] | rewrite ! H15 by lia; [rewrite H18 by lia; [lia | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom26 H0 H1 H2 :=  custom0 H0 H1 H2; [ | auto with bool | .. ].
+Ltac custom27 H0 H1 H2 H3 H4 H5 H7 H8 :=  intros H0 H1 H2 H3; [apply H4; [apply H5 in H3; [intros H7; [auto | .. ] | .. ] | intros H8 | .. ] | .. ].
+Ltac custom28  :=  generalize wordsize_max_unsigned; [lia | .. ].
+Ltac custom29 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 :=  unfold H0, H1, H2; [intros H3 H4 H5 H6 H7 H8; [rewrite H7, H8; [apply H9 | .. ] | .. ] | .. ].
+Ltac custom30 H0 H1 :=  rewrite H0 by lia; [rewrite H1 by lia | .. ].
+Ltac custom31 H0 H1 :=  destruct ( zlt H0 H1 ); [lia | lia | .. ].
+Ltac custom32  :=  f_equal; [lia | .. ].
+Ltac custom33 H0 :=  rewrite H0; [ | lia | .. ].
+Ltac custom34 H0 H1 H2 H3 H4 H5 H6 H10 H8 H12 H13 H14 H15 :=  intros H0 H1 H2 H3; [rewrite H4; [apply H5 in H3; [change ( Int.unsigned iwordsize' ) with zwordsize in H6; [destruct ( Z.min_spec ( zwordsize - Int.unsigned H2 ) H0 ) as [ [ A B ] | [ A B ] ]; [custom2 H8 H12; [intros H13 H14; [rewrite ! H15 by auto | .. ] | .. ] | custom1 H10 | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom35 H0 H3 H4 :=  custom15 H0; [auto | apply H3; [rewrite <- H4; [change ( unsigned iwordsize ) with zwordsize; [tauto | .. ] | .. ] | .. ] | .. ].
+Ltac custom36 H0 H1 H2 :=  intros H0 H1; [unfold H2 | .. ].
+Ltac custom37 H0 H1 H7 H8 H13 :=  fold H0; [destruct ( zlt H0 H1 ); [assert ( A : unsigned ( sub H7 H8 ) = H1 - H0 ); [apply H13; [custom28  | .. ] |  | .. ] | assert ( A : unsigned ( sub H8 H7 ) = H0 - H1 ); [apply H13; [custom28  | .. ] |  | .. ] | .. ] | .. ].
+Ltac custom38 H0 H1 :=  custom2 H0 H1; [lia | .. ].
+Ltac custom39 H0 H1 H2 :=  custom11 H0 H1 H2; [auto | try rewrite negb_elim; [auto | .. ] | try rewrite negb_elim; [auto | .. ] | try rewrite negb_elim; [auto | .. ] | .. ].
+Ltac custom40 H0 H1 H2 H3 :=  intros H0 H1 H2; [apply H3 with H0; [ |  | .. ] | .. ].
+Ltac custom41 H0 H1 H2 H3 H4 H5 H8 H13 H14 H15 H16 :=  intros H0 H1 H2 H3 H4; [unfold H5; [set ( Y := unsigned H1 ) in *; [apply H8 in H3; [apply H8 in H4; [set ( Z := unsigned H2 ) in *; [custom7 H13 H14 H15; [rewrite H16 by auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom42 H0 H1 H2 H3 H4 H5 H8 H13 H14 H15 H16 :=  intros H0 H1 H2 H3 H4; [unfold H5; [set ( Y := Int.unsigned H1 ) in *; [apply H8 in H3; [apply H8 in H4; [set ( Z := Int.unsigned H2 ) in *; [custom7 H13 H14 H15; [rewrite H16 by auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom43 H0 H1 H2 H3 H4 H5 H9 H7 H11 H12 H13 H14 :=  intros H0 H1 H2 H3; [rewrite H4; [apply H5 in H3; [destruct ( Z.min_spec ( zwordsize - unsigned H2 ) H0 ) as [ [ A B ] | [ A B ] ]; [custom2 H7 H11; [intros H12 H13; [rewrite ! H14 by auto | .. ] | .. ] | custom1 H9 | .. ] | .. ] | .. ] | .. ].
+Ltac custom44 H0 H1 :=  unfold H0; [apply H1 | .. ].
+Ltac custom45 H0 H1 H2 :=  custom4 H0 H1; [apply H2 | .. ].
+Ltac custom46 H0 H1 H2 H3 :=  intros H0 H1 H2; [apply H3 with H1; [ |  | .. ] | .. ].
+Ltac custom47 H0 H1 H2 H3 H4 :=  unfold H0; [rewrite H1 by lia; [rewrite H2; [rewrite H3 by lia; [apply H4 | .. ] | unfold min_signed, max_signed; [lia | .. ] | .. ] | .. ] | .. ].
+Ltac custom48 H0 H1 H2 :=  unfold H0; [custom2 H1 H2 | .. ].
+Ltac custom49 H0 H1 H2 :=  rewrite H0 by lia; [symmetry; [rewrite H1 by lia; [f_equal; [destruct ( zlt ( H2 - Int.zwordsize + ( Int.zwordsize - 1 ) ) Int.zwordsize ); [lia | lia | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom50 H0 H2 H3 :=  assert ( 0 <= H0 < zwordsize - 1 ); [generalize ( ltu_inv _ _ H2 ); [custom1 H3; [generalize wordsize_pos wordsize_max_unsigned; [lia | .. ] | .. ] | .. ] |  | .. ].
+Ltac custom51 H0 H1 H2 H3 H4 H5 :=  intros H0; [custom0 H1 H2 H3; [custom3 H4 H5; [custom32  | lia | .. ] | .. ] | .. ].
+Ltac custom52 H0 H1 H2 H3 H4 :=  intros H0 H1 H2; [apply H3 with H4; [ |  | .. ] | .. ].
+Ltac custom53 H0 H1 H2 H3 H4 H5 :=  intros H0 H1 H2; [custom26 H3 H4 H5; [ | auto with bool |  | .. ] | .. ].
+Ltac custom54 H0 H1 H2 H3 H4 H5 H7 H8 H6 :=  intros H0 H1 H2 H3; [apply H4; [apply H5 in H3; [intros H7; [change ( Int.unsigned iwordsize' ) with zwordsize in H6; [auto] | .. ] | .. ] | intros H8 | .. ] | .. ].
+Ltac custom55 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1 H2 H3; [custom21 H4 H5 H6; [auto |  | .. ] | .. ].
+Ltac custom56  :=  unfold max_unsigned; [lia | .. ].
+Ltac custom57 H0 H1 H2 :=  rewrite H0; [custom2 H1 H2 | .. ].
+Ltac custom58 H0 H1 :=  destruct ( zlt H0 H1 ); [ | auto | .. ].
+Ltac custom59 H0 H1 H2 H3 :=  intros H0 H1; [unfold H2, H3 | .. ].
+Ltac custom60 H0 :=  custom1 H0; [auto | .. ].
+Ltac custom61 H0 H1 H2 H3 H4 H6 H9 :=  unfold H0; [intros H1 H2 H3; [destruct ( Z_one_bits wordsize ( unsigned H1 ) 0 ) as [ | i [ | ? ? ] ] eqn : B; [inv H4 | inv H6 | inv H9 | .. ] | .. ] | .. ].
+Ltac custom62 H0 H1 H2 :=  unfold H0, H1; [rewrite <- H2; [auto | .. ] | .. ].
+Ltac custom63 H0 H3 H4 H1 H2 :=  generalize ( eq_spec H0 H3 ); [case ( eq H0 H4 ); [intros H1; [congruence | .. ] | intros H2; [congruence | .. ] | .. ] | .. ].
+Ltac custom64 H0 H1 H6 H7 H13 :=  fold H0; [destruct ( zlt H0 H1 ); [assert ( A : Int.unsigned ( Int.sub H6 H7 ) = H1 - H0 ); [custom6 H13 |  | .. ] | assert ( A : Int.unsigned ( Int.sub H7 H6 ) = H0 - H1 ); [custom6 H13 |  | .. ] | .. ] | .. ].
+Ltac custom65 H1 H2 H3 H4 H0 H5 H6 H7 H8 H9 :=  assert ( forall a b c, a = add b c -> c = sub a b ); [intros H1 H2 H3 H4; [subst H1; [custom3 H6 H7; [custom16 H8 H9 | .. ] | .. ] | .. ] | custom4 H0 H5 | .. ].
+Ltac custom66 H0 H1 H2 H12 H13 :=  rewrite H0; [destruct ( zlt H1 H2 ); [rewrite H12 by lia; [custom8 H13 | .. ] | rewrite H12 by lia; [custom8 H13 | .. ] | .. ] | .. ].
+Ltac custom67 H1 H2 H4 :=  rewrite !bits_shru; [destruct ( zlt ( H1 + unsigned H2 ) zwordsize ); [custom1 H4; [custom19 H2 | .. ] |  | .. ] | auto | auto |  | .. ].
+Ltac custom68 H0 H1 H2 H3 H4 H5 :=  intros H0; [unfold H1, H2; [custom2 H3 H4; [unfold max_unsigned; [rewrite H5; [lia | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom69 H0 H1 H2 H3 H4 H5 H10 :=  intros H0; [custom7 H1 H2 H3; [rewrite H4, H5 by auto; [rewrite H4, H5; [f_equal | custom31 H2 H10 |  | .. ] | .. ] | .. ] | .. ].
+Ltac custom70 H0 H1 H2 H3 H4 :=  custom7 H0 H1 H2; [custom3 H3 H4; [auto |  |  | .. ] | .. ].
+Ltac custom71 H0 H1 H2 :=  custom7 H0 H1 H2; [autorewrite with ints; [ |  | .. ] | .. ].
+Ltac custom72 H0 H1 H2 :=  intros H0 H1; [custom33 H2; [rewrite !bits_size_2; [auto | lia | lia | .. ] | .. ] | .. ].
+Ltac custom73 H0 H1 H2 H3 H7 :=  intros H0 H1 H2; [unfold H3; [set ( x' := unsigned H0 ); [set ( y' := unsigned H1 ); [set ( z' := unsigned H2 ); [apply H7 | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom74 H0 H1 H2 H3 H4 H5 :=  intros H0 H1 H2; [rewrite ( H3 ( H4 H0 H1 ) ); [rewrite H5; [f_equal; [apply H3 | apply H3 | .. ] | .. ] | .. ] | .. ].
+Ltac custom75 H0 H1 H2 H3 H4 H5 H6 H8 H9 H7 :=  intros H0 H1 H2; [generalize ( ltu_inv _ _ H2 ); [rewrite H3; [intros H4; [unfold H5; [custom18 H6 H8 H9 H7 | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom76 H0 H1 :=  unfold H0; [rewrite H1 by lia | .. ].
+Ltac custom77  :=  generalize wordsize_pos; [lia | .. ].
+Ltac custom78 H0 :=  custom1 H0; [lia | .. ].
+Ltac custom79 H0 H1 :=  rewrite H0; [unfold H1 |  | .. ].
+Ltac custom80 H0 H1 :=  rewrite <- H0; [apply H1 | .. ].
+Ltac custom81 H0 H1 H2 :=  custom4 H0 H1; [ | apply H2 | .. ].
+Ltac custom82 H0 H1 H2 :=  intros H0; [custom10 H1 H2 | .. ].
+Ltac custom83 H0 :=  destruct H0; [( left ; reflexivity ) ( left ; reflexivity ) || ( right ; congruence ( left ; reflexivity ) || ( right ; congruence ))|| ( right ; congruence ) |  |  | .. ].
+Ltac custom84 H0 H1 H2 H3 H4 H5 H6 H7 :=  intros H0 H1 H2 H3; [apply H4 with H5; [apply H6 | apply H7 | .. ] | .. ].
+Ltac custom85 H0 H1 H2 :=  custom30 H0 H1; [custom30 H0 H2; [f_equal; [rewrite H0 by lia; [lia | .. ] | .. ] | .. ] | .. ].
+Ltac custom86 H0 H1 :=  unfold H0; [custom1 H1 | .. ].
+Ltac custom87 H0 H1 H2 H3 :=  generalize ( unsigned_range H0 ); [intros H1; [custom3 H2 H3; [lia | f_equal | .. ] | .. ] | .. ].
+Ltac custom88 H0 H1 H2 H3 :=  red; [intros H0; [elim H1; [rewrite <- ( H2 H3 ); [custom1 H0 | .. ] | .. ] | .. ] | .. ].
+Ltac custom89 H0 H1 :=  custom16 H0 H1; [auto | lia | .. ].
+Ltac custom90 H0 H1 :=  custom16 H0 H1; [lia | lia | .. ].
+Ltac custom91 H0 :=  destruct ( Z.odd H0 ); [simpl in *; [discriminate || ring | .. ] | simpl in *; [discriminate || ring | .. ] | .. ].
+Ltac custom92 H0 H1 H2 H3 H4 :=  intros H0; [red; [rewrite H1, H2; [custom15 H3; [apply H4 | .. ] | .. ] | .. ] | .. ].
+Ltac custom93 H0 H1 H2 H3 H4 H5 H6 :=  intros H0; [unfold H1, H2; [apply H3; [rewrite <- H4; [custom4 H5 H6 | .. ] | .. ] | .. ] | .. ].
+Ltac custom94 H0 H1 H2 H3 :=  intros H0; [custom0 H1 H2 H3; [destruct ( testbit H0 H2 ); [auto | auto | .. ] | .. ] | .. ].
+Ltac custom95 H0 H1 H9 H6 H12 :=  destruct ( zlt H0 ( unsigned H1 ) ); [auto | rewrite ! H9 by lia; [destruct ( zlt ( H0 - unsigned H1 ) H6 ); [custom8 H12 |  | .. ] | .. ] | .. ].
+Ltac custom96 H0 H7 H8 :=  destruct ( bits_size_1 H0 ); [subst H0; [custom3 H7 H8; [zify; [lia | .. ] | .. ] | .. ] |  | .. ].
+Ltac custom97 H0 H1 H9 H6 H12 :=  destruct ( zlt H0 ( Int.unsigned H1 ) ); [auto | rewrite ! H9 by lia; [destruct ( zlt ( H0 - Int.unsigned H1 ) H6 ); [custom8 H12 |  | .. ] | .. ] | .. ].
+Ltac custom98 H0 H1 :=  destruct ( testbit H0 H1 ); [simpl in *; [congruence | .. ] | simpl in *; [congruence | .. ] | .. ].
+Ltac custom99 H0 H1 H2 H3 :=  custom11 H0 H1 H2; [apply H3 | decEq; [apply H3 | .. ] | auto |  | .. ].
+Ltac custom100 H0 H1 H2 H3 H10 :=  custom7 H0 H1 H2; [rewrite H3 by auto; [symmetry; [rewrite H10 by auto; [destruct ( zlt H1 Int.zwordsize ); [ |  | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom101 H0 H1 H2 H3 H4 H5 :=  intros H0 H1 H2 H3; [custom10 H4 H5; [ | auto | .. ] | .. ].
+Ltac custom102 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1 H2 H3; [custom71 H4 H5 H6; [destruct ( zlt ( H5 + unsigned H1 ) zwordsize ); [ |  | .. ] | custom19 H1 | auto with bool |  |  | .. ] | .. ].
+Ltac custom103 H0 H1 H2 :=  unfold H0; [custom4 H1 H2; [ |  | .. ] | .. ].
+Ltac custom104 H0 :=  rewrite H0; [ | auto | .. ].
+Ltac custom105 H0 H1 :=  custom2 H0 H1; [auto |  | .. ].
+Ltac custom106 H0 H1 H2 :=  intros H0; [custom2 H1 H2 | .. ].
+Ltac custom107 H0 H1 H2 H3 H4 :=  intros H0 H1; [custom26 H2 H3 H4 | .. ].
+Ltac custom108 H0 :=  unfold H0; [f_equal; [symmetry | .. ] | .. ].
+Ltac custom109 H0 H1 H2 H3 :=  unfold H0; [intros H1; [rewrite <- ( H2 H1 ) at 2; [apply H3 | .. ] | .. ] | .. ].
+Ltac custom110 H0 H1 H2 H3 :=  unfold H0; [intros H1 H2 H3 | .. ].
+Ltac custom111 H0 H1 H2 :=  unfold H0 at 1, H1; [rewrite <- H2; [auto | .. ] | .. ].
+Ltac custom112  :=  generalize half_modulus_pos; [lia | .. ].
+Ltac custom113 H0 :=  unfold modulus, wordsize; [change Wordsize_Ptrofs.wordsize with ( if Archi.ptr64 then 64 % nat else 32 % nat ); [rewrite H0; [reflexivity | .. ] | .. ] | .. ].
+Ltac custom114 H0 H1 H2 H3 H12 H13 :=  rewrite H0 by ( generalize H1 ; lia ); [destruct ( zlt H2 H3 ); [rewrite H13 by lia | custom8 H12 | .. ] | .. ].
+Ltac custom115 H0 H2 H4 H6 :=  set ( Xl := Int.unsigned H0 ); [set ( Xh := Int.unsigned H2 ); [set ( Yl := Int.unsigned H4 ); [set ( Yh := Int.unsigned H6 ) | .. ] | .. ] | .. ].
+Ltac custom116 H0 H1 H2 :=  unfold H0, H1; [custom1 H2 | .. ].
+Ltac custom117 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2; [rewrite <- ( H3 ( H4 H2 ) ); [custom1 H5 | .. ] | .. ] | .. ].
+Ltac custom118 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom119 H0 H1 :=  rewrite H0; [apply H1 with 0; [lia | lia | .. ] | .. ].
+Ltac custom120 H2 H3 H4 H0 H1 :=  custom52 H2 H3 H4 H0 H1; [ | auto | .. ].
+Ltac custom121 H0 H1 :=  rewrite H0 in H1; [congruence | lia | .. ].
+Ltac custom122 H0 H2 H3 H4 :=  subst H0; [rewrite H2; [rewrite H3, H4; [auto | .. ] | .. ] | .. ].
+Ltac custom123 H0 :=  rewrite H0; [f_equal; [ |  | .. ] | .. ].
+Ltac custom124 H0 H2 H3 H4 H5 :=  assert ( 0 <= H0 < zwordsize ); [apply H2 with ( H3 H4 ); [rewrite H5; [auto with coqlib | .. ] | .. ] |  | .. ].
+Ltac custom125 H0 H1 H6 H7 :=  destruct ( zlt ( Int.unsigned H0 ) ( Int.unsigned H1 ) ); [custom6 H6 | custom6 H7 | .. ].
+Ltac custom126 H0 :=  rewrite <- H0; [ | lia | lia | .. ].
+Ltac custom127 H0 H1 H2 H3 :=  intros H0; [custom26 H1 H2 H3; [auto with bool | .. ] | .. ].
+Ltac custom128 H2 H3 H0 H1 H4 H5 H6 :=  custom59 H2 H3 H0 H1; [custom3 H4 H5; [rewrite H6; [generalize ( unsigned_range H2 ) ( unsigned_range H3 ) | .. ] | .. ] | .. ].
+Ltac custom129 H0 H1 H2 H3 :=  custom4 H0 H1; [custom4 H2 H3 | custom4 H2 H3 | .. ].
+Ltac custom130 H0 H1 H2 H3 :=  custom4 H0 H1; [apply H2 | custom81 H3 H1 H2; [apply H2 | .. ] | .. ].
+Ltac custom131 H0 H1 H2 H3 H4 :=  intros H0; [custom0 H1 H2 H3; [apply H4 | .. ] | .. ].
+Ltac custom132 H0 H1 :=  custom3 H0 H1; [auto | custom32  | lia | .. ].
+Ltac custom133 H0 H6 H7 H8 :=  destruct ( zlt H0 zwordsize ); [custom0 H6 H7 H8; [destruct ( zlt H7 H0 ); [ |  | .. ] |  | auto with bool | .. ] |  | .. ].
+Ltac custom134 H1 H2 H3 H0 H4 H5 :=  custom53 H1 H2 H3 H0 H4 H5; [ | auto with bool | .. ].
+Ltac custom135 H0 H1 H2 H3 H4 :=  intros H0 H1; [rewrite <- H2; [rewrite <- H3; [custom1 H4 | .. ] | .. ] | .. ].
+Ltac custom136 H0 H1 H2 H3 H6 :=  custom71 H0 H1 H2; [custom58 H1 H3; [custom6 H6 | .. ] | lia | .. ].
+Ltac custom137 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3; [generalize ( Int.unsigned_range H1 ); [intros H4 | .. ] | .. ].
+Ltac custom138 H0 H1 :=  custom58 H0 H1; [auto | .. ].
+Ltac custom139 H0 H1 :=  rewrite H0 by lia; [apply H1 | .. ].
+Ltac custom140 H0 :=  f_equal; [custom6 H0 | .. ].
+Ltac custom141 H0 :=  symmetry; [apply H0 | .. ].
+Ltac custom142 H0 H1 H2 H3 :=  intros H0 H1; [custom10 H2 H3; [ |  | .. ] | .. ].
+Ltac custom143 H0 H1 H2 H3 H4 H5 :=  intros H0 H1 H2; [custom7 H3 H4 H5 | .. ].
+Ltac custom144 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 :=  intros H0 H1 H2 H3 H4 H5; [custom7 H6 H7 H8; [rewrite H9 by lia; [rewrite H10 by auto | .. ] | .. ] | .. ].
+Ltac custom145  :=  unfold max_signed; [lia | .. ].
+Ltac custom146  :=  unfold max_signed; [generalize min_signed_neg; [lia | .. ] | .. ].
+Ltac custom147 H0 H1 :=  red; [intro H0; [elim H1 | .. ] | .. ].
+Ltac custom148  :=  simpl; [lia | .. ].
+Ltac custom149 H0 H1 :=  custom30 H0 H1; [lia | .. ].
+Ltac custom150 H0 H2 H1 :=  custom30 H0 H2; [rewrite H1; [custom32  | .. ] | .. ].
+Ltac custom151 H0 H1 H2 H3 H4 H5 H6 :=  unfold H0, H1, H2; [intros H3 H4 H5; [custom2 H5 H6 | .. ] | .. ].
+Ltac custom152 H0 H1 :=  custom1 H0; [custom19 H1 | .. ].
+Ltac custom153 H0 :=  symmetry; [apply H0 with ( - 1 ); [ | lia | .. ] | .. ].
+Ltac custom154 H0 H1 :=  generalize ( size_range H0 ) ( size_range H1 ); [zify; [lia | .. ] | .. ].
+Ltac custom155 H0 :=  decEq; [apply H0 | .. ].
+Ltac custom156 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [custom80 H4 H5 | .. ] | .. ].
+Ltac custom157 H0 H1 H2 H3 H4 H5 :=  unfold H0, H1; [intros H2 H3 H4; [custom2 H4 H5 | .. ] | .. ].
+Ltac custom158 H0 H1 :=  custom16 H0 H1; [auto | .. ].
+Ltac custom159 H0 H1 :=  rewrite H0; [simpl Z.div2; [custom1 H1 | .. ] | .. ].
+Ltac custom160  :=  split; [lia |  | .. ].
+Ltac custom161 H0 H1 H2 :=  rewrite H0; [rewrite <- H1; [custom1 H2 | .. ] | .. ].
+Ltac custom162 H0 H1 H2 H3 :=  rewrite H0; [custom10 H1 H2; [unfold H3 | .. ] | .. ].
+Ltac custom163 H0 H1 H9 H10 :=  destruct ( zlt H0 H1 ); [custom8 H9 | custom8 H10 | .. ].
+Ltac custom164 H0 H1 H2 H3 :=  rewrite <- H0; [custom103 H1 H2 H3; [ | auto with ints | .. ] |  | .. ].
+Ltac custom165 H0 H1 :=  destruct ( zlt ( H0 + unsigned H1 ) zwordsize ); [lia | lia | .. ].
+Ltac custom166 H0 H2 H3 :=  assert ( two_p H0 < half_modulus ); [custom105 H2 H3 | assert ( two_p H0 < modulus ); [ |  | .. ] | .. ].
+Ltac custom167 H0 H3 :=  apply H0 with wordsize; [apply H3 | auto | .. ].
+Ltac custom168  :=  destruct zlt; [lia | lia | .. ].
+Ltac custom169 H0 H1 H2 :=  case ( zlt H0 half_modulus ); [intro H1 | intro H2 | .. ].
+Ltac custom170  :=  rewrite !bits_shl; [ | auto | auto |  | .. ].
+Ltac custom171  :=  rewrite !bits_shr; [ | auto |  | auto | .. ].
+Ltac custom172 H0 H1 H2 :=  custom48 H0 H1 H2; [auto | lia |  | .. ].
+Ltac custom173 H0 H1 H10 :=  destruct ( zlt H0 ( Int.unsigned H1 ) ); [auto | rewrite H10 by lia | .. ].
+Ltac custom174 H0 H1 :=  intro H0; [custom6 H1 | .. ].
+Ltac custom175 H0 H1 :=  apply H0; [custom19 H1 |  | .. ].
+Ltac custom176 H2 H3 H0 H1 H4 :=  custom59 H2 H3 H0 H1; [rewrite H4; [tauto | .. ] | .. ].
+Ltac custom177 H2 H3 H0 H1 H4 :=  custom59 H2 H3 H0 H1; [apply H4 | .. ].
+Ltac custom178 H0 H1 :=  destruct ( testbit H0 H1 ); [reflexivity reflexivity || discriminate|| discriminate |  | .. ].
+Ltac custom179 H0 H1 :=  intros H0; [unfold H1 | .. ].
+Ltac custom180 H0 H1 H2 H3 :=  intros H0; [custom21 H1 H2 H3; [reflexivity | .. ] | .. ].
+Ltac custom181 H0 H1 H2 :=  intros H0; [custom3 H1 H2; [ |  | .. ] | .. ].
+Ltac custom182 H0 H1 :=  apply H0; [split; [ | apply H1 | .. ] | .. ].
+Ltac custom183 H1 H2 H3 H0 H4 H5 H6 :=  custom134 H1 H2 H3 H0 H4 H5; [apply H6 | auto with bool | .. ].
+Ltac custom184 H0 H3 H4 :=  destruct ( bits_size_1 H0 ); [subst H0; [custom10 H3 H4 | .. ] |  | .. ].
+Ltac custom185 H0 H6 H7 H8 :=  destruct ( zlt H0 zwordsize ); [custom71 H6 H7 H8; [destruct ( zlt H7 H0 ); [ |  | .. ] |  |  |  | .. ] |  | .. ].
+Ltac custom186 H0 H1 H2 H3 H4 :=  custom7 H0 H1 H2; [rewrite H3, ! H4 by lia | .. ].
+Ltac custom187 H1 H2 H0 H3 H4 H5 :=  custom107 H1 H2 H0 H3 H4; [apply H5 | auto with bool |  |  | .. ].
+Ltac custom188 H0 H1 H2 H3 H4 H5 :=  intros H0 H1; [apply H2; [intros H3 H4 H5 | .. ] | .. ].
+Ltac custom189 H0 H1 H2 H3 H4 :=  intros H0 H1 H2; [apply H3 in H2; [change ( Int.unsigned ( Int.repr 63 ) ) with 63 in H4] | .. ].
+Ltac custom190 H0 H1 H2 H3 H4 :=  intros H0 H1 H2; [custom10 H3 H4; [ | auto | .. ] | .. ].
+Ltac custom191 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3; [unfold H4 | .. ].
+Ltac custom192  :=  exists ( - 1 ); [ring | .. ].
+Ltac custom193 H0 H1 H2 :=  elim H0; [rewrite <- ( H1 H2 ) | .. ].
+Ltac custom194 H0 H1 :=  custom30 H0 H1; [custom32  | .. ].
+Ltac custom195 H0 H1 H2 :=  custom30 H0 H1; [rewrite H2 by lia | .. ].
+Ltac custom196 H0 H1 :=  rewrite H0, H1; [auto |  |  | .. ].
+Ltac custom197  :=  unfold min_signed, max_signed; [lia | .. ].
+Ltac custom198 H0 H1 :=  custom38 H0 H1; [lia | .. ].
+Ltac custom199  :=  decEq; [ring | .. ].
+Ltac custom200 H0 :=  custom15 H0; [auto | .. ].
+Ltac custom201 H0 :=  symmetry; [custom6 H0 | .. ].
+Ltac custom202 H0 :=  rewrite H0; [lia | .. ].
+Ltac custom203 H0 H2 :=  subst H0; [custom1 H2 | .. ].
+Ltac custom204 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom205 H0 H2 :=  set ( x' := unsigned H0 ); [set ( y' := unsigned H2 ) | .. ].
+Ltac custom206 H0 H1 H4 H5 H2 H3 :=  intros H0; [custom70 H1 H4 H5 H2 H3; [ |  | .. ] | .. ].
+Ltac custom207 H0 H1 :=  custom2 H0 H1; [custom77  | .. ].
+Ltac custom208 H0 H1 H2 :=  custom2 H0 H1; [apply H2 |  | .. ].
+Ltac custom209 H0 H1 H2 :=  custom21 H0 H1 H2; [auto |  | .. ].
+Ltac custom210  :=  rewrite !testbit_repr; [ | auto |  | .. ].
+Ltac custom211 H0 H2 :=  assert ( two_p H0 > 0 ); [custom6 H2 |  | .. ].
+Ltac custom212 H0 H1 H2 H3 :=  intros H0; [custom0 H1 H2 H3 | .. ].
+Ltac custom213 H2 H0 H1 H3 H4 :=  custom82 H2 H0 H1; [custom44 H3 H4 | .. ].
+Ltac custom214 H0 H1 H2 :=  custom21 H0 H1 H2; [rewrite H2 |  | .. ].
+Ltac custom215 H0 H1 :=  destruct ( zlt H0 ( unsigned H1 ) ); [auto |  | .. ].
+Ltac custom216 H0 H1 H2 :=  custom3 H0 H1; [rewrite H2 | .. ].
+Ltac custom217 H3 H4 H5 H6 H0 H1 H2 :=  custom55 H3 H4 H5 H6 H0 H1 H2; [intuition | .. ].
+Ltac custom218 H0 H1 H2 :=  intros H0 H1; [rewrite H2 | .. ].
+Ltac custom219 H0 H1 H2 H3 :=  intros H0 H1; [custom2 H2 H3 | .. ].
+Ltac custom220 H0 H1 H2 H3 :=  intros H0 H1 H2; [unfold H3 | .. ].
+Ltac custom221 H0 H1 H2 H3 :=  intros H0 H1 H2; [custom6 H3 | .. ].
+Ltac custom222 H0 H1 H2 H3 H4 :=  intros H0 H1 H2; [custom105 H3 H4 | .. ].
+Ltac custom223 H0 H1 H2 H3 H4 H5 :=  intros H0 H1 H2; [custom0 H3 H4 H5 | .. ].
+Ltac custom224 H0 H1 H2 :=  intros H0 H1 H2; [set ( uy := unsigned H1 ) | .. ].
+Ltac custom225 H0 H1 H2 :=  rewrite H0 by apply H1; [rewrite H2 | .. ].
+Ltac custom226 H0 H2 H3 :=  assert ( two_p H0 < modulus ); [custom38 H2 H3 |  | .. ].
+Ltac custom227 H0 H1 :=  change ( two_p 32 ) with Int.modulus; [generalize ( Int.unsigned_range H0 ) ( Int.unsigned_range H1 ) | .. ].
+Ltac custom228 H0 H1 H6 :=  destruct ( zlt ( unsigned H0 + unsigned H1 ) modulus ); [ | rewrite H6 | .. ].
+Ltac custom229 H0 :=  generalize ( Int.unsigned_range H0 ); [lia | .. ].
+Ltac custom230 H0 H1 :=  custom30 H0 H1; [lia | .. ].
+Ltac custom231 H0 H1 :=  custom16 H0 H1; [custom56  | .. ].
+Ltac custom232 H0 H1 H2 :=  custom16 H0 H1; [custom19 H2 | .. ].
+Ltac custom233  :=  generalize min_signed_neg; [custom145  | .. ].
+Ltac custom234 H0 H1 H2 H3 H4 :=  unfold H0, H1, H2, H3; [custom1 H4 | .. ].
+Ltac custom235 H0 H2 H1 H3 :=  replace ( unsigned H0 ) with ( ( unsigned H2 + unsigned H1 ) - unsigned H3 ); [ | lia | .. ].
+Ltac custom236 H1 H2 H3 H0 :=  custom99 H1 H2 H3 H0; [auto | .. ].
+Ltac custom237 H0 H1 H9 :=  destruct ( zlt H0 ( zwordsize - Int.unsigned H1 ) ); [custom8 H9 |  | .. ].
+Ltac custom238 H0 H1 H2 H5 H3 H6 H4 :=  apply H0 with ( H1 ( H2 ( H5 H3 + H6 H4 ) ) ); [eauto with ints |  | .. ].
+Ltac custom239 H0 H1 H4 :=  custom58 H0 H1; [custom8 H4 | .. ].
+Ltac custom240 H0 H1 :=  simpl; [custom2 H0 H1 | .. ].
+Ltac custom241 H0 H1 H2 :=  custom86 H0 H1; [rewrite H2 | .. ].
+Ltac custom242 H0 :=  generalize ( Int.unsigned_range_2 H0 ); [lia | .. ].
+Ltac custom243 H0 H1 :=  custom158 H0 H1; [lia | .. ].
+Ltac custom244 H0 H1 H2 H9 :=  destruct ( zlt ( H0 - Int.unsigned H1 ) H2 ); [custom8 H9 |  | .. ].
+Ltac custom245 H0 :=  unfold H0; [lia | .. ].
+Ltac custom246 H0 H3 H1 H2 :=  unfold H0; [custom106 H3 H1 H2 | .. ].
+Ltac custom247 H0 H1 H2 :=  unfold H0; [custom4 H1 H2 | .. ].
+Ltac custom248 H0 :=  custom6 H0; [lia | .. ].
+Ltac custom249  :=  generalize modulus_pos; [lia | .. ].
+Ltac custom250 H0 :=  f_equal; [custom15 H0 | .. ].
+Ltac custom251 H0 :=  f_equal; [rewrite H0 | .. ].
+Ltac custom252  :=  decEq; [lia | .. ].
+Ltac custom253 H1 H2 H3 H0 H4 H5 :=  custom134 H1 H2 H3 H0 H4 H5; [auto with bool | .. ].
+Ltac custom254  :=  right; [lia | .. ].
+Ltac custom255 H0 H1 H9 :=  destruct ( zlt H0 ( zwordsize - unsigned H1 ) ); [custom8 H9 |  | .. ].
+Ltac custom256  :=  simpl in *; [discriminate || ring | .. ].
+Ltac custom257  :=  simpl in *; [congruence | .. ].
+Ltac custom258 H0 :=  unfold modulus; [rewrite H0 | .. ].
+Ltac custom259 H0 :=  custom1 H0; [custom28  | .. ].
+Ltac custom260 H0 :=  custom1 H0; [lia | .. ].
+Ltac custom261 H0 H1 H2 H9 :=  destruct ( zlt ( H0 - unsigned H1 ) H2 ); [custom8 H9 |  | .. ].
+Ltac custom262  :=  left; [lia | .. ].
+Ltac custom263 H0 :=  left; [custom15 H0 | .. ].
+Ltac custom264 H2 H3 H4 H0 H1 :=  custom120 H2 H3 H4 H0 H1; [exact bits_and | .. ].
+Ltac custom265 H2 H3 H4 H0 H1 :=  custom120 H2 H3 H4 H0 H1; [exact bits_or | .. ].
+Ltac custom266 H2 H3 H4 H0 H1 :=  custom120 H2 H3 H4 H0 H1; [exact bits_xor | .. ].
+Ltac custom267 H0 H1 H2 :=  custom57 H0 H1 H2; [auto | .. ].
+Ltac custom268 H0 H1 :=  rewrite H0 by lia; [rewrite H1 | .. ].
+Ltac custom269 H2 H3 H4 H0 H1 :=  custom52 H2 H3 H4 H0 H1; [exact bits_and | .. ].
+Ltac custom270 H2 H3 H4 H0 H1 :=  custom52 H2 H3 H4 H0 H1; [exact bits_or | .. ].
+Ltac custom271 H2 H3 H4 H0 H1 :=  custom52 H2 H3 H4 H0 H1; [exact bits_xor | .. ].
+Ltac custom272 H1 H2 H0 H3 H4 :=  custom107 H1 H2 H0 H3 H4; [auto with bool | .. ].
+Ltac custom273 H1 H2 H0 H3 H4 :=  custom107 H1 H2 H0 H3 H4; [auto | .. ].
+Ltac custom274 H0 :=  custom33 H0; [lia | .. ].
+Ltac custom275 H0 :=  custom33 H0; [custom32  | .. ].
+Ltac custom276 H0 :=  custom33 H0; [ | lia | .. ].
+Ltac custom277 H2 H3 H0 H1 :=  custom142 H2 H3 H0 H1; [reflexivity | .. ].
+Ltac custom278 H0 H1 :=  transitivity ( repr ( unsigned H0 ) ); [ | apply H1 | .. ].
+Ltac custom279 H0 H1 H2 :=  case ( zeq ( unsigned H0 ) ( unsigned H1 ) ); [intro H2 |  | .. ].
+Ltac custom280 H0 H1 :=  apply H0 with modulus; [apply H1 |  | .. ].
+Ltac custom281 H0 H1 H2 :=  eapply H0; [custom4 H1 H2; [ |  | .. ] |  | .. ].
+Ltac custom282 H0 H1 H2 :=  custom81 H0 H1 H2; [custom4 H1 H2 | .. ].
+Ltac custom283 H0 :=  rewrite H0; [custom112  | .. ].
+Ltac custom284 H0 H1 :=  rewrite H0; [apply H1 with ( - 1 ); [ |  | .. ] | .. ].
+Ltac custom285 H0 H1 H8 :=  destruct ( zlt H0 ( unsigned H1 ) ); [custom1 H8 |  | .. ].
+Ltac custom286 H2 H3 H0 H4 H5 H1 :=  custom187 H2 H3 H0 H4 H5 H1; [auto with bool |  | .. ].
+Ltac custom287 H2 H3 H0 H4 H5 H1 :=  custom286 H2 H3 H0 H4 H5 H1; [auto with bool | .. ].
+Ltac custom288 H0 H2 H3 :=  subst H0; [custom16 H2 H3 | .. ].
+Ltac custom289 H0 H3 H4 :=  subst H0; [custom3 H3 H4; [ |  | .. ] | .. ].
+Ltac custom290 H0 H3 :=  subst H0; [apply H3 | .. ].
+Ltac custom291 H0 :=  rewrite <- H0; [auto with ints | .. ].
+Ltac custom292 H0 H1 H2 H3 :=  rewrite <- H0; [custom57 H1 H2 H3 | .. ].
+Ltac custom293 H0 H1 :=  rewrite <- H0; [rewrite <- H1 | .. ].
+Ltac custom294 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 :=  intros H0 H1 H2 H3 H4 H5 H6; [custom18 H7 H8 H9 H5 | .. ].
+Ltac custom295 H0 H1 :=  custom4 H0 H1; [auto with ints |  | .. ].
+Ltac custom296 H0 H1 :=  apply H0; [unfold H1 | .. ].
+Ltac custom297 H2 H0 H1 H3 H4 :=  custom82 H2 H0 H1; [custom2 H3 H4 | .. ].
+Ltac custom298 H0 H1 :=  apply H0; [custom1 H1 | .. ].
+Ltac custom299 H0 H1 H2 :=  apply H0; [custom2 H1 H2 | .. ].
+Ltac custom300 H0 :=  apply H0; [ | auto | .. ].
+Ltac custom301 H0 H1 :=  custom2 H0 H1; [lia | .. ].
+Ltac custom302 H0 H1 :=  custom4 H0 H1; [auto | .. ].
+Ltac custom303 H0 H1 :=  custom4 H0 H1; [lia | .. ].
+Ltac custom304 H0 H1 H2 H3 H4 H5 H6 H7 :=  custom137 H0 H1 H2 H3 H4; [custom71 H5 H6 H7; [ |  | .. ] | .. ].
+Ltac custom305 H0 :=  intros H0; [lia | .. ].
+Ltac custom306 H0 H1 H2 :=  intros H0; [custom44 H1 H2 | .. ].
+Ltac custom307 H3 H0 H4 H5 H1 H2 :=  custom206 H3 H0 H4 H5 H1 H2; [ | custom28  | .. ].
+Ltac custom308 H3 H4 H5 H6 H0 H1 H2 :=  custom55 H3 H4 H5 H6 H0 H1 H2; [ | lia | .. ].
+Ltac custom309 H0 H1 :=  custom3 H0 H1; [lia |  | .. ].
+Ltac custom310 H0 H1 H2 :=  custom3 H0 H1; [unfold H2 |  | .. ].
+Ltac custom311 H0 H1 H2 :=  custom3 H0 H1; [custom1 H2 | .. ].
+Ltac custom312 H0 H1 H2 H3 :=  custom7 H0 H1 H2; [rewrite H3 by auto | .. ].
+Ltac custom313 H0 H1 H2 H3 :=  custom7 H0 H1 H2; [rewrite ! H3 by auto | .. ].
+Ltac custom314 H1 H2 H0 H3 H4 H5 H6 :=  custom36 H1 H2 H0; [custom129 H3 H4 H5 H6 | .. ].
+Ltac custom315 H1 H2 H0 H3 :=  custom36 H1 H2 H0; [custom152 H3 H2 | .. ].
+Ltac custom316 H0 H1 H2 H3 H4 :=  intros H0 H1; [unfold H2, H3, H4 | .. ].
+Ltac custom317 H0 H1 H2 H3 H4 H5 :=  intros H0 H1; [unfold H2, H3, H4, H5 | .. ].
+Ltac custom318 H0 H1 H2 H3 H4 H5 :=  intros H0 H1 H2 H3 H4; [unfold H5 | .. ].
+Ltac custom319 H0 H1 H2 H3 H4 :=  intros H0 H1 H2; [custom44 H3 H4 | .. ].
+Ltac custom320 H0 H1 H2 H3 H4 H5 H6 H7 H8 :=  intros H0 H1 H2 H3 H4 H5; [custom18 H6 H7 H8 H5 | .. ].
+Ltac custom321 H0 H1 H2 H3 H4 H5 H6 H7 :=  intros H0 H1 H2 H3 H4 H5; [custom10 H6 H7 | .. ].
+Ltac custom322 H0 H1 H2 :=  intros H0 H1 H2; [repeat rewrite sub_add_opp | .. ].
+Ltac custom323 H0 H1 H2 H3 H4 H7 H8 H5 H6 :=  intros H0 H1 H2 H3; [custom186 H4 H7 H8 H5 H6 | .. ].
+Ltac custom324 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3; [custom123 H4 | .. ].
+Ltac custom325 H0 H1 H2 H3 :=  intros H0 H1 H2 H3; [symmetry | .. ].
+Ltac custom326 H0 H1 H2 H3 :=  intros H0 H1 H2 H3; [generalize ( is_power2_correct _ _ H3 ) | .. ].
+Ltac custom327 H0 H1 H2 H3 :=  intros H0 H1 H2 H3; [generalize ( is_power2_correct H1 H2 H3 ) | .. ].
+---------------------------
+Num proofs: 406
+Num training proofs: 406
+Original size: 5462
+Compressed total size: 2792
+Training size: 5462
+(2) (3) Testing size: 0
+(2) (3) Compressed testing size: 2792
+(2) (3) Compression rate: 0.00
+Compressed size + lib: 3844 ( 2792 corpus / 1052 library )
+[1] numTactics: 328
+[1] avrgTacticSize: 3.21
+[1] maxTacSize: 33
+[1] numProofsCompressed/total: 386 / 406
+[1] numAvgApplications: 3.09
+[1] numTotalApplications: 1014
+Compression rate: 1.4209157127991676
+Num tactics in library: 328

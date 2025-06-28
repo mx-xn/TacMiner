@@ -1,0 +1,17 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom1  :=  simpl; [discriminate | .. ].
+Ltac custom2 H0 :=  unfold H0; [custom1  | .. ].
+Ltac custom3  :=  simpl; [reflexivity | .. ].
+Ltac custom4 H0 :=  intros H0; [clear H0 | .. ].
+Ltac custom5 H0 :=  unfold H0; [reflexivity | .. ].
+Ltac custom6 H0 H1 :=  unfold H0; [intros H1 | .. ].
+Ltac custom7 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom8 H0 H1 :=  apply H0; [apply H1 | .. ].
+---------------------------
+ , , 0.65
+DoubleBase, Number of Tactics, 9
+ , Average Tactic Size, 2.00
+ , Total Tactic Size, 18
+ , Max Tactic Size, 2
+ , Overall CP, 1.08

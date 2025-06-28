@@ -1,0 +1,28 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg |  |  | .. ].
+Ltac custom1  :=  econstructor; [eauto |  |  | .. ].
+Ltac custom2 H0 H1 H3 :=  apply H0 with H1; [auto | eapply H3; [ |  |  |  |  | .. ] | .. ].
+Ltac custom3  :=  econstructor; [ |  | eauto with rtlg |  | .. ].
+Ltac custom4 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom5 H0 :=  eapply H0; [eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | eauto 3 with rtlg | .. ].
+Ltac custom6  :=  constructor; [auto | .. ].
+Ltac custom7 H0 :=  eapply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom8 H0 :=  apply H0; [ | eauto 3 with rtlg | .. ].
+Ltac custom9 H0 H1 :=  econstructor; [ | apply H0 with H1; [auto | custom0 ; [ |  | .. ] | .. ] | .. ].
+Ltac custom10  :=  econstructor; [custom5  |  |  |  | .. ].
+Ltac custom11 H0 :=  inv H0; [eauto with rtlg].
+Ltac custom12 H0 H1 :=  apply H0 with H1; [auto | custom0  | .. ].
+Ltac custom13 H0 H1 :=  apply H0 with H1; [auto | custom0  | .. ].
+Ltac custom14 H0 H1 :=  intros H0 H1; [monadInv H1 | .. ].
+Ltac custom15 H0 H1 :=  apply H0 with H1; [eauto 3 with rtlg |  | .. ].
+Ltac custom16 H0 H1 H2 :=  intros H0 H1 H2; [monadInv H2 | .. ].
+Ltac custom17 H0 H1 :=  apply H0 with H1; [auto | custom0  | .. ].
+Ltac custom18  :=  custom9 ; [ | custom0  | .. ].
+Ltac custom19  :=  custom2 ; [ |  |  |  | eauto 4 with rtlg | .. ].
+---------------------------
+ , , 0.2
+RTLgenspec, Number of Tactics, 20
+ , Average Tactic Size, 2.65
+ , Total Tactic Size, 53
+ , Max Tactic Size, 6
+ , Overall CP, 1.15

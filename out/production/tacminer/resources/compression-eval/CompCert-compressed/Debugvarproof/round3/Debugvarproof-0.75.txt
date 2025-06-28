@@ -1,0 +1,45 @@
+extracted tactics -----------
+Ltac custom0  :=  constructor; [ |  | auto | .. ].
+Ltac custom1 H0 H7 :=  split; [apply H0; [apply H7 | .. ] | auto | .. ].
+Ltac custom2 H3 H4 :=  split; [apply H3; [apply H4 | .. ] | auto | .. ].
+Ltac custom3 H0 :=  induction H0 as [ | [ v i ] l ]; [simpl | simpl; [auto | .. ] | .. ].
+Ltac custom4 H0 H1 H11 :=  simpl in H0; [destruct H1; [inv H11 | .. ] | .. ].
+Ltac custom5  :=  simpl; [auto | .. ].
+Ltac custom6 H0 H1 :=  apply H0 with H1; [eauto | eauto | .. ].
+Ltac custom7 H0 :=  apply H0; [auto | .. ].
+Ltac custom8  :=  induction 1; [simpl; [try tauto | .. ] | .. ].
+Ltac custom9 H0 H1 H2 :=  simpl; [intros H0; [destruct ( Pos.compare_spec H1 H2 ); [subst H2 | .. ] | .. ] | .. ].
+Ltac custom10  :=  induction 1; [simpl | .. ].
+Ltac custom11 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom12  :=  simpl; [tauto | .. ].
+Ltac custom13 H0 H1 :=  simpl; [intros H0 H1 | .. ].
+Ltac custom14 H0 :=  simpl; [destruct H0; [ | auto | .. ] | .. ].
+Ltac custom15  :=  constructor; [constructor | auto | .. ].
+Ltac custom16 H0 :=  apply H0; [ |  | auto with coqlib | .. ].
+Ltac custom17 H0 :=  apply H0; [exact symbols_preserved | .. ].
+Ltac custom18 H0 H1 :=  rewrite <- H0; [custom17 H1 | .. ].
+Ltac custom19 H0 H1 :=  destruct ( Pos.compare_spec H0 H1 ); [subst H1 | .. ].
+Ltac custom20 H0 :=  inv H0; [eauto | .. ].
+Ltac custom21  :=  constructor; [red | .. ].
+Ltac custom22  :=  constructor; [ | auto | .. ].
+Ltac custom23  :=  constructor; [auto | .. ].
+Ltac custom24  :=  econstructor; [eauto | .. ].
+Ltac custom25 H11 :=  custom10 ; [intros H11 | .. ].
+---------------------------
+Num proofs: 21
+Num training proofs: 10
+Original size: 731
+Compressed total size: 586
+Training size: 530
+(2) (3) Testing size: 201
+(2) (3) Compressed testing size: 159
+(2) (3) Compression rate: 126.42
+Compressed size + lib: 651 ( 586 corpus / 65 library )
+[1] numTactics: 26
+[1] avrgTacticSize: 2.50
+[1] maxTacSize: 4
+[1] numProofsCompressed/total: 9 / 11
+[1] numAvgApplications: 4.00
+[1] numTotalApplications: 104
+Compression rate: 1.1228878648233487
+Num tactics in library: 26

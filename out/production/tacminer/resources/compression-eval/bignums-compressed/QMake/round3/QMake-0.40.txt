@@ -1,0 +1,43 @@
+extracted tactics -----------
+Ltac custom0  :=  simpl; [destr_eqb; [nzsimpl | nzsimpl | .. ] | .. ].
+Ltac custom1  :=  simpl; [auto | .. ].
+Ltac custom2 H0 :=  nzsimpl; [rewrite H0; [ | lia | .. ] | .. ].
+Ltac custom3  :=  simpl; [nzsimpl | .. ].
+Ltac custom4 H2 H3 H4 H5 H6 :=  custom0 ; [intros H2 H3; [rewrite H6 in *; [lia | lia | .. ] | .. ] | intros H4 H5 | .. ].
+Ltac custom5  :=  simpl; [try discriminate | .. ].
+Ltac custom6 H0 :=  unfold H0; [nzsimpl | .. ].
+Ltac custom7  :=  custom3 ; [try lia | .. ].
+Ltac custom8 H0 H1 :=  intros H0; [rewrite H1 in *; [lia | lia | .. ] | .. ].
+Ltac custom9 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom10  :=  destr_eqb; [nzsimpl | .. ].
+Ltac custom11  :=  simpl; [discriminate | .. ].
+Ltac custom12 H0 :=  simpl; [rewrite H0; [destr_zcompare; [ | .. ] | .. ] | .. ].
+Ltac custom13 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom14 H0 :=  rewrite H0; [ | auto | .. ].
+Ltac custom15 H0 :=  nzsimpl; [intros _; [rewrite H0 | .. ] | .. ].
+Ltac custom16  :=  destr_zcompare; [ |  | custom3  | .. ].
+Ltac custom17 H0 :=  rewrite H0 in *; [ | lia | .. ].
+Ltac custom18 H0 :=  rewrite H0 in *; [ | auto | .. ].
+Ltac custom19  :=  custom3 ; [auto | .. ].
+Ltac custom20 H0 :=  intros H0; [custom19  | .. ].
+Ltac custom21  :=  custom3 ; [destr_eqb | .. ].
+Ltac custom22 H0 H1 :=  rewrite H0; [apply H1; [ | .. ] | .. ].
+Ltac custom23 H0 :=  destruct H0 as [ zy|ny dy ]; [ | simpl | .. ].
+---------------------------
+Num proofs: 23
+Num training proofs: 4
+Original size: 809
+Compressed total size: 618
+Training size: 439
+(2) (3) Testing size: 370
+(2) (3) Compressed testing size: 314
+(2) (3) Compression rate: 117.83
+Compressed size + lib: 677 ( 618 corpus / 59 library )
+[1] numTactics: 24
+[1] avrgTacticSize: 2.46
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 10 / 19
+[1] numAvgApplications: 4.79
+[1] numTotalApplications: 115
+Compression rate: 1.1949778434268834
+Num tactics in library: 24

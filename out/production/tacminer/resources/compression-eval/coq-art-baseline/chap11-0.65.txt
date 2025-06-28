@@ -1,0 +1,20 @@
+extracted tactics-----------
+custom_tac18: elim _i; auto with searchtrees
+custom_tac32: apply _i; auto with searchtrees
+custom_tac3: intros; auto with searchtrees
+custom_tac11: eauto with searchtrees; rewrite _i
+---------------------------
+Num proofs: 48
+Num training proofs: 21
+Original size: 647
+Training size: 447
+Testing size: 200
+Compressed total size: 590 ( 558 corpus / 32 library )
+Compressed testing size: 193
+[1] numTactics: 4
+[1] avrgTacticSize: 2.00
+[1] maxTacSize: 2
+[1] numAvgApplications: 1.75
+[1] numTotalApplications: 7
+Compression rate: 1.0362694300518134
+Num tactics in library: 4

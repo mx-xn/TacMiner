@@ -1,0 +1,9 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  econstructor; [eapply H0; [eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ] | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+---------------------------
+ , , 0.6
+RTLgenspec, Number of Tactics, 1
+ , Average Tactic Size, 10.00
+ , Total Tactic Size, 10
+ , Max Tactic Size, 10
+ , Overall CP, 1.00

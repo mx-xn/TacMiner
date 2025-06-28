@@ -1,0 +1,21 @@
+extracted tactics -----------
+Ltac custom0  :=  simpl; [auto with zarith | .. ].
+Ltac custom1 H0 :=  rewrite H0; [ | lia | .. ].
+---------------------------
+Num proofs: 16
+Num training proofs: 3
+Original size: 423
+Compressed total size: 405
+Training size: 184
+(2) (3) Testing size: 239
+(2) (3) Compressed testing size: 239
+(2) (3) Compression rate: 100.00
+Compressed size + lib: 409 ( 405 corpus / 4 library )
+[1] numTactics: 2
+[1] avrgTacticSize: 2.00
+[1] maxTacSize: 2
+[1] numProofsCompressed/total: 0 / 13
+[1] numAvgApplications: 9.00
+[1] numTotalApplications: 18
+Compression rate: 1.0342298288508558
+Num tactics in library: 2

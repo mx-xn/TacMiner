@@ -1,0 +1,24 @@
+extracted tactics -----------
+Ltac custom0  :=  constructor; [auto | .. ].
+Ltac custom1 H0 H1 :=  destruct ( H0 H1 ) as [ z| ]; [congruence | congruence | .. ].
+Ltac custom2 H0 H1 :=  cbn; [custom1 H0 H1 | .. ].
+Ltac custom3 H0 H1 H2 :=  intros H0; [constructor; [custom2 H1 H2 | .. ] | .. ].
+Ltac custom4 H0 :=  intros H0; [constructor | .. ].
+---------------------------
+Num proofs: 59
+Num training proofs: 2
+Original size: 912
+Compressed total size: 876
+Training size: 48
+(2) (3) Testing size: 864
+(2) (3) Compressed testing size: 848
+(2) (3) Compression rate: 101.89
+Compressed size + lib: 888 ( 876 corpus / 12 library )
+[1] numTactics: 5
+[1] avrgTacticSize: 2.40
+[1] maxTacSize: 3
+[1] numProofsCompressed/total: 10 / 57
+[1] numAvgApplications: 4.80
+[1] numTotalApplications: 24
+Compression rate: 1.027027027027027
+Num tactics in library: 5

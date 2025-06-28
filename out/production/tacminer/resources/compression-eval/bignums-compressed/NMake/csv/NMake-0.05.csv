@@ -1,0 +1,12 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom1 H0 :=  custom0 H0; [auto with zarith | .. ].
+Ltac custom2 H0 :=  apply H0; [auto | .. ].
+Ltac custom3 H0 :=  rewrite H0; [auto with zarith | .. ].
+---------------------------
+ , , 0.05
+NMake, Number of Tactics, 4
+ , Average Tactic Size, 2.00
+ , Total Tactic Size, 8
+ , Max Tactic Size, 2
+ , Overall CP, 1.05

@@ -1,0 +1,35 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [red; [auto | .. ] | .. ].
+Ltac custom1 H0 H4 H5 H6 H3 :=  apply H0; [auto | apply ( H4 H5 ); [apply H6 with H3; [auto | .. ] | .. ] | .. ].
+Ltac custom2 H0 :=  apply H0; [auto | .. ].
+Ltac custom3 H0 :=  left; [eapply H0; [eauto | eauto | .. ] | .. ].
+Ltac custom4 H0 :=  unfold H0; [auto | .. ].
+Ltac custom5 H0 H1 H2 H3 :=  split; [intros H0; [destruct ( OrderedEquation'.eq_dec H2 H3 ) | .. ] | intros H1; [destruct ( OrderedEquation.eq_dec H2 H3 ) | .. ] | .. ].
+Ltac custom6 H0 H1 H7 H8 H9 :=  destruct ( OrderedEqKind.compare ( ekind H0 ) ( ekind H1 ) ); [custom0 H8 | apply H9; [red | .. ] | custom0 H7 | .. ].
+Ltac custom7 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5 | .. ].
+Ltac custom8 H0 H5 :=  destruct H0; [ | destruct H5 | .. ].
+Ltac custom9  :=  red; [auto | .. ].
+Ltac custom10  :=  right; [split | .. ].
+Ltac custom11  :=  left; [congruence | .. ].
+Ltac custom12 H0 H1 H5 H6 :=  destruct ( OrderedPositive.compare ( ereg H0 ) ( ereg H1 ) ); [custom0 H5 |  | custom0 H6 | .. ].
+Ltac custom13 H0 H1 H6 H7 :=  destruct ( OrderedLoc.compare ( eloc H0 ) ( eloc H1 ) ); [custom0 H6 |  | custom0 H7 | .. ].
+Ltac custom14 H0 H1 H2 H3 H4 :=  unfold H0, H1; [intros H2 H3 H4 | .. ].
+Ltac custom15 H0 :=  red; [intros H0 | .. ].
+---------------------------
+Num proofs: 26
+Num training proofs: 18
+Original size: 415
+Compressed total size: 274
+Training size: 278
+(2) (3) Testing size: 137
+(2) (3) Compressed testing size: 85
+(2) (3) Compression rate: 161.18
+Compressed size + lib: 320 ( 274 corpus / 46 library )
+[1] numTactics: 16
+[1] avrgTacticSize: 2.88
+[1] maxTacSize: 5
+[1] numProofsCompressed/total: 6 / 8
+[1] numAvgApplications: 3.81
+[1] numTotalApplications: 61
+Compression rate: 1.296875
+Num tactics in library: 16

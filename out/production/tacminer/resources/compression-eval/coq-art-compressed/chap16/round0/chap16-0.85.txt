@@ -1,0 +1,37 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 :=  rewrite H0; [rewrite H1 | .. ].
+Ltac custom1  :=  simpl; [auto | .. ].
+Ltac custom2 H0 :=  rewrite <- H0; [auto | .. ].
+Ltac custom3 H0 H1 :=  rewrite <- H0; [rewrite <- H1 | .. ].
+Ltac custom4 H0 :=  intros H0; [elim H0 | .. ].
+Ltac custom5 H0 H1 H2 H3 :=  rewrite ( H0 H1 H2 ) in H3; [assumption].
+Ltac custom6 H0 :=  elim ( Nat.lt_irrefl 0 ); [exact H0 | .. ].
+Ltac custom7 H0 H2 H3 H1 H4 :=  simpl in H0; [custom5 H2 H3 H1 H4].
+Ltac custom8 H0 H1 H2 :=  rewrite H0 in H1; [custom6 H2].
+Ltac custom9 H0 :=  intros H0; [lia | .. ].
+Ltac custom10 H0 H1 H2 H3 H4 H5 H6 :=  rewrite H0 in H1; [custom7 H2 H3 H4 H5 H6].
+Ltac custom11 H0 H1 H2 :=  rewrite H0 in H1; [discriminate H2].
+Ltac custom12 H0 H1 H2 :=  case H0; [ | intros H1 H2 | .. ].
+Ltac custom13 H0 :=  rewrite H0; [ | auto with zarith | .. ].
+Ltac custom14 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom15 H0 H1 H2 :=  rewrite H0 in H1; [simpl in H2].
+Ltac custom16 H0 :=  rewrite H0; [ring | .. ].
+Ltac custom17 H0 H1 :=  intros H0 H1; [elim H1 | .. ].
+---------------------------
+Num proofs: 20
+Num training proofs: 9
+Original size: 599
+Compressed total size: 515
+Training size: 413
+(2) (3) Testing size: 186
+(2) (3) Compressed testing size: 155
+(2) (3) Compression rate: 120.00
+Compressed size + lib: 551 ( 515 corpus / 36 library )
+[1] numTactics: 18
+[1] avrgTacticSize: 2.00
+[1] maxTacSize: 2
+[1] numProofsCompressed/total: 10 / 11
+[1] numAvgApplications: 4.33
+[1] numTotalApplications: 78
+Compression rate: 1.087114337568058
+Num tactics in library: 18

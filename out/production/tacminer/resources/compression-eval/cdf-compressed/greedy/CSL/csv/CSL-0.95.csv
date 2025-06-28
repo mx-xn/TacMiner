@@ -1,0 +1,23 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 H4 H5 H6 H7 H8 H9 H10 H11 H12 H13 H14 H15 H16 H17 :=  destruct H0; [constructor | constructor; [auto | cbn; [intros H16 H17; [congruence | .. ] | .. ] | intros H1 H2 H3 H4 H5 H6 | intros H7 H8 H9 H10 H11 H12 H13 H14 H15; [subst H9; [inv H15] | .. ] | .. ] | .. ].
+Ltac custom1 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom2 H0 H1 H2 :=  apply H0; [intros H1; [cbn; [destruct ( Z.eq_dec H2 H1 ); [ | auto | .. ] | .. ] | .. ] | .. ].
+Ltac custom3 H0 :=  apply H0; [ |  | auto | .. ].
+Ltac custom4 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom5 H0 H1 :=  intro H0; [inv H0; [congruence] | .. ]. cbn in H1.
+Ltac custom6  :=  custom2 ; [auto | .. ].
+Ltac custom7 H0 H1 :=  destruct ( H0 H1 ); [congruence |  | .. ].
+Ltac custom8 H3 :=  intuition auto; [ |  | apply H3 | .. ].
+Ltac custom9  :=  custom4 ; [auto | .. ].
+Ltac custom10 H0 H1 :=  rewrite H0; [apply H1 | .. ].
+Ltac custom11 H3 H1 :=  custom5 ; [rewrite H3 in H1].
+Ltac custom12 H0 H1 H2 H3 H4 :=  assert ( L : H0 H1 = Some H2 ) by ( rewrite H3 ; apply H4 ); [custom11 ].
+Ltac custom13  :=  red; [auto | .. ].
+Ltac custom14 H0 :=  rewrite H0; [custom13  | .. ].
+---------------------------
+ , , 0.95
+CSL, Number of Tactics, 15
+ , Average Tactic Size, 2.93
+ , Total Tactic Size, 44
+ , Max Tactic Size, 11
+ , Overall CP, 1.60

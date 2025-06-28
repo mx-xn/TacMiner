@@ -1,0 +1,41 @@
+extracted tactics-----------
+custom_tac18: intros; monadInv _i
+custom_tac26: apply _i with _i; auto
+custom_tac37: eapply _i; eauto
+custom_tac63: pose ( AT := fun pc i => instr_at_incr _i _i pc i _i); induction 1; econstructor; eauto
+custom_tac46: constructor; auto
+custom_tac1: intros until _o; unfold _i
+custom_tac9: intros; red; intros
+custom_tac4: unfold _i; intros
+custom_tac58: econstructor; eauto with rtlg
+custom_tac32: apply _i; eauto with rtlg
+custom_tac2: exists _i; auto
+custom_tac5: intros; inv _i
+custom_tac17: simpl; apply _i
+custom_tac38: simpl; intros
+custom_tac42: right; eauto with rtlg
+custom_tac20: intros; unfold _i in _i
+custom_tac10: red; intros
+custom_tac16: intros; eauto with rtlg
+custom_tac22: unfold _i; simpl
+custom_tac23: simpl in _i; rewrite _i in _i
+custom_tac47: induction 1; intros
+custom_tac73: monadInv _i; auto
+custom_tac74: constructor; unfold _i in _i
+custom_tac13: subst _i; auto
+custom_tac59: constructor; eauto with rtlg
+---------------------------
+Num proofs: 55
+Num training proofs: 55
+Original size: 888
+Training size: 888
+Testing size: 888
+Compressed total size: 723 ( 610 corpus / 113 library )
+Compressed testing size: 826
+[1] numTactics: 25
+[1] avrgTacticSize: 2.12
+[1] maxTacSize: 4
+[1] numAvgApplications: 2.32
+[1] numTotalApplications: 58
+Compression rate: 1.0750605326876512
+Num tactics in library: 25

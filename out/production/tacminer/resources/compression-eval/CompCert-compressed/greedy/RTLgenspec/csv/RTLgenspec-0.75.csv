@@ -1,0 +1,37 @@
+extracted tactics -----------
+Ltac custom0  :=  econstructor; [eauto |  |  | .. ].
+Ltac custom1 H0 H1 H3 H4 H5 H6 H7 H8 H9 :=  generalize H0; [unfold H1; [caseEq ( nth_error ( map_letvars H3 ) H4 ); [intros H5 H6 H7 | intros H8 H9 | .. ] | .. ] | .. ].
+Ltac custom2 H0 H8 :=  intros until H0; [unfold H8 | .. ].
+Ltac custom3 H0 H1 :=  apply H0 with H1; [eauto with rtlg |  | .. ].
+Ltac custom4 H0 :=  exists H0; [auto | .. ].
+Ltac custom5  :=  right; [eauto with rtlg | .. ].
+Ltac custom6  :=  econstructor; [eauto with rtlg |  | .. ].
+Ltac custom7  :=  constructor; [auto | .. ].
+Ltac custom8 H0 H1 H2 H3 H4 H5 H6 :=  simpl; [intros H0 H1 H2 H3 H4 H5 H6 | .. ].
+Ltac custom9 H0 H1 H2 H3 H4 H5 H6 H7 :=  simpl; [intros H0 H1 H2 H3 H4 H5 H6 H7 | .. ].
+Ltac custom10 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom11 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3 H4; [monadInv H4 | .. ].
+Ltac custom12 H0 H1 H2 H3 H4 H5 H6 H7 :=  intros H0 H1 H2 H3 H4 H5 H6 H7; [monadInv H7 | .. ].
+Ltac custom13 H0 :=  apply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom14 H0 H1 H2 :=  intros H0 H1 H2; [left; [eauto with rtlg | .. ] | .. ].
+Ltac custom15 H0 H1 H2 :=  intros H0 H1 H2; [pose ( AT := fun pc i => instr_at_incr H0 H1 pc i H2 ) | .. ].
+Ltac custom16  :=  split; [ | auto | .. ].
+Ltac custom17  :=  split; [ | congruence | .. ].
+Ltac custom18  :=  constructor; [eauto with rtlg |  | .. ].
+Ltac custom19  :=  custom3 ; [eauto with rtlg | .. ].
+Ltac custom20  :=  custom3 ; [eauto with rtlg | .. ].
+Ltac custom21 H0 H1 :=  generalize H0; [unfold H1 | .. ].
+Ltac custom22 H0 :=  apply H0; [ | eauto 3 with rtlg | .. ].
+Ltac custom23 H0 H1 :=  intros H0 H1; [inv H1 | .. ].
+Ltac custom24 H0 H1 :=  apply H0 with H1; [auto | .. ].
+Ltac custom25  :=  custom7 ; [auto | .. ].
+Ltac custom26  :=  custom0 ; [ | eauto |  | .. ].
+Ltac custom27 H0 H1 H2 :=  intros H0 H1 H2; [inv H2 | .. ].
+Ltac custom28 H0 :=  exploit H0; [eauto |  |  | .. ].
+---------------------------
+ , , 0.75
+RTLgenspec, Number of Tactics, 29
+ , Average Tactic Size, 2.17
+ , Total Tactic Size, 63
+ , Max Tactic Size, 5
+ , Overall CP, 1.22

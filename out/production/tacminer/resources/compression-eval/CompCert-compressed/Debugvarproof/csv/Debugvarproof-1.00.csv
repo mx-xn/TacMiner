@@ -1,0 +1,69 @@
+extracted tactics -----------
+Ltac custom0  :=  constructor; [auto | auto | .. ].
+Ltac custom1 H0 H1 H2 H12 :=  intros H0 H1; [inv H1; [try ( inv H2 ); [econstructor; [split; [eapply H12; [ | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom3 H0 H1 H2 H12 H13 H14 H26 H15 H17 H25 :=  intros H0 H1; [inv H1; [try ( inv H2 ); [econstructor; [split; [eapply H12; [eapply H13 with ( H14 := H26 ); [rewrite <- H17; [apply H25; [exact symbols_preserved | .. ] | .. ] | eauto | eauto | .. ] | apply H15 | traceEq | .. ] | custom0 ; [auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom4 H0 H1 H2 H12 H13 H14 H15 H16 H19 :=  intros H0 H1; [inv H1; [try ( inv H2 ); [exploit find_label_match; [eauto | eauto | intros ( H12 & H13 & H14 & H15 & H16 ); [econstructor; [split; [eapply H19; [ | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom6 H0 H18 H4 H5 H6 H7 H8 H3 :=  induction H0 as [ | [ v1 i1 ] H18 ]; [simpl; [intros H4 H5 | .. ] | simpl; [intros H6 H7; [destruct ( Pos.compare_spec H8 H3 ); [subst H3 | simpl; [auto | .. ] | simpl; [destruct H7; [auto | auto | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom7 H0 :=  destruct H0; [auto | auto | auto | auto | auto | auto | auto | auto |  |  | auto | auto | auto | .. ].
+Ltac custom9 H0 H1 H2 H12 H14 H16 H18 H19 H21 H23 :=  simpl; [intros H0; [destruct ( Pos.compare_spec H1 H2 ); [simpl in H12; [subst H2] | simpl in H14; [destruct H18; [inv H21 | .. ] | .. ] | simpl in H16; [destruct H19; [inv H23 | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom10 H0 H1 H2 H14 H15 H16 H17 H18 H19 :=  intros H0 H1; [inv H1; [try ( inv H2 ); [exploit find_label_match; [eauto | eauto | intros ( H14 & H15 & H16 & H17 & H18 ); [econstructor; [split; [eapply H19; [ | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ] | .. ].
+Ltac custom11 H0 H7 :=  split; [apply H0; [apply H7 | .. ] | auto | .. ].
+Ltac custom12 H0 :=  simpl; [intros H0 | .. ].
+Ltac custom13 H0 H1 H2 :=  intros H0 H1; [inv H1; [try ( inv H2 ); [econstructor; [split | .. ] | .. ] | .. ] | .. ].
+Ltac custom14 H0 H1 :=  eapply H0 with ( t2 := H1 ); [econstructor; [constructor | simpl; [constructor | .. ] | simpl; [auto | .. ] | .. ] | eauto | eauto | .. ].
+Ltac custom16  :=  custom0 ; [auto | .. ].
+Ltac custom17 H6 H7 H8 H3 :=  split; [apply H6; [apply H7; [apply H8 with H3; [eauto | eauto | .. ] | .. ] | .. ] | auto | .. ].
+Ltac custom18  :=  simpl; [auto | .. ].
+Ltac custom19 H0 :=  econstructor; [split; [apply H0 | .. ] | .. ].
+Ltac custom20 H3 H4 H5 :=  constructor; [red; [intros H3 H4 H5 | .. ] | auto | .. ].
+Ltac custom21 H0 H1 H2 :=  intros H0 H1; [inv H1; [try ( inv H2 ) | .. ] | .. ].
+Ltac custom22 H3 :=  split; [apply H3 | auto | .. ].
+Ltac custom23  :=  induction 1; [simpl; [try tauto | .. ] | simpl; [induction 1 | .. ] | .. ].
+Ltac custom24 H0 H1 H2 H6 :=  unfold H0; [destruct ( delta_state H1 H2 ) as [ killed born ]; [induction H6 as [ | [ v i ] l ]; [simpl | .. ] | .. ] | .. ].
+Ltac custom25 H0 :=  apply H0; [auto | .. ].
+Ltac custom26 H0 :=  exploit H0; [eauto | eauto | tauto | .. ].
+Ltac custom27 H0 H7 H5 :=  destruct H0; [elim ( Plt_strict H7 ); [inv H5; [eauto] | .. ] | .. ].
+Ltac custom28  :=  induction 1; [simpl; [constructor | .. ] | .. ].
+Ltac custom29 H0 :=  custom12 H0; [try ( econstructor ; now eauto with barg ) | .. ].
+Ltac custom30 H0 :=  custom12 H0; [try contradiction | .. ].
+Ltac custom31  :=  econstructor; [eauto | .. ].
+Ltac custom32  :=  simpl; [induction 1; [try constructor | .. ] | .. ].
+Ltac custom33 H0 H1 H2 :=  intros H0 H1; [inv H1; [monadInv H2 | .. ] | .. ].
+Ltac custom34 H0 H1 :=  rewrite <- H0; [apply H1; [exact symbols_preserved | .. ] | .. ].
+Ltac custom35 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom36  :=  constructor; [auto | .. ].
+Ltac custom37 H0 H1 :=  apply H0 with H1; [eauto | eauto | .. ].
+Ltac custom38 H2 H3 H4 :=  exploit find_function_translated; [eauto | intros ( H2 & H3 & H4 ) | .. ].
+Ltac custom39 H0 :=  apply H0; [custom0  |  | auto with coqlib | .. ].
+Ltac custom40 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom41 H0 H1 :=  eapply H0; [apply H1 | eauto | .. ].
+Ltac custom42 H0 :=  econstructor; [split; [eapply H0; [ | .. ] | .. ] | .. ].
+Ltac custom43 H0 H1 H2 H3 H4 :=  intros H0 H1 H2; [apply ( H3 H4 ); [auto | .. ] | .. ].
+Ltac custom44 H0 :=  destruct H0; [congruence | auto | .. ].
+Ltac custom45 H0 H10 :=  destruct H0; [inv H10 | right | .. ].
+Ltac custom46 H0 :=  constructor; [apply H0 | .. ].
+Ltac custom47  :=  constructor; [ | auto | .. ].
+Ltac custom48 H0 H1 :=  destruct ( Pos.compare_spec H0 H1 ); [subst H1 | .. ].
+Ltac custom49 H11 :=  induction 1; [custom12 H11 | .. ].
+Ltac custom50 H0 :=  custom40 H0; [eauto | .. ].
+Ltac custom51 H0 :=  symmetry; [custom25 H0 | .. ].
+Ltac custom52  :=  simpl; [tauto | .. ].
+Ltac custom53 H0 :=  apply H0; [custom0  | .. ].
+Ltac custom54 H0 :=  elim ( Plt_strict H0 ); [eauto | .. ].
+Ltac custom55  :=  simpl; [red | .. ].
+Ltac custom56 H0 :=  custom22 H0; [auto | .. ].
+Ltac custom57  :=  simpl; [constructor | .. ].
+Ltac custom58 H1 H2 H0 H12 H13 H14 :=  custom21 H1 H2 H0; [custom38 H12 H13 H14 | .. ].
+Ltac custom59 H0 H1 :=  eapply H0; [apply H1 | .. ].
+Ltac custom60 H0 H1 :=  inv H0; [inv H1 | .. ].
+Ltac custom61 H0 :=  inv H0; [eauto | .. ].
+Ltac custom62  :=  custom28 ; [simpl | .. ].
+Ltac custom63 H0 H7 :=  destruct H0; [inv H7 | .. ].
+Ltac custom64 H0 :=  destruct H0; [auto | .. ].
+---------------------------
+ , , 1.0
+Debugvarproof, Number of Tactics, 61
+ , Average Tactic Size, 3.77
+ , Total Tactic Size, 230
+ , Max Tactic Size, 16
+ , Overall CP, 0.00

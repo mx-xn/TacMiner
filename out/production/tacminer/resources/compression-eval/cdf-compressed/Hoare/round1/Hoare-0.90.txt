@@ -1,0 +1,61 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 H3 H4 :=  apply H0; [unfold H1; [congruence | .. ] | cbn | intros H2 H3 H4; [inv H4 | .. ] | .. ].
+Ltac custom1 H0 :=  apply H0; [auto | .. ].
+Ltac custom2  :=  split; [auto | auto | .. ].
+Ltac custom3 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom4 H0 H1 H2 H4 H3 :=  apply H0; [intros H1; [specialize ( H2 H1 ); [tauto] | .. ] | .. ]. apply H4 in H3.
+Ltac custom5 H0 H1 :=  apply H0; [intros H1 | .. ].
+Ltac custom6  :=  red; [auto | .. ].
+Ltac custom7 H0 :=  custom1 H0; [auto | .. ].
+Ltac custom8 H0 H1 :=  apply H0 with H1; [auto | auto | .. ].
+Ltac custom9 H0 :=  exists H0; [split; [ | auto | .. ] | .. ].
+Ltac custom10 H0 H1 H2 H3 H4 H8 :=  custom0 H0 H1 H2 H3 H4; [congruence | apply H8; [custom6  | custom2  | .. ] | .. ].
+Ltac custom11 H0 :=  custom3 H0; [eauto | .. ].
+Ltac custom12 H0 :=  apply H0; [custom2  | .. ].
+Ltac custom13 H0 H6 H1 H3 H4 H5 :=  assert ( H' : exists R : H0 -> assertion, forall x : H6, H1 x ( R x ) ); [custom5 H3 H4; [custom1 H5 | .. ] | .. ].
+Ltac custom14 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1; [custom0 H2 H3 H4 H5 H6; [auto | .. ] | .. ].
+Ltac custom15 H0 :=  destruct H0; [constructor | .. ].
+Ltac custom16  :=  split; [auto | .. ].
+Ltac custom17 H0 :=  split; [ | exact H0 | .. ].
+Ltac custom18 H0 H1 H2 :=  custom5 H0 H1; [apply H2 | .. ].
+Ltac custom19 H0 H1 H2 H3 H4 H11 :=  custom0 H0 H1 H2 H3 H4; [ | apply H11 | .. ].
+Ltac custom20 H0 H1 :=  eapply H0; [apply H1 | .. ].
+Ltac custom21 H0 H1 H8 :=  destruct ( H0 H1 ) as ( B & C ); [custom1 H8].
+Ltac custom22 H0 :=  rewrite H0; [ | auto | .. ].
+Ltac custom23 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom24 H0 H1 :=  apply H0 with H1; [ | auto | .. ].
+Ltac custom25 H0 :=  custom3 H0; [ | eauto | .. ].
+Ltac custom26 H0 H1 :=  apply H0; [custom3 H1 | custom3 H1; [Tauto | .. ] | .. ].
+Ltac custom27 H0 H1 :=  intros H0; [custom1 H1 | .. ].
+Ltac custom28 H0 H1 :=  eapply H0; [eexact H1 | constructor | .. ].
+Ltac custom29 H0 H1 :=  apply H0 in H1; [ | custom6  | .. ].
+Ltac custom30 H0 H1 H2 :=  apply H0 in H1; [destruct H2 as ( C12 & C22 )].
+Ltac custom31 H0 H1 H2 :=  apply H0 in H1; [destruct H2 as ( C11 & C21 )].
+Ltac custom32 H0 H1 H2 H3 :=  intros H0 H1 H2; [apply H3 | .. ].
+Ltac custom33 H0 :=  unfold H0; [congruence | .. ].
+Ltac custom34  :=  cbn; [auto | .. ].
+Ltac custom35 H0 H1 :=  apply H0; [custom3 H1 | .. ].
+Ltac custom36 H0 H1 :=  eapply H0; [eexact H1 | .. ].
+Ltac custom37 H0 H1 :=  eapply H0; [custom11 H1 | .. ].
+Ltac custom38 H0 H1 H2 :=  intros H0 [ H1 H2 ]; [red in H1 | .. ].
+Ltac custom39 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3 H4; [inv H4 | .. ].
+Ltac custom40 H0 H1 H2 H3 :=  intros H0 H1 H2; [custom1 H3 | .. ].
+Ltac custom41 H0 H1 H2 H3 H4 :=  intros H0 H1 H2; [custom20 H3 H4 | .. ].
+---------------------------
+Num proofs: 53
+Num training proofs: 27
+Original size: 1385
+Compressed total size: 960
+Training size: 923
+(2) (3) Testing size: 462
+(2) (3) Compressed testing size: 310
+(2) (3) Compression rate: 149.03
+Compressed size + lib: 1062 ( 960 corpus / 102 library )
+[1] numTactics: 42
+[1] avrgTacticSize: 2.43
+[1] maxTacSize: 6
+[1] numProofsCompressed/total: 20 / 26
+[1] numAvgApplications: 5.10
+[1] numTotalApplications: 214
+Compression rate: 1.3041431261770244
+Num tactics in library: 42

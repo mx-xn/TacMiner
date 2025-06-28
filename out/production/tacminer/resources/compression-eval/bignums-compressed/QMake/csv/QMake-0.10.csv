@@ -1,0 +1,23 @@
+extracted tactics -----------
+Ltac custom0  :=  simpl; [nzsimpl | .. ].
+Ltac custom1  :=  destr_eqb; [nzsimpl | nzsimpl | .. ].
+Ltac custom2  :=  simpl; [auto | .. ].
+Ltac custom3 H0 :=  simpl; [rewrite H0 | .. ].
+Ltac custom4  :=  destr_zcompare; [ | simpl | simpl | .. ].
+Ltac custom5 H2 H3 H4 H5 H7 H8 :=  custom1 ; [intros H2 H3 | intros H4 H5 | nzsimpl; [intros H7 H8 | .. ] | .. ].
+Ltac custom6 H0 :=  rewrite H0 in *; [lia | lia | .. ].
+Ltac custom7 H0 :=  unfold H0; [simpl | .. ].
+Ltac custom8  :=  simpl; [try discriminate | .. ].
+Ltac custom9 H0 :=  destruct H0; [simpl; [discriminate | .. ] | .. ].
+Ltac custom10  :=  red; [simpl | .. ].
+Ltac custom11 H0 H1 :=  custom7 H0; [custom9 H1 | .. ].
+Ltac custom12 H0 :=  custom1 ; [intros H0 | .. ].
+Ltac custom13 H1 H2 :=  nzsimpl; [intros H1 H2 | .. ].
+Ltac custom14 H0 H3 :=  custom12 H0; [custom6 H3 | .. ].
+---------------------------
+ , , 0.1
+QMake, Number of Tactics, 15
+ , Average Tactic Size, 2.47
+ , Total Tactic Size, 37
+ , Max Tactic Size, 5
+ , Overall CP, 1.11

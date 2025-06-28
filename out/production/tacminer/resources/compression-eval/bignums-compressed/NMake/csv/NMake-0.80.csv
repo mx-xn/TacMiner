@@ -1,0 +1,38 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H4 :=  intros H0; [rewrite H1; [destr_t H0 as ( n, H4 ) | .. ] | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 :=  rewrite H0; [apply H1; [intros H2 H3 H4; [simpl | .. ] | .. ] | .. ].
+Ltac custom2 H0 :=  symmetry; [apply H0 | .. ].
+Ltac custom3 H0 H1 H2 :=  case Z.compare_spec; [ | intros H0 | intros H1; [apply H2; [auto with zarith | .. ] | .. ] | .. ].
+Ltac custom4 H0 :=  intros H0; [rewrite H0 | .. ].
+Ltac custom5 H0 :=  rewrite H0; [ |  | auto with zarith | .. ].
+Ltac custom6 H0 :=  rewrite H0; [ | auto with zarith | .. ].
+Ltac custom7 H0 H1 H2 :=  intros H0 H1; [unfold H2 | .. ].
+Ltac custom8 H0 H1 :=  unfold H0; [rewrite H1 | .. ].
+Ltac custom9 H0 :=  generalize ( spec_pos H0 ); [auto with zarith | .. ].
+Ltac custom10 H0 H1 H2 :=  unfold H0, H1; [rewrite H2 | .. ].
+Ltac custom11  :=  split; [ | now intros -> | .. ].
+Ltac custom12 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom13 H0 H1 :=  rewrite H0; [simpl; [rewrite H1 | .. ] | .. ].
+Ltac custom14 H0 H1 :=  custom13 H0 H1; [assumption | .. ].
+Ltac custom15 H0 H1 H2 :=  rewrite H0; [apply H1; [apply H2 | .. ] | .. ].
+Ltac custom16 H0 H1 :=  rewrite H0; [ | custom9 H1 | .. ].
+Ltac custom17 H0 H1 :=  intros H0; [rewrite H1 | .. ].
+Ltac custom18 H0 H1 H2 H3 H4 H5 H6 :=  intros H0 H1; [custom1 H2 H3 H4 H5 H6; [clear H0 H1 | .. ] | .. ].
+Ltac custom19 H0 H1 H2 H3 H4 H5 :=  custom1 H0 H1 H2 H3 H4; [rewrite H5 | .. ].
+Ltac custom20 H0 :=  generalize ( ZnZ.spec_to_Z H0 ); [auto with zarith | .. ].
+Ltac custom21 H0 H1 :=  custom2 H0; [ | apply H1 | .. ].
+Ltac custom22 H0 H1 :=  rewrite H0; [apply H1 | .. ].
+Ltac custom23 H0 :=  rewrite <- H0; [ |  | auto with zarith | .. ].
+Ltac custom24 H0 :=  apply H0; [auto with zarith | .. ].
+Ltac custom25 H0 :=  custom24 H0; [ | auto with zarith | .. ].
+Ltac custom26 H0 :=  custom24 H0; [auto with zarith | .. ].
+Ltac custom27 H0 H1 :=  apply H0; [rewrite H1 | .. ].
+Ltac custom28 H0 H1 H2 H3 H4 :=  intros H0 H1; [custom10 H2 H3 H4 | .. ].
+Ltac custom29 H0 H1 H2 H3 :=  intros H0 H1 H2; [rewrite H3 | .. ].
+---------------------------
+ , , 0.8
+NMake, Number of Tactics, 30
+ , Average Tactic Size, 2.30
+ , Total Tactic Size, 69
+ , Max Tactic Size, 5
+ , Overall CP, 1.21

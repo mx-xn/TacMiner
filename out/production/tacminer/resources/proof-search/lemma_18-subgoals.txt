@@ -1,0 +1,6 @@
+iff
+  (R.In x
+     (proj1_sig
+        (exist (fun r : R.t => R.ok r) (R.remove l h (proj1_sig s))
+           (remove_obligation_1 l h s l0))))
+  (and (not (and (Z.le l x) (Z.lt x h))) (R.In x (proj1_sig s)))

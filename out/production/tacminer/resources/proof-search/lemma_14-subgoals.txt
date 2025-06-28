@@ -1,0 +1,12 @@
+iff
+  (R.In x
+     (proj1_sig
+        (exist (fun r : R.t => R.ok r) (R.Cons l h R.Nil)
+           (interval_obligation_1 l h l0))))
+  (and (Z.le l x) (Z.lt x h))
+
+iff
+  (R.In x
+     (proj1_sig
+        (exist (fun r : R.t => R.ok r) R.Nil interval_obligation_2)))
+  (and (Z.le l x) (Z.lt x h))

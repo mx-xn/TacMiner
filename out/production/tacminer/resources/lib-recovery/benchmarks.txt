@@ -1,0 +1,18 @@
+// please follow the following format:
+// <ID>
+// <path where target tactic is used>
+// <tactic-sig-and-body>
+//
+// benchmark-separator!!!
+//
+// <..other benchmarks>
+
+1
+verdi/theories/Systems/LiveLockServ.v
+Ltac invcs H := inversion H; subst_max; clear H; simpl in *.
+
+
+
+
+
+

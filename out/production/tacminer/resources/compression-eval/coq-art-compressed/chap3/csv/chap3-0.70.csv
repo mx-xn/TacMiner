@@ -1,0 +1,11 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [assumption | assumption | .. ].
+Ltac custom1 H0 :=  apply H0; [assumption | .. ].
+Ltac custom2 H0 H1 :=  apply H0; [intro H1 | .. ].
+---------------------------
+ , , 0.7
+chap3, Number of Tactics, 3
+ , Average Tactic Size, 2.33
+ , Total Tactic Size, 7
+ , Max Tactic Size, 3
+ , Overall CP, 1.03

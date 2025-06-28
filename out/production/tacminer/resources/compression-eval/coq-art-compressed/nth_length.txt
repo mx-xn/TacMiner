@@ -1,0 +1,8 @@
+extracted tactics -----------
+custom0  := split; [auto with arith |auto with arith | .. ].
+---------------------------
+Num proofs: 1
+Original size: 20
+Compressed size: 17 ( 14 corpus / 3 library )
+Compression rate: 1.1764705882352942
+Num tactics in library: 1

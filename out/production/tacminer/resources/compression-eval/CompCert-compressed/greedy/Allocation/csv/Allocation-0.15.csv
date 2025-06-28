@@ -1,0 +1,14 @@
+extracted tactics -----------
+Ltac custom0  :=  simpl; [congruence | .. ].
+Ltac custom1 H0 :=  left; [eapply H0; [eauto | eauto | .. ] | .. ].
+Ltac custom2 H0 H5 :=  destruct H0; [ | destruct H5 | .. ].
+Ltac custom3 H0 :=  destruct H0; [ |  | custom0  | .. ].
+Ltac custom4  :=  right; [split | .. ].
+Ltac custom5  :=  left; [congruence | .. ].
+---------------------------
+ , , 0.15
+Allocation, Number of Tactics, 6
+ , Average Tactic Size, 2.00
+ , Total Tactic Size, 12
+ , Max Tactic Size, 4
+ , Overall CP, 1.04

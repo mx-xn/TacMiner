@@ -1,0 +1,56 @@
+extracted tactics -----------
+Ltac custom0 H0 :=  apply H0; [auto | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 :=  constructor; [intros H0 | intros H1 H2 H3 H4 | .. ].
+Ltac custom2 H0 :=  destruct H0; [simpl in *; [auto | .. ] | .. ].
+Ltac custom3 H2 :=  simpl in *; [unfold H2 | .. ].
+Ltac custom4 H0 :=  eapply H0; [eauto | eauto | .. ].
+Ltac custom5 H0 :=  rewrite H0; [auto | .. ].
+Ltac custom6 H0 H1 :=  apply H0; [custom5 H1 | .. ].
+Ltac custom7 H0 H1 H2 :=  red; [intros H0 H1 H2 | .. ].
+Ltac custom8  :=  simpl; [auto | .. ].
+Ltac custom9 H0 H1 H2 H3 :=  split; [ | intros H0 H1 H2 H3; [eauto | .. ] | .. ].
+Ltac custom10  :=  simpl in *; [InvAgree | .. ].
+Ltac custom11 H0 :=  rewrite ! H0; [auto | .. ].
+Ltac custom12 H0 :=  custom0 H0; [autorewrite with ints; [ | .. ] | .. ].
+Ltac custom13 H0 :=  red; [intros H0 | .. ].
+Ltac custom14 H6 :=  InvAgree; [apply H6 | .. ].
+Ltac custom15 H0 :=  eelim H0; [eauto | eauto | eauto | .. ].
+Ltac custom16 H0 H1 H2 H3 H4 H5 H6 H7 :=  unfold H0; [intros H1 H2 H3 H4 H5 H6 H7 | .. ].
+Ltac custom17 H0 H1 H2 H3 H4 H5 H6 :=  unfold H0; [intros H1 H2 H3 H4 H5 H6 | .. ].
+Ltac custom18 H0 H1 H2 H3 H4 H5 :=  unfold H0; [intros H1 H2 H3 H4 H5 | .. ].
+Ltac custom19 H0 :=  rewrite <- H0; [eauto | .. ].
+Ltac custom20 H0 H1 :=  rewrite H0 in H1; [auto].
+Ltac custom21 H0 H1 H2 :=  rewrite H0 in H1; [custom19 H2].
+Ltac custom22 H0 H1 H2 :=  rewrite H0; [intros [ H1 H2 ] | .. ].
+Ltac custom23 H0 H2 H3 H4 H5 :=  inv H0; [custom22 H2 H3 H4; [custom15 H5 | .. ] | .. ].
+Ltac custom24 H0 H1 H2 H3 :=  split; [ | intros H0 H1 H2 H3 | .. ].
+Ltac custom25  :=  autorewrite with ints; [ |  | auto | .. ].
+Ltac custom26 H0 H1 :=  generalize ( Int.size_range H0 ); [intros H1 | .. ].
+Ltac custom27 H0 :=  f_equal; [apply H0; [ | .. ] | .. ].
+Ltac custom28 H0 :=  apply H0; [lia | .. ].
+Ltac custom29 H0 H1 :=  rewrite H0 by lia; [custom28 H1 | .. ].
+Ltac custom30 H0 H1 :=  apply H0; [custom0 H1 | .. ].
+Ltac custom31  :=  split; [ | auto | .. ].
+Ltac custom32 H0 :=  eelim H0; [ | eauto | .. ].
+Ltac custom33 H0 :=  custom32 H0; [eauto | .. ].
+Ltac custom34 H0 H1 H2 H3 :=  custom22 H0 H1 H2; [custom33 H3 | .. ].
+Ltac custom35 H0 H1 H2 H3 :=  custom7 H0 H1 H2; [rewrite ! H3 by auto | .. ].
+Ltac custom36 H0 :=  destruct H0; [custom8  | .. ].
+---------------------------
+Num proofs: 50
+Num training proofs: 27
+Original size: 1185
+Compressed total size: 940
+Training size: 719
+(2) (3) Testing size: 466
+(2) (3) Compressed testing size: 369
+(2) (3) Compression rate: 126.29
+Compressed size + lib: 1021 ( 940 corpus / 81 library )
+[1] numTactics: 37
+[1] avrgTacticSize: 2.19
+[1] maxTacSize: 4
+[1] numProofsCompressed/total: 18 / 23
+[1] numAvgApplications: 4.73
+[1] numTotalApplications: 175
+Compression rate: 1.1606268364348677
+Num tactics in library: 37

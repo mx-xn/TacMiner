@@ -1,0 +1,149 @@
+cdf/./Hoare.v
+-----
+cdf/./Hoare_compr.v
+-----
+-----
+update_same
+Proof. unfold update; intros. destruct (string_dec x x); congruence. Qed.
+update_other
+Proof. unfold update; intros. destruct (string_dec x y); congruence. Qed.
+Hoare_consequence_pre
+Proof. intros. apply Hoare_consequence with (P := P) (Q := Q); unfold aimp; auto. Qed.
+Hoare_consequence_post
+Proof. intros. apply Hoare_consequence with (P := P) (Q := Q); unfold aimp; auto. Qed.
+Floyd_assign
+Proof. intros. eapply Hoare_consequence_pre. apply Hoare_assign. intros s Ps. set (x0 := s x). set (v := aeval a s). set (s' := update x v s). set (s'' := update x x0 s'). assert (s'' = s). apply functional_extensionality; intros. unfold s'', s', update. destruct (string_dec x x1). subst x1; auto. auto. unfold aupdate. exists x0. exists v. split. red; cbn. apply update_same. cbn; fold v; fold s'; fold s''. rewrite H. split; auto. red; auto. Qed.
+Hoare_ifthen
+Proof. intros. apply Hoare_ifthenelse; auto. apply Hoare_consequence_pre with Q; auto using Hoare_skip. Qed.
+Hoare_dowhile
+Proof. intros. apply Hoare_seq with Q. auto. apply Hoare_while. apply Hoare_consequence_pre with P; auto. Qed.
+HOARE_frame
+Proof. intros R. assert (IND_SUB: forall (vars1 vars2: ident -> Prop), independent R vars1 -> (forall x, vars2 x -> vars1 x) -> independent R vars2). unfold independent; intros. apply H with s1; auto. induction 1; intros IND; simpl in IND. - apply HOARE_skip. - eapply HOARE_consequence with (Q := P //\\ R). apply HOARE_assign. unfold aupdate; intros s [A B]. split. auto. apply IND with s; auto. intros y DIFF. rewrite update_other; auto. Tauto. - apply HOARE_seq with (Q //\\ R). apply IHHOARE1. eapply IND_SUB; eauto. cbn; intros; tauto. apply IHHOARE2. eapply IND_SUB; eauto. cbn; intros; tauto. - apply HOARE_ifthenelse. eapply HOARE_consequence with (Q := Q //\\ R). apply IHHOARE1. eapply IND_SUB; eauto. cbn; intros; tauto. Tauto. Tauto. eapply HOARE_consequence with (Q := Q //\\ R). apply IHHOARE2. eapply IND_SUB; eauto. cbn; intros; tauto. Tauto. Tauto. - eapply HOARE_consequence with (P := P //\\ R). apply HOARE_while with a. intros. eapply HOARE_consequence. apply (H0 v). auto. Tauto. Tauto. Tauto. Tauto. - eapply HOARE_consequence with (Q := Q //\\ R). apply HOARE_havoc. intros s [A B] n; split. apply A. apply IND with s; auto. intros y DIFF. rewrite update_other; auto. Tauto. - eapply HOARE_consequence. apply HOARE_assert with (P := P //\\ R). Tauto. Tauto. - eapply HOARE_consequence. apply IHHOARE; auto. intros s [A B]; split; auto. intros s [A B]; split; auto. Qed.
+HOARE_for
+Proof. intros. apply HOARE_seq with P. apply HOARE_assign. set (variant := PLUS (MINUS (VAR h) (VAR i)) (CONST 1)). apply HOARE_while with (a := variant). intro v. eapply HOARE_seq. eapply HOARE_consequence. apply HOARE_frame with (R := aequal variant v //\\ atrue (LESSEQUAL (VAR i) (VAR h))). eexact H. intros s1 s2 E. unfold aequal, atrue, aand; simpl. rewrite (E i), (E h) by auto. auto. Tauto. intros s A. eexact A. eapply HOARE_consequence with (Q := alessthan variant v //\\ P). apply HOARE_assign. intros s (A & B & C). unfold aequal in B; simpl in B. unfold atrue in C; simpl in C. apply Z.leb_le in C. split. red; simpl. rewrite update_same. rewrite update_other by auto. lia. exact A. Tauto. Qed.
+Hoare_skip_inv
+Proof. intros P Q H; dependent induction H. - red; auto. - red; intros. apply H1, IHHoare, H0; auto. Qed.
+Hoare_assign_inv
+Proof. intros x a P Q H; dependent induction H. - red; auto. - red; intros; red. apply H1, IHHoare, H0; auto. Qed.
+Hoare_seq_inv
+Proof. intros c1 c2 P Q H; dependent induction H. - exists Q; auto. - edestruct IHHoare as (R & C1 & C2); eauto. exists R; split; eauto using Hoare_consequence_pre, Hoare_consequence_post. Qed.
+Hoare_ifthenelse_inv
+Proof. intros b c1 c2 P Q H; dependent induction H. - split; auto. - edestruct IHHoare as (C1 & C2); eauto. split; eapply Hoare_consequence; eauto. intros s [A B]; split; auto. intros s [A B]; split; auto. Qed.
+Hoare_while_inv
+Proof. intros b c P Q H; dependent induction H. - exists P; split; auto. split; Tauto. - edestruct IHHoare as (Inv & C & X & Y); eauto. exists Inv; split; auto. split; Tauto. Qed.
+Hoare_havoc_inv
+Proof. intros x P Q H; dependent induction H. - red; auto. - intros s Ps n. apply H1. apply IHHoare; auto. Qed.
+Hoare_assert_inv
+Proof. intros b P Q H; dependent induction H. - exists P; split; Tauto. - edestruct IHHoare as (R & A & B); eauto. exists R; split; Tauto. Qed.
+Hoare_conj
+Proof. intro c. induction c; intros. - apply Hoare_skip_inv in H. apply Hoare_skip_inv in H0. eapply Hoare_consequence_post. apply Hoare_skip. Tauto. - apply Hoare_assign_inv in H. apply Hoare_assign_inv in H0. eapply Hoare_consequence_pre. apply Hoare_assign. unfold aupdate in *; Tauto. - apply Hoare_seq_inv in H. destruct H as (R1 & C11 & C21). apply Hoare_seq_inv in H0. destruct H0 as (R2 & C12 & C22). apply Hoare_seq with (R1 //\\ R2); auto. - apply Hoare_ifthenelse_inv in H. destruct H as (C11 & C21). apply Hoare_ifthenelse_inv in H0. destruct H0 as (C12 & C22). apply Hoare_ifthenelse. eapply Hoare_consequence_pre. eauto. Tauto. eapply Hoare_consequence_pre. eauto. Tauto. - apply Hoare_while_inv in H. destruct H as (Inv1 & C1 & A1 & B1). apply Hoare_while_inv in H0. destruct H0 as (Inv2 & C2 & A2 & B2). eapply Hoare_consequence with (P := Inv1 //\\ Inv2). apply Hoare_while. eapply Hoare_consequence_pre. eapply IHc; eauto. Tauto. Tauto. Tauto. - intros. apply Hoare_assert_inv in H. destruct H as (R1 & A1 & B1). apply Hoare_assert_inv in H0. destruct H0 as (R2 & A2 & B2). eapply Hoare_consequence. eapply Hoare_assert with (P := R1 //\\ R2). Tauto. Tauto. - apply Hoare_havoc_inv in H. apply Hoare_havoc_inv in H0. eapply Hoare_consequence_pre. apply Hoare_havoc. unfold aupdate, aforall in *; Tauto. Qed.
+Hoare_exists
+Proof. intros CHOICE X c. induction c; intros P Q H. - assert (H': forall x, P x -->> Q x) by (intros; apply Hoare_skip_inv; auto). eapply Hoare_consequence_pre. apply Hoare_skip. intros s (x & Px). exists x; apply H'; auto. - assert (H': forall y, P y -->> aupdate x a (Q y)). intros. apply Hoare_assign_inv. auto. eapply Hoare_consequence_pre. apply Hoare_assign. intros s (y & Py). exists y. apply H'; auto. - set (REL := fun (x : X) (R: assertion) => Hoare (P x) c1 R /\ Hoare R c2 (Q x)). assert (H': exists R: X -> assertion, forall x: X, REL x (R x)). apply CHOICE. intros x. apply Hoare_seq_inv. auto. destruct H' as (R & H'). apply Hoare_seq with (aexists R). apply IHc1. intros; apply H'. apply IHc2. intros; apply H'. - assert (H1: Hoare (aexists (fun x => atrue b //\\ P x)) c1 (aexists Q)). apply IHc1. intros. specialize (H x). apply Hoare_ifthenelse_inv in H. tauto. assert (H2: Hoare (aexists (fun x => afalse b //\\ P x)) c2 (aexists Q)). apply IHc2. intros. specialize (H x). apply Hoare_ifthenelse_inv in H. tauto. apply Hoare_ifthenelse; eapply Hoare_consequence_pre; eauto. intros s (A & x & B). exists x; split; auto. intros s (A & x & B). exists x; split; auto. - set (REL := fun (x : X) (Inv: assertion) => Hoare (atrue b //\\ Inv) c Inv /\ (P x -->> Inv) /\ (afalse b //\\ Inv -->> Q x)). assert (H': exists Inv: X -> assertion, forall x: X, REL x (Inv x)). apply CHOICE. intros x. apply Hoare_while_inv. auto. destruct H' as (Inv & H'). eapply Hoare_consequence with (P := aexists Inv). apply Hoare_while. apply Hoare_consequence_pre with (P := aexists (fun x => atrue b //\\ Inv x)). apply IHc. intros x. apply H'. intros s (A & x & B); exists x; split; auto. intros s (x & A). exists x; apply H'; auto. intros s (A & x & B); exists x; apply H'; split; auto. - intros. set (REL := fun (x : X) (R: assertion) => (P x -->> atrue b //\\ R) /\ (atrue b //\\ R -->> Q x)). assert (H': exists R: X -> assertion, forall x: X, REL x (R x)). apply CHOICE. intros x. apply Hoare_assert_inv. auto. destruct H' as (R & A). eapply Hoare_consequence. apply Hoare_assert with (P := aexists R). intros s (x & Px). destruct (A x) as (B & C). apply B in Px. destruct Px. split; auto. exists x; auto. intros s (Bs & x & Rx). destruct (A x) as (B & C). exists x. apply C. split; auto. - assert (H': forall y, P y -->> aforall (fun n => aupdate x (CONST n) (Q y))). intros. apply Hoare_havoc_inv. auto. eapply Hoare_consequence_pre. apply Hoare_havoc. intros s (y & Py). exists y. apply H'; auto. Qed.
+Hoare_forall
+Proof. intros CHOICE X inhabited c; induction c; intros P Q H. - assert (H': forall x, P x -->> Q x) by (intros; apply Hoare_skip_inv; auto). eapply Hoare_consequence_pre. apply Hoare_skip. intros s Ps x. apply H'. apply Ps. - assert (H': forall y, P y -->> aupdate x a (Q y)). intros. apply Hoare_assign_inv. auto. eapply Hoare_consequence_pre. apply Hoare_assign. intros s Ps y. apply H'. auto. - set (REL := fun (x : X) (R: assertion) => Hoare (P x) c1 R /\ Hoare R c2 (Q x)). assert (H': exists R: X -> assertion, forall x: X, REL x (R x)). apply CHOICE. intros x. apply Hoare_seq_inv. auto. destruct H' as (R & H'). apply Hoare_seq with (aforall R). apply IHc1. intros; apply H'. apply IHc2. intros; apply H'. - assert (H1: Hoare (aforall (fun x => atrue b //\\ P x)) c1 (aforall Q)). apply IHc1. intros. specialize (H x). apply Hoare_ifthenelse_inv in H. tauto. assert (H2: Hoare (aforall (fun x => afalse b //\\ P x)) c2 (aforall Q)). apply IHc2. intros. specialize (H x). apply Hoare_ifthenelse_inv in H. tauto. apply Hoare_ifthenelse; eapply Hoare_consequence_pre; eauto. intros s (A & B) x. split; auto. intros s (A & B) x. split; auto. - set (REL := fun (x : X) (Inv: assertion) => Hoare (atrue b //\\ Inv) c Inv /\ (P x -->> Inv) /\ (afalse b //\\ Inv -->> Q x)). assert (H': exists Inv: X -> assertion, forall x: X, REL x (Inv x)). apply CHOICE. intros x. apply Hoare_while_inv. auto. destruct H' as (Inv & H'). eapply Hoare_consequence with (P := aforall Inv). apply Hoare_while. apply Hoare_consequence_pre with (P := aforall (fun x => atrue b //\\ Inv x)). apply IHc. intros x. apply H'. intros s [A B] x; split; auto. intros s A x. apply H'; auto. intros s [A B] x. apply H'; split; auto. - intros. set (REL := fun (x : X) (R: assertion) => (P x -->> atrue b //\\ R) /\ (atrue b //\\ R -->> Q x)). assert (H': exists R: X -> assertion, forall x: X, REL x (R x)). apply CHOICE. intros x. apply Hoare_assert_inv. auto. destruct H' as (R & A). eapply Hoare_consequence. apply Hoare_assert with (P := aforall R). intros s Pall; split. destruct (A inhabited) as (B & C). apply B; auto. intros x. destruct (A x) as (B & C). apply B; auto. intros s (Bs & Rall) x. destruct (A x) as (B & C). apply C; split; auto. - assert (H': forall y, P y -->> aforall (fun n => aupdate x (CONST n) (Q y))). intros. apply Hoare_havoc_inv. auto. eapply Hoare_consequence_pre. apply Hoare_havoc. intros s Pall n y. apply H'. auto. Qed.
+Hoare_safe
+Proof. induction 1; intros s Ps; simpl; auto. destruct Ps. red in H. congruence. Qed.
+Ltac custom_tac5 H0 := exists H0; split.
+
+Ltac custom_tac66 H0 := constructor; exact H0.
+
+Ltac custom_tac27 H0 := eapply H0; eauto.
+
+Ltac custom_tac6  := split; auto.
+
+Ltac custom_tac22 H0 H1 := apply H0 with H1; auto.
+
+Ltac custom_tac14 H0 := apply H0; auto.
+
+Ltac custom_tac65 H0 := constructor; apply H0.
+
+Hoare_step
+Proof. induction 1; intros s c' s' Ps RED. - inv RED. - inv RED. custom_tac5 P. custom_tac66 Ps. - inv RED. + custom_tac5 Q. assumption. custom_tac27 Hoare_skip_inv. + destruct ( IHHoare1 _ _ _ Ps H2) as ( P' & HO' & Ps'). exists P'; custom_tac6 . custom_tac22 Hoare_seq Q. - inv RED. exists ( if beval b s' then atrue b //\\ P else afalse b //\\ P); split. destruct ( beval b s'); auto. unfold aand, atrue, afalse. destruct ( beval b s') eqn:B; auto. - inv RED. + exists ( afalse b //\\ P); split. constructor. unfold aand, afalse; auto. + exists ( atrue b //\\ P); split. custom_tac22 Hoare_seq P. custom_tac14 Hoare_while. unfold aand, atrue; auto. - inv RED. custom_tac5 Q. custom_tac65 Ps. - destruct Ps as [ Ps1 Ps2]. inv RED. exists ( atrue b //\\ P); split. constructor. custom_tac6 . - apply H0 in Ps. destruct ( IHHoare _ _ _ Ps RED) as ( R & HO & Rs'). exists R; custom_tac6 . custom_tac22 Hoare_consequence_post Q. Qed.
+Hoare_steps
+Proof. assert (REC: forall cs cs', star red cs cs' -> forall P Q, Hoare P (fst cs) Q -> P (snd cs) -> exists P', Hoare P' (fst cs') Q /\ P' (snd cs')). induction 1; intros. exists P; auto. destruct a as [c1 s1], b as [c2 s2], c as [c3 s3]; simpl in *. destruct (Hoare_step _ _ _ H1 _ _ _ H2 H) as (R & HO & Rs2). eapply IHstar; eauto. intros. eapply (REC (c, s) (c', s')); eauto. Qed.
+Hoare_sound
+Proof. intros P c Q s HO Ps; split. - intros (c' & s' & RED & STUCK). destruct (Hoare_steps _ _ _ _ _ _ HO Ps RED) as (P' & HO' & Ps'). eapply Hoare_safe; eauto. - intros s' (c' & RED & TERM). red in TERM. subst c'. destruct (Hoare_steps _ _ _ _ _ _ HO Ps RED) as (P' & HO' & Ps'). eapply Hoare_skip_inv; eauto. Qed.
+Triple_skip
+Proof. intros P s PRE. apply safe_now. reflexivity. auto. Qed.
+Triple_assign
+Proof. intros P x a s PRE. apply safe_step. - unfold terminated; congruence. - cbn; tauto. - intros c' s' RED; inv RED. apply safe_now. reflexivity. exact PRE. Qed.
+safe_seq
+Proof. intros Q R c2 QR. induction 1. - rewrite H. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inv RED. apply QR; auto. inv H2. - apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inv RED. + elim H; red; auto. + apply H2; auto. Qed.
+Triple_seq
+Proof. intros. intros s PRE. apply safe_seq with Q; auto. Qed.
+Triple_ifthenelse
+Proof. intros; intros s PRE. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inv RED. destruct (beval b s') eqn:B. - apply H; split; auto. - apply H0; split; auto. Qed.
+Triple_while
+Proof. intros P variant b c T. assert (REC: forall v s, P s -> aeval variant s = v -> safe (afalse b //\\ P) (WHILE b c) s ). intro v. induction v using (well_founded_induction (Z.lt_wf 0)). intros. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inv RED. apply safe_now. red; auto. split; auto. apply safe_seq with (alessthan variant (aeval variant s') //\\ P). intros s'' [PRE1 PRE2]. red in PRE1. eapply H. eexact PRE1. exact PRE2. auto. apply T. split; auto. split; auto. red. auto. intros s PRE. apply REC with (aeval variant s); auto. Qed.
+Triple_havoc
+Proof. intros; intros s PRE. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inv RED. constructor. red; auto. apply PRE. Qed.
+Triple_assert
+Proof. intros. intros s [PRE1 PRE2]. red in PRE1. apply safe_step. unfold terminated; congruence. cbn; congruence. intros c' s' RED; inv RED. apply safe_now; auto. red; auto. split; auto. Qed.
+Triple_consequence
+Proof. intros. assert (REC: forall c s, safe Q c s -> safe Q' c s). induction 1. apply safe_now; auto. apply safe_step; auto. red; auto. Qed.
+HOARE_sound
+Proof. induction 1. - apply Triple_skip. - apply Triple_assign. - apply Triple_seq with Q; auto. - apply Triple_ifthenelse; auto. - apply Triple_while with a; auto. - apply Triple_havoc; auto. - apply Triple_assert; auto. - apply Triple_consequence with P Q; auto. Qed.
+safe_terminated_inv
+Proof. intros. inv H. auto. contradiction. Qed.
+safe_not_stuck
+Proof. intros. inv H. contradiction. auto. Qed.
+safe_step_inv
+Proof. intros. inv H. red in H1; subst c; inv H0. eauto. Qed.
+triple_skip
+Proof. intros P s PRE. apply safe_now. reflexivity. auto. Qed.
+triple_assign
+Proof. intros P x a s PRE. apply safe_step. - unfold terminated; congruence. - cbn; tauto. - intros c' s' RED; inv RED. apply safe_now. reflexivity. exact PRE. Qed.
+safe_seq
+Proof. intros Q R c2 QR. cofix CHR; destruct 1. - rewrite H. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inversion RED; clear RED. rewrite <- H4. apply QR; auto. congruence. inv H2. - apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inversion RED. + elim H; red; auto. + apply CHR. apply H1; auto. Defined.
+triple_seq
+Proof. intros. intros s PRE. apply safe_seq with Q; auto. Qed.
+triple_while
+Proof. intros P b c T. assert (REC: forall s, P s -> safe (afalse b //\\ P) (WHILE b c) s). cofix CHR; intros s Ps. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inversion RED. apply safe_now. red; auto. split; auto. congruence. apply safe_seq with P. intros s'' Ps''. apply CHR. auto. apply T. split; auto. congruence. intros s PRE. apply REC. auto. Qed.
+triple_ifthenelse
+Proof. intros; intros s PRE. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inv RED. destruct (beval b s') eqn:B. - apply H; split; auto. - apply H0; split; auto. Qed.
+triple_havoc
+Proof. intros; intros s PRE. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inv RED. constructor. red; auto. apply PRE. Qed.
+triple_assert
+Proof. intros. intros s [PRE1 PRE2]. red in PRE1. apply safe_step. unfold terminated; congruence. cbn; congruence. intros c' s' RED; inv RED. apply safe_now; auto. red; auto. split; auto. Qed.
+triple_consequence
+Proof. intros. assert (REC: forall c s, safe Q c s -> safe Q' c s). cofix CH. destruct 1. apply safe_now; auto. apply safe_step; auto. red; auto. Qed.
+Hoare_sound
+Proof. induction 1. - apply triple_skip. - apply triple_assign. - apply triple_seq with Q; auto. - apply triple_ifthenelse; auto. - apply triple_while; auto. - apply triple_havoc; auto. - apply triple_assert; auto. - apply triple_consequence with P Q; auto. Qed.
+safe_mono
+Proof. induction 1; intros. - replace n' with O by lia. constructor. - destruct n'. constructor. apply safe_now; auto. - destruct n'. constructor. apply safe_step; auto. intros. apply H2; auto. lia. Qed.
+safe_now'
+Proof. intros. destruct n. constructor. apply safe_now; auto. Qed.
+safe_terminated_inv
+Proof. intros. inv H. auto. contradiction. Qed.
+safe_notstuck
+Proof. intros. inv H. - rewrite H1. cbn; auto. - auto. Qed.
+safe_step_inv
+Proof. intros. inv H. - rewrite H2 in H0; inv H0. - eauto. Qed.
+triple_skip
+Proof. intros P n s PRE. apply safe_now'. reflexivity. auto. Qed.
+triple_assign
+Proof. intros P x a n s PRE. destruct n. constructor. apply safe_step. - unfold terminated; congruence. - cbn; tauto. - intros c' s' RED; inv RED. apply triple_skip. exact PRE. Qed.
+safe_seq
+Proof. intros Q R c2 n. induction n; intros QR c s SF. - constructor. - apply safe_step. unfold terminated; congruence. + cbn. eapply safe_notstuck; eauto. + intros c' s' RED. inv RED. * apply QR. lia. eapply safe_terminated_inv; eauto. red; auto. * apply IHn. intros; apply QR; auto. eapply safe_step_inv; eauto. Qed.
+triple_seq
+Proof. intros. intros n s PRE. apply safe_seq with Q; auto. Qed.
+triple_while
+Proof. intros P b c T. red. intro n. induction n; intros s Ps. constructor. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inv RED. - apply triple_skip. split; auto. - apply safe_seq with P. intros. apply safe_mono with n. apply IHn; auto. lia. apply T. split; auto. Qed.
+triple_ifthenelse
+Proof. intros; intros n s PRE. destruct n. constructor. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inv RED. destruct (beval b s') eqn:B. - apply H; split; auto. - apply H0; split; auto. Qed.
+triple_havoc
+Proof. intros; intros n s PRE. destruct n. constructor. apply safe_step. unfold terminated; congruence. cbn; auto. intros c' s' RED; inv RED. apply safe_now'. red; auto. apply PRE. Qed.
+triple_assert
+Proof. intros. intros n s [PRE1 PRE2]. red in PRE1. destruct n. constructor. apply safe_step. unfold terminated; congruence. cbn; congruence. intros c' s' RED; inv RED. apply safe_now'; auto. red; auto. split; auto. Qed.
+triple_consequence
+Proof. intros. assert (REC: forall n c s, safe Q n c s -> safe Q' n c s). induction 1. constructor. apply safe_now; auto. apply safe_step; auto. red; auto. Qed.
+Hoare_sound
+Proof. induction 1. - apply triple_skip. - apply triple_assign. - apply triple_seq with Q; auto. - apply triple_ifthenelse; auto. - apply triple_while; auto. - apply triple_havoc; auto. - apply triple_assert; auto. - apply triple_consequence with P Q; auto. Qed.
+terminated_dec
+Proof. unfold terminated. destruct c; (left; reflexivity) || (right; discriminate). Qed.
+sem_wp_seq
+Proof. unfold sem_wp; cofix CH; intros c1 c2 Q s SAFE. destruct (terminated_dec c1). - apply safe_now. auto. eapply safe_step_inv. eauto. rewrite t. constructor. - apply safe_step. auto. change (~ (error (c1;;c2) s)). eapply safe_not_stuck; eauto. unfold terminated; congruence. intros. apply CH. eapply safe_step_inv. eexact SAFE. constructor; auto. Qed.
+Hoare_sem_wp
+Proof. intro c. induction c; intros Q. - eapply Hoare_consequence_pre. apply Hoare_skip. intros s W. eapply safe_terminated_inv. eexact W. red; auto. - eapply Hoare_consequence_pre. apply Hoare_assign. intros s W. assert (W': safe Q SKIP (update x (aeval a s) s)). eapply safe_step_inv. eexact W. apply red_assign. apply safe_terminated_inv in W'. assumption. red; auto. - apply Hoare_seq with (sem_wp c2 Q); auto. eapply Hoare_consequence_pre. apply IHc1. intros s; apply sem_wp_seq. - apply Hoare_ifthenelse. + eapply Hoare_consequence_pre. apply IHc1. intros s [P1 P2]. replace c1 with (if beval b s then c1 else c2). eapply safe_step_inv. eexact P2. constructor. rewrite P1; auto. + eapply Hoare_consequence_pre. apply IHc2. intros s [P1 P2]. replace c2 with (if beval b s then c1 else c2). eapply safe_step_inv. eexact P2. constructor. rewrite P1; auto. - eapply Hoare_consequence_post. apply Hoare_while. eapply Hoare_consequence_pre. apply IHc. + intros s [P1 P2]. apply sem_wp_seq. eapply safe_step_inv. eexact P2. constructor. exact P1. + intros s [P1 P2]. eapply safe_terminated_inv. eapply safe_step_inv. eexact P2. apply red_while_done. exact P1. red; auto. - eapply Hoare_consequence. apply Hoare_assert. + intros s SAFE. assert (NOTSTUCK: ~ (error (ASSERT b) s)). eapply safe_not_stuck; eauto. unfold terminated; congruence. assert (B: beval b s = true). cbn in NOTSTUCK. destruct (beval b s); auto. assert (FINAL: Q s). eapply safe_terminated_inv. eapply safe_step_inv. eexact SAFE. constructor. auto. red; auto. split. exact B. exact FINAL. + intros s; unfold aand; tauto. - eapply Hoare_consequence_pre. apply Hoare_havoc. intros s W n. assert (W': safe Q SKIP (update x n s)). eapply safe_step_inv. eexact W. apply red_havoc. apply safe_terminated_inv in W'. assumption. red; auto. Qed.
+Hoare_complete
+Proof. intros. apply Hoare_consequence_pre with (sem_wp c Q). apply Hoare_sem_wp. intros s. apply H. Qed.

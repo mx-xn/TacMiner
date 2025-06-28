@@ -1,0 +1,48 @@
+extracted tactics -----------
+Ltac custom0  :=  econstructor; [eauto |  |  | .. ].
+Ltac custom1  :=  econstructor; [ | eauto with rtlg | eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom2 H0 :=  eapply H0; [eauto with rtlg |  |  |  |  | .. ].
+Ltac custom3  :=  econstructor; [eauto with rtlg |  | .. ].
+Ltac custom4 H0 :=  apply H0; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom5 H0 :=  eapply H0; [eauto | .. ].
+Ltac custom6 H0 H1 :=  apply H0 with H1; [eauto with rtlg | eauto with rtlg | .. ].
+Ltac custom7  :=  constructor; [auto | .. ].
+Ltac custom8 H0 H1 :=  apply H0 with H1; [auto | eapply H0; [eauto 2 with rtlg |  |  |  |  | .. ] | .. ].
+Ltac custom9 H0 :=  exists H0; [auto | .. ].
+Ltac custom10  :=  custom2 ; [ | eauto with rtlg |  |  | .. ].
+Ltac custom11 H0 H1 :=  generalize H0; [unfold H1 | .. ].
+Ltac custom12  :=  custom2 ; [ | eauto with rtlg |  |  | .. ].
+Ltac custom13 H0 H1 :=  apply H0 with H1; [auto | .. ].
+Ltac custom14  :=  econstructor; [custom2  |  |  | .. ].
+Ltac custom15 H0 H1 H2 H3 H4 H5 H6 H7 :=  simpl; [intros H0 H1 H2 H3 H4 H5 H6 H7 | .. ].
+Ltac custom16  :=  right; [eauto with rtlg | .. ].
+Ltac custom17  :=  custom2 ; [ | eauto with rtlg |  |  | .. ].
+Ltac custom18 H0 :=  monadInv H0; [constructor | .. ].
+Ltac custom19 H0 H1 H2 H3 H4 :=  intros H0 H1 H2 H3 H4; [monadInv H4 | .. ].
+Ltac custom20 H0 H1 H2 :=  intros H0 H1 H2; [left; [eauto with rtlg | .. ] | .. ].
+Ltac custom21 H0 :=  eapply H0; [eauto 3 with rtlg |  | eauto 3 with rtlg |  |  | .. ].
+Ltac custom22 H0 H1 H2 :=  intros H0 H1 H2; [pose ( AT := fun pc i => instr_at_incr H0 H1 pc i H2 ) | .. ].
+Ltac custom23 H0 :=  apply H0; [auto with coqlib | .. ].
+Ltac custom24  :=  split; [ | auto | .. ].
+Ltac custom25  :=  split; [ | congruence | .. ].
+Ltac custom26  :=  custom0 ; [ |  | eauto | .. ].
+Ltac custom27  :=  custom0 ; [ |  | eauto | .. ].
+Ltac custom28  :=  custom0 ; [ |  | eauto | .. ].
+Ltac custom29  :=  custom7 ; [auto | .. ].
+Ltac custom30 H0 :=  apply H0; [ | eauto 3 with rtlg | .. ].
+Ltac custom31 H0 :=  monadInv H0; [custom13 ].
+Ltac custom32  :=  custom2 ; [ | eauto with rtlg |  |  | .. ].
+Ltac custom33 H0 H1 :=  apply H0 with H1; [eauto 3 with rtlg |  | .. ].
+Ltac custom34 H0 :=  try ( monadInv H0 ); [custom13 ].
+Ltac custom35  :=  custom2 ; [ | eauto with rtlg |  |  | .. ].
+Ltac custom36  :=  custom2 ; [ | eauto with rtlg |  |  | .. ].
+Ltac custom37  :=  exploit transl_exit_charact; [eauto |  | .. ].
+Ltac custom38 H0 H1 :=  intros H0 H1; [monadInv H1 | .. ].
+Ltac custom39 H0 :=  exploit H0; [eauto |  |  | .. ].
+---------------------------
+ , , 0.5
+RTLgenspec, Number of Tactics, 40
+ , Average Tactic Size, 2.20
+ , Total Tactic Size, 88
+ , Max Tactic Size, 4
+ , Overall CP, 1.23

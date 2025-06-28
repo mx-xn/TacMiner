@@ -1,0 +1,56 @@
+forall (s2 : t) (_ : ok s2),
+iff (eq (beq Nil s2) true) (forall x : Z, iff (In x Nil) (In x s2))
+
+forall (s2 : t) (_ : ok s2),
+iff (eq (beq (Cons l h s) s2) true)
+  (forall x : Z, iff (In x (Cons l h s)) (In x s2))
+
+iff (eq (beq Nil Nil) true) (forall x : Z, iff (In x Nil) (In x Nil))
+
+iff (eq (beq Nil (Cons l h s)) true)
+  (forall x : Z, iff (In x Nil) (In x (Cons l h s)))
+
+iff (eq (beq (Cons l h s) Nil) true)
+  (forall x : Z, iff (In x (Cons l h s)) (In x Nil))
+
+iff (eq (beq (Cons l h s) (Cons l0 h0 s0)) true)
+  (forall x : Z, iff (In x (Cons l h s)) (In x (Cons l0 h0 s0)))
+
+forall (_ : eq false true) (x : Z),
+iff False (or (and (Z.le l x) (Z.lt x h)) (In x s))
+
+forall
+  _ : forall x : Z, iff False (or (and (Z.le l x) (Z.lt x h)) (In x s)),
+eq false true
+
+forall (_ : eq false true) (x : Z),
+iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False
+
+forall
+  _ : forall x : Z, iff (or (and (Z.le l x) (Z.lt x h)) (In x s)) False,
+eq false true
+
+forall (_ : eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true)
+  (x : Z),
+iff (or (and (Z.le l x) (Z.lt x h)) (In x s))
+  (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0))
+
+forall
+  _ : forall x : Z,
+      iff (or (and (Z.le l x) (Z.lt x h)) (In x s))
+        (or (and (Z.le l0 x) (Z.lt x h0)) (In x s0)),
+eq (andb (andb (zeq l l0) (zeq h h0)) (beq s s0)) true
+
+eq (andb (andb (left e) (zeq h h0)) (beq s s0)) true
+
+eq (andb (andb (right n) (zeq h h0)) (beq s s0)) true
+
+eq (andb (andb (left e) (left e0)) (beq s s0)) true
+
+eq (andb (andb (left e) (right n)) (beq s s0)) true
+
+forall x : Z, iff (In x s) (In x s0)
+
+forall _ : In x s, In x s0
+
+forall _ : In x s0, In x s

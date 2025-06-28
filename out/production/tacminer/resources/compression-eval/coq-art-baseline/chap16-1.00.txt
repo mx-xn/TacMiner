@@ -1,0 +1,36 @@
+extracted tactics-----------
+custom_tac37: intros _o _o _o; elim _i; simpl; auto; intros _o _o _o _o _o; rewrite <- _i; rewrite <- _i; symmetry; apply _i
+custom_tac0: rewrite _i; rewrite _i
+custom_tac39: intros _o _o _o; elim _i; simpl; trivial; intros _o _o _o _o; rewrite <- _i; rewrite <- _i
+custom_tac7: simpl; auto
+custom_tac3: intros _o; rewrite _i in _i
+custom_tac19: intros _o; elim _i
+custom_tac5: intros _o; case _i
+custom_tac18: intros; lia
+custom_tac1: rewrite _i; auto
+custom_tac2: intros _o _o; rewrite _i in _i
+custom_tac17: rewrite _i in _i; simpl in _i
+custom_tac42: rewrite <- _i; rewrite <- _i
+custom_tac9: unfold _i; intros _o _o
+custom_tac16: rewrite <- _i; auto
+custom_tac27: elim _i; intros _o _o
+custom_tac13: simpl; intros _o
+custom_tac25: simpl; rewrite _i
+custom_tac41: intros _o _o _o _o _o; rewrite ( _i _i _i _i)
+custom_tac46: rewrite _i; apply _i
+custom_tac45: rewrite _i; lia
+---------------------------
+Num proofs: 33
+Num training proofs: 33
+Original size: 622
+Training size: 622
+Testing size: 622
+Compressed total size: 560 ( 487 corpus / 73 library )
+Compressed testing size: 536
+[1] numTactics: 20
+[1] avrgTacticSize: 2.60
+[1] maxTacSize: 9
+[1] numAvgApplications: 3.10
+[1] numTotalApplications: 62
+Compression rate: 1.1604477611940298
+Num tactics in library: 20

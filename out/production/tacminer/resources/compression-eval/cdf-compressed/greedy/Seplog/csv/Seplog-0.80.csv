@@ -1,0 +1,25 @@
+extracted tactics -----------
+Ltac custom0 H0 H1 H2 :=  constructor; [auto | constructor | intros H0 H1 H2; [inv H2 | .. ] | .. ].
+Ltac custom1 H0 H1 H2 H3 H4 H5 :=  red; [intros H0 H1; [eapply H2; [eapply H3; [eexact H4 | eapply H5 | .. ] | .. ] | .. ] | .. ].
+Ltac custom2  :=  split; [auto | auto | .. ].
+Ltac custom3 H0 :=  apply H0; [auto | .. ].
+Ltac custom4  :=  red; [auto | .. ].
+Ltac custom5 H0 H1 :=  red; [intros H0 H1 | .. ].
+Ltac custom6 H0 H1 :=  apply H0; [apply H1 | .. ].
+Ltac custom7 H0 :=  apply H0; [custom2  | .. ].
+Ltac custom8 H0 :=  apply H0; [custom4  | .. ].
+Ltac custom9 H0 H1 :=  apply H0; [eapply H1 | .. ].
+Ltac custom10 H0 :=  custom3 H0; [auto | .. ].
+Ltac custom11 H0 H2 :=  red in H0; [subst H2].
+Ltac custom12 H0 H1 :=  exists H0, H1; [auto | .. ].
+Ltac custom13 H0 H5 :=  subst H0; [custom10 H5 | .. ].
+Ltac custom14  :=  constructor; [auto | .. ].
+Ltac custom15  :=  split; [auto | .. ].
+Ltac custom16 H4 H5 H0 H1 H2 H3 :=  custom1 H4 H5 H0 H1 H2 H3; [ | eexact H5 | .. ].
+---------------------------
+ , , 0.8
+Seplog, Number of Tactics, 17
+ , Average Tactic Size, 2.24
+ , Total Tactic Size, 38
+ , Max Tactic Size, 6
+ , Overall CP, 1.40

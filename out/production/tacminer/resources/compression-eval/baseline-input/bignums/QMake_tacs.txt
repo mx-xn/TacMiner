@@ -1,0 +1,155 @@
+bignums/BigQ/QMake.v
+-----
+bignums/BigQ/QMake_compr.v
+-----
+-----
+N_to_Z_pos
+Proof. intros x; rewrite NN.spec_0; generalize (NN.spec_pos x). lia. Qed.
+strong_spec_of_Q
+Proof. intros(x,y); destruct y; simpl; rewrite ?ZZ.spec_of_Z; auto; destr_eqb; now rewrite ?NN.spec_0, ?NN.spec_of_N. Qed.
+spec_of_Q
+Proof. intros; rewrite strong_spec_of_Q; red; auto. Qed.
+spec_0
+Proof. simpl. nzsimpl. reflexivity. Qed.
+spec_1
+Proof. simpl. nzsimpl. reflexivity. Qed.
+spec_m1
+Proof. simpl. nzsimpl. reflexivity. Qed.
+spec_compare
+Proof. intros [z1 | x1 y1] [z2 | x2 y2]; unfold Qcompare, compare; qsimpl. Qed.
+spec_min
+Proof. unfold min, Qmin, GenericMinMax.gmin. intros. rewrite spec_compare; destruct Qcompare; auto with qarith. Qed.
+spec_max
+Proof. unfold max, Qmax, GenericMinMax.gmax. intros. rewrite spec_compare; destruct Qcompare; auto with qarith. Qed.
+spec_eq_bool
+Proof. intros. unfold eq_bool. rewrite spec_compare. reflexivity. Qed.
+strong_spec_check_int
+Proof. intros; unfold check_int. nzsimpl. destr_zcompare. simpl. rewrite <- H; qsimpl. congruence. reflexivity. qsimpl. lia. Qed.
+spec_norm
+Proof. intros p q; unfold norm. assert (Hp := NN.spec_pos (Zabs_N p)). assert (Hq := NN.spec_pos q). nzsimpl. destr_zcompare. rewrite strong_spec_check_int; reflexivity. rewrite strong_spec_check_int. qsimpl. generalize (Zgcd_div_pos (ZZ.to_Z p) (NN.to_Z q)). lia. replace (NN.to_Z q) with 0%Z in * by assumption. rewrite Zdiv_0_l in *; auto with zarith. apply Zgcd_div_swap0; lia. qsimpl. assert (H' : Z.gcd (ZZ.to_Z p) (NN.to_Z q) = 0%Z). generalize (Z.gcd_nonneg (ZZ.to_Z p) (NN.to_Z q)); lia. symmetry; apply (Z.gcd_eq_0_l _ _ H'); auto. Qed.
+strong_spec_norm
+Proof. intros. replace (Qred [Qq p q]) with (Qred [norm p q]) by (apply Qred_complete; apply spec_norm). symmetry; apply Qred_identity. unfold norm. assert (Hp := NN.spec_pos (Zabs_N p)). assert (Hq := NN.spec_pos q). nzsimpl. destr_zcompare; rewrite ?strong_spec_check_int. qsimpl. qsimpl. rewrite Zgcd_1_rel_prime. destruct (Z_lt_le_dec 0 (NN.to_Z q)). apply Zis_gcd_rel_prime; auto with zarith. apply Zgcd_is_gcd. replace (NN.to_Z q) with 0%Z in * by lia. rewrite Zdiv_0_l in *; lia. simpl; auto with zarith. Qed.
+spec_red
+Proof. intros [ z | n d ]. auto with qarith. unfold red. apply spec_norm. Qed.
+strong_spec_red
+Proof. intros [ z | n d ]. unfold red. symmetry; apply Qred_identity; simpl; auto with zarith. unfold red; apply strong_spec_norm. Qed.
+spec_add
+Proof. intros [x | nx dx] [y | ny dy]; unfold Qplus; qsimpl; try lia. rewrite Pos.mul_1_r, Z2Pos.id; auto. rewrite Pos.mul_1_r, Z2Pos.id; auto. rewrite Pos2Z.inj_mul, 2 Z2Pos.id; auto. Qed.
+spec_add_norm
+Proof. intros x y; rewrite <- spec_add. destruct x; destruct y; unfold add_norm, add; destr_eqb; auto using Qeq_refl, spec_norm. Qed.
+strong_spec_add_norm
+Proof. unfold Reduced; intros. rewrite strong_spec_red. rewrite <- (Qred_complete [add x y]). rewrite <- strong_spec_red. destruct x as [zx|nx dx]; destruct y as [zy|ny dy]; simpl; destr_eqb; nzsimpl; simpl; auto. rewrite spec_add, spec_add_norm; apply Qeq_refl. Qed.
+strong_spec_opp
+Proof. intros [z | x y]; simpl. rewrite ZZ.spec_opp; auto. strong_spec_opp_tac. - auto; rewrite NN.spec_0. - rewrite ZZ.spec_opp; auto. Qed.
+spec_opp
+Proof. intros; rewrite strong_spec_opp; red; auto. Qed.
+strong_spec_opp_norm
+Proof. unfold Reduced; intros. rewrite strong_spec_opp, <- H, !strong_spec_red, <- Qred_opp. apply Qred_complete; apply spec_opp. Qed.
+spec_sub
+Proof. intros x y; unfold sub; rewrite spec_add; auto. rewrite spec_opp; ring. Qed.
+spec_sub_norm
+Proof. intros x y; unfold sub_norm; rewrite spec_add_norm; auto. rewrite spec_opp; ring. Qed.
+strong_spec_sub_norm
+Proof. intros. unfold sub_norm. apply strong_spec_add_norm; auto. apply strong_spec_opp_norm; auto. Qed.
+spec_mul
+Proof. intros [x | nx dx] [y | ny dy]; unfold Qmult; simpl; qsimpl. rewrite Pos.mul_1_r, Z2Pos.id; auto. rewrite Z.mul_eq_0 in *; intuition. nsubst; auto with zarith. nsubst; auto with zarith. nsubst; nzsimpl; auto with zarith. rewrite Pos2Z.inj_mul, 2 Z2Pos.id; auto. Qed.
+spec_norm_denum
+Proof. unfold norm_denum; intros; simpl; qsimpl. congruence. nsubst; auto with zarith. Qed.
+spec_irred
+Proof. intros. unfold irred; nzsimpl; simpl. destr_zcompare. exists 1%Z; nzsimpl; auto. exists 0%Z; nzsimpl. assert (Z.gcd (ZZ.to_Z n) (NN.to_Z d) = 0%Z). generalize (Z.gcd_nonneg (ZZ.to_Z n) (NN.to_Z d)); lia. clear H. split. symmetry; apply (Z.gcd_eq_0_l _ _ H0). symmetry; apply (Z.gcd_eq_0_r _ _ H0). exists (Z.gcd (ZZ.to_Z n) (NN.to_Z d)). simpl. split. nzsimpl. destruct (Zgcd_is_gcd (ZZ.to_Z n) (NN.to_Z d)). rewrite Z.mul_comm; symmetry; apply Zdivide_Zdiv_eq; auto with zarith. nzsimpl. destruct (Zgcd_is_gcd (ZZ.to_Z n) (NN.to_Z d)). rewrite Z.mul_comm; symmetry; apply Zdivide_Zdiv_eq; auto with zarith. Qed.
+spec_irred_zero
+Proof. intros. unfold irred. split. nzsimpl; intros. destr_zcompare; auto. simpl. nzsimpl. rewrite H, Zdiv_0_l; auto. nzsimpl; destr_zcompare; simpl; auto. nzsimpl. intros. generalize (NN.spec_pos d); intros. destruct (NN.to_Z d); auto. assert (0 < 0)%Z. rewrite <- H0 at 2. apply Zgcd_div_pos; auto with zarith. compute; auto. discriminate. compute in H1; elim H1; auto. Qed.
+strong_spec_irred
+Proof. unfold irred; intros. nzsimpl. destr_zcompare; simpl; auto. elim H. apply (Z.gcd_eq_0_r (ZZ.to_Z n)). generalize (Z.gcd_nonneg (ZZ.to_Z n) (NN.to_Z d)); lia. nzsimpl. rewrite Zgcd_1_rel_prime. apply Zis_gcd_rel_prime. generalize (NN.spec_pos d); lia. generalize (Z.gcd_nonneg (ZZ.to_Z n) (NN.to_Z d)); lia. apply Zgcd_is_gcd; auto. Qed.
+spec_mul_norm_Qz_Qq
+Proof. intros z n d; unfold mul_norm_Qz_Qq; nzsimpl; rewrite Zcompare_gt. destr_eqb; nzsimpl; intros Hz. qsimpl; rewrite Hz; auto. destruct Z_le_gt_dec as [LE|GT]. qsimpl. rewrite spec_norm_denum. qsimpl. rewrite Zdiv_gcd_zero in GT; auto with zarith. nsubst. rewrite Zdiv_0_l in *; discriminate. rewrite <- Z.mul_assoc, (Z.mul_comm (ZZ.to_Z n)), Z.mul_assoc. rewrite Zgcd_div_swap0; lia. Qed.
+strong_spec_mul_norm_Qz_Qq
+Proof. unfold Reduced. rewrite 2 strong_spec_red, 2 Qred_iff. simpl; nzsimpl. destr_eqb; intros Hd H; simpl in *; nzsimpl. unfold mul_norm_Qz_Qq; nzsimpl; rewrite Zcompare_gt. destr_eqb; intros Hz; simpl; nzsimpl; simpl; auto. destruct Z_le_gt_dec. simpl; nzsimpl. destr_eqb; simpl; nzsimpl; auto with zarith. unfold norm_denum. destr_eqb; simpl; nzsimpl. rewrite Hd, Zdiv_0_l; discriminate. intros _. destr_eqb; simpl; nzsimpl; auto. nzsimpl; rewrite Hd, Zdiv_0_l; auto with zarith. rewrite Z2Pos.id in H; auto. unfold mul_norm_Qz_Qq; nzsimpl; rewrite Zcompare_gt. destr_eqb; intros Hz; simpl; nzsimpl; simpl; auto. destruct Z_le_gt_dec as [H'|H']. simpl; nzsimpl. destr_eqb; simpl; nzsimpl; auto. intros. rewrite Z2Pos.id; auto. apply Zgcd_mult_rel_prime; auto. generalize (Z.gcd_eq_0_l (ZZ.to_Z z) (NN.to_Z d)) (Z.gcd_nonneg (ZZ.to_Z z) (NN.to_Z d)); lia. destr_eqb; simpl; nzsimpl; auto. unfold norm_denum. destr_eqb; nzsimpl; simpl; destr_eqb; simpl; auto. intros; nzsimpl. rewrite Z2Pos.id; auto. apply Zgcd_mult_rel_prime. rewrite Zgcd_1_rel_prime. apply Zis_gcd_rel_prime. generalize (NN.spec_pos d); lia. generalize (Z.gcd_nonneg (ZZ.to_Z z) (NN.to_Z d)); lia. apply Zgcd_is_gcd. destruct (Zgcd_is_gcd (ZZ.to_Z z) (NN.to_Z d)) as [ (z0,Hz0) (d0,Hd0) Hzd]. replace (NN.to_Z d / Z.gcd (ZZ.to_Z z) (NN.to_Z d))%Z with d0. rewrite Zgcd_1_rel_prime in *. apply bezout_rel_prime. destruct (rel_prime_bezout _ _ H) as [u v Huv]. apply Bezout_intro with u (v*(Z.gcd (ZZ.to_Z z) (NN.to_Z d)))%Z. rewrite <- Huv; rewrite Hd0 at 2; ring. rewrite Hd0 at 1. symmetry; apply Z_div_mult_full; auto with zarith. Qed.
+Ltac custom_tac39 H0 H1 H2 := intros H0 H1; rewrite <- H2.
+
+Ltac custom_tac88 H0 H1 := auto; unfold H0, H1.
+
+Ltac custom_tac51 H0 H1 := apply H0; apply H1.
+
+Ltac custom_tac24 H0 := rewrite H0; qsimpl.
+
+Ltac custom_tac86 H0 H1 := destruct irred as ( n1,d1); destruct irred as ( n2,d2); simpl @snd in *; destruct H0 as [ Hg1 Hg2]; destruct H1 as [ Hg1' Hg2'].
+
+Ltac custom_tac87 H0 := auto with zarith; rewrite H0 in *.
+
+Ltac custom_tac79 H0 H1 := auto with zarith; rewrite H0 in H1.
+
+spec_mul_norm
+Proof. custom_tac39 x y spec_mul; custom_tac88 mul_norm mul; destruct x; destruct y. custom_tac51 Qeq_refl spec_mul_norm_Qz_Qq. custom_tac24 spec_mul_norm_Qz_Qq; ring. rename t0 into nx, t3 into dy, t2 into ny, t1 into dx. destruct ( spec_irred nx dy) as ( g & Hg). destruct ( spec_irred ny dx) as ( g' & Hg'). assert ( Hz := spec_irred_zero nx dy). assert ( Hz':= spec_irred_zero ny dx). custom_tac86 Hg Hg'. custom_tac24 spec_norm_denum; spec_mul_norm_tac. rewrite Eq in *. simpl in *. rewrite <- Hg2' in *; custom_tac87 Eq; simpl in *. rewrite <- Hg2 in *; auto with zarith. spec_mul_norm_tac. rewrite Hz' in Eq; rewrite Eq in *; custom_tac79 Hz Eq; rewrite Eq in *; auto with zarith. rewrite <- Hg1, <- Hg2, <- Hg1', <- Hg2'; ring. Qed.
+strong_spec_mul_norm
+Proof. unfold Reduced; intros. rewrite strong_spec_red, Qred_iff. destruct x as [zx|nx dx]; destruct y as [zy|ny dy]. simpl in *; auto with zarith. simpl. rewrite <- Qred_iff, <- strong_spec_red, strong_spec_mul_norm_Qz_Qq; auto. simpl. rewrite <- Qred_iff, <- strong_spec_red, strong_spec_mul_norm_Qz_Qq; auto. simpl. destruct (spec_irred nx dy) as [g Hg]. destruct (spec_irred ny dx) as [g' Hg']. assert (Hz := spec_irred_zero nx dy). assert (Hz':= spec_irred_zero ny dx). assert (Hgc := strong_spec_irred nx dy). assert (Hgc' := strong_spec_irred ny dx). destruct irred as (n1,d1); destruct irred as (n2,d2). simpl @snd in *; destruct Hg as [Hg1 Hg2]; destruct Hg' as [Hg1' Hg2']. unfold norm_denum; qsimpl. assert (NEQ : NN.to_Z dy <> 0%Z) by (rewrite Hz; intros EQ; rewrite EQ in *; lia). specialize (Hgc NEQ). assert (NEQ' : NN.to_Z dx <> 0%Z) by (rewrite Hz'; intro EQ; rewrite EQ in *; lia). specialize (Hgc' NEQ'). revert H H0. rewrite 2 strong_spec_red, 2 Qred_iff; simpl. destr_eqb; simpl; nzsimpl; try lia; intros. rewrite Z2Pos.id in *; auto. apply Zgcd_mult_rel_prime; rewrite Z.gcd_comm; apply Zgcd_mult_rel_prime; rewrite Z.gcd_comm; auto. rewrite Zgcd_1_rel_prime in *. apply bezout_rel_prime. destruct (rel_prime_bezout (ZZ.to_Z ny) (NN.to_Z dy)) as [u v Huv]; trivial. apply Bezout_intro with (u*g')%Z (v*g)%Z. rewrite <- Huv, <- Hg1', <- Hg2. ring. rewrite Zgcd_1_rel_prime in *. apply bezout_rel_prime. destruct (rel_prime_bezout (ZZ.to_Z nx) (NN.to_Z dx)) as [u v Huv]; trivial. apply Bezout_intro with (u*g)%Z (v*g')%Z. rewrite <- Huv, <- Hg2', <- Hg1. ring. Qed.
+spec_inv
+Proof. destruct x as [ z | n d ]. simpl. rewrite ZZ.spec_compare; destr_zcompare. rewrite <- H. simpl; nzsimpl; compute; auto. simpl. destr_eqb; nzsimpl. - intros; rewrite Z.abs_eq in *; lia. - intros _. set (z':=ZZ.to_Z z) in *; clearbody z'. red; simpl. rewrite Z.abs_eq by lia. rewrite Z2Pos.id by auto. unfold Qinv; simpl; destruct z'; simpl; auto; discriminate. - simpl. destr_eqb; nzsimpl; intros. + rewrite Z.abs_neq in *; lia. + set (z':=ZZ.to_Z z) in *; clearbody z'. red; simpl. rewrite Z.abs_neq by lia. rewrite Z2Pos.id by lia. unfold Qinv; simpl; destruct z'; simpl; auto; discriminate. - simpl. rewrite ZZ.spec_compare; destr_zcompare. rewrite <- H. simpl; nzsimpl. destr_eqb; intros; compute; auto. simpl. destr_eqb; nzsimpl; intros. intros; rewrite Z.abs_eq in *; lia. intros; rewrite Z.abs_eq in *; lia. nsubst; compute; auto. set (n':=ZZ.to_Z n) in *; clearbody n'. rewrite Z.abs_eq by lia. red; simpl. rewrite Z2Pos.id by auto. unfold Qinv; simpl; destruct n'; simpl; auto; try discriminate. rewrite Pos2Z.inj_mul, Z2Pos.id; auto. simpl. destr_eqb; nzsimpl; intros. intros; rewrite Z.abs_neq in *; lia. intros; rewrite Z.abs_neq in *; lia. nsubst; compute; auto. set (n':=ZZ.to_Z n) in *; clearbody n'. red; simpl; nzsimpl. rewrite Z.abs_neq by lia. rewrite Z2Pos.id by lia. unfold Qinv; simpl; destruct n'; simpl; auto; try discriminate. assert (T : forall x, Zneg x = Z.opp (Zpos x)) by auto. rewrite T, Pos2Z.inj_mul, Z2Pos.id; auto; ring. Qed.
+spec_inv_norm
+Proof. intros. rewrite <- spec_inv. destruct x as [ z | n d ]. simpl. rewrite ZZ.spec_compare; destr_zcompare; auto with qarith. simpl; nzsimpl; destr_eqb. destr_zcompare; simpl; auto with qarith. destr_eqb; nzsimpl; auto with qarith. intros _ Hd; rewrite Hd; auto with qarith. destr_eqb; nzsimpl; auto with qarith. intros _ Hd; rewrite Hd; auto with qarith. destr_zcompare; auto with qarith. destr_zcompare; nzsimpl; simpl; auto with qarith; intros. destr_eqb; nzsimpl. - intros; rewrite Z.abs_eq in *; lia. - intros _. rewrite H0; auto with qarith. - lia. - destr_zcompare; nzsimpl; simpl; auto with qarith. destr_eqb; nzsimpl; intros. + rewrite Z.abs_neq in *; lia. + rewrite H0; auto with qarith. + lia. Qed.
+strong_spec_inv_norm
+Proof. unfold Reduced. intros. destruct x as [ z | n d ]. simpl; nzsimpl. rewrite strong_spec_red, Qred_iff. destr_zcompare; simpl; nzsimpl; auto. destr_eqb; nzsimpl; simpl; auto. destr_eqb; nzsimpl; simpl; auto. rewrite strong_spec_red, Qred_iff in H; revert H. simpl; nzsimpl. destr_eqb; nzsimpl; auto with qarith. destr_zcompare; simpl; nzsimpl; auto; intros. destr_zcompare; simpl; nzsimpl; auto. destr_eqb; nzsimpl; simpl; auto. rewrite Z.abs_eq; lia. intros _. rewrite strong_spec_norm; simpl; nzsimpl. destr_eqb; nzsimpl. rewrite Z.abs_eq; lia. intros _. rewrite Qred_iff. simpl. rewrite Z.abs_eq; auto with zarith. rewrite Z2Pos.id in *; auto. rewrite Z.gcd_comm; auto. destr_eqb; nzsimpl; simpl; auto; intros. destr_zcompare; simpl; nzsimpl; auto. destr_eqb; nzsimpl. rewrite Z.abs_neq; lia. intros _. rewrite strong_spec_norm; simpl; nzsimpl. destr_eqb; nzsimpl. rewrite Z.abs_neq; lia. intros _. rewrite Qred_iff. simpl. rewrite Z2Pos.id in *; auto. intros. rewrite Z.gcd_comm, Z.gcd_abs_l, Z.gcd_comm. apply Zis_gcd_gcd; auto with zarith. apply Zis_gcd_minus. rewrite Z.opp_involutive, <- H1; apply Zgcd_is_gcd. rewrite Z.abs_neq; lia. Qed.
+spec_div
+Proof. unfold div; rewrite spec_mul; auto. unfold Qdiv; apply Qmult_comp. apply Qeq_refl. apply spec_inv; auto. Qed.
+spec_div_norm
+Proof. unfold div_norm; rewrite spec_mul_norm; auto. unfold Qdiv; apply Qmult_comp. apply Qeq_refl. apply spec_inv_norm; auto. Qed.
+strong_spec_div_norm
+Proof. intros; unfold div_norm. apply strong_spec_mul_norm; auto. apply strong_spec_inv_norm; auto. Qed.
+spec_square
+Proof. destruct x as [ z | n d ]. simpl; rewrite ZZ.spec_square; red; auto. simpl. destr_eqb; nzsimpl; intros. apply Qeq_refl. rewrite NN.spec_square in *; nzsimpl. rewrite Z.mul_eq_0 in *; lia. rewrite NN.spec_square in *; nzsimpl; nsubst; lia. rewrite ZZ.spec_square, NN.spec_square. red; simpl. rewrite Pos2Z.inj_mul; rewrite !Z2Pos.id; auto. apply Z.mul_pos_pos; auto. Qed.
+spec_power_pos
+Proof. intros [ z | n d ] p; unfold power_pos. simpl. rewrite ZZ.spec_pow_pos, Qpower_decomp. red; simpl; f_equal. now rewrite Pos2Z.inj_pow, Z.pow_1_l. simpl. rewrite ZZ.spec_pow_pos. destr_eqb; nzsimpl; intros. - apply Qeq_sym; apply Qpower_positive_0. - rewrite NN.spec_pow_pos in *. assert (0 < NN.to_Z d ^ Zpos p)%Z by (apply Z.pow_pos_nonneg; auto with zarith). lia. - exfalso. rewrite NN.spec_pow_pos in *. nsubst. rewrite Z.pow_0_l' in *. + lia. + discriminate. - rewrite Qpower_decomp. red; simpl; do 3 f_equal. apply Pos2Z.inj. rewrite Pos2Z.inj_pow. rewrite 2 Z2Pos.id by (generalize (NN.spec_pos d); lia). now rewrite NN.spec_pow_pos. Qed.
+strong_spec_power_pos
+Proof. destruct x as [z | n d]; simpl; intros. red; simpl; auto. red; simpl; intros. rewrite strong_spec_norm; simpl. destr_eqb; nzsimpl; intros. simpl; auto. rewrite Qred_iff. revert H. unfold Reduced; rewrite strong_spec_red, Qred_iff; simpl. destr_eqb; nzsimpl; simpl; intros. exfalso. rewrite NN.spec_pow_pos in *. nsubst. rewrite Z.pow_0_l' in *; lia. rewrite Z2Pos.id in *; auto. rewrite NN.spec_pow_pos, ZZ.spec_pow_pos; auto. rewrite Zgcd_1_rel_prime in *. apply rel_prime_Zpower; auto with zarith. Qed.
+spec_power
+Proof. destruct z. simpl; nzsimpl; red; auto. apply spec_power_pos. simpl. rewrite spec_inv, spec_power_pos; apply Qeq_refl. Qed.
+spec_power_norm
+Proof. destruct z. simpl; nzsimpl; red; auto. apply spec_power_pos. simpl. rewrite spec_inv_norm, spec_power_pos; apply Qeq_refl. Qed.
+strong_spec_power_norm
+Proof. destruct z; simpl. intros _; unfold Reduced; rewrite strong_spec_red. unfold one. simpl to_Q; nzsimpl; auto. intros; apply strong_spec_power_pos; auto. intros; apply strong_spec_inv_norm; apply strong_spec_power_pos; auto. Qed.
+strong_spec_of_Qc
+Proof. intros (q,Hq); intros. unfold of_Qc; rewrite strong_spec_of_Q; auto. Qed.
+strong_spec_of_Qc_bis
+Proof. intros; red; rewrite strong_spec_red, strong_spec_of_Qc. destruct q; simpl; auto. Qed.
+spec_of_Qc
+Proof. intros; apply Qc_decomp; simpl; intros. rewrite strong_spec_of_Qc. apply canon. Qed.
+spec_oppc
+Proof. intros q; unfold Qcopp, to_Qc, Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete. rewrite spec_opp, <- Qred_opp, Qred_correct. apply Qeq_refl. Qed.
+spec_oppc_bis
+Proof. intros. rewrite <- strong_spec_opp_norm by apply strong_spec_of_Qc_bis. rewrite strong_spec_red. symmetry; apply (Qred_complete (-q)%Q). rewrite spec_opp, strong_spec_of_Qc; auto with qarith. Qed.
+spec_comparec
+Proof. unfold Qccompare, to_Qc. intros q1 q2; rewrite spec_compare; simpl; auto. apply Qcompare_comp; apply Qeq_sym; apply Qred_correct. Qed.
+spec_addc
+Proof. unfold to_Qc. transitivity (Q2Qc ([x] + [y])). unfold Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete; apply spec_add; auto. unfold Qcplus, Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete. apply Qplus_comp; apply Qeq_sym; apply Qred_correct. Qed.
+spec_add_normc
+Proof. unfold to_Qc. transitivity (Q2Qc ([x] + [y])). unfold Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete; apply spec_add_norm; auto. unfold Qcplus, Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete. apply Qplus_comp; apply Qeq_sym; apply Qred_correct. Qed.
+spec_add_normc_bis
+Proof. intros. rewrite <- strong_spec_add_norm by apply strong_spec_of_Qc_bis. rewrite strong_spec_red. symmetry; apply (Qred_complete (x+y)%Q). rewrite spec_add_norm, ! strong_spec_of_Qc; auto with qarith. Qed.
+spec_subc
+Proof. unfold sub; rewrite spec_addc; auto. rewrite spec_oppc; ring. Qed.
+spec_sub_normc
+Proof. unfold sub_norm; rewrite spec_add_normc; auto. rewrite spec_oppc; ring. Qed.
+spec_sub_normc_bis
+Proof. intros. rewrite <- strong_spec_sub_norm by apply strong_spec_of_Qc_bis. rewrite strong_spec_red. symmetry; apply (Qred_complete (x+(-y)%Qc)%Q). rewrite spec_sub_norm, ! strong_spec_of_Qc. unfold Qcopp, Q2Qc, this. rewrite Qred_correct ; auto with qarith. Qed.
+spec_mulc
+Proof. unfold to_Qc. transitivity (Q2Qc ([x] * [y])). unfold Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete; apply spec_mul; auto. unfold Qcmult, Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete. apply Qmult_comp; apply Qeq_sym; apply Qred_correct. Qed.
+spec_mul_normc
+Proof. unfold to_Qc. transitivity (Q2Qc ([x] * [y])). unfold Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete; apply spec_mul_norm; auto. unfold Qcmult, Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete. apply Qmult_comp; apply Qeq_sym; apply Qred_correct. Qed.
+spec_mul_normc_bis
+Proof. intros. rewrite <- strong_spec_mul_norm by apply strong_spec_of_Qc_bis. rewrite strong_spec_red. symmetry; apply (Qred_complete (x*y)%Q). rewrite spec_mul_norm, ! strong_spec_of_Qc; auto with qarith. Qed.
+spec_invc
+Proof. unfold to_Qc. transitivity (Q2Qc (/[x])). unfold Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete; apply spec_inv; auto. unfold Qcinv, Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete. apply Qinv_comp; apply Qeq_sym; apply Qred_correct. Qed.
+spec_inv_normc
+Proof. unfold to_Qc. transitivity (Q2Qc (/[x])). unfold Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete; apply spec_inv_norm; auto. unfold Qcinv, Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete. apply Qinv_comp; apply Qeq_sym; apply Qred_correct. Qed.
+spec_inv_normc_bis
+Proof. intros. rewrite <- strong_spec_inv_norm by apply strong_spec_of_Qc_bis. rewrite strong_spec_red. symmetry; apply (Qred_complete (/x)%Q). rewrite spec_inv_norm, ! strong_spec_of_Qc; auto with qarith. Qed.
+spec_divc
+Proof. unfold div; rewrite spec_mulc; auto. unfold Qcdiv; apply f_equal2 with (f := Qcmult); auto. apply spec_invc; auto. Qed.
+spec_div_normc
+Proof. unfold div_norm; rewrite spec_mul_normc; auto. unfold Qcdiv; apply f_equal2 with (f := Qcmult); auto. apply spec_inv_normc; auto. Qed.
+spec_div_normc_bis
+Proof. intros. rewrite <- strong_spec_div_norm by apply strong_spec_of_Qc_bis. rewrite strong_spec_red. symmetry; apply (Qred_complete (x*(/y)%Qc)%Q). rewrite spec_div_norm, ! strong_spec_of_Qc. unfold Qcinv, Q2Qc, this; rewrite Qred_correct; auto with qarith. Qed.
+spec_squarec
+Proof. unfold to_Qc. transitivity (Q2Qc ([x]^2)). unfold Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete; apply spec_square; auto. simpl Qcpower. replace (Q2Qc [x] * 1) with (Q2Qc [x]); try ring. simpl. unfold Qcmult, Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete. apply Qmult_comp; apply Qeq_sym; apply Qred_correct. Qed.
+spec_power_posc
+Proof. unfold to_Qc. transitivity (Q2Qc ([x]^Zpos p)). unfold Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete; apply spec_power_pos; auto. induction p using Pos.peano_ind. simpl; ring. rewrite Pos2Nat.inj_succ; simpl Qcpower. rewrite <- IHp; clear IHp. unfold Qcmult, Q2Qc. apply Qc_decomp; unfold this. apply Qred_complete. setoid_replace ([x] ^ Zpos (Pos.succ p))%Q with ([x] * [x] ^ Zpos p)%Q. apply Qmult_comp; apply Qeq_sym; apply Qred_correct. simpl. rewrite <- Pos.add_1_l. rewrite Qpower_plus_positive; simpl; apply Qeq_refl. Qed.

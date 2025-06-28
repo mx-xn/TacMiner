@@ -1,0 +1,87 @@
+CompCert/backend/Debugvarproof.v
+-----
+CompCert/backend/Debugvarproof_compr.v
+-----
+-----
+transf_program_match
+Proof. intros. eapply match_transform_partial_program; eauto. Qed.
+diff_same
+Proof. intro s. induction s as [ | [v i] s]; simpl. auto. rewrite Pos.compare_refl. rewrite dec_eq_true. auto. Qed.
+delta_state_same
+Proof. intro s. destruct s; simpl. rewrite ! diff_same; auto. auto. Qed.
+transf_code_match
+Proof. intros lm. fix REC 1. intros c. destruct c; intros before; simpl. - constructor. - assert (DEFAULT: forall before after, match_code (i :: c) (i :: add_delta_ranges before after (transf_code lm after c))). intros. constructor. apply REC. destruct i; auto. destruct c; auto. destruct i; auto. set (after := get_label l0 lm). set (c1 := Llabel l0 :: add_delta_ranges before after (transf_code lm after c)). replace c1 with (add_delta_ranges before before c1). constructor. constructor. apply REC. unfold add_delta_ranges. rewrite delta_state_same. auto. Qed.
+transf_function_match
+Proof. unfold transf_function; intros. destruct (ana_function f) as [lm|]; inv H. constructor. apply transf_code_match. Qed.
+find_label_add_delta_ranges
+Proof. intros. unfold add_delta_ranges. destruct (delta_state before after) as [killed born]. induction killed as [ | [v i] l]; simpl; auto. induction born as [ | [v i] l]; simpl; auto. Qed.
+find_label_match_rec
+Proof. induction 1; simpl; intros. - discriminate. - destruct (is_label lbl i). inv H0. econstructor; econstructor; econstructor; eauto. rewrite find_label_add_delta_ranges. auto. Qed.
+find_label_match
+Proof. intros. inv H. eapply find_label_match_rec; eauto. Qed.
+set_state_1
+Proof. intros v i s. induction s as [ | [v' i'] s]; simpl. - auto. - destruct (Pos.compare v v'); simpl; auto. Qed.
+set_state_2
+Proof. intros v i v' i' s. induction s as [ | [v1 i1] s]; simpl; intros. - contradiction. - destruct (Pos.compare_spec v v1); simpl. + subst v1. destruct H0. congruence. auto. + auto. + destruct H0; auto. Qed.
+set_state_3
+Proof. induction 1; simpl; intros. - intuition congruence. - destruct (Pos.compare_spec v v0); simpl in H1. + subst v0. destruct H1. inv H1; auto. right; split. apply not_eq_sym. apply Plt_ne. eapply H; eauto. auto. + destruct H1. inv H1; auto. destruct H1. inv H1. right; split; auto. apply not_eq_sym. apply Plt_ne. auto. right; split; auto. apply not_eq_sym. apply Plt_ne. apply Plt_trans with v0; eauto. + destruct H1. inv H1. right; split; auto. apply Plt_ne. auto. destruct IHwf_avail as [A | [A B]]; auto. Qed.
+wf_set_state
+Proof. induction 1; simpl. - constructor. red; simpl; tauto. constructor. - destruct (Pos.compare_spec v v0). + subst v0. constructor; auto. + constructor. red; simpl; intros. destruct H2. inv H2. auto. apply Plt_trans with v0; eauto. constructor; auto. + constructor. red; intros. exploit set_state_3. eexact H0. eauto. intros [[A B] | [A B]]. * subst v' i'; eauto. * eauto. * eauto. Qed.
+remove_state_1
+Proof. induction 1; simpl; red; intros. - auto. - destruct (Pos.compare_spec v v0); simpl in *. + subst v0. elim (Plt_strict v); eauto. + destruct H1. inv H1. elim (Plt_strict v); eauto. elim (Plt_strict v). apply Plt_trans with v0; eauto. + destruct H1. inv H1. elim (Plt_strict v); eauto. tauto. Qed.
+remove_state_2
+Proof. intros v v' i' s. induction s as [ | [v1 i1] s]; simpl; intros. - auto. - destruct (Pos.compare_spec v v1); simpl. + subst v1. destruct H0. congruence. auto. + auto. + destruct H0; auto. Qed.
+remove_state_3
+Proof. induction 1; simpl; intros. - contradiction. - destruct (Pos.compare_spec v v0); simpl in H1. + subst v0. split; auto. apply not_eq_sym; apply Plt_ne; eauto. + destruct H1. inv H1. split; auto. apply not_eq_sym; apply Plt_ne; eauto. split; auto. apply not_eq_sym; apply Plt_ne. apply Plt_trans with v0; eauto. + destruct H1. inv H1. split; auto. apply Plt_ne; auto. destruct IHwf_avail as [A B] ; auto. Qed.
+wf_remove_state
+Proof. induction 1; simpl. - constructor. - destruct (Pos.compare_spec v v0). + auto. + constructor; auto. + constructor; auto. red; intros. exploit remove_state_3. eexact H0. eauto. intros [A B]. eauto. Qed.
+wf_filter
+Proof. induction 1; simpl. - constructor. - destruct (pred (v, i)) eqn:P; auto. constructor; auto. red; intros. apply filter_In in H1. destruct H1. eauto. Qed.
+join_1
+Proof. induction 1; simpl; try tauto; induction 1; simpl; intros I1 I2; auto. destruct I1, I2. - inv H3; inv H4. rewrite Pos.compare_refl. rewrite dec_eq_true; auto with coqlib. - inv H3. assert (L: Plt v1 v) by eauto. apply Pos.compare_gt_iff in L. rewrite L. auto. - inv H4. assert (L: Plt v0 v) by eauto. apply Pos.compare_lt_iff in L. rewrite L. apply IHwf_avail. constructor; auto. auto. auto with coqlib. - destruct (Pos.compare v0 v1). + destruct (eq_debuginfo i0 i1); auto with coqlib. + apply IHwf_avail; auto with coqlib. constructor; auto. + eauto. Qed.
+join_2
+Proof. induction 1; simpl; try tauto; induction 1; simpl; intros I; try tauto. destruct (Pos.compare_spec v0 v1). - subst v1. destruct (eq_debuginfo i0 i1). + subst i1. destruct I. auto. exploit IHwf_avail; eauto. tauto. + exploit IHwf_avail; eauto. tauto. - exploit (IHwf_avail ((v1, i1) :: s0)); eauto. constructor; auto. simpl. tauto. - exploit IHwf_avail0; eauto. tauto. Qed.
+wf_join
+Proof. induction 1; simpl; induction 1; simpl; try constructor. destruct (Pos.compare_spec v v0). - subst v0. destruct (eq_debuginfo i i0); auto. constructor; auto. red; intros. apply join_2 in H3; auto. destruct H3. eauto. - apply IHwf_avail. constructor; auto. - apply IHwf_avail0. Qed.
+symbols_preserved
+Proof. intros. apply (Genv.find_symbol_match TRANSF). Qed.
+functions_translated
+Proof. intros. apply (Genv.find_funct_transf_partial TRANSF). auto. Qed.
+function_ptr_translated
+Proof. intros. apply (Genv.find_funct_ptr_transf_partial TRANSF). auto. Qed.
+sig_preserved
+Proof. unfold transf_fundef, transf_partial_fundef; intros. destruct f. monadInv H. exploit transf_function_match; eauto. intros M; inv M; auto. inv H. reflexivity. Qed.
+find_function_translated
+Proof. unfold find_function; intros; destruct ros; simpl. apply functions_translated; auto. rewrite symbols_preserved. destruct (Genv.find_symbol ge i). apply function_ptr_translated; auto. congruence. Qed.
+can_eval_safe_arg
+Proof. intros rs sp m a. induction a; simpl; intros; try contradiction; try (econstructor; now eauto with barg). destruct H as [S1 S2]. destruct (IHa1 S1) as [v1 E1]. destruct (IHa2 S2) as [v2 E2]. exists (Val.longofwords v1 v2); auto with barg. Qed.
+eval_add_delta_ranges
+Proof. intros. unfold add_delta_ranges. destruct (delta_state before after) as [killed born]. induction killed as [ | [v i] l]; simpl. - induction born as [ | [v i] l]; simpl. + apply star_refl. + destruct i as [a SAFE]; simpl. exploit can_eval_safe_arg; eauto. intros [v1 E1]. eapply star_step with (t2 := E0). econstructor. constructor. eexact E1. constructor. simpl; constructor. simpl; auto. eauto. eauto. - eapply star_step with (t2 := E0). econstructor. constructor. simpl; constructor. simpl; auto. eauto. eauto. Qed.
+parent_locset_match
+Proof. induction 1; simpl. auto. inv H; auto. Qed.
+Ltac custom_tac29  := constructor; auto.
+
+Ltac custom_tac15  := econstructor; eauto.
+
+Ltac custom_tac25 H0 := split; apply H0.
+
+Ltac custom_tac24 H0 := apply H0; auto.
+
+Ltac custom_tac45 H0 := eauto; intros H0.
+
+Ltac custom_tac0 H0 := eapply H0; eauto.
+
+Ltac custom_tac31 H0 := auto; apply H0.
+
+Ltac custom_tac47  := constructor; simpl.
+
+Ltac custom_tac41 H0 H1 := inv H0; inv H1.
+
+transf_step_correct
+Proof. induction 1; intros ts1 MS; inv MS; try ( inv TRC). - econstructor; split. eapply plus_left. custom_tac29 . apply eval_add_delta_ranges. traceEq. custom_tac29 . - econstructor; split. eapply plus_left. custom_tac29 . apply eval_add_delta_ranges. traceEq. custom_tac29 . - econstructor; split. eapply plus_left. custom_tac15 . instantiate ( 1 := v). rewrite <- H; apply eval_operation_preserved; exact symbols_preserved. apply eval_add_delta_ranges. traceEq. custom_tac29 . - econstructor; split. eapply plus_left. eapply exec_Lload with ( a := a). rewrite <- H; apply eval_addressing_preserved; exact symbols_preserved. eauto. eauto. apply eval_add_delta_ranges. traceEq. custom_tac29 . - econstructor; split. eapply plus_left. eapply exec_Lstore with ( a := a). rewrite <- H; apply eval_addressing_preserved; exact symbols_preserved. eauto. eauto. apply eval_add_delta_ranges. traceEq. custom_tac29 . - exploit find_function_translated; eauto. intros ( tf' & A & B). econstructor; custom_tac25 plus_one. econstructor. eexact A. symmetry; custom_tac24 sig_preserved. traceEq. custom_tac29 . custom_tac29 . custom_tac29 . - exploit find_function_translated; eauto. intros ( tf' & A & B). exploit parent_locset_match; custom_tac45 PLS. econstructor; custom_tac25 plus_one. custom_tac15 . rewrite PLS. eexact A. symmetry; custom_tac24 sig_preserved. inv TRF; eauto. traceEq. rewrite PLS. custom_tac29 . - econstructor; split. eapply plus_left. custom_tac15 . eapply eval_builtin_args_preserved with ( ge1 := ge); eauto. exact symbols_preserved. custom_tac0 external_call_symbols_preserved. apply senv_preserved. apply eval_add_delta_ranges. traceEq. custom_tac29 . - econstructor; split. eapply plus_left. custom_tac29 . apply eval_add_delta_ranges. traceEq. custom_tac29 . - exploit find_label_match; eauto. intros ( before' & after' & tc' & A & B). econstructor; split. eapply plus_left. constructor; eauto. apply eval_add_delta_ranges; eauto. traceEq. custom_tac29 . - exploit find_label_match; eauto. intros ( before' & after' & tc' & A & B). econstructor; split. eapply plus_left. custom_tac0 exec_Lcond_true. apply eval_add_delta_ranges; eauto. traceEq. custom_tac29 . - econstructor; split. eapply plus_left. eapply exec_Lcond_false; custom_tac31 eval_add_delta_ranges. traceEq. custom_tac29 . - exploit find_label_match; eauto. intros ( before' & after' & tc' & A & B). econstructor; split. eapply plus_left. custom_tac15 . apply eval_add_delta_ranges. reflexivity. traceEq. custom_tac29 . - econstructor; custom_tac25 plus_one. constructor. inv TRF; eauto. traceEq. rewrite ( parent_locset_match _ _ STACKS). custom_tac29 . - monadInv H7. rename x into tf. assert ( MF: match_function f tf) by ( apply transf_function_match; auto). inversion MF; subst. econstructor; custom_tac25 plus_one. custom_tac47 ; eauto. reflexivity. custom_tac29 . - monadInv H8. econstructor; custom_tac25 plus_one. custom_tac15 . custom_tac0 external_call_symbols_preserved. apply senv_preserved. custom_tac29 . - custom_tac41 H3 H1. econstructor; split. eapply plus_left. econstructor. apply eval_add_delta_ranges. traceEq. custom_tac29 . Qed.
+transf_initial_states
+Proof. intros. inversion H. exploit function_ptr_translated; eauto. intros [tf [A B]]. exists (Callstate nil tf (Locmap.init Vundef) m0); split. econstructor; eauto. eapply (Genv.init_mem_transf_partial TRANSF); eauto. rewrite (match_program_main TRANSF), symbols_preserved. eauto. rewrite <- H3. apply sig_preserved. auto. constructor. constructor. auto. Qed.
+transf_final_states
+Proof. intros. inv H0. inv H. inv H5. econstructor; eauto. Qed.
+transf_program_correct
+Proof. eapply forward_simulation_plus. apply senv_preserved. eexact transf_initial_states. eexact transf_final_states. eexact transf_step_correct. Qed.
